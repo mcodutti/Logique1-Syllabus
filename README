@@ -1,0 +1,25 @@
+========================================================================
+  Slides pour le cours de Logique 1ère année à l'ESI 
+  (http://www.heb.be/esi)
+  Contact : mcodutti@heb.be
+========================================================================
+
+Le document de base a été obtneu par conversion de la version ODT
+via l'outil writer2latex (w2l).
+
+Le document LaTeX esr découpé en plusieurs parties
+log1.tex			: Le document maitre
+	log1.sty		: Le style fait maison 
+	algoesi.sty		: style en préparation pour de beaux algorithmes
+	auto.sty		: Le style créé par l'outil de conversion
+	log1-debut.tex	: les premières pages (page de garde, toc)
+	log1-chapitre-*	: les chapitres
+	log1-annexe		: l'annexe
+	log1-fin		: les dernières pages (vide pour l'instant)
+	
+Pour produire le document : pdflatex log1.tex
+Le document est gros.
+Pour compiler plus vite, on peut 
+- décommenter la ligne \incldueonly
+- ou utiliser rubber qui offre une option 
+  pour choisir le chapitre à compiler 

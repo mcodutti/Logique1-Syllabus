@@ -1,0 +1,1432 @@
+\chapter[Le fichier séquentiel]{
+Le fichier séquentiel}
+{
+Dans ce chapitre, on voit comment manipuler les fichiers séquentiels via
+deux notations : une notation procédurale et une notation orienté objet
+(nous vous laisserons utiliser celle que vous préférez). }
+
+\begin{center}
+ [Warning: Image ignored] % Unhandled or unsupported graphics:
+%\includegraphics[width=1.27cm,height=1.27cm]{log1-img/log1-img157}
+
+\end{center}
+{
+Ensuite, on généralise la notion de fichier à la notion de «~séquence~»
+qui peut englober aussi d'autres structures comme les
+listes et les tableaux.}
+
+{
+Dans la première partie de ce chapitre, nous utilisons la convention
+courante qu'une lecture infructueuse est nécessaire
+pour détecter la fin d'un fichier. En fin de chapitre
+on voit une autre convention de lecture qu'on
+rencontre dans certains langages et qui stipule qu'on
+peut détecter la fin de fichier juste après la dernière lecture utile.
+}
+
+\section{Présentation}
+{
+Un \textbf{fichier} informatique est une unité informationnelle
+physiquement stockée sur un support de mémoire de masse permanent
+(disque dur, CD-ROM, clé USB par exemple). }
+
+{
+Le qualificatif \textbf{séquentiel}\footnote{Il existe également des
+fichiers à \textit{accès direct} (cf. votre cours
+d'organisation des données)} signifie que
+lorsqu'on \textit{lit} un fichier, les éléments sont
+accédés dans une \textbf{séquence préétablie et ordonnée} (pour accéder
+à un élément de position donnée, il faut d’abord avoir \textit{lu} tous
+les éléments précédents). De même, lorsqu'on
+\textit{écrit} un fichier séquentiel, les éléments sont ordonnés dans
+l'ordre dans lequel ils sont écrits (une prochaine
+lecture les donnerait dans ce même ordre).}
+
+{
+Nous allons considérer qu'un fichier peut être lu ou
+écrit mais pas les deux en même temps\footnote{Certains systèmes et
+langages mettent à disposition des fichiers en lecture/écriture
+simultanées}. On considère aussi qu'un fichier doit
+explicitement être \textbf{ouvert} avant toute lecture/écriture et
+qu'il doit être \textbf{fermé} après la dernière
+lecture/écriture.}
+
+{
+Lors d'une lecture de fichier, on appelle
+«~\textbf{élément courant~»}, le prochain élément qui sera lu.
+L’ensemble étant fini, il doit être possible d’en détecter la
+\textbf{fin}; on peut imaginer la présence d’une marque particulière
+caractérisant cette fin (\textbf{marque de fin de fichier}). }
+
+{
+On comprend donc qu'il faut une lecture supplémentaire
+explicite pour lire la fin de fichier et se rendre ainsi compte
+qu'il n'y a plus rien à lire. En fin
+de chapitre on présente un autre type d'accès où on
+sait qu'on est à la fin du fichier juste après la
+lecture du dernier élément.}
+
+{
+Le fichier n'est pas la seule structure qui peut être
+accédée en séquence. On pourrait faire de même pour un tableau, une
+liste ou encore d'autres structures que vous verrez en
+deuxième année. Ce point est, lui aussi, abordé en fin de chapitre.}
+
+\section{Primitives – notation procédurale}
+{
+Voyons les notations utilisées pour manipuler des fichiers dans un
+contexte non orienté-objet.}
+
+{\sffamily\bfseries\upshape
+Déclaration d’un fichier séquentiel }
+
+{
+Les fichiers utilisés dans un algorithme seront déclarés dans la partie
+déclarative du code selon le modèle : }
+
+{\sffamily
+nomFichier : fichier de T }
+
+{
+où \textstyleCodeInsr{T} est le type des éléments du fichier (types
+simples, variables structurées, objets)}
+
+{
+Exemples:}
+
+{\sffamily
+fileNumbers : fichier d’entiers }
+
+{\sffamily
+fichierTexte : fichier de chaines }
+
+{\sffamily
+fichCalendrier : fichier de Date }
+
+{\sffamily\bfseries\upshape
+Ouverture d’un fichier en lecture }
+
+{\sffamily
+\textstyleMotCl{ouvrir} nomFichier (\textstyleMotCl{lecture}) \ // ou
+\textbf{IN }ou\textbf{ INPUT} }
+
+{
+Cette primitive met à la disposition de l’exécutant le fichier
+\textstyleCodeInsr{nomFichier} en spécifiant que ce fichier sera
+utilisé en lecture (IN). De plus, elle positionne la tête de lecture
+devant le premier élément du fichier (qui n’est donc pas encore lu).
+Attention, si le fichier \textstyleCodeInsr{nomFichier} est inexistant,
+cette primitive provoque l’interruption du programme. }
+
+{
+Pour ouvrir plusieurs fichiers en lecture :}
+
+{\sffamily
+\textstyleMotCl{ouvrir} nomFichier1, nomFichier2, nomFichier3
+(\textstyleMotCl{lecture})\ \ // ou \textbf{IN }ou\textbf{ INPUT}}
+
+{\sffamily\bfseries\upshape
+Ouverture d’un fichier en écriture }
+
+{\sffamily
+\textstyleMotCl{ouvrir} nomFichier (\textstyleMotCl{écriture}) \ \ // ou
+\textstyleMotCl{OUT} \ ou \textstyleMotCl{OUTPUT}}
+
+{
+Cette primitive met à la disposition de l’exécutant le fichier
+\textstyleCodeInsr{nomFichier} en spécifiant que ce fichier sera
+utilisé en écriture (OUT). De plus, elle positionne la tête d’écriture
+en début du fichier. Si le fichier \textstyleCodeInsr{nomFichier} est
+inexistant, celui-ci sera créé lors de l’exécution de cette primitive.
+Par contre, si ce fichier existe déjà, son contenu est «~détruit~» lors
+de l'ouverture.}
+
+{
+Pour ouvrir plusieurs fichiers en écriture :}
+
+{\sffamily
+\textstyleMotCl{ouvrir} nomFichier1, nomFichier2, nomFichier3
+(\textstyleMotCl{écriture}) \ \ }
+
+{\sffamily
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ // ou \textstyleMotCl{OUT} \ ou
+\textstyleMotCl{OUTPUT}}
+
+{\sffamily\bfseries\upshape
+Lecture dans un fichier (ouvert en lecture) }
+
+{\sffamily
+\textstyleMotCl{lire} nomFichier ; nomVariable }
+
+{
+Cette primitive lit dans le fichier \textstyleCodeInsr{nomFichier} une
+valeur qui sera affectée à la variable \textstyleCodeInsr{nomVariable}.
+La valeur lue est la donnée du fichier se trouvant en face de la tête
+de lecture. }
+
+{
+Si \textstyleCodeInsr{nomFichier} est un fichier de T alors
+\textstyleCodeInsr{nomVariable} doit être déclaré de type T.}
+
+{
+Pour détecter la fin de fichier, on utilise la
+\textbf{notation}\footnote{Dans certains langages, il
+s'agira d'une variable en lecture
+seule; dans d'autres langages, ce sera un appel de
+module ou de méthode.}\textbf{ }\textstyleCodeInsr{EOF(nomFichier)}.
+Après une lecture \textstyleCodeInsr{EOF(nomFichier)} prend la valeur
+\textbf{vrai} si la \textbf{fin de fichier} a été détectée et
+\textbf{faux }sinon. }
+
+{
+Dans le cas où \textstyleCodeInsr{EOF(nomFichier)} est à
+\textbf{vrai}\textstyleCodeInsr{,} le contenu de
+\textstyleCodeInsr{nomVariable} n’est plus affecté et doit être
+considéré comme indéterminé. }
+
+{
+Attention à ne pas commettre les erreurs d’utilisation suivantes qui
+provoquent toutes l’interruption de l’algorithme : }
+
+\liststyleListv
+\begin{itemize}
+\item {
+lecture dans un fichier ouvert en écriture, ou non ouvert en lecture; }
+\item {
+utilisation de la primitive \textstyleMotCl{lire} alors que la marque de
+fin de fichier a déjà été détectée, c’est-à-dire lorsque
+\textstyleCodeInsr{EOF(nomFichier)} est devenu \textbf{vrai};}
+\item {
+utilisation de \textstyleCodeInsr{nomVariable} alors que
+\textstyleCodeInsr{EOF(nomFichier)} est devenu \textbf{vrai};}
+\item {
+appel à \textstyleCodeInsr{EOF(nomFichier)} alors
+qu'aucune lecture n'a encore été
+faite.}
+\end{itemize}
+{\sffamily\bfseries
+Écriture dans un fichier (ouvert en écriture) }
+
+{\sffamily
+\textstyleMotCl{écrire} nomFichier ; nomVariable }
+
+{
+Cette primitive réalise l’écriture du contenu de la variable
+\textstyleCodeInsr{nomVariable} dans le fichier
+\textstyleCodeInsr{nomFichier} à l’endroit correspondant à la position
+de la tête d’écriture. Après l’écriture, la tête avance d’une position.
+Il est bien entendu interdit d’écrire dans un fichier ouvert en
+lecture, ou qui n’a pas été ouvert en écriture. }
+
+{\sffamily\bfseries\upshape
+Fermeture d’un fichier }
+
+{\sffamily
+\textstyleMotCl{fermer} nomFichier }
+
+{
+Cette primitive permet de fermer un fichier après son utilisation, en
+lecture ou en écriture. Dans le cas où le fichier a été ouvert en
+écriture, cette primitive place la marque spéciale de fin de fichier
+dans l’élément courant. Une fois le fichier fermé, il
+n'est plus permis de l'utiliser.}
+
+{
+Pour fermer plusieurs fichiers :}
+
+{\sffamily
+\textstyleMotCl{fermer} nomFichier1, nomFichier2, nomFichier3 }
+
+\section{Algorithme de base }
+{
+L’algorithme suivant parcourt simplement le fichier
+\textstyleCodeInsr{nomFichier}. Il s’agit de l’algorithme type dont la
+structure se retrouve dans la majorité des algorithmes exploitant un
+fichier. }
+
+{\sffamily
+\textstyleMotCl{module} parcoursFichier()}
+
+{\sffamily
+\ \ nomFichier : fichier de T }
+
+{\sffamily
+\ \ enregistrement : T }
+
+{\sffamily
+\ \ \textstyleMotCl{ouvrir} nomFichier (lecture) }
+
+{\sffamily
+\ \ \textstyleMotCl{lire} nomFichier ; enregistrement }
+
+{\sffamily
+\ \ \textstyleMotCl{tant} \textstyleMotCl{que} NON EOF(nomFichier)
+\textstyleMotCl{faire} }
+
+{\sffamily\itshape
+\ \ \ \ // traitement de l’information contenue dans enregistrement}
+
+{\sffamily
+\ \ \ \ \textstyleMotCl{lire} nomFichier ; enregistrement }
+
+{\sffamily
+\ \ \textstyleMotCl{fin} \textstyleMotCl{tant} \textstyleMotCl{que} }
+
+{\sffamily
+\ \ \textstyleMotCl{fermer} nomFichier }
+
+{\sffamily
+\textstyleMotCl{fin module}}
+
+
+\bigskip
+
+{\sffamily\bfseries\scshape
+Exemple : Copie d'un fichier}
+
+{
+Par exemple, voici un programme qui recopie simplement les données
+d'un fichier (en lecture) dans un autre (en écriture)
+}
+
+{\sffamily
+\textstyleMotCl{module} copieFichier() }
+
+{\sffamily
+\ \ fichierIn : fichier de T }
+
+{\sffamily
+\ \ fichierOut : fichier de T }
+
+{\sffamily
+\ \ enregistrement : T }
+
+{\sffamily
+\ \ \textstyleMotCl{ouvrir} fichierIn (lecture), \ fichierOut
+(écriture)}
+
+{\sffamily
+\ \ \textstyleMotCl{lire} fichierIn ; enregistrement }
+
+{\sffamily
+\ \ \textstyleMotCl{tant} \textstyleMotCl{que} NON EOF(fichierIn)
+\textstyleMotCl{faire} }
+
+{\sffamily
+\ \ \ \ \textstyleMotCl{écrire} fichierOut ; enregistrement}
+
+{\sffamily
+\ \ \ \ \textstyleMotCl{lire} fichierIn ; enregistrement }
+
+{\sffamily
+\ \ \textstyleMotCl{fin} \textstyleMotCl{tant} \textstyleMotCl{que} }
+
+{\sffamily
+\ \ \textstyleMotCl{fermer} fichierIn, fichierOut }
+
+{\sffamily
+\textstyleMotCl{fin module}}
+
+\section{Primitives – notation orienté objet}
+{
+On peut aussi définir une notation orienté objet pour la manipulation
+d'un fichier. On utilise une classe pour les fichiers
+séquentiels en entrée et une autre pour les fichiers séquentiels en
+sortie.}
+
+{\sffamily
+\textstyleMotCl{classe} FichierEntrée de T}
+
+{\sffamily
+\textstyleMotCl{public} :}
+
+{\sffamily
+\ \ \textstyleMotCl{constructeur} FichierEntrée de T(localisation :
+chaine)}
+
+{\sffamily
+\ \ \textstyleMotCl{méthode} ouvrir()}
+
+{\sffamily
+\ \ \textstyleMotCl{méthode} lire() {→} T}
+
+{\sffamily
+\ \ \textstyleMotCl{méthode} EOF() {→} booléen}
+
+{\sffamily
+\ \ \textstyleMotCl{méthode} fermer()}
+
+{\sffamily
+\textstyleMotCl{fin} \textstyleMotCl{classe}}
+
+
+\bigskip
+
+{\sffamily
+\textstyleMotCl{classe} FichierSortie de T}
+
+{\sffamily
+\textstyleMotCl{public} :}
+
+{\sffamily
+\ \ \textstyleMotCl{constructeur} FichierSortie de T(localisation :
+chaine)}
+
+{\sffamily
+\ \ \textstyleMotCl{méthode} ouvrir()}
+
+{\sffamily
+\ \ \textstyleMotCl{méthode} écrire( enr : T )}
+
+{\sffamily
+\ \ \textstyleMotCl{méthode} fermer()}
+
+{\sffamily
+\textstyleMotCl{fin }\textstyleMotCl{classe}}
+
+{
+Quelques remarques s'imposent :}
+
+\liststyleListv
+\begin{itemize}
+\item {
+Dans la version non orienté objet, rien n'est dit sur
+la localisation du fichier; on suppose que cela est déterminé par
+ailleurs. Ici, nous supposerons que le lien est fait à la
+construction.}
+\item {
+En Java, l'appel au constructeur «~ouvre~» le fichier;
+la tête de lecture/écriture est positionnée au début. Toutefois, pour
+rester proche de la version non OO, nous supposerons en logique
+qu'un appel à la méthode \textstyleCodeInsr{ouvrir()}
+est nécessaire.}
+\end{itemize}
+{\sffamily\bfseries\scshape
+Exemple : parcours d'un fichier}
+
+{
+Récrivons l'algorithme de base en notation orienté
+objet.}
+
+{\sffamily
+\textstyleMotCl{module} parcoursFichier() }
+
+{\sffamily
+\ \ fichier : FichierEntrée de T}
+
+{\sffamily
+\ \ enregistrement : T}
+
+{\sffamily
+\ \ fichier {\textrm{[F0DF?]}} nouveau
+FichierEntrée de T( {\textquotedbl}data.txt{\textquotedbl} )}
+
+{\sffamily
+\ \ fichier.ouvrir() }
+
+{\sffamily
+\ \ enregistrement {\textrm{[F0DF?]}}
+fichier.lire()}
+
+{\sffamily
+\ \ \textstyleMotCl{tant} \textstyleMotCl{que} NON fichier.EOF()
+\textstyleMotCl{faire} }
+
+{\sffamily\itshape
+\ \ \ \ // traitement de l’information contenue dans enregistrement}
+
+{\sffamily
+\ \ \ \ enregistrement {\textrm{[F0DF?]}}
+fichier.lire()}
+
+{\sffamily
+\ \ \textstyleMotCl{fin} \textstyleMotCl{tant} \textstyleMotCl{que} }
+
+{\sffamily
+\ \ fichier.fermer() }
+
+{\sffamily
+\textstyleMotCl{fin module}}
+
+{
+Bien souvent, le fichier sera un paramètre du module. Dans ce cas, il
+aura déjà été créé. Illustrons ce point pour
+l'algorithme de copie de fichier.}
+
+{\sffamily
+\textstyleMotCl{module} copieFichier( fichierIn : FichierEntrée de T, }
+
+{\sffamily
+\ \ \ \ \ \ \ \  \ \ \ \ fichierOut : FichierSortie de T ) }
+
+{\sffamily
+\ \ enregistrement : T }
+
+{\sffamily
+\ \ fichierIn.ouvrir() }
+
+{\sffamily
+\ \ fichierOut.ouvrir() }
+
+{\sffamily
+\ \ enregistrement {\textrm{[F0DF?]}}
+fichierIn.lire()}
+
+{\sffamily
+\ \ \textstyleMotCl{tant} \textstyleMotCl{que} NON fichierIn.EOF()
+\textstyleMotCl{faire} }
+
+{\sffamily
+\ \ \ \ fichierOut.écrire( enregistrement )}
+
+{\sffamily
+\ \ \ \ enregistrement {\textrm{[F0DF?]}}
+fichierIn.lire()}
+
+{\sffamily
+\ \ \textstyleMotCl{fin} \textstyleMotCl{tant} \textstyleMotCl{que} }
+
+{\sffamily
+\ \ fichierIn.fermer() }
+
+{\sffamily
+\ \ fichierOut.fermer() }
+
+{\sffamily
+\textstyleMotCl{fin module}}
+
+\section{Le cas des fichiers vides}
+{
+Dans tout algorithme de manipulation de fichiers, il faut se demander ce
+qu'il advient du cas d'un fichier
+vide (rappelons que c'est la première lecture qui
+permet d'identifier ce cas). Il y a 3 cas de figure :}
+
+\liststyleNumberingii
+\begin{enumerate}
+\item {
+Le fichier vide est un cas particulier tout à fait acceptable et qui est
+traité correctement par l'algorithme général.}
+\item {
+Le fichier vide demande un traitement spécial qui n'est
+pas couvert par le cas général.}
+\item {
+Le fichier vide dénote un problème mal posé qui ne peut être résolu.}
+\end{enumerate}
+{\sffamily\bfseries\scshape
+Exemple 1 – Des informations à traiter}
+
+{
+Le module \textstyleCodeInsr{copierFichier} ci-dessus est un exemple du
+premier cas. En cas de fichier vide, l'algorithme
+fonctionne parfaitement puisqu'il créera bien un
+nouveau fichier vide. De façon générale, le fichier vide peut
+simplement indiquer qu'il n'y a rien
+à traiter pour le moment. Par exemple, on pourrait imaginer un fichier
+contenant des informations sur les étudiants qui se sont mis en ordre
+d'inscription aujourd'hui et qui
+serait utilisé toutes les nuits par un programme créant les comptes
+informatiques pour ces étudiants. \ }
+
+{\sffamily\bfseries\scshape
+Exemple 2 – Calcul de la moyenne}
+
+{
+Si le problème de départ est de calculer la somme, la moyenne ou encore
+le maximum des nombres contenus dans un fichier, alors la solution ne
+peut être donnée dans le cas d'un fichier vide (cas 3)
+à moins que l'analyse n'ait
+clairement indiqué la réponse à donner dans ce cas (cas 2).
+Concentrons-nous sur le calcul de la moyenne d’une série de nombres
+contenus dans un fichier. Voici un premier exemple avec la notation OO
+:}
+
+{\sffamily
+\textstyleMotCl{module} calculMoyenne( fileNb : fichierEntrée de réels )
+{→} réel}
+
+
+\bigskip
+
+{\sffamily
+\ \ somme, nombre : réels}
+
+{\sffamily
+\ \ cpt : entier}
+
+
+\bigskip
+
+{\sffamily
+\ \ fileNb.ouvrir()}
+
+{\sffamily
+\ \ cpt {\textrm{[F0DF?]}} 0}
+
+{\sffamily
+\ \ somme {\textrm{[F0DF?]}} 0}
+
+{\sffamily
+\ \ nombre {\textrm{[F0DF?]}} fileNb.lire()}
+
+{\sffamily
+\ \ \textstyleMotCl{tant} \textstyleMotCl{que} NON fileNb.EOF()
+\textstyleMotCl{faire}}
+
+{\sffamily
+\ \ \ \ cpt {\textrm{[F0DF?]}} cpt + 1}
+
+{\sffamily
+\ \ \ \ somme {\textrm{[F0DF?]}} somme + nombre}
+
+{\sffamily
+\ \ \ \ nombre {\textrm{[F0DF?]}} fileNb.lire()}
+
+{\sffamily
+\ \ \textstyleMotCl{fin} \textstyleMotCl{tant} \textstyleMotCl{que}}
+
+{\sffamily
+\ \ fileNb.fermer()}
+
+{\sffamily
+\ \ \textstyleMotCl{retourner}{\textrm{
+}}{somme} / cpt}
+
+
+\bigskip
+
+{\sffamily
+\textstyleMotCl{fin} \textstyleMotCl{module}}
+
+{
+Il est facile de deviner ce qui se passerait si le fichier était vide !
+Le nombre de nombres du fichier étant nul, le calcul de la moyenne
+provoquerait une interruption (division par zéro). }
+
+{
+Une possibilité consiste à discriminer ce cas en fin de traitement :}
+
+{\sffamily
+\textstyleMotCl{module} calculMoyenne ( fileNb : fichierEntrée de réels
+) {→} réel}
+
+
+\bigskip
+
+{\sffamily
+\ \ somme, nombre : réels}
+
+{\sffamily
+\ \ cpt : entier}
+
+
+\bigskip
+
+{\sffamily
+\ \ fileNb.ouvrir()}
+
+{\sffamily
+\ \ cpt {\textrm{[F0DF?]}} 0}
+
+{\sffamily
+\ \ somme {\textrm{[F0DF?]}} 0}
+
+{\sffamily
+\ \ nombre {\textrm{[F0DF?]}} fileNb.lire()}
+
+{\sffamily
+\ \ \textstyleMotCl{tant} \textstyleMotCl{que} NON fileNb.EOF()
+\textstyleMotCl{faire}}
+
+{\sffamily
+\ \ \ \ cpt {\textrm{[F0DF?]}} cpt + 1}
+
+{\sffamily
+\ \ \ \ somme {\textrm{[F0DF?]}} somme + nombre}
+
+{\sffamily
+\ \ \ \ nombre {\textrm{[F0DF?]}} fileNb.lire()}
+
+{\sffamily
+\ \ \textstyleMotCl{fin} \textstyleMotCl{tant} \textstyleMotCl{que}}
+
+{\sffamily
+\ \ fileNb.fermer()}
+
+{\sffamily
+\ \ \textstyleMotCl{si} cpt {\textgreater} 0 \textstyleMotCl{alors}}
+
+{\sffamily
+\ \ \ \ \textstyleMotCl{retourner}{\textrm{
+}}{somme} / cpt}
+
+{\sffamily
+\ \ \textstyleMotCl{sinon}}
+
+{\sffamily
+\ \ \ \ \textstyleMotCl{erreur} {\textquotedbl}Fichier
+vide{\textquotedbl}}
+
+{\sffamily
+\ \ \textstyleMotCl{fin} \textstyleMotCl{si}}
+
+{\sffamily
+\textstyleMotCl{fin} \textstyleMotCl{module}}
+
+{
+Mais ce n'est pas toujours possible. Par exemple, si le
+problème est simplement de calculer la somme des nombres, la variable
+\textstyleCodeInsr{cpt} disparait et la somme seule ne permet pas de
+juger si le fichier est vide. En effet, la somme pourrait être nulle
+parce que les différents éléments additionnés amènent précisément à ce
+résultat. Il est alors plus sûr de traiter ce cas juste après la
+première lecture.}
+
+{\sffamily
+\textstyleMotCl{module} calculMoyenne( fileNb : fichierEntrée de réels )
+{→} réel}
+
+
+\bigskip
+
+{\sffamily
+\ \ somme, nombre : réels}
+
+{\sffamily
+\ \ cpt : entier}
+
+
+\bigskip
+
+{\sffamily
+\ \ fileNb.ouvrir()}
+
+{\sffamily
+\ \ cpt {\textrm{[F0DF?]}} 0}
+
+{\sffamily
+\ \ somme {\textrm{[F0DF?]}} 0}
+
+{\sffamily
+\ \ nombre {\textrm{[F0DF?]}} fileNb.lire()}
+
+
+\bigskip
+
+{\sffamily
+\ \ \textstyleMotCl{si} fileNb.EOF() \textstyleMotCl{alors}}
+
+{\sffamily
+\textstyleMotCl{\ \ \ \ }\textstyleMotCl{\textmd{fileNb.fermer()}}}
+
+{\sffamily
+\ \ \ \ \textstyleMotCl{erreur} {\textquotedbl}Fichier
+vide{\textquotedbl}}
+
+{\sffamily
+\ \ \textstyleMotCl{fin} \textstyleMotCl{si}}
+
+
+\bigskip
+
+{\sffamily
+\ \ \textstyleMotCl{tant} \textstyleMotCl{que} \ NON fileNb.EOF()
+\textstyleMotCl{faire}}
+
+{\sffamily
+\ \ \ \ cpt {\textrm{[F0DF?]}} cpt + 1}
+
+{\sffamily
+\ \ \ \ somme {\textrm{[F0DF?]}} somme + nombre}
+
+{\sffamily
+\ \ \ \ nombre {\textrm{[F0DF?]}} fileNb.lire()}
+
+{\sffamily
+\ \ \textstyleMotCl{fin} \textstyleMotCl{tant} \textstyleMotCl{que}}
+
+{\sffamily
+\ \ fileNb.fermer()}
+
+{\sffamily
+\ \ \textstyleMotCl{retourner}{\textrm{
+}}{somme} / cpt}
+
+{\sffamily
+\textstyleMotCl{fin} \textstyleMotCl{module}}
+
+
+\bigskip
+
+{
+Écrivons l'algorithme général de traitement
+d'un fichier séquentiel :}
+
+{\sffamily
+\textstyleMotCl{module} algorithmeDeTraitementSurFichier}
+
+
+\bigskip
+
+{\sffamily
+\ \ // \textit{déclaration des variables, fichiers,... éventuellement en
+paramètres}}
+
+
+\bigskip
+
+{\sffamily
+\ \ \textstyleMotCl{ouvrir} fichier (lecture)}
+
+{\sffamily
+\ \ \textstyleMotCl{lire} fichier ; élément}
+
+{\sffamily
+\ \ \textstyleMotCl{si} EOF(fichier) \textstyleMotCl{alors}}
+
+{\sffamily\itshape
+\ \ \ \ // traitement spécial fichier vide}
+
+{\sffamily
+\ \ \textstyleMotCl{sinon}}
+
+{\sffamily\itshape
+\ \ \ \ // initialisation du traitement de l’ensemble}
+
+{\sffamily
+\ \ \ \ \textstyleMotCl{tant} \textstyleMotCl{que} NON EOF(fichier)
+\textstyleMotCl{faire}}
+
+{\sffamily\itshape
+\ \ \ \ \ \ // traitement d’un élément}
+
+{\sffamily
+\ \ \ \ \ \ \textstyleMotCl{lire} fichier ; élément}
+
+{\sffamily
+\ \ \ \ \textstyleMotCl{fin} \textstyleMotCl{tant} \textstyleMotCl{que}}
+
+{\sffamily\itshape
+\ \ \ \ // clôture du traitement de l’ensemble}
+
+{\sffamily
+\ \ \textstyleMotCl{fin} \textstyleMotCl{si}}
+
+{\sffamily
+\ \ \textstyleMotCl{fermer} fichier}
+
+{\sffamily
+\textstyleMotCl{fin} \textstyleMotCl{module}}
+
+{
+Lorsque le «~traitement spécial du fichier vide~» consiste à générer une
+«~ERREUR~» alors le \textstyleMotCl{si-sinon-fin si} peut être changé
+en un simple \textstyleMotCl{si-fin si} suivi du traitement normal.}
+
+\section{La séquence}
+{
+Un fichier séquentiel impose un accès séquentiel à ses éléments.
+D'autres structures de données peuvent être accédées
+séquentiellement : par exemple le tableau et la liste mais aussi la
+liste chainée (cf. votre cours de logique de 2ème année), la
+communication sur un port série ou via le réseau, ... Les algorithmes
+développés pour les fichiers peuvent être réutilisés pour
+n'importe quelle séquence.}
+
+{\sffamily\bfseries\upshape
+Le tableau vu comme une séquence}
+
+{
+Un tableau permet un accès direct à ses éléments mais on peut tout aussi
+bien y accéder en séquence. Comment traduire les notations introduites
+pour les fichiers ? Il suffit d'utiliser un indice
+courant et de le faire évoluer :}
+
+{\sffamily
+// Supposons tab : tableau [1 à n] de T et utilisons un indiceCourant}
+
+
+\bigskip
+
+{\sffamily
+// ouvrir devient}
+
+{\sffamily
+\ \ indiceCourant {\textrm{[F0DF?]}} 0}
+
+
+\bigskip
+
+{\sffamily
+// lire devient}
+
+{\sffamily
+\ \ indiceCourant {\textrm{[F0DF?]}}
+indiceCourant + 1}
+
+{\sffamily
+\ \ \textstyleMotCl{si} indiceCourant ${\leq}$ N \textstyleMotCl{alors}}
+
+{\sffamily
+\ \ \ \ sauve {\textrm{[F0DF?]}} tab[
+indiceCourant ]}
+
+{\sffamily
+\ \ \textstyleMotCl{fin} \textstyleMotCl{si}}
+
+
+\bigskip
+
+{\sffamily
+//\ \ EOF devient}
+
+{\sffamily
+\ \ indiceCourant {\textgreater} N}
+
+{\sffamily\bfseries\upshape
+La liste vue comme une séquence}
+
+{
+Une liste aussi peut aussi être vue comme une séquence. Nous vous
+laissons en exercice le soin de déterminer ce que deviennent les
+primitives ouvrir/lire/\textsf{EOF} dans ce cas}
+
+\section{Un accès différent aux fichiers/séquences}
+{
+Dans les fichiers comme nous les avons vus actuellement, une «~lecture~»
+infructueuse est nécessaire pour se rendre compte
+qu'il n'y a plus
+d'informations à lire. }
+
+{
+On peut envisager des fichiers (ou plus généralement des séquences) où
+on doit d'abord demander s'il reste
+un élément à traiter avant de l'obtenir effectivement.
+Ce schéma est celui qu'on trouve notamment dans }
+
+\liststyleListv
+\begin{itemize}
+\item {
+les curseurs en SQL}
+\item {
+les itérateurs en Java}
+\item {
+la lecture via la classe Scanner en Java}
+\item {
+la lecture dans certains langages de programmation comme Visual Basic}
+\end{itemize}
+{
+On pourrait définir une telle séquence ainsi}
+
+{\sffamily
+\textstyleMotCl{classe} Séquence de T}
+
+{\sffamily
+\ \ \textstyleMotCl{méthode} débuter()\ \ \ \ }
+
+{\sffamily
+\ \ \textstyleMotCl{méthode} aEncore() {→}
+booléen}
+
+{\sffamily
+\ \ \textstyleMotCl{méthode} suivant() {→} T}
+
+{\sffamily
+\textstyleMotCl{fin} \textstyleMotCl{classe}}
+
+{
+Pour illustrer ceci, écrivons l'algorithme qui parcourt
+la séquence.}
+
+{\sffamily
+\textstyleMotCl{module} parcourir ( données : Séquence de T )}
+
+{\sffamily
+\ \ données.débuter()}
+
+{\sffamily
+\ \ \textstyleMotCl{tant} \textstyleMotCl{que} données.aEncore()
+\textstyleMotCl{faire}}
+
+{\sffamily
+\ \ \ \ élément {\textrm{[F0DF?]}}
+données.suivant()}
+
+{\sffamily\itshape
+\ \ \ \ // Traiter l'élément}
+
+{\sffamily
+\ \ \textstyleMotCl{fin} \textstyleMotCl{tant} \textstyleMotCl{que}\ \ }
+
+{\sffamily
+\textstyleMotCl{fin} \textstyleMotCl{module}}
+
+
+\bigskip
+
+{\sffamily\bfseries\scshape
+Exercice – Adaptation aux tableaux et aux listes}
+
+{
+Que deviennent les méthodes de la classe Séquence de T pour un
+tableau/une liste ?}
+
+\section{}
+\section{Exercices}
+{
+Pour ces exercices, vous pouvez utiliser les notations orienté objet ou
+non mais restez cohérents au sein d'un même exercice
+(pas de mélange).}
+
+\liststyleExercice
+\begin{enumerate}
+\item {\sffamily\bfseries
+Algorithmes de base}
+\end{enumerate}
+{
+Soit le fichier FILE dont chacun des enregistrements est de type
+\textbf{Elément}. Cette structure contient les champs
+\textstyleCodeInsr{numéro} (entier), \textstyleCodeInsr{clé} (chaine)
+et \ \textstyleCodeInsr{info} (chaine). Écrire des modules réalisant
+les requêtes suivantes :}
+
+\liststyleNumberingv
+\begin{enumerate}
+\item {
+détermination de la \textbf{longueur} du fichier (c’est-à-dire le nombre
+d’enregistrements du fichier)}
+\item {
+affichage de la valeur minimale du champ \textstyleCodeInsr{numéro}
+parmi les enregistrements du fichier}
+\item {
+recherche du \textit{n}{}-ème enregistrement du fichier. L’entier
+\textit{n} sera entré en paramètre et un paramètre booléen traduira
+l’existence ou non de l’enregistrement recherché ; dans l’affirmative,
+un troisième paramètre renverra cet enregistrement.}
+\item {
+recherche d’un élément connaissant sa «~clé~», c’est-à-dire renvoi en
+paramètre du premier enregistrement du fichier dont le champ
+\textstyleCodeInsr{clé} est égal à la valeur \textstyleCodeInsr{val}
+entrée en paramètre. On renverra également un paramètre booléen
+traduisant l’existence ou non de l’élément cherché. }
+\end{enumerate}
+
+\bigskip
+
+\liststyleExercice
+\begin{enumerate}
+\item {\sffamily\bfseries
+Copies et modifications de fichiers }
+\end{enumerate}
+{
+Les énoncés suivants sont volontairement «~flous~». À vous de préciser
+leur modalités de fonctionnement et de prévoir les différents scénarios
+possibles.}
+
+\liststyleNumberingv
+\begin{enumerate}
+\item {
+Écrire un algorithme qui supprime le \textit{n}{}-ème élément d’un
+fichier}
+\item {
+Écrire un algorithme qui supprime d’un fichier les éléments dont la
+valeur d’un certain champ est égale à une valeur entrée en paramètre }
+\item {
+Écrire un algorithme qui insère dans un fichier une valeur entrée en
+paramètre en \textit{n}{}-ème position}
+\item {
+Écrire un algorithme qui «~éclate~» un fichier en deux fichiers ; le
+premier contiendra les éléments dont la valeur d’un certain champ est
+inférieure à une valeur entrée en paramètre, et le deuxième contiendra
+les autres éléments.}
+\end{enumerate}
+
+\bigskip
+
+\liststyleExercice
+\begin{enumerate}
+\item {\sffamily\bfseries
+Fichiers ordonnés}
+\end{enumerate}
+{
+Soit FILENUM un fichier d’entiers. Écrire un algorithme :}
+
+\liststyleNumberingv
+\begin{enumerate}
+\item {
+qui vérifie si les éléments du fichier sont ordonnés par ordre
+croissant}
+\item {
+qui recherche le mode d’ordonnancement du fichier (croissant,
+strictement croissant, décroissant, strictement décroissant ou aucune
+de ces possibilités)}
+\end{enumerate}
+{
+En supposant à présent FILENUM ordonné en mode croissant, écrire un
+algorithme :}
+
+\liststyleNumberingv
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {
+qui insère la valeur VAL dans une copie de ce fichier}
+\item {
+qui crée une copie du fichier débarrassé de ses redondances}
+\end{enumerate}
+
+\bigskip
+
+\liststyleExercice
+\begin{enumerate}
+\item {\sffamily\bfseries
+Statistiques sur les profs}
+\end{enumerate}
+{
+{Soit le fichier FILEPROFS des professeurs de la
+HEB. La structure des enregistrements de ce fichier est
+}{\textbf{Prof}}{
+contenant les champs suivants :}}
+
+{
+nom : \ \ \ \ chaine}
+
+{
+âge : \ \ \ \ entier}
+
+{
+{sexe : \ \ \ \ logique
+(}{\textbf{vrai}}{ si
+masculin,
+}{\textbf{faux}}{ si
+féminin)}}
+
+{
+{dateIn : \ \ date d’entrée en fonction (objet
+}\textstyleCodeInsr{{Date}}{)}}
+
+{
+Écrire l’algorithme qui :}
+
+\liststyleNumberingv
+\begin{enumerate}
+\item {
+affiche les noms des professeurs qui auront 20 ans d’ancienneté ou plus
+au 31 décembre prochain}
+\item {
+affiche l’âge moyen du corps professoral}
+\item {
+affiche en \% la proportion de femmes dans le corps professoral}
+\end{enumerate}
+
+\bigskip
+
+\liststyleExercice
+\begin{enumerate}
+\item {\sffamily\bfseries
+La sélection des mannequins}
+\end{enumerate}
+{
+Une agence de mannequins a organisé un concours ouvert aux débutantes
+non professionnelles. Les postulantes inscrites ont toutes participé à
+un examen de culture générale au cours duquel les questions étaient
+rédigées indifféremment en français ou en néerlandais. Les
+organisateurs du concours ont encodé tous les renseignements
+nécessaires sur les candidates dans le fichier CANDI dont la structure
+des enregistrements est de type \textbf{Candidat} comprenant les champs
+suivants :}
+
+{
+nom : \ \ \ \ chaine}
+
+{
+adresse : \ \ chaine}
+
+{
+téléphone :\ \ chaine}
+
+{
+date : \ \ \ \ date de naissance
+({objet}{\textbf{\textit{
+}}}\textstyleCodeInsr{{Date}})}
+
+{
+taille : \ \ \ \ taille en mètre (réel)}
+
+{
+poids :\ \ \ \ poids en kilo (réel)}
+
+{
+pts : \ \ \ \ points obtenus à l’examen coté sur 150 (entier)}
+
+{
+En vue de réaliser une sélection, le jury a décidé d’éliminer les
+candidates :}
+
+\liststyleListv
+\begin{itemize}
+\item {
+n’ayant pas atteint 18 ans au 1\textsuperscript{er} novembre de l’année
+en cours ;}
+\item {
+ayant 30 ans ou plus au 1\textsuperscript{er} décembre de l’année en
+cours ;}
+\item {
+de moins de 1m70 ou de plus de 1m90 ;}
+\item {
+ayant un IMC inférieur à 18 ou supérieur à 20, l’IMC (\textit{Indice de
+Masse Corporelle}) étant le rapport entre le poids et le carré de la
+taille ;}
+\item {
+ayant obtenu moins de 70\% à l’examen de culture générale.}
+\end{itemize}
+{
+Écrire l’algorithme qui réalise, en une seule lecture du fichier CANDI,
+cette sélection et qui écrit, sur le fichier SELECTION, les
+enregistrements des candidates sélectionnées qui pourront continuer le
+concours.}
+
+\liststyleExercice
+\begin{enumerate}
+\item {\sffamily\bfseries
+Le top 10}
+\end{enumerate}
+{
+{Soit le fichier FILENB dont les enregistrements
+sont des nombres entiers. Écrire} l’algorithme qui relève les dix plus
+petites valeurs différentes dans ce fichier et les affiche.}
+
+\liststyleExercice
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item[] 
+\bigskip
+\item {\sffamily\bfseries
+{Le méli-mélo de
+cartes}{. }}
+\end{enumerate}
+{
+{Soit le fichier CARTES dont chaque
+enregistrement est une structure
+}{\textbf{Carte}}{
+contenant les champs :}}
+
+{
+couleur : entier (0 pour PIQUE, 1 pour TREFLE, 2 pour CARREAU et 3 pour
+CŒUR)~}
+
+{
+figure : \ \ entier (1 pour l’AS, 2 pour le DEUX,…, 10 pour le DIX, 11
+pour le VALET,}
+
+{
+\ \ \ \ \ \ 12 pour la DAME et 13 pour le ROI)}
+
+{
+{Le fichier décrit un nombre indéterminé de
+cartes provenant de paquets différents ; comme le nombre de cartes est
+élevé, chaque carte apparait certainement plusieurs fois dans le
+fichier. Écrire} l’algorithme qui dénombre et affiche le nombre de jeux
+complets de 52 cartes contenu dans ce fichier.}
+
+\liststyleExercice
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\bfseries
+La partie d’échec}
+\end{enumerate}
+{
+Lorsqu’une partie d’échec est interrompue, on enregistre la position de
+toutes les pièces sur l’échiquier de manière à pouvoir les replacer le
+jour où la partie va reprendre. Le fichier de sauvegarde est JEU et
+contient des enregistrements de type \textbf{Case}, chacun de ceux-ci
+contenant les 3 champs :}
+
+{
+\ \ nl : \ \ numéro de ligne où se trouve la pièce (entier entre 1 et
+8)}
+
+{
+\ \ nc : \ \ numéro de colonne où se trouve la pièce (entier entre 1 et
+8)}
+
+{
+\ \ val : \ \ valeur de la pièce de type \textbf{Pièce}}
+
+
+\bigskip
+
+{
+\textbf{Pièce} contient 2 champs: }
+
+{
+type:\ \  \ les valeurs sont ROI, REINE, CAVALIER, FOU, TOUR, PION}
+
+{
+couleur: les valeurs sont BLANC et NOIR}
+
+
+\bigskip
+
+{
+Écrire l’algorithme parcourant le fichier JEU et permettant :}
+
+\liststyleListv
+\begin{itemize}
+\item {
+de replacer les pièces dans le tableau \textstyleCodeInsr{échiquier}
+(tableau à deux dimensions 8 x 8 de \textbf{Pièce})}
+\item {
+de compter combien de cavaliers sont encore présents sur l’échiquier}
+\item {
+d’afficher la couleur du joueur possédant encore le plus de pièces sur
+l’échiquier.}
+\end{itemize}
+\liststyleExercice
+\begin{enumerate}
+\item {\sffamily\bfseries
+Les stages}
+\end{enumerate}
+{
+Soit le tableau \textstyleCodeInsr{stages} de \textit{n} éléments de
+structure \textbf{Stage} contenant les six champs : \ \ }
+
+{
+réfStage  : \ \ référence du stage}
+
+{
+âgeMin : \ \ âge minimum requis pour pouvoir participer}
+
+{
+âgeMax : \ \ âge maximum permis pour pouvoir participer}
+
+{
+nbMin : \ \ nombre minimum de participants requis pour que ce stage }
+
+{
+\ \ \ \ puisse avoir lieu}
+
+{
+nbMax : \ \ nombre maximum de participants admis}
+
+{
+nbDemande : \ \ nombre de demandes valables (au point de vue des limites
+}
+
+{
+\ \ \ \ d’âges) déjà enregistrées avant aujourd’hui.}
+
+
+\bigskip
+
+{
+Soit le fichier \textstyleCodeInsr{DEMANDES} des nouvelles demandes de
+participation à un stage. La structure \textbf{Demande} d’un
+enregistrement de ce fichier est la suivante :}
+
+
+\bigskip
+
+
+\bigskip
+
+{
+nom : \ \ \ \ nom et prénom du candidat}
+
+{
+âge : \ \ \ \ âge du candidat}
+
+{
+adresse : \ \ adresse du candidat}
+
+{
+réfStage : \ \ référence du stage pour lequel la demande est formulée.}
+
+
+\bigskip
+
+{
+Écrire un module qui reçoit en paramètres le tableau
+\textstyleCodeInsr{stages}, le tableau \textstyleCodeInsr{messages} de
+6 éléments de type chaine (décrit ci-dessous) et le fichier
+\textstyleCodeInsr{DEMANDES}. Ce module va traiter les nouvelles
+demandes en mettant à jour le tableau \textstyleCodeInsr{stages} et en
+créant un fichier \textstyleCodeInsr{REPONSES} de structure
+d’enregistrement \textbf{InfoOut}. Cette structure comprend les champs
+suivants :}
+
+
+\bigskip
+
+{
+requête : \ \ structure \textbf{Demande}\textbf{\textit{ }}reprenant
+toutes les informations }
+
+{
+\ \ \ \ fournies par un candidat}
+
+{
+msg : \ \ \ \ chaine de caractères devant contenir le message à envoyer
+au}
+
+{
+\ \ \ \ demandeur, issu du tableau \textstyleCodeInsr{messages}}
+
+{
+Les messages possibles sont un des six suivants : }
+
+\begin{center}
+\tablehead{}
+\begin{supertabular}{|m{0.36400002cm}|m{13.407001cm}|}
+\hline
+ 1 &
+ Le stage que vous avez demandé \textbf{n’existe
+pas} ! La référence est incorrecte\\\hline
+ 2 &
+ Votre êtes \textbf{trop jeune} pour participer
+au stage que vous avez demandé !\\\hline
+ 3 &
+ Vous être \textbf{trop âgé} pour participer au
+stage que vous avez demandé !\\\hline
+ 4 &
+ Désolé de ne pas prendre votre demande en
+considération : le stage demandé \textbf{est complet}\\\hline
+ 5 &
+ Votre inscription pour le stage est \textbf{mise
+en attente} car il n’y a pas encore assez d’inscrits\\\hline
+ 6 &
+ Votre inscription pour le stage demandé
+\textbf{est acceptée}\\\hline
+\end{supertabular}
+\end{center}
+{
+\textstyleMotCl{\textmd{\textit{Notez qu’un seul message doit être
+fourni en réponse à une demande. L’ordre de priorité des messages
+correspond à l’ordre de leur apparition dans le tableau.}}}}
+
+\liststyleExercice
+\setcounter{saveenum}{\value{enumi}}
+\begin{enumerate}
+\setcounter{enumi}{\value{saveenum}}
+\item {\sffamily\bfseries
+Séquence. }
+\end{enumerate}
+{
+Écrivez un module qui reçoit une séquence d'entiers et
+qui}
+
+\liststyleNumberingv
+\begin{enumerate}
+\item {
+en affiche tous les éléments}
+\item {
+détermine la valeur la plus grande (erreur si la séquence est vide)}
+\item {
+détermine si la séquence est (strictement) croissante (erreur si la
+séquence est vide)}
+\item {
+détermine si la valeur \textstyleCodeInsr{val} (passée en paramètre) est
+présente ou non.}
+\end{enumerate}
