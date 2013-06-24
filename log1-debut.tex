@@ -2,31 +2,65 @@
 % Syllabus de Logique 1ère - Début du document
 % =======================================================
 
-% ==== Page de garde ====
-\begin{center}
-\sffamily\large
-\ecole\\
-\entite\\
-\entiteadresse\\
-\entitetel{} – \entitemail
-\end{center}
+% =======================================================
+% Page de garde
+% =======================================================
+\thispagestyle{empty}
+\begin{minipage}{3cm}
+	\includegraphics[width=25mm]{image/logo-esi}
+\end{minipage}
+\begin{minipage}{13cm}
+\vspace{-6\baselineskip}
+\sffamily
+\Large\ecole\\\entite
+\bigskip\\
+\large\entiteadresse\\\entitetel{} – \entitemail
+\end{minipage}
 
 \vfill
 
 \begin{center}
-\sffamily\huge
-\cours\\
-\bigskip
-\Large
-\etude{} --- \annee\ année\\
-\textit{Édition 2013–2014}
+\sffamily
+\Huge\cours
+\bigskip\\
+\Large\etude{} -- \annee\ année\\
+%\textit{Édition 2013–2014}
 \end{center}
-
 
 \vfill
 
-{\itshape Professeurs\\\auteur}
+%Professeurs\\\medskip
+\begin{center}
+\itshape 
+\begin{tabular}{p{3cm}p{3cm}p{3cm}p{3cm}}
+\auteura & \auteurb & \auteurc & \auteurd \\
+\auteure & \auteurf & \auteurg & \auteurh \\
+\end{tabular}
+\end{center}
 
-% ==== Table des matières ====
+% =======================================================
+% 2ème page : licence, infos de version, ...
+% =======================================================
+
+\clearpage
+\thispagestyle{empty}
+
+Document produit avec \LaTeX.
+
+Version du \today.
+
+\vfill
+
+\includegraphics[width=25mm]{image/cc-gris}
+\\
+Ce document est distribué sous licence 
+\\Creative Commons Paternité - Partage à l'Identique 2.0 Belgique 
+\\(http://creativecommons.org/licenses/by-sa/2.0/be/).
+\\Les autorisations au-delà du champ de cette licence
+\\peuvent être obtenues à \entitesite{} - \texttt{\contact}.
+
+% =======================================================
+% Table des matières
+% =======================================================
 \setcounter{tocdepth}{1}
 \tableofcontents

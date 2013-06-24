@@ -1,3 +1,4 @@
+prepa
 *.acn
 *.acr
 *.alg
@@ -23,6 +24,7 @@
 *.nlo
 *.out
 *.pdfsync
+*.pdf
 *.ps
 *.snm
 *.synctex.gz
