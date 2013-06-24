@@ -103,8 +103,10 @@
 [3]{\printandpush\algorithmicprocedure\ \textproc{#1}(#2)\ifthenelse{\equal{#3}{}}{}{\Gives\ #3}}
 {\algorithmicend\ \algorithmicprocedure}
 
-\algrenewcommand{\algorithmiccomment}[1]{{\itshape\small\hskip2em$\triangleright$ #1}}
-\newcommand{\LineComment}[1]{\Stmt{}\Comment{#1}}
+\algrenewcommand{\algorithmiccomment}[1]{{\small\hskip2em// #1}}
+\newcommand{\LComment}{\Empty\hskip-2em\Comment}
+\newcommand{\RComment}{\hfill\Comment}
+\newcommand{\Indent}{\expandafter\hskip\algorithmicindent\relax}
 
 % =====
 \newenvironment{pseudo}{%

@@ -93,11 +93,11 @@
 	\begin{Emphase}{Instructions élémentaires}
 		\cadre{
 		\begin{pseudo}
-		\Stmt{\K{Avancer}}
-		\LineComment{Le robot se déplace d'une case dans la direction vers laquelle il regarde}
-		\Stmt{\K{ADroite}}
-		\LineComment{Le robot tourne d'un quart de tour vers la droite.}
-		\LineComment{Ainsi, s'il regardait en bas, il regarde à présent à gauche.}
+		\Stmt \K{Avancer}
+		\Stmt \Comment Le robot se déplace d'une case dans la direction vers laquelle il regarde
+		\Stmt \K{ADroite}
+		\Stmt \Comment Le robot tourne d'un quart de tour vers la droite.
+		\Stmt \Comment Ainsi, s'il regardait en bas, il regarde à présent à gauche.
 		\end{pseudo}
 		}
 	\end{Emphase}
@@ -128,8 +128,8 @@
 		\cadre{
 		\begin{pseudo}
 		\Begin
-			\Stmt{ADroite}
-			\Stmt{ADroite}
+			\Stmt ADroite
+			\Stmt ADroite
 		\End
 		\end{pseudo}
 		}
@@ -159,8 +159,8 @@
 	\cadre{
 	\begin{pseudo}
 	\Begin
-		\Stmt{Avancer}
-		\Stmt{Avancer}
+		\Stmt Avancer
+		\Stmt Avancer
 	\End
 	\end{pseudo}
 	}
@@ -244,18 +244,18 @@
 	\begin{Emphase}{Les tests}
 		\cadre{
 		\begin{pseudo}
-		\Stmt{\K{devantMur}}
-		\LineComment{est vrai si le robot fait \textbf{face} à un mur.}
-		\Stmt{\K{devantTrésor}} 
-		\LineComment{est vrai si le robot fait face au trésor.}
-		\Stmt{\K{devantMarque}}
-		\LineComment{est vrai si le robot fait face à une marque.}
-		\Stmt{\K{surMarque}}
-		\LineComment{est vrai si le robot est sur une marque.}
-		\Stmt{\K{non}, \K{et}, \K{ou}}
-		\LineComment{De plus, le robot est capable d'effectuer des 
-			\emph{calculs logiques}}
-		\LineComment{grâce à ces opérateurs.}
+		\Stmt \K{devantMur}
+		\Stmt \Comment est vrai si le robot fait \textbf{face} à un mur.
+		\Stmt \K{devantTrésor}
+		\Stmt \Comment est vrai si le robot fait face au trésor.
+		\Stmt \K{devantMarque}
+		\Stmt \Comment est vrai si le robot fait face à une marque.
+		\Stmt \K{surMarque}
+		\Stmt \Comment est vrai si le robot est sur une marque.
+		\Stmt \K{non}, \K{et}, \K{ou}
+		\Stmt \Comment De plus, le robot est capable d'effectuer 
+			des \emph{calculs logiques}
+		\Stmt \Comment grâce à ces opérateurs.
 		\end{pseudo}
 		}
 	\end{Emphase}
@@ -265,9 +265,9 @@
 		\cadre{
 		\begin{pseudo}
 		\If{condition}
-			\Stmt{série d'instructions à exécuter si la condition est vraie.}
+			\Stmt série d'instructions à exécuter si la condition est vraie.
 		\Else
-			\Stmt{série d'instructions à exécuter si la condition est fausse.}
+			\Stmt série d'instructions à exécuter si la condition est fausse.
 		\EndIf
 		\end{pseudo}
 		}
@@ -328,7 +328,7 @@
 	\begin{pseudo}
 	\Begin
 		\If{non devantMur}
-			\Stmt{Avancer}
+			\Stmt Avancer
 		\Else
 		\EndIf
 	\End
@@ -375,7 +375,7 @@
 	\cadre{
 	\begin{pseudo}
 		\While{condition}
-			\Stmt{série d'instructions à exécuter si la condition est vraie.}
+			\Stmt série d'instructions à exécuter si la condition est vraie.
 		\EndWhile
 	\end{pseudo}
 	}
@@ -423,10 +423,10 @@
 	\begin{Emphase}{Instructions élémentaires}
 		\cadre{
 		\begin{pseudo}
-		\Stmt{\K{ajouterMarque}} 
-			\LineComment{Le robot trace une croix sur la case qu'il occupe.}
-		\Stmt{\K{effacerMarque}}
-			\LineComment{Le robot efface la croix sur la case qu'il occupe.}
+		\Stmt \K{ajouterMarque} 
+		\Stmt \Comment Le robot trace une croix sur la case qu'il occupe.
+		\Stmt \K{effacerMarque}
+		\Stmt \Comment Le robot efface la croix sur la case qu'il occupe.
 		\end{pseudo}
 		}
 	\end{Emphase}
@@ -434,8 +434,8 @@
 	\begin{Emphase}{Test}
 		\cadre{
 		\begin{pseudo}
-		\Stmt{\K{surMarque}}
-			\LineComment{Est vrai si le robot est dans une case marquée d'une croix.}
+		\Stmt \K{surMarque}
+		\Stmt \Comment Est vrai si le robot est dans une case marquée d'une croix.
 		\end{pseudo}
 		}
 	\end{Emphase}

@@ -19,11 +19,11 @@
 
 		\cadre{
 		\begin{pseudo}
-			\Stmt{- Rechercher le dénominateur commun des deux fractions}
-			\Stmt{- Mettre chaque fraction au même dénominateur}
-			\Stmt{- Additionner les numérateurs des deux fractions,}
-			\Stmt{\ \ ce qui donne le numérateur de la somme}
-			\Stmt{- Simplifier la fraction obtenue.}
+			\Stmt - Rechercher le dénominateur commun des deux fractions
+			\Stmt - Mettre chaque fraction au même dénominateur
+			\Stmt - Additionner les numérateurs des deux fractions,
+			\Stmt \Indent ce qui donne le numérateur de la somme
+			\Stmt - Simplifier la fraction obtenue
 		\end{pseudo}
 		}
 		
@@ -47,13 +47,13 @@
 
 		\cadre{
 		\begin{pseudo}
-		\Stmt{- Prendre connaissance du premier numérateur et du premier dénominateur ;}
-		\Stmt{- Prendre connaissance du second numérateur et du second dénominateur ;}
-		\Stmt{- Multiplier les deux dénominateurs pour obtenir le dénominateur commun ;}
-		\Stmt{- Multiplier le premier numérateur par le second dénominateur}
-		\Stmt{\ \ et le second numérateur par le premier dénominateur ;}
-		\Stmt{- Additionner ces deux produits pour obtenir le numérateur du résultat ;}
-		\Stmt{- Communiquer ce résultat ainsi que le dénominateur commun.}
+		\Stmt - Prendre connaissance du premier numérateur et du premier dénominateur ;
+		\Stmt - Prendre connaissance du second numérateur et du second dénominateur ;
+		\Stmt - Multiplier les deux dénominateurs pour obtenir le dénominateur commun ;
+		\Stmt - Multiplier le premier numérateur par le second dénominateur
+		\Stmt \Indent et le second numérateur par le premier dénominateur ;
+		\Stmt - Additionner ces deux produits pour obtenir le numérateur du résultat ;
+		\Stmt - Communiquer ce résultat ainsi que le dénominateur commun.
 		\end{pseudo}
 		}
 
@@ -174,7 +174,7 @@
 			
 			\begin{center}
 			\tablehead{}
-			\begin{supertabular}{m{1.8109999cm}|m{11.918cm}}
+			\begin{tabular}[t]{p{2cm}|p{12cm}}
 			\raggedleft  \textstyleMotCl{entier} &
 			 pour les nombres entiers\\
 			\raggedleft  \textstyleMotCl{réel} &
@@ -190,7 +190,7 @@
 			\raggedleft  \textstyleMotCl{booléen} &
 			 les variables de ce type ne peuvent valoir que
 			\textbf{vrai} ou \textbf{faux}\\
-			\end{supertabular}
+			\end{tabular}
 			\end{center}
 			
 			On veillera au cours de logique à ne pas utiliser les valeurs 0 et 1
@@ -216,8 +216,8 @@
 
 			\cadre{
 			\begin{pseudo}
-			\Stmt{num1 et num2 seront les noms de deux objets destinés à recevoir}
-			\Stmt{les numérateurs des fractions, c’est-à-dire des nombres à valeurs entières.}
+			\Stmt num1 et num2 seront les noms de deux objets destinés à recevoir
+			\Stmt les numérateurs des fractions, c’est-à-dire des nombres à valeurs entières.
 			\end{pseudo}
 			}
 			
@@ -258,24 +258,18 @@
 
 			avec la signification suivante :
 
-			{
-			\ \ \textstyleCodeInsr{\textcolor{black}{num1 }}\textcolor{black}{(
-			}\textstyleCodeInsr{\textcolor{black}{num2}}\textcolor{black}{
-			)}\textcolor{black}{\ \ \ \ pour numérateur de la première (seconde)
-			fraction ;}}
+			\begin{itemize}
+			\item
+				\textstyleCodeInsr{num1 (num2)} pour numérateur 
+				de la première (seconde) fraction ;
+			\item
+				\textstyleCodeInsr{den1 (den2)} pour dénominateur 
+				de la première (seconde) fraction ;
+			\item
+				\textstyleCodeInsr{numRes (denRes)}
+				pour numérateur (dénominateur) du résultat.
+			\end{itemize}
 			
-			{
-			\textcolor{black}{\ \ }\textstyleCodeInsr{\textcolor{black}{den1}}\textcolor{black}{
-			( }\textstyleCodeInsr{\textcolor{black}{den2}}\textcolor{black}{
-			)}\textcolor{black}{\ \ \ \ pour dénominateur de la première (seconde)
-			fraction ;}}
-			
-			{
-			\textcolor{black}{\ \ }\textstyleCodeInsr{\textcolor{black}{numRes}}\textcolor{black}{
-			( }\textstyleCodeInsr{\textcolor{black}{denRes
-			}}\textcolor{black}{)}\textcolor{black}{\ \ pour numérateur
-			(dénominateur) du résultat.}}
-
 			\marginicon{attention}
 			Attention, lors de la déclaration d’une variable, celle-ci n’a pas de
 			valeur ! Nous verrons plus loin que c’est l’instruction
@@ -510,7 +504,7 @@
 	
 			\begin{center}
 			\tablehead{}
-			\begin{supertabular}{m{1cm}|m{12cm}}
+			\begin{supertabular}{m{2cm}|m{11cm}}
 			\raggedleft  \textstyleCodeInsr{\textless} & (strictement) plus petit que\\
 			\raggedleft  \textstyleCodeInsr{\textgreater} & (strictement) plus grand que\\
 			\raggedleft  \textstyleCodeInsr{=} & égal\\
@@ -550,20 +544,20 @@
 			mémoire. Nous noterons :
 
 			\cadre{
-			{\sffamily
-			\textstyleMotCl{lire} liste\_de\_variables\_à\_lire}
+			\begin{pseudo}
+			\Read{liste\_de\_variables\_à\_lire}
+			\end{pseudo}
 			}
 			
 			{\bfseries Exemples}
 			
 			\cadre{
-			{\sffamily
-			\textstyleMotCl{lire} nombre1, nombre2}
-			
-			{\sffamily
-			\textstyleMotCl{lire} num1, den1, num2, den2}
+			\begin{pseudo}
+			\Read{nombre1, nombre2}
+			\Read{num1, den1, num2, den2}
+			\end{pseudo}
 			}
-
+			
 			L’exécution de cette instruction provoque une
 			pause dans le déroulement de l’algorithme : l’exécutant demande alors à
 			l’utilisateur les valeurs des variables à lire. Ces valeurs viennent
@@ -582,9 +576,9 @@
 			données qu’il connait déjà :
 
 			\cadre{
-			{\sffamily
-			\textbf{nomVariable }{\textbf{←}}\textbf{
-			expression}}
+			\begin{pseudo}
+			\Gets{nomVariable}{expression}
+			\end{pseudo}
 			}
 			
 			Rappelons qu’une \textbf{expression} 
@@ -595,21 +589,13 @@
 			Exemples}
 			
 			\cadre{
-			{\sffamily
-			somme {\textbf{←}} nombre1 + nombre2}
-			
-			{\sffamily
-			denRes {\textbf{←}} den1 * den2}
-			
-			{\sffamily
-			cpt {\textbf{←}} cpt + 1}
-			
-			{\sffamily
-			delta {\textbf{←}} b**2 – 4*a*c}
-			
-			{\sffamily
-			test {\textbf{←}} a {\textless} b \ \ \ \ //
-			pour une variable logique}
+			\begin{pseudo}
+			\Gets{somme}{nombre1 + nombre2}
+			\Gets{denRes}{den1 * den2}
+			\Gets{cpt}{cpt + 1}
+			\Gets{delta}{b**2 – 4*a*c}
+			\Gets{test}{a < b} \Comment{pour une variable logique}
+			\end{pseudo}
 			}
 
 			{\bfseries
@@ -618,29 +604,24 @@
 			\begin{itemize}
 			\item
 				Il est de règle que le résultat de l’expression à droite du signe
-				d’affectation ({\textsf{\textbf{←}}}) soit de
+				d’affectation ($\gets$) soit de
 				même type que la variable à sa gauche. On tolère certaines exceptions
 				:
 				\begin{itemize}
 				\item
-					\textstyleCodeInsr{entier
-					}\textstyleCodeInsr{{\textbf{←}}}\textstyleCodeInsr{
-					réel} : \ dans ce cas le contenu de la variable sera la valeur tronquée
-					de l’expression réelle. Par exemple si «~\textstyleCodeInsr{nb~»} est
+					\textstyleCodeInsr{entier}{ $\gets$ }\textstyleCodeInsr{réel} : 
+					dans ce cas le contenu de la variable sera la valeur tronquée
+					de l’expression réelle. 
+					Par exemple si «~\textstyleCodeInsr{nb}~» est
 					une variable de type entier, son contenu après l’instruction
-					«~\textstyleCodeInsr{nb
-					}\textstyleCodeInsr{{\textbf{←}}}\textstyleCodeInsr{
-					15/4~»} sera 3
+					«~\textstyleCodeInsr{nb}{ $\gets$ }\textstyleCodeInsr{$15/4$}~» 
+					sera 3
 				\item 
-					\textstyleCodeInsr{réel
-					}\textstyleCodeInsr{{\textbf{←}}}\textstyleCodeInsr{
-					entier} : \ ici, il n'y a évidemment pas de perte de
-					valeur.
+					\textstyleCodeInsr{réel}{ $\gets$ }\textstyleCodeInsr{entier} :
+					ici, il n'y a évidemment pas de perte de valeur.
 				\item 
-					\textstyleCodeInsr{chaine
-					}\textstyleCodeInsr{{\textbf{←}}}\textstyleCodeInsr{
-					caractère;} le contraire n'est évidemment pas
-					accepté.
+					\textstyleCodeInsr{chaine}{ $\gets$ }\textstyleCodeInsr{caractère} : 
+					le contraire n'est évidemment pas accepté.
 				\end{itemize}
 			\item 
 				Seules les variables déclarées peuvent être affectées, que ce soit par
@@ -648,9 +629,8 @@
 			\item 
 				On veillera à ne pas mélanger la déclaration d’une variable et son
 				affectation interne dans une même ligne de code, donc pas
-				d’instructions hybrides du genre \textsf{x}\textstyleCodeInsr{
-				}\textstyleCodeInsr{{\textbf{←}}}\textstyleCodeInsr{
-				2 : entier}\ \ // incorrect !
+				d’instructions hybrides du genre 
+				\textsf{x}{ $\gets$ }\textstyleCodeInsr{2 : entier}\ \ // incorrect !
 			\item 
 				Pour l’affectation interne, toutes les variables apparaissant dans
 				\textstyleCodeInsr{expression} doivent avoir été affectées
@@ -663,313 +643,229 @@
 		l’extérieur (donc à l’utilisateur) la valeur d’un résultat de
 		l’exécution de l’algorithme. Nous écrirons :
 
-{\sffamily
-\textstyleMotCl{écrire} expression ou liste de variables}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img48}
-
-\end{center}
-{
-qui signifie que la valeur d’une expression (ou celles des différentes
-variables mentionnées) sera fournie à l’utilisateur (par exemple par un
-affichage à l’écran ou par impression sur listing via l’imprimante,
-etc…).}
-
-
-\bigskip
-
-{\bfseries
-Remarques}
-
-\liststyleListv
-\begin{itemize}
-\item {
-Ce ne serait pas une erreur fondamentale de remplacer
-\textstyleCodeInsr{lire} par \textstyleCodeInsr{recevoir} ou
-\textstyleCodeInsr{écrire} par \textstyleCodeInsr{afficher}. Il n’y a
-évidemment pas de confusion possible à partir du moment où l’on sait
-qu’il s’agit de primitives d’échange entre l’extérieur et l’ordinateur
-exécutant la procédure, mais par principe, il est conseillé d’utiliser
-une syntaxe commune et limitée à un petit nombre de mots clés. }
-\item {
-Comme pour l’affectation interne, on ne peut \textstyleCodeInsr{écrire}
-que des expressions dont les variables ont été affectées préalablement.
-}
-\end{itemize}
-\section{Structure générale d’un algorithme}
-{
-La traduction d’un algorithme en pseudo-code constituera le contenu d’un
-\textstyleMotCl{module}. Un module contient donc la solution
-algorithmique d’un problème donné (ou d’une de ses parties). Sa
-structure générale sera la suivante :}
-
-{\sffamily
-\textstyleMotCl{module} nomDuModule()}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img49}
-
-\end{center}
-{\sffamily
-\ \ \textit{déclaration des variables et constantes utilisées dans le
-module}}
-
-{\sffamily\itshape
-\ \ lecture des données}
-
-{\sffamily\itshape
-\ \ instructions utilisant les données lues}
-
-{\sffamily\itshape
-\ \ \ communication des résultats}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
-
-{\bfseries
-Remarques}
-
-\liststyleListv
-\begin{itemize}
-\item {
-Le code d'un algorithme sera toujours compris entre la
-première ligne ; appelée «~entête~» qui commence par le mot «~module~»
-suivi du nom choisi pour l'algorithme ; et la ligne
-finale «~fin module~». Le code compris entre l'entête
-et la ligne finale sera toujours légèrement décalé vers la droite,
-c'est un premier exemple
-d'\textbf{indentation} indispensable pour la
-lisibilité d'un programme, nous y reviendrons lors de
-l'étude des structures alternatives et répétitives.}
-\item {
-Comme pour les variables, le nomDuModule devra être approprié au contenu
-! Par exemple, sommeNombres, additionnerFractions plutôt que goPartez
-!
-Le rôle des parenthèses qui suivent le nom du module sera expliqué plus
-tard.}
-\item {
-Il va de soi que toutes les parties de cette structure générale ne
-seront pas toujours nécessaires : certains algorithmes ne nécessiteront
-pas de lecture de données, d'autres ne devront pas
-communiquer des résultats,...}
-\item {
-Pour la lisibilité, on veillera toujours à ce que le texte d’un module
-tienne sur une seule page.}
-\end{itemize}
-{
-À titre d’exemple, récrivons l’algorithme d’addition de fractions décrit
-en début de chapitre :}
-
-{\sffamily
-\textstyleMotCl{module} additionnerFractions()}
-
-{\sffamily
-\ \ num1, den1, num2, den2, numRes, denRes : entiers}
-
-{\sffamily
-\textstyleMotCl{\ \ lire} num1, den1, num2, den2}
-
-{\sffamily
-{\ \ denRes
-}{\textbf{←}}{ den1 *
-den2}}
-
-{\sffamily
-{\ \ numRes
-}{\textbf{←}}{
-num1*den2 + num2*den1}}
-
-{\sffamily
-\textstyleMotCl{\ \ écrire} numRes, {\textquotedbl}~/~{\textquotedbl},
-denRes}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
-
-\section[Commenter un algorithme]{\bfseries Commenter un
-algorithme}
-{
-On n’insistera jamais assez sur la nécessité de \textbf{documenter} un
-algorithme en y insérant des \textbf{commentaires} judicieux, clairs et
-suffisants ! Un commentaire est un texte placé dans
-l'algorithme et destiné à faciliter au maximum la
-compréhension d’un algorithme par le lecteur (parfois une autre
-personne, mais aussi souvent l'auteur qui se perd dans
-son propre texte lorsqu'il y replonge après une
-interruption). Ces commentaires (introduits par
-«~\textstyleCodeInsr{//~» }) seront bien entendu ignorés par
-l’exécutant de l’algorithme.}
-
-{\sffamily
-// ce module lit les contenus de 2 fractions et affiche leur somme}
-
-{\sffamily
-\textstyleMotCl{module} additionnerFractions()}
-
-
-\bigskip
-
-{\sffamily
-\ \ num1, den1, num2, den2, numRes, denRes : entiers}
-
-
-\bigskip
-
-{\sffamily
-\ \ \textstyleMotCl{lire} num1, den1, num2, den2}
-
-{\sffamily
-{\ \ denRes
-}{\textbf{←}}{ den1 *
-den2 \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ // calcul du dénominateur}}
-
-{\sffamily
-{\ \ numRes
-}{\textbf{←}}{
-num1*den2 + num2*den1\ \ // calcul du numérateur}}
-
-{\sffamily
-\ \ \textstyleMotCl{écrire} numRes, {\textquotedbl}~/~{\textquotedbl},
-denRes\ \  \ // la fraction n'est sans doute pas
-simplifiée}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-{
-Noter qu’un excès de commentaires peut être aussi nuisible qu’un
-trop-peu pour la compréhension d’un algorithme. Par exemple, un choix
-judicieux de noms de variables peut s’avérer bien plus efficace que des
-commentaires superflus. Ainsi, l’instruction}
-
-{\sffamily
-nouveauCapital {\textbf{←}} ancienCapital * (1 +
-taux / 100)}
-
-{
-dépourvue de commentaires est bien préférable aux lignes suivantes :}
-
-{\sffamily
-c1 {\textbf{←}} c0 * (1 + t / 100) \ // calcul
-du nouveau capital}
-
-{\sffamily
-\ \ \ \ \ \ // c1 est le nouveau capital, c0 est l’ancien capital, t est
-le taux}
-
-\section{Compléments de pseudo-code}
-{
-\textstyleMotCl{\textmd{Présentons quelques notions algorithmiques peu
-utilisées en première mais qui vous seront peut-être utiles dans
-l'un ou l'autre des exercices.}}}
-
-{\sffamily\bfseries\upshape
-Constantes}
-
-{
-Une \textbf{constante} est une information pour laquelle nom, type et
-valeur sont figés. La liste des constantes utilisées dans un algorithme
-apparaitra dans la section déclaration des variables sous la forme
-suivante :}
-
-{\sffamily
-\textstyleMotCl{constante} PI = 3,14}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img50}
-
-\end{center}
-{\sffamily
-\textstyleMotCl{constante} ESI = {\textquotedbl}École Supérieure d’
-Informatique{\textquotedbl}}
-
-{
-\textstyleMotCl{\textmd{Il est inutile de spécifier leur type, celui-ci
-étant défini implicitement par la valeur de la constante.}}}
-
-{\sffamily\bfseries\upshape
-Énumération}
-
-{
-Parfois, une variable ne peut prendre qu'un ensemble
-fixe et fini de valeurs. Par exemple une variable représentant une
-saison ne peut prendre que quatre valeurs (HIVER, PRINTEMPS, ETE,
-AUTOMNE). On va l'indiquer grâce à
-l'énumération qui introduit un \textbf{nouveau type}
-de donnée.}
-
-{\sffamily
-\textstyleMotCl{énumération} Saison \{ HIVER, PRINTEMPS, ETE, AUTOMNE \}
-}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img51}
-
-\end{center}
-{
-Il y a deux avantages à cela : une indication claire des possibilités de
-la variable lors de la déclaration et une lisibilité du code grâce à
-l'utilisation des valeurs explicites.}
-
-{\sffamily\bfseries\scshape
-Exercice : Autres situations}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.282cm,height=1.282cm]{log1-img/log1-img52}
-
-\end{center}
-{
-Pouvez-vous identifier d'autres données qui pourraient
-avantageusement s'exprimer avec une énumération ?}
-
-{\bfseries
-Quid des langages de programmation ?}
-
-{
-Certains langages (comme Java) proposent un type énuméré complet.
-D'autres (comme C et C++) proposent un type énuméré
-incomplet mais qui permet néanmoins une écriture comme celle ci-dessus.
-Cobol propose des «~noms conditions~» qui représentent
-l'ensemble des valeurs possibles
-d'une variable. D'autres langages,
-enfin, ne proposent rien. Pour ces langages, le truc est de définir des
-constantes entières qui vont permettre une écriture proche de celle
-ci-dessus (mais sans une déclaration explicite).}
-
-{\bfseries
-Lien avec les entiers}
-
-{
-Dans l'exemple ci dessus, on lit un Mois mais souvent
-on disposera plutôt d'un entier. Il faut pouvoir
-convertir les valeurs. Chaque langage de programmation propose sa
-propre technique; nous allons adopter la syntaxe suivante :}
-
-{\sffamily
-Mois(3)\ \ // donne l'énumération du mois numéro 3 (on
-commence à 1)}
-
-{\sffamily
-Entier(mois)\ \ // donne l'entier associé à un mois}
-
-\section{Exercices}
-{\sffamily\bfseries\upshape
-Pour s'échauffer}
+			\cadre{
+			\begin{pseudo}
+			\Write{expression ou liste de variables}
+			\end{pseudo}
+			}
+
+		qui signifie que la valeur d’une expression (ou celles des différentes
+		variables mentionnées) sera fournie à l’utilisateur (par exemple par un
+		affichage à l’écran ou par impression sur listing via l’imprimante,
+		etc\dots).
+
+		{\bfseries
+		Remarques}
+
+		\begin{itemize}
+		\item
+			Ce ne serait pas une erreur fondamentale de remplacer
+			\textstyleCodeInsr{lire} par \textstyleCodeInsr{recevoir} ou
+			\textstyleCodeInsr{écrire} par \textstyleCodeInsr{afficher}. Il n’y a
+			évidemment pas de confusion possible à partir du moment où l’on sait
+			qu’il s’agit de primitives d’échange entre l’extérieur et l’ordinateur
+			exécutant la procédure, mais par principe, il est conseillé d’utiliser
+			une syntaxe commune et limitée à un petit nombre de mots clés.
+		\item
+			Comme pour l’affectation interne, on ne peut \textstyleCodeInsr{écrire}
+			que des expressions dont les variables ont été affectées préalablement.
+		\end{itemize}
+
+	\section{Structure générale d’un algorithme}
+
+		La traduction d’un algorithme en pseudo-code constituera le contenu d’un
+		\textstyleMotCl{module}. Un module contient donc la solution
+		algorithmique d’un problème donné (ou d’une de ses parties). Sa
+		structure générale sera la suivante :
+
+		\cadre{
+		\begin{pseudo}
+		\Module{nomDuModule}{}{}
+			\Stmt \textit{déclaration des variables et constantes utilisées dans le module}
+			\Stmt \textit{lecture des données}
+			\Stmt \textit{instructions utilisant les données lues}
+			\Stmt \textit{communication des résultats}
+		\EndModule
+		\end{pseudo}
+		}		
+
+		{\bfseries
+		Remarques}
+		
+		\begin{itemize}
+		\item {
+			Le code d'un algorithme sera toujours compris entre la
+			première ligne ; appelée «~entête~» qui commence par le mot «~module~»
+			suivi du nom choisi pour l'algorithme ; et la ligne
+			finale «~fin module~». Le code compris entre l'entête
+			et la ligne finale sera toujours légèrement décalé vers la droite,
+			c'est un premier exemple
+			d'\textbf{indentation} indispensable pour la
+			lisibilité d'un programme, nous y reviendrons lors de
+			l'étude des structures alternatives et répétitives.}
+		\item {
+			Comme pour les variables, le nomDuModule devra être approprié au contenu
+			! Par exemple, sommeNombres, additionnerFractions plutôt que goPartez
+			!
+			Le rôle des parenthèses qui suivent le nom du module sera expliqué plus
+			tard.}
+		\item {
+			Il va de soi que toutes les parties de cette structure générale ne
+			seront pas toujours nécessaires : certains algorithmes ne nécessiteront
+			pas de lecture de données, d'autres ne devront pas
+			communiquer des résultats,...}
+		\item {
+			Pour la lisibilité, on veillera toujours à ce que le texte d’un module
+			tienne sur une seule page.}
+		\end{itemize}
+
+		À titre d’exemple, récrivons l’algorithme d’addition de fractions décrit
+		en début de chapitre :
+
+		\cadre{
+		\begin{pseudo}
+		\Module{additionnerFractions}{}{}
+			\Declare{num1, den1, num2, den2, numRes, denRes}{entiers}
+			\Read{num1, den1, num2, den2}
+			\Gets{denRes}{den1 * den2}
+			\Gets{numRes}{num1*den2 + num2*den1}
+			\Write{numRes, "/", denRes}
+		\EndModule
+		\end{pseudo}
+		}
+
+	\section{Commenter un algorithme}
+
+		On n’insistera jamais assez sur la nécessité de \textbf{documenter} un
+		algorithme en y insérant des \textbf{commentaires} judicieux, clairs et
+		suffisants ! Un commentaire est un texte placé dans
+		l'algorithme et destiné à faciliter au maximum la
+		compréhension d’un algorithme par le lecteur (parfois une autre
+		personne, mais aussi souvent l'auteur qui se perd dans
+		son propre texte lorsqu'il y replonge après une
+		interruption). Ces commentaires (introduits par
+		«~\textstyleCodeInsr{//~» }) seront bien entendu ignorés par
+		l’exécutant de l’algorithme.
+
+		\cadre{
+		\begin{pseudo}
+		\LComment Ce module lit les contenus de 2 fractions et affiche leur somme
+		\Module{additionnerFractions}{}{}
+			\Declare{num1, den1, num2, den2, numRes, denRes}{entiers}
+			\Read{num1, den1, num2, den2}
+			\Gets{denRes}{den1 * den2} 
+				\RComment calcul du dénominateur
+			\Gets{numRes}{num1*den2 + num2*den1}
+				\RComment calcul du numérateur
+			\Empty \RComment la fraction n'est sans doute pas simplifiée
+			\Write{numRes, "/", denRes} 
+		\EndModule
+		\end{pseudo}
+		}
+
+		Noter qu’un excès de commentaires peut être aussi nuisible qu’un
+		trop-peu pour la compréhension d’un algorithme. Par exemple, un choix
+		judicieux de noms de variables peut s’avérer bien plus efficace que des
+		commentaires superflus. Ainsi, l’instruction
+
+		\cadre{
+		\begin{pseudo}
+		\Gets{nouveauCapital}{ancienCapital * (1 + taux / 100)}
+		\end{pseudo}
+		}
+
+		dépourvue de commentaires est bien préférable aux lignes suivantes :
+
+		\cadre{
+		\begin{pseudo}
+		\Gets{c1}{c0 * (1 + t / 100)} \RComment calcul du nouveau capital
+		\Empty \RComment c1 est le nouveau capital, c0 est l’ancien capital, t est le taux
+		\end{pseudo}
+		}
+
+	\section{Compléments de pseudo-code}
+
+		\textstyleMotCl{\textmd{Présentons quelques notions algorithmiques peu
+		utilisées en première mais qui vous seront peut-être utiles dans
+		l'un ou l'autre des exercices.}}
+
+		\subsection{Constantes}
+
+			Une \textbf{constante} est une information pour laquelle nom, type et
+			valeur sont figés. La liste des constantes utilisées dans un algorithme
+			apparaitra dans la section déclaration des variables sous la forme
+			suivante :
+
+			\cadre{
+			\begin{pseudo}
+			\Stmt \K{constante} PI = 3,14
+			\Stmt \K{constante} ESI 
+				= {\textquotedbl}École Supérieure d’Informatique{\textquotedbl}
+			\end{pseudo}
+			}
+
+
+			\textstyleMotCl{\textmd{Il est inutile de spécifier leur type, celui-ci
+			étant défini implicitement par la valeur de la constante.}}
+
+		\subsection{Énumération}
+
+			Parfois, une variable ne peut prendre qu'un ensemble
+			fixe et fini de valeurs. Par exemple une variable représentant une
+			saison ne peut prendre que quatre valeurs (HIVER, PRINTEMPS, ETE,
+			AUTOMNE). On va l'indiquer grâce à
+			l'énumération qui introduit un \textbf{nouveau type}
+			de donnée.
+
+			\cadre{
+			\begin{pseudo}
+			\Stmt \K{énumération} Saison \{ HIVER, PRINTEMPS, ETE, AUTOMNE \}
+			\end{pseudo}
+			}
+
+			Il y a deux avantages à cela : une indication claire des possibilités de
+			la variable lors de la déclaration et une lisibilité du code grâce à
+			l'utilisation des valeurs explicites.
+
+			\marginicon{exercice}
+			\begin{Emphase}{Exercice : Autres situations}
+
+				Pouvez-vous identifier d'autres données qui pourraient
+				avantageusement s'exprimer avec une énumération ?
+
+			\end{Emphase}
+			
+			\subsubsection*{Quid des langages de programmation ?}
+
+				Certains langages (comme Java) proposent un type énuméré complet.
+				D'autres (comme C et C++) proposent un type énuméré
+				incomplet mais qui permet néanmoins une écriture comme celle ci-dessus.
+				Cobol propose des «~noms conditions~» qui représentent
+				l'ensemble des valeurs possibles
+				d'une variable. D'autres langages,
+				enfin, ne proposent rien. Pour ces langages, le truc est de définir des
+				constantes entières qui vont permettre une écriture proche de celle
+				ci-dessus (mais sans une déclaration explicite).
+
+			\subsubsection*{Lien avec les entiers}
+
+				Dans l'exemple ci dessus, on lit un Mois mais souvent
+				on disposera plutôt d'un entier. Il faut pouvoir
+				convertir les valeurs. Chaque langage de programmation propose sa
+				propre technique; nous allons adopter la syntaxe suivante :
+
+				\cadre{
+				\begin{pseudo}
+				\Stmt Mois(3) 
+					\RComment donne l'énumération du mois numéro 3 (on commence à 1)
+				\Stmt Entier(mois)
+					\RComment donne l'entier associé à un mois					
+				\end{pseudo}
+				}
+
+	\section{Exercices}
+
+		\subsection{Pour s'échauffer}
 
 \liststyleExercice
 \begin{enumerate}
