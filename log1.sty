@@ -1,0 +1,86 @@
+% ===============================================================
+% Feuille de style LaTeX pour le cours de logique 1ère à l'ESI
+% ===============================================================
+
+% ===================================================
+%   Les gros éléments de mise en page
+% ===================================================
+
+% Spécifie que les fichiers sources sont codés en UTF8
+% http://www.ctan.org/pkg/inputenc
+% ----------------------------------------------------
+\usepackage[utf8]{inputenc}
+
+% Francisation des textes
+% http://en.wikibooks.org/wiki/LaTeX/Internationalization#Babel
+% -------------------------------------------------------------
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}		% Permet de taper des accents
+
+% Plus belles polices vectorielles que computer roman
+% http://www.tug.dk/FontCatalogue/lmodern/
+% -------------------------------------------------------------
+\usepackage{lmodern}			
+
+% Enlever l'indentation de chaque première ligne de paragraphe
+% + legèr espace entre les paragraphes.
+% http://www.ctan.org/pkg/parskip
+% -------------------------------------------------------------
+\usepackage{parskip}
+
+% Permet d'avoir des couleurs
+% usenames et dvipsnames pour noms prédéfinis
+% http://www.ctan.org/pkg/xcolor
+% -------------------------------------------------------------
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+% Permet de barrer, souligner, ...
+% Pour barrer : \sout{texte}
+% -------------------------------------------------------------
+\usepackage[normalem]{ulem}
+
+% Gestion des images.
+% http://www.ctan.org/pkg/graphicx
+% -------------------------------------------------------------
+\usepackage{graphicx}
+
+% Hyperliens et URL
+% http://www.ctan.org/pkg/hyperref
+% -------------------------------------------------------------
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks = true,  % Colours links instead of ugly boxes
+  urlcolor   = blue,  % Colour for external hyperlinks
+  linkcolor  = black  % Colour of internal links
+}
+
+% Permet d'avoir les numéros de (sub)sections dans la marge
+% Tiré de "Latex Howtos" de Sébastien Combéfis
+% -------------------------------------------------------------
+\makeatletter
+\def\@seccntformat#1{\protect\makebox[0pt][r]{\csname the#1\endcsname\quad}}
+\makeatother
+
+% Framed permet d'avoir du texte avec une barre à gauche
+\usepackage{framed}
+\colorlet{shadecolor}{gray!50}
+\renewenvironment{leftbar}{%
+  \def\FrameCommand{\textcolor{shadecolor}{\vrule width 1pt} \hspace{10pt}}%
+  \MakeFramed {\advance\hsize-\width \FrameRestore}}%
+{\endMakeFramed}
+
+% Modification du style pour les captions des figures
+\usepackage[font=scriptsize,labelfont=sc,position=below]{caption}
+
+% ===================================================
+%   Commandes et environnements
+% ===================================================
+
+\newenvironment{Emphase}[1]{%
+		\smallskip
+		\textbf{#1}%
+		\begin{leftbar}
+}{
+		\end{leftbar}
+		\smallskip
+}
