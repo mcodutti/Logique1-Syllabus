@@ -45,6 +45,9 @@
 \algdef{SE}[IF]{If}{EndIf}[1]
   {\printandpush\algorithmicif\ #1\ \algorithmicthen}
   {\popandprint\algorithmicend\ \algorithmicif}%
+\algdef{SE}[BLOCK]{Begin}{End}
+  {\printandpush \algorithmicbegin}
+  {\popandprint \algorithmicend}%
 \algdef{C}[IF]{IF}{ElsIf}[1]
   {\popandprint\pushindent\algorithmicelse\ \algorithmicif\ #1\ \algorithmicthen}%
 \algdef{Ce}[ELSE]{IF}{Else}{EndIf}
@@ -60,14 +63,8 @@
 % Fin du code pour les lignes verticales
 % ==============================================================================
 
-\newenvironment{algoesi}{%
-  \begin{sffamily}
-  \begin{algorithmic}[0]
-}{%
-  \end{algorithmic}
-  \end{sffamily}
-}
 % Ajouts propres pour la francisation des termes prédéfinis
+\algnewcommand\algorithmicbegin{\textbf{début}}
 \algrenewcommand\algorithmicend{\textbf{fin}}
 \algrenewcommand\algorithmicprocedure{\textbf{module}}
 \algrenewcommand\algorithmicfunction{\textbf{module}}
@@ -99,12 +96,30 @@
 \newcommand{\Write}[1]{\LState\textbf{écrire}\ #1}
 \newcommand{\Empty}{\LState}
 \newcommand{\Stmt}{\LState}
+\newcommand{\K}[1]{\textbf{#1}}
 
 % \Module{nom}{param}{return_type} ... \EndModule
 \algblockdefx[MODULE]{Module}{EndModule}
 [3]{\printandpush\algorithmicprocedure\ \textproc{#1}(#2)\ifthenelse{\equal{#3}{}}{}{\Gives\ #3}}
 {\algorithmicend\ \algorithmicprocedure}
 
+% =====
+\newenvironment{algoesi}{%
+  \begin{sffamily}
+  \begin{algorithmic}[0]
+}{%
+  \end{algorithmic}
+  \end{sffamily}
+}
+
+\newenvironment{pseudo}[1]{%
+\begin{algorithm}
+  \caption{#1}
+  \begin{algoesi}
+}{%
+  \end{algoesi}%
+  \end{algorithm}%
+}
 
 
 
