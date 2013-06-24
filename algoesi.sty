@@ -103,24 +103,25 @@
 [3]{\printandpush\algorithmicprocedure\ \textproc{#1}(#2)\ifthenelse{\equal{#3}{}}{}{\Gives\ #3}}
 {\algorithmicend\ \algorithmicprocedure}
 
+\algrenewcommand{\algorithmiccomment}[1]{{\itshape\small\hskip2em$\triangleright$ #1}}
+\newcommand{\LineComment}[1]{\Stmt{}\Comment{#1}}
+
 % =====
-\newenvironment{algoesi}{%
-  \begin{sffamily}
-  \begin{algorithmic}[0]
+\newenvironment{pseudo}{%
+	\begin{minipage}{0.95\linewidth}
+	\begin{sffamily}
+	\begin{algorithmic}[0]
 }{%
-  \end{algorithmic}
-  \end{sffamily}
+	\end{algorithmic}
+	\end{sffamily}
+	\end{minipage}
 }
 
-\newenvironment{pseudo}[1]{%
-\begin{algorithm}
-  \caption{#1}
-  \begin{algoesi}
-}{%
-  \end{algoesi}%
-  \end{algorithm}%
+\newcommand{\cadre}[1]{%
+	\fcolorbox{gray}{gray!10}{%
+		\begin{minipage}{0.98\textwidth}#1\end{minipage}%
+	}%
 }
-
 
 
 

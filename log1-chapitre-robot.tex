@@ -91,17 +91,17 @@
 	
 	\marginicon{definition}
 	\begin{Emphase}{Instructions élémentaires}
-		\begin{description}
-		\item[Avancer] 
-			Le robot se déplace d'une case dans
-			la direction vers laquelle il regarde
-		\item[ADroite]
-			Le robot tourne d'un quart de tour vers la droite.\\
-			Ainsi, s'il regardait en bas, il regarde à
-			présent à gauche.
-		\end{description}
+		\cadre{
+		\begin{pseudo}
+		\Stmt{\K{Avancer}}
+		\LineComment{Le robot se déplace d'une case dans la direction vers laquelle il regarde}
+		\Stmt{\K{ADroite}}
+		\LineComment{Le robot tourne d'un quart de tour vers la droite.}
+		\LineComment{Ainsi, s'il regardait en bas, il regarde à présent à gauche.}
+		\end{pseudo}
+		}
 	\end{Emphase}
-	
+		
 	Nous allons commencer par quelque chose de très simple : demandons au
 	robot de faire demi-tour.
 
@@ -123,14 +123,18 @@
 
 		\textbf{But} : Le robot doit faire demi-tour.
 
+		\textbf{Solution}
+
+		\cadre{
+		\begin{pseudo}
+		\Begin
+			\Stmt{ADroite}
+			\Stmt{ADroite}
+		\End
+		\end{pseudo}
+		}
+		
 	\end{Emphase}
-	
-	\begin{pseudo}{Demi-tour}
-	\Begin
-		\Stmt{ADroite}
-		\Stmt{ADroite}
-	\End
-	\end{pseudo}
 
 	Tentons à présent un exercice un peu plus compliqué
 	(même si cela n'apparait pas tout de suite)
@@ -152,13 +156,15 @@
 
 	Vous avez peut-être trouvé la solution suivante :
 
-	\begin{pseudo}{Avancer de deux cases (1\up{er} essai)}
+	\cadre{
+	\begin{pseudo}
 	\Begin
 		\Stmt{Avancer}
 		\Stmt{Avancer}
 	\End
 	\end{pseudo}
-
+	}
+	
 	Elle n'est \textbf{pas correcte} ! Pourtant je suis sûr
 	que vous l'avez essayé et que le robot a effectivement
 	avancé de 2 cases. 
@@ -236,28 +242,35 @@
 
 	\marginicon{definition}
 	\begin{Emphase}{Les tests}
-		\begin{description}
-		\item[devantMur]
-			est vrai si le robot fait \textbf{face} à un mur.
-		\item[devantTrésor] 
-			est vrai si le robot fait face au trésor.
-		\item[devantMarque]
-			est vrai si le robot fait face à une marque.
-		\item[surMarque]
-			est vrai si le robot est sur une marque.
-		\end{description}
-		De plus, le robot est capable d'effectuer des 
-		\emph{calculs logiques} grâce aux termes :
-		{\sffamily\textbf{non}, \textbf{et}, \textbf{ou}}.
+		\cadre{
+		\begin{pseudo}
+		\Stmt{\K{devantMur}}
+		\LineComment{est vrai si le robot fait \textbf{face} à un mur.}
+		\Stmt{\K{devantTrésor}} 
+		\LineComment{est vrai si le robot fait face au trésor.}
+		\Stmt{\K{devantMarque}}
+		\LineComment{est vrai si le robot fait face à une marque.}
+		\Stmt{\K{surMarque}}
+		\LineComment{est vrai si le robot est sur une marque.}
+		\Stmt{\K{non}, \K{et}, \K{ou}}
+		\LineComment{De plus, le robot est capable d'effectuer des 
+			\emph{calculs logiques}}
+		\LineComment{grâce à ces opérateurs.}
+		\end{pseudo}
+		}
 	\end{Emphase}
 
 	\marginicon{definition}
 	\begin{Emphase}{Les alternatives}
-		{\sffamily\bfseries Si} condition {\sffamily\bfseries alors}
-		\\{\color{white}........}série d'instructions à exécuter si la condition est vraie.
-		\\{\sffamily\bfseries Sinon}
-		\\{\color{white}........}série d'instructions à exécuter si la condition est fausse.
-		\\{\sffamily\bfseries Fin si}
+		\cadre{
+		\begin{pseudo}
+		\If{condition}
+			\Stmt{série d'instructions à exécuter si la condition est vraie.}
+		\Else
+			\Stmt{série d'instructions à exécuter si la condition est fausse.}
+		\EndIf
+		\end{pseudo}
+		}
 	\end{Emphase}
 
 	Lorsque le robot doit exécuter une alternative, il teste la condition
@@ -311,7 +324,8 @@
 
 	\end{Emphase}
 
-	\begin{pseudo}{Avancer d'une case}
+	\cadre{
+	\begin{pseudo}
 	\Begin
 		\If{non devantMur}
 			\Stmt{Avancer}
@@ -319,7 +333,8 @@
 		\EndIf
 	\End
 	\end{pseudo}
-
+	}
+	
 	Si cet exemple est bien compris, 
 	essayez de résoudre par vous-même celui-ci :
 
@@ -357,9 +372,13 @@
 
 	\marginicon{definition}
 	\begin{Emphase}{Les répétitions}
-		{\sffamily\bfseries Tant que} condition {\sffamily\bfseries faire}
-		\\{\color{white}........}série d'instructions à exécuter si la condition est vraie.
-		\\{\sffamily\bfseries Fin tant que}
+	\cadre{
+	\begin{pseudo}
+		\While{condition}
+			\Stmt{série d'instructions à exécuter si la condition est vraie.}
+		\EndWhile
+	\end{pseudo}
+	}
 	\end{Emphase}
 
 	Lorsqu'il rencontre cette structure, le robot évalue la
@@ -402,19 +421,23 @@
 
 	\marginicon{definition}
 	\begin{Emphase}{Instructions élémentaires}
-		\begin{description}
-		\item[ajouterMarque] 
-			Le robot trace une croix sur la case qu'il occupe.
-		\item[effacerMarque]
-			Le robot efface la croix sur la case qu'il occupe.
-		\end{description}
+		\cadre{
+		\begin{pseudo}
+		\Stmt{\K{ajouterMarque}} 
+			\LineComment{Le robot trace une croix sur la case qu'il occupe.}
+		\Stmt{\K{effacerMarque}}
+			\LineComment{Le robot efface la croix sur la case qu'il occupe.}
+		\end{pseudo}
+		}
 	\end{Emphase}
 
 	\begin{Emphase}{Test}
-		\begin{description}
-		\item[surMarque] 
-			Est vrai si le robot est dans une case marquée d'une croix.
-		\end{description}
+		\cadre{
+		\begin{pseudo}
+		\Stmt{\K{surMarque}}
+			\LineComment{Est vrai si le robot est dans une case marquée d'une croix.}
+		\end{pseudo}
+		}
 	\end{Emphase}
 
 	Nous avons à présent tout ce qu'il faut pour résoudre
