@@ -84,27 +84,29 @@
 \newcommand{\In}{\ensuremath{\downarrow}}
 \newcommand{\Out}{\ensuremath{\uparrow}}
 \newcommand{\InOut}{\In{}\Out{}}
-%\newcommand{\Gets}{\ensuremath{\gets}{}}
+\newcommand{\Gets}{\ensuremath{\gets}\ }
 \newcommand{\Gives}{\ \ensuremath{\rightarrow}{}}
-\newcommand{\T}[1]{\textsf{#1}}
+\newcommand{\T}[1]{\textsf{#1}} % Type
+\newcommand{\K}[1]{\textbf{#1}} % Keyword
 
-\definecolor{declarecolor}{gray}{0.2}
-\renewcommand{\Return}[1]{\LState\algorithmicreturn\ #1}
+%\definecolor{declarecolor}{gray}{0.2}
 \newcommand{\Declare}[2]{\LState{#1 : #2}}
-\newcommand{\Gets}[2]{\LState #1 \ensuremath{\gets}{} #2}
-\newcommand{\Read}[1]{\LState\textbf{lire}\ #1}
-\newcommand{\Write}[1]{\LState\textbf{écrire}\ #1}
+\newcommand{\Decl}{\LState}
+\renewcommand{\Return}{\LState\algorithmicreturn\ }
+%\newcommand{\Gets}[2]{\LState #1 \ensuremath{\gets}{} #2}
+\newcommand{\Read}{\LState\textbf{lire}\ }
+\newcommand{\Write}{\LState\textbf{écrire}\ }
 \newcommand{\Empty}{\LState}
 \newcommand{\Stmt}{\LState}
-\newcommand{\K}[1]{\textbf{#1}}
+\newcommand{\Let}{\LState}
 
 % \Module{nom}{param}{return_type} ... \EndModule
 \algblockdefx[MODULE]{Module}{EndModule}
 [3]{\printandpush\algorithmicprocedure\ \textproc{#1}(#2)\ifthenelse{\equal{#3}{}}{}{\Gives\ #3}}
 {\algorithmicend\ \algorithmicprocedure}
 
-\algrenewcommand{\algorithmiccomment}[1]{{\small\hskip2em// #1}}
-\newcommand{\LComment}{\Empty\hskip-2em\Comment}
+\algrenewcommand{\algorithmiccomment}[1]{{\small\hskip1em// #1}}
+\newcommand{\LComment}{\Empty\hskip-1em\Comment}
 \newcommand{\RComment}{\hfill\Comment}
 \newcommand{\Indent}{\expandafter\hskip\algorithmicindent\relax}
 
@@ -113,6 +115,7 @@
 	\begin{minipage}{0.95\linewidth}
 	\begin{sffamily}
 	\begin{algorithmic}[0]
+	\small
 }{%
 	\end{algorithmic}
 	\end{sffamily}
@@ -124,6 +127,4 @@
 		\begin{minipage}{0.98\textwidth}#1\end{minipage}%
 	}%
 }
-
-
 

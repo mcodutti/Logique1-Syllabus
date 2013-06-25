@@ -499,8 +499,8 @@
 	
 		\subsection{Opérateurs de comparaison}
 	
-				Ces opérateurs agissent généralement sur des variables numériques ou des
-				chaines et donnent un résultat booléen.
+			Ces opérateurs agissent généralement sur des variables numériques ou des
+			chaines et donnent un résultat booléen.
 	
 			\begin{center}
 			\tablehead{}
@@ -545,7 +545,7 @@
 
 			\cadre{
 			\begin{pseudo}
-			\Read{liste\_de\_variables\_à\_lire}
+			\Read liste\_de\_variables\_à\_lire
 			\end{pseudo}
 			}
 			
@@ -553,8 +553,8 @@
 			
 			\cadre{
 			\begin{pseudo}
-			\Read{nombre1, nombre2}
-			\Read{num1, den1, num2, den2}
+			\Read nombre1, nombre2
+			\Read num1, den1, num2, den2
 			\end{pseudo}
 			}
 			
@@ -577,7 +577,7 @@
 
 			\cadre{
 			\begin{pseudo}
-			\Gets{nomVariable}{expression}
+			\Let nomVariable \Gets expression
 			\end{pseudo}
 			}
 			
@@ -590,11 +590,11 @@
 			
 			\cadre{
 			\begin{pseudo}
-			\Gets{somme}{nombre1 + nombre2}
-			\Gets{denRes}{den1 * den2}
-			\Gets{cpt}{cpt + 1}
-			\Gets{delta}{b**2 – 4*a*c}
-			\Gets{test}{a < b} \Comment{pour une variable logique}
+			\Let somme \Gets nombre1 + nombre2
+			\Let denRes \Gets den1 * den2
+			\Let cpt \Gets cpt + 1
+			\Let delta \Gets b**2 – 4*a*c
+			\Let test \Gets a < b \RComment pour une variable logique
 			\end{pseudo}
 			}
 
@@ -645,7 +645,7 @@
 
 			\cadre{
 			\begin{pseudo}
-			\Write{expression ou liste de variables}
+			\Write expression ou liste de variables
 			\end{pseudo}
 			}
 
@@ -726,10 +726,10 @@
 		\begin{pseudo}
 		\Module{additionnerFractions}{}{}
 			\Declare{num1, den1, num2, den2, numRes, denRes}{entiers}
-			\Read{num1, den1, num2, den2}
-			\Gets{denRes}{den1 * den2}
-			\Gets{numRes}{num1*den2 + num2*den1}
-			\Write{numRes, "/", denRes}
+			\Read num1, den1, num2, den2
+			\Let denRes \Gets den1 * den2
+			\Let numRes \Gets num1*den2 + num2*den1
+			\Write numRes, "/", denRes
 		\EndModule
 		\end{pseudo}
 		}
@@ -752,13 +752,13 @@
 		\LComment Ce module lit les contenus de 2 fractions et affiche leur somme
 		\Module{additionnerFractions}{}{}
 			\Declare{num1, den1, num2, den2, numRes, denRes}{entiers}
-			\Read{num1, den1, num2, den2}
-			\Gets{denRes}{den1 * den2} 
+			\Read num1, den1, num2, den2
+			\Let denRes \Gets den1 * den2
 				\RComment calcul du dénominateur
-			\Gets{numRes}{num1*den2 + num2*den1}
+			\Let numRes \Gets num1*den2 + num2*den1
 				\RComment calcul du numérateur
 			\Empty \RComment la fraction n'est sans doute pas simplifiée
-			\Write{numRes, "/", denRes} 
+			\Write numRes, "/", denRes
 		\EndModule
 		\end{pseudo}
 		}
@@ -770,7 +770,7 @@
 
 		\cadre{
 		\begin{pseudo}
-		\Gets{nouveauCapital}{ancienCapital * (1 + taux / 100)}
+		\Let nouveauCapital \Gets ancienCapital * (1 + taux / 100)
 		\end{pseudo}
 		}
 
@@ -778,7 +778,7 @@
 
 		\cadre{
 		\begin{pseudo}
-		\Gets{c1}{c0 * (1 + t / 100)} \RComment calcul du nouveau capital
+		\Let c1 \Gets c0 * (1 + t / 100) \RComment calcul du nouveau capital
 		\Empty \RComment c1 est le nouveau capital, c0 est l’ancien capital, t est le taux
 		\end{pseudo}
 		}
@@ -803,7 +803,6 @@
 				= {\textquotedbl}École Supérieure d’Informatique{\textquotedbl}
 			\end{pseudo}
 			}
-
 
 			\textstyleMotCl{\textmd{Il est inutile de spécifier leur type, celui-ci
 			étant défini implicitement par la valeur de la constante.}}
@@ -867,400 +866,220 @@
 
 		\subsection{Pour s'échauffer}
 
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Compréhension d'algorithme}
-
-{
-Pour ces exercices, on vous demande de comprendre des algorithmes
-donnés. Plus précisément, que vont-ils afficher si à chaque fois les
-deux nombres lus au départ sont successivement 2 et 3 ?}
-\end{enumerate}
-{\sffamily
-\textstyleMotCl{module} exerciceA()}
-
-{\sffamily
-\ \ a, b : entiers}
-
-{\sffamily
-\ \ \textstyleMotCl{lire} a, b}
-
-{\sffamily
-\ \ a {\textbf{←}} a + 2 * b}
-
-{\sffamily
-\ \ \textstyleMotCl{écrire} a}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{module} exerciceB()}
-
-{\sffamily
-\ \ a, b : entiers}
-
-{\sffamily
-\ \ quotient : réel}
-
-{\sffamily
-\ \ \textstyleMotCl{lire} b,~a}
-
-{\sffamily
-\ \ quotient {\textbf{←}} a / b}
-
-{\sffamily
-\ \ \textstyleMotCl{écrire} quotient}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{module} exerciceC()}
-
-{\sffamily
-\ \ a, b, c, d : entiers}
-
-{\sffamily
-\ \ \textstyleMotCl{lire} c, d}
-
-{\sffamily
-\ \ a {\textbf{←}} 2 * c + 5 * d}
-
-{\sffamily
-\ \ {b
-}{\textbf{←}}{ 2 + c *
-3 + d}}
-
-{\sffamily
-{\ \ c
-}{\textbf{←}}{ a
-}{MOD}{ b}}
-
-{\sffamily
-{\ \ }\textstyleMotCl{{écrire}}
-a DIV c}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{module} exerciceD()}
-
-{\sffamily
-\ \ x, y : réels}
-
-{\sffamily
-\ \ \textstyleMotCl{lire} x, y}
-
-{\sffamily
-\ \ x {\textbf{←}} x * x}
-
-{\sffamily
-\ \ x {\textbf{←}} x * x + y * y}
-
-{\sffamily
-\ \ x {\textbf{←}} ${\surd}$(x)}
-
-{\sffamily
-\ \ \textstyleMotCl{{écrire}} x}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{module} exerciceE()}
-
-{\sffamily
-\ \ x, y : entiers}
-
-{\sffamily
-\ \ \textstyleMotCl{lire} x, x}
-
-{\sffamily
-\texttt{\ \ }x {\textbf{←}} x MOD x + (x + 1)
-DIV 2}
-
-{\sffamily
-\ \ \textstyleMotCl{{écrire}} x + 3}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-\textstyleMotCl{Le jeu des }\textstyleMotCl{\textit{n}}\textstyleMotCl{
-erreurs}}
-\end{enumerate}
-{
-\textstyleMotCl{\textmd{Pouvez-vous identifier les erreurs et/ou les
-problèmes dans les modules suivants ?}}}
-
-{\sffamily
-\textstyleMotCl{module} exA() \ // Division}
-
-{\sffamily
-\ \ nb1, nb2 : réels}
-
-{\sffamily
-\ \ \textstyleMotCl{{écrire}} nb1 / nb2}
-
-{\sffamily
-\textstyleMotCl{fin}\textstyleMotCl{\textmd{ }}\textstyleMotCl{module}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{module} exB() \ // Somme}
-
-{\sffamily
-\ \ nb1, nb2 : réels}
-
-{\sffamily
-\ \ \textstyleMotCl{lire} nb1, nb2}
-
-{\sffamily
-\ \ m {\textbf{←}} (nb1 + nb2) / 2}
-
-{\sffamily
-\ \ \textstyleMotCl{{écrire}} m}
-
-{\sffamily
-\textstyleMotCl{fin}\textstyleMotCl{\textmd{ }}\textstyleMotCl{module}}
-
-
-\bigskip
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Simplification d'algorithme}
-\end{enumerate}
-{
-Voici quelques extraits d’algorithmes corrects du point de vue de la
-syntaxe mais contenant des lignes inutiles ou des lourdeurs d’écriture.
-Remplacer chacune de ces portions d’algorithme par un minimum
-d’instructions qui auront un effet équivalent.}
-
-{\sffamily
-hauteur {\textbf{←}} largeur * 50 \ \ // les
-deux variables sont des entiers}
-
-{\sffamily
-hauteur {\textbf{←}} hauteur MOD 5 + 7}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{lire} var}
-
-{\sffamily
-var {\textbf{←}} 0}
-
-
-\bigskip
-
-{\sffamily
-var {\textbf{←}} 0}
-
-{\sffamily
-\textstyleMotCl{lire} var}
-
-
-\bigskip
-
-{\sffamily
-ok2 {\textbf{←}} NON (ok1 = vrai) ET NON (ok1 =
-faux)}
-
-{\sffamily\bfseries\upshape
-Exercices d’apprentissage}
-
-{
-Il est temps de se lancer et d'écrire vos premiers
-modules. Voici de précieux conseils pour vous guider dans la résolution
-de tels problèmes. }
-
-\liststyleListv
-\begin{itemize}
-\item {
-il convient d’abord de bien comprendre le problème posé; assurez-vous
-qu’il est parfaitement spécifié ;}
-\item {
-déclarez ensuite les variables (et leur type) qui interviennent dans
-l’algorithme ; les noms des variables risquant de ne pas être
-suffisamment explicites, donnez les renseignements nécessaires à la
-compréhension de l’existence de ces variables ;}
-\item {
-mettez en évidence les variables «~données~», les variables
-«~résultats~» et les variables de travail ;}
-\item {
-n’hésitez pas à faire une ébauche de résolution en français avant
-d’élaborer l’algorithme définitif pseudo-codé.}
-\end{itemize}
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Surface d'un triangle}
-\end{enumerate}
-{
-Écrire un algorithme qui calcule et affiche la surface
-d'un triangle connaissant sa base et sa hauteur.}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.134cm,height=1.134cm]{log1-img/log1-img53}
-
-\end{center}
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Placement}
-\end{enumerate}
-{
-Écrire un algorithme qui, étant donné le montant d’un capital placé (en
-€) et le taux d’intérêt annuel (en \%), calcule et affiche la valeur
-totale acquise après un an de ce placement.}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Prix TTC}
-\end{enumerate}
-{
-Écrire un algorithme qui, étant donné le prix unitaire d’un produit
-(hors TVA), le taux de TVA (en \%) et la quantité de produit vendue à
-un client, calcule et affiche le prix total à payer par ce client.}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Durée de trajet}
-\end{enumerate}
-{
-Écrire un algorithme qui, étant donné la vitesse moyenne en \textbf{m/s}
-d’un véhicule et la distance parcourue en \textbf{km} par ce véhicule,
-calcule et affiche la durée en secondes du trajet de ce véhicule.}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Permutation}
-\end{enumerate}
-{
-Écrire une séquence d’instructions qui réalise la permutation du contenu
-de deux variables.}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.134cm,height=1.134cm]{log1-img/log1-img54}
-
-\end{center}
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Cote moyenne}
-\end{enumerate}
-{
-Écrire un algorithme qui, étant donné les résultats (cote entière sur
-20) de trois examens passés par un étudiant (exprimés par six nombres,
-à savoir, la cote et la pondération de chaque examen) calcule et
-affiche la moyenne globale exprimée en pourcentage. Vérifiez bien votre
-algorithme avec des valeurs concrètes; il est facile de se tromper dans
-la formule !}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Somme des chiffres}
-\end{enumerate}
-{
-Écrire un algorithme qui calcule la somme des chiffres
-d'un nombre entier de 3 chiffres.
-Réflexion : l’algorithme est-il aussi valide pour les entiers inférieurs
-à 100 ? }
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.134cm,height=1.134cm]{log1-img/log1-img55}
-
-\end{center}
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Conversion HMS en secondes}
-\end{enumerate}
-{
-Écrire un algorithme qui, étant donné un moment dans la journée donné
-par trois nombres lus, à savoir, heure, minute et seconde, calcule le
-nombre de secondes écoulées depuis minuit.}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.134cm,height=1.134cm]{log1-img/log1-img56}
-
-\end{center}
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Conversion secondes en HMS}
-\end{enumerate}
-{
-Écrire un algorithme qui, étant donné un temps écoulé dans la journée
-exprimé en secondes, calcule et affiche ce temps sous la forme de trois
-nombres (heure, minute et seconde).}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.134cm,height=1.134cm]{log1-img/log1-img57}
-
-\end{center}
-{
-Ex : 10000 secondes donnera 2h 46'
-40''}
-
-
-\bigskip
-
+\begin{Exercice}{Compréhension d'algorithme}
+
+	Pour ces exercices, on vous demande de comprendre des algorithmes
+	donnés. Plus précisément, que vont-ils afficher si à chaque fois les
+	deux nombres lus au départ sont successivement $2$ et $3$ ?
+
+	\cadre{
+	\begin{pseudo}
+	\Module{exerciceA}{}{}
+		\Decl a,b : entiers
+		\Read a,b
+		\Let a \Gets a + 2 * b
+		\Write a
+	\EndModule
+	\end{pseudo}
+	}
+
+	\cadre{
+	\begin{pseudo}
+	\Module{exerciceB}{}{}
+		\Decl a,b : entiers
+		\Decl quotient : réel
+		\Read b,a
+		\Let quotient \Gets a / b
+		\Write quotient
+	\EndModule
+	\end{pseudo}
+	}
+
+	\cadre{
+	\begin{pseudo}
+	\Module{exerciceC}{}{}
+		\Decl a,b,c,d : entiers
+		\Read c,d
+		\Let a \Gets 2 * c + 5 * d
+		\Let b \Gets 2 + c * 3 + d
+		\Let c \Gets a MOD b 
+		\Write a DIV c
+	\EndModule
+	\end{pseudo}
+	}
+
+	\cadre{
+	\begin{pseudo}
+	\Module{exerciceD}{}{}
+		\Decl x,y : réels
+		\Read x,y
+		\Let x \Gets x * x
+		\Let x \Gets x * x + y * y
+		\Let x \Gets ${\surd}$(x) 
+		\Write x
+	\EndModule
+	\end{pseudo}
+	}
+
+	\cadre{
+	\begin{pseudo}
+	\Module{exerciceE}{}{}
+		\Decl x,y : réels
+		\Read x,x
+		\Let x \Gets x MOD x + (x + 1) DIV 2
+		\Write x + 3
+	\EndModule
+	\end{pseudo}
+	}
+
+\end{Exercice}
+
+\begin{Exercice}{Le jeu des $n$ erreurs}
+
+	Pouvez-vous identifier les erreurs et/ou les
+	problèmes dans les modules suivants ?
+
+	\cadre{
+	\begin{pseudo}
+	\Module{exA}{}{} \Comment Division
+		\Decl nb1, nb2 : réels
+		\Write nb1 / nb2
+	\EndModule
+	\end{pseudo}
+	}
+
+	\cadre{
+	\begin{pseudo}
+	\Module{exB}{}{} \Comment Somme
+		\Decl nb1, nb2 : réels
+		\Read nb1, nb2
+		\Let m \Gets (nb1 + nb2) / 2
+		\Write m
+	\EndModule
+	\end{pseudo}
+	}
+
+\end{Exercice}
+
+\begin{Exercice}{Simplification d'algorithme}
+
+	Voici quelques extraits d’algorithmes corrects du point de vue de la
+	syntaxe mais contenant des lignes inutiles ou des lourdeurs d’écriture.
+	Remplacer chacune de ces portions d’algorithme par un minimum
+	d’instructions qui auront un effet équivalent.
+
+	\cadre{
+	\begin{pseudo}
+	\Let hauteur \Gets largeur * 50 \Comment les deux variables sont des entiers
+	\Let hauteur \Gets hauteur MOD 5 + 7
+	\end{pseudo}
+	}
+
+	\cadre{
+	\begin{pseudo}
+	\Read var
+	\Let var \Gets 0
+	\end{pseudo}
+	}
+
+	\cadre{
+	\begin{pseudo}
+	\Let var \Gets 0
+	\Read var
+	\end{pseudo}
+	}
+
+	\cadre{
+	\begin{pseudo}
+	\Let ok2 \Gets NON (ok1 = vrai) ET NON (ok1 = faux)
+
+	\end{pseudo}
+	}
+
+\end{Exercice}
+
+\subsection{Exercices d’apprentissage}
+
+	Il est temps de se lancer et d'écrire vos premiers
+	modules. Voici de précieux conseils pour vous guider dans la résolution
+	de tels problèmes.
+
+	\begin{itemize}
+	\item {
+		il convient d’abord de bien comprendre le problème posé; assurez-vous
+		qu’il est parfaitement spécifié ;}
+	\item {
+		déclarez ensuite les variables (et leur type) qui interviennent dans
+		l’algorithme ; les noms des variables risquant de ne pas être
+		suffisamment explicites, donnez les renseignements nécessaires à la
+		compréhension de l’existence de ces variables ;}
+	\item {
+		mettez en évidence les variables «~données~», les variables
+		«~résultats~» et les variables de travail ;}
+	\item {
+		n’hésitez pas à faire une ébauche de résolution en français avant
+		d’élaborer l’algorithme définitif pseudo-codé.}
+	\end{itemize}
+
+\begin{Exercice}{Surface d'un triangle}
+	\marginicon{java}
+	Écrire un algorithme qui calcule et affiche la surface
+	d'un triangle connaissant sa base et sa hauteur.
+\end{Exercice}
+
+\begin{Exercice}{Placement}
+	Écrire un algorithme qui, étant donné le montant d’un capital placé (en
+	€) et le taux d’intérêt annuel (en \%), calcule et affiche la valeur
+	totale acquise après un an de ce placement.
+\end{Exercice}
+
+\begin{Exercice}{Prix TTC}
+	Écrire un algorithme qui, étant donné le prix unitaire d’un produit
+	(hors TVA), le taux de TVA (en \%) et la quantité de produit vendue à
+	un client, calcule et affiche le prix total à payer par ce client.
+\end{Exercice}
+
+\begin{Exercice}{Durée de trajet}
+	Écrire un algorithme qui, étant donné la vitesse moyenne en \textbf{m/s}
+	d’un véhicule et la distance parcourue en \textbf{km} par ce véhicule,
+	calcule et affiche la durée en secondes du trajet de ce véhicule.
+\end{Exercice}
+
+\begin{Exercice}{Permutation}
+	\marginicon{java}
+	Écrire une séquence d’instructions qui réalise la permutation du contenu
+	de deux variables.
+\end{Exercice}
+
+\begin{Exercice}{Cote moyenne}
+	Écrire un algorithme qui, étant donné les résultats (cote entière sur
+	20) de trois examens passés par un étudiant (exprimés par six nombres,
+	à savoir, la cote et la pondération de chaque examen) calcule et
+	affiche la moyenne globale exprimée en pourcentage. Vérifiez bien votre
+	algorithme avec des valeurs concrètes; il est facile de se tromper dans
+	la formule !
+\end{Exercice}
+
+\begin{Exercice}{Somme des chiffres}
+	\marginicon{java}
+	Écrire un algorithme qui calcule la somme des chiffres
+	d'un nombre entier de 3 chiffres.
+	Réflexion : l’algorithme est-il aussi valide pour les entiers inférieurs
+	à 100 ?
+\end{Exercice}
+
+\begin{Exercice}{Conversion HMS en secondes}
+	\marginicon{java}
+	Écrire un algorithme qui, étant donné un moment dans la journée donné
+	par trois nombres lus, à savoir, heure, minute et seconde, calcule le
+	nombre de secondes écoulées depuis minuit.
+\end{Exercice}
+
+\begin{Exercice}{Conversion secondes en HMS}
+	\marginicon{java}
+	Écrire un algorithme qui, étant donné un temps écoulé dans la journée
+	exprimé en secondes, calcule et affiche ce temps sous la forme de trois
+	nombres (heure, minute et seconde).
+
+	Ex : 10000 secondes donnera 2h 46'40''
+\end{Exercice}

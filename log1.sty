@@ -127,6 +127,9 @@
 
 % Pour un exercice avec numérotation automatique
 \newenvironment{Exercice}[1]{%
-	{\stepcounter{exercicenum}{\sffamily\bfseries #1}\marginnote{\footnotesize\Cadre{\theexercicenum}\qquad}\\}%
+	{\stepcounter{exercicenum}%
+	{\sffamily\bfseries #1}%
+	\marginnote{\footnotesize\Cadre{\theexercicenum}\qquad}\\}%
+	\smallskip%
 	}{%
 	}
