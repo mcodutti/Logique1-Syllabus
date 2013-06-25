@@ -1,385 +1,301 @@
-\chapter[Les modules]{
-Les modules}
-{
-Dans ce chapitre, nous voyons pourquoi et comment découper un algorithme
-en modules (morceaux d'algorithmes). }
+\chapter{Les modules}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.27cm,height=1.27cm]{log1-img/log1-img74}
+	\marginicon{objectif}
+	Dans ce chapitre, nous voyons pourquoi et comment découper un algorithme
+	en modules (morceaux d'algorithmes).
 
-\end{center}
 \section{Introduction}
-{
-Outre le choix de noms de variables explicites et une indentation
-correcte, tout bon programmeur se doit de veiller à la clarté et la
-lisibilité de ses algorithmes. Si ces qualités sont relativement aisées
-à assurer dans les premiers exemples et exercices abordés, il n’en est
-pas de même lorsque croissent la complexité et la longueur des
-algorithmes. Il est courant que les lignes de codes de programmes se
-comptent en centaines ou en milliers. Dès lors, le découpage en modules
-est indispensable. En outre, lors de l’écriture d’un algorithme sur
-papier, on conseille dans un souci de lisibilité qu’aucun des modules
-ne dépasse la longueur d’une page.}
 
-{
-Illustrons l’approche modulaire sur l’exercice du chapitre précédent
-demandant de calculer le maximum de 3 nombres. Commençons par écrire la
-solution du problème plus simple : le maximum de 2 nombres.}
+	Outre le choix de noms de variables explicites et une indentation
+	correcte, tout bon programmeur se doit de veiller à la clarté et la
+	lisibilité de ses algorithmes. Si ces qualités sont relativement aisées
+	à assurer dans les premiers exemples et exercices abordés, il n’en est
+	pas de même lorsque croissent la complexité et la longueur des
+	algorithmes. Il est courant que les lignes de codes de programmes se
+	comptent en centaines ou en milliers. Dès lors, le découpage en modules
+	est indispensable. En outre, lors de l’écriture d’un algorithme sur
+	papier, on conseille dans un souci de lisibilité qu’aucun des modules
+	ne dépasse la longueur d’une page.
+	
+	Illustrons l’approche modulaire sur l’exercice du chapitre précédent
+	demandant de calculer le maximum de 3 nombres. Commençons par écrire la
+	solution du problème plus simple : le maximum de 2 nombres.
 
-{\sffamily
-\textbf{module} max2()}
+	\cadre{
+	\begin{pseudo}
+	\Module{max2}{}{}
+		\Decl a,b,max : réels
+		\Read a,b
+		\If{a > b}
+			\Let max \Gets a
+		\Else
+			\Let max \Gets b
+		\EndIf
+		\Write max
+	\EndModule
+	\end{pseudo}
+	}
+	
+	Pour le maximum de 3 nombres, il existe plusieurs approches. Voyons
+	celle-ci :
 
-{\sffamily
-\ \ a, b, max : réels}
+	\cadre{
+	\begin{pseudo}
+		\Stmt Calculer le maximum des deux premiers nombres, soit temp
+		\Stmt Calculer le maximum de temp et du troisième nombre, ce qui donne le résultat.
+	\end{pseudo}
+	}
 
-{\sffamily
-\ \ \textbf{lire} a, b}
+	{Sur base de cette idée, comment faire à présent
+	pour introduire le calcul du maximum de 2 nombres dans l’algorithme
+	calculant le maximum de 3 nombres ? Une solution consiste à
+	«~copier-coller~» les lignes de code du module
+	}\textstyleCodeInsr{{max2}}{
+	dans le module
+	}\textstyleCodeInsr{{max3}}{,
+	toutefois en adaptant son contenu au contexte de ce module : les
+	nombres
+	}\textstyleCodeInsr{{a}}{
+	et
+	}\textstyleCodeInsr{{b}}{
+	ne doivent plus être systématiquement lus et la valeur du maximum ne
+	doit plus être systématiquement affichée. Ainsi
+	}\textstyleCodeInsr{{temp}}{
+	est calculé et ré-utilisé dans un calcul ultérieur. Ceci donnerait :}
 
-{\sffamily
-\ \ \textbf{si} a {\textgreater} b \textbf{alors}}
+	\cadre{
+	\begin{pseudo}
+	\Module{max3}{}{}
+		\Decl a,b,c,temp,max : réels
+		\Read a,b,c
+		\If{a > b}
+			\Let temp \Gets a
+		\Else
+			\Let temp \Gets b
+		\EndIf
+		\If{temp > c}
+			\Let max \Gets temp
+		\Else
+			\Let max \Gets c
+		\EndIf
+		\Write max
+	\EndModule
+	\end{pseudo}
+	}
 
-{\sffamily
-\ \ \ \ max{ }{← a}}
-
-{\sffamily
-\ \ \textbf{sinon}}
-
-{\sffamily
-\ \ \ \ max{ }{← b}}
-
-{\sffamily
-\ \ \textstyleMotCl{fin} \textstyleMotCl{si}}
-
-{\sffamily
-\ \ \textbf{écrire} max}
-
-{\sffamily\bfseries
-\textstyleMotCl{fin module}}
-
-{
-Pour le maximum de 3 nombres, il existe plusieurs approches. Voyons
-celle-ci :}
-
-{\sffamily
-Calculer le maximum des deux premiers nombres, soit temp}
-
-{\sffamily
-Calculer le maximum de temp et du troisième nombre, ce qui donne le
-résultat.}
-
-{
-{Sur base de cette idée, comment faire à présent
-pour introduire le calcul du maximum de 2 nombres dans l’algorithme
-calculant le maximum de 3 nombres ? Une solution consiste à
-«~copier-coller~» les lignes de code du module
-}\textstyleCodeInsr{{max2}}{
-dans le module
-}\textstyleCodeInsr{{max3}}{,
-toutefois en adaptant son contenu au contexte de ce module : les
-nombres
-}\textstyleCodeInsr{{a}}{
-et
-}\textstyleCodeInsr{{b}}{
-ne doivent plus être systématiquement lus et la valeur du maximum ne
-doit plus être systématiquement affichée. Ainsi
-}\textstyleCodeInsr{{temp}}{
-est calculé et ré-utilisé dans un calcul ultérieur. Ceci donnerait :}}
-
-{\sffamily
-\textbf{module} max3()}
-
-{\sffamily
-\ \ a, b, c, temp, max : réels}
-
-{\sffamily
-\ \ \textbf{lire} a, b, c}
-
-{\sffamily
-\ \ \textbf{si} a {\textgreater} b \textbf{alors}}
-
-{\sffamily
-\ \ \ \ temp{ }{← a}}
-
-{\sffamily
-\ \ \textbf{sinon}}
-
-{\sffamily
-\ \ \ \ temp{ }{← b}}
-
-{\sffamily
-\ \ \textstyleMotCl{fin} \textstyleMotCl{si}}
-
-{\sffamily
-\ \ \textbf{si} temp {\textgreater} c \textbf{alors}}
-
-{\sffamily
-\ \ \ \ max{ }{← temp}}
-
-{\sffamily
-\ \ \textbf{sinon}}
-
-{\sffamily
-\ \ \ \ max{ }{← c}}
-
-{\sffamily
-\ \ \textstyleMotCl{fin} \textstyleMotCl{si}}
-
-{\sffamily
-\ \ \textbf{écrire} max}
-
-{\sffamily
-\textstyleMotCl{fin module}}
-
-{
-Bien que correcte, cette démarche est cependant déconseillée et peut
-s’avérer fastidieuse, spécialement dans le cas de «~grands~»
-algorithmes. Imaginons qu’il aurait fallu de cette façon «~mixer~» deux
-algorithmes d’une cinquantaine de lignes chacun. Le résultat serait un
-algorithme d’une centaine de lignes qui perdrait en lisibilité et
-clarté. De plus, l’opération effectuée n’est pas sans risques : que se
-passerait-il si les deux modules contiennent chacun une variable nommée
-de manière identique ? Cette «~transplantation~» demande donc la
-vérification de toutes les variables utilisées, la réécriture des
-lignes de déclarations de variables de façon à y inclure celles du
-module «~greffé~», le «~raccord~» correct des données lues et écrites
-par ce module aux variables du module principal, etc… }
-
-{
-Imaginons, par exemple, que l'on doit calculer le
-maximum de 4 ou même 5 nombres. Le résultat serait un code long et
-composé de lignes fort proches. Une erreur serait vite arrivée et
-serait difficile à détecter.}
-
-{
-L’idéal serait de pouvoir garder deux modules séparés, conservant chacun
-leur spécificité (l’un calculant le maximum de deux nombres et l’autre
-le maximum de trois nombres) mais de leur permettre de communiquer
-entre eux pour s’échanger des données ou des résultats de calculs. Nous
-allons voir deux solutions.}
+	Bien que correcte, cette démarche est cependant déconseillée et peut
+	s’avérer fastidieuse, spécialement dans le cas de «~grands~»
+	algorithmes. Imaginons qu’il aurait fallu de cette façon «~mixer~» deux
+	algorithmes d’une cinquantaine de lignes chacun. Le résultat serait un
+	algorithme d’une centaine de lignes qui perdrait en lisibilité et
+	clarté. De plus, l’opération effectuée n’est pas sans risques : que se
+	passerait-il si les deux modules contiennent chacun une variable nommée
+	de manière identique ? Cette «~transplantation~» demande donc la
+	vérification de toutes les variables utilisées, la réécriture des
+	lignes de déclarations de variables de façon à y inclure celles du
+	module «~greffé~», le «~raccord~» correct des données lues et écrites
+	par ce module aux variables du module principal, etc… 
+	
+	Imaginons, par exemple, que l'on doit calculer le
+	maximum de 4 ou même 5 nombres. Le résultat serait un code long et
+	composé de lignes fort proches. Une erreur serait vite arrivée et
+	serait difficile à détecter.
+	
+	L’idéal serait de pouvoir garder deux modules séparés, conservant chacun
+	leur spécificité (l’un calculant le maximum de deux nombres et l’autre
+	le maximum de trois nombres) mais de leur permettre de communiquer
+	entre eux pour s’échanger des données ou des résultats de calculs. Nous
+	allons voir deux solutions.
 
 \section{Passage de paramètres}
-{
-Pour pouvoir faire communiquer les modules entre eux, il faut les
-équiper d’une «~interface~» de transmission des variables appelée
-l’\textbf{en-tête }du module et qui contient une déclaration de
-variables qu’on appellera ici \textbf{paramètres} du module. }
 
-{
-Les variables accompagnées d’une flèche vers le bas (\textsf{↓}) sont
-des \textbf{paramètres d’entrée} qui reçoivent des données au
-\textbf{début} de l’exécution du module (données qui ne doivent donc
-plus être lues) tandis que celles accompagnées d’une flèche vers le
-haut (\textsf{↑}) sont des \textbf{paramètres de sortie} qui permettent
-de renvoyer des résultats à l’\textbf{issue} de l’exécution du module
-(résultats qui ne doivent donc plus être écrits). }
+	Pour pouvoir faire communiquer les modules entre eux, il faut les
+	équiper d’une «~interface~» de transmission des variables appelée
+	l’\textbf{en-tête }du module et qui contient une déclaration de
+	variables qu’on appellera ici \textbf{paramètres} du module. 
+	
+	Les variables accompagnées d’une flèche vers le bas (\textsf{↓}) sont
+	des \textbf{paramètres d’entrée} qui reçoivent des données au
+	\textbf{début} de l’exécution du module (données qui ne doivent donc
+	plus être lues) tandis que celles accompagnées d’une flèche vers le
+	haut (\textsf{↑}) sont des \textbf{paramètres de sortie} qui permettent
+	de renvoyer des résultats à l’\textbf{issue} de l’exécution du module
+	(résultats qui ne doivent donc plus être écrits). 
 
+	Par exemple, ceci donnerait pour le module \textstyleCodeInsr{max2} :
 
-\bigskip
+	\cadre{
+	\begin{pseudo}
+	\Module{max2}{a\In, b\In : réels, max\Out : réel}{}
+		\If{a > b}
+			\Let max \Gets a
+		\Else
+			\Let max \Gets b
+		\EndIf
+	\EndModule
+	\end{pseudo}
+	}
 
-{
-Par exemple, ceci donnerait pour le module \textstyleCodeInsr{max2} :}
+	Notons que, sous cette forme, ce module est devenu «~inactif~», il ne
+	lit rien ni n’écrit rien, mais il est cependant prêt à être utilisé. Il
+	suffit pour cela de lui fournir les valeurs de \textstyleCodeInsr{a} et
+	\textstyleCodeInsr{b} (paramètres d’entrée) pour qu’il entre en action.
+	Une fois le maximum calculé, celui-ci est affecté à la variable
+	\textstyleCodeInsr{max} qui – en tant que paramètre de sortie –
+	contiendra et renverra le résultat voulu.
 
-{\sffamily
-\textbf{module} max2\textstyleMotCl{{\textmd{( a
-}}}\textstyleMotCl{{\textmd{↓}}}\textstyleMotCl{{\textmd{,
-b
-}}}\textstyleMotCl{{\textmd{↓}}}\textstyleMotCl{{\textmd{
-: réels, max
-}}}\textstyleMotCl{{\textmd{↑}}}\textstyleMotCl{{\textmd{
-: réel )}}}}
+	{Pour faire appel aux services de ce module, il
+	suffit à présent d’écrire son nom suivi d’un nombre de variables (ou
+	d'expressions) en accord avec son entête. Montrons par
+	un exemple comment le module
+	}\textstyleCodeInsr{{max3}}{
+	peut faire appel au module
+	}\textstyleCodeInsr{{max2}}{:}
 
-{\sffamily
-\ \ \textbf{si} a {\textgreater} b \textbf{alors}}
+	\cadre{
+	\begin{pseudo}
+	\Module{max3}{}{}
+		\Decl a,b,c,temp,max : réels
+		\Read a,b,c
+		\Stmt max2( a, b, temp )
+		\Stmt max2( temp, c, max )
+		\Write max
+	\EndModule
+	\end{pseudo}
+	}
 
-{\sffamily
-\ \ \ \ max{ }{← a}}
+	{
+	{L’instruction
+	}\textstyleCodeInsr{{max2(a, b,
+	temp)}}{ se déroule comme suit :}}
+	
+	\begin{itemize}
+	\item {
+	{le contenu des variables
+	}\textstyleCodeInsr{{a}}{
+	et
+	}\textstyleCodeInsr{{b}}{
+	est affecté aux paramètres d’entrée
+	}\textstyleCodeInsr{{a}}{
+	et
+	}\textstyleCodeInsr{{b}}{
+	du module
+	}\textstyleCodeInsr{{max2}}{,
+	puis ce module peut entrer en action ;}}
+	\item {
+	{à l’issue du module
+	}\textstyleCodeInsr{{max2}}{,
+	la valeur du paramètre de sortie
+	}\textstyleCodeInsr{{max}}{
+	est communiquée à la variable
+	}\textstyleCodeInsr{{temp}}{,
+	qui contient à présent le maximum de
+	}\textstyleCodeInsr{{a}}{
+	et
+	}\textstyleCodeInsr{{b}}{.}}
+	\end{itemize}
 
-{\sffamily
-\ \ \textbf{sinon}}
+	{
+	{L’instruction
+	}\textstyleCodeInsr{{max2(temp, c,
+	max)}}{ se déroule comme suit :}}
+	
+	\begin{itemize}
+	\item {
+	{le contenu des variables
+	}\textstyleCodeInsr{{temp}}{
+	et
+	}\textstyleCodeInsr{{c}}{
+	est affecté aux paramètres d’entrée
+	}\textstyleCodeInsr{{a}}{
+	et
+	}\textstyleCodeInsr{{b}}{
+	du module
+	}\textstyleCodeInsr{{max2}}{,
+	puis ce module peut entrer en action ;}}
+	\item {
+	{à l’issue du module
+	}\textstyleCodeInsr{{max2}}{,
+	la valeur du paramètre de sortie
+	}\textstyleCodeInsr{{max}}{
+	est communiquée à la variable
+	}\textstyleCodeInsr{{max}}{,
+	qui contient à présent le maximum des 3 nombres de départ.}}
+	\end{itemize}
 
-{\sffamily
-\ \ \ \ max{ }{← b}}
+	{Il est évident que la présence de ces deux
+	instructions dans le module
+	}\textstyleCodeInsr{{max3}}{
+	implique la présence du module
+	}\textstyleCodeInsr{{max2}}{
+	«~aux alentours~» du premier, c’est-à-dire que ces deux modules doivent
+	se trouver sur le même support d’écriture de
+	l'algorithme complet.}
 
-{\sffamily
-\ \ \textstyleMotCl{fin} \textstyleMotCl{si}}
+	{
+	{Implicitement, on a introduit ici un nouveau
+	type de primitive, l’}{\textbf{appel à un
+	}}{\textbf{module}}{\textit{
+	}}{qui consiste en la simple écriture de son
+	nom dans le code. Cette }{instruction est
+	reconnue comme telle car elle ne s’apparente pas aux autres types
+	}{d’instruction vus précédemment (primitives
+	}\textstyleMotCl{{lire}}{,
+	}\textstyleMotCl{{écrire}}{,
+	affectation
+	(}{\textsf{\textbf{←}}}{)}{,
+	structures }{de contrôle
+	}\textstyleMotCl{{si}}{,
+	}\textstyleMotCl{{selon
+	que}}{,
+	}\textstyleMotCl{{tant
+	que}}{,
+	}\textstyleMotCl{{pour}}{,
+	etc.) Lorsque l’ordinateur rencontre cette instruction, il va
+	rechercher si un module portant ce nom existe. Une fois ce module
+	trouvé, les paramètres }{\textit{ad
+	hoc}}{ lui sont communiqués et toutes les
+	instructions le composant sont exécutées séquentiellement. Arrivé à
+	l’issue du module, les paramètres de sortie sont communiqués au module
+	appelant et le déroulement de celui-ci se poursuit là où il avait été
+	interrompu.}}
 
-{\sffamily
-\textstyleMotCl{fin module}}
+	{\bfseries Remarques}
 
-{
-Notons que, sous cette forme, ce module est devenu «~inactif~», il ne
-lit rien ni n’écrit rien, mais il est cependant prêt à être utilisé. Il
-suffit pour cela de lui fournir les valeurs de \textstyleCodeInsr{a} et
-\textstyleCodeInsr{b} (paramètres d’entrée) pour qu’il entre en action.
-Une fois le maximum calculé, celui-ci est affecté à la variable
-\textstyleCodeInsr{max} qui – en tant que paramètre de sortie –
-contiendra et renverra le résultat voulu. }
+	\begin{itemize}
+	\item {
+	{un paramètre peut être à la fois paramètre
+	d’entrée et de sortie ; on le fait suivre alors de la double flèche
+	}{↓↑}{ ;}}
+	\item {
+	si tous les paramètres sont en entrée, on peut omettre les flèches;}
+	\item {
+	la présence de ces paramètres n’est pas obligatoire, on peut envisager
+	un module sans paramètre de sortie (par ex. un module qui reçoit en
+	entrée un nombre et dont la seule fonction est de l’afficher à
+	l’écran), ou inversement sans paramètre d’entrée (un module qui simule
+	un lancer de dé, et renvoie en paramètre une valeur aléatoire entre 1
+	et 6) ;}
+	\item {
+	{pour appeler correctement un module, il faut
+	fournir des noms de variables, des expressions ou des constantes
+	}{\textbf{en même
+	nombre}}{ et en même ordre que les paramètres
+	du module ;}}
+	\item {
+	en outre, les types des variables doivent correspondre entre l’appel et
+	l’en-tête du module ;}
+	\item {
+	ne peut être affectée à un paramètre d’entrée du module qu’une
+	constante, une expression ou une variable préalablement affectée ;}
+	\item {
+	à un paramètre de sortie d’un module doit toujours correspondre une
+	autre variable, jamais une constante ou une expression ;}
+	\item {
+	il faut s’assurer qu’à l’issue du module, tous les paramètres de sortie
+	aient été affectés lors de l’exécution de ce module.}
+	\end{itemize}
 
-{
-{Pour faire appel aux services de ce module, il
-suffit à présent d’écrire son nom suivi d’un nombre de variables (ou
-d'expressions) en accord avec son entête. Montrons par
-un exemple comment le module
-}\textstyleCodeInsr{{max3}}{
-peut faire appel au module
-}\textstyleCodeInsr{{max2}}{:}}
-
-{\sffamily
-\textbf{module} max3()}
-
-{\sffamily
-\ \ a, b, c, temp, max : réels}
-
-{\sffamily
-\ \ \textbf{lire} a, b, c}
-
-{\sffamily
-\ \ \textstyleMotCl{\textmd{max2( a, b, temp )}}}
-
-{\sffamily
-\ \ \textstyleMotCl{\textmd{max2( temp, c, max )}}}
-
-{\sffamily
-\ \ \textbf{écrire} max}
-
-{\sffamily
-\textstyleMotCl{fin module}}
-
-{
-{L’instruction
-}\textstyleCodeInsr{{max2(a, b,
-temp)}}{ se déroule comme suit :}}
-
-\liststyleListv
-\begin{itemize}
-\item {
-{le contenu des variables
-}\textstyleCodeInsr{{a}}{
-et
-}\textstyleCodeInsr{{b}}{
-est affecté aux paramètres d’entrée
-}\textstyleCodeInsr{{a}}{
-et
-}\textstyleCodeInsr{{b}}{
-du module
-}\textstyleCodeInsr{{max2}}{,
-puis ce module peut entrer en action ;}}
-\item {
-{à l’issue du module
-}\textstyleCodeInsr{{max2}}{,
-la valeur du paramètre de sortie
-}\textstyleCodeInsr{{max}}{
-est communiquée à la variable
-}\textstyleCodeInsr{{temp}}{,
-qui contient à présent le maximum de
-}\textstyleCodeInsr{{a}}{
-et
-}\textstyleCodeInsr{{b}}{.}}
-\end{itemize}
-{
-{L’instruction
-}\textstyleCodeInsr{{max2(temp, c,
-max)}}{ se déroule comme suit :}}
-
-\liststyleListv
-\begin{itemize}
-\item {
-{le contenu des variables
-}\textstyleCodeInsr{{temp}}{
-et
-}\textstyleCodeInsr{{c}}{
-est affecté aux paramètres d’entrée
-}\textstyleCodeInsr{{a}}{
-et
-}\textstyleCodeInsr{{b}}{
-du module
-}\textstyleCodeInsr{{max2}}{,
-puis ce module peut entrer en action ;}}
-\item {
-{à l’issue du module
-}\textstyleCodeInsr{{max2}}{,
-la valeur du paramètre de sortie
-}\textstyleCodeInsr{{max}}{
-est communiquée à la variable
-}\textstyleCodeInsr{{max}}{,
-qui contient à présent le maximum des 3 nombres de départ.}}
-\end{itemize}
-{
-{Il est évident que la présence de ces deux
-instructions dans le module
-}\textstyleCodeInsr{{max3}}{
-implique la présence du module
-}\textstyleCodeInsr{{max2}}{
-«~aux alentours~» du premier, c’est-à-dire que ces deux modules doivent
-se trouver sur le même support d’écriture de
-l'algorithme complet.}}
-
-{
-{Implicitement, on a introduit ici un nouveau
-type de primitive, l’}{\textbf{appel à un
-}}{\textbf{module}}{\textit{
-}}{qui consiste en la simple écriture de son
-nom dans le code. Cette }{instruction est
-reconnue comme telle car elle ne s’apparente pas aux autres types
-}{d’instruction vus précédemment (primitives
-}\textstyleMotCl{{lire}}{,
-}\textstyleMotCl{{écrire}}{,
-affectation
-(}{\textsf{\textbf{←}}}{)}{,
-structures }{de contrôle
-}\textstyleMotCl{{si}}{,
-}\textstyleMotCl{{selon
-que}}{,
-}\textstyleMotCl{{tant
-que}}{,
-}\textstyleMotCl{{pour}}{,
-etc.) Lorsque l’ordinateur rencontre cette instruction, il va
-rechercher si un module portant ce nom existe. Une fois ce module
-trouvé, les paramètres }{\textit{ad
-hoc}}{ lui sont communiqués et toutes les
-instructions le composant sont exécutées séquentiellement. Arrivé à
-l’issue du module, les paramètres de sortie sont communiqués au module
-appelant et le déroulement de celui-ci se poursuit là où il avait été
-interrompu.}}
-
-{\bfseries
-Remarques}
-
-\liststyleListv
-\begin{itemize}
-\item {
-{un paramètre peut être à la fois paramètre
-d’entrée et de sortie ; on le fait suivre alors de la double flèche
-}{↓↑}{ ;}}
-\item {
-si tous les paramètres sont en entrée, on peut omettre les flèches;}
-\item {
-la présence de ces paramètres n’est pas obligatoire, on peut envisager
-un module sans paramètre de sortie (par ex. un module qui reçoit en
-entrée un nombre et dont la seule fonction est de l’afficher à
-l’écran), ou inversement sans paramètre d’entrée (un module qui simule
-un lancer de dé, et renvoie en paramètre une valeur aléatoire entre 1
-et 6) ;}
-\item {
-{pour appeler correctement un module, il faut
-fournir des noms de variables, des expressions ou des constantes
-}{\textbf{en même
-nombre}}{ et en même ordre que les paramètres
-du module ;}}
-\item {
-en outre, les types des variables doivent correspondre entre l’appel et
-l’en-tête du module ;}
-\item {
-ne peut être affectée à un paramètre d’entrée du module qu’une
-constante, une expression ou une variable préalablement affectée ;}
-\item {
-à un paramètre de sortie d’un module doit toujours correspondre une
-autre variable, jamais une constante ou une expression ;}
-\item {
-il faut s’assurer qu’à l’issue du module, tous les paramètres de sortie
-aient été affectés lors de l’exécution de ce module.}
-\end{itemize}
 \section[Variables locales]{\bfseries Variables locales}
 {
 {Dans le cadre de ce cours d’algorithmique, nous
