@@ -62,24 +62,17 @@ La définition d’un type structuré adoptera le modèle suivant :}
 %\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img80}
 
 \end{center}
-{\sffamily
-\textstyleMotCl{\textcolor{black}{structure}}\textcolor{black}{
-\ NomDeLaStructure}}
 
-{\sffamily
-\ \ nomChamp1 : type1}
-
-{\sffamily
-\ \ nomChamp2 : type2}
-
-{\sffamily
-…}
-
-{\sffamily
-\ \ nomChampN : typeN}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{structure}}
+\cadre{
+\begin{pseudo}
+\Struct{NomDeLaStructure}
+	\Decl nomChamp1 : type1
+	\Decl nomChamp2 : type2
+	\Decl \dots
+	\Decl nomChampN : typeN
+\EndStruct
+\end{pseudo}
+}
 
 {
 \textstylePolicepardfaut{\textcolor{black}{nomChamp1, …, nomChampN sont

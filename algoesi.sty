@@ -45,9 +45,12 @@
 \algdef{SE}[IF]{If}{EndIf}[1]
   {\printandpush\algorithmicif\ #1\ \algorithmicthen}
   {\popandprint\algorithmicend\ \algorithmicif}%
-\algdef{SE}[BLOCK]{Begin}{End}
-  {\printandpush \algorithmicbegin}
+\algdef{SE}[BLOCK]{Begin}{End}[1]
+  {\printandpush \algorithmicbegin\ #1}
   {\popandprint \algorithmicend}%
+\algdef{SE}[BLOC]{Block}{EndBlock}[1]
+  {\printandpush \algorithmicblock\ #1}
+  {\popandprint \algorithmicend\ \algorithmicblock}%
 \algdef{C}[IF]{IF}{ElsIf}[1]
   {\popandprint\pushindent\algorithmicelse\ \algorithmicif\ #1\ \algorithmicthen}%
 \algdef{Ce}[ELSE]{IF}{Else}{EndIf}
@@ -63,17 +66,31 @@
   {\popandprint\algorithmicend\ \algorithmicswitch}%
 \algdef{C}[SWITCH]{SWITCH}{Case}[1]
   {\popandprint\pushindent\ #1:}%
+\algdef{SE}[STRUCT]{Struct}{EndStruct}[1]
+  {\printandpush\algorithmicstruct\ #1}
+  {\popandprint\algorithmicend\ \algorithmicstruct}%
+\algdef{SE}[CLASS]{Class}{EndClass}[1]
+  {\printandpush\algorithmicclass\ #1}
+  {\popandprint\algorithmicend\ \algorithmicclass}%
   
 % ==============================================================================
 % Fin du code pour les lignes verticales
 % ==============================================================================
 
 % Ajouts propres pour la francisation des termes prédéfinis
+\algnewcommand\algorithmicclass{\textbf{classe}}
+\algnewcommand\algorithmicmethod{\textbf{méthode}}
+\algnewcommand\algorithmicconstr{\textbf{constructeur}}
+\algnewcommand\algorithmicstruct{\textbf{structure}}
+\algnewcommand\algorithmicblock{\textbf{bloc}}
 \algnewcommand\algorithmicbegin{\textbf{début}}
 \algrenewcommand\algorithmicend{\textbf{fin}}
 \algrenewcommand\algorithmicprocedure{\textbf{module}}
 \algrenewcommand\algorithmicfunction{\textbf{module}}
 \algrenewcommand\algorithmicwhile{\textbf{tant que}}
+\algrenewcommand\algorithmicfor{\textbf{pour}}
+\algrenewcommand\algorithmicrepeat{\textbf{répéter}}
+\algrenewcommand\algorithmicuntil{\textbf{jusqu'à ce que}}
 \algrenewcommand\algorithmicdo{\textbf{faire}}
 \algrenewcommand\algorithmicreturn{\textbf{retourner}}
 \algrenewcommand\algorithmicif{\textbf{si}}
@@ -107,9 +124,19 @@
 \newcommand{\Let}{\LState}
 
 % \Module{nom}{param}{return_type} ... \EndModule
-\algblockdefx[MODULE]{Module}{EndModule}
-[3]{\printandpush\algorithmicprocedure\ \textproc{#1}(#2)\ifthenelse{\equal{#3}{}}{}{\Gives\ #3}}
-{\algorithmicend\ \algorithmicprocedure}
+\algblockdefx[MODULE]{Module}{EndModule}[3]%
+{\printandpush\algorithmicprocedure\ \textproc{#1}(#2)\ifthenelse{\equal{#3}{}}{}{\Gives\ #3}}
+{\popandprint\algorithmicend\ \algorithmicprocedure}
+\algblockdefx[METHOD]{Method}{EndMethod}[3]%
+{\printandpush\algorithmicmethod\ \textproc{#1}(#2)\ifthenelse{\equal{#3}{}}{}{\Gives\ #3}}
+{\popandprint\algorithmicend\ \algorithmicmethod}
+\algblockdefx[CONSTR]{Constr}{EndConstr}[2]%
+{\printandpush\algorithmicconstr\ \textproc{#1}(#2)}
+{\popandprint\algorithmicend\ \algorithmicconstr}
+\algdef{C}[CLASS]{CLASS}{Private}{\popandprint\pushindent\ privé:}%
+\algdef{C}[CLASS]{CLASS}{Public}{\popandprint\pushindent\ public:}%
+\newcommand{\MethodSign}[3]{\Stmt \algorithmicmethod\ \textproc{#1}(#2)\ifthenelse{\equal{#3}{}}{}{\Gives\ #3}}
+\newcommand{\ConstrSign}[2]{\Stmt \algorithmicconstr\ \textproc{#1}(#2)}
 
 \algrenewcommand{\algorithmiccomment}[1]{{\small\hskip1em// #1}}
 \newcommand{\LComment}{\Empty\hskip-1em\Comment}

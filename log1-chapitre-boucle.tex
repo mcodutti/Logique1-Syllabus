@@ -107,25 +107,13 @@ Le «~tant que~» est une structure qui demande à
 l'exécutant de répéter une tâche (une ou plusieurs
 instructions) tant qu'une condition donnée est vraie.}
 
-{\sffamily
-\textstyleMotCl{tant que} condition \textstyleMotCl{faire}}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img84}
-
-\end{center}
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=5.173cm,height=5.928cm]{log1-img/log1-img85}
-
-\end{center}
-{\sffamily
-\ \  \ séquence d’instructions à exécuter }
-
-{\sffamily
-\textstyleMotCl{fin tant que}}
-
+\cadre{
+\begin{pseudo}
+\While{condition}
+	\Stmt séquence d’instructions à exécuter
+\EndWhile
+\end{pseudo}
+}
 
 \bigskip
 
@@ -165,19 +153,13 @@ s'agit d'une différence mineure.}
 
 \bigskip
 
-{\sffamily
-\textstyleMotCl{faire}}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img87}
-
-\end{center}
-{\sffamily
-\ \  \ séquence d’instructions à exécuter }
-
-{\sffamily
-\textstyleMotCl{jusqu'à ce que} condition}
+\cadre{
+\begin{pseudo}
+\Repeat
+	\Stmt séquence d’instructions à exécuter
+\Until{condition}
+\end{pseudo}
+}
 
 
 \bigskip
@@ -200,22 +182,13 @@ répétée. Cela se fait au travers d'une
 d'une valeur de départ jusqu'à une
 valeur finale.}
 
-{\sffamily
-\textstyleMotCl{pour} variable \textstyleMotCl{de} début
-\textstyleMotCl{à} fin [\textstyleMotCl{par} pas]
-\textstyleMotCl{faire}}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img88}
-
-\end{center}
-{\sffamily
-\ \ \ \ \ \ \ \ \ \ \textit{séquence d’instructions à exécuter }}
-
-{\sffamily
-\textstyleMotCl{fin pour}}
-
+\cadre{
+\begin{pseudo}
+\For{variable \K{de} début \K{à} fin [\K{par} pas]}
+	\Stmt séquence d’instructions à exécuter
+\EndFor
+\end{pseudo}
+}
 
 \bigskip
 

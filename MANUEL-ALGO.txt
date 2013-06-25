@@ -2,7 +2,9 @@
    Petit manuel pour aider à écrire des algorithmes 
 ======================================================
 
-===== Structure générale
+------------------------------------------------------
+ Structure générale
+------------------------------------------------------
 
 \cadre{
 \begin{pseudo}
@@ -13,7 +15,9 @@
 Je n'ai aps encore trouvé techniquement comment éviter de mettre
 le 'cadre' autour (qui sert à mettre un fond gris clair)
 
-===== Les instructions
+------------------------------------------------------
+ Les instructions
+------------------------------------------------------
 
 - Déclaration 	: \Decl ...					
 - Lire 			: \Read ...
@@ -23,15 +27,31 @@ le 'cadre' autour (qui sert à mettre un fond gris clair)
 	
 On peut utiliser \K{mot} pour un mot clé non prévu
 
-===== Modules et autres
+------------------------------------------------------
+ Modules et autres
+------------------------------------------------------
 
 \Module{nom}{paramètres}{retour}
 	...
+	\Return valeur retour		// facultatif
 \EndModule
 
 Pour les paramètres, on peut utiliser \In, \Out et \InOut
 
-===== Structures de contrôle
+On a aussi
+
+\Block{nom}
+	...
+\EndBlock
+
+\Struct{Nom}
+	\Decl champ : type
+	...
+\EndStruct
+
+------------------------------------------------------
+ Structures de contrôle
+------------------------------------------------------
 
 \If{condition}
 	...
@@ -54,4 +74,32 @@ Les selon que j'en suis pas encore content
 	...
 \Until{condition}
 
+\For{i \K{de} 1 \K{à} n}
+	...
+\EndFor
 
+------------------------------------------------------
+ OO
+------------------------------------------------------
+
+\Class{Test}
+\Private
+	\Decl a : entier
+	\Decl b : entier
+\Public
+	\ConstrSign{Test}{a: entier}
+	\MethodSign{brol2}{a,b: entiers}{}
+\EndClass
+
+\Empty
+\Constr{Test}{a:entier}
+	\Read a
+	\Read b
+\EndConstr
+
+\Empty
+\LComment Cette méthode blablabla
+\Method{brol}{a}{b}
+	\Read a
+	\Read b
+\EndMethod
