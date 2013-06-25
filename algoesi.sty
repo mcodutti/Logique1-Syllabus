@@ -122,6 +122,7 @@
 \newcommand{\Empty}{\LState}
 \newcommand{\Stmt}{\LState}
 \newcommand{\Let}{\LState}
+\newcommand{\Error}{\LState\textbf{erreur}\ }
 
 % \Module{nom}{param}{return_type} ... \EndModule
 \algblockdefx[MODULE]{Module}{EndModule}[3]%
@@ -135,6 +136,7 @@
 {\popandprint\algorithmicend\ \algorithmicconstr}
 \algdef{C}[CLASS]{CLASS}{Private}{\popandprint\pushindent\ privé:}%
 \algdef{C}[CLASS]{CLASS}{Public}{\popandprint\pushindent\ public:}%
+\newcommand{\ModuleSign}[3]{\Stmt \algorithmicprocedure\ \textproc{#1}(#2)\ifthenelse{\equal{#3}{}}{}{\Gives\ #3}}
 \newcommand{\MethodSign}[3]{\Stmt \algorithmicmethod\ \textproc{#1}(#2)\ifthenelse{\equal{#3}{}}{}{\Gives\ #3}}
 \newcommand{\ConstrSign}[2]{\Stmt \algorithmicconstr\ \textproc{#1}(#2)}
 
