@@ -58,7 +58,12 @@
 \algdef{SE}[FUNCTION]{Function}{EndFunction}[2]
    {\printandpush\algorithmicfunction\ \textproc{#1}\ifthenelse{\equal{#2}{}}{}{(#2)}}%
    {\popandprint\algorithmicend\ \algorithmicfunction}%
-\makeatother
+\algdef{SE}[SWITCH]{Switch}{EndSwitch}[1]
+  {\printandpush\algorithmicswitch\ #1}
+  {\popandprint\algorithmicend\ \algorithmicswitch}%
+\algdef{C}[SWITCH]{SWITCH}{Case}[1]
+  {\popandprint\pushindent\ #1:}%
+  
 % ==============================================================================
 % Fin du code pour les lignes verticales
 % ==============================================================================
@@ -74,6 +79,7 @@
 \algrenewcommand\algorithmicif{\textbf{si}}
 \algrenewcommand\algorithmicthen{\textbf{alors}}
 \algrenewcommand\algorithmicelse{\textbf{sinon}}
+\algnewcommand\algorithmicswitch{\textbf{selon que}}
 \floatname{algorithm}{Algorithme}
 
 % Modifications de style

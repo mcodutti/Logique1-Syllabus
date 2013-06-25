@@ -1,149 +1,91 @@
-\chapter[Les alternatives]{
-Les alternatives}
-{
+\chapter{Les alternatives}
+
+\marginicon{objectif}
 Avec ce chapitre, nous abordons les structures alternatives qui
 permettent de conditionner des parties d'algorithmes.
-Elles ne seront exécutées que si une condition est satisfaite. }
+Elles ne seront exécutées que si une condition est satisfaite.
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.27cm,height=1.27cm]{log1-img/log1-img58}
-
-\end{center}
 \section{«~si – alors – sinon~»}
-{
+
 Cette structure permet d'exécuter une partie de code ou
 une autre en fonction de la valeur de vérité d'une
-condition.}
+condition.
 
-{\sffamily\bfseries\upshape
-si – alors}
+\marginicon{definition}
+\begin{Emphase}{si – alors}
+\cadre{
+\begin{pseudo}
+\If{condition}
+	\LComment instructions à réaliser si la condition est VRAIE
+\EndIf
+\end{pseudo}
+}
+\end{Emphase}
 
-{\sffamily
-\textstyleMotCl{si} \textit{condition} \textstyleMotCl{alors}}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img59}
-
-\end{center}
-{\sffamily
-\ \ // instructions à réaliser si la condition est VRAIE}
-
-{\sffamily
-\textstyleMotCl{fin si}}
-
-{
 La \textbf{condition} est une expression délivrant un résultat booléen
 (\textbf{vrai} ou \textbf{faux}) ; elle associe des variables,
 constantes, expressions arithmétiques, au moyen des opérateurs logiques
 ou de comparaison. En particulier, cette condition peut être réduite à
-une seule variable booléenne.}
+une seule variable booléenne.
 
-{
 Dans cette structure, lorsque la condition est vraie, il y a exécution
 de la séquence d’instructions contenue entre les mots
 \textstyleMotCl{alors} et \textstyleMotCl{fin si} ; ensuite,
-l’algorithme continue de façon séquentielle.}
+l’algorithme continue de façon séquentielle.
 
-{
 Lorsque la condition est fausse, les instructions se trouvant entre
 \textstyleMotCl{alors} et \textstyleMotCl{fin si} sont tout simplement
-ignorées.}
+ignorées.
 
-{\sffamily\bfseries
-si – alors – sinon}
+\marginicon{definition}
+\begin{Emphase}{si – alors - sinon}
+\cadre{
+\begin{pseudo}
+\If{condition}
+	\LComment instructions à réaliser si la condition est VRAIE
+\Else
+	\LComment instructions à réaliser si la condition est FAUSSE
+\EndIf
+\end{pseudo}
+}
+\end{Emphase}
 
-{\sffamily
-\textstyleMotCl{si} \textit{condition} \textstyleMotCl{alors}}
+Dans cette structure, une et une seule des deux séquences est exécutée.
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img60}
-
-\end{center}
-{\sffamily
-\ \ // instructions à réaliser si la condition est VRAIE}
-
-{\sffamily\bfseries\itshape
-\textstyleMotCl{\textup{sinon}}}
-
-{\sffamily
-\ \ // instructions à réaliser si la condition est FAUSSE}
-
-{\sffamily
-\textstyleMotCl{fin si}}
-
-{
-Dans cette structure, une et une seule des deux séquences est exécutée.}
-
-{\sffamily\bfseries\scshape
-Exercice résolu : Signe d'un nombre}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.282cm,height=1.282cm]{log1-img/log1-img61}
-
-\end{center}
-{
+\marginicon{exercice}
+\begin{Emphase}{Exercice résolu : Signe d'un nombre}
 Écrire un algorithme qui dit si un nombre lu est positif (zéro inclus)
-ou strictement négatif}
+ou strictement négatif.
 
-{\bfseries
-Solution}
+{\bfseries Solution}
 
-{\sffamily
-\textstyleMotCl{module} signeNombre()}
+\cadre{
+\begin{pseudo}
+\Module{signeNombre}{}{}
+	\Decl nb : entier
+	\Read nb
+	\If{nb < 0}
+		\Write "le nombre", nb, " est négatif"
+	\Else
+		\Write "le nombre", nb, " est positif ou nul"
+	\EndIf
+\EndModule
+\end{pseudo}
+}
+\end{Emphase}
 
-{\sffamily
-\ \ nb : entier}
-
-{\sffamily
-\ \ \textstyleMotCl{lire} nb}
-
-{\sffamily
-\ \ \textstyleMotCl{si} nb {\textless} 0 \textstyleMotCl{alors}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{écrire} {\textquotedbl}le
-nombre~{\textquotedbl}, nb, {\textquotedbl}~est négatif{\textquotedbl}}
-
-{\sffamily
-\ \ \textstyleMotCl{sinon}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{écrire} {\textquotedbl}le
-nombre~{\textquotedbl}, nb, {\textquotedbl}~est positif ou
-nul{\textquotedbl}}
-
-{\sffamily
-\ \ \textstyleMotCl{fin} \textstyleMotCl{si}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
-
-{\sffamily\bfseries\scshape
-Exercice : Signe d'un nombre (amélioré)}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.282cm,height=1.282cm]{log1-img/log1-img62}
-
-\end{center}
-{
+\marginicon{exercice}
+\begin{Emphase}{Exercice : Signe d'un nombre (amélioré)}
 Écrire un algorithme qui dit si un nombre lu est positif, négatif ou
-nul.}
+nul.
+\end{Emphase}
 
 \section{Indentation}
-{
+
 Dans l’écriture de tout algorithme, on veillera à \textbf{indenter}
 correctement les lignes de codes afin de faciliter sa lecture ; cela
-veut dire que : }
+veut dire que :
 
-\liststyleListv
 \begin{itemize}
 \item {
 Les \textbf{balises} encadrant toute structure de contrôle devront être
@@ -161,737 +103,322 @@ d'une tabulation vers la droite.}
 \item {
 On pourra aussi tracer une \textbf{ligne verticale} entre le début et la
 fin d'une structure de contrôle afin de mieux la
-délimiter encore\footnote{Nous ne le faisons pas dans ce document
-simplement parce que le traitement de texte utilisé pour écrire ce
-document ne permet pas (à notre connaissance)
-d'automatiser le tracé de telles lignes.}. }
+délimiter encore. }
 \end{itemize}
-{
-Exemple : Reprenons l'algorithme du signe
-d'un nombre.}
-
-{\sffamily
-\textstyleMotCl{module} signeNombre()}
-
-{\sffamily
-[Warning: Draw object ignored]\ \ nb : entier}
-
-{\sffamily
-\ \ \textstyleMotCl{lire} nb}
-
-{\sffamily
-\ \ \textstyleMotCl{si} nb {\textless} 0 \textstyleMotCl{alors}}
-
-{\sffamily
-[Warning: Draw object ignored]\ \ \ \ \textstyleMotCl{écrire}
-{\textquotedbl}le nombre~{\textquotedbl}, nb, {\textquotedbl}~est
-négatif{\textquotedbl}}
-
-{\sffamily
-[Warning: Draw object ignored]\ \ \textstyleMotCl{sinon}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{écrire} {\textquotedbl}le
-nombre~{\textquotedbl}, nb, {\textquotedbl}~est positif ou
-nul{\textquotedbl}}
-
-{\sffamily
-\ \ \textstyleMotCl{fin} \textstyleMotCl{si}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
 
 \section{«~selon que~»}
-{
+
 Avec ces structures, plusieurs branches d'exécution
 sont disponibles. L'ordinateur choisit la branche à
 exécuter en fonction de la valeur d'une variable ou de
-la condition qui est vraie.}
+la condition qui est vraie.
 
-{\sffamily\bfseries
-selon que (version avec listes de valeurs)}
+\marginicon{definition}
+\begin{Emphase}{selon que (version avec listes de valeurs)}
+\cadre{
+\begin{pseudo}
+\Switch{expression \K{vaut}}
+	\Case{liste\_1 de valeurs}
+		\LComment instructions lorsque la valeur est dans liste\_1
+	\Case{liste\_2 de valeurs}
+		\LComment instructions lorsque la valeur est dans liste\_2
+	\Case{\dots}
+	\Case{liste\_n de valeurs}
+		\LComment instructions lorsque la valeur est dans liste\_n
+	\Case{\K{autres}}
+		\LComment instructions lorsque la valeur de l'expression
+		\LComment ne se trouve dans aucune des listes précédentes
+\EndSwitch
+\end{pseudo}
+}
+\end{Emphase}
 
-{\sffamily
-\textstyleMotCl{selon} \textstyleMotCl{que} \textit{expression}
-\textstyleMotCl{vaut}}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img63}
-
-\end{center}
-
-\bigskip
-
-{\sffamily
-\ \ liste\_1 de valeurs : }
-
-{\sffamily
-\ \ \ \ // instructions à exécuter lorsque la valeur}
-
-{\sffamily
-\ \ \ \ \ \ \ de l’expression se trouve dans liste\_1 }
-
-
-\bigskip
-
-{\sffamily
-\ \ liste\_2 de valeurs : }
-
-{\sffamily
-\ \ \ \ // instructions à exécuter lorsque la valeur }
-
-{\sffamily
-\ \ \ \ \ \ de l’expression se trouve dans liste\_2 }
-
-{\sffamily
-\ \ etc...}
-
-
-\bigskip
-
-{\sffamily
-\ \ liste\_n de valeurs : }
-
-{\sffamily
-\ \ \ \ // instructions à exécuter lorsque la valeur }
-
-{\sffamily
-\ \ \ \ \ \ de l’expression se trouve dans liste\_n }
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{\ \ autres} : }
-
-{\sffamily
-\ \ \ \ // instructions à exécuter lorsque la valeur de}
-
-{\sffamily
-\ \ \ \ \ \ l’expression ne se trouve dans aucune des listes
-précédentes}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{selon}}
-
-{
 Dans ce type de structure, comme pour la structure
 \textstyleMotCl{si-alors-sinon}, une seule des séquences d’instructions
 sera exécutée. On veillera à ne pas faire apparaitre une même valeur
 dans plusieurs listes. Cette structure est une simplification
 d’écriture de plusieurs alternatives imbriquées. Elle est équivalente à
-:}
+:
 
-{\sffamily
-\textstyleMotCl{si} expression = une des valeurs de la liste\_1
-\textstyleMotCl{alors}}
+\cadre{
+\begin{pseudo}
+\If{expression = une des valeurs de la liste\_1}
+	\LComment instructions lorsque la valeur est dans liste\_1
+\Else
+	\If{expression = une des valeurs de la liste\_2}
+		\LComment instructions lorsque la valeur est dans liste\_2
+	\Else
+		\LComment \dots
+		\If{expression = une des valeurs de la liste\_n}
+			\LComment instructions lorsque la valeur est dans liste\_n
+		\Else
+			\LComment instructions lorsque la valeur de l'expression
+			\LComment ne se trouve dans aucune des listes précédentes
+		\EndIf
+	\EndIf
+\EndIf
+\end{pseudo}
+}
 
-{\sffamily
-\ \ // instructions à exécuter}
+Noter que le cas \textstyleMotCl{autres} est facultatif.
 
-{\sffamily
-\textstyleMainindexentry{sinon}}
+\marginicon{definition}
+\begin{Emphase}{selon que (version avec conditions)}
+\cadre{
+\begin{pseudo}
+\Switch{}
+	\Case{condition\_1}
+		\LComment instructions lorsque la condition\_1 est vraie
+	\Case{condition\_2}
+		\LComment instructions lorsque la condition\_2 est vraie
+	\Case{\dots}
+	\Case{condition\_n}
+		\LComment instructions lorsque la condition\_n est vraie
+	\Case{\K{autres}}
+		\LComment instructions à exécuter quand aucune
+		\LComment des conditions précédentes n’est vérifiée
+\EndSwitch
+\end{pseudo}
+}
+\end{Emphase}
 
-{\sffamily
-\ \ \textstyleMotCl{si} expression = une des valeurs de la liste\_2
-\textstyleMotCl{alors}}
-
-{\sffamily
-\ \ \ \ // instructions à exécuter}
-
-{\sffamily
-\ \ \textstyleMainindexentry{sinon}}
-
-{\sffamily
-\ \ \ \ ...}
-
-{\sffamily
-\ \ \ \ \ \ \textstyleMotCl{si} expression = une des valeurs de la
-liste\_n \textstyleMotCl{alors}}
-
-{\sffamily
-\ \ \ \ \ \ \ \ // instructions à exécuter}
-
-{\sffamily
-\ \ \ \ \ \ \textstyleMainindexentry{sinon}}
-
-{\sffamily
-\ \ \ \ \ \ \ \ // instructions à exécuter}
-
-{\sffamily
-\ \ \ \ \ \ \textstyleMotCl{fin si}}
-
-{\sffamily
-\ \ \ \ …}
-
-{\sffamily
-\ \ \textstyleMotCl{fin si}}
-
-{\sffamily
-\textstyleMotCl{fin si}}
-
-{
-Noter que le cas \textstyleMotCl{autres} est facultatif.}
-
-
-\bigskip
-
-
-\bigskip
-
-{\sffamily\bfseries
-selon que (version avec conditions)}
-
-{\sffamily
-\textstyleMotCl{selon} \textstyleMotCl{que}}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img64}
-
-\end{center}
-{\sffamily
-\textbf{\ \ }condition\_1 : // instructions à exécuter lorsque la
-condition\_1 est vraie}
-
-{\sffamily
-\ \ condition\_2 : // instructions à exécuter lorsque la condition\_2
-est vraie}
-
-{\sffamily
-\ \ etc...}
-
-{\sffamily
-\ \ condition\_n : // instructions à exécuter lorsque la condition\_n
-est vraie}
-
-
-\bigskip
-
-{\sffamily
-\ \ \textstyleMotCl{autres} : // instructions à exécuter quand aucune
-des conditions \ \ \ \ \ \ \ \ précédentes n’est vérifiée}
-
-{\sffamily
-\textstyleMotCl{fin}\textbf{ }\textstyleMotCl{selon}}
-
-{
 Comme précédemment, une et une seule des séquences d’instructions est
 exécutée. On veillera à ce que les conditions ne se «~recouvrent~» pas,
 c’est-à-dire que deux d’entre-elles ne soient jamais vraies
-simultanément. C'est équivalent à :}
+simultanément. C'est équivalent à :
 
-{\sffamily
-\textstyleMotCl{si} condition\_1 \textstyleMotCl{alors}}
+\cadre{
+\begin{pseudo}
+\If{condition\_1}
+	\LComment instructions lorsque la condition\_1 est vraie
+\Else
+	\If{condition\_2}
+		\LComment instructions lorsque la condition\_2 est vraie
+	\Else
+		\LComment \dots
+		\If{condition\_n}
+			\LComment instructions lorsque la condition\_n est vraie
+		\Else
+			\LComment instructions à exécuter quand aucune
+			\LComment des conditions précédentes n’est vérifiée
+		\EndIf
+	\EndIf
+\EndIf
+\end{pseudo}
+}
 
-{\sffamily
-\ \ // instructions à exécuter}
-
-{\sffamily
-\textstyleMainindexentry{sinon}}
-
-{\sffamily
-\ \ \textstyleMotCl{si} condition\_2 \textstyleMotCl{alors}}
-
-{\sffamily
-\ \ \ \ // instructions à exécuter}
-
-{\sffamily
-\ \ \textstyleMainindexentry{sinon}}
-
-{\sffamily
-\ \ \ \ ...}
-
-{\sffamily
-\ \ \ \ \ \ \textstyleMotCl{si} condition\_n \textstyleMotCl{alors}}
-
-{\sffamily
-\ \ \ \ \ \ \ \ // instructions à exécuter}
-
-{\sffamily
-\ \ \ \ \ \ \textstyleMainindexentry{sinon}}
-
-{\sffamily
-\ \ \ \ \ \ \ \ // instructions à exécuter}
-
-{\sffamily
-\ \ \ \ \ \ \textstyleMotCl{fin si}}
-
-{\sffamily
-\ \ \ \ …}
-
-{\sffamily
-\ \ \textstyleMotCl{fin si}}
-
-{\sffamily
-\textstyleMotCl{fin si}}
-
-
-\bigskip
-
-{\sffamily\bfseries\scshape
-Exercice résolu : Jour de la semaine en clair}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.282cm,height=1.282cm]{log1-img/log1-img65}
-
-\end{center}
-{
+\marginicon{exercice}
+\begin{Emphase}{Exercice résolu : Jour de la semaine en clair}
 Écrire un algorithme qui lit un jour de la semaine sous forme
-d'un nombre entier (1 pour lundi, ..., 7 pour
-dimanche) et qui affiche en clair ce jour de la semaine.}
+d'un nombre entier (1 pour lundi, \dots, 7 pour
+dimanche) et qui affiche en clair ce jour de la semaine.
 
-{\bfseries
-Solution}
+{\bfseries Solution}
 
-{\sffamily
-\textstyleMotCl{module} jourSemaine()}
+\cadre{
+\begin{pseudo}
+\Module{jourSemaine}{}{}
+\Decl jour : entier
+\Read jour
+	\Switch{jour \K{vaut}}
+		\Stmt 1 : \K{écrire} "lundi"
+		\Stmt 2 : \K{écrire} "mardi"
+		\Stmt 3 : \K{écrire} "mercredi"
+		\Stmt 4 : \K{écrire} "jeudi"
+		\Stmt 5 : \K{écrire} "vendredi"
+		\Stmt 6 : \K{écrire} "samedi"
+		\Stmt 7 : \K{écrire} "dimanche"
+	\EndSwitch
+\EndModule
+\end{pseudo}
+}
+\end{Emphase}
 
-{\sffamily
-\ \ jour : entier}
+\marginicon{exercice}
+\begin{Emphase}{Exercice résolu : Nombre de jours (avec énumération)}
 
-{\sffamily
-\ \ \textstyleMotCl{lire} jour}
-
-{\sffamily
-\ \ \textstyleMotCl{selon que} jour \textstyleMotCl{vaut}}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ }1 : \textstyleMotCl{écrire}
-{\textquotedbl}lundi{\textquotedbl}}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ }2 : \textstyleMotCl{écrire}
-{\textquotedbl}mardi{\textquotedbl}}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ }3 : \textstyleMotCl{écrire}
-{\textquotedbl}mercredi{\textquotedbl}}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ }4 : \textstyleMotCl{écrire}
-{\textquotedbl}jeudi{\textquotedbl}}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ }5 : \textstyleMotCl{écrire}
-{\textquotedbl}vendredi{\textquotedbl}}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ }6 : \textstyleMotCl{écrire}
-{\textquotedbl}samedi{\textquotedbl}}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ }7 : \textstyleMotCl{écrire}
-{\textquotedbl}dimanche{\textquotedbl}}
-
-{\sffamily
-\ \ \textstyleMotCl{fin selon que}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
-
-
-\bigskip
-
-
-\bigskip
-
-
-\bigskip
-
-{\sffamily\bfseries\scshape
-Exercice résolu : Nombre de jours (avec énumération)}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.282cm,height=1.282cm]{log1-img/log1-img66}
-
-\end{center}
-{
 Reprendre l'algorithme qui affiche le nombre de jours
-dans un mois en utilisant une énumération.}
+dans un mois en utilisant une énumération.
 
-{\bfseries
-Solution}
+{\bfseries Solution}
 
-{\sffamily
-\textstyleMotCl{énumération} Mois \{ JANVIER, FEVRIER, MARS, AVRIL, MAI,
-JUIN,}
+\cadre{
+\begin{pseudo}
+\Stmt \K{énumération} Mois {JANVIER, FEVRIER, \dots, DECEMBRE}
+\Module{nbJours}{}{}
+	\Decl mois : Mois
+	\Read mois
+	\Switch{mois \K{vaut}}
+		\Case{JANVIER, MARS, MAI, JUILLET, AOUT, OCTOBRE, DECEMBRE}
+			\Write 31
+		\Case{AVRIL, JUIN, SEPTEMBRE, NOVEMBRE}
+			\Write 30
+		\Case{FEVRIER} \Comment{on ne tient pas compte ici des années bissextiles}
+			\Write 28
+		\Case{\K{autre}}
+			\Write "Mois invalide"
+	\EndSwitch
+\EndModule
+\end{pseudo}
+}
+\end{Emphase}
 
-{\sffamily
-\ \ \ \ \ \ \ \ \ \ JUILLET, AOUT, SEPTEMBRE, OCTOBRE,}
-
-{\sffamily
-\ \ \ \ \ \ \ \ \ \ NOVEMBRE, DECEMBRE \}}
-
-{\sffamily
-\textstyleMotCl{module} nbJours()}
-
-{\sffamily
-\ \ mois : Mois}
-
-{\sffamily
-\ \ \textstyleMotCl{lire} mois}
-
-{\sffamily
-\ \ \textstyleMotCl{selon que} mois \textstyleMotCl{vaut}}
-
-{\sffamily
-\ \ \ \ JANVIER, MARS, MAI, JUILLET, AOUT, OCTOBRE, DECEMBRE :}
-
-{\sffamily
-\ \ \ \ \ \ \textstyleMotCl{écrire} 31}
-
-{\sffamily
-\ \ \ \ AVRIL, JUIN, SEPTEMBRE, NOVEMBRE :}
-
-{\sffamily
-\ \ \ \ \ \ \textstyleMotCl{écrire} 30}
-
-{\sffamily
-\ \ \ \ FEVRIER :}
-
-{\sffamily
-\ \ \ \ \ \ \textstyleMotCl{écrire} 28\ \ // on ne tient pas compte ici
-des années bissextiles}
-
-{\sffamily
-\ \ \ \ autre :}
-
-{\sffamily
-\ \ \ \ \ \  \textstyleMotCl{écrire} {\textquotedbl} Mois invalide
-{\textquotedbl}}
-
-{\sffamily
-\ \ \textstyleMotCl{fin selon que}\ \ \ \ }
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
-
-{\sffamily\bfseries\scshape
-Exercice : Signe d'un nombre (avec selon-que)}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.282cm,height=1.282cm]{log1-img/log1-img67}
-
-\end{center}
-{
+\marginicon{exercice}
+\begin{Emphase}{Exercice : Signe d'un nombre (avec selon-que)}
 Réécrire l'algorithme donnant le signe
 d'un nombre (positif, négatif ou nul) en utilisant le
-«~selon-que~». Quelle version préférez-vous et pourquoi ?}
+«~selon-que~». Quelle version préférez-vous et pourquoi ?
+\end{Emphase}
 
-{\sffamily\bfseries\scshape
-Exercice : Nombre de jours dans un mois}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.282cm,height=1.282cm]{log1-img/log1-img68}
-
-\end{center}
-{
+\marginicon{exercice}
+\begin{Emphase}{Exercice : Nombre de jours dans un mois}
 Écrire un algorithme qui donne le nombre de jours dans un mois. Le mois
 est lu sous forme d'un entier (1 pour janvier, ...).
 On ne tient pas compte ici des années bissextiles; le mois de février
-comprend toujours 28 jours.}
+comprend toujours 28 jours.
+\end{Emphase}
 
 \section{Exercices}
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Compréhension}
-\end{enumerate}
-{
+
+\begin{Exercice}{Compréhension}
+
 Qu’affichent les algorithmes suivants si à chaque fois les deux nombres
-lus au départ sont successivement 2 et 3 ? Même question avec 4 et 1.}
+lus au départ sont successivement 2 et 3 ? Même question avec 4 et 1.
 
-{\sffamily
-\textstyleMotCl{module} exerciceA()}
+\cadre{
+\begin{pseudo}
+\Module{exerciceA}{}{}
+	\Decl a,b : entier
+	\Read a,b
+	\If{a > b}
+		\Let a \Gets a + 2 * b
+	\EndIf
+	\Write a
+\EndModule
+\end{pseudo}
+}
 
-{\sffamily
-\ \ a, b : entiers}
+\cadre{
+\begin{pseudo}
+\Module{exerciceB}{}{}
+	\Decl a,b,c : entier
+	\Read b,a
+	\If{a > b}
+		\Let c \Gets a DIV b
+	\Else
+		\Let c \Gets b MOD a	
+	\EndIf
+	\Write c
+\EndModule
+\end{pseudo}
+}
 
-{\sffamily
-\ \ \textstyleMotCl{lire} a, b}
+\cadre{
+\begin{pseudo}
+\Module{exerciceC}{}{}
+	\Decl x1,x2 : entier
+	\Decl ok : booléen
+	\Read x1,x2
+	\Let ok \Gets x1 > c2
+	\If{ok}
+		\Let ok \Gets ok ET x1 = 4
+	\Else
+		\Let ok \Gets ok OU x2 = 3
+	\EndIf
+	\If{ok}
+		\Let x1 \Gets x1 * 1000
+	\EndIf
+	\Write x1 + x2
+\EndModule
+\end{pseudo}
+}
+\end{Exercice}
 
-{\sffamily
-\ \ \textstyleMotCl{si} a {\textgreater} b \textstyleMotCl{alors}}
-
-{\sffamily
-\texttt{\ \ \ \ }a\texttt{ }{\textbf{←}}\texttt{
-}a + 2 * b}
-
-{\sffamily
-\textstyleMotCl{\ \ fin si}}
-
-{\sffamily
-\ \ \textstyleMotCl{{écrire}} a}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{module} exerciceB()}
-
-{\sffamily
-\ \ a, b, c : entiers}
-
-{\sffamily
-\ \ \textstyleMotCl{lire} b,~a}
-
-{\sffamily
-\ \ \textstyleMotCl{si} a {\textgreater} b \textstyleMotCl{alors}}
-
-{\sffamily
-\ \ \ \ {c
-}{\textbf{←}}{ a
-}{DIV}{ b}}
-
-{\sffamily
-{\ \ }\textstyleMotCl{{sinon}}}
-
-{\sffamily
-{\ \ \ \ c
-}{\textbf{←}}{ b
-}{MOD}{ a}}
-
-{\sffamily
-\ \ \textstyleMotCl{fin si}}
-
-{\sffamily
-\ \ \textstyleMotCl{{écrire}} c}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{module} exerciceC()}
-
-{\sffamily
-\ \ x1, x2 : entiers}
-
-{\sffamily
-\ \ ok : booléen}
-
-{\sffamily
-\ \ \textstyleMotCl{lire} x1, x2}
-
-{\sffamily
-\texttt{\ \ }ok {\textbf{←}}\texttt{ }x1
-{\textgreater} x2}
-
-{\sffamily
-\ \ \textstyleMotCl{si} ok \textstyleMotCl{alors}}
-
-{\sffamily
-\texttt{\ \ \ \ }ok {\textbf{←}} ok ET x1 = 4}
-
-{\sffamily
-\ \ \textstyleMotCl{{sinon}}}
-
-{\sffamily
-\texttt{\ \ \ \ }ok {\textbf{←}} ok OU x2 = 3}
-
-{\sffamily
-\ \ \textstyleMotCl{fin si}}
-
-{\sffamily
-\ \ \ \textstyleMotCl{si} ok \textstyleMotCl{alors}}
-
-{\sffamily
-\texttt{\ \ \ \ }x1 {\textbf{←}} x1 * 100}
-
-{\sffamily
-\ \ \textstyleMotCl{fin si}}
-
-{\sffamily
-\ \ \textstyleMotCl{{écrire}} x1 + x2}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-\textstyleMotCl{Simplification d'algorithmes}}
-\end{enumerate}
-{
+\begin{Exercice}{Simplification d'algorithmes}
 Voici quelques extraits d’algorithmes corrects du point de vue de la
 syntaxe mais contenant des lignes inutiles ou des lourdeurs d’écriture.
 Remplacer chacune de ces portions d’algorithme par un minimum
-d’instructions qui auront un effet équivalent.}
+d’instructions qui auront un effet équivalent.
 
-{\sffamily
-\textstyleMotCl{si} ok = vrai \textstyleMotCl{alors}}
+\cadre{
+\begin{pseudo}
+\If{ok = vrai}
+	\Write nombre
+\EndIf
+\end{pseudo}
+}
 
-{\sffamily
-\ \ \textstyleMotCl{{écrire}} nombre}
+\cadre{
+\begin{pseudo}
+\If{ok = faux}
+	\Write nombre
+\EndIf
+\end{pseudo}
+}
 
-{\sffamily
-\textstyleMotCl{fin si}}
+\cadre{
+\begin{pseudo}
+\If{condition}
+	\Let ok \Gets vrai
+\Else
+	\Let ok \Gets faux
+\EndIf
+\end{pseudo}
+}
 
+\cadre{
+\begin{pseudo}
+\If{a $>$ b}
+	\Let ok \Gets faux
+\Else
+	\If{a $\leq$ b}
+		\Let ok \Gets vrai
+	\EndIf
+\EndIf
+\end{pseudo}
+}
 
-\bigskip
+\cadre{
+\begin{pseudo}
+\If{ok1 = vrai ET ok2 = vrai}
+	\Write x
+\EndIf
+\end{pseudo}
+}
+\end{Exercice}
 
-{\sffamily
-\textstyleMotCl{si} ok = faux \textstyleMotCl{alors}}
-
-{\sffamily
-\ \ \textstyleMotCl{{écrire}} nombre}
-
-{\sffamily
-\textstyleMotCl{fin si}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{si} condition \textstyleMotCl{alors}}
-
-{\sffamily
-\ \ ok\texttt{ }{\textbf{←}}\texttt{ }vrai}
-
-{\sffamily
-\textstyleMotCl{{sinon}}}
-
-{\sffamily
-\ \ ok\texttt{ }{\textbf{←}}\texttt{ }faux}
-
-{\sffamily
-\textstyleMotCl{fin si}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{si} a {\textgreater} b \textstyleMotCl{alors}}
-
-{\sffamily
-\texttt{\ \ }ok\texttt{ }{\textbf{←}}\texttt{
-}faux}
-
-{\sffamily
-\textstyleMotCl{{sinon}}}
-
-{\sffamily
-\ \ \textstyleMotCl{si} a ${\leq}$ b \textstyleMotCl{alors}}
-
-{\sffamily
-\ \ \ \ ok {\textbf{←}} vrai}
-
-{\sffamily
-\ \ \textstyleMotCl{fin si}}
-
-{\sffamily
-\textstyleMotCl{fin si}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{si} ok1 = vrai ET ok2 = vrai \textstyleMotCl{alors}}
-
-{\sffamily
-\ \ \textstyleMotCl{{écrire}} x}
-
-{\sffamily
-\textstyleMotCl{fin si}}
-
-
-\bigskip
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Maximum de 2 nombres}
-\end{enumerate}
-{
+\begin{Exercice}{Maximum de 2 nombres}
+\marginicon{java}
 Écrire un algorithme qui, étant donné deux nombres quelconques,
 recherche et affiche la valeur la plus grande. Attention ! On ne veut
 pas savoir si c'est le premier ou le deuxième qui est
 le plus grand mais bien quelle est cette plus grande valeur. Le
 problème est donc bien défini même si les deux nombres lus sont
-identiques.}
+identiques.
+\end{Exercice}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.134cm,height=1.134cm]{log1-img/log1-img69}
-
-\end{center}
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Maximum de 3 nombres}
-\end{enumerate}
-{
+\begin{Exercice}{Maximum de 3 nombres}
+\marginicon{java}
 Écrire un algorithme qui, étant donné trois nombres quelconques,
-recherche et affiche le plus grand des trois.}
+recherche et affiche le plus grand des trois.
+\end{Exercice}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.134cm,height=1.134cm]{log1-img/log1-img70}
-
-\end{center}
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Le signe}
-\end{enumerate}
-{
+\begin{Exercice}{Le signe}
+\marginicon{java}
 Écrire un algorithme qui lit un entier et affiche un message indiquant
 s'il est strictement négatif, nul ou strictement
-positif. }
+positif.
+\end{Exercice}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.134cm,height=1.134cm]{log1-img/log1-img71}
-
-\end{center}
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Test d'intervalle}
-\end{enumerate}
+\begin{Exercice}{Test d'intervalle}
 {
 Écrire un algorithme qui, étant donné trois nombres, recherche et
 affiche si le premier des trois appartient à l’intervalle donné par le
 plus petit et le plus grand des deux autres (bornes exclues). Qu’est-ce
 qui change si on inclut les bornes ?}
+\end{Exercice}
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Équation du deuxième degré}
-\end{enumerate}
+\begin{Exercice}{Équation du deuxième degré}
 {
 {Écrire un algorithme qui, étant donné une
 équation du deuxième degré, déterminée par le coefficient de
@@ -901,39 +428,23 @@ le coefficient de
 terme indépendant, recherche et affiche la ou les racine(s) de
 l’équation (ou un message adéquat s'il
 n'existe pas de racine réelle) }}
+\end{Exercice}
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Calcul de salaire}
-\end{enumerate}
+\begin{Exercice}{Calcul de salaire}
 {
 Dans une entreprise, une retenue spéciale de 15\% est pratiquée sur la
 partie du salaire mensuel qui dépasse 1200 €. Écrire un algorithme qui
 calcule le salaire net à partir du salaire brut. En quoi l’utilisation
 de constantes convient-elle pour améliorer cet algorithme ?}
+\end{Exercice}
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Année bissextile}
-
-{
+\begin{Exercice}{Année bissextile}
+\marginicon{java}
 Écrire un algorithme qui vérifie si une année est bissextile. Pour
 rappel, les années bissextiles sont les années multiples de 4. Font
 exception, les multiples de 100 (sauf les multiples de 400 qui sont
-bien bissextiles). Ainsi}
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.134cm,height=1.134cm]{log1-img/log1-img72}
+bien bissextiles). Ainsi
 
-\end{center}
-\end{enumerate}
-\liststyleListv
 \begin{itemize}
 \item {
 2010 n'est \textbf{pas} bissextile}
@@ -944,62 +455,36 @@ bien bissextiles). Ainsi}
 \item {
 2400 est bissextile}
 \end{itemize}
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Valider une date}
-\end{enumerate}
+
+\end{Exercice}
+
+\begin{Exercice}{Valider une date}
 {
 Écrire un algorithme qui valide une date donnée par trois entiers :
 l’année, le mois et le jour.}
+\end{Exercice}
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Le jour de la semaine}
-\end{enumerate}
+\begin{Exercice}{Le jour de la semaine}
+\marginicon{java}
 {
 Écrire un algorithme qui lit un jour du mois de novembre de cette année
 (sous forme d'un entier) et qui affiche le nom du jour
 («~lundi~», «~mardi~», ...)}
+\end{Exercice}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.134cm,height=1.134cm]{log1-img/log1-img73}
-
-\end{center}
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Quel jour serons-nous ?}
-\end{enumerate}
+\begin{Exercice}{Quel jour serons-nous ?}
 {
 Écrire un algorithme qui indique le nom du jour qui sera \textit{n}
 jours plus tard qu’un jour donné. Par exemple si le jour donné est «
 mercredi » et \textit{n} = 10, l’algorithme indiquera « samedi ».}
+\end{Exercice}
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Les cosinus}
-\end{enumerate}
-{
+\begin{Exercice}{Les cosinus}
 Écrire un algorithme qui pour un entier \textit{n} donné, affiche la
-valeur de cos(\textit{n} $\pi $/2)}
+valeur de cos(\textit{n} $\pi $/2)
+\end{Exercice}
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Le stationnement alternatif}
-\end{enumerate}
+\begin{Exercice}{Le stationnement alternatif}
 {
 Dans une rue où se pratique le stationnement alternatif, du 1 au 15 du
 mois, on se gare du côté des maisons ayant un numéro impair, et le
@@ -1007,3 +492,4 @@ reste du mois, on se gare de l'autre côté. Écrire un
 algorithme qui, sur base de la date du jour et du numéro de maison
 devant laquelle vous vous êtes arrêté, indique si vous êtes bien
 stationné ou non. }
+\end{Exercice}
