@@ -100,7 +100,7 @@
 % Met en évidence un ou des paragraphes
 % titre en gras + barre grise à gauche
 \newenvironment{Emphase}[1]{%
-	\smallskip
+	\smallskip%
 	\colorbox{gray!25}{\textbf{#1}}%
 	\smallskip
 	\begin{leftbar}
@@ -120,16 +120,14 @@
 % Affiche un cadre coloré autour de texte, coloré aussi et en sansserif.
 % Pour encadré numéro d'exercice, de tutoriel, ....
 % -------------------------------------------------------------
-\newcommand{\Cadre}[1]{{
-	\sffamily
-	\Ovalbox{\ #1\ }
-}}
+\newcommand{\Cadre}[1]{{\sffamily\Ovalbox{#1}}}
 
 % Pour un exercice avec numérotation automatique
 \newenvironment{Exercice}[1]{%
-	{\stepcounter{exercicenum}%
-	{\sffamily\bfseries #1}%
-	\marginnote{\footnotesize\Cadre{\theexercicenum}\qquad}\\}%
-	\smallskip%
+	\stepcounter{exercicenum}%
+	\medskip
+	{\Cadre{\theexercicenum}}\quad%
+	{\sffamily\bfseries#1}
+	\medskip\\
 	}{%
 	}
