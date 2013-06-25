@@ -1,0 +1,57 @@
+======================================================
+   Petit manuel pour aider à écrire des algorithmes 
+======================================================
+
+===== Structure générale
+
+\cadre{
+\begin{pseudo}
+	% L'algorithme ici
+\end{pseudo}
+}
+
+Je n'ai aps encore trouvé techniquement comment éviter de mettre
+le 'cadre' autour (qui sert à mettre un fond gris clair)
+
+===== Les instructions
+
+- Déclaration 	: \Decl ...					
+- Lire 			: \Read ...
+- Écrire 		: \Write ...
+- Assignation	: \Let var \Gets expression
+- Divers		: \Stmt ...
+	
+On peut utiliser \K{mot} pour un mot clé non prévu
+
+===== Modules et autres
+
+\Module{nom}{paramètres}{retour}
+	...
+\EndModule
+
+Pour les paramètres, on peut utiliser \In, \Out et \InOut
+
+===== Structures de contrôle
+
+\If{condition}
+	...
+\Else
+	...
+\EndIf
+
+Les selon que j'en suis pas encore content
+
+\Switch{var \K{vaut}}		// ou \Switch{} pour la seconde forme
+	\Case{...}				// ou \LCase{...}{instruction} pour placer sur une meme ligne
+		...
+\EndSwitch
+
+\While{condition}
+	...
+\EndWhile
+
+\Repeat
+	...
+\Until{condition}
+
+
