@@ -1,549 +1,342 @@
+% ==================================
 \chapter{Les variables structurées}
+% ==================================
+
+% ==========================
 \section{Le type structuré}
-{
-Dans les chapitres précédents, nous avons utilisé des variables de types
-dits «~simples~» (entier, réel, booléen, caractère, chaine) ne pouvant
-contenir qu’une seule valeur à la fois. Cependant, certains types
-d’information consistent en un regroupement de plusieurs données
-élémentaires. Quelques exemples :}
+% ==========================
 
-\liststyleListv
-\begin{itemize}
-\item {
-une \textbf{date} est composée de trois éléments (le jour, le mois,
-l’année), le mois s’exprimant tantôt par un entier (15/10/2004) tantôt
-par une chaine (15 octobre 2004)}
-\item {
-un \textbf{moment} de la journée est un triple d’entiers (heures,
-minutes, secondes)}
-\item {
-la localisation d’un \textbf{point} dans un plan nécessite la
-connaissance de deux coordonnées cartésiennes (l’abscisse \textit{x} et
-l’ordonnée \textit{y}) ou polaires (le rayon \textit{r} et l’angle
-\textit{$\theta $})}
-\item {
-une \textbf{adresse }est composée de plusieurs données : un nom de rue,
-un numéro de maison, parfois un numéro de boite postale, un code
-postal, le nom de la localité, un nom ou code de pays pour une adresse
-à l’étranger…}
-\end{itemize}
-{
-Pour stocker et manipuler de tels ensembles de données, nous utiliserons
-des \textbf{types structurés} ou \textbf{structures}\footnote{Nous
-verrons dans un chapitre ultérieur que l'approche
-«~orienté objet~» offre également une solution élégante pour manipuler
-des données complexes}. Une \textbf{structure} est donc un ensemble
-fini d’éléments pouvant être de types distincts. Chaque élément de cet
-ensemble, appelé \textbf{champ} de la structure, possède un nom unique.
-}
+	Dans les chapitres précédents, nous avons utilisé des variables de types
+	dits «~simples~» (entier, réel, booléen, caractère, chaine) ne pouvant
+	contenir qu’une seule valeur à la fois. Cependant, certains types
+	d’information consistent en un regroupement de plusieurs données
+	élémentaires. Quelques exemples :
 
-{
-Noter qu’un champ d’une structure peut lui-même être une structure. Par
-exemple, une \textbf{carte d’identité} inclut parmi ses informations
-une \textbf{date} de naissance, l’\textbf{adresse} de son
-propriétaire…}
+	\begin{itemize}
+	\item {
+		une \textbf{date} est composée de trois éléments (le jour, le mois,
+		l’année), le mois s’exprimant tantôt par un entier (15/10/2004) tantôt
+		par une chaine (15 octobre 2004)}
+	\item {
+		un \textbf{moment} de la journée est un triple d’entiers (heures,
+		minutes, secondes)}
+	\item {
+		la localisation d’un \textbf{point} dans un plan nécessite la
+		connaissance de deux coordonnées cartésiennes (l’abscisse \textit{x} et
+		l’ordonnée \textit{y}) ou polaires (le rayon \textit{r} et l’angle
+		\textit{$\theta $})}
+	\item {
+		une \textbf{adresse }est composée de plusieurs données : un nom de rue,
+		un numéro de maison, parfois un numéro de boite postale, un code
+		postal, le nom de la localité, un nom ou code de pays pour une adresse
+		à l’étranger\dots}
+	\end{itemize}
 
+	Pour stocker et manipuler de tels ensembles de données, nous utiliserons
+	des \textbf{types structurés} ou \textbf{structures}\footnote{Nous
+	verrons dans un chapitre ultérieur que l'approche
+	«~orienté objet~» offre également une solution élégante pour manipuler
+	des données complexes}. Une \textbf{structure} est donc un ensemble
+	fini d’éléments pouvant être de types distincts. Chaque élément de cet
+	ensemble, appelé \textbf{champ} de la structure, possède un nom unique.
+	
+	Noter qu’un champ d’une structure peut lui-même être une structure. Par
+	exemple, une \textbf{carte d’identité} inclut parmi ses informations
+	une \textbf{date} de naissance, l’\textbf{adresse} de son
+	propriétaire\dots
 
-\bigskip
+% ===================================
+\section{Définition d'une structure}
+% ===================================
 
+	\marginicon{definition}
+	La définition d’un type structuré adoptera le modèle suivant :
 
-\bigskip
+	\cadre{
+	\begin{pseudo}
+	\Struct{NomDeLaStructure}
+		\Decl nomChamp1 : type1
+		\Decl nomChamp2 : type2
+		\Decl \dots
+		\Decl nomChampN : typeN
+	\EndStruct
+	\end{pseudo}
+	}
 
+	nomChamp1, \dots, nomChampN 
+	sont les noms des différents champs de la structure, 
+	et type1, \dots, typeN les types de ces champs. 
+	Ces types sont soit les types «~simples~» étudiés
+	précédemment (entier, réel, booléen, caractère, chaine) soit d’autres
+	types structurés dont la structure aura été préalablement définie.
 
-\bigskip
+	Pour exemple, nous définissons ci-dessous trois
+	types structurés que nous utiliserons souvent par la suite :
 
-\section[Définition d'une structure]{Définition
-d'une structure}
-{
-La définition d’un type structuré adoptera le modèle suivant :}
+	\cadre{
+	\begin{pseudo}
+	\Struct{Date}
+		\Decl jour : entier
+		\Decl mois : entier
+		\Decl année : entier
+	\EndStruct
+	\end{pseudo}
+	}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img80}
+	\cadre{
+	\begin{pseudo}
+	\Struct{Moment}
+		\Decl heure : entier
+		\Decl minute : entier
+		\Decl seconde : entier
+	\EndStruct
+	\end{pseudo}
+	}
 
-\end{center}
+	\cadre{
+	\begin{pseudo}
+	\Struct{Point}
+		\Decl x : réel
+		\Decl y : réel
+	\EndStruct
+	\end{pseudo}
+	}
 
-\cadre{
-\begin{pseudo}
-\Struct{NomDeLaStructure}
-	\Decl nomChamp1 : type1
-	\Decl nomChamp2 : type2
-	\Decl \dots
-	\Decl nomChampN : typeN
-\EndStruct
-\end{pseudo}
-}
-
-{
-\textstylePolicepardfaut{\textcolor{black}{nomChamp1, …, nomChampN sont
-les noms des différents champs de la structure, et type1, … , typeN les
-types de ces champs. Ces types sont soit les types «~simples~» étudiés
-précédemment (entier, réel, booléen, caractère, chaine) soit d’autres
-types structurés dont la structure aura été préalablement définie.}}}
-
-{
-\textstylePolicepardfaut{Pour exemple, nous définissons ci-dessous trois
-types structurés que nous utiliserons souvent par la suite :}}
-
-{\sffamily
-\textstyleMotCl{\textcolor{black}{structure}}\textstylePolicepardfaut{\textsf{\textcolor{black}{
-Date}}}}
-
-{\sffamily
-\textstylePolicepardfaut{\textsf{\ \ jour : entier}}}
-
-{\sffamily
-\textstylePolicepardfaut{\textsf{\ \ mois : entier}}}
-
-{\sffamily
-\textstylePolicepardfaut{\textsf{\ \ année : entier}}}
-
-{\sffamily
-\textstyleMotCl{fin}\textstylePolicepardfaut{\textsf{
-}}\textstyleMotCl{structure}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{\textcolor{black}{structure}}\textstylePolicepardfaut{\textsf{\textcolor{black}{
-Moment}}}}
-
-{\sffamily
-\textstylePolicepardfaut{\textsf{\ \ heure : entier}}}
-
-{\sffamily
-\textstylePolicepardfaut{\textsf{\ \ minute : entier}}}
-
-{\sffamily
-\textstylePolicepardfaut{\textsf{\ \ seconde : entier}}}
-
-{\sffamily
-\textstyleMotCl{fin}\textstylePolicepardfaut{\textsf{
-}}\textstyleMotCl{structure}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{\textcolor{black}{structure}}\textstylePolicepardfaut{\textsf{\textcolor{black}{
-Point}}}}
-
-{\sffamily
-\textstylePolicepardfaut{\textsf{\ \ x : réel}}}
-
-{\sffamily
-\textstylePolicepardfaut{\textsf{\ \ y : réel}}}
-
-{\sffamily
-\textstyleMotCl{fin}\textstylePolicepardfaut{\textsf{
-}}\textstyleMotCl{structure}}
-
+% =====================================================
 \section{Déclaration d’une variable de type structuré}
-{
-\textstylePolicepardfaut{Une fois un type structuré défini, la
-déclaration de variables de ce type est identique à celle des variables
-simples. Par exemple :}}
+% =====================================================
 
-{\sffamily
-\textstylePolicepardfaut{\textsf{\textcolor{black}{anniversaire, jourJ :
-Date}}}}
+	Une fois un type structuré défini, la
+	déclaration de variables de ce type est identique à celle des variables
+	simples. Par exemple :
 
-{\sffamily
-\textstylePolicepardfaut{\textsf{\textcolor{black}{départ, arrivée,
-unMoment : Moment}}}}
+	\cadre{
+	\begin{pseudo}
+	\Decl anniversaire, jourJ : Date
+	\Decl départ, arrivée, unMoment : Moment
+	\Decl a, b, centreGravité : Point
+	\end{pseudo}
+	}
 
-{\sffamily
-\textstylePolicepardfaut{\textsf{\textcolor{black}{a, b, centreGravité :
-Point}}}}
-
+% ====================================================
 \section{Utilisation des variables de type structuré}
-{
-\textstylePolicepardfaut{En général, pour manipuler une variable
-structurée ou en modifier le contenu, il faut agir au niveau de ses
-champs en utilisant les opérations permises selon leur type. Pour
-accéder à l’un des champs d’une variable structurée, il faut mentionner
-le nom de ce champ ainsi que celui de la variable dont il fait partie.
-Nous utiliserons la notation «~pointée~» :}}
+% ====================================================
 
+	En général, pour manipuler une variable
+	structurée ou en modifier le contenu, il faut agir au niveau de ses
+	champs en utilisant les opérations permises selon leur type. Pour
+	accéder à l’un des champs d’une variable structurée, il faut mentionner
+	le nom de ce champ ainsi que celui de la variable dont il fait partie.
+	Nous utiliserons la notation «~pointée~» :
 
-\bigskip
+	\cadre{
+	\begin{pseudo}
+	\Stmt nomVariable.nomChamp
+	\end{pseudo}
+	}
 
-{\sffamily
-\textstylePolicepardfaut{\textsf{nomVariable.nomChamp}}}
+	Exemple d’instructions utilisant les variables
+	déclarées au paragraphe précédent :
 
-{
-\textstylePolicepardfaut{Exemple d’instructions utilisant les variables
-déclarées au paragraphe précédent :}}
+	\cadre{
+	\begin{pseudo}
+	\Let anniversaire.jour \Gets 15
+	\Let anniversaire.mois \Gets 10
+	\Let anniversaire.année \Gets 2014
+	\Let arrivée.heure \Gets départ.heure+2
+	\Let centreGravité.x \Gets (a.x+b.x)/2
+	\end{pseudo}
+	}
 
-{\sffamily
-\textstylePolicepardfaut{\textsf{\textcolor{black}{anniversaire}}}\textstylePolicepardfaut{\textsf{\textbf{\textcolor{black}{.}}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{jour
-}}}\textstyleMotCl{{\textcolor{black}{←}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{
-15}}}}
+	On peut cependant dans certains cas utiliser
+	une variable structurée de manière globale (c’est-à-dire d’une façon
+	qui agit simultanément sur chacun de ses champs). Le cas le plus
+	courant est l’affectation interne entre deux variables structurées de
+	même type, par exemple :
 
-{\sffamily
-\textstylePolicepardfaut{\textsf{\textcolor{black}{anniversaire}}}\textstylePolicepardfaut{\textsf{\textbf{\textcolor{black}{.}}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{mois
-}}}\textstyleMotCl{{\textcolor{black}{←}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{
-10}}}}
+	\cadre{
+	\begin{pseudo}
+	\Let arrivée \Gets départ
+	\end{pseudo}
+	}
 
-{\sffamily
-\textstylePolicepardfaut{\textsf{\textcolor{black}{anniversaire}}}\textstylePolicepardfaut{\textsf{\textbf{\textcolor{black}{.}}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{année
-}}}\textstyleMotCl{{\textcolor{black}{←}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{
-2004}}}}
+	qui résume les trois instructions suivantes :
 
-{\sffamily
-\textstylePolicepardfaut{\textsf{\textcolor{black}{arrivée}}}\textstylePolicepardfaut{\textsf{\textbf{\textcolor{black}{.}}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{heure
-}}}\textstyleMotCl{{\textcolor{black}{←}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{
-départ}}}\textstylePolicepardfaut{\textsf{\textbf{\textcolor{black}{.}}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{heure
-+ 2}}}}
+	\cadre{
+	\begin{pseudo}
+	\Let arrivée.heure \Gets départ.heure
+	\Let arrivée.minute \Gets départ.minute
+	\Let arrivée.seconde \Gets départ.seconde
+	\end{pseudo}
+	}
 
-{\sffamily
-\textstylePolicepardfaut{\textsf{\textcolor{black}{centreGravité}}}\textstylePolicepardfaut{\textsf{\textbf{\textcolor{black}{.}}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{x
-}}}\textstyleMotCl{{\textcolor{black}{←}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{
-(a}}}\textstylePolicepardfaut{\textsf{\textbf{\textcolor{black}{.}}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{x
-+
-b}}}\textstylePolicepardfaut{\textsf{\textbf{\textcolor{black}{.}}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{x)/2}}}}
+	Une variable structurée peut aussi être le
+	paramètre d’un module, et un module peut également renvoyer une
+	«~valeur~» de type structuré. Par exemple, l’en-tête d’un module
+	renvoyant le nombre de secondes écoulées entre une heure de départ et
+	d’arrivée serait :
 
-{
-\textstylePolicepardfaut{On peut cependant dans certains cas utiliser
-une variable structurée de manière globale (c’est-à-dire d’une façon
-qui agit simultanément sur chacun de ses champs). Le cas le plus
-courant est l’affectation interne entre deux variables structurées de
-même type, par exemple :}}
+	\cadre{
+	\begin{pseudo}
+	\ModuleSign{nbSecondesEcoulées}{ départ\In, arrivée\In : Moment}{entier}
+	\end{pseudo}
+	}
 
-{\sffamily
-\textstylePolicepardfaut{\textsf{\textcolor{black}{arrivée
-}}}\textstyleMotCl{{\textcolor{black}{←}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{
-départ}}}}
+	On pourra aussi lire ou écrire une variable structurée\footnote{Bien que, dans certains
+	langages, ces opérations devront être décomposées en une lecture ou
+	écriture de chaque champ de la structure.}.
 
-{
-\textstylePolicepardfaut{qui résume les trois instructions suivantes :}}
+	\cadre{
+	\begin{pseudo}
+	\Read unMoment
+	\Write unMoment
+	\end{pseudo}
+	}
 
-{\sffamily
-\textstylePolicepardfaut{\textsf{\textcolor{black}{arrivée}}}\textstylePolicepardfaut{\textsf{\textbf{\textcolor{black}{.}}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{heure
-}}}\textstyleMotCl{{\textcolor{black}{←}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{
-départ}}}\textstylePolicepardfaut{\textsf{\textbf{\textcolor{black}{.}}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{heure}}}}
+	Par contre, il n’est pas autorisé d’utiliser
+	les opérateurs de comparaison ({\textless}, {\textgreater}) pour
+	comparer des variables structurées (même de même type), car une
+	relation d’ordre n’accompagne pas toujours les structures utilisées. En
+	effet, s’il est naturel de vouloir comparer des dates ou des moments,
+	comment définir une relation d’ordre avec les points du plan ou avec
+	des cartes d’identités ?
 
-{\sffamily
-\textstylePolicepardfaut{\textsf{\textcolor{black}{arrivée}}}\textstylePolicepardfaut{\textsf{\textbf{\textcolor{black}{.}}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{minute
-}}}\textstyleMotCl{{\textcolor{black}{←}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{
-départ}}}\textstylePolicepardfaut{\textsf{\textbf{\textcolor{black}{.}}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{minute}}}}
+	Si le besoin de comparer des variables
+	structurées se fait sentir, il faudra dans ce cas écrire des modules de
+	comparaison adaptés aux structures utilisées.
 
-{\sffamily
-\textstylePolicepardfaut{\textsf{\textcolor{black}{arrivée}}}\textstylePolicepardfaut{\textsf{\textbf{\textcolor{black}{.}}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{seconde
-}}}\textstyleMotCl{{\textcolor{black}{←}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{
-départ}}}\textstylePolicepardfaut{\textsf{\textbf{\textcolor{black}{.}}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{seconde}}}}
+	Par facilité, on peut assigner tous les champs en une fois via des
+	«~\{\}~». Exemple :
 
-{
-\textstylePolicepardfaut{Une variable structurée peut aussi être le
-paramètre d’un module, et un module peut également renvoyer une
-«~valeur~» de type structuré. Par exemple, l’en-tête d’un module
-renvoyant le nombre de secondes écoulées entre une heure de départ et
-d’arrivée serait :}}
+	\cadre{
+	\begin{pseudo}
+	\Let anniversaire \Gets \{1,9,1989\}
+	\end{pseudo}
+	}
 
-{\sffamily
-\textstyleMotCl{\textcolor{black}{module}}\textstylePolicepardfaut{\textsf{\textcolor{black}{
-nbSecondesEcoulées( départ
-}}}\textstylePolicepardfaut{{\textsf{\textcolor{black}{↓}}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{,
-arrivée
-}}}\textstylePolicepardfaut{{\textsf{\textcolor{black}{↓}}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{
-: Moment)
-}}}\textstylePolicepardfaut{{\textsf{\textcolor{black}{→}}}}\textstylePolicepardfaut{\textsf{\textcolor{black}{
-entier}}}}
-
-{
-\textstylePolicepardfaut{On pourra aussi lire ou écrire une variable
-structurée}\footnote{\textstylePolicepardfaut{Bien que, dans certains
-langages, ces opérations devront être décomposées en une lecture ou
-écriture de chaque champ de la structure.}}\textstylePolicepardfaut{.}}
-
-{\sffamily
-\textstyleMotCl{\textcolor{black}{lire}}\textstylePolicepardfaut{\textsf{\textcolor{black}{
-unMoment}}}}
-
-{\sffamily
-\textstyleMotCl{\textcolor{black}{écrire}}\textstylePolicepardfaut{\textsf{\textcolor{black}{
-unMoment}}}}
-
-{
-\textstylePolicepardfaut{Par contre, il n’est pas autorisé d’utiliser
-les opérateurs de comparaison ({\textless}, {\textgreater}) pour
-comparer des variables structurées (même de même type), car une
-relation d’ordre n’accompagne pas toujours les structures utilisées. En
-effet, s’il est naturel de vouloir comparer des dates ou des moments,
-comment définir une relation d’ordre avec les points du plan ou avec
-des cartes d’identités ?}}
-
-{
-\textstylePolicepardfaut{Si le besoin de comparer des variables
-structurées se fait sentir, il faudra dans ce cas écrire des modules de
-comparaison adaptés aux structures utilisées.}}
-
-{
-Par facilité, on peut assigner tous les champs en une fois via des
-«~\{\}~». Exemple :}
-
-{\sffamily
-anniversaire
-\textstyleMotCl{{\textcolor{black}{←
-}}}\textstyleMotCl{{\textmd{\textcolor{black}{\{1,9,1989\}
-\ \ }}}}}
-
+% =============================
 \section{Exemple d’algorithme}
-{
-Le module ci-dessous reçoit en paramètre deux dates ; la valeur renvoyée
-est –1 si la première date est antérieure à la deuxième, 0 si les deux
-dates sont identiques ou 1 si la première date est postérieure à la
-deuxième.}
+% =============================
 
-{\sffamily
-\textstyleMotCl{\textcolor{black}{module}}\textcolor{black}{
-comparerDates(date1
-}\textstylePolicepardfaut{{\textsf{\textcolor{black}{↓}}}}\textcolor{black}{,
-date2
-}\textstylePolicepardfaut{{\textsf{\textcolor{black}{↓
-:}}}}\textcolor{black}{ Date}\textcolor{black}{)
-}\textstylePolicepardfaut{{\textsf{\textcolor{black}{→}}}}\textcolor{black}{
-entier}}
+	Le module ci-dessous reçoit en paramètre deux dates ; la valeur renvoyée
+	est –1 si la première date est antérieure à la deuxième, 0 si les deux
+	dates sont identiques ou 1 si la première date est postérieure à la
+	deuxième.
 
-{\sffamily
-\ \ résultat : entier }
+	\cadre{
+	\begin{pseudo}
+	\Module{comparerDates}{date1\In, date2\In}{entier}
+		\Decl résultat : entier
+		\Let  résultat \Gets -1
+		\If{date1.année ${\geq}$ date2.année}
+			\If{date1.année $>$ date2.année}
+				\Let  résultat \Gets 1
+			\Else \RComment Les années sont identiques
+				\If{date1.mois ${\geq}$ date2.mois}
+					\If{date1.mois $>$ date2.mois}
+						\Let  résultat \Gets 1
+					\Else \RComment Les mois sont identiques
+						\If{date1.jour ${\geq}$ date2.jour}
+							\If{date1.jour $>$ date2.jour}
+								\Let  résultat \Gets 1
+							\Else \RComment Les jours sont identiques
+								\Let  résultat \Gets 0
+							\EndIf
+						\EndIf
+					\EndIf
+				\EndIf
+			\EndIf
+		\EndIf
+		\Return résultat
+	\EndModule
+	\end{pseudo}
+	}
 
-{\sffamily
-\textcolor{black}{\ \ résultat
-}\textstyleMotCl{{\textcolor{black}{←}}}\textcolor{black}{
-–1}}
-
-{\sffamily
-\textcolor{black}{\ \ }\textstyleMotCl{\textcolor{black}{si}}\textcolor{black}{
-date1}\textbf{\textcolor{black}{.}}\textcolor{black}{année
-}\textrm{\textcolor{black}{${\geq}$}}\textcolor{black}{
-date2}\textbf{\textcolor{black}{.}}\textcolor{black}{année
-}\textstyleMotCl{\textcolor{black}{alors}}}
-
-{\sffamily
-\textcolor{black}{\ \ \ \ }\textstyleMotCl{\textcolor{black}{si}}\textcolor{black}{
-date1}\textbf{\textcolor{black}{.}}\textcolor{black}{année
-{\textgreater}
-date2}\textbf{\textcolor{black}{.}}\textcolor{black}{année
-}\textstyleMotCl{\textcolor{black}{alors}}}
-
-{\sffamily
-\textcolor{black}{\ \ \ \ \ \ résultat
-}\textstyleMotCl{{\textcolor{black}{←}}}\textcolor{black}{
-1}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{sinon}\textstyleMotCl{\textmd{ \ // les années
-sont identiques}}}
-
-{\sffamily
-\textstyleMotCl{\textcolor{black}{\ \ \ \ \ \ si}}\textcolor{black}{
-date1}\textbf{\textcolor{black}{.}}\textcolor{black}{mois
-}\textrm{\textcolor{black}{${\geq}$}}\textcolor{black}{
-date2}\textbf{\textcolor{black}{.}}\textcolor{black}{mois
-}\textstyleMotCl{\textcolor{black}{alors}}}
-
-{\sffamily
-\textstyleMotCl{\textcolor{black}{\ \ \ \ \ \ \ \ si}}\textcolor{black}{
-date1}\textbf{\textcolor{black}{.}}\textcolor{black}{mois
-{\textgreater}
-date2}\textbf{\textcolor{black}{.}}\textcolor{black}{mois
-}\textstyleMotCl{\textcolor{black}{alors}}}
-
-{\sffamily
-\textcolor{black}{\ \ \ \ \ \ \ \ \ \ résultat
-}\textstyleMotCl{{\textcolor{black}{←}}}\textcolor{black}{
-1}}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ \ \ \ \ sinon} // les mois sont identiques}
-
-{\sffamily
-\textstyleMotCl{\textcolor{black}{\ \ \ \ \ \ \ \ \ \ si}}\textcolor{black}{
-date1}\textbf{\textcolor{black}{.}}\textcolor{black}{jour
-}\textrm{\textcolor{black}{${\geq}$}}\textcolor{black}{
-date2}\textbf{\textcolor{black}{.}}\textcolor{black}{jour
-}\textstyleMotCl{\textcolor{black}{alors}}}
-
-{\sffamily
-\textstyleMotCl{\textcolor{black}{\ \ \ \ \ \ \ \ \ \ \ \ si}}\textcolor{black}{
-date1}\textbf{\textcolor{black}{.}}\textcolor{black}{jour
-{\textgreater}
-date2}\textbf{\textcolor{black}{.}}\textcolor{black}{jour
-}\textstyleMotCl{\textcolor{black}{alors}}}
-
-{\sffamily
-\textcolor{black}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ résultat
-}\textstyleMotCl{{\textcolor{black}{←}}}\textcolor{black}{
-1}}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ \ \ \ \ \ \ \ \ sinon} // les jours sont
-identiques}
-
-{\sffamily
-\textcolor{black}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ résultat
-}\textstyleMotCl{{\textcolor{black}{←}}}\textcolor{black}{
-0}}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ \ \ \ \ \ \ \ \ fin} \textstyleMotCl{si}}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ \ \ \ \ \ \ fin} \textstyleMotCl{si}}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ \ \ \ \ fin} \textstyleMotCl{si}}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ \ \ fin} \textstyleMotCl{si}}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ fin} \textstyleMotCl{si}}
-
-{\sffamily
-\textstyleMotCl{\ \ fin} \textstyleMotCl{si}}
-
-{\sffamily
-\textstyleMotCl{\ \ retourner} résultat}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
+% =====================================
 \section{Exercices sur les structures}
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Conversion moment-secondes}
-\end{enumerate}
-{
-\textstylePolicepardfaut{Écrire un module qui reçoit en paramètre un
-moment d’une journée et qui retourne le nombre de secondes écoulées
-depuis minuit jusqu’à ce moment. }}
+% =====================================
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Conversion secondes-moment}
-\end{enumerate}
-{
-\textstylePolicepardfaut{Écrire un module qui reçoit en paramètre un
-nombre de secondes écoulées dans une journée à partir de minuit et qui
-retourne le moment correspondant de la journée.}}
+\begin{Exercice}{Conversion moment-secondes}
+	Écrire un module qui reçoit en paramètre un
+	moment d’une journée et qui retourne le nombre de secondes écoulées
+	depuis minuit jusqu’à ce moment.
+\end{Exercice}
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Temps écoulé entre 2 moments}
-\end{enumerate}
-{
-\textstylePolicepardfaut{Écrire un module qui reçoit en paramètres deux
-moments d’une journée et qui retourne le nombre de secondes séparant
-ces deux moments. }}
+\begin{Exercice}{Conversion secondes-moment}
+	Écrire un module qui reçoit en paramètre un
+	nombre de secondes écoulées dans une journée à partir de minuit et qui
+	retourne le moment correspondant de la journée.
+\end{Exercice}
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Milieu de 2 points}
-\end{enumerate}
-{
-\textstylePolicepardfaut{Écrire un module recevant les coordonnées de
-deux points distincts du plan et retournant les coordonnées du point
-situé au milieu des deux.}}
+\begin{Exercice}{Temps écoulé entre 2 moments}
+	Écrire un module qui reçoit en paramètres deux
+	moments d’une journée et qui retourne le nombre de secondes séparant
+	ces deux moments.
+\end{Exercice}
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Distance entre 2 points}
-\end{enumerate}
-{
-\textstylePolicepardfaut{Écrire un module recevant les coordonnées de
-deux points distincts du plan et qui }\textstylePolicepardfaut{retourne
-la distance entre ces deux points.}}
+\begin{Exercice}{Milieu de 2 points}
+	Écrire un module recevant les coordonnées de
+	deux points distincts du plan et retournant les coordonnées du point
+	situé au milieu des deux.
+\end{Exercice}
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Un rectangle}
-\end{enumerate}
-{
-\textstylePolicepardfaut{\textcolor{black}{Définir un type
-}}\textstylePolicepardfaut{\textbf{\textcolor{black}{Rectangle}}}\textstylePolicepardfaut{\textbf{\textcolor{black}{
-}}}\textstylePolicepardfaut{\textcolor{black}{pouvant décrire de façon
-commode un rectangle dans un espace à deux dimensions et dont les côtés
-sont parallèles aux axes des
-}}\textstylePolicepardfaut{\textcolor{black}{coordonnées. Écrire
-ensuite}}}
+\begin{Exercice}{Distance entre 2 points}
+	Écrire un module recevant les coordonnées de
+	deux points distincts du plan et qui retourne
+	la distance entre ces deux points.
+\end{Exercice}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.134cm,height=1.134cm]{log1-img/log1-img81}
+\begin{Exercice}{Un rectangle}
+	\marginicon{java}
+	Définir un type \textbf{Rectangle} pouvant décrire de façon
+	commode un rectangle dans un espace à deux dimensions et dont les côtés
+	sont parallèles aux axes des coordonnées. 
+	Écrire ensuite
 
-\end{center}
-\liststyleNumberingv
-\begin{enumerate}
-\item {
-un module calculant le périmètre d’un rectangle reçu en paramètre ;}
-\item {
-un module calculant la surface d’un rectangle reçu en paramètre ;}
-\item {
-un module recevant en paramètre un rectangle R et les coordonnées
-d'un point P, et renvoyant la valeur booléenne
-\textbf{vrai} si et seulement si le point P est à
-l'intérieur du rectangle R ;}
-\item {
-un module recevant en paramètre un rectangle R et les coordonnées
-d'un \ point P, et renvoyant la valeur booléenne
-\textbf{vrai} si et seulement si le point P est sur le bord du
-rectangle R ;}
-\item {
-un module recevant en paramètre deux rectangles et renvoyant la valeur
-booléenne \textbf{vrai} si et seulement si ces deux rectangles ont une
-intersection.}
-\end{enumerate}
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Un cercle}
-\end{enumerate}
-{
-\textstylePolicepardfaut{\textcolor{black}{Définir un type
-}}\textstylePolicepardfaut{\textbf{\textcolor{black}{Cercle}}}\textstylePolicepardfaut{\textbf{\textcolor{black}{
-}}}\textstylePolicepardfaut{\textcolor{black}{pouvant décrire de façon
-commode un cercle quelconque dans un espace à deux dimensions. Écrire
-ensuite}}}
+	\begin{enumerate}[label=\alph*)]
+	\item {
+		un module calculant le périmètre d’un rectangle reçu en paramètre ;}
+	\item {
+		un module calculant la surface d’un rectangle reçu en paramètre ;}
+	\item {
+		un module recevant en paramètre un rectangle R et les coordonnées
+		d'un point P, et renvoyant la valeur booléenne
+		\textbf{vrai} si et seulement si le point P est à
+		l'intérieur du rectangle R ;}
+	\item {
+		un module recevant en paramètre un rectangle R et les coordonnées
+		d'un \ point P, et renvoyant la valeur booléenne
+		\textbf{vrai} si et seulement si le point P est sur le bord du
+		rectangle R ;}
+	\item {
+		un module recevant en paramètre deux rectangles et renvoyant la valeur
+		booléenne \textbf{vrai} si et seulement si ces deux rectangles ont une
+		intersection.}
+	\end{enumerate}
+\end{Exercice}
 
-\liststyleNumberingv
-\begin{enumerate}
-\item {
-un module calculant la surface du cercle reçu en paramètre ;}
-\item {
-un module recevant 2 points en paramètre et retournant le cercle dont le
-diamètre est défini par ces 2 points ;}
-\item {
-un module qui détermine si un point donné est dans un cercle ;}
-\item {
-un module qui indique si 2 cercles ont une intersection.
-}
-\end{enumerate}
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Validation de date}
-\end{enumerate}
-{
-\textstylePolicepardfaut{\textcolor{black}{Écrire un algorithme qui
-valide une date reçue en paramètre sous forme d'une
-structure.}}}
+\begin{Exercice}{Un cercle}
+	Définir un type \textbf{Cercle} pouvant décrire de façon
+	commode un cercle quelconque dans un espace à deux dimensions. 
+	Écrire ensuite
+	
+	\begin{enumerate}[label=\alph*)]
+	\item {
+		un module calculant la surface du cercle reçu en paramètre ;}
+	\item {
+		un module recevant 2 points en paramètre et retournant le cercle dont le
+		diamètre est défini par ces 2 points ;}
+	\item {
+		un module qui détermine si un point donné est dans un cercle ;}
+	\item {
+		un module qui indique si 2 cercles ont une intersection.
+	}
+	\end{enumerate}
+\end{Exercice}
 
+\begin{Exercice}{Validation de date}
+	Écrire un algorithme qui valide une date reçue en paramètre 
+	sous forme d'une structure.
+\end{Exercice}
+
+	

@@ -1,103 +1,90 @@
-\chapter[Les boucles]{\textstyleMotCl{
-Les boucles}}
-{
-Les ordinateurs révèlent tout leur potentiel dans leur capacité à
-répéter inlassablement les mêmes tâches. Nous voyons ici comment
-spécifier des boucles dans nos codes et comment les utiliser à bon
-escient. \ }
+% ====================
+\chapter{Les boucles}
+% ====================
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.27cm,height=1.27cm]{log1-img/log1-img82}
+	\marginicon{objectif}
+	Les ordinateurs révèlent tout leur potentiel dans leur capacité à
+	répéter inlassablement les mêmes tâches. Nous voyons ici comment
+	spécifier des boucles dans nos codes et comment les utiliser à bon
+	escient.
 
-\end{center}
-{
-Attention ! D'expérience, nous savons que ce chapitre
-est difficile à appréhender par les étudiants. Beaucoup
-d'entre-vous perdent pied ici. Accrochez-vous et
-faites bien tous les exercices proposés !}
+	\marginicon{attention}
+	Attention ! D'expérience, nous savons que ce chapitre
+	est difficile à appréhender par les étudiants. Beaucoup
+	d'entre-vous perdent pied ici. Accrochez-vous et
+	faites bien tous les exercices proposés !
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.323cm,height=1.323cm]{log1-img/log1-img83}
 
-\end{center}
+% =======================================
 \section{La notion de travail répétitif}
-{
-Si on veut faire effectuer un travail répétitif, il faut indiquer deux
-choses}
+% =======================================
 
-\liststyleNumberingi
-\begin{enumerate}
-\item {
-Le travail à répéter}
-\item {
-Comment savoir s'il faut continuer la répétition ou
-l'arrêter.}
-\end{enumerate}
-{
-Examinons quelques exemples pour fixer notre propos.}
+	Si on veut faire effectuer un travail répétitif, 
+	il faut indiquer deux choses
+	
+	\begin{enumerate}
+	\item Le travail à répéter
+	\item Comment savoir s'il faut continuer la répétition 
+		ou l'arrêter.
+	\end{enumerate}
 
-{
-\textbf{Exemple 1} : Pour traiter des dossiers, on dira quelque chose
-comme «~tant qu'il reste un dossier à traiter, le
-traiter~» ou encore «~traiter un dossier puis passer au suivant
-jusqu'à ce qu'il
-n'en reste plus à traiter~».}
+	Examinons quelques exemples pour fixer notre propos.
 
-\liststyleListv
-\begin{itemize}
-\item {
-La tâche à répéter est : «~traiter un dossier~»}
-\item {
-On indique qu'on doit continuer s'il
-reste encore un dossier à traiter }
-\end{itemize}
-{
-\textbf{Remarque :} On aurait aussi pu le formuler ainsi : «~traiter un
-dossier et passer au suivant jusqu'à ce
-qu'il n'en reste plus~»}
+	\textbf{Exemple 1} : Pour traiter des dossiers, on dira quelque chose
+	comme «~tant qu'il reste un dossier à traiter, le
+	traiter~» ou encore «~traiter un dossier puis passer au suivant
+	jusqu'à ce qu'il
+	n'en reste plus à traiter~».
 
-{
-\textbf{Exemple 2} : Pour calculer la cote finale de tous les étudiants,
-on aura quelque chose du genre «~Pour tout étudiant, calculer sa
-cote~»}
+	\begin{itemize}
+	\item La tâche à répéter est : «~traiter un dossier~»
+	\item On indique qu'on doit continuer s'il
+		reste encore un dossier à traiter
+	\end{itemize}
 
-\liststyleListv
-\begin{itemize}
-\item {
-La tâche à répéter est : «~calculer la cote d'un
-étudiant~»}
-\item {
-On indique qu'on doit le faire pour tous les étudiants.
-On doit donc commencer par le premier, passer à chaque fois au suivant
-et s'arrêter quand on a fini le dernier.}
-\end{itemize}
-{
-\textbf{Exemple 3} : Pour afficher tous les nombres de 1 à 100, on aura
-«~Pour tous les nombres de 1 à 100, afficher ce nombre~»}
+	\textbf{Remarque :} On aurait aussi pu le formuler ainsi : «~traiter un
+	dossier et passer au suivant jusqu'à ce
+	qu'il n'en reste plus~»
 
-\liststyleListv
-\begin{itemize}
-\item {
-La tâche à répéter est : «~afficher un nombre~»}
-\item {
-On indique qu'on doit le faire pour tous les nombres de
-1 à 100. On doit donc commencer avec 1, passer à chaque fois au nombre
-suivant et s'arrêter après avoir affiché le nombre
-100.}
-\end{itemize}
-{
-\textbf{Attention} ! Comprenez bien que c'est toujours
-la même tâche qui est exécutée mais pas avec le même effet à chaque
-fois. Ainsi, on traite un dossier mais à chaque fois un différent; on
-affiche un nombre mais à chaque fois un différent. Nous verrons comment
-y arriver en logique.}
+	\textbf{Exemple 2} : Pour calculer la cote finale de tous les étudiants,
+	on aura quelque chose du genre «~Pour tout étudiant, calculer sa
+	cote~»
 
+	\begin{itemize}
+	\item 
+		La tâche à répéter est : «~calculer la cote d'un
+		étudiant~»
+	\item 
+		On indique qu'on doit le faire pour tous les étudiants.
+		On doit donc commencer par le premier, passer à chaque fois au suivant
+		et s'arrêter quand on a fini le dernier.
+	\end{itemize}
+
+	\textbf{Exemple 3} : Pour afficher tous les nombres de 1 à 100, on aura
+	«~Pour tous les nombres de 1 à 100, afficher ce nombre~»
+
+	\begin{itemize}
+	\item
+		La tâche à répéter est : «~afficher un nombre~»
+	\item 
+		On indique qu'on doit le faire pour tous les nombres de
+		1 à 100. On doit donc commencer avec 1, passer à chaque fois au nombre
+		suivant et s'arrêter après avoir affiché le nombre
+		100.
+	\end{itemize}
+
+	\textbf{Attention} ! Comprenez bien que c'est toujours
+	la même tâche qui est exécutée mais pas avec le même effet à chaque
+	fois. Ainsi, on traite un dossier mais à chaque fois un différent; on
+	affiche un nombre mais à chaque fois un différent. Nous verrons comment
+	y arriver en logique.
+
+% ==============================
 \section{Structures itératives}
-{
+% ==============================
+
 Chacune des structures suivantes traduit une volonté de faire exécuter
-un certain nombre de fois une séquence d’instructions. }
+un certain nombre de fois une séquence d’instructions. 
 
 {\sffamily\bfseries
 «~tant que~»}
