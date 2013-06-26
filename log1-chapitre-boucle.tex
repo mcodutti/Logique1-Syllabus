@@ -83,857 +83,497 @@
 \section{Structures itératives}
 % ==============================
 
-Chacune des structures suivantes traduit une volonté de faire exécuter
-un certain nombre de fois une séquence d’instructions. 
-
-{\sffamily\bfseries
-«~tant que~»}
-
-{
-Le «~tant que~» est une structure qui demande à
-l'exécutant de répéter une tâche (une ou plusieurs
-instructions) tant qu'une condition donnée est vraie.}
-
-\cadre{
-\begin{pseudo}
-\While{condition}
-	\Stmt séquence d’instructions à exécuter
-\EndWhile
-\end{pseudo}
-}
-
-\bigskip
-
-{
-Comme pour la structure \textstyleMotCl{si}, la \textbf{condition} est
-une expression à valeur booléenne. Dans ce type de structure, il faut
-qu’il y ait dans la séquence d’instructions comprise entre
-\textstyleMotCl{tant que} et \textstyleMotCl{fin tant que} au moins une
-instruction qui modifie une des composantes de la condition de telle
-manière qu’elle puisse devenir \textbf{fausse} à un moment donné
-(sinon, boucle infinie!). On fournit ci-contre un ordinogramme mettant
-en évidence la dynamique de cette structure. On remarquera que si la
-condition est fausse dès le début, la tâche n'est
-jamais exécutée.}
-
-{\sffamily\bfseries\upshape
-«~faire – jusqu'à ce que~»}
-
-{
-Cette structure est très proche du «~tant que~» à deux différences près
-:}
-
-\liststyleNumberingi
-\begin{enumerate}
-\item {
-Le test est fait à la fin et pas au début. La tâche est donc toujours
-exécutée au moins une fois. }
-\item {
-On donne la condition pour arrêter et pas pour continuer; il
-s'agit d'une différence mineure.}
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=4.302cm,height=5.313cm]{log1-img/log1-img86}
-
-\end{center}
-\end{enumerate}
-
-\bigskip
-
-\cadre{
-\begin{pseudo}
-\Repeat
-	\Stmt séquence d’instructions à exécuter
-\Until{condition}
-\end{pseudo}
-}
-
-
-\bigskip
-
-{
-Comme ci-dessus, il faut que la séquence d’instructions comprise entre
-\textstyleMotCl{faire} et \textstyleMotCl{jusqu'à ce
-que} contienne au moins une instruction qui modifie la condition de
-telle manière qu’elle puisse devenir \textbf{vraie} à un moment donné
-pour arrêter l'itération. On fournit ci-contre un
-ordinogramme mettant en évidence la dynamique de cette structure.}
-
-{\sffamily\bfseries
-«~pour~»}
-
-{
-Ici, on va plutôt indiquer \textbf{combien de fois} la tâche doit être
-répétée. Cela se fait au travers d'une
-\textbf{variable de contrôle} dont la valeur va évoluer à partir
-d'une valeur de départ jusqu'à une
-valeur finale.}
-
-\cadre{
-\begin{pseudo}
-\For{variable \K{de} début \K{à} fin [\K{par} pas]}
-	\Stmt séquence d’instructions à exécuter
-\EndFor
-\end{pseudo}
-}
-
-\bigskip
-
-{
-Dans ce type de structure, \textbf{début}, \textbf{fin} et \textbf{pas}
-peuvent être des constantes, des variables ou des expressions (le plus
-souvent à valeurs entières mais on admettra aussi des réels). Le
-\textbf{pas} est facultatif, et généralement omis. Dans ce cas, la
-valeur par défaut est 1. Ce pas est parfois négatif, dans le cas
-d'un compte à rebours, par exemple
-\textstyleCodeInsr{pour n de 10 à 1 par -1}.}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=7.004cm,height=10.516cm]{log1-img/log1-img89}
-
-\end{center}
-{
-Quand le \textbf{pas} est positif, la boucle s'arrête
-lorsque la variable dépasse la valeur de \textbf{fin}. Par contre, avec
-un \textbf{pas} négatif, la boucle s'arrête lorsque la
-variable prend une valeur plus petite que la valeur de \textbf{fin}
-(cf. le test dans l'organigramme fourni)}
-
-{
-Veiller à la cohérence de l’écriture de cette structure. On considérera
-qu’au cas (à éviter) où \textbf{début} est strictement supérieur à
-\textbf{fin} et le \textbf{pas} est positif, la séquence d’instructions
-n’est jamais exécutée (mais ce n’est pas le cas dans tous les langages
-de programmation !). Idem si \textbf{début} est strictement inférieur à
-\textbf{fin} mais avec un \textbf{pas} négatif.}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.323cm,height=1.323cm]{log1-img/log1-img90}
-
-\end{center}
-{
-\textbf{Exemples~}:}
-
-{\sffamily
-\textstyleMotCl{pour} i \textstyleMotCl{de} 0 \textstyleMotCl{à} 2
-\textstyleMotCl{faire} \ \ \ \ // la boucle est exécutée 3 fois}
-
-{\sffamily
-\textstyleMotCl{pour} i \textstyleMotCl{de} 2 \textstyleMotCl{à} 0
-\textstyleMotCl{faire} \ \ \ \ // la boucle n'est pas
-exécutée}
-
-{\sffamily
-\textstyleMotCl{pour} i \textstyleMotCl{de} 1 \textstyleMotCl{à} 10
-\textstyleMotCl{par} -1 \textstyleMotCl{faire} \ \ // la boucle
-n'est pas exécutée}
-
-{\sffamily
-\textstyleMotCl{pour} i \textstyleMotCl{de} 1 \textstyleMotCl{à} 1
-\textstyleMotCl{par} 5 \textstyleMotCl{faire} \ \ // la boucle est
-exécutée 1 fois}
-
-{
-Veiller aussi à ne pas modifier dans la séquence d’instructions une des
-variables de contrôle \textbf{début}, \textbf{fin} ou \textbf{pas} ! Il
-est aussi fortement déconseillé de modifier «~manuellement~» la
-\textbf{variable} de contrôle au sein de la boucle
-\textstyleMotCl{pour}. Il ne faut pas l’initialiser en début de boucle,
-et ne pas s’occuper de sa modification, l’instruction \textbf{variable}
-{\textsf{\textbf{←}}} \textbf{variable} +
-\textbf{pas} étant automatique et implicite à chaque étape de la
-boucle. Il est aussi déconseillé d’utiliser \textbf{variable} à la
-sortie de la structure \textstyleMotCl{pour} sans lui affecter une
-nouvelle valeur (son contenu pouvant varier selon le langage de
-programmation).}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.323cm,height=1.323cm]{log1-img/log1-img91}
-
-\end{center}
-{\sffamily\bfseries
-Quel type de boucle choisir ?}
-
-{
-\textstyleMotCl{\textmd{En pratique, il est possible d’utiliser
-systématiquement la boucle }}\textstyleMotCl{tant
-que}\textstyleMotCl{\textmd{ qui peut s’adapter dans toutes les
-situations. Cependant, il est plus clair d’utiliser
-}}\textstyleMotCl{pour}\textstyleMotCl{\textmd{ dans les cas où le
-nombre d’itérations est fixé et connu à l’avance (par là, on veut dire
-que le nombre d'itérations
-}}\textstyleMotCl{\textmd{est
-}}\textstyleMotCl{déterminé}\textstyleMotCl{\textmd{ au moment où on
-arrive à la boucle). La boucle
-}}\textstyleMotCl{faire}\textstyleMotCl{\textmd{ convient quant à elle
-dans les cas où le contenu de la boucle doit être parcouru au moins une
-fois, alors que dans }}\textstyleMotCl{tant
-que}\textstyleMotCl{\textmd{, le nombre de parcours peut être nul si la
-condition initiale est fausse. Ci-dessous un petit schéma récapitulatif
-:}}}
-
-
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=11.044cm,height=8.509cm]{log1-img/log1-img92}
-
-\end{center}
-\section[Exemples]{\textstyleMotCl{Exemples}}
-{
-\textstyleMotCl{\textmd{Nous présentons quelques exemples de difficulté
-croissante pour montrer comment bien utiliser les boucles.}}}
-
-{\sffamily\bfseries\scshape
-\textstyleMotCl{\textmd{Exemple 1 : Compter de 1 à 10}}}
-
-{
-\textstyleMotCl{\textmd{Imaginons qu'on veuille
-afficher tous les nombres de 1 à 10. On va évidemment rejeter cette
-première solution :}}}
-
-{\sffamily
-\textstyleMotCl{module}\textstyleMotCl{\textmd{ compterJusque10()}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{écrire} 1}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{écrire} 2}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{écrire} 3}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{écrire} 4}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{écrire} 5}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{écrire} 6}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{écrire} 7}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{écrire} 8}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{écrire} 9}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{écrire} 10}
-
-{\sffamily
-\textstyleMotCl{fin}\textstyleMotCl{\textmd{ }}\textstyleMotCl{module}}
-
-{
-\textstyleMotCl{\textmd{Non seulement c'est long à
-écrire (imaginer l'algorithme pour afficher les
-nombres de 1 à 10000 !) mais c'est très peu souple.
-Cela ne fonctionne que pour 10 : il faut
-}}\textstyleMotCl{\textmd{modifier l'algorithme pour
-un autre décompte. La boucle va nous permettre
-d'obtenir un algorithme qui s'adapte
-à la limite du décompte.}}}
-
-{
-\textstyleMotCl{\textmd{Posons-nous les bonnes questions pour déterminer
-la boucle :}}}
-
-\liststyleListv
-\begin{itemize}
-\item {
-\textstyleMotCl{\textmd{Quelle est la tâche à répéter ? Afficher un
-nombre.}}}
-\item {
-\textstyleMotCl{\textmd{Comment savoir si on continue ? On arrête quand
-«~10~» est affiché.}}}
-\item {
-\textstyleMotCl{\textmd{Comment afficher à chaque fois un nombre
-différent ? Au travers d'une variable qui prendra
-toutes les valeurs de 1 à 10. Il faut donc ajouter dans le corps de la
-boucle une incrémentation de la variable}}}
-\end{itemize}
-{
-\textstyleMotCl{\textmd{Ce qui donne :}}}
-
-{\sffamily
-\textstyleMotCl{module}\textstyleMotCl{\textmd{ compterJusque10()\ \ //
-version avec tant que}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ nb : entier}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ nb
-}}\textstyleMotCl{{←}}\textstyleMotCl{{\textmd{
-1\ \ \ \ \ \ // C'est le premier nombre à
-afficher}}}\textstyleMotCl{\textmd{ }}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{tant}\textstyleMotCl{\textmd{
-}}\textstyleMotCl{que}\textstyleMotCl{\textmd{ nb
-}}\textstyleMotCl{\textrm{\textmd{${\leq}$}}}\textstyleMotCl{\textmd{
-10 }}\textstyleMotCl{faire}\textstyleMotCl{\textmd{\ \ // Tant que le
-nb à afficher est toujours bon}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ }}\textstyleMotCl{écrire}\textstyleMotCl{\textmd{
-nb\ \ \ \ // On affiche la valeur de la variable nb}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ nb
-}}\textstyleMotCl{{←}}\textstyleMotCl{{\textmd{
-nb + 1\ \ // On passe au nombre suivant}}}\textstyleMotCl{\textmd{
-\ \ }}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{fin}\textstyleMotCl{\textmd{
-}}\textstyleMotCl{tant}\textstyleMotCl{\textmd{ }}\textstyleMotCl{que}}
-
-{\sffamily
-\textstyleMotCl{fin}\textstyleMotCl{\textmd{ }}\textstyleMotCl{module}}
-
-{
-\textstyleMotCl{\textmd{Mais ici, on pourrait aussi
-l'écrire avec un «~pour~» vu qu'on
-connait exactement le nombre de passages dans la boucle (10). La
-variable de contrôle va évoluer de 1 à 10 ce qui tombe bien car
-c'est justement le nombre à afficher à chaque fois.}}}
-
-{\sffamily
-\textstyleMotCl{module}\textstyleMotCl{\textmd{ compterJusque10()\ \ //
-version avec pour}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ nb : entier}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{pour}\textstyleMotCl{\textmd{
-nb }}\textstyleMotCl{de}\textstyleMotCl{\textmd{ 1
-}}\textstyleMotCl{à}\textstyleMotCl{\textmd{ 10
-}}\textstyleMotCl{faire\ \ }\textstyleMotCl{\textmd{// par défaut le
-pas est de 1}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ }}\textstyleMotCl{écrire}\textstyleMotCl{\textmd{
-nb\ \ \ \ }}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{fin}\textstyleMotCl{\textmd{
-}}\textstyleMotCl{pour}}
-
-{\sffamily
-\textstyleMotCl{fin}\textstyleMotCl{\textmd{ }}\textstyleMotCl{module}}
-
-{
-\textstyleMotCl{\textmd{On obtient une solution plus courte et plus
-lisible car l'en-tête du «~pour~» indique clairement
-comment va évoluer la boucle (valeur de départ, pas et valeur
-finale)}}}
-
-{\sffamily\bfseries\scshape
-\textstyleMotCl{\textmd{Exemple 2 : Compter de 1 à
-}}\textstyleMotCl{\textrm{\textmd{beaucoup}}}}
-
-{
-\textstyleMotCl{\textmd{Dans l'exercice précédent, on a
-affirmé que la boucle pouvait s'adapter à la limite du
-décompte. Montrons-le ! Supposons qu'on veuille
-afficher les nombres de 1 à n où n est une valeur donnée par
-l'utilisateur.}}}
-
-{
-\textstyleMotCl{\textmd{Rien de plus simple, il suffit de lire cette
-valeur au début et de l'utiliser comme limite de
-boucle}}}
-
-{\sffamily
-\textstyleMotCl{module}\textstyleMotCl{\textmd{ afficherN()}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ nb, n : entier}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{lire}\textstyleMotCl{\textmd{
-n}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{pour}\textstyleMotCl{\textmd{
-nb }}\textstyleMotCl{de}\textstyleMotCl{\textmd{ 1 }}\textstyleMotCl{à
-}\textstyleMotCl{\textmd{n }}\textstyleMotCl{faire\ \ }}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ }}\textstyleMotCl{écrire}\textstyleMotCl{\textmd{
-nb\ \ \ \ }}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{fin}\textstyleMotCl{\textmd{
-}}\textstyleMotCl{pour}}
-
-{\sffamily
-\textstyleMotCl{fin}\textstyleMotCl{\textmd{ }}\textstyleMotCl{module}}
-
-
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.244cm,height=1.296cm]{log1-img/log1-img93}
-
-\end{center}
-{
-\textstyleMotCl{Réflexion : }\textstyleMotCl{\textmd{Que se passe-t-il
-si l'utilisateur entre une valeur négative ? }}}
-
-{
-\textstyleMotCl{\textmd{Comment améliorer le code pour que le programme
-le signale à l'utilisateur ?}}}
-
-
-\bigskip
-
-{\sffamily\bfseries\scshape
-\textstyleMotCl{\textmd{Exemple 3 : Afficher les nombres pairs}}}
-
-{
-\textstyleMotCl{\textmd{Cela se complique un peu. Cette fois-ci on
-affiche uniquement les nombres
-}}\textstyleMotCl{pairs}\textstyleMotCl{\textmd{
-jusqu'à la limite n.
-}}\textstyleMotCl{\textmd{Exemple}}\textstyleMotCl{\textmd{ : les
-nombres pairs de 1 à 10 sont : 2, 4, 6, 8, 10}}}
-
-{
-\textstyleMotCl{\textmd{Notez que n peut être impair. Si n vaut 11,
-l'affichage est le même que pour 10.}}}
-
-{
-\textstyleMotCl{\textmd{Est-ce qu'on peut utiliser un
-«~pour~» ? Oui. De 1 à n, il y a exactement «~n DIV 2~» nombres à
-afficher. La difficulté vient du lien à faire entre la variable de
-contrôle et le nombre à afficher}}}
-
-{
-\textstyleMotCl{Solution 1}\textstyleMotCl{\textmd{ : on garde le lien
-entre la variable de contrôle et le nombre à afficher. Dans ce cas, on
-commence à 2 et le pas doit être de 2.}}}
-
-{\sffamily
-\textstyleMotCl{module}\textstyleMotCl{\textmd{ afficherPair()}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ nb, n : entiers}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{lire}\textstyleMotCl{\textmd{
-n}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{pour}\textstyleMotCl{\textmd{
-nb }}\textstyleMotCl{de}\textstyleMotCl{\textmd{ 2
-}}\textstyleMotCl{à}\textstyleMotCl{\textmd{ n
-}}\textstyleMotCl{par}\textstyleMotCl{\textmd{ 2
-}}\textstyleMotCl{faire\ \ }}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ }}\textstyleMotCl{écrire}\textstyleMotCl{\textmd{
-nb\ \ \ \ }}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{fin}\textstyleMotCl{\textmd{
-}}\textstyleMotCl{pour}}
-
-{\sffamily
-\textstyleMotCl{fin}\textstyleMotCl{\textmd{ }}\textstyleMotCl{module}}
-
-{
-\textstyleMotCl{Solution 2}\textstyleMotCl{\textmd{ : la variable de
-contrôle compte simplement le nombre d'itérations.
-Alors il faut calculer le nombre à afficher en fonction de la variable
-de contrôle (ici le double de celle-ci convient) }}}
-
-{\sffamily
-\textstyleMotCl{module}\textstyleMotCl{\textmd{ afficherPair()}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ i, n : entiers}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{lire}\textstyleMotCl{\textmd{
-n}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{pour}\textstyleMotCl{\textmd{
-i }}\textstyleMotCl{de}\textstyleMotCl{\textmd{ 1
-}}\textstyleMotCl{à}\textstyleMotCl{\textmd{ n
-}}\textstyleMotCl{\textmd{DIV}}\textstyleMotCl{\textmd{ 2
-}}\textstyleMotCl{faire}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ }}\textstyleMotCl{écrire}\textstyleMotCl{\textmd{
-2 * i\ \ \ \ }}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{fin}\textstyleMotCl{\textmd{
-}}\textstyleMotCl{pour}}
-
-{\sffamily
-\textstyleMotCl{fin}\textstyleMotCl{\textmd{ }}\textstyleMotCl{module}}
-
-{
-\textstyleMotCl{\textmd{Par une vieille habitude des
-programmeurs}}\footnote{Née avec le langage FORTRAN où la variable
-«~i~» était par défaut une variable entière.}\textstyleMotCl{\textmd{,
-une variable de contrôle qui se contente de compter les passages dans
-la boucle est souvent nommée «~i~». On l'appelle aussi
-«~itérateur~».}}}
-
-{\sffamily\bfseries\scshape
-\textstyleMotCl{\textmd{Exemple 4 : Afficher les premiers nombres
-pairs}}}
-
-{
-\textstyleMotCl{\textmd{Voici un problème proche du précédent : on
-affiche cette fois les N premiers nombres pairs.
-}}\textstyleMotCl{\textmd{Exemple}}\textstyleMotCl{\textmd{ : les 10
-premiers nombres pairs sont : 2, 4, 6, 8, 10, 12, 14, 16, 18, 20.}}}
-
-{
-\textstyleMotCl{\textmd{Il est plus simple de partir de la solution 2 de
-l'exemple précédent en changeant simplement la valeur
-finale de la boucle. }}}
-
-{\sffamily
-\textstyleMotCl{module}\textstyleMotCl{\textmd{ afficherPair()}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ i, n : entier}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{lire}\textstyleMotCl{\textmd{
-n}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{pour}\textstyleMotCl{\textmd{
-i }}\textstyleMotCl{de}\textstyleMotCl{\textmd{ 1
-}}\textstyleMotCl{à}\textstyleMotCl{\textmd{ n
-}}\textstyleMotCl{faire}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ }}\textstyleMotCl{écrire}\textstyleMotCl{\textmd{
-2 * i\ \ \ \ }}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{fin}\textstyleMotCl{\textmd{
-}}\textstyleMotCl{pour}}
-
-{\sffamily
-\textstyleMotCl{fin}\textstyleMotCl{\textmd{ }}\textstyleMotCl{module}}
-
-{\sffamily\bfseries\scshape
-\textstyleMotCl{\textmd{Exemple 5 : Somme de nombres}}}
-
-{
-\textstyleMotCl{\textmd{Changeons de problème. On veut pouvoir calculer
-la somme d'une série de nombres donnés par
-l'utilisateur. Il faut d'abord se
-demander comment l'utilisateur va pouvoir indiquer
-combien de nombres il faut additionner ou quand est-ce que le dernier
-nombre à additionner a été entré. Voyons quelques possibilités.}}}
-
-{
-\textstyleMotCl{Variante 1}\textstyleMotCl{ :}\textstyleMotCl{\textmd{
-\ L'utilisateur indique le nombre de termes au départ.
-Ce problème est proche de ce qui a déjà été fait.}}}
-
-{\sffamily
-\textstyleMotCl{module}\textstyleMotCl{\textmd{ sommeNombres()\ \ \ \ //
-variante 1\ \ }}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ nbValeurs : entier\ \ // nb de valeurs à
-additionner}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ valeur : entier\ \ \ \ // un des termes de
-l'addition}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ somme : entier\ \ \ \ // la somme}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ i : entier\ \ \ \ \ \ // itérateur}}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ somme
-}}\textstyleMotCl{{←}}\textstyleMotCl{{\textmd{
-0\ \ \ \ // la somme se construit petit à petit. 0 au
-départ}}}\textstyleMotCl{\textmd{ }}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{lire}\textstyleMotCl{\textmd{
-nbValeurs}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{pour}\textstyleMotCl{\textmd{
-i }}\textstyleMotCl{de}\textstyleMotCl{\textmd{ 1
-}}\textstyleMotCl{à}\textstyleMotCl{\textmd{ nbValeurs
-}}\textstyleMotCl{faire}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ }}\textstyleMotCl{lire}\textstyleMotCl{\textmd{
-valeur}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ somme
-}}\textstyleMotCl{{←}}\textstyleMotCl{{\textmd{
-somme + valeur}}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{fin}\textstyleMotCl{\textmd{
-}}\textstyleMotCl{pour}}
-
-{\sffamily
-\textstyleMotCl{\ \ }\textstyleMotCl{écrire} somme}
-
-{\sffamily
-\textstyleMotCl{fin}\textstyleMotCl{\textmd{ }}\textstyleMotCl{module}}
-
-{
-\textstyleMotCl{Variante 2}\textstyleMotCl{\textmd{ : Après chaque
-nombre, on demande à l'utilisateur
-s'il y a encore un nombre à \ additionner. }}}
-
-{
-\textstyleMotCl{\textmd{Ici, il faut chercher une solution différente
-car on ne connait pas au départ le nombre de valeurs à additionner et
-donc le nombre de passages dans la boucle. On va devoir passer à un
-«~tant que~» ou un «faire jusqu'à ce que». On peut
-envisager de demander en fin de boucle s'il reste
-encore un nombre à additionner. Ce qui donne :}}}
-
-{\sffamily
-\textstyleMotCl{module}\textstyleMotCl{\textmd{ sommeNombres()\ \ \ \ //
-variante 2a\ \ }}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ encore : booléen\ \ // est-ce
-qu'il reste encore une valeur à additionner ?}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ valeur : entier\ \ \ \ // une des valeurs à
-additionner}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ somme : entier\ \ \ \ // la somme}}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ somme
-}}\textstyleMotCl{{←}}\textstyleMotCl{{\textmd{
-0\ \ \ \ // la somme se construit petit à petit. 0 au
-départ}}}\textstyleMotCl{\textmd{ }}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{faire}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ }}\textstyleMotCl{lire}\textstyleMotCl{\textmd{
-valeur}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ somme
-}}\textstyleMotCl{{←}}\textstyleMotCl{{\textmd{
-somme + valeur}}}}
-
-{\sffamily
-\textstyleMotCl{{\textmd{\ \ \ \ }}}\textstyleMotCl{{lire}}\textstyleMotCl{{\textmd{
-encore}}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{jusqu'à
-ce que }NON encore}
-
-{\sffamily
-\textstyleMotCl{\ \ }\textstyleMotCl{écrire} somme}
-
-{\sffamily
-\textstyleMotCl{fin}\textstyleMotCl{\textmd{ }}\textstyleMotCl{module}}
-
-{
-\textstyleMotCl{\textmd{Avec cette solution, on additionne au moins une
-valeur. Si on veut pouvoir tenir }}\textstyleMotCl{\textmd{compte du
-cas très particulier où l'utilisateur ne veut
-additionner aucune valeur, il faut utiliser un «~tant que~» et donc
-poser la question avant d'entrer dans la boucle.}}}
-
-{\sffamily
-\textstyleMotCl{module}\textstyleMotCl{\textmd{ sommeNombres()\ \ \ \ //
-variante 2b\ \ }}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ encore : booléen\ \ // est-ce
-qu'il reste encore une valeur à additionner ?}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ valeur : entier\ \ \ \ // une des valeurs à
-\ additionner}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ somme : entier\ \ \ \ // la somme}}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ somme
-}}\textstyleMotCl{{←}}\textstyleMotCl{{\textmd{
-0\ \ \ \ // la somme se construit petit à petit. 0 au
-départ}}}\textstyleMotCl{\textmd{ }}}
-
-{\sffamily
-\textstyleMotCl{{\textmd{\ \ }}}\textstyleMotCl{{lire}}\textstyleMotCl{{\textmd{
-encore}}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{tant que }encore
-\textstyleMotCl{faire}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ }}\textstyleMotCl{lire}\textstyleMotCl{\textmd{
-valeur}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ somme
-}}\textstyleMotCl{{←}}\textstyleMotCl{{\textmd{
-somme + valeur}}}}
-
-{\sffamily
-\textstyleMotCl{{\textmd{\ \ \ \ }}}\textstyleMotCl{{lire}}\textstyleMotCl{{\textmd{
-encore}}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{fin}\textstyleMotCl{\textmd{
-}}\textstyleMotCl{tant}\textstyleMotCl{\textmd{ }}\textstyleMotCl{que}}
-
-{\sffamily
-\textstyleMotCl{\ \ }\textstyleMotCl{écrire} somme}
-
-{\sffamily
-\textstyleMotCl{fin}\textstyleMotCl{\textmd{ }}\textstyleMotCl{module}}
-
-{
-\textstyleMotCl{Variante 3}\textstyleMotCl{\textmd{ :
-L'utilisateur entre une valeur spéciale pour indiquer
-la fin. On parle de valeur
-}}\textstyleMotCl{sentinelle}\textstyleMotCl{\textmd{. Ceci
-n'est possible que si cette valeur
-}}\textstyleMotCl{sentinelle}\textstyleMotCl{\textmd{ ne peut pas être
-un terme valide de l'addition. Par exemple, si on veut
-additionner des nombres positifs uniquement, la valeur -1 peut servir
-de valeur sentinelle. Mais sans limite sur les nombres à additionner
-(positifs, négatifs ou nuls) il n'est pas possible de
-choisir une sentinelle.}}}
-
-{
-\textstyleMotCl{\textmd{Ici, on se base sur la valeur entrée pour
-décider si on continue ou pas. Il faut donc
-}}\textstyleMotCl{toujours}\textstyleMotCl{\textmd{ effectuer un test
-après une lecture de valeur. C'est pour cela
-qu'il faut effectuer une lecture avant et une autre à
-la fin de la boucle.}}}
-
-{\sffamily
-\textstyleMotCl{module}\textstyleMotCl{\textmd{ sommeNombres()\ \ \ \ //
-variante 3\ \ }}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ valeur : entier\ \ \ \ // une des valeurs à
-additionner}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ somme : entier\ \ \ \ // la somme}}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ somme
-}}\textstyleMotCl{{←}}\textstyleMotCl{{\textmd{
-0\ \ \ \ // la somme se construit petit à petit. 0 au
-départ}}}\textstyleMotCl{\textmd{ }}}
-
-{\sffamily
-\textstyleMotCl{{\textmd{\ \ }}}\textstyleMotCl{{lire}}\textstyleMotCl{{\textmd{
-valeur}}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{tant que} valeur ${\neq}$
--1 \textstyleMotCl{faire}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ somme
-}}\textstyleMotCl{{←}}\textstyleMotCl{{\textmd{
-somme + valeur}}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ }}\textstyleMotCl{lire}\textstyleMotCl{\textmd{
-valeur\ \ \ \ // remarquer l'endroit où on lit une
-valeur.}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{fin}\textstyleMotCl{\textmd{
-}}\textstyleMotCl{tant}\textstyleMotCl{\textmd{ }}\textstyleMotCl{que}}
-
-{\sffamily
-\textstyleMotCl{\ \ }\textstyleMotCl{écrire} somme}
-
-{\sffamily
-\textstyleMotCl{fin}\textstyleMotCl{\textmd{ }}\textstyleMotCl{module}}
-
-{
-\textstyleMotCl{\textmd{Voilà ! Vous devriez à présent être en mesure de
-résoudre les exercices qui suivent. Courage ! Et n'en
-passez aucun !}}}
-
-{
-\textstyleMotCl{Réflexion}\textstyleMotCl{\textmd{ : Quelle valeur
-sentinelle prendrait-on pour additionner une série de cotes
-d'interrogations ? Une série de températures ? }}}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.244cm,height=1.296cm]{log1-img/log1-img94}
-
-\end{center}
-{
-\textstyleMotCl{Réflexion}\textstyleMotCl{\textmd{ : Dans les solutions
-2 et 3 on lit une variable booléenne. Comment un programmeur
-pourrait-il réaliser cette instruction de façon pratique ?}}}
-
-
-\bigskip
-
-
-\bigskip
-
-
-\bigskip
-
-
-\bigskip
-
-\section[Exercices]{\textstyleMotCl{Exercices}}
+	Chacune des structures suivantes traduit une volonté de faire exécuter
+	un certain nombre de fois une séquence d’instructions. 
+
+	\subsection{«~tant que~»}
+
+		Le «~tant que~» est une structure qui demande à
+		l'exécutant de répéter une tâche (une ou plusieurs
+		instructions) tant qu'une condition donnée est vraie.
+
+		\cadre{
+		\begin{pseudo}
+		\While{condition}
+			\Stmt séquence d’instructions à exécuter
+		\EndWhile
+		\end{pseudo}
+		}
+
+		Comme pour la structure \textstyleMotCl{si}, la \textbf{condition} est
+		une expression à valeur booléenne. Dans ce type de structure, il faut
+		qu’il y ait dans la séquence d’instructions comprise entre
+		\textstyleMotCl{tant que} et \textstyleMotCl{fin tant que} au moins une
+		instruction qui modifie une des composantes de la condition de telle
+		manière qu’elle puisse devenir \textbf{fausse} à un moment donné
+		(sinon, boucle infinie!). La figure \vref{fig:boucle-tq} donne 
+		un ordinogramme mettant en évidence la dynamique de cette structure. 
+		On remarquera que si la condition est fausse dès le début, 
+		la tâche n'est jamais exécutée.
+
+		\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{image/boucle-tq}
+		\caption{Ordinogramme de la boucle "tant-que"}
+		\label{fig:boucle-tq}
+		\end{figure}
+		
+	\subsection{«~faire – jusqu'à ce que~»}
+
+		Cette structure est très proche du «~tant que~» 
+		à deux différences près :
+	
+		\begin{enumerate}
+		\item {
+			Le test est fait à la fin et pas au début. La tâche est donc toujours
+			exécutée au moins une fois. }
+		\item {
+			On donne la condition pour arrêter et pas pour continuer; il
+			s'agit d'une différence mineure.}
+		\end{enumerate}
+
+		\cadre{
+		\begin{pseudo}
+		\Repeat
+			\Stmt séquence d’instructions à exécuter
+		\Until{condition}
+		\end{pseudo}
+		}
+
+		Comme ci-dessus, il faut que la séquence d’instructions comprise entre
+		\textstyleMotCl{faire} et \textstyleMotCl{jusqu'à ce
+		que} contienne au moins une instruction qui modifie la condition de
+		telle manière qu’elle puisse devenir \textbf{vraie} à un moment donné
+		pour arrêter l'itération. 
+		La figure \vref{fig:boucle-faire} donne 
+		un ordinogramme mettant en évidence la dynamique de cette structure. 
+
+		\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.4\textwidth]{image/boucle-faire}
+		\caption{Ordinogramme de la boucle "faire – jusqu'à ce que"}
+		\label{fig:boucle-faire}
+		\end{figure}
+
+	\subsection{«~pour~»}
+
+		Ici, on va plutôt indiquer \textbf{combien de fois} la tâche doit être
+		répétée. Cela se fait au travers d'une
+		\textbf{variable de contrôle} dont la valeur va évoluer à partir
+		d'une valeur de départ jusqu'à une
+		valeur finale.
+		
+		\cadre{
+		\begin{pseudo}
+		\For{variable \K{de} début \K{à} fin [\K{par} pas]}
+			\Stmt séquence d’instructions à exécuter
+		\EndFor
+		\end{pseudo}
+		}
+
+		Dans ce type de structure, \textbf{début}, \textbf{fin} et \textbf{pas}
+		peuvent être des constantes, des variables ou des expressions (le plus
+		souvent à valeurs entières mais on admettra aussi des réels). Le
+		\textbf{pas} est facultatif, et généralement omis. Dans ce cas, la
+		valeur par défaut est 1. Ce pas est parfois négatif, dans le cas
+		d'un compte à rebours, par exemple
+		\textstyleCodeInsr{pour n de 10 à 1 par -1}.
+
+		Quand le \textbf{pas} est positif, la boucle s'arrête
+		lorsque la variable dépasse la valeur de \textbf{fin}. Par contre, avec
+		un \textbf{pas} négatif, la boucle s'arrête lorsque la
+		variable prend une valeur plus petite que la valeur de \textbf{fin}
+		(cf. le test dans l'organigramme de la figure \vref{fig:boucle-pour})
+
+		\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{image/boucle-pour}
+		\caption{Ordinogramme de la boucle "pour"}
+		\label{fig:boucle-pour}
+		\end{figure}
+
+		\marginicon{attention}
+		Veiller à la cohérence de l’écriture de cette structure. On considérera
+		qu’au cas (à éviter) où \textbf{début} est strictement supérieur à
+		\textbf{fin} et le \textbf{pas} est positif, la séquence d’instructions
+		n’est jamais exécutée (mais ce n’est pas le cas dans tous les langages
+		de programmation !). Idem si \textbf{début} est strictement inférieur à
+		\textbf{fin} mais avec un \textbf{pas} négatif.
+
+		\textbf{Exemples~}:
+
+		\cadre{
+		\begin{pseudo}
+		\Stmt \K{pour} i \K{de} 0 \K{à} 2 \K{faire} \RComment La boucle est exécutée 3 fois.
+		\Stmt \K{pour} i \K{de} 2 \K{à} 0 \K{faire} \RComment La boucle n'est pas exécutée.
+		\Stmt \K{pour} i \K{de} 1 \K{à} 10 \K{par} -1 \K{faire} \RComment La boucle n'est pas exécutée.
+		\Stmt \K{pour} i \K{de} 1 \K{à} 1 \K{par} 5 \K{faire} \RComment La boucle est exécutée 1 fois.
+		\end{pseudo}
+		}
+		
+		\marginicon{attention}
+		Veiller aussi à ne pas modifier dans la séquence d’instructions une des
+		variables de contrôle \textbf{début}, \textbf{fin} ou \textbf{pas} ! Il
+		est aussi fortement déconseillé de modifier «~manuellement~» la
+		\textbf{variable} de contrôle au sein de la boucle
+		\textstyleMotCl{pour}. Il ne faut pas l’initialiser en début de boucle,
+		et ne pas s’occuper de sa modification, l’instruction \textbf{variable}
+		{\textsf{\textbf{←}}} \textbf{variable} +
+		\textbf{pas} étant automatique et implicite à chaque étape de la
+		boucle. Il est aussi déconseillé d’utiliser \textbf{variable} à la
+		sortie de la structure \textstyleMotCl{pour} sans lui affecter une
+		nouvelle valeur (son contenu pouvant varier selon le langage de
+		programmation).
+
+	\subsection{Quel type de boucle choisir ?}
+
+		En pratique, il est possible d’utiliser systématiquement la boucle 
+		\textstyleMotCl{tant que} qui peut s’adapter à toutes les situations. 
+		Cependant, il est plus clair d’utiliser \textstyleMotCl{pour} dans les cas 
+		où le nombre d’itérations est fixé et connu à l’avance 
+		(par là, on veut dire que le nombre d'itérations est déterminé au moment 
+		où on arrive à la boucle). 
+		La boucle \textstyleMotCl{faire} convient quant à elle
+		dans les cas où le contenu de la boucle doit être parcouru au moins une
+		fois, alors que dans \textstyleMotCl{tant que}, 
+		le nombre de parcours peut être nul si la condition initiale est fausse. 
+		La figure \vref{fig:boucle-choix} propose un petit schéma récapitulatif.
+
+		\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\textwidth]{image/boucle-choixtype}
+		\caption{Quel type de boucle choisir ?}
+		\label{fig:boucle-choix}
+		\end{figure}
+
+% =================
+\section{Exemples}
+% =================
+
+	Nous présentons quelques exemples de difficulté
+	croissante pour montrer comment bien utiliser les boucles.
+
+	\subsection{Exemple 1 -- Compter de 1 à 10}
+
+		Imaginons qu'on veuille afficher tous les nombres de 1 à 10. 
+		On va évidemment rejeter cette première solution :
+
+		\cadre{
+		\begin{pseudo}
+		\Module{compterJusque10}{}{} \RComment Une mauvaise solution !
+		\Write 1
+		\Write 2
+		\Write 3
+		\Write 4
+		\Write 5
+		\Write 6
+		\Write 7
+		\Write 8
+		\Write 9
+		\Write 10
+		\EndModule
+		\end{pseudo}
+		}
+
+		Non seulement c'est long à écrire 
+		(imaginer l'algorithme pour afficher les nombres de 1 à 10000 !) 
+		mais c'est très peu souple.
+		Cela ne fonctionne que pour 10 : il faut modifier l'algorithme pour
+		un autre décompte. La boucle va nous permettre
+		d'obtenir un algorithme qui s'adapte
+		à la limite du décompte.
+
+		Posons-nous les bonnes questions pour déterminer la boucle :
+
+		\begin{itemize}
+		\item 
+			Quelle est la tâche à répéter ? Afficher un nombre.
+		\item 
+			Comment savoir si on continue ? On arrête quand «~10~» est affiché.
+		\item 
+			Comment afficher à chaque fois un nombre différent ? 
+			Au travers d'une variable qui prendra toutes les valeurs de 1 à 10. 
+			Il faut donc ajouter dans le corps de la
+			boucle une incrémentation de la variable
+		\end{itemize}
+
+		Ce qui donne :
+
+		\cadre{
+		\begin{pseudo}
+		\Module{compterJusque10}{}{} \RComment Version avec tant que
+			\Decl nb : entier
+			\Let nb \Gets 1 \RComment C'est le premier nombre à afficher
+			\While{nb $\leq$ 10} \RComment Tant que le nb à afficher est toujours bon
+				\Write nb \RComment On affiche la valeur de la variable nb
+				\Let nb \Gets nb + 1 \RComment On passe au nombre suivant
+			\EndWhile
+		\EndModule
+		\end{pseudo}
+		}
+
+		Mais ici, on pourrait aussi l'écrire avec un «~pour~» vu qu'on
+		connait exactement le nombre de passages dans la boucle (10). 
+		La variable de contrôle va évoluer de 1 à 10 ce qui tombe bien car
+		c'est justement le nombre à afficher à chaque fois.
+
+		\cadre{
+		\begin{pseudo}
+		\Module{compterJusque10}{}{} \RComment Version avec pour
+			\Decl nb : entier
+			\For{nb \K{de} 1 \K{à} 10} \RComment Par défaut le pas est de 1
+				\Write nb 
+			\EndFor
+		\EndModule
+		\end{pseudo}
+		}
+
+		On obtient une solution plus courte et plus lisible 
+		car l'en-tête du «~pour~» indique clairement
+		comment va évoluer la boucle
+		(valeur de départ, pas et valeur finale)
+
+	\subsection{Exemple 2 -- Compter de 1 à beaucoup}
+
+		Dans l'exercice précédent, on a
+		affirmé que la boucle pouvait s'adapter à la limite du
+		décompte. Montrons-le ! Supposons qu'on veuille
+		afficher les nombres de 1 à n où n est une valeur donnée par
+		l'utilisateur.
+
+		Rien de plus simple, il suffit de lire cette
+		valeur au début et de l'utiliser comme limite de boucle
+
+		\cadre{
+		\begin{pseudo}
+		\Module{afficherN}{}{} 
+			\Decl nb, n : entier
+			\Read n
+			\For{nb \K{de} 1 \K{à} n} 
+				\Write nb 
+			\EndFor
+		\EndModule
+		\end{pseudo}
+		}
+
+		\marginicon{reflexion}
+		\textbf{Réflexion} : Que se passe-t-il si l'utilisateur entre une valeur négative ?
+		Comment améliorer le code pour que le programme
+		le signale à l'utilisateur ?
+
+	\subsection{Exemple 3 -- Afficher les nombres pairs}
+
+		Cela se complique un peu. Cette fois-ci on
+		affiche uniquement les nombres \textbf{pairs} jusqu'à la limite $n$.
+		
+		\textbf{Exemple} : 
+		les nombres pairs de $1$ à $10$ sont : $2$, $4$, $6$, $8$, $10$.
+		
+		Notez que $n$ peut être impair. Si $n$ vaut $11$, 
+		l'affichage est le même que pour $10$.
+
+		Est-ce qu'on peut utiliser un «~pour~» ? 
+		Oui. De 1 à n, il y a exactement «~n DIV 2~» nombres à afficher. 
+		La difficulté vient du lien à faire entre la variable de
+		contrôle et le nombre à afficher.
+
+		\textbf{Solution 1} : 
+		on garde le lien entre la variable de contrôle 
+		et le nombre à afficher. 
+		Dans ce cas, on commence à $2$ et le pas doit être de $2$.
+
+		\cadre{
+		\begin{pseudo}
+		\Module{afficherPair}{}{} 
+			\Decl nb, n : entier
+			\Read n
+			\For{nb \K{de} 2 \K{à} n \K{par} 2} 
+				\Write nb 
+			\EndFor
+		\EndModule
+		\end{pseudo}
+		}
+
+		\textbf{Solution 2} : 
+		la variable de contrôle compte simplement le nombre d'itérations.
+		Alors il faut calculer le nombre à afficher en fonction de la variable
+		de contrôle (ici le double de celle-ci convient)
+
+		\cadre{
+		\begin{pseudo}
+		\Module{afficherPair}{}{} 
+			\Decl i, n : entier
+			\Read n
+			\For{nb \K{de} 1 \K{à} n DIV 2} 
+				\Write 2 * i 
+			\EndFor
+		\EndModule
+		\end{pseudo}
+		}
+
+		Par une vieille habitude des programmeurs\footnote{Née avec 
+		le langage FORTRAN où la variable $i$ était par défaut une variable entière.},
+		une variable de contrôle qui se contente de compter les passages dans
+		la boucle est souvent nommée $i$. 
+		On l'appelle aussi «~itérateur~».
+
+	\subsection{Exemple 4 -- Afficher les premiers nombres pairs}
+
+		Voici un problème proche du précédent : 
+		on affiche cette fois les $N$ premiers nombres pairs.
+		
+		\textbf{Exemple} : 
+		les $10$ premiers nombres pairs sont : $2$, $4$, $6$, $8$, $10$, $12$, $14$, $16$, $18$, $20$.
+		
+		Il est plus simple de partir de la solution 2 de l'exemple précédent
+		en changeant simplement la valeur finale de la boucle.
+
+		\cadre{
+		\begin{pseudo}
+		\Module{afficherPair}{}{} 
+			\Decl i, n : entier
+			\Read n
+			\For{nb \K{de} 1 \K{à} n} 
+				\Write 2 * i 
+			\EndFor
+		\EndModule
+		\end{pseudo}
+		}
+
+	\subsection{Exemple 5 -- Somme de nombres}
+
+		Changeons de problème. On veut pouvoir calculer
+		la somme d'une série de nombres donnés par
+		l'utilisateur. Il faut d'abord se
+		demander comment l'utilisateur va pouvoir indiquer
+		combien de nombres il faut additionner ou quand est-ce que le dernier
+		nombre à additionner a été entré. Voyons quelques possibilités.
+
+		\textbf{Variante 1} : 
+		L'utilisateur indique le nombre de termes au départ.
+		Ce problème est proche de ce qui a déjà été fait.
+		
+		\cadre{
+		\begin{pseudo}
+		\Module{sommeNombres}{}{} \RComment Variante 1
+			\Decl nbValeurs : entier \RComment nb de valeurs à additionner
+			\Decl valeur : entier \RComment un des termes de l'addition
+			\Decl somme : entier \RComment la somme
+			\Decl i : entier \RComment itérateur
+			\Let somme \Gets 0 \RComment la somme se construit petit à petit. 0 au départ
+			\Read nbValeurs
+			\For{nb \K{de} 1 \K{à} nbValeurs} 
+				\Read valeur
+				\Let somme \Gets somme + valeur 
+			\EndFor
+			\Write somme
+		\EndModule
+		\end{pseudo}
+		}
+
+		\textbf{Variante 2} : Après chaque nombre, 
+		on demande à l'utilisateur s'il y a encore un nombre à additionner.
+
+		Ici, il faut chercher une solution différente
+		car on ne connait pas au départ le nombre de valeurs à additionner et
+		donc le nombre de passages dans la boucle. On va devoir passer à un
+		«~tant que~» ou un «faire jusqu'à ce que». On peut
+		envisager de demander en fin de boucle s'il reste
+		encore un nombre à additionner. Ce qui donne :
+
+		\cadre{
+		\begin{pseudo}
+		\Module{sommeNombres}{}{} \RComment Variante 2a
+			\Decl encore : booléen \RComment est-ce qu'il reste encore une valeur à additionner ?
+			\Decl valeur : entier \RComment un des termes de l'addition
+			\Decl somme : entier \RComment la somme
+			\Let somme \Gets 0
+			\Repeat 
+				\Read valeur
+				\Let somme \Gets somme + valeur 
+				\Read encore
+			\Until{NON encore}
+			\Write somme
+		\EndModule
+		\end{pseudo}
+		}
+		
+		Avec cette solution, on additionne au moins une valeur. 
+		Si on veut pouvoir tenir compte du
+		cas très particulier où l'utilisateur ne veut
+		additionner aucune valeur, il faut utiliser un «~tant que~» et donc
+		poser la question avant d'entrer dans la boucle.
+
+		\cadre{
+		\begin{pseudo}
+		\Module{sommeNombres}{}{} \RComment Variante 2b
+			\Decl encore : booléen \RComment est-ce qu'il reste encore une valeur à additionner ?
+			\Decl valeur : entier \RComment un des termes de l'addition
+			\Decl somme : entier \RComment la somme
+			\Let somme \Gets 0
+			\Read encore
+			\While{encore} 
+				\Read valeur
+				\Let somme \Gets somme + valeur 
+				\Read encore
+			\EndWhile
+			\Write somme
+		\EndModule
+		\end{pseudo}
+		}
+
+		\textbf{Variante 3} :
+		L'utilisateur entre une valeur spéciale pour indiquer la fin. 
+		On parle de valeur \textbf{sentinelle}. 
+		Ceci n'est possible que si cette valeur \textbf{sentinelle} ne peut pas être
+		un terme valide de l'addition. Par exemple, si on veut
+		additionner des nombres positifs uniquement, la valeur -1 peut servir
+		de valeur sentinelle. Mais sans limite sur les nombres à additionner
+		(positifs, négatifs ou nuls) il n'est pas possible de
+		choisir une sentinelle.
+
+		Ici, on se base sur la valeur entrée pour décider si on continue ou pas. 
+		Il faut donc \textbf{toujours} effectuer un test
+		après une lecture de valeur. C'est pour cela
+		qu'il faut effectuer une lecture avant et une autre à
+		la fin de la boucle.
+
+		\cadre{
+		\begin{pseudo}
+		\Module{sommeNombres}{}{} \RComment Variante 3
+			\Decl valeur : entier \RComment un des termes de l'addition
+			\Decl somme : entier \RComment la somme
+			\Let somme \Gets 0
+			\Read valeur
+			\While{valeur ${\neq}$ -1} 
+				\Let somme \Gets somme + valeur 
+				\Read valeur \RComment remarquer l'endroit où on lit une valeur.
+			\EndWhile
+			\Write somme
+		\EndModule
+		\end{pseudo}
+		}
+
+		Voilà ! Vous devriez à présent être en mesure de
+		résoudre les exercices qui suivent.
+		Courage ! Et n'en passez aucun !
+
+		\marginicon{reflexion}
+		\textbf{Réflexion} : 
+		Quelle valeur sentinelle prendrait-on 
+		pour additionner une série de cotes d'interrogations ? 
+		Une série de températures ?
+
+		\marginicon{reflexion}
+		\textbf{Réflexion} : 
+		Dans les solutions 2 et 3 on lit une variable booléenne. 
+		Comment un programmeur pourrait-il réaliser 
+		cette instruction de façon pratique ?
+
+% ==================
+\section{Exercices}
+% ==================
+
 \liststyleExercice
 \begin{enumerate}
 \item {\sffamily\bfseries
