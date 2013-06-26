@@ -22,6 +22,13 @@
 % -------------------------------------------------------------
 \usepackage{lmodern}			
 
+% Régler les marges des pages
+% http://www.ctan.org/pkg/geometry
+% \usepackage{fullpage}	: alternative (pas de contrôle)
+% -------------------------------------------------------------
+%\usepackage{geometry}
+\setlength{\footskip}{6\baselineskip}
+
 % Enlever l'indentation de chaque première ligne de paragraphe
 % + legèr espace entre les paragraphes.
 % http://www.ctan.org/pkg/parskip
@@ -98,6 +105,19 @@
 % http://www.ctan.org/pkg/varioref
 % -------------------------------------------------------------
 \usepackage[french]{varioref}
+
+% Gestion de l'entête et du pied de page
+% http://www.ctan.org/pkg/fancyhdr
+% -------------------------------------------------------------
+\usepackage{fancyhdr}
+\fancyhf{} % Enlever tout
+\renewcommand{\headrulewidth}{0pt} % pas de ligne en entête
+\fancyfoot[C]{\textcolor{gray}{---\ \thepage\ ---}}
+\fancypagestyle{plain}{				% Redéfinir le style plain
+	\fancyhf{} 						% Enlever tout
+	\fancyfoot[C]{\textcolor{gray}{---\ \thepage\ ---}}
+	\renewcommand{\headrulewidth}{0pt} % pas de ligne en entête
+}
 
 % ===================================================
 %   Commandes et environnements

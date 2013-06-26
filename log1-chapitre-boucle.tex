@@ -564,7 +564,6 @@
 		pour additionner une série de cotes d'interrogations ? 
 		Une série de températures ?
 
-		\marginicon{reflexion}
 		\textbf{Réflexion} : 
 		Dans les solutions 2 et 3 on lit une variable booléenne. 
 		Comment un programmeur pourrait-il réaliser 
@@ -574,710 +573,352 @@
 \section{Exercices}
 % ==================
 
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Compréhension d'algorithmes}
-\end{enumerate}
-{
-Quels sont les affichages réalisés lors de l'exécution
-des algorithmes suivants ?}
-
-{\sffamily
-\textstyleMotCl{module} boucle1\textstyleMotCl{\textmd{()}}}
-
-{\sffamily
-\ \ x : entier}
-
-{\sffamily
-\texttt{\ \ }x\texttt{
-}\textstyleMotCl{{←}}\texttt{ }0}
-
-{\sffamily
-\ \ \textstyleMotCl{tant que} x {\textless} 12 \textstyleMotCl{faire}}
-
-{\sffamily
-\texttt{\ \ \ \ }x\texttt{
-}\textstyleMotCl{{←}}\texttt{ }x + 2}
-
-{\sffamily
-\ \ \textstyleMotCl{fin tant que}}
-
-{\sffamily
-\ \ \textstyleMotCl{{écrire}} x}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{module} boucle2()}
-
-{\sffamily
-\ \ ok : booléen}
-
-{\sffamily
-\ \ x : entier}
-
-{\sffamily
-\ \ ok \textstyleMotCl{{←}} vrai}
-
-{\sffamily
-\ \ x \textstyleMotCl{{←}} 5}
-
-{\sffamily
-\ \ \textstyleMotCl{tant que} ok \textstyleMotCl{faire}}
-
-{\sffamily
-{\ \ \ \ x
-}\textstyleMotCl{{←}}{ x
-+ 7}}
-
-{\sffamily
-{\ \ \ \ ok
-}\textstyleMotCl{{←}}{ x
-MOD 11 }{${\neq}$}{ 0}}
-
-{\sffamily
-\ \ \textstyleMotCl{fin tant que}}
-
-{\sffamily
-\ \ \textstyleMotCl{{écrire}} x}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{module} boucle3()}
-
-{\sffamily
-\ \ ok : booléen}
-
-{\sffamily
-\ \ cpt, x : entiers}
-
-{\sffamily
-\texttt{\ \ }x\texttt{
-}\textstyleMotCl{{←}}\texttt{ }10}
-
-{\sffamily
-\texttt{\ \ }cpt\texttt{
-}\textstyleMotCl{{←}}\texttt{ }0}
-
-{\sffamily
-\texttt{\ \ }ok\texttt{
-}\textstyleMotCl{{←}}\texttt{ }vrai}
-
-{\sffamily
-\ \ \textstyleMotCl{tant que} ok ET cpt {\textless} 3
-\textstyleMotCl{faire}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{si} x MOD 2 = 0 \textstyleMotCl{alors}}
-
-{\sffamily
-{\texttt{\ \ \ \ \ \ }}{x}{\texttt{
-}}\textstyleMotCl{{←}}{\texttt{
-}}{x + 1}}
-
-{\sffamily
-{\texttt{\ \ \ \ \ \ }}{ok}{\texttt{
-}}\textstyleMotCl{{←}}{\texttt{
-}}{x {\textless} 20}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{{sinon}}}
-
-{\sffamily
-{\texttt{\ \ \ \ \ \ }}{x}{\texttt{
-}}\textstyleMotCl{{←}}{\texttt{
-}}{x + 3}}
-
-{\sffamily
-{\texttt{\ \ \ \ \ \ }}{cpt}{\texttt{
-}}\textstyleMotCl{{←}}{\texttt{
-}}{cpt + 1}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{fin si}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{{écrire}} x}
-
-{\sffamily
-\ \ \textstyleMotCl{fin tant que}}
-
-{\sffamily
-\ \ \textstyleMotCl{{écrire}} cpt}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{module} boucle4()}
-
-{\sffamily
-\ \ pair, grand : booléens}
-
-{\sffamily
-\ \ p, x : entiers}
-
-{\sffamily
-\texttt{\ \ }x\texttt{
-}\textstyleMotCl{{←}}\texttt{ }1}
-
-{\sffamily
-\texttt{\ \ }p\texttt{
-}\textstyleMotCl{{←}}\texttt{ }1}
-
-{\sffamily
-\ \ \textstyleMotCl{faire}}
-
-{\sffamily
-\texttt{\ \ \ \ }p \textstyleMotCl{{←}} 2 * p}
-
-{\sffamily
-\ \ \ \ x \textstyleMotCl{{←}} x + p}
-
-{\sffamily
-\ \ \ \ pair \textstyleMotCl{{←}} x MOD 2 = 0}
-
-{\sffamily
-\ \ \ \ grand \textstyleMotCl{{←}} x
-{\textgreater} 15}
-
-{\sffamily
-\ \ \textstyleMotCl{jusqu'à ce que} pair OU grand}
-
-{\sffamily
-\ \ \textstyleMotCl{{écrire}} x}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{module} boucle5()}
-
-{\sffamily
-\ \ i, x : entiers}
-
-{\sffamily
-\ \ ok : booléen}
-
-{\sffamily
-\texttt{\ \ }x \textstyleMotCl{{←}} 3}
-
-{\sffamily
-\ \ ok \textstyleMotCl{{←}} vrai}
-
-{\sffamily
-\ \ \textstyleMotCl{pour} i de 1 \textstyleMotCl{à} 5
-\textstyleMotCl{faire}}
-
-{\sffamily
-{\texttt{\ \ }}{\ \ x
-}\textstyleMotCl{{←}}{
-x + i}}
-
-{\sffamily
-{\ \ \ \ ok
-}\textstyleMotCl{{←}}{
-ok }{ET}{ (x
-}{MOD}{ 2 = 0)}}
-
-{\sffamily
-\ \ \textstyleMotCl{fin pour}}
-
-{\sffamily
-\ \ \textstyleMotCl{si} ok \textstyleMotCl{alors}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{{écrire}} x}
-
-{\sffamily
-\ \ \textstyleMotCl{{sinon}}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{{écrire}} 2 * x}
-
-{\sffamily
-\ \ \textstyleMotCl{fin si}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{module} boucle6()}
-
-{\sffamily
-\ \ i, j, fin : entiers}
-
-{\sffamily
-\ \ \textstyleMotCl{pour} i de 1 à 3 \textstyleMotCl{faire}}
-
-{\sffamily
-\ \ \ \ fin \textstyleMotCl{{←}} 6 * i - 11}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{pour} j de 1 à fin \textstyleMotCl{par} 3
-\textstyleMotCl{faire} }
-
-{\sffamily
-\ \ \ \ \ \ \textstyleMotCl{{écrire}} 10 * i +
-j}
-
-{\sffamily
-{\ \ \ \ }\textstyleMotCl{{fin
-pour}} \ \ \ \ \ }
-
-{\sffamily
-\ \ \textstyleMotCl{fin pour}}
-
-{\sffamily
-\textstyleMotCl{fin module}}
-
-
-\bigskip
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Simplification}
-\end{enumerate}
-{
-Voici quelques extraits d’algorithmes corrects du point de vue de la
-syntaxe mais contenant des lignes inutiles ou des lourdeurs d’écriture.
-Remplacer ces portions d’algorithme par un minimum d’instructions qui
-auront un effet équivalent.}
-
-{\sffamily
-a \textstyleMotCl{{←}} 1}
-
-{\sffamily
-b \textstyleMotCl{{←}} 1}
-
-{\sffamily
-\textstyleMotCl{tant que} a {\textless} 10 \textstyleMotCl{faire}}
-
-{\sffamily
-\ \ {a
-}\textstyleMotCl{{←}}{
-a + 1}}
-
-{\sffamily
-{\ \ b
-}\textstyleMotCl{{←}}{
-b + 1}}
-
-{\sffamily
-{\ \ }\textstyleMotCl{{écrire}}{
-b}}
-
-{\sffamily
-\textstyleMotCl{fin tant que}}
-
-
-\bigskip
-
-{\sffamily
-a \textstyleMotCl{{←}} 1}
-
-{\sffamily
-b \textstyleMotCl{{←}} 1}
-
-{\sffamily
-\textstyleMotCl{tant que} a {\textless} 10 \textstyleMotCl{faire}}
-
-{\sffamily
-\ \ {a
-}\textstyleMotCl{{←}}{
-a + 1}}
-
-{\sffamily
-{\ \ b
-}\textstyleMotCl{{←}}{
-b + 1}}
-
-{\sffamily
-\textstyleMotCl{fin tant que}}
-
-{\sffamily
-\textstyleMotCl{{écrire}}{
-b}}
-
-
-\bigskip
-
-{\sffamily
-i \textstyleMotCl{{←}} 1}
-
-{\sffamily
-\textstyleMotCl{pour} i de 1 à 10 \textstyleMotCl{faire}}
-
-{\sffamily
-{\texttt{\ \ }}{b}{\texttt{
-}}\textstyleMotCl{{←}}{\texttt{
-}}{i}}
-
-{\sffamily
-\textstyleMotCl{fin pour}}
-
-
-\bigskip
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Afficher les n premiers}
-\end{enumerate}
-{
-Écrire un algorithme qui lit un naturel n et affiche}
-
-\begin{itemize}
-\item {
-les n premiers entiers strictement positifs ;}
-\item {
-les n premiers entiers strictement positifs en ordre décroissant ;}
-\item {
-les n premiers carrés parfaits ;}
-\item {
-les n premiers naturels impairs ;}
-\item {
-les naturels impairs qui sont inférieurs ou égaux à n.}
-\end{itemize}
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Maximum de nombres}
-\end{enumerate}
-{
-Écrire un algorithme qui lit une série de cotes d’interrogation (entiers
-entre 0 et 20) et affiche ensuite la plus grande. Pour signaler la fin
-de l’encodage des cotes, l’utilisateur introduit un nombre négatif
-(\textbf{valeur sentinelle}).}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Afficher les multiples de 3}
-\end{enumerate}
-{
-Écrire un algorithme qui lit une série de nombres entiers positifs,
-jusqu’à ce que l’utilisateur encode la valeur 0. Les nombres multiples
-de 3 seront affichés au fur et à mesure et le nombre de ces multiples
-sera affiché en fin de traitement.}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Placement d'un capital}
-\end{enumerate}
-{
-On placera le 1\textsuperscript{er} janvier de l’année à venir un
-capital pendant un certain nombre d’années à un certain taux. Le
-capital évolue suivant le système des intérêts composés. Écrire un
-algorithme qui, à partir du capital de départ, du nombre d’années et du
-taux de placement (en \%), affiche pour chaque année les informations
-suivantes : la date, le capital et les intérêts obtenus au
-1\textsuperscript{er} janvier de cette année.}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Produit de 2 nombres}
-\end{enumerate}
-{
-Écrire un algorithme qui retourne le produit de deux entiers quelconques
-sans utiliser l’opérateur de multiplication, mais en minimisant le
-nombre d’opérations.}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Génération de suites}
-\end{enumerate}
-{
-Écrire un algorithme qui affiche les \textbf{N premiers termes} des
-suites suivantes:}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.134cm,height=1.134cm]{log1-img/log1-img95}
-
-\end{center}
-\liststyleNumberingv
-\begin{enumerate}
-\item {
-1, 2, 4, 7, 11, 16, …}
-\item {
-1, 2, 4, 5, 7, 8, 10, 11, …}
-\item {
-0, 1, 1, 2, 3, 5, 8, 13, 21, … (suite de Fibonacci)}
-\item {
-1, 2, 3, 4, 3, 2, 3, 4, 5, 4, 3, 4, 5, 6, 5, 4, 5, 6, ... 
-(la procession d'Echternach)}
-\item {
-1, 2, 3, 3, 5, 4, 7, 5, 9, 6, 11, 7, 13, 8,... \ }
-\item {
-1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11,
-21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 40, 39, 38, ..., 31, 41, 42, …}
-\end{enumerate}
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Factorielle}
-\end{enumerate}
-{
-Écrire un algorithme qui retourne la factorielle de N (entier positif ou
-nul). Rappel: la factorielle de N, notée N!, \ est le produit des N
-premiers entiers strictement positifs. Par convention, 0! = 1.}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Somme de chiffres}
-\end{enumerate}
-{
-Écrire un algorithme qui retourne la somme des chiffres qui forment un
-nombre naturel N. Attention, on donne au départ \textbf{le} nombre et
-pas ses chiffres. Exemple: 133045 doit donner comme résultat 16,
-puisque 1 + 3 + 3 + 0 + 4 + 5 = 16.}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.134cm,height=1.134cm]{log1-img/log1-img96}
-
-\end{center}
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Conversion binaire-décimale}
-\end{enumerate}
-{
-Écrire un algorithme qui lit un nombre entier positif censé représenter
-une configuration binaire (et donc ne contenant que des chiffres 0 et
-1) et qui retourne la conversion de ce nombre en base 10. Attention, on
-lit \textbf{un} nombre et on affiche \textbf{un} nombre. Améliorer
-l’algorithme de sorte qu’il signale une éventuelle erreur d’encodage.}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.134cm,height=1.134cm]{log1-img/log1-img97}
-
-\end{center}
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Conversion décimale-binaire}
-\end{enumerate}
-{
-Écrire un algorithme qui lit un entier positif et retourne sa
-configuration binaire. }
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-PGCD}
-\end{enumerate}
-{
-Écrire un algorithme qui calcule le PGCD (plus grand commun diviseur) de
-deux entiers positifs selon l’algorithme d’Euclide.}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-PPCM}
-\end{enumerate}
-{
-Écrire un algorithme qui calcule le PPCM (plus petit commun multiple) de
-deux entiers positifs.}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Nombre premier}
-\end{enumerate}
-{
-Écrire un algorithme qui vérifie si un entier positif est un
-\textbf{nombre premier}. 
-Rappel : un nombre est premier s’il n’est divisible que par 1 et par
-lui-même. Le premier nombre premier est 2.}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Nombres premiers}
-\end{enumerate}
-{
-Écrire un algorithme qui affiche les nombres premiers inférieurs ou
-égaux à un entier positif donné. Le module de cet algorithme fera appel
-de manière répétée mais économique à celui de l’exercice précédent.}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Nombre parfait }
-\end{enumerate}
-{
-Écrire un algorithme qui vérifie si un entier positif est un
-\textbf{nombre parfait}, c’est-à-dire un nombre égal à la somme de ses
-diviseurs (sauf lui-même). Par exemple, 6 est parfait car 6 = 1 + 2 +
-3. De même, 28 est parfait car 28 = 1 + 2 + 4 + 7 + 14.}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Décomposition en facteurs premiers}
-\end{enumerate}
-{
-{Écrire}{ un algorithme
-qui affiche la décomposition d’un entier en facteurs premiers. Par
-exemple, 1001880 donnerait comme décomposition
-}{2}{\textsuperscript{3
-}}{*
-}{3}{\textsuperscript{2
-}}{*}{ 5
-}{*}{
-11}{\textsuperscript{2
-\ }}{*}{
-2}{3}{.}}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Palindrome}
-\end{enumerate}
-{
-{Écrire}{ un algorithme
-qui vérifie si un entier donné forme un \ palindrome ou non. Un
-}{nombre palindrome
-}{est un nombre qui lu dans un sens (de gauche
-à droite) est identique au nombre lu dans l’autre sens (de droite à
-gauche). Par exemple, }{1047401 est un nombre
-palindrome.}}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Jeu de la fourchette}
-\end{enumerate}
-{
-{Écrire} un algorithme qui simule le jeu de la
-fourchette. Ce jeu consiste à essayer de découvrir un nombre quelconque
-compris entre 1 et 100 inclus, tiré au sort par l’ordinateur (primitive
-\textstyleCodeInsr{Hasard}). L’utilisateur a droit à huit essais
-maximum. À chaque essai, l’algorithme devra afficher un message
-indicatif «~nombre donné trop petit~» ou «~nombre donné trop grand~».
-En conclusion, soit «~bravo, vous avez trouvé en [nombre] essais~» soit
-«~désolé, le nombre était [valeur] ». }
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.134cm,height=1.134cm]{log1-img/log1-img98}
-
-\end{center}
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-IMC}
-\end{enumerate}
-{
-L’IMC (\textit{Indice de Masse Corporelle}) est une mesure permettant à
-chacun d’entre nous de se situer sur une échelle de corpulence. On
-obtient l’IMC en divisant le poids en kilo par le carré de la taille en
-mètre. Pour un homme, un IMC supérieur à 30 veut dire obèse ; entre 25
-exclu et 30, excès pondéral ; entre 20 inclus et 25 inclus corpulence
-normale ; en dessous de 20 corpulence maigre. Pour une femme, un IMC
-supérieur à 30 veut dire obèse ; entre 24 exclu et 30, excès pondéral ;
-entre 19 inclus et 24 inclus corpulence normale ; en dessous de 19
-corpulence maigre. Écrire un algorithme qui lit les données d’une série
-de personnes (sexe (‘H’ ou ‘F’), poids et taille) et affiche à la fin
-le pourcentage de personnes obèses.}
-
-{
-Remarque~: Choisissez une valeur sentinelle pour indiquer la fin des
-données.}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Cotes}
-\end{enumerate}
-{
-{Écrire} un algorithme qui permet d’introduire
-pour chaque étudiant d’un groupe de logique les trois cotes
-d’interrogations (sur 20) qu’il a passées durant l’année, cotes données
-dans l’ordre chronologique ainsi que la cote d'examen
-(sur 100). La valeur –1 est introduite en cas d’absence justifiée à une
-interrogation. Pour une absence non justifiée, la cote de
-l’interrogation est de 0. En ce qui concerne l'examen,
-toute absence (justifiée ou non) est introduite comme un «~-1~» et
-implique un «~0~» comme cote finale.}
-
-{
-Pour rappel, l’examen est coté sur 100 et la cote finale se calcule
-comme suit : on additionne les points des trois interrogations passées
-(y compris les zéros des absences non justifiées) à la cote de
-l’examen. Dans le cas d’absences justifiées (1, 2 ou 3), la cote
-d’examen est ramenée respectivement sur 120, 140 ou 160 et additionnée
-aux interrogations passées. Dans tous les cas, le total sur 160 est
-divisé par 8 pour obtenir la cote finale sur 20.}
-
-{
-L'algorithme demande après chaque étudiant
-s'il reste encore des notes à encoder et affiche à la
-fin le nombre de cotes, la meilleure cote et le pourcentage de cotes
-supérieures à 12.}
+\begin{Exercice}{Compréhension d'algorithmes}
+	Quels sont les affichages réalisés lors de l'exécution
+	des algorithmes suivants ?
+	
+	\cadre{
+	\begin{pseudo}
+	\Module{boucle1}{}{}
+		\Decl x : entier
+		\Let x \Gets 0
+		\While{x < 12}
+			\Let x \Gets x + 2	
+		\EndWhile
+		\Write x
+	\EndModule
+	\end{pseudo}
+	}
+	
+	\cadre{
+	\begin{pseudo}
+	\Module{boucle2}{}{}
+		\Decl ok : booléen
+		\Decl x : entier
+		\Let ok \Gets vrai
+		\Let x \Gets 5
+		\While{ok}
+			\Let x \Gets x + 7	
+			\Let ok \Gets x MOD 11 $\neq$ 0	
+		\EndWhile
+		\Write x
+	\EndModule
+	\end{pseudo}
+	}
+
+	\cadre{
+	\begin{pseudo}
+	\Module{boucle3}{}{}
+		\Decl ok : booléen
+		\Decl cpt, x : entiers
+		\Let x \Gets 10
+		\Let cpt \Gets 0
+		\Let ok \Gets vrai
+		\While{ok ET cpt < 3}
+			\If{x MOD 2 = 0}
+				\Let x \Gets x + 1
+				\Let ok \Gets x < 20
+			\Else
+				\Let x \Gets x + 3
+				\Let cpt \Gets cpt + 1
+			\EndIf
+		\EndWhile
+		\Write x
+	\EndModule
+	\end{pseudo}
+	}
+
+	\cadre{
+	\begin{pseudo}
+	\Module{boucle4}{}{}
+		\Decl pair, grand : booléens
+		\Decl p, x : entiers
+		\Let x \Gets 1
+		\Let p \Gets 1
+		\Let ok \Gets vrai
+		\Repeat
+			\Let p \Gets 2 * p
+			\Let x \Gets x + p
+			\Let pair \Gets x MOD 2 = 0
+			\Let grand \Gets x > 15
+		\Until{pair OU grand}
+		\Write x
+	\EndModule
+	\end{pseudo}
+	}
+
+	\cadre{
+	\begin{pseudo}
+	\Module{boucle5}{}{}
+		\Decl i, x : entiers
+		\Decl ok : booléen
+		\Let x \Gets 3
+		\Let ok \Gets vrai
+		\For{i \K{de} 1 \K{à} 5}
+			\Let x \Gets x + i
+			\Let ok \Gets ok ET (x MOD 2 = 0)
+		\EndFor
+		\If{ok}
+			\Write x
+		\Else
+			\Write 2 * x
+		\EndIf
+	\EndModule
+	\end{pseudo}
+	}
+
+	\cadre{
+	\begin{pseudo}
+	\Module{boucle6}{}{}
+		\Decl i, j, fin : entiers
+		\For{i \K{de} 1 \K{à} 3}
+			\Let fin \Gets 6 * i - 11
+			\For{j \K{de} 1 \K{à} fin \K{par} 3}
+				\Write 10 * i + j
+			\EndFor
+		\EndFor
+	\EndModule
+	\end{pseudo}
+	}
+
+\end{Exercice}
+
+\begin{Exercice}{Simplification}
+	Voici quelques extraits d’algorithmes corrects du point de vue de la
+	syntaxe mais contenant des lignes inutiles ou des lourdeurs d’écriture.
+	Remplacer ces portions d’algorithme par un minimum d’instructions qui
+	auront un effet équivalent.
+
+	\cadre{
+	\begin{pseudo}
+	\Let a \Gets 1
+	\Let b \Gets 1
+	\While{a < 10}
+		\Let a \Gets a + 1
+		\Let b \Gets b + 1
+		\Write b
+	\EndWhile
+	\end{pseudo}
+	}
+
+	\cadre{
+	\begin{pseudo}
+	\Let a \Gets 1
+	\Let b \Gets 1
+	\While{a < 10}
+		\Let a \Gets a + 1
+		\Let b \Gets b + 1
+	\EndWhile
+	\Write b
+	\end{pseudo}
+	}
+
+	\cadre{
+	\begin{pseudo}
+	\Let i \Gets 1
+	\For{i \K{de} 1 \K{à} 10}
+		\Let b \Gets i
+	\EndFor
+	\end{pseudo}
+	}
+
+\end{Exercice}
+
+\begin{Exercice}{Afficher les n premiers}
+	Écrire un algorithme qui lit un naturel n et affiche
+	
+	\begin{itemize}
+	\item {
+	les n premiers entiers strictement positifs ;}
+	\item {
+	les n premiers entiers strictement positifs en ordre décroissant ;}
+	\item {
+	les n premiers carrés parfaits ;}
+	\item {
+	les n premiers naturels impairs ;}
+	\item {
+	les naturels impairs qui sont inférieurs ou égaux à n.}
+	\end{itemize}
+\end{Exercice}
+
+\begin{Exercice}{Maximum de nombres}
+	Écrire un algorithme qui lit une série de cotes d’interrogation (entiers
+	entre 0 et 20) et affiche ensuite la plus grande. Pour signaler la fin
+	de l’encodage des cotes, l’utilisateur introduit un nombre négatif
+	(\textbf{valeur sentinelle}).
+\end{Exercice}
+
+\begin{Exercice}{Afficher les multiples de 3}
+	Écrire un algorithme qui lit une série de nombres entiers positifs,
+	jusqu’à ce que l’utilisateur encode la valeur 0. Les nombres multiples
+	de 3 seront affichés au fur et à mesure et le nombre de ces multiples
+	sera affiché en fin de traitement.
+\end{Exercice}
+
+\begin{Exercice}{Placement d'un capital}
+	On placera le 1\up{er} janvier de l’année à venir un
+	capital pendant un certain nombre d’années à un certain taux. Le
+	capital évolue suivant le système des intérêts composés. Écrire un
+	algorithme qui, à partir du capital de départ, du nombre d’années et du
+	taux de placement (en \%), affiche pour chaque année les informations
+	suivantes : la date, le capital et les intérêts obtenus au
+	1\up{er} janvier de cette année.
+\end{Exercice}
+
+\begin{Exercice}{Produit de 2 nombres}
+	Écrire un algorithme qui retourne le produit de deux entiers quelconques
+	sans utiliser l’opérateur de multiplication, mais en minimisant le
+	nombre d’opérations.
+\end{Exercice}
+
+\begin{Exercice}{Génération de suites}
+	\marginicon{java}
+	Écrire un algorithme qui affiche les \textbf{N premiers termes} des
+	suites suivantes:
+
+	\begin{enumerate}[label=\alph*)]
+	\item {
+	1, 2, 4, 7, 11, 16, \dots}
+	\item {
+	1, 2, 4, 5, 7, 8, 10, 11, \dots}
+	\item {
+	0, 1, 1, 2, 3, 5, 8, 13, 21, \dots\ (suite de Fibonacci)}
+	\item {
+	1, 2, 3, 4, 3, 2, 3, 4, 5, 4, 3, 4, 5, 6, 5, 4, 5, 6, \dots\ 
+	(la procession d'Echternach)}
+	\item {
+	1, 2, 3, 3, 5, 4, 7, 5, 9, 6, 11, 7, 13, 8, \dots }
+	\item {
+	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11,
+	21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 40, 39, 38, \dots, 31, 41, 42, \dots}
+	\end{enumerate}
+\end{Exercice}
+
+\begin{Exercice}{Factorielle}
+	Écrire un algorithme qui retourne la factorielle de N (entier positif ou
+	nul). Rappel: la factorielle de N, notée N!, est le produit des N
+	premiers entiers strictement positifs. Par convention, 0! = 1.
+\end{Exercice}
+
+\begin{Exercice}{Somme de chiffres}
+	\marginicon{java}
+	Écrire un algorithme qui retourne la somme des chiffres qui forment un
+	nombre naturel N. Attention, on donne au départ \textbf{le} nombre et
+	pas ses chiffres. Exemple: 133045 doit donner comme résultat 16,
+	puisque 1 + 3 + 3 + 0 + 4 + 5 = 16.
+\end{Exercice}
+
+\begin{Exercice}{Conversion binaire-décimale}
+	\marginicon{java}
+	Écrire un algorithme qui lit un nombre entier positif censé représenter
+	une configuration binaire (et donc ne contenant que des chiffres 0 et
+	1) et qui retourne la conversion de ce nombre en base 10. Attention, on
+	lit \textbf{un} nombre et on affiche \textbf{un} nombre. Améliorer
+	l’algorithme de sorte qu’il signale une éventuelle erreur d’encodage.
+\end{Exercice}
+
+\begin{Exercice}{Conversion décimale-binaire}
+	Écrire un algorithme qui lit un entier positif et retourne sa
+	configuration binaire.
+\end{Exercice}
+
+\begin{Exercice}{PGCD}
+	Écrire un algorithme qui calcule le PGCD (plus grand commun diviseur) de
+	deux entiers positifs selon l’algorithme d’Euclide.
+\end{Exercice}
+
+\begin{Exercice}{PPCM}
+	Écrire un algorithme qui calcule le PPCM (plus petit commun multiple) de
+	deux entiers positifs.
+\end{Exercice}
+
+\begin{Exercice}{Nombre premier}
+	Écrire un algorithme qui vérifie si un entier positif est un
+	\textbf{nombre premier}. 
+	Rappel : un nombre est premier s’il n’est divisible que par 1 et par
+	lui-même. Le premier nombre premier est 2.
+\end{Exercice}
+
+\begin{Exercice}{Nombres premiers}
+	Écrire un algorithme qui affiche les nombres premiers inférieurs ou
+	égaux à un entier positif donné. Le module de cet algorithme fera appel
+	de manière répétée mais économique à celui de l’exercice précédent.
+\end{Exercice}
+
+\begin{Exercice}{Nombre parfait}
+	Écrire un algorithme qui vérifie si un entier positif est un
+	\textbf{nombre parfait}, c’est-à-dire un nombre égal à la somme de ses
+	diviseurs (sauf lui-même). Par exemple, 6 est parfait car 6 = 1 + 2 +
+	3. De même, 28 est parfait car 28 = 1 + 2 + 4 + 7 + 14.
+\end{Exercice}
+
+\begin{Exercice}{Décomposition en facteurs premiers}
+	Écrire un algorithme qui affiche la décomposition 
+	d’un entier en facteurs premiers. 
+	Par exemple, $1001880$ donnerait comme décomposition
+	$2^3 * 3^2 * 5 * 11^2 * 23$.
+\end{Exercice}
+
+\begin{Exercice}{Palindrome}
+	Écrire un algorithme qui vérifie si un entier donné 
+	forme un palindrome ou non. 
+	Un nombre palindrome est un nombre qui lu dans un sens 
+	(de gauche à droite) est identique au nombre lu dans l’autre sens 
+	(de droite à gauche). 
+	Par exemple, $1047401$ est un nombre palindrome.
+\end{Exercice}
+
+\begin{Exercice}{Jeu de la fourchette}
+	\marginicon{java}
+	Écrire un algorithme qui simule le jeu de la
+	fourchette. Ce jeu consiste à essayer de découvrir un nombre quelconque
+	compris entre 1 et 100 inclus, tiré au sort par l’ordinateur (primitive
+	\textstyleCodeInsr{Hasard}). L’utilisateur a droit à huit essais
+	maximum. À chaque essai, l’algorithme devra afficher un message
+	indicatif «~nombre donné trop petit~» ou «~nombre donné trop grand~».
+	En conclusion, soit «~bravo, vous avez trouvé en [nombre] essais~» soit
+	«~désolé, le nombre était [valeur] ».
+\end{Exercice}
+
+\begin{Exercice}{IMC}
+	L’IMC (\textit{Indice de Masse Corporelle}) est une mesure permettant à
+	chacun d’entre nous de se situer sur une échelle de corpulence. On
+	obtient l’IMC en divisant le poids en kilo par le carré de la taille en
+	mètre. Pour un homme, un IMC supérieur à 30 veut dire obèse ; entre 25
+	exclu et 30, excès pondéral ; entre 20 inclus et 25 inclus corpulence
+	normale ; en dessous de 20 corpulence maigre. Pour une femme, un IMC
+	supérieur à 30 veut dire obèse ; entre 24 exclu et 30, excès pondéral ;
+	entre 19 inclus et 24 inclus corpulence normale ; en dessous de 19
+	corpulence maigre. Écrire un algorithme qui lit les données d’une série
+	de personnes (sexe (‘H’ ou ‘F’), poids et taille) et affiche à la fin
+	le pourcentage de personnes obèses.
+
+	Remarque~: Choisissez une valeur sentinelle pour indiquer la fin des
+	données.
+\end{Exercice}
+
+\begin{Exercice}{Cotes}
+	Écrire un algorithme qui permet d’introduire
+	pour chaque étudiant d’un groupe de logique les trois cotes
+	d’interrogations (sur 20) qu’il a passées durant l’année, cotes données
+	dans l’ordre chronologique ainsi que la cote d'examen
+	(sur 100). La valeur –1 est introduite en cas d’absence justifiée à une
+	interrogation. Pour une absence non justifiée, la cote de
+	l’interrogation est de 0. En ce qui concerne l'examen,
+	toute absence (justifiée ou non) est introduite comme un «~-1~» et
+	implique un «~0~» comme cote finale.
+	
+	Pour rappel, l’examen est coté sur 100 et la cote finale se calcule
+	comme suit : on additionne les points des trois interrogations passées
+	(y compris les zéros des absences non justifiées) à la cote de
+	l’examen. Dans le cas d’absences justifiées (1, 2 ou 3), la cote
+	d’examen est ramenée respectivement sur 120, 140 ou 160 et additionnée
+	aux interrogations passées. Dans tous les cas, le total sur 160 est
+	divisé par 8 pour obtenir la cote finale sur 20.
+	
+	L'algorithme demande après chaque étudiant
+	s'il reste encore des notes à encoder et affiche à la
+	fin le nombre de cotes, la meilleure cote et le pourcentage de cotes
+	supérieures à 12.
+\end{Exercice}
 
