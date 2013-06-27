@@ -150,7 +150,7 @@
 
 % Pour un exercice avec numérotation automatique
 \newenvironment{Exercice}[1]{%
-	\stepcounter{exercicenum}%
+	\refstepcounter{exercicenum}%
 	\medskip
 	{\color{MidnightBlue}\Cadre{\theexercicenum}}\quad%
 	{\sffamily\bfseries#1}
