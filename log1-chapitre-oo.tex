@@ -1,5 +1,6 @@
-\chapter[L'orienté objet]{
-L'orienté objet}
+\chapter[L'orienté objet]{\textstyleMotCl{
+L'orienté objet}}
+\marginicon{objectif}
 {
 Dans ce chapitre, nous présentons les bases de la programmation orientée
 objet. Nous commençons par expliquer les motivations qui ont amené ce
@@ -9,11 +10,6 @@ d'\textit{encapsulation}. Les autres piliers de
 l'orienté objet (\textit{héritage} et
 \textit{polymorphisme}) ne seront pas vus cette année.}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.27cm,height=1.27cm]{log1-img/log1-img130}
-
-\end{center}
 \section{Motivation}
 {
 Depuis son apparition, la puissance de l'ordinateur
@@ -67,6 +63,7 @@ de panier d'achats, de compte en banque, de banque, de
 client, de portefeuille d'actions, ...}
 
 \section{La notion d'objet}
+\marginicon{definition}
 {\sffamily\bfseries\upshape
 Définition\footnote{Les définitions sont tirées du livre de Cardon et
 Dabancourt (cf. bibliographie)}}
@@ -74,11 +71,6 @@ Dabancourt (cf. bibliographie)}}
 {
 Un \textbf{objet} est une entité logicielle qui :}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img131}
-
-\end{center}
 \liststyleListi
 \begin{itemize}
 \item {
@@ -128,6 +120,9 @@ journée qu'elle représente.}
 L'état d'un objet est mémorisé via des
 variables qu'on appelle des \textit{attributs}.}
 
+\bigskip
+
+\marginicon{definition}
 {\sffamily\bfseries\upshape
 Attributs}
 
@@ -137,11 +132,6 @@ l'ensemble des informations se présentant sous forme
 de variables et permettant de représenter l'état
 d'un objet.}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img132}
-
-\end{center}
 {
 Nous verrons plus loin la syntaxe précise pour définir les attributs
 d'un objet.}
@@ -171,6 +161,8 @@ représentée par une seule chaine mais également par un «~objet
 adresse~» (qui contiendrait : une rue, un numéro, un code postal,
 ...).}
 \end{itemize}
+
+\marginicon{attention}
 {
 \textbf{Remarque}\textbf{ : }Certaines parties de
 l'état peuvent évoluer au fil du temps.
@@ -178,24 +170,17 @@ D'autres parties sont immuables. Ainsi
 l'adresse d'une personne peut changer
 mais pas sa date de naissance. }
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.323cm,height=1.323cm]{log1-img/log1-img133}
-
-\end{center}
+\marginicon{exercice}
 {\sffamily\bfseries\scshape
 Exercices - attributs}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.282cm,height=1.282cm]{log1-img/log1-img134}
-
-\end{center}
 \liststyleWWviiiNumi
 \begin{enumerate}
 \item {
 Quel(s) attribut(s) prendriez-vous pour représenter
 (l'état d') une date ?}
+\item {
+Et pour un étudiant ?}
 \item {
 Et pour un dé à 6 faces ?}
 \item {
@@ -204,6 +189,7 @@ Et pour une télévision ? \ (on peut en trouver vraiment beaucoup !)}
 
 \bigskip
 
+\marginicon{definition}
 {\sffamily\bfseries\upshape
 Comportement}
 
@@ -212,11 +198,6 @@ Le \textbf{comportement} d'un objet est défini par
 l'ensemble des messages ou requêtes auxquels il peut
 répondre.}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img135}
-
-\end{center}
 {
 Pour ce faire, il exécute une fonction (un module) qui pourra
 éventuellement retourner une information à l'émetteur
@@ -235,61 +216,68 @@ texte, modifier un fichier, ...). }
 \item {
 Quels «~messages~» peut-on envoyer à une date ? On peut lui demander
 (entre autres):}
-\item {
-des informations sur le jour du mois, le mois, l'année,
-le jour de la semaine ; }
-\item {
-si elle est antérieure ou non à une autre date ;}
-\item {
-si elle fait partie d'une année bissextile ; }
-\item {
-le nombre de jours qui la sépare de la fin de l'année
-;}
-\item {
-de passer au jour suivant, à la semaine suivante, ...}
+	\begin{itemize}
+	\item {
+	des informations sur le jour du mois, le mois, l'année,
+	le jour de la semaine ; }
+	\item {
+	si elle est antérieure ou non à une autre date ;}
+	\item {
+	si elle fait partie d'une année bissextile ; }
+	\item {
+	le nombre de jours qui la sépare de la fin de l'année
+	;}
+	\item {
+	de passer au jour suivant, à la semaine suivante, ...}
+	\end{itemize}
 \item {
 Et pour un stock de produits ? On peut }
-\item {
-lui demander la quantité disponible d'un produit donné
-;}
-\item {
-lui annoncer l'arrivée d'une quantité
-donnée d'un produit donné ;}
-\item {
-lui indiquer qu'un produit n'existe
-plus (à retirer du stock) ;}
-\item {
-lui demander d'enlever une certaine quantité
-d'un produit du stock.}
+	\begin{itemize}
+	\item {
+	lui demander la quantité disponible d'un produit donné
+	;}
+	\item {
+	lui annoncer l'arrivée d'une quantité
+	donnée d'un produit donné ;}
+	\item {
+	lui indiquer qu'un produit n'existe
+	plus (à retirer du stock) ;}
+	\item {
+	lui demander d'enlever une certaine quantité
+	d'un produit du stock.}
+	\end{itemize}
 \item {
 Et pour un employé ? On peut}
-\item {
-lui demander son adresse, son salaire ou sa fonction, ...}
-\item {
-augmenter son salaire ;}
-\item {
-le changer de fonction ;}
-\item {
-le licencier (penser à prévoir une date de départ dans
-l'état !).}
+	\begin{itemize}
+	\item {
+	lui demander son adresse, son salaire ou sa fonction, ...}
+	\item {
+	augmenter son salaire ;}
+	\item {
+	le changer de fonction ;}
+	\item {
+	le licencier (penser à prévoir une date de départ dans
+	l'état !).}
+	\end{itemize}
 \item {
 Pour un moment de la journée on peut demander s'il se
-situe le matin ou pas, ...}
+situe le matin ou pas, ...}	
 \end{itemize}
+
+\marginicon{exercice}
 {\sffamily\bfseries\scshape
 Exercice - comportement}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.282cm,height=1.282cm]{log1-img/log1-img136}
-
-\end{center}
-{
-Quel comportement voyez-vous pour un téléviseur ?}
+{\begin{enumerate}
+	\item {
+	Quel comportement voyez-vous pour un téléviseur ?}
+	\item {
+	Et pour un étudiant ?}
+\end{enumerate}}
 
 
 \bigskip
 
+\marginicon{definition}
 {\sffamily\bfseries\upshape
 Méthode}
 
@@ -298,72 +286,55 @@ Un message lance l'exécution d'un
 module appelé \textbf{méthode} dans le jargon de
 l'orienté objet. }
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img137}
-
-\end{center}
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img138}
-
-\end{center}
 {\bfseries
 Exemples}
 
 \liststyleListv
 \begin{itemize}
-\item {
-Pour permettre à une date de passer au jour suivant, nous allons définir
-un méthode qui incrémente le jour du mois en tenant compte
-d'un possible basculement au mois suivant ou à
-l'année suivante.}
-\item {
-Pour permettre à un moment d'indiquer
-s'il est le matin ou pas, nous allons définir une
-méthode comme celle-ci \ (nous verrons plus tard comment
-l'associer aux objets)}
+	\item {
+	Pour permettre à une date de passer au jour suivant, nous allons définir
+	un méthode qui incrémente le jour du mois en tenant compte
+	d'un possible basculement au mois suivant ou à
+	l'année suivante.}
+	\item {
+	Pour permettre à un moment d'indiquer
+	s'il est le matin ou pas, nous allons définir une
+	méthode comme celle-ci \ (nous verrons plus tard comment
+	l'associer aux objets)}
+
+	\bigskip
+
+	\cadre{
+	\begin{pseudo}
+		\LComment On suppose que 'heure' est un des attributs utilisés
+		\LComment pour représenter l'état (le moment dans la journée)
+		\Method{estMatin}{}{booléen}
+			\Return heure > 12 // on considère
+			que midi est situé l'après-midi
+		\EndMethod
+	\end{pseudo}
+	}
+	\\
+	\bigskip
+	{
+	Cet exemple devrait vous sembler familier à deux exceptions près}
+
+	\liststyleListv
+	\begin{itemize}
+		\item {
+		on utilise le mot «~\textstyleMotCl{méthode}~» en lieu et place de
+		«~\textstyleMotCl{module}~» ;}
+		\item {
+		les attributs (l'heure ici) ne sont pas passés en
+		paramètre. Un objet connait déjà son état et donc la valeur de ses
+		attributs. Nous verrons plus loin la syntaxe précise.}
+	\end{itemize}
 \end{itemize}
-{\sffamily
-\textstyleWWPolicepardfaut{// On suppose que
-'heure' est un des attributs utilisés
-}}
 
-{\sffamily
-\textstyleWWPolicepardfaut{// pour représenter l'état
-(le moment dans la journée)}}
-
-{\sffamily
-\textstyleMotCl{méthode} estMatin() → booléen}
-
-{\sffamily
-\ \ \textstyleMotCl{retourner} heure {\textless} 12\ \ // on considère
-que midi est situé l'après-midi}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{méthode}}
-
-{
-Cet exemple devrait vous sembler familier à deux exceptions près}
-
-\liststyleListv
-\begin{itemize}
-\item {
-on utilise le mot «~\textstyleMotCl{méthode}~» en lieu et place de
-«~\textstyleMotCl{module}~» ;}
-\item {
-les attributs (l'heure ici) ne sont pas passés en
-paramètre. Un objet connait déjà son état et donc la valeur de ses
-attributs. Nous verrons plus loin la syntaxe précise.}
-\end{itemize}
+\marginicon{exercice}
 {\sffamily\bfseries\scshape
-Exe\textup{rcices - méthodes}}
+Exercices - méthodes}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.282cm,height=1.282cm]{log1-img/log1-img139}
-
-\end{center}
 \liststyleWWviiiNumi
 \begin{enumerate}
 \item {
@@ -376,9 +347,6 @@ méthodes ?}
 
 \bigskip
 
-
-\bigskip
-
 {\sffamily\bfseries
 Activer un comportement}
 
@@ -388,8 +356,11 @@ envoyer un message (ou dit autrement, appeler une de ses méthodes). La
 syntaxe que nous allons utiliser (c'est la plus
 courante) est la notation pointée}
 
-{\sffamily
-nomObjet.nomMéthode()}
+\cadre{
+\begin{pseudo}
+	\Stmt nomObjet.nomMéthode()
+\end{pseudo}
+}
 
 {\bfseries
 Exemple}
@@ -399,20 +370,20 @@ Supposons que le nom «~maintenant~» désigne un objet contenant un moment
 de la journée (on verra comment réaliser cela). Si on veut savoir si on
 est le matin, on peut écrire}
 
-{\sffamily
-\textstyleMotCl{si} maintenant.estMatin() \textstyleMotCl{alors} ...}
+\cadre{
+\begin{pseudo}
+	\If{maintenant.estMatin()}
+		\Stmt ...
+	\EndIf
+\end{pseudo}
+}
 
 
 \bigskip
 
+\marginicon{exercice}
 {\sffamily\bfseries\scshape
 Exercice – activer un comportement}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.282cm,height=1.282cm]{log1-img/log1-img140}
-
-\end{center}
 {
 Écrire la portion de code qui allume une télévision (désignée par
 «~maTélévision~») et puis l'éteint aussitôt après.}
@@ -439,71 +410,77 @@ que notre message contienne le nouveau salaire. Autrement dit, il faut
 communiquer ce nouveau salaire à la méthode de changement du salaire.
 Ce qui donne la méthode suivante :}
 
-{\sffamily
-\textstyleMotCl{méthode} modifierSalaire( nouveauSalaire : entier )}
-
-{\sffamily
-\ \ salaire ← nouveauSalaire}
-
-{\sffamily
-\textstyleMotCl{fin méthode}}
-
+\cadre{
+\begin{pseudo}
+	\Method{modifierSalaire}{nouveauSalaire : entier}{}
+		\Stmt salaire \Gets nouveauSalaire
+	\EndMethod
+\end{pseudo}
+}
 
 \bigskip
 
+\marginicon{exercice}
 {\sffamily\bfseries\scshape
 Exercices – paramètres du comportement}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.282cm,height=1.282cm]{log1-img/log1-img141}
+\liststyleWWviiiNumi
+\begin{enumerate}
+	\item {
+	Prenons un objet représentant un étudiant. 
+	Nous supposerons qu'un étudiant a un \textit{numéro}, un 
+	\textit{nom}, une \textit{annéeÉtude}, est ou non 
+	\textit{doubleur} et est ou non \textit{ancien}
+	Donnez les entêtes des méthodes suivantes qui permettent de
+	:}
 
-\end{center}
-\liststyleWWviiiNumi
-\begin{enumerate}
-\item {
-Prenons un objet représentant une date (un jour du calendrier
-grégorien). Donnez les entêtes des méthodes suivantes qui permettent de
-:}
-\end{enumerate}
-\liststyleListv
-\begin{itemize}
-\item {
-demander le jour de la semaine d'une date}
-\item {
-modifier l'année d'une date}
-\item {
-modifier le jour représenté par l'objet}
-\item {
-savoir si une date est antérieure ou non à une autre}
-\item {
-connaitre le nombre de jours (absolu) séparant deux dates.}
-\end{itemize}
-\liststyleWWviiiNumi
-\begin{enumerate}
-\item {
-Utilisation. Soit «~date1~» et «~date2~», deux dates ; écrivez la
-portion de code qui utilise les méthodes ci-dessus pour}
-\end{enumerate}
-\liststyleListv
-\begin{itemize}
-\item {
-mettre «~date1~» au 12 novembre 2007;}
-\item {
-mettre «~date2~» au 15 février 2008;}
-\item {
-vérifier quelle date précède l'autre;}
-\item {
-calculer le nombre de jours d'écart entre ces deux
-dates.}
-\end{itemize}
-\liststyleWWviiiNumi
-\begin{enumerate}
-\item {
-Précédemment, vous avez défini l'ensemble du
-comportement d'un téléviseur. Écrivez les entêtes des
-méthodes correspondant à ce comportement ainsi qu'une
-portion de code qui les utilise.}
+	\liststyleListv
+	\begin{itemize}
+		\item {
+		demander le numéro d'un étudiant}
+		\item {
+		demander si un étudiant est doubleur ou non}
+		\item {
+		modifier l'année détude d'un étudiant}
+		\item {
+		faire réussir un étudiant}
+		\item {
+		faire rater un étudiant.}
+	\end{itemize}
+		
+	\item {
+	Prenons un objet représentant une date du calendrier grégorien. 
+	Donnez les entêtes des méthodes suivantes qui permettent de
+	:}
+
+	\liststyleListv
+	\begin{itemize}
+		\item{
+		demander le jour de la semaine d'une date}
+		\item {
+		savoir si une date est antérieure ou non à une autre}
+		\item {
+		connaitre le nombre de jours (absolu) séparant deux dates.}
+	\end{itemize}
+	
+	\item {
+	Utilisation. Soit «~date1~» et «~date2~», deux dates ; écrivez la
+	portion de code qui utilise les méthodes ci-dessus pour}
+	
+	\liststyleListv
+	\begin{itemize}
+		\item {
+		vérifier quelle date précède l'autre;}
+		\item {
+		calculer le nombre de jours d'écart entre ces deux
+		dates.}
+	\end{itemize}
+	
+	\item {
+	Précédemment, vous avez défini l'ensemble du
+	comportement d'un téléviseur. Écrivez les entêtes des
+	méthodes correspondant à ce comportement ainsi qu'une
+	portion de code qui les utilise.}
 \end{enumerate}
 
 \bigskip
@@ -518,17 +495,14 @@ accédés qu'au travers du comportement de
 l'objet, c'est-à-dire via ses
 méthodes.}
 
+\marginicon{definition}
+{\sffamily\bfseries\upshape
 {
 Lorsque les détails de l'implémentation
 d'un objet sont masqués aux autres objets, on dit
 qu'il y a \textbf{encapsulation} des données et du
-comportement des objets.}
+comportement des objets.}}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img142}
-
-\end{center}
 {
 Pourquoi une telle recommandation ? Le but est de garantir la cohérence
 de l'état de l'objet. Si on pouvait
@@ -559,19 +533,16 @@ valeur de cet attribut et une autre qui permet de la modifier.}
 {\sffamily\bfseries\upshape
 Accesseur et mutateur}
 
+\marginicon{definition}
+{\sffamily\bfseries\upshape
 {
 \textbf{Accesseur}\footnote{\textstyleFootnoteSymbol{On utilise aussi
 souvent le mot anglais «~getter~». }} : méthode dont le but est de
 fournir la valeur d'un attribut
 \textbf{Mutateur}\footnote{\textstyleFootnoteSymbol{On utilise aussi
 souvent le mot anglais «~setter~»}} : méthode dont le but est de
-modifier la valeur d'un attribut}
+modifier la valeur d'un attribut}}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img143}
-
-\end{center}
 {
 Par convention, ces méthodes sont nommées «~getNom~» et «~setNom~» où
 «~nom~» est le nom de
@@ -588,33 +559,32 @@ Exemple}
 l'attribut «~heure~» d'un moment de
 la journée}
 
-{\sffamily
-\textstyleMotCl{méthode} getHeure() → entier}
-
-{\sffamily
-\ \ \textstyleMotCl{retourner} heure}
-
-{\sffamily
-\textstyleMotCl{fin}\textbf{ }\textstyleMotCl{méthode}}
-
+\cadre{
+\begin{pseudo}
+	\Method{getHeure}{}{entier}
+		\Return heure
+	\EndMethod
+\end{pseudo}
+}
 
 \bigskip
 
-{\sffamily
-\textstyleMotCl{méthode} setHeure( h : entier )}
+\cadre{
+\begin{pseudo}
+	\Method{setHeure}{uneHeure : entier}{}
+		\Stmt heure \Gets uneHeure
+	\EndMethod
+\end{pseudo}
+}
 
-{\sffamily
-\ \ heure ← h}
-
-{\sffamily
-\textstyleMotCl{fin}\textbf{ }\textstyleMotCl{méthode}}
+\bigskip
 
 {\sffamily\bfseries\upshape
 Que faire si le paramètre est invalide ? }
 
 {
 Dans l'exemple précédent, que se passerait-il si le
-paramètre \textstyleCodeInsr{h} vaut 25 ? Une valeur aberrante sera
+paramètre \textstyleCodeInsr{uneHeure} vaut 25 ? Une valeur aberrante sera
 affectée à l'attribut \textstyleCodeInsr{heure}.}
 
 {
@@ -646,31 +616,29 @@ programme avec une courte explication du problème.}
 {
 La syntaxe que nous allons retenir est}
 
-{\sffamily
-\textstyleMotCl{erreur} {\textquotedbl}explication de
-l'erreur{\textquotedbl}}
+\cadre{
+\begin{pseudo}
+	\Stmt \K{erreur} "explication de l'erreur"
+\end{pseudo}
+}
+
+\bigskip
 
 {
 Ce qui donne :}
 
-{\sffamily
-\textstyleMotCl{méthode} setHeure( h : entier )}
-
-{\sffamily
-\ \ \textstyleMotCl{si} h {\textless} 0 OU h {\textgreater} 23
-\textstyleMotCl{alors} \textstyleMotCl{erreur} {\textquotedbl}heure
-invalide{\textquotedbl} \textstyleMotCl{fin}\textbf{
-}\textstyleMotCl{si}}
-
-{\sffamily
-\ \ // Pour être précis, il faudrait tenir compte que 24h00 est une
-heure valide}
-
-{\sffamily
-\ \ heure ← h}
-
-{\sffamily
-\textstyleMotCl{fin}\textbf{ }\textstyleMotCl{méthode}}
+\cadre{
+\begin{pseudo}
+	\Method{setHeure}{uneHeure : entier}{}
+		\If{uneHeure < 0 OU uneHeure > 23}
+			\Stmt \K{erreur} "heure invalide"
+		\EndIf
+		\LComment Pour être précis, il faudrait tenir compte que 24h00 est une
+heure valide
+		\Stmt heure \Gets uneHeure
+	\EndMethod
+\end{pseudo}
+}
 
 {
 \textbf{Remarque} : Accéder à la valeur d’un attribut ne pose pas de
@@ -680,14 +648,10 @@ sorte d’attribut en \textit{lecture seule}) ? Cela permet de changer de
 façon transparente la représentation des données. \ Nous y reviendrons
 plus loin.}
 
+\marginicon{exercice}
 {\sffamily\bfseries\scshape
 Exercice - encapsulation}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.282cm,height=1.282cm]{log1-img/log1-img144}
-
-\end{center}
 {
 Sans le savoir, vous avez déjà défini des accesseurs (lisez: accesseurs
 et mutateurs) pour le téléviseur. Lesquels ? En suivant la convention
@@ -702,16 +666,13 @@ commune à tous les objets similaires. Par exemple toutes les dates ont
 un même comportement et un même type d'état (une
 journée du calendrier).}
 
+\marginicon{definition}
+{\sffamily\bfseries\upshape
 {
 Une \textbf{classe} est un ensemble d'objets qui ont en
 commun les mêmes méthodes et qui partagent les mêmes types
-d'attributs.}
+d'attributs.}}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img145}
-
-\end{center}
 {
 Une \textbf{instance}\footnote{Vous pouvez considérer les termes
 «~instance de classe~» et «~objet~» comme synonymes. }
@@ -740,95 +701,55 @@ Nous devons d'abord définir une classe avant de pouvoir
 en instancier les objets que nous voulons utiliser. Précisons la
 syntaxe utilisée pour définir une classe}
 
-{\sffamily
-\textstyleMotCl{classe} NomDeLaClasse}
+\cadre{
+\begin{pseudo}
+	\Class{NomDeLaClasse}
+		\Private
+			\LComment La liste des attributs (donc privés par convention)
+		\Public
+			\LComment La liste des méthodes publiques
+		\Private
+			\LComment La liste des méthodes privées
+	\EndClass
+	\LComment Par souci de lisibilité, on pourra indiquer uniquement 
+	les signatures des
+	\LComment méthodes et donner le code complet des méthodes à 
+	la suite de la classe.
+\end{pseudo}
+}
 
-{\sffamily
-\ \ \textstyleMotCl{privé} :\ \ \ \ }
-
-{\sffamily
-\ \ \ \ // La liste des attributs (donc privés par convention)}
-
-{\sffamily
-\ \ \textstyleMotCl{public} :\ \ \ \ }
-
-{\sffamily
-\ \ \ \ // La liste des méthodes publiques}
-
-{\sffamily
-\ \ \textstyleMotCl{privé} :\ \ \ \ }
-
-{\sffamily
-\ \ \ \ // La liste des méthodes privées}
-
-{\sffamily
-\textstyleMotCl{fin}\textbf{ }\textstyleMotCl{classe}}
-
-{\sffamily
-// Par souci de lisibilité, on pourra indiquer uniquement les signatures
-des}
-
-{\sffamily
-// méthodes et donner le code complet des méthodes à la suite de la
-classe.}
+\bigskip
 
 {
 \textbf{Exemple} : la classe Moment qui représente un moment de la
 journée}
 
-{\sffamily
-\textstyleMotCl{classe} Moment}
+\cadre{
+\begin{pseudo}
+	\Class{Moment}
+		\Private
+			\Decl heure : entier
+			\Decl minute : entier
+			\Decl seconde : entier
+		\Public
+			\MethodSign{getHeure}{}{entier}
+			\MethodSign{getMinute}{}{entier}
+			\MethodSign{getSeconde}{}{entier}
+			\MethodSign{setHeure}{uneHeure : entier}{}
+			\MethodSign{setMinute}{uneMinute : entier}{}
+			\MethodSign{setSeconde}{uneSeconde : entier}{}
+			\MethodSign{estMatin}{}{booléen}
+	\EndClass
+	
+	\Method{estMatin}{}{booléen}
+		\Return heure < 12
+	\EndMethod
+	\LComment + les accesseurs et les mutateurs
 
-{\sffamily
-\ \ \textstyleMotCl{privé} :\ \ \ \ }
+\end{pseudo}
+}
 
-{\sffamily
-\ \ \ \ heure : entier}
-
-{\sffamily
-\ \ \ \ minute : entier}
-
-{\sffamily
-\ \ \ \ seconde : entier}
-
-{\sffamily
-\ \ \textstyleMotCl{public} :\ \ \ \ }
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ méthode} getHeure() → entier}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ méthode} getMinute() → entier}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ méthode} getSeconde() → entier}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ méthode} setHeure( h : entier )}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ méthode} setMinute( m : entier )}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ méthode} setSeconde( s : entier )}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ méthode} estMatin() → booléen}
-
-{\sffamily
-\textstyleMotCl{fin}\textbf{ }\textstyleMotCl{classe}}
-
-{\sffamily
-\textstyleMotCl{méthode} estMatin() → booléen}
-
-{\sffamily
-\ \ \textstyleMotCl{retourner} heure{\textless}12}
-
-{\sffamily
-\textstyleMotCl{fin}\textbf{ }\textstyleMotCl{méthode}}
-
-{\sffamily
-\textstyleWWPolicepardfaut{// + les accesseurs et les mutateurs}}
+\bigskip
 
 {\sffamily\bfseries\upshape
 Instanciation d'une classe}
@@ -840,57 +761,39 @@ Cela s'écrit avec l'instruction
 l'assigne à une variable déclarée du type de la
 classe.}
 
-{\sffamily
-nomObjet : nomClasse\ \ \ \ \ \ \ \ // déclaration de
-l'objet}
-
-{\sffamily
-nomObjet \ ← \textstyleMotCl{nouveau} nomClasse()\ \ \ \ //
-instanciation de l'objet}
+\cadre{
+\begin{pseudo}
+	\Decl nomObjet : nomClasse 
+	\RComment déclaration de l'objet
+	\Let nomObjet \Gets \K{nouveau} nomClasse() 
+	\RComment instanciation de l'objet
+\end{pseudo}
+}
 
 {
 \textbf{Exemple} : pour créer un moment de la journée}
 
-{\sffamily
-\textstyleMotCl{{module}}{
-test()}}
-
-{\sffamily
-\ \ midi : Moment\ \ \ \ \ \ // réf. 1}
-
-{\sffamily
-{\ \ }midi ← \textstyleMotCl{nouveau}
-Moment()\ \ // réf. 2}
-
-{\sffamily
-\ \ {midi.setHeure( 12 )}}
-
-{\sffamily
-\ \ midi.setMinute( 0 )}
-
-{\sffamily
-\ \ midi.setSeconde( 0 )\ \ \ \ // réf. 3}
-
-{\sffamily
-{\ \ }\textstyleMotCl{si} midi.estMatin()
-\textstyleMotCl{alors}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{écrire} {\textquotedbl}Midi est considéré comme
-étant encore le matin{\textquotedbl}}
-
-{\sffamily
-\ \ \textstyleMotCl{sinon}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{écrire} {\textquotedbl}Midi est considéré comme
-étant l'après-midi{\textquotedbl}}
-
-{\sffamily
-\textstyleMotCl{\ \ fin si}}
-
-{\sffamily
-\textstyleMotCl{fin module}}
+\cadre{
+\begin{pseudo}
+	\Module{test}{}{}
+		\Decl midi : Moment
+		\RComment réf. 1
+		\Let midi \Gets \K{nouveau} Moment()
+		\RComment réf. 2
+		\Stmt midi.setHeure( 12 )
+		\Stmt midi.setMinute( 0 )
+		\Stmt midi.setSeconde( 0 )
+		\RComment réf. 3
+		\If{midi.estMatin()}
+			\Write "Midi est considéré comme
+			étant encore le matin"
+		\Else 
+			\Write "Midi est considéré comme
+			étant l'après-midi"
+		\EndIf
+	\EndModule
+\end{pseudo}
+}
 
 {
 Remarquez qu'il y a une différence importante entre les
@@ -974,24 +877,19 @@ Après l'action des mutateurs (réf. 3), on a :}
 \centering\arraybslash  seconde = 0\\\hhline{~~-}
 \end{supertabular}
 \end{center}
+
+\marginicon{exercice}
 {\sffamily\bfseries\scshape
 Exercices – classe et instance}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.282cm,height=1.282cm]{log1-img/log1-img146}
-
-\end{center}
 \liststyleWWviiiNumi
 \begin{enumerate}
 \item {
-Pour les dates, vous avez déjà écrit les attributs et les en-têtes des
-fonctions. Regroupez le tout en une classe Date en respectant les
-notations que vous venez de voir.}
+Pour les étudiants, vous avez déjà écrit les attributs et les en-têtes des
+méthodes. Regroupez le tout en une classe \textstyleCodeInsr{Etudiant}
+en respectant les notations que vous venez de voir.}
 \item {
-Écrivez un module qui calcule et affiche le nombre de jours entre le 15
-septembre de cette année et le 30 juin de l'année
-prochaine.}
+Écrivez un module qui fait rater un étudiant puis qui le fait réussir.}
 \end{enumerate}
 
 \bigskip
@@ -1010,17 +908,14 @@ Il serait bon, lorsqu'on crée un objet (via
 initial de l'objet et que cet état puisse être validé.
 C'est le rôle précis des constructeurs.}
 
-{
+
+\marginicon{definition}
+{\sffamily\bfseries\upshape{
 Un \textbf{constructeur} est une méthode particulière permettant
 d'initialiser les attributs d'un
 objet lors de sa création effective. Elle porte le même nom que sa
-classe et ne retourne pas de valeur.}
+classe et ne retourne pas de valeur.}}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img147}
-
-\end{center}
 {
 Il peut y avoir plusieurs constructeurs ce qui permet
 d'offrir plusieurs possibilités
@@ -1040,106 +935,66 @@ Exemple}
 {
 Écrivons des constructeurs pour un moment de la journée :}
 
-{\sffamily
-\textstyleMotCl{classe} Moment}
+\cadre{
+\begin{pseudo}
+	\Class{Moment}
+		\Private
+			\LComment pas de changement
+			\Decl heure : entier
+			\Decl minute : entier
+			\Decl seconde : entier
+		\Public
+			\ConstrSign{Moment}{uneHeure, uneMinute, uneSeconde : entiers}
+			\ConstrSign{Moment}{uneHeure, uneMinute : entiers}
+			\RComment 0 seconde par défaut
+			\ConstrSign{Moment}{uneHeure : entier}
+			\RComment initialiser à une heure pile
+			\Empty
+			\LComment pas de changement au niveau des méthodes :
+			\MethodSign{getHeure}{}{entier}
+			\MethodSign{getMinute}{}{entier}
+			\MethodSign{getSeconde}{}{entier}
+			\MethodSign{setHeure}{uneHeure : entier}{}
+			\MethodSign{setMinute}{uneMinute : entier}{}
+			\MethodSign{setSeconde}{uneSeconde : entier}{}
+			\MethodSign{estMatin}{}{booléen}
+	\EndClass
+	\end{pseudo}
+}
 
-{\sffamily
-\ \ \textstyleMotCl{privé} :\ \ \ \ }
+\cadre{
+\begin{pseudo}
+	\Constr{Moment}{uneHeure, uneMinute, uneSeconde : entiers}
+		\Stmt setHeure(uneHeure)
+		\Stmt setMinute(uneMinute)
+		\Stmt setSeconde(uneSeconde)
+		\LComment Il est courant en logique qu'un constructeur 
+		appelle les mutateurs 
+		\LComment afin d'effectuer les tests sans avoir à les
+		dupliquer.
+		\LComment Mais c'est une démarche que vous éviterez de
+		\LComment faire en Java par exemple.
+	\EndConstr
+	
+	\Empty
+	\Constr{Moment}{uneHeure, uneMinute : entiers}
+		\Stmt setHeure(uneHeure)
+		\Stmt setMinute(uneMinute)
+		\Stmt setSeconde(0)
+	\EndConstr
+	
+	\Empty
+	\Constr{Moment}{uneHeure : entier}
+		\Stmt setHeure(uneHeure)
+		\Stmt setMinute(0)
+		\Stmt setSeconde(0)
+	\EndConstr
+		
+	\Empty
+	\LComment + les accesseurs, les mutateurs et les autres méthodes
 
-{\sffamily
-\ \ \ \ // pas de changement}
-
-{\sffamily
-\ \ \ \ heure : entier}
-
-{\sffamily
-\ \ \ \ minute : entier}
-
-{\sffamily
-\ \ \ \ seconde : entier}
-
-{\sffamily
-\ \ \textstyleMotCl{public} :\ \ }
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{constructeur} Moment( h, m, s : entiers )\ \ }
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{constructeur} Moment( h, m : entiers ) \ \ // 0
-seconde par défaut \ \ }
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{constructeur} Moment( h : entier )\ \ 
-\ \ \ \ \ \ // initialiser à une heure pile\ \ }
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ \ \ // pas de changement au niveau des
-méthodes}}
-
-{\sffamily
-\textstyleMotCl{fin}\textbf{ }\textstyleMotCl{classe}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{constructeur} Moment( h, m, s : entiers )}
-
-{\sffamily
-\ \ {setHeure( h )}}
-
-{\sffamily
-\ \ setMinute( m )}
-
-{\sffamily
-{\ \ }setSeconde( s )}
-
-{\sffamily
-\ \ // Il est courant qu'un constructeur appelle les
-mutateurs }
-
-{\sffamily
-\ \ // afin d'effectuer les tests sans avoir à les
-dupliquer }
-
-{\sffamily
-\textstyleMotCl{fin}\textbf{ }\textstyleMotCl{constructeur}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{constructeur}\textbf{ }Moment( h, m : entiers )}
-
-{\sffamily
-\ \ {setHeure( h )}}
-
-{\sffamily
-\ \ setMinute( m )}
-
-{\sffamily
-{\ \ }setSeconde( 0 )}
-
-{\sffamily
-\textstyleMotCl{fin constructeur}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{constructeur} Moment( h : entier )}
-
-{\sffamily
-\ \ {setHeure( h )}}
-
-{\sffamily
-\ \ setMinute( 0 )}
-
-{\sffamily
-{\ \ }setSeconde( 0 )}
-
-{\sffamily
-\textstyleMotCl{fin constructeur}}
+\end{pseudo}
+}
 
 {
 Lorsqu'on instancie un objet, les paramètres
@@ -1150,21 +1005,17 @@ l'objet.}
 {
 \textbf{Exemple} : Instancions quelques moments de la journée}
 
-{\sffamily
-moment11\textbf{ }\textbf{←}\textbf{ }\textstyleMotCl{nouveau} Moment(
-14, 23, 56 )}
-
-{\sffamily
-moment12\textbf{ }\textbf{←}\textbf{ }\textstyleMotCl{nouveau} Moment(
-9, 30 )}
-
-{\sffamily
-moment13\textbf{ }\textbf{←}\textbf{ }\textstyleMotCl{nouveau} Moment(
-17 )}
+\cadre{
+\begin{pseudo}
+	\Let moment11 \Gets \K{nouveau} Moment(14, 23, 56)
+	\Let moment11 \Gets \K{nouveau} Moment(9, 30)
+	\Let moment11 \Gets \K{nouveau} Moment(17)
+\end{pseudo}
+}
 
 {
 Le fait qu'un objet est instancié via la primitive
-\textbf{nouveau} et \ pas implicitement à la déclaration permet de
+\textbf{nouveau} et pas implicitement à la déclaration permet de
 postposer sa construction effective au moment où
 l'état initial qu'on veut lui donner
 sera connu (ce qui peut résulter d'un calcul). On est
@@ -1172,22 +1023,18 @@ ainsi assuré que tous les objets manipulés sont valides ce qui permet
 d’éviter les situations où une méthode fait des dégâts suite à la
 manipulation d’un objet invalide.}
 
+\marginicon{exercice}
 {\sffamily\bfseries\scshape
 Exercices - constructeur}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.282cm,height=1.282cm]{log1-img/log1-img148}
-
-\end{center}
 \liststyleWWviiiNumi
 \begin{enumerate}
 \item {
-Écrivez un ou des constructeurs pour une Date}
+Écrivez un ou des constructeur(s) pour un \textstyleCodeInsr{Etudiant}}
 \item {
-Adaptez le module écrit plus haut qui calcule le nombre de jours entre
-le 15 septembre de cette année et le 30 juin de
-l'année suivante.}
+Adaptez le module écrit plus haut pour qu'il fasse rater 
+puis réussir l'étudiant "Dupont, g12345, en 1ère année,
+non doubleur".}
 \end{enumerate}
 
 \bigskip
@@ -1232,14 +1079,10 @@ mais il ne faudra rien changer au reste du code, c-à-d les lignes du
 code utilisant la classe. C’est d’ailleurs là une des grandes forces de
 la programmation orientée objet.}
 
+\marginicon{exercice}
 {\sffamily\bfseries\scshape
 Exercices – représentation de l'état}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.282cm,height=1.282cm]{log1-img/log1-img149}
-
-\end{center}
 \liststyleWWviiiNumi
 \begin{enumerate}
 \item {
@@ -1254,14 +1097,10 @@ pour définir la classe Moment ?}
 
 \bigskip
 
+\marginicon{attention}
 {\bfseries
 Remarque}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.323cm,height=1.323cm]{log1-img/log1-img150}
-
-\end{center}
 {
 Précédemment, nous avons défini un \textbf{accesseur} comme une méthode
 permettant d’accéder à la valeur d’un attribut. Mais c’est au
@@ -1359,44 +1198,38 @@ Clarifions certaines notations liées aux objets.}
 On peut directement afficher un objet. Cela affiche son état,
 c'est-à-dire les valeurs de ses attributs dans
 l'ordre où ils apparaissent dans la définition de la
-classe.}
-\end{itemize}
-{\sffamily
-rendezVous : Moment}
+classe.
+\\
+\bigskip
+\cadre{
+\begin{pseudo}
+	\Decl rendezVous : Moment
+	\Let rendezVous \Gets \K{nouveau} Moment(14, 23, 56)
+	\Write rendezVous 
+	\RComment affichera 14, 23 et 56 dans un format lisible quelconque
+\end{pseudo}
+}
+}
+\bigskip
 
-{\sffamily
-rendezVous \textbf{←}\textbf{ }\textstyleMotCl{nouveau} Moment( 14, 23,
-56 )}
-
-{\sffamily
-\textstyleMotCl{écrire} rendezVous\ \ // affichera 14, 23 et 56 dans un
-format lisible quelconque}
-
-\liststyleListv
-\begin{itemize}
 \item {
 Un nom d'objet est en fait une \textbf{référence} à
 l'objet. Ainsi l'assignation ne copie
 pas l'objet mais sa référence. Au final, nous avons
 deux noms identifiant le même objet}
-\end{itemize}
-{\sffamily
-moment1, moment2 : Moment}
-
-{\sffamily
-moment1 \textbf{←}\textbf{ }\textstyleMotCl{nouveau} Moment( 14, 23, 56
-)}
-
-{\sffamily
-moment2 \textbf{←}\textbf{ }moment1\ \ // moment1 et moment2 désignent
-le même objet}
-
-{\sffamily
-moment2.setHeure( 12 )}
-
-{\sffamily
-\textstyleMotCl{écrire} moment1.getHeure() \ // affiche 12 !!!}
-
+\\
+\bigskip
+\cadre{
+\begin{pseudo}
+	\Decl moment1, moment2 : Moment
+	\Let moment1 \Gets \K{nouveau} Moment(14, 23, 56)
+	\Let moment2 \Gets moment1
+	\RComment moment1 et moment2 désignent le même objet
+	\Stmt moment2.setHeure( 12 )
+	\Write moment1.getHeure() 
+	\RComment affiche 12 !!!
+\end{pseudo}
+}
 
 \bigskip
 
@@ -1407,7 +1240,7 @@ moment2.setHeure( 12 )}
 \multicolumn{1}{|m{2.19cm}|}{\centering  moment1}
 &
 \centering \sffamily → &
-\centering  Heure = 14 12 &
+\centering  Heure = \sout{14} 12 &
 \multicolumn{1}{m{2.34cm}|}{\centering \sffamily
 ←} &
 \multicolumn{1}{m{2.146cm}|}{\centering\arraybslash
@@ -1435,63 +1268,45 @@ moment2.setHeure( 12 )}
 
 \bigskip
 
-\liststyleListv
-\begin{itemize}
 \item {
 Le signe «~=~» permet de tester que deux noms référencent le même objet.
 Pour tester que deux objets différents sont dans le même état, on
 utilise la méthode «~égal~».}
+\\
+\bigskip
+\cadre{
+\begin{pseudo}
+	\Decl moment1, moment2, moment3 : Moment
+	\Empty
+	\Let moment1 \Gets {nouveau} Moment( 14, 23, 56 )
+	\Let moment2 \Gets moment1 
+	\RComment moment1 et moment2 désignent le même objet
+	\Empty
+	\Let moment3 \Gets {nouveau} Moment( 14, 23, 56 )
+	\Write moment1 = moment2
+	\RComment vrai
+	\Write moment1 = moment3 
+	\RComment faux
+	\Write moment1.égal(moment2) 
+	\RComment vrai
+	\Write moment1.égal(moment3) 
+	\RComment vrai
+	\Empty 
+	\Stmt moment2.setHeure( 12 )
+	\Write moment1.égal(moment2) 
+	\RComment vrai
+	\Write moment1.égal(moment3) 
+	\RComment faux
+\end{pseudo}
+}
 \end{itemize}
-{\sffamily
-moment1, moment2, moment3 : Moment}
-
-{\sffamily
-moment1 \textbf{←}\textbf{ }\textstyleMotCl{nouveau} Moment( 14, 23, 56
-)}
-
-{\sffamily
-moment2 \textbf{←}\textbf{ }moment1 \ \ \ \ \ \ // moment1 et moment2
-désignent le même objet\ \ }
-
-{\sffamily
-moment3 \textbf{←}\textbf{ }\textstyleMotCl{nouveau} Moment( 14, 23, 56
-)}
-
-{\sffamily
-\textstyleMotCl{écrire} moment1 = moment2\ \ \ \ // vrai}
-
-{\sffamily
-\textstyleMotCl{écrire} moment1 = moment3 \ \ \ \ // faux}
-
-{\sffamily
-\textstyleMotCl{écrire} moment1.égal(moment2) \ \ // vrai}
-
-{\sffamily
-\textstyleMotCl{écrire} moment1.égal(moment3) \ \ // vrai}
-
-{\sffamily
-moment2.setHeure( 12 )}
-
-{\sffamily
-\textstyleMotCl{écrire} moment1.égal(moment2) \ \ // vrai}
-
-{\sffamily
-\textstyleMotCl{écrire} moment1.égal(moment3) \ \ // faux}
-
-
 \bigskip
 
+\marginicon{exercice}
 {\sffamily\bfseries\scshape
 Exercice – méthode égal()}
-
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.282cm,height=1.282cm]{log1-img/log1-img151}
-
-\end{center}
 {
 Écrire la méthode égal() pour la classe Moment.}
-
 
 \bigskip
 
@@ -1501,49 +1316,48 @@ existe par défaut pour toutes les nouvelles classes.}
 
 \liststyleListv
 \begin{itemize}
-\item {
-Un attribut privé n'est pas connu en dehors de la
-classe. Précisons : un attribut privé n'est connu que
-des instances de cette classe, ce qui signifie qu'il
-est également connu par tous les autres objets de la même
-classe.
+	\item {
+	Un attribut privé n'est pas connu en dehors de la
+	classe. Précisons : un attribut privé n'est connu que
+	des instances de cette classe, ce qui signifie qu'il
+	est également connu par tous les autres objets de la même
+	classe.
 
-\textbf{Exemple} : écrivons la méthode qui teste si un moment précède un
-autre (en supposant que l'état est représenté par un
-seul entier, totalSecondes, le nombre de secondes depuis minuit)}
+	\textbf{Exemple} : écrivons la méthode qui teste si un moment précède un
+	autre (en supposant que l'état est représenté par un
+	seul entier, totalSecondes, le nombre de secondes depuis minuit)
+	\\
+	\bigskip
+	\cadre{
+	\begin{pseudo}
+		\Method{estAntérieur}{autre : Moment}{booléen}
+			\Return totalSecondes < autre.totalSecondes
+			\LComment c'est équivalent à \textstyleMotCl{retourner} totalSecondes < autre.getTotalSecondes()
+		\EndMethod
+	\end{pseudo}
+	}
+	\bigskip
+	}
+	\item {
+	Lorsqu'il est déclaré, un nom d'objet
+	ne référence encore aucun objet. Cela s'indique par la
+	valeur «~rien~». On peut aussi utiliser cette valeur pour enlever toute
+	référence vers un objet.
+	\\
+	\bigskip
+	\cadre{
+	\begin{pseudo}
+		\Decl moment : Moment
+		\RComment moment = rien
+		\Let moment \Gets \K{nouveau} Moment( 14, 23, 56 )
+		\RComment moment ${\neq}$ rien
+		\Let moment \Gets rien
+		\RComment moment = rien
+	\end{pseudo}
+	}
+	}
 \end{itemize}
-{\sffamily
-\textstyleMotCl{méthode} estAntérieur( autre : Moment ) → booléen}
-
-{\sffamily
-\ \ \textstyleMotCl{retourner} totalSecondes {\textless}
-autre.totalSecondes}
-
-{\sffamily
-\ \ // équivalent à \textstyleMotCl{retourner} totalSecondes {\textless}
-autre.getTotalSecondes()}
-
-{\sffamily
-\textstyleMotCl{fin}\textbf{ }\textstyleMotCl{méthode}}
-
-\liststyleListv
-\begin{itemize}
-\item {
-Lorsqu'il est déclaré, un nom d'objet
-ne référence encore aucun objet. Cela s'indique par la
-valeur «~rien~». On peut aussi utiliser cette valeur pour enlever toute
-référence vers un objet.}
-\end{itemize}
-{\sffamily
-moment : Moment\ \ \ \ \ \ \ \ \ \ \ \ // moment = rien}
-
-{\sffamily
-moment \textbf{←}\textbf{ }\textstyleMotCl{nouveau} Moment( 14, 23, 56
-)\ \ \ \ // moment ${\neq}$ rien}
-
-{\sffamily
-moment \textbf{←}\textbf{ }rien\ \ \ \ \ \ \ \ \ \ \ \ // moment = rien}
-
+	
 \section{Représentation modélisée d'une classe}
 {
 Un dessin étant souvent plus lisible qu'un texte, on
@@ -1629,126 +1443,84 @@ Enfin, on doit pouvoir comparer des durées. Arrêtons-nous là, mais en
 pratique, on pourrait trouver encore bon nombre d’autres méthodes qu’il
 serait intéressant de fournir. Ce qui nous donne jusqu’à présent}
 
-{\sffamily
-\textstyleMotCl{classe} Durée}
-
-{\sffamily
-\ \ \textstyleMotCl{privé~}:}
-
-{\sffamily
-\ \ \ \ // rien encore}
-
-{\sffamily
-\ \ \textstyleMotCl{public~}:}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{constructeur} Durée(secondes : entier)}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{constructeur} Durée(heure, minute, seconde :
-entiers)}
-
-
-\bigskip
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} getJour() → entier~~~~~\textit{ \ \ //
-nb de jours dans une durée}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} getHeure() → entier~~\textit{ \ \ //
-entier entre 0 et 23 inclus}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} getMinute() → entier~ \textit{\ \ \ //
-entier entre 0 et 59 inclus}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} getSeconde() → entier\textit{ \ \ //
-entier entre 0 et 59 inclus}}
-
-
-\bigskip
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} getTotalHeures() → entier~~~~~
-\textit{// Le nombre total d’heures}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} getTotalMinutes() → entier~~~~
-\textit{// Le nombre total de minutes}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} getTotalSecondes() → entier~\textit{ //
-Le nb total de secondes}}
-
-
-\bigskip
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} ajouter(autreDurée~~↓ : Durée) }
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} différence(autreDurée~~ ↓ : Durée) →
-Durée}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} égale(autreDurée~~↓ : Durée) → booléen
+\cadre{
+\begin{pseudo}
+	\Class{Durée}
+		\Private
+			\LComment rien encore
+		\Public
+			\ConstrSign{Durée}{secondes : entier}
+			\ConstrSign{Durée}{heure, minute, seconde : entiers}
+			\Empty
+			\MethodSign{getJour}{}{entier}
+			\RComment nb de jours dans une durée
+			\MethodSign{getHeure}{}{entier}
+			\RComment entier entre 0 et 23 inclus
+			\MethodSign{getMinute}{}{entier}
+			\RComment entier entre 0 et 59 inclus
+			\MethodSign{getSeconde}{}{entier}
+			\RComment entier entre 0 et 59 inclus
+			\Empty
+			\MethodSign{getTotalHeures}{}{entier}
+			\RComment Le nombre total d’heures
+			\MethodSign{getTotalMinutes}{}{entier}
+			\RComment Le nombre total de minutes
+			\MethodSign{getTotalSecondes}{}{entier}
+			\RComment Le nombre total de secondes
+			\Empty
+			\MethodSign{ajouter}{autreDurée : Durée}{}
+			\MethodSign{différence}{autreDurée : Durée}{Durée}
+			\MethodSign{égale}{autreDurée : Durée}{booléen}
+			\MethodSign{plusPetit}{autreDurée : Durée}{booléen}
+	\EndClass
+\end{pseudo}
 }
 
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} plusPetit(autreDurée~~ ↓ : Durée) →
-booléen}
+\bigskip
 
-{\sffamily
-\textstyleMotCl{fin classe}}
-
+\marginicon{attention}
 {\bfseries
 Quelques remarques}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.323cm,height=1.323cm]{log1-img/log1-img152}
-
-\end{center}
 \liststyleListv
 \begin{itemize}
-\item {
-On a deux constructeurs, ce qui offre plus de souplesse pour initialiser
-un objet. Ceci est un exemple supplémentaire du concept de
-«\textbf{~surcharge~}».}
-\item {
-Faisons bien la distinction entre les méthodes
-\textstyleCodeInsr{getXXX()} et \textstyleCodeInsr{getTotalXXX()}. Par
-exemple, la méthode \textstyleCodeInsr{getMinute()} retourne la valeur
-de la composante «~minutes~» dans une représentation HMS tandis que la
-méthode \textstyleCodeInsr{getTotalMinutes()} retourne le nombre total
-de minutes pour cette durée. Ex : pour 1h23’12’’,
-\textstyleCodeInsr{getMinute()} retourne 23 et
-\textstyleCodeInsr{getTotalMinutes()} retourne 83. Idem avec les heures
-et les secondes.}
-\item {
-Les méthodes \textstyleCodeInsr{getTotalXXX()} retournent le nombre
-(toujours entier) de XXX contenus dans la durée. Exemple, avec la durée
-0h23’52'’, \textstyleCodeInsr{getTotalMinutes()}
-retourne 23 et pas 24 (autrement dit, il n’y a pas d’arrondi vers le
-haut).}
-\item {
-Il n’y a pas de \textit{mutateur }(\textstyleCodeInsr{setXXX()}). Ce qui
-signifie qu’on ne peut pas changer directement la valeur de l’objet
-après son initialisation. On aurait pu en définir mais nous
-n'avons pas jugé utile de le faire dans ce cas
-précis.}
-\item {
-La méthode \textstyleCodeInsr{ajouter()} ne retourne rien. En effet,
-elle ajoute la durée à l’objet sur lequel est appelée la méthode. C’est
-un choix ; on aurait aussi pu dire que la méthode ne modifie pas
-l’objet mais en retourne un autre qui représente la somme. Dans ce cas,
-on l’aurait plutôt appelée «\textstyleCodeInsr{~plus( )}~».}
-\item {
-La méthode \textstyleCodeInsr{différence()}, elle, renvoie toujours une
-durée (positive).}
+	\item {
+	On a deux constructeurs, ce qui offre plus de souplesse pour initialiser
+	un objet. Ceci est un exemple supplémentaire du concept de
+	«\textbf{~surcharge~}».}
+	\item {
+	Faisons bien la distinction entre les méthodes
+	\textstyleCodeInsr{getXXX()} et \textstyleCodeInsr{getTotalXXX()}. Par
+	exemple, la méthode \textstyleCodeInsr{getMinute()} retourne la valeur
+	de la composante «~minutes~» dans une représentation HMS tandis que la
+	méthode \textstyleCodeInsr{getTotalMinutes()} retourne le nombre total
+	de minutes pour cette durée. Ex : pour 1h23’12’’,
+	\textstyleCodeInsr{getMinute()} retourne 23 et
+	\textstyleCodeInsr{getTotalMinutes()} retourne 83. Idem avec les heures
+	et les secondes.}
+	\item {
+	Les méthodes \textstyleCodeInsr{getTotalXXX()} retournent le nombre
+	(toujours entier) de XXX contenus dans la durée. Exemple, avec la durée
+	0h23’52'’, \textstyleCodeInsr{getTotalMinutes()}
+	retourne 23 et pas 24 (autrement dit, il n’y a pas d’arrondi vers le
+	haut).}
+	\item {
+	Il n’y a pas de \textit{mutateur }(\textstyleCodeInsr{setXXX()}). Ce qui
+	signifie qu’on ne peut pas changer directement la valeur de l’objet
+	après son initialisation. On aurait pu en définir mais nous
+	n'avons pas jugé utile de le faire dans ce cas
+	précis.}
+	\item {
+	La méthode \textstyleCodeInsr{ajouter()} ne retourne rien. En effet,
+	elle ajoute la durée à l’objet sur lequel est appelée la méthode. C’est
+	un choix ; on aurait aussi pu dire que la méthode ne modifie pas
+	l’objet mais en retourne un autre qui représente la somme. Dans ce cas,
+	on l’aurait plutôt appelée «\textstyleCodeInsr{~plus( )}~».}
+	\item {
+	La méthode \textstyleCodeInsr{différence()}, elle, renvoie toujours une
+	durée (positive).}
 \end{itemize}
+
 {\sffamily\bfseries
 La représentation de l'état (les attributs)}
 
@@ -1780,23 +1552,16 @@ permette d’écrire des méthodes lisibles et si possible efficaces
 critères, la deuxième représentation est de loin la meilleure. Ce qui
 nous donne}
 
-{\sffamily
-\textstyleMotCl{classe} Durée}
-
-{\sffamily
-\ \ \textstyleMotCl{privé~}:}
-
-{\sffamily
-\ \ \ \ totalSecondes : entier}
-
-{\sffamily
-\ \ \textstyleMotCl{public~}:}
-
-{\sffamily
-\ \ \ \ // idem…}
-
-{\sffamily
-\textstyleMotCl{fin classe}}
+\cadre{
+\begin{pseudo}
+	\Class{Durée}
+		\Private
+			\Decl totalSecondes : entier
+		\Public
+			\LComment idem
+	\EndClass
+\end{pseudo}
+}
 
 {\sffamily\bfseries\upshape
 L'implémentation}
@@ -1805,298 +1570,128 @@ L'implémentation}
 On est à présent prêt pour écrire le code des méthodes. Ce qui nous
 donne pour la classe dans son entièreté :}
 
-{\sffamily
-\textstyleMotCl{classe} Durée}
-
-{\sffamily
-\ \ \textstyleMotCl{privé~}:}
-
-{\sffamily
-\ \ \ \ totalSecondes : entier}
-
-{\sffamily
-\ \ \textstyleMotCl{public~}:}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{constructeur} Durée(secondes : entier)}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{constructeur} Durée(heure, minute, seconde :
-\textit{entiers})}
-
-
-\bigskip
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} getJour() → entier~~~~~\textit{ \ \ //
-nb de jours dans une durée}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} getHeure() → entier~~\textit{ \ \ //
-entier entre 0 et 23 inclus}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} getMinute() → entier~ \textit{\ \ \ //
-entier entre 0 et 59 inclus}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} getSeconde() → entier\textit{ \ \ //
-entier entre 0 et 59 inclus}}
-
-
-\bigskip
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} getTotalHeures() → entier~~~~~
-\textit{// Le nombre total d’heures}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} getTotalMinutes() → entier~~~~
-\textit{// Le nombre total de minutes}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} getTotalSecondes() → entier~\textit{ //
-Le nb total de secondes}}
-
-
-\bigskip
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} ajouter( autreDurée~ : Durée ) }
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} différence( autreDurée~~ ↓ : Durée ) →
-Durée}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} égale( autreDurée : Durée ) → booléen }
-
-{\sffamily
-\textit{\ \ \ \ }\textstyleMotCl{méthode} plusPetit( autreDurée : Durée
-) → \ booléen}
-
-{\sffamily
-\textstyleMotCl{fin classe}}
-
-
-\bigskip
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{constructeur} Durée(secondes : entier) }
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{si}\textstyleMotCl{\textmd{
-secondes {\textless} 0 }}\textstyleMotCl{alors}\textstyleMotCl{\textmd{
-}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ }}\textstyleMotCl{erreur}\textstyleMotCl{\textmd{
-{\textquotedbl}paramètre négatif{\textquotedbl} }}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{fin si}}
-
-{\sffamily
-\ \ totalSecondes~ \textbf{←} secondes}
-
-{\sffamily
-\textstyleMotCl{fin constructeur}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{constructeur} Durée(heure~, minute~, seconde : entiers)
+\cadre{
+\begin{pseudo}
+	\Class{Durée}
+		\Private
+			\Decl totalSecondes : entier
+		\Public
+			\ConstrSign{Durée}{secondes : entier}
+			\ConstrSign{Durée}{heure, minute, seconde : entiers}
+			\Empty
+			\MethodSign{getJour}{}{entier}
+			\RComment nb de jours dans une durée
+			\MethodSign{getHeure}{}{entier}
+			\RComment entier entre 0 et 23 inclus
+			\MethodSign{getMinute}{}{entier}
+			\RComment entier entre 0 et 59 inclus
+			\MethodSign{getSeconde}{}{entier}
+			\RComment entier entre 0 et 59 inclus
+			\Empty
+			\MethodSign{getTotalHeures}{}{entier}
+			\RComment Le nombre total d’heures
+			\MethodSign{getTotalMinutes}{}{entier}
+			\RComment Le nombre total de minutes
+			\MethodSign{getTotalSecondes}{}{entier}
+			\RComment Le nombre total de secondes
+			\Empty
+			\MethodSign{ajouter}{autreDurée : Durée}{}
+			\MethodSign{différence}{autreDurée : Durée}{Durée}
+			\MethodSign{égale}{autreDurée : Durée}{booléen}
+			\MethodSign{plusPetit}{autreDurée : Durée}{booléen}
+	\EndClass
+\end{pseudo}
 }
 
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{si}\textstyleMotCl{\textmd{
-heure {\textless} 0
-}}\textstyleMotCl{\textmd{OU}}\textstyleMotCl{\textmd{ minute
-{\textless} 0 }}\textstyleMotCl{\textmd{OU}}\textstyleMotCl{\textmd{
-seconde {\textless} 0 }}\textstyleMotCl{alors}\textstyleMotCl{\textmd{
-}}}
+\cadre{
+\begin{pseudo}
+	\Constr{Durée}{secondes : entier}
+		\If{secondes < 0}
+			\Stmt \K{erreur} "paramètre négatif"
+		\EndIf
+		\Let totalSecondes \Gets secondes
+	\EndConstr
+	\Empty
+	\Constr{Durée}{heure, minute, seconde : entiers}
+		\If{heure < 0 OU minute < 0 OU seconde < 0}
+			\Stmt \K{erreur} "un des paramètres est négatif"
+		\EndIf
+		\Let totalSecondes \Gets 3600*heure + 60*minute + seconde
+	\EndConstr
+\end{pseudo}
+}
 
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ }}\textstyleMotCl{erreur}\textstyleMotCl{\textmd{
-{\textquotedbl}un des paramètre est négatif{\textquotedbl} }}}
+\cadre{
+\begin{pseudo}
+	\LComment Retourne le nombre de jours dans une 
+	représentation JJ/HH:MM:SS
+	\Method{getJour}{}{entier}
+		\Return totalSecondes DIV (3600*24)
+	\EndMethod
+	\Empty
+	\LComment Retourne le nombre d'heures dans une 
+	représentation JJ/HH:MM:SS
+	\Method{getHeure}{}{entier}
+		\LComment On doit enlever les jours éventuels
+		\Return (totalSecondes DIV 3600) MOD 24
+	\EndMethod
+	\Empty
+	\LComment Retourne le nombre de minutes dans une 
+	représentation JJ/HH:MM:SS
+	\Method{getMinute}{}{entier}
+		\LComment On doit enlever les heures éventuelles
+		\Return (totalSecondes DIV 60) MOD 60
+	\EndMethod
+	\Empty
+	\LComment Retourne le nombre de secondes dans une 
+	représentation JJ/HH:MM:SS
+	\Method{getSeconde}{}{entier}
+		\LComment On doit enlever les minutes éventuelles
+		\Return totalSecondes  MOD 60
+	\EndMethod
+\end{pseudo}
+}
 
-{\sffamily
-\textstyleMotCl{\textmd{\ \ }}\textstyleMotCl{fin si}}
+\cadre{
+\begin{pseudo}
 
-{\sffamily
-\ \ totalSecondes~ \textbf{←} 3600*heure + 60*minute + seconde}
+	\LComment Retourne le nombre entier d’heures complètes
+	\Method{getTotalHeures}{}{entier}
+		\Return totalSecondes DIV 3600
+	\EndMethod
+	\Empty
+	\LComment Retourne le nombre entier de minutes complètes
+	\Method{getTotalMinutes}{}{entier}
+		\Return totalSecondes DIV 60
+	\EndMethod
+	\Empty
+	\LComment Retourne le nombre entier de secondes complètes
+	\Method{getTotalSecondes}{}{entier}
+		\Return totalSecondes
+	\EndMethod
+\end{pseudo}
+}
 
-{\sffamily
-\textstyleMotCl{fin constructeur}}
+\cadre{
+\begin{pseudo}
+	\Method{ajouter}{autreDurée : Durée}{}
+		\Let totalSecondes \Gets totalSecondes + autreDurée.totalSecondes
+	\EndMethod
+	\Empty
+	\Method{différence}{autreDurée : Durée}{Durée}
+		\Return \K{nouvelle} Durée(valeurAbsolue(totalSecondes - autreDurée.totalSecondes))
+	\EndMethod
+	\Empty
+	\Method{égale}{autreDurée : Durée}{booléen}
+		\Return totalSecondes = autreDurée.totalSecondes
+	\EndMethod
+	\Empty
+	\Method{plusPetit}{autreDurée : Durée}{booléen}
+		\Return totalSecondes < autreDurée.totalSecondes
+	\EndMethod
+\end{pseudo}
+}
 
-{\sffamily
-~}
-
-{\sffamily
-// Retourne le nombre de jours dans une représentation JJ/HH :MM :SS}
-
-{\sffamily
-\textstyleMotCl{méthode} getJour() → entier}
-
-{\sffamily
-\ \ \textstyleMotCl{retourner} totalSecondes DIV (3600*24) }
-
-{\sffamily
-\textstyleMotCl{fin méthode}}
-
-{\sffamily
-~}
-
-{\sffamily
-// Retourne le nombre d’heures dans une représentation JJ/HH :MM :SS}
-
-{\sffamily
-\textstyleMotCl{méthode} getHeure() → entier}
-
-{\sffamily
-\ \ // On doit enlever les jours éventuels }
-
-{\sffamily
-\ \ \textstyleMotCl{retourner} (totalSecondes~ DIV 3600) MOD 24~ }
-
-{\sffamily
-\textstyleMotCl{fin méthode}}
-
-{\sffamily
-~}
-
-{\sffamily
-// Retourne le nombre de minutes dans une représentation JJ/HH :MM :SS}
-
-{\sffamily
-\textstyleMotCl{méthode} getMinute() → entier}
-
-{\sffamily
-\ \ // On doit enlever les heures éventuelles}
-
-{\sffamily
-\ \ \textstyleMotCl{retourner} (totalSecondes~ DIV 60) MOD 60 }
-
-{\sffamily
-\textstyleMotCl{fin méthode}}
-
-{\sffamily
-~}
-
-{\sffamily
-// Retourne le nombre de secondes dans une représentation JJ/HH :MM :SS}
-
-{\sffamily
-\textstyleMotCl{méthode} getSeconde() → entier}
-
-{\sffamily
-\ \ // On doit enlever les minutes éventuelles}
-
-{\sffamily
-\ \ \textstyleMotCl{retourner} totalSecondes~ MOD 60 }
-
-{\sffamily
-\textstyleMotCl{fin méthode}}
-
-{\sffamily
-~}
-
-{\sffamily
-// Retourne le nombre entier d’heures complètes}
-
-{\sffamily
-\textstyleMotCl{méthode} getTotalHeures() → entier}
-
-{\sffamily
-\ \ \textstyleMotCl{retourner} totalSecondes~ DIV 3600 }
-
-{\sffamily
-\textstyleMotCl{fin méthode}}
-
-{\sffamily
-~}
-
-{\sffamily
-// Retourne le nombre entier de minutes complètes}
-
-{\sffamily
-\textstyleMotCl{méthode} getTotalMinutes() → \ entier}
-
-{\sffamily
-\textstyleMotCl{\ \ retourner} totalSecondes~ DIV 60 }
-
-{\sffamily
-\textstyleMotCl{fin méthode}}
-
-{\sffamily
-~}
-
-{\sffamily
-// Retourne le nombre entier de secondes complètes}
-
-{\sffamily
-\textstyleMotCl{méthode} getTotalSecondes() →\textrm{  }entier}
-
-{\sffamily
-\textstyleMotCl{\ \ retourner} totalSecondes~}
-
-{\sffamily
-\textstyleMotCl{fin méthode}}
-
-{\sffamily
-~}
-
-{\sffamily
-\textstyleMotCl{méthode} ajouter(autreDurée~~↓ : Durée)}
-
-{\sffamily
-\ \ totalSecondes~ \textbf{←} totalSecondes~ + autreDurée.totalSecondes}
-
-{\sffamily
-\textstyleMotCl{fin méthode}}
-
-{\sffamily
-~}
-
-{\sffamily
-\textstyleMotCl{méthode} différence(autreDurée~~ ↓ : Durée) → Durée}
-
-{\sffamily
-\ \ \textstyleMotCl{retourner} \textstyleMotCl{nouvelle} Durée(
-{\textbar} totalSecondes – autreDurée.totalSecondes {\textbar} )}
-
-{\sffamily
-\textstyleMotCl{fin méthode}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{méthode} égale(autreDurée~~↓ : Durée) → \ booléen}
-
-{\sffamily
-\ \ \textstyleMotCl{retourner} totalSecondes~ =
-autreDurée.totalSecondes~}
-
-{\sffamily
-\textstyleMotCl{fin méthode}}
-
-{\sffamily
-~}
-
-{\sffamily
-\textstyleMotCl{méthode} plusPetit(autreDurée~~ ↓ : Durée) → \ booléen}
-
-{\sffamily
-\textstyleMotCl{\ \ retourner} totalSecondes~ {\textless}
-autreDurée.totalSecondes}
-
-{\sffamily
-\textstyleMotCl{fin méthode}}
 
 {
 Et c’est tout ! Chaque méthode est très petite. C’est une constante en
@@ -2116,17 +1711,14 @@ Nous venons de voir l'essentiel de la partie
 abordées au cours de Java mais également au cours de Logique de
 deuxième année. En voici un aperçu :}
 
+\marginicon{definition}
 {\sffamily\bfseries\upshape
 L'héritage}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img153}
-
-\end{center}
 {
 L’héritage permet de définir une classe à partir d’une autre qui lui
-sert de base. On peut alors }
+sert de base.} 
+{On peut alors}
 
 \liststyleListv
 \begin{itemize}
@@ -2149,17 +1741,14 @@ dérivée}, \textbf{classe fille} ou encore \textbf{sous-classe}.}
 Cette notion est un préalable pour le pilier suivant, le
 \textbf{polymorphisme}.}
 
+\marginicon{definition}
 {\sffamily\bfseries\upshape
 Le polymorphisme}
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.129cm,height=1.282cm]{log1-img/log1-img154}
-
-\end{center}
 {
 Le polymorphisme permet d’utiliser un objet fille en lieu et place d’un
-objet mère. Exposé aussi brièvement cela peut paraitre futile mais cela
+objet mère.} 
+{Exposé aussi brièvement cela peut paraitre futile mais cela
 permet de construire du code ayant une architecture élégante, robuste
 et facilement adaptable.}
 
@@ -2167,10 +1756,10 @@ et facilement adaptable.}
 \liststyleExercice
 \begin{enumerate}
 \item {\sffamily\bfseries
-La date}
+L'étudiant}
 \end{enumerate}
 {
-Reprenez la classe \textstyleCodeInsr{Date} qui a servi
+Reprenez la classe \textstyleCodeInsr{Etudiant} qui a servi
 d'exemple. Identifiez et écrivez les méthodes qui vous
 paraissent utiles pour une telle classe.}
 
