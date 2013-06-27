@@ -520,31 +520,31 @@
 	Exemple du contenu du tableau phrase :
 
 	\begin{center}
-	\tablehead{}
-	\begin{supertabular}{|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|}
+	\begin{tabular}{|*{21}{>{\small\centering\arraybackslash}m{0.30cm}|}}
 	\hline
-	\centering  A &
-	~&
-	\centering  L &
-	\centering  ' &
-	\centering  E &
-	\centering  T &
-	\centering  A &
-	\centering  P &
-	\centering  E &
-	\centering  , &
-	~&
-	~&
-	\centering  E &
-	\centering  P &
-	\centering  A &
-	\centering  T &
-	\centering  E &
-	\centering  - &
-	\centering  L &
-	\centering  A &
-	\centering\arraybslash  !\\\hline
-	\end{supertabular}
+	  A &
+	  ~ &
+	  L &
+	  ' &
+	  E &
+	  T &
+	  A &
+	  P &
+	  E &
+	  , &
+	  ~ &
+	  ~ &
+	  E &
+	  P &
+	  A &
+	  T &
+	  E &
+	  - &
+	  L &
+	  A &
+	  ! \\
+	\hline
+	\end{tabular}
 	\end{center}
 
 	\textbf{Aide} : il est permis d’utiliser les modules suivants :
@@ -570,30 +570,30 @@
 	l'exercice \vref{ex:indiceminmax} pour réaliser cet algorithme. 
 	
 	\begin{center}
-	\tablehead{}
-	\begin{supertabular}{|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.315cm}|m{0.31700003cm}|m{0.35cm}|m{0.35cm}|m{0.31700003cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.35cm}|m{0.48800004cm}|}
+	\begin{tabular}{|*{20}{>{\centering\arraybackslash}m{0.35cm}|}}
 	\hline
-	\centering  12 &
-	\centering  85 &
-	\centering  21 &
-	\centering  17 &
-	\centering  8 &
-	\centering  6 &
-	\centering  10 &
-	\centering  16 &
-	\centering  5 &
-	\centering  74 &
-	\centering  64 &
-	\centering  29 &
-	\centering  41 &
-	\centering  11 &
-	\centering  73 &
-	\centering  72 &
-	\centering  28 &
-	\centering  66 &
-	\centering  55 &
-	\centering\arraybslash  44\\\hline
-	\end{supertabular}
+	  12 &
+	  \cellcolor{gray!25}85 &
+	  \cellcolor{gray!25}21 &
+	  \cellcolor{gray!25}17 &
+	  \cellcolor{gray!25}8 &
+	  \cellcolor{gray!25}6 &
+	  \cellcolor{gray!25}10 &
+	  \cellcolor{gray!25}16 &
+	  \cellcolor{gray!25}5 &
+	  74 &
+	  64 &
+	  29 &
+	  41 &
+	  11 &
+	  73 &
+	  72 &
+	  28 &
+	  66 &
+	  55 &
+	  44
+	\\\hline
+	\end{tabular}
 	\end{center}
 \end{Exercice}
 
@@ -609,69 +609,50 @@
 	il y a donc 3 séquences à comptabiliser :
 
 	\begin{center}
-	\tablehead{}
-	\begin{supertabular}{m{0.35cm}m{0.35cm}m{0.35cm}m{0.35cm}m{0.35cm}m{0.35cm}m{0.35cm}m{0.35cm}m{0.35cm}m{0.35cm}m{0.35cm}m{0.35cm}m{0.35cm}m{0.35cm}m{0.35cm}m{0.35cm}m{0.35cm}m{0.35cm}m{0.35cm}m{0.35cm}}
-	\centering \itshape 1 &
-	\centering \itshape 2 &
-	\centering \itshape 3 &
-	\centering \itshape 4 &
-	\centering \itshape 5 &
-	\centering \itshape 6 &
-	\centering \itshape 7 &
-	\centering \itshape 8 &
-	\centering \itshape 9 &
-	\centering \itshape 10 &
-	\centering \itshape 11 &
-	\centering \itshape 12 &
-	\centering \itshape 13 &
-	\centering \itshape 14 &
-	\centering \itshape 15 &
-	\centering \itshape 16 &
-	\centering \itshape 17 &
-	\centering \itshape 18 &
-	\centering \itshape 19 &
-	\centering\arraybslash \itshape 20\\\hline
-	\multicolumn{1}{|m{0.35cm}|}{\centering 
-	O} &
-	\multicolumn{1}{m{0.35cm}|}{\centering  X}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering  X}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering  O}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering  X}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering  O}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering  X}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering  O}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering  X}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering  O}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering  O}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering  O}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering  O}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering  X}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering  X}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering  O}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering  X}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering  O}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering  O}
-	&
-	\multicolumn{1}{m{0.35cm}|}{\centering\arraybslash
-	 X}\\\hline
-	\end{supertabular}
+	\begin{tabular}{*{20}{>{\centering\arraybackslash}m{0.35cm}}}
+	 \itshape 1 &
+	 \itshape 2 &
+	 \itshape 3 &
+	 \itshape 4 &
+	 \itshape 5 &
+	 \itshape 6 &
+	 \itshape 7 &
+	 \itshape 8 &
+	 \itshape 9 &
+	 \itshape 10 &
+	 \itshape 11 &
+	 \itshape 12 &
+	 \itshape 13 &
+	 \itshape 14 &
+	 \itshape 15 &
+	 \itshape 16 &
+	 \itshape 17 &
+	 \itshape 18 &
+	 \itshape 19 &
+	 \itshape 20
+	 \\\hline
+	\multicolumn{1}{|>{\centering\arraybackslash}m{0.35cm}|}{ O} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{  X} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{  X} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{ \cellcolor{gray!25} O} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{ \cellcolor{gray!25} X} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{ \cellcolor{gray!25} O} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{  X} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{ \cellcolor{gray!25} O} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{ \cellcolor{gray!25} X} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{ \cellcolor{gray!25} O} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{  O} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{  O} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{  O} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{  X} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{  X} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{ \cellcolor{gray!25} O} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{ \cellcolor{gray!25} X} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{ \cellcolor{gray!25} O} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{  O} &
+	\multicolumn{1}{>{\centering\arraybackslash}m{0.35cm}|}{  X}\\
+	\hline
+	\end{tabular}
 	\end{center}
 \end{Exercice}
 
