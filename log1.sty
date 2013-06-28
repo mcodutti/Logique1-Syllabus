@@ -94,6 +94,9 @@
 % -------------------------------------------------------------
 \usepackage{enumitem}
 \setdescription{font=\sffamily\bfseries, style=nextline, leftmargin=*}
+% Environnement liste, alternative à itemize, plus aéré.
+\newlist{liste}{itemize}{3}
+\setlist[liste]{label=$\triangleright$,leftmargin=8mm,itemsep=1mm}
 
 % Permet une numérotation des exercices
 \newcounter{exercicenum}[chapter]
