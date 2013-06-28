@@ -116,10 +116,10 @@
 
 		\textbf{Conditions initiales}
 
-		\begin{liste}
+		\begin{itemize}
 		\item La position et la direction du robot sont aléatoires
 		\item La position du trésor n'est pas importante
-		\end{liste}
+		\end{itemize}
 
 		\textbf{But} : Le robot doit faire demi-tour.
 
@@ -144,10 +144,10 @@
 
 		\textbf{Conditions initiales}
 
-		\begin{liste}
+		\begin{itemize}
 		\item La position et la direction du robot sont aléatoires
 		\item La position du trésor n'est pas importante
-		\end{liste}
+		\end{itemize}
 		
 		\textbf{But} : Le robot doit avancer de deux cases dans la direction
 		vers laquelle il regarde.
@@ -313,10 +313,10 @@
 
 		\textbf{Conditions initiales}
 
-		\begin{liste}
+		\begin{itemize}
 		\item La position et la direction du robot sont aléatoires
 		\item La position du trésor n'est pas importante
-		\end{liste}
+		\end{itemize}
 		
 		\textbf{But} : Le robot doit avancer d'\textbf{une
 		case} tout droit (dans la direction vers laquelle il regarde). 
@@ -343,10 +343,10 @@
 
 		\textbf{Conditions initiales}
 
-		\begin{liste}
+		\begin{itemize}
 		\item La position et la direction du robot sont aléatoires
 		\item La position du trésor n'est pas importante
-		\end{liste}
+		\end{itemize}
 		
 		\textbf{But} : Le robot doit avancer de \textbf{deux cases} tout droit
 		(dans la direction vers laquelle il regarde). Si un mur
@@ -390,16 +390,18 @@
 	
 	Nous avons à présent tout ce qu'il faut pour résoudre
 	notre problème.
-
+%
+\clearpage
+%
 	\marginicon{exercice}
 	\begin{Emphase}{Exercice : avancer jusqu'au mur}
 
 		\textbf{Conditions initiales}
 
-		\begin{liste}
+		\begin{itemize}
 		\item La position et la direction du robot sont aléatoires
 		\item La position du trésor n'est pas importante
-		\end{liste}
+		\end{itemize}
 		
 		\textbf{But} : Le robot doit avancer jusqu'au mur
 		devant lui et s'y arrêter.
@@ -450,10 +452,10 @@
 
 		\textbf{Conditions initiales}
 
-		\begin{liste}
+		\begin{itemize}
 		\item La position et la direction du robot sont aléatoires
 		\item La position du trésor n'est pas importante
-		\end{liste}
+		\end{itemize}
 		
 		\textbf{But} : Le robot doit avancer jusqu'au mur
 		devant lui, faire demi-tour et revenir à sa position de départ 
@@ -613,7 +615,9 @@ Quand peut-on affirmer qu'un algorithme est correct ?
 		\begin{Exercice}{Nord-ouest}
 			Le robot doit aller jusqu'au coin nord-ouest.
 		\end{Exercice}
-
+%
+\clearpage
+%
 		\begin{Exercice}{Nord-ouest et retour}
 			Le robot doit aller jusqu'au coin nord-ouest
 			puis revenir sur sa case de départ.
@@ -625,10 +629,10 @@ Quand peut-on affirmer qu'un algorithme est correct ?
 
 		\begin{Exercice}{Trésor}
 			Le robot doit aller jusqu'au trésor qui se trouve
-			\begin{liste}
+			\begin{itemize}
 			\item soit dans le coin nord-est ;
 			\item soit dans le coin nord-ouest.
-			\end{liste}
+			\end{itemize}
 		\end{Exercice}
 
 	\subsection{Modules}
@@ -669,10 +673,10 @@ Quand peut-on affirmer qu'un algorithme est correct ?
 			pourtour, et revenir ensuite à sa position (et son orientation) de
 			départ.
 
-			\begin{liste}
+			\begin{itemize}
 			\item Le robot est situé dans le coin supérieur gauche et regarde à droite.
 			\item La position du trésor n'est pas importante.
-			\end{liste}
+			\end{itemize}
 
 			\textbf{Conseil} : L'utilisation de procédures rendra
 			votre programme plus court et plus lisible.
@@ -681,10 +685,10 @@ Quand peut-on affirmer qu'un algorithme est correct ?
 		\begin{Exercice}{Trouver le trésor (1°)}
 			Le robot doit s'arrêter sur le trésor.
 
-			\begin{liste}
+			\begin{itemize}
 			\item Le robot est situé dans le coin supérieur gauche et regarde à droite.
 			\item Le trésor est sur le bord supérieur.
-			\end{liste}
+			\end{itemize}
 
 			\textbf{Attention} : 
 			Testez bien votre solution; il existe un cas très particulier.
@@ -693,19 +697,19 @@ Quand peut-on affirmer qu'un algorithme est correct ?
 		\begin{Exercice}{Trouver le trésor (2°)}
 			Le robot doit s'arrêter sur le trésor.
 
-			\begin{liste}
+			\begin{itemize}
 			\item Le robot est placé aléatoirement et regarde une direction à droite.
 			\item Le trésor est placé sur le bord droit.
-			\end{liste}
+			\end{itemize}
 		\end{Exercice}
 
 		\begin{Exercice}{Trouver le trésor (3°)}
 			Le robot doit s'arrêter sur le trésor.
 
-			\begin{liste}
+			\begin{itemize}
 			\item Le robot est placé aléatoirement et regarde une direction au hasard.
 			\item Le trésor est placé sur un bord au hasard.
-			\end{liste}
+			\end{itemize}
 		\end{Exercice}
 
 		\begin{Exercice}{Marquer le domaine}
@@ -713,28 +717,28 @@ Quand peut-on affirmer qu'un algorithme est correct ?
 			(totalement vide au départ). 
 			L'ordre dans lequel il trace les croix n'est pas important.
 
-			\begin{liste}
+			\begin{itemize}
 			\item
 				À vous de choisir la situation initiale du robot qui vous permet de
 				résoudre au mieux le problème.
-			\end{liste}
+			\end{itemize}
 		\end{Exercice}
 
 		\begin{Exercice}{Trouver le trésor (4°)}
 			Le robot doit s'arrêter sur le trésor.
 
-			\begin{liste}
+			\begin{itemize}
 			\item Le robot est situé dans le coin supérieur gauche et regarde à droite.
 			\item Le trésor est placé au hasard.
-			\end{liste}
+			\end{itemize}
 		\end{Exercice}
 
 		\begin{Exercice}{Trouver le trésor (5°)}
 			Le robot doit s'arrêter sur le trésor.
 
-			\begin{liste}
+			\begin{itemize}
 			\item Le robot est placé aléatoirement et regarde une direction au hasard.
 			\item Le trésor est placé au hasard.
-			\end{liste}
+			\end{itemize}
 		\end{Exercice}
 			
