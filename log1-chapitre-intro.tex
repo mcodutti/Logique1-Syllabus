@@ -377,22 +377,23 @@ en trace les lignes principales.
 		programme. D'autre part, le processeur va «~exécuter~»
 		ce programme.
 
-		\begin{center}
-		\includegraphics[width=0.7\textwidth]{image/intro-schema-ordi}
-		\end{center}
-
-	\subsubsection*{Comment fonctionne le processeur ?}
-
-		De façon très simplifiée, on passe par les étapes suivantes :
-
-		\begin{enumerate}
-		\item Le processeur lit l'instruction courante.
-		\item Il exécute cette instruction. Cela peut amener à manipuler les données.
-		\item L'instruction suivante devient
-			l'instruction courante.\footnote{Cela se complique si
-			on tient compte des \textit{branchements conditionnels}.}
-		\item On revient au point 1
-		\end{enumerate}
+		\begin{tabular}{m{0.50\linewidth}m{0.48\linewidth}}
+			\begin{center}
+			\includegraphics[width=0.5\textwidth]{image/intro-schema-ordi}
+			\end{center}
+		&
+			\textbf{Comment fonctionne le processeur ?}
+	
+			De façon très simplifiée, on passe par les étapes suivantes :
+	
+			\begin{enumerate}
+			\item Le processeur lit l'instruction courante.
+			\item Il exécute cette instruction. Cela peut amener à manipuler les données.
+			\item L'instruction suivante devient l'instruction courante.
+			\item On revient au point 1
+			\end{enumerate}
+		\\
+		\end{tabular}
 
 		On le voit il s'agit d'un travail
 		automatique ne laissant aucune place à l'initiative !
@@ -403,7 +404,6 @@ en trace les lignes principales.
 	lesquelles il faut passer quand on développe un programme.
 
 	\begin{tabular}{m{0.25\linewidth}m{0.72\linewidth}}
-	\vspace{-1cm}
 	\includegraphics[width=3.5cm]{image/intro-phases-develop}
 	&
 	\begin{liste}
@@ -436,7 +436,7 @@ en trace les lignes principales.
 	phase, on pourra détecter des erreurs, imprécisions ou oublis des
 	phases précédentes et revenir en arrière.
 
-	\subsubsection*{Pourquoi passer par la phase «~logique~» 
+	\textbf{Pourquoi passer par la phase «~logique~» 
 		et ne pas directement passer à la programmation ?}
 	
 	Voilà une question que vous ne manquerez pas de vous poser pendant votre
