@@ -1,66 +1,64 @@
-\chapter[L'orienté objet]{\textstyleMotCl{
-L'orienté objet}}
-\marginicon{objectif}
-{
-Dans ce chapitre, nous présentons les bases de la programmation orientée
-objet. Nous commençons par expliquer les motivations qui ont amené ce
-type de programmation avant d'entrer dans le vif du
-sujet en explicitant le concept
-d'\textit{encapsulation}. Les autres piliers de
-l'orienté objet (\textit{héritage} et
-\textit{polymorphisme}) ne seront pas vus cette année.}
+\chapter{L'orienté objet}
+
+	\marginicon{objectif}
+		Dans ce chapitre, nous présentons les bases de la programmation orientée
+		objet. Nous commençons par expliquer les motivations qui ont amené ce
+		type de programmation avant d'entrer dans le vif du
+		sujet en explicitant le concept
+		d'\textit{encapsulation}. Les autres piliers de
+		l'orienté objet (\textit{héritage} et
+		\textit{polymorphisme}) ne seront pas vus cette année.
 
 \section{Motivation}
-{
-Depuis son apparition, la puissance de l'ordinateur
-n'a cessé de croitre exponentiellement. Les tâches qui
-lui sont confiées ont fait de même. Ainsi les programmes à écrire sont
-de plus en plus gros et de plus en plus complexes.}
+	Depuis son apparition, la puissance de l'ordinateur
+	n'a cessé de croitre exponentiellement. Les tâches qui
+	lui sont confiées ont fait de même. Ainsi les programmes à écrire sont
+	de plus en plus gros et de plus en plus complexes.
 
-{
-Face à la complexité, la démarche est toujours la même : découper le
-problème en sous-problèmes (qui peuvent à leur tour être découpés) ce
-qui permet}
+	
+	Face à la complexité, la démarche est toujours la même : découper le
+	problème en sous-problèmes (qui peuvent à leur tour être découpés) ce
+	qui permet
 
-\liststyleListv
-\begin{itemize}
-\item {
-d'attaquer chaque problème séparément en évitant la
-surcharge cognitive ;}
-\item {
-de répartir le travail entre plusieurs personnes ;}
-\item {
-de pouvoir réutiliser du travail déjà produit si un sous-problème est
-déjà apparu dans le cadre d'un autre problème ;}
-\item {
-de produire un code plus lisible car s'exprimant avec
-des termes de plus haut niveau, plus proches du problème à résoudre.
-Ainsi, là où un tri devra être fait, on trouvera le mot «~trier~» qui
-fera référence à la partie de code qui s’occupe du tri. Cela va dans le
-sens d’une plus grande «~abstraction~» du code : un code qui s’éloigne
-du langage simpliste compris par le processeur pour s’approcher de la
-pensée humaine et des termes du problème à résoudre.}
-\end{itemize}
-{
-Les langages de programmation ont suivi cette approche en permettant
-toujours plus d’abstraction. Dans un chapitre précédent, on vous a
-présenté la notion de module qui permet de découper la tâche à réaliser
-en sous-tâches ainsi que la notion de structure qui permet de regrouper
-des données. Il s'agit là de deux approches
-dissociées. }
+	\liststyleListv
+	\begin{itemize}
+	\item {
+	d'attaquer chaque problème séparément en évitant la
+	surcharge cognitive ;}
+	\item {
+	de répartir le travail entre plusieurs personnes ;}
+	\item {
+	de pouvoir réutiliser du travail déjà produit si un sous-problème est
+	déjà apparu dans le cadre d'un autre problème ;}
+	\item {
+	de produire un code plus lisible car s'exprimant avec
+	des termes de plus haut niveau, plus proches du problème à résoudre.
+	Ainsi, là où un tri devra être fait, on trouvera le mot «~trier~» qui
+	fera référence à la partie de code qui s’occupe du tri. Cela va dans le
+	sens d’une plus grande «~abstraction~» du code : un code qui s’éloigne
+	du langage simpliste compris par le processeur pour s’approcher de la
+	pensée humaine et des termes du problème à résoudre.}
+	\end{itemize}
+	{
+	Les langages de programmation ont suivi cette approche en permettant
+	toujours plus d’abstraction. Dans un chapitre précédent, on vous a
+	présenté la notion de module qui permet de découper la tâche à réaliser
+	en sous-tâches ainsi que la notion de structure qui permet de regrouper
+	des données. Il s'agit là de deux approches
+	dissociées. }
 
-{
-C'est cette lacune que se propose de combler
-l'orienté objet : permettre de définir des
-\textbf{objets} (composés de \textbf{données} et
-\textbf{d'instructions}) qui sont proches du problème
-à résoudre. Cela va permettre une meilleure lisibilité et une plus
-grande concision du code. Ainsi on pourra définir les notions de date,
-d'employé, de fournisseur, de plateau de jeu, de pion,
-de livre, d'emprunteur, de carte à jouer, de chambre,
-de réservation, de vol, de produit, de stock, de ristourne, de facture,
-de panier d'achats, de compte en banque, de banque, de
-client, de portefeuille d'actions, ...}
+	{
+	C'est cette lacune que se propose de combler
+	l'orienté objet : permettre de définir des
+	\textbf{objets} (composés de \textbf{données} et
+	\textbf{d'instructions}) qui sont proches du problème
+	à résoudre. Cela va permettre une meilleure lisibilité et une plus
+	grande concision du code. Ainsi on pourra définir les notions de date,
+	d'employé, de fournisseur, de plateau de jeu, de pion,
+	de livre, d'emprunteur, de carte à jouer, de chambre,
+	de réservation, de vol, de produit, de stock, de ristourne, de facture,
+	de panier d'achats, de compte en banque, de banque, de
+	client, de portefeuille d'actions, ...}
 
 \section{La notion d'objet}
 \marginicon{definition}
