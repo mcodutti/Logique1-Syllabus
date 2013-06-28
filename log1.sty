@@ -26,7 +26,7 @@
 % http://www.ctan.org/pkg/geometry
 % vmargin: 1cm de plus automatique
 % -------------------------------------------------------------
-\usepackage[leftmargin=4cm,rightmargin=3cm,vmargin=3cm,footskip=4\baselineskip]{geometry}
+\usepackage[lmargin=3.5cm,rmargin=3.5cm,vmargin=3cm,footskip=4\baselineskip]{geometry}
 
 % Enlever l'indentation de chaque première ligne de paragraphe
 % + legèr espace entre les paragraphes.
@@ -130,7 +130,8 @@
 \newenvironment{Emphase}[1]{%
 	\smallskip%
 	\colorbox{gray!25}{\textbf{#1}}%
-	\smallskip
+	\smallskip{}
+	%\subsection*{\normalsize\colorbox{gray!25}{\textbf{#1}}}
 	\begin{leftbar}
 }{
 	\end{leftbar}
