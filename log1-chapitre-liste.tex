@@ -1,154 +1,124 @@
 
-\chapter[La liste]{
-La liste}
-{
+\chapter{La liste}
+
+
+\marginicon{objectif}
+
 Imaginons qu’on désire manipuler par programme une liste de contacts ou
 encore une liste de rendez-vous. Cette liste va varier ; sa taille
 n’est donc pas fixée. Utiliser un tableau à cet effet n’est pas
 l’idéal. En effet, la taille d’un tableau, qu’il soit statique ou
 dynamique, ne peut plus changer une fois le tableau créé. Il faudrait
-le sur-dimensionner, ce qui n’est pas économe.}
+le sur-dimensionner, ce qui n’est pas économe.
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.27cm,height=1.27cm]{log1-img/log1-img155}
-
-\end{center}
-{
 Il serait intéressant de disposer d’une structure qui offre toutes les
 facilités d’un tableau tout en pouvant «~grandir~» si nécessaire.
 Construisons une telle structure de données et appelons-la «~Liste~»
-pour rester en phase avec son appellation commune en Java.}
+pour rester en phase avec son appellation commune en Java.
+
 
 \section{La classe Liste}
-{
+
 Nous verrons plus loin comment la réaliser en pratique mais nous pouvons
 déjà définir le comportement qu’on en attend (les méthodes qu’elle doit
-fournir)}
+fournir)
 
-{\sffamily
-\textstyleMotCl{classe} Liste de T\ \ // T est un type quelconque}
+\cadre{
+\begin{pseudo}
+	\Class{Liste de T}
+		\RComment T est un type quelconque
+		\Private
+			\LComment sera complété plus tard	
+		\Public
+			\ConstrSign{Liste de T}{}			
+				\RComment construit une liste vide
+			\MethodSign{get}{pos : entier}{T}
+				\RComment donne un élément en position pos
+			\MethodSign{set}{pos : entier, valeur : T}{}
+				\RComment modifie un élément en position pos
+			\MethodSign{taille}{}{entier}
+				\RComment donne le nombre d’éléments
+			\MethodSign{ajouter}{valeur : T}{}
+				\RComment ajoute un élément en fin de liste
+			\MethodSign{insérer}{pos : entier, valeur : T}{}
+				\RComment insère un élément en position pos
+			\MethodSign{supprimer}{}{}
+				\RComment supprime le dernier élément
+			\MethodSign{supprimerPos}{pos : entier}{}
+				\RComment supprime l'élément en position pos
+			\MethodSign{supprimer}{valeur : T}{booléen}
+				\RComment supprime l'élément de valeur donnée
+			\MethodSign{vider}{}{}
+				\RComment vide la liste
+			\MethodSign{estVide}{}{booléen}
+				\RComment la liste est-elle vide ?
+			\MethodSign{existe}{valeur \In : T, poso \Out : entier}{}
+				\RComment recherche un élément
+		\EndClass
+\end{pseudo}
+}
 
-{\sffamily
-\textstyleMotCl{privé:}}
+\bigskip
 
-{\sffamily
-\ \ // sera complété plus tard}
-
-{\sffamily
-\textstyleMotCl{public :}}
-
-{\sffamily
-\ \ \textstyleMotCl{constructeur} Liste de T()\ \ \ \ \ \ // construit
-une liste vide}
-
-{\sffamily
-\ \ \textstyleMotCl{méthode} get( pos : entier ) → T\ \ \ \ \ \ // donne
-un élément en position pos}
-
-{\sffamily
-\ \ \textstyleMotCl{méthode} set( pos : entier, valeur : T )\ \ \ \ //
-modifie un élément en position pos}
-
-{\sffamily
-\ \ \textstyleMotCl{méthode} taille() → entier\ \ \ \ \ \ // donne le nb
-d’éléments}
-
-{\sffamily
-\ \ \textstyleMotCl{méthode} ajouter( valeur : T )\ \ \ \ \ \ // ajoute
-un élt en fin de liste}
-
-{\sffamily
-\ \ \textstyleMotCl{méthode} insérer( pos : entier, valeur : T ) \ \ //
-insère un élt en position pos}
-
-{\sffamily
-\ \ \textstyleMotCl{méthode} supprimer()\ \ \ \ \ \ \ \ // supprime le
-dernier élément}
-
-{\sffamily
-\ \ \textstyleMotCl{méthode} supprimer( pos : entier )\ \ \ \ //
-supprime l'élément en position pos}
-
-{\sffamily
-\ \ \textstyleMotCl{méthode} supprimer( valeur : T ) → booléen\ \ //
-supprime l'élt de valeur donnée}
-
-{\sffamily
-\ \ \textstyleMotCl{méthode} vider()\ \ \ \ \ \ \ \ \ \ // vide la
-liste}
-
-{\sffamily
-\ \ \textstyleMotCl{méthode} estVide() → booléen\ \ \ \ \ \ // la liste
-est-elle vide ?}
-
-{\sffamily
-\ \ \textstyleMotCl{méthode} existe( valeur : T, pos~↑ : entier ) →
-booléen \ // recherche un élément}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{classe}}
-
-{
-Quelques précisions s’imposent :}
+Quelques précisions s’imposent :
 
 \liststyleListv
 \begin{itemize}
-\item {
-Comme les tableaux, les listes peuvent contenir des éléments de
-n’importe quel type tout en restant uniforme au sein d’une même liste
-(on pourra manipuler une liste d’entiers, une liste de contacts, ...
-mais pas mélanger). Il serait rédhibitoire de devoir définir une Liste
-pour chaque type d’éléments. On utilise dès lors la possibilité en OO
-d’écrire un code \textbf{générique}\footnote{\ on parle aussi de
-«~template~».}. Le «~T~» dans la définition de la classe indique le
-type des éléments qui sera spécifié lors de l’utilisation de la classe.
-On écrira par exemple «~\textstyleCodeInsr{Liste d’entiers}~» pour
-utiliser une liste d’entiers.}
-\item {
-Les méthodes «\textstyleCodeInsr{~get~}» et «\textstyleCodeInsr{~set~}»
-permettent de connaitre ou modifier un élément de la liste. On
-considère que le premier élément de la liste est en position 1.}
-\item {
-«\textstyleCodeInsr{~ajouter~}» ajoute un élément en fin de liste (elle
-grandit donc d’une unité)}
-\item {
-«\textstyleCodeInsr{~insérer~}» insère un élément à une position donnée
-(entre 1 et taille+1). L’élément qui s’y trouvait est décalé
-d'une position ainsi que tous les éléments suivants.}
-\item {
-La version de «\textstyleCodeInsr{~supprimer~}» avec une position en
-paramètre supprime un élément d'une position donnée en
-décalant les éléments suivants. On pourrait imaginer une technique plus
-rapide consistant à placer le dernier élément à la place de l’élément
-supprimé mais ce faisant on changerait l’ordre relatif des éléments ce
-qui va à l’encontre de l’idée intuitive qu’on se fait d’une liste.
-Cette amélioration pourrait plutôt s’envisager dans une structure de
-type \textbf{ensemble} pour lequel il n’y a pas d’ordre relatif entre
-les éléments.}
-\item {
-La version de «\textstyleCodeInsr{~supprimer~}» avec une valeur en
-paramètre enlève un élément de valeur donnée. Elle retourne un booléen
-indiquant si la suppression a pu se faire ou pas (ce qui sera le cas si
-la valeur n’est pas présente dans la liste). Si la valeur existe en
-plusieurs exemplaires, la méthode n’en supprime que la première
-occurrence.}
-\item {
-La méthode «\textstyleCodeInsr{~existe~}» permet de savoir si un élément
-donné existe dans la liste. }
-\item {
-si c’est le cas, elle donne aussi sa position.}
-\item {
-si l’élément n’existe pas, le paramètre ‘\textstyleCodeInsr{pos}’ est
-indéterminé }
-\item {
-si l’élément est présent en plusieurs exemplaires, la méthode donne la
-position de la première occurrence.}
-\item {
-En pratique, il serait intéressant de chercher un élément à partir d’une
-partie de l’information qu’elle contient mais c’est difficile à
-exprimer de façon générique c'est-à-dire lorsque le
-type n'est pas connu à priori.}
+	\item 
+		Comme les tableaux, les listes peuvent contenir des éléments de
+		n’importe quel type tout en restant uniforme au sein d’une même liste
+		(on pourra manipuler une liste d’entiers, une liste de contacts, ...
+		mais pas mélanger). Il serait rédhibitoire de devoir définir une Liste
+		pour chaque type d’éléments. On utilise dès lors la possibilité en OO
+		d’écrire un code \textbf{générique}\footnote{\ on parle aussi de
+		«~template~».}. Le «~T~» dans la définition de la classe indique le
+		type des éléments qui sera spécifié lors de l’utilisation de la classe.
+		On écrira par exemple «~\textstyleCodeInsr{Liste d’entiers}~» pour
+		utiliser une liste d’entiers.
+	\item 
+		Les méthodes «\textstyleCodeInsr{~get~}» et «\textstyleCodeInsr{~set~}»
+		permettent de connaitre ou modifier un élément de la liste. On
+		considère que le premier élément de la liste est en position 1.
+	\item 
+		«\textstyleCodeInsr{~ajouter~}» ajoute un élément en fin de liste (elle
+		grandit donc d’une unité)
+	\item 
+		«\textstyleCodeInsr{~insérer~}» insère un élément à une position donnée
+		(entre 1 et taille+1). L’élément qui s’y trouvait est décalé
+		d'une position ainsi que tous les éléments suivants.
+	\item 
+		La version de «\textstyleCodeInsr{~supprimer~}» avec une position en
+		paramètre supprime un élément d'une position donnée en
+		décalant les éléments suivants. On pourrait imaginer une technique plus
+		rapide consistant à placer le dernier élément à la place de l’élément
+		supprimé mais ce faisant on changerait l’ordre relatif des éléments ce
+		qui va à l’encontre de l’idée intuitive qu’on se fait d’une liste.
+		Cette amélioration pourrait plutôt s’envisager dans une structure de
+		type \textbf{ensemble} pour lequel il n’y a pas d’ordre relatif entre
+		les éléments.
+	\item 
+		La version de «\textstyleCodeInsr{~supprimer~}» avec une valeur en
+		paramètre enlève un élément de valeur donnée. Elle retourne un booléen
+		indiquant si la suppression a pu se faire ou pas (ce qui sera le cas si
+		la valeur n’est pas présente dans la liste). Si la valeur existe en
+		plusieurs exemplaires, la méthode n’en supprime que la première
+		occurrence.
+	\item 
+		La méthode «\textstyleCodeInsr{~existe~}» permet de savoir si un élément
+		donné existe dans la liste. 
+	\item 
+		si c’est le cas, elle donne aussi sa position.
+	\item 
+		si l’élément n’existe pas, le paramètre ‘\textstyleCodeInsr{pos}’ est
+		indéterminé 
+	\item 
+		si l’élément est présent en plusieurs exemplaires, la méthode donne la
+		position de la première occurrence.
+	\item 
+		En pratique, il serait intéressant de chercher un élément à partir d’une
+		partie de l’information qu’elle contient mais c’est difficile à
+		exprimer de façon générique c'est-à-dire lorsque le
+		type n'est pas connu à priori.
 \end{itemize}
 
 \bigskip
@@ -156,92 +126,50 @@ type n'est pas connu à priori.}
 {\sffamily\bfseries\scshape
 Exemple : recherche du minimum}
 
-{
 Dans le chapitre sur les tableaux, vous avez fait un exercice consistant
 à afficher tous les indices où se trouve le minimum d’un tableau.
 Reprenons-le et modifions-le afin qu’il retourne la liste des indices
 où se trouvent les différentes occurrences du minimum. On pourrait
-l’écrire ainsi :}
+l’écrire ainsi :
 
-{\sffamily
-\textstyleMotCl{module} indicesMinimum( tab : \textstyleMotCl{tableau} [
-1 à n ] d’entiers ) → Liste d’entiers}
-
-{\sffamily
-\ \ min : entier\ \ \ \ }
-
-{\sffamily
-\ \ indicesMin : Liste d’entiers}
-
-{\sffamily
-\ \ min~\textrm{ }← tab[1]}
-
-{\sffamily
-\ \ indicesMin~\textrm{ }← \textstyleMotCl{nouvelle} Liste d’entiers()}
-
-{\sffamily
-\ \ indicesMin.ajouter( 1 )}
-
-{\sffamily
-\ \ \textstyleMotCl{pour} i \textstyleMotCl{de} 2 \textstyleMotCl{à} n
-\textstyleMotCl{faire}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{selon que} }
-
-{\sffamily
-\ \ \ \ \ \ tab[i] = min : \ \ \ \ }
-
-{\sffamily
-\ \ \ \ \ \ \ \ indicesMin{.ajouter( i )}}
-
-{\sffamily
-\ \ \ \ \ \ tab[i] {\textless} min : \ \ \ \ }
-
-{\sffamily
-{\ \ \ \ \ \ \ \ indicesMin}\textstyleMotCl{{\textmd{.vider()}}}{
-}}
-
-{\sffamily
-\ \ \ \ \ \ \ \ indicesMin.ajouter( i )}
-
-{\sffamily
-\ \ \ \ \ \ \ \ min~\textrm{ }← tab[i]}
-
-{\sffamily
-\ \ \ \ \ \ tab[i] {\textgreater} min : }
-
-{\sffamily
-{\ \ \ \ \ \ \ \ }{//
-rien à faire dans ce cas\ \ }}
-
-{\sffamily
-{\ \ \ \ }\textstyleMotCl{fin}
-\textstyleMotCl{selon}}
-
-{\sffamily
-\ \ \textstyleMotCl{fin} \textstyleMotCl{pour}}
-
-{\sffamily
-\ \ \textstyleMotCl{retourner} indicesMin~ \ \ \ \ }
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
+\cadre{
+\begin{pseudo}
+	\Module{indicesMinimum}{tab : tableau [1 à n] d'entiers}{Liste d’entiers}
+		\Decl min : entier
+		\Decl indicesMin : Liste d'entiers
+		\Let min \Gets tab[1]
+		\Let indicesMin \Gets \K{nouvelle} Liste d'entiers()
+		\Stmt indicesMin.ajouter( 1 )
+		\For{i \K{de} 2 \K{à} n}
+			\Switch{} 
+				\Case{tab[i] = min}
+					\Stmt indicesMin.ajouter( i )
+				\Case{tab[i] < min}
+					\Stmt indicesMin.vider() 
+					\Stmt indicesMin.ajouter( i )
+					\Let min \Gets tab[i]
+				\Case{tab[i] > min}
+					\LComment rien à faire dans ce cas	
+			\EndSwitch
+		\EndFor
+		\Return indicesMin
+	\EndModule
+\end{pseudo}
+}
 
 \bigskip
 
+
 \section{Comment implémenter l’état}
-{
+
 Cette liste est bien utile mais comment la réaliser en pratique ?
 Comment représenter une liste variable d’éléments ? Pour
 l'instant, la seule structure qui peut accueillir
 plusieurs éléments de même type est le tableau. Nous allons donc
 prendre comme attribut principal de la liste, un tableau que nous
 appellerons \textstyleCodeInsr{éléments}. Comment, dès lors, contourner
-le problème de la limitation de la taille de ce tableau ?}
+le problème de la limitation de la taille de ce tableau ?
 
-{
 Repartons donc de la notion de tableau et tentons de comprendre sa
 limitation. Lors de sa création, un tableau se voit attribuer un espace
 bien précis et contigu en mémoire. Il se peut très bien que
@@ -251,14 +179,13 @@ claire : si un \ tableau s’avère trop petit lors de son utilisation, il
 suffit d’en créer un autre plus grand ailleurs en mémoire et d’y
 recopier tous les éléments du premier. Évidemment, cette opération est
 coûteuse en temps et on cherchera à l’effectuer le moins souvent
-possible.}
+possible.
 
-{
 \textbf{Quelle taille donner au nouveau tableau} ? L’idée qui vient
 immédiatement est d’augmenter la taille d’une unité afin d’accueillir
 le nouvel élément mais cette approche implique de fréquents
 agrandissements. Il est plus efficace d’augmenter la taille
-proportionnellement, par exemple en la multipliant par un facteur 2. }
+proportionnellement, par exemple en la multipliant par un facteur 2.
 
 \begin{center}
 \tablehead{}
@@ -280,7 +207,8 @@ proportionnellement, par exemple en la multipliant par un facteur 2. }
  .\\\hhline{---~~~------}
 \end{supertabular}
 \end{center}
-{
+
+
 \textbf{Taille logique et taille physique}. À tout moment, le tableau
 aura une et une seule taille même si celle-ci pourra changer au cours
 du temps. Puisqu’on multipliera la taille du tableau par 2 pour des
@@ -291,12 +219,12 @@ que la taille logique est le nombre de cases effectivement occupées.
 Dans ce qui suit, on s'arrangera pour que les cases
 occupées soient groupées à gauche du tableau (il n'y a
 pas de trou). Pour l’utilisateur, seule la taille logique a un sens (on
-lui cache les détails d’implémentation).}
+lui cache les détails d’implémentation).
 
-{
+
 \textbf{Exemple} : pour le tableau suivant, la taille logique est de 6
 (c’est cette taille qui a du sens pour l’utilisateur de la liste) et la
-taille physique est de 8.}
+taille physique est de 8.
 
 \begin{center}
 \tablehead{}
@@ -312,480 +240,261 @@ taille physique est de 8.}
 \centering\arraybslash  .\\\hline
 \end{supertabular}
 \end{center}
-{
+
 Quand il faut insérer un élément (en position valide) ou en ajouter un
-en fin de liste, deux cas se présentent :}
+en fin de liste, deux cas se présentent :
 
 \liststyleListv
 \begin{itemize}
-\item {
-Si la taille logique est plus petite que la taille physique, il suffit
-d’ajouter l’élément dans le tableau et d’adapter la taille logique.}
-\item {
-Par contre, si la taille logique est égale à la taille physique, il faut
-procéder à un agrandissement du tableau.}
+	\item 
+		Si la taille logique est plus petite que la taille physique, il suffit
+		d’ajouter l’élément dans le tableau et d’adapter la taille logique.
+	\item 
+		Par contre, si la taille logique est égale à la taille physique, il faut
+		procéder à un agrandissement du tableau.
 \end{itemize}
-{
+
 Présentons les attributs nécessaires et l'algorithme
-d’agrandissement du tableau.}
+d’agrandissement du tableau.
 
-{\sffamily
-\textstyleMotCl{classe} Liste de T}
-
-{\sffamily
-\textstyleMotCl{\ \ privé :}}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ \ \ éléments :
-}\textstyleMotCl{tableau}\textstyleWWPolicepardfaut{ de T}}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ \ \ tailleLogique : entier }}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ \ \ taillePhysique : entier}}
-
-{\sffamily
-\textstyleMotCl{\ \ privé :}}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{méthode} agrandir()}
-
-{\sffamily
-\ \ \ \ \ \ i : entier}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ \ \ \ \ nouveauTab :
-}\textstyleMotCl{tableau}\textstyleWWPolicepardfaut{ de T}}
-
-{\sffamily
-\ \ \ \ \ \ \textstyleWWPolicepardfaut{taillePhysique }←
-\textstyleWWPolicepardfaut{taillePhysique * 2~}}
-
-{\sffamily
-\ \ \ \ \ \ \textstyleWWPolicepardfaut{nouveauTab~}←
-\textstyleMotCl{nouveau} \textstyleMotCl{tableau} [ 1 à taillePhysique
-] \textstyleWWPolicepardfaut{de T~}}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ \ \ \ \ }\textstyleMotCl{pour}\textstyleWWPolicepardfaut{
-i }\textstyleMotCl{de}\textstyleWWPolicepardfaut{ 1
-}\textstyleMotCl{à}\textstyleWWPolicepardfaut{ tailleLogique
-}\textstyleMotCl{faire}}
-
-{\sffamily
-\ \ \ \ \ \ \ \ \textstyleWWPolicepardfaut{nouveauTab[ i ]~}←
-\textstyleWWPolicepardfaut{éléments[ i ]~}}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ \ \ \ \ }\textstyleMotCl{fin}\textstyleWWPolicepardfaut{
-}\textstyleMotCl{pour}}
-
-{\sffamily
-\ \ \ \ \ \ \textstyleWWPolicepardfaut{éléments }←
-\textstyleWWPolicepardfaut{nouveauTab~\ \ \ \ \ \ }}
-
-{\sffamily
-\ \ \ \ \textstyleMotCl{fin méthode}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{classe}}
-
+\cadre{
+\begin{pseudo}
+	\Class{Liste de T}
+		\Private
+			\Decl éléments : \K{tableau} de T
+			\Decl tailleLogique : entier
+			\Decl taillePhysique : entier
+		\Private
+			\Method {agrandir}{}{}
+				\Decl i : entier
+				\Decl nouveauTab : \K{tableau} de T
+				\Let taillePhysique \Gets taillePhysique * 2
+				\Let nouveauTab \Gets \K{nouveau} \K{tableau} [ 1 à taillePhysique ] de T
+				\For{i \K{de} 1 \K{à} tailleLogique}
+					\Let nouveauTab[ i ] \Gets éléments[ i ]
+				\EndFor
+				\Let éléments \Gets nouveauTab
+			\EndMethod
+		\EndClass
+	\end{pseudo}
+}
 
 \bigskip
 
-{
 \textbf{Réduction du tableau}. Tout comme on agrandit le tableau si
 nécessaire, on pourrait le réduire lorsque des suppressions d’éléments
 le rendent sous-utilisé (par exemple lorsque la taille logique devient
 inférieure au tiers de la taille physique). Nous n’abordons toutefois
-pas cette problématique ici.}
+pas cette problématique ici.
+
 
 \section{Implémentation du comportement}
-{
+
 Nous avons à présent toutes les cartes en main pour écrire les méthodes
-publiques de la classe.}
+publiques de la classe.
 
-{\sffamily
-\textstyleMotCl{constructeur} Liste de T()}
-
-{\sffamily
-\ \ \textstyleWWPolicepardfaut{tailleLogique }←
-\textstyleWWPolicepardfaut{0~\ \ // La liste est vide au départ}}
-
-{\sffamily
-\ \ \textstyleWWPolicepardfaut{taillePhysique }←
-\textstyleWWPolicepardfaut{32\ \ // une bonne valeur pour commencer~}}
-
-{\sffamily
-\ \ \textstyleWWPolicepardfaut{éléments }← \textstyleMotCl{nouveau}
-\textstyleMotCl{tableau} [ 1 à taillePhysique ]
-\textstyleWWPolicepardfaut{de T~}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{constructeur}}
-
+\cadre{
+\begin{pseudo}
+	\Constr{Liste de T()}{}
+		\Let tailleLogique \Gets 0
+		\RComment La liste est vide au départ
+		\Let taillePhysique \Gets 32
+		\RComment une bonne valeur pour commencer
+		\Let éléments \Gets \K{nouveau} \K{tableau} [ 1 à taillePhysique ] de T
+	\EndConstr
+\end{pseudo}
+}
 
 \bigskip
 
-{\sffamily
-\textstyleMotCl{méthode} get( pos : entier ) → T}
-
-{\sffamily
-\ \ \textstyleMotCl{si}\textstyleWWPolicepardfaut{ pos {\textless} 1
-}\textstyleWWPolicepardfaut{OU}\textstyleWWPolicepardfaut{ pos
-{\textgreater} tailleLogique
-}\textstyleMotCl{alors}\textstyleWWPolicepardfaut{
-}\textstyleMotCl{erreur}\textstyleWWPolicepardfaut{
-{\textquotedbl}position invalide{\textquotedbl}
-}\textstyleMotCl{fin}\textstyleWWPolicepardfaut{
-}\textstyleMotCl{si}\textstyleWWPolicepardfaut{~}}
-
-{\sffamily
-\ \ \textstyleMotCl{retourner} éléments[ pos
-]\textstyleWWPolicepardfaut{~}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{méthode}}
-
+\cadre{
+\begin{pseudo}
+	\Method{get}{pos : entier}{T}
+		\If{ pos < 1 OU pos > tailleLogique}
+			\K{erreur} position invalide
+		\EndIf
+		\Return éléments[ pos ]
+	\EndMethod
+\end{pseudo}
+}
 
 \bigskip
 
-{\sffamily
-\textstyleMotCl{méthode} set( pos : entier, valeur : T )}
-
-{\sffamily
-\ \ \textstyleMotCl{si}\textstyleWWPolicepardfaut{ pos {\textless} 1
-}\textstyleWWPolicepardfaut{OU}\textstyleWWPolicepardfaut{ pos
-{\textgreater} tailleLogique
-}\textstyleMotCl{alors}\textstyleWWPolicepardfaut{
-}\textstyleMotCl{erreur}\textstyleWWPolicepardfaut{
-{\textquotedbl}position invalide{\textquotedbl}
-}\textstyleMotCl{fin}\textstyleWWPolicepardfaut{
-}\textstyleMotCl{si}\textstyleWWPolicepardfaut{~}}
-
-{\sffamily
-\ \ éléments[ pos ]\textstyleWWPolicepardfaut{~}←
-\textstyleWWPolicepardfaut{valeur}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{méthode}}
-
+\cadre{
+\begin{pseudo}
+	\Method{set}{pos : entier, valeur : T}{}
+		\If{ pos < 1 OU pos > tailleLogique}
+			\K{erreur} position invalide
+		\EndIf
+		\Let éléments[ pos ] \Gets valeur
+	\EndMethod
+\end{pseudo}
+}
 
 \bigskip
 
-{\sffamily
-\textstyleMotCl{méthode} taille() → entier}
-
-{\sffamily
-\ \ \textstyleMotCl{retourner}
-tailleLogique\textstyleWWPolicepardfaut{~\ \ // Et pas la taille
-physique !}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{méthode}}
-
+\cadre{
+\begin{pseudo}
+	\Method{taille}{}{entier}
+		\Return tailleLogique
+		\RComment Et pas la taille physique !
+	\EndMethod
+\end{pseudo}
+}
 
 \bigskip
 
-{\sffamily
-\textstyleMotCl{méthode} ajouter( valeur : T )}
-
-{\sffamily
-\ \ \textstyleMotCl{si}\textstyleWWPolicepardfaut{ tailleLogique =
-taillePhysique }\textstyleMotCl{alors}\textstyleWWPolicepardfaut{ }}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ \ \ agrandir()\ \ \ \ \ \ // méthode
-privée détaillée supra}}
-
-{\sffamily
-\textstyleMotCl{\ \ fin}\textstyleWWPolicepardfaut{
-}\textstyleMotCl{si}\textstyleWWPolicepardfaut{~}}
-
-{\sffamily
-\ \ \textstyleWWPolicepardfaut{tailleLogique }←
-\textstyleWWPolicepardfaut{tailleLogique + 1~}}
-
-{\sffamily
-\ \ éléments[ \textstyleWWPolicepardfaut{tailleLogique} ]\textrm{ }←
-\textstyleWWPolicepardfaut{valeur}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{méthode}}
-
+\cadre{
+\begin{pseudo}
+	\Method{ajouter}{valeur : T}{}
+		\If{tailleLogique = taillePhysique}
+			\Stmt agrandir()
+			\RComment méthode privée détaillée supra
+		\EndIf
+		\Let tailleLogique \Gets tailleLogique + 1
+		\Let éléments[ tailleLogique ] \Gets valeur
+	\EndMethod
+\end{pseudo}
+}
 
 \bigskip
 
-{\sffamily
-\textstyleMotCl{méthode} insérer( pos : entier, valeur : T )}
-
-{\sffamily
-\ \ \textstyleMotCl{si}\textstyleWWPolicepardfaut{ pos{\textless}1
-}\textstyleWWPolicepardfaut{OU}\textstyleWWPolicepardfaut{ pos
-{\textgreater} tailleLogique+1
-}\textstyleMotCl{alors}\textstyleWWPolicepardfaut{
-}\textstyleMotCl{erreur}\textstyleWWPolicepardfaut{
-{\textquotedbl}position invalide{\textquotedbl}
-}\textstyleMotCl{fin}\textstyleWWPolicepardfaut{
-}\textstyleMotCl{si}\textstyleWWPolicepardfaut{~}}
-
-{\sffamily
-\ \ \textstyleMotCl{si}\textstyleWWPolicepardfaut{ tailleLogique =
-taillePhysique }\textstyleMotCl{alors}\textstyleWWPolicepardfaut{ }}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ \ \ agrandir()}}
-
-{\sffamily
-\textstyleMotCl{\ \ fin}\textstyleWWPolicepardfaut{
-}\textstyleMotCl{si}\textstyleWWPolicepardfaut{~}}
-
-{\sffamily
-\ \ décalerDroite( pos )\ \ // voir ci-dessous}
-
-{\sffamily
-\ \ \textstyleWWPolicepardfaut{tailleLogique}\textrm{ }←
-\textstyleWWPolicepardfaut{tailleLogique + 1~}}
-
-{\sffamily
-\ \ éléments[ pos ]\textstyleWWPolicepardfaut{~}←
-\textstyleWWPolicepardfaut{valeur}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{méthode}}
-
+\cadre{
+\begin{pseudo}
+	\Method{insérer}{pos : entier, valeur : T}{}
+		\If{ pos < 1 OU pos > tailleLogique+1}
+			\K{erreur} position invalide
+		\EndIf
+		\If{tailleLogique = taillePhysique}
+			\Stmt agrandir()
+		\EndIf
+		\Stmt décalerDroite( pos )
+		\RComment voir ci-dessous
+		\Let tailleLogique \Gets tailleLogique + 1
+		\Let éléments[ pos ] \Gets valeur
+	\EndMethod
+\end{pseudo}
+}
 
 \bigskip
 
-{\sffamily
-\textstyleMotCl{méthode} supprimer()}
-
-{\sffamily
-\ \ \textstyleMotCl{si}\textstyleWWPolicepardfaut{ tailleLogique = 0
-}\textstyleMotCl{alors}\textstyleWWPolicepardfaut{
-\ }\textstyleMotCl{erreur}\textstyleWWPolicepardfaut{
-{\textquotedbl}liste vide{\textquotedbl}
-}\textstyleMotCl{fin}\textstyleWWPolicepardfaut{
-}\textstyleMotCl{si}\textstyleWWPolicepardfaut{~}}
-
-{\sffamily
-\ \ \textstyleWWPolicepardfaut{tailleLogique }←
-\textstyleWWPolicepardfaut{tailleLogique - 1~}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{méthode}}
-
+\cadre{
+\begin{pseudo}
+	\Method{supprimer}{}{}
+		\If{tailleLogique = 0}
+			\K{erreur} liste vide
+		\EndIf
+		\Let tailleLogique \Gets tailleLogique - 1
+	\EndMethod
+\end{pseudo}
+}
 
 \bigskip
 
-{\sffamily
-\textstyleMotCl{méthode} supprimer( pos : entier )}
-
-{\sffamily
-\ \ \textstyleMotCl{si}\textstyleWWPolicepardfaut{ pos {\textless} 1
-}\textstyleWWPolicepardfaut{OU}\textstyleWWPolicepardfaut{ pos
-{\textgreater} tailleLogique
-}\textstyleMotCl{alors}\textstyleWWPolicepardfaut{
-\ }\textstyleMotCl{erreur}\textstyleWWPolicepardfaut{
-{\textquotedbl}position invalide{\textquotedbl}
-}\textstyleMotCl{fin}\textstyleWWPolicepardfaut{
-}\textstyleMotCl{si}\textstyleWWPolicepardfaut{~}}
-
-{\sffamily
-\ \ décalerGauche( pos + 1 )}
-
-{\sffamily
-\ \ \textstyleWWPolicepardfaut{tailleLogique}\textrm{ }←
-\textstyleWWPolicepardfaut{tailleLogique - 1~}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{méthode}}
-
-{\sffamily
-\textstyleMotCl{méthode} supprimer( valeur: T ) → booléen}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ existe : booléen}}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ pos : entier}}
-
-{\sffamily
-\ \ \textstyleWWPolicepardfaut{existe
-}\textstyleWWPolicepardfaut{←}\textstyleWWPolicepardfaut{
-existe(valeur, pos)}}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ }\textstyleMotCl{si}\textstyleWWPolicepardfaut{
-existe }\textstyleMotCl{alors}}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ \ \ supprimer( pos )}}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ }\textstyleMotCl{fin}\textstyleWWPolicepardfaut{
-}\textstyleMotCl{si}}
-
-{\sffamily
-\ \ \textstyleMotCl{retourner} existe}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{méthode}}
-
+\cadre{
+\begin{pseudo}
+	\Method{supprimerPos}{pos : entier}{}
+		\If{ pos < 1 OU pos > tailleLogique}
+			\K{erreur} position invalide
+		\EndIf
+		\Stmt décalerGauche( pos + 1 )
+		\Let tailleLogique\Gets tailleLogique - 1
+	\EndMethod
+\end{pseudo}
+}
 
 \bigskip
 
-{\sffamily
-\textstyleMotCl{méthode} \textstyleWWPolicepardfaut{vider()}}
-
-{\sffamily
-\ \ \textstyleWWPolicepardfaut{tailleLogique }←
-\textstyleWWPolicepardfaut{0 \ // Les éléments ne sont pas effacés mais
-sont ignorés}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{méthode}}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{méthode} \textstyleWWPolicepardfaut{estVide()
-}→\textstyleWWPolicepardfaut{ booléen}}
-
-{\sffamily
-\ \ \textstyleMotCl{retourner} tailleLogique =
-0\textstyleWWPolicepardfaut{~}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{méthode}}
-
+\cadre{
+\begin{pseudo}
+	\Method{supprimer}{valeur: T}{booléen}
+		\Decl existe : booléen
+		\Decl pos : entier
+		\Let existe \Gets existe(valeur, pos)
+		\If{existe}
+			\Stmt supprimer( pos )
+		\EndIf
+		\Return existe
+	\EndMethod
+\end{pseudo}
+}
 
 \bigskip
 
-{\sffamily
-\textstyleMotCl{méthode} existe( valeur : T, pos~↑ : entier ) →
-booléen
-\ \ \textstyleWWPolicepardfaut{pos}\textrm{ }←
-\textstyleWWPolicepardfaut{1}}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ // Rq : le
-}\textstyleWWPolicepardfaut{ET}\textstyleWWPolicepardfaut{ ci-dessous
-est une évaluation court-circuitée (cf. chapitre 3)}}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ }\textstyleMotCl{tant}\textstyleWWPolicepardfaut{
-}\textstyleMotCl{que}\textstyleWWPolicepardfaut{ pos
-}\textstyleWWPolicepardfaut{${\leq}$}\textstyleWWPolicepardfaut{
-tailleLogique
-}\textstyleWWPolicepardfaut{ET}\textstyleWWPolicepardfaut{ éléments[
-pos ] }\textstyleWWPolicepardfaut{${\neq}$}\textstyleWWPolicepardfaut{
-valeur }\textstyleMotCl{faire}}
-
-{\sffamily
-\ \ \ \ \textstyleWWPolicepardfaut{pos}\textrm{ }← pos +
-\textstyleWWPolicepardfaut{1\ \ \ \ }}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ }\textstyleMotCl{fin}\textstyleWWPolicepardfaut{
-}\textstyleMotCl{tant}\textstyleWWPolicepardfaut{
-}\textstyleMotCl{que}\textstyleWWPolicepardfaut{~}}
-
-{\sffamily
-\ \ \textstyleMotCl{retourner} \textstyleWWPolicepardfaut{pos
-}\textstyleWWPolicepardfaut{${\leq}$}\textstyleWWPolicepardfaut{
-\ tailleLogique}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{méthode}}
-
+\cadre{
+\begin{pseudo}
+	\Method{vider}{}{}
+		\Let tailleLogique \Gets 0 
+		\RComment Les éléments ne sont pas effacés mais sont ignorés
+	\EndMethod
+\end{pseudo}
+}
 
 \bigskip
 
-{\sffamily
-// Ces méthodes-ci sont privées}
-
-
-\bigskip
-
-{\sffamily
-\textstyleMotCl{méthode} \textstyleWWPolicepardfaut{décalerDroite( début
-: entier )}}
-
-{\sffamily\itshape
-\ \ // Décale toutes les éléments d'une position vers
-la droite à partir de début}
-
-{\sffamily
-\ \ i : entier}
-
-{\sffamily
-\ \ \textstyleMotCl{pour} i \textstyleMotCl{de} tailleLogique
-\textstyleMotCl{à}
-\textstyleWWPolicepardfaut{début~}\textstyleMotCl{par} –1
-\textstyleMotCl{faire} }
-
-{\sffamily
-\ \ \ \ éléments[ i + 1 ]\textstyleWWPolicepardfaut{~}← éléments[ i
-]\textstyleWWPolicepardfaut{~}}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ }\textstyleMotCl{fin}\textstyleWWPolicepardfaut{
-}\textstyleMotCl{pour}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{méthode}}
-
+\cadre{
+\begin{pseudo}
+	\Method{estVide}{}{booléen}
+		\Return tailleLogique = 0
+	\EndMethod
+\end{pseudo}
+}
 
 \bigskip
 
-{\sffamily
-\textstyleMotCl{méthode} \textstyleWWPolicepardfaut{décalerGauche( début
-: entier )}}
-
-{\sffamily\itshape
-\ \ // Décale toutes les éléments d'une position vers
-la gauche à partir de}
-
-{\sffamily\itshape
-\ \ // début ; ce paramètre vaut toujours au moins 2.}
-
-{\sffamily
-\ \ i : entier}
-
-{\sffamily
-\ \ \textstyleMotCl{pour} i \textstyleMotCl{de}
-\textstyleWWPolicepardfaut{début}\textstyleMotCl{ à} tailleLogique
-\textstyleMotCl{faire} }
-
-{\sffamily
-\ \ \ \ éléments[ i - 1 ]\textstyleWWPolicepardfaut{~}← éléments[ i
-]\textstyleWWPolicepardfaut{~}}
-
-{\sffamily
-\textstyleWWPolicepardfaut{\ \ }\textstyleMotCl{fin}\textstyleWWPolicepardfaut{
-}\textstyleMotCl{pour}}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{méthode}}
-
+\cadre{
+\begin{pseudo}
+	\Method{existe}{valeur\In : T, pos\Out : entier}{booléen}
+		\Let pos \Gets 1
+		\LComment Rq : le ET ci-dessous est une évaluation 
+		court-circuitée (cf. chapitre 3)
+		\While{ pos{${\leq}$}tailleLogique ET éléments[ pos ]{${\neq}$}valeur}
+			\Let pos \Gets pos + 1
+		\EndWhile
+		\Return pos{${\leq}$}tailleLogique
+	\EndMethod
+\end{pseudo}
+}
 
 \bigskip
 
-{
-\textstyleMotCl{La recherche se fait sur un élément complet. }}
+\cadre{
+\begin{pseudo}
+	\LComment Ces méthodes-ci sont privées
+	\bigskip
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.323cm,height=1.323cm]{log1-img/log1-img156}
+	\Method{décalerDroite}{début : entier}{}
+		\LComment Décale tous les éléments d'une position vers
+		la droite à partir de début
+		\Decl i : entier
+		\For{i \K{de} tailleLogique \K{à} début \K{par} –1}
+			\Let éléments[ i + 1 ] \Gets éléments[ i ]
+		\EndFor
+	\EndMethod
 
-\end{center}
-{
-\textstyleMotCl{\textmd{Prenons comme exemple une liste de contacts.
+	\bigskip
+	
+	\Method {décalerGauche}{début : entier}{}
+		\LComment Décale toutes les éléments d'une position vers
+		la gauche à partir de début ; 
+		\LComment ce paramètre vaut toujours au moins 2.
+		\Decl i : entier
+		\For{i \K{de} début \K{à} tailleLogique}
+			\Let éléments[ i - 1 ] \Gets éléments[ i ]
+		\EndFor
+	\EndMethod
+\end{pseudo}
+}
+
+\bigskip
+
+\marginicon{attention}
+\textstyleMotCl{La recherche se fait sur un élément complet. }
+
+
+Prenons comme exemple une liste de contacts.
 Lors d'une recherche, on doit fournir
-}}\textstyleMotCl{tout}\textstyleMotCl{\textmd{ le contact à
+\textstyleMotCl{tout} le contact à
 rechercher. Il s'agit juste de savoir
 s'il est présent et où. Une autre méthode intéressante
 serait de retrouver un contact à partir d'une partie
@@ -793,463 +502,405 @@ de l'information, par exemple son nom. Cette méthode
 est fort proche de notre méthode de recherche mais il serait très
 difficile de l'écrire génériquement. On vous demandera
 d'écrire explicitement une telle méthode de recherche
-en cas de besoin.}}}
+en cas de besoin.
+
 
 \section{Et sans tableau dynamique ?}
-{
+
 Certains langages (c’est le cas de Cobol) ne permettent pas de créer
 dynamiquement un nouveau tableau. Il vous faudra travailler avec un
-tableau classique en le créant suffisamment grand.}
+tableau classique en le créant suffisamment grand.
 
-{
+
 Les algorithmes d’ajout/suppression/recherche vus pour la liste peuvent
 être appliqués tels quels à un tableau statique à une modification près
 : lors d’un ajout dans un tableau plein, on ne peut pas l’agrandir; il
-faut générer une erreur.}
+faut générer une erreur.
+
 
 \section{Exercices}
 \liststyleExercice
 \begin{enumerate}
-\item {\sffamily\bfseries
-Liste des premiers entiers}
+	\item {\sffamily\bfseries
+	Liste des premiers entiers}
+	
+		Écrire un module qui reçoit un entier n en paramètre et retournant la
+		liste contenant les entiers de 1 à n dans l'ordre
+		décroissant. On peut supposer que n est positif.
+	\end{enumerate}
+		
+	\liststyleExercice
+	\setcounter{saveenum}{\value{enumi}}
+	\begin{enumerate}
+	\setcounter{enumi}{\value{saveenum}}
+		\item {\sffamily\bfseries
+		Liste des premiers entiers}
+	
+		Écrire un module qui reçoit une liste de chaines en paramètre et
+		supprime de cette liste tous les éléments de valeur donnée en
+		paramètre. L'algorithme retournera le nombre de
+		suppressions effectuées
+	\end{enumerate}
+		
+	\liststyleExercice
+	\setcounter{saveenum}{\value{enumi}}
+	\begin{enumerate}
+	\setcounter{enumi}{\value{saveenum}}	
+		\item {\sffamily\bfseries
+		Somme d'une liste}
+	
+		Écrire un module qui calcule la somme des éléments d’une liste
+		d’entiers.
+	\end{enumerate}
+	
+	\liststyleExercice
+	\setcounter{saveenum}{\value{enumi}}
+	\begin{enumerate}
+	\setcounter{enumi}{\value{saveenum}}
+		\item {\sffamily\bfseries
+		Les extrêmes}
+		
+			Écrire un module qui supprime le minimum et le maximum des éléments
+			d’une liste d’entiers. On peut supposer que le maximum et le minimum
+			sont uniques.
+	\end{enumerate}
 
-{
-Écrire un module qui reçoit un entier n en paramètre et retournant la
-liste contenant les entiers de 1 à n dans l'ordre
-décroissant. On peut supposer que n est positif.}
-\item {\sffamily\bfseries
-{List}e des premiers entiers}
+	\liststyleExercice
+	\setcounter{saveenum}{\value{enumi}}
+	\begin{enumerate}
+	\setcounter{enumi}{\value{saveenum}}
+		\item {\sffamily\bfseries
+		Anniversaires}
+		
+			Écrire un module qui reçoit une liste de Personne (nom + prénom + date
+			de naissance ; cf. exercice dans le chapitre OO) et retourne la liste
+			de ceux qui sont nés durant un mois passé en paramètre (entier entre 1
+			et 12)
+		\end{enumerate}
+		
+	\liststyleExercice
+	\setcounter{saveenum}{\value{enumi}}
+	\begin{enumerate}
+	\setcounter{enumi}{\value{saveenum}}
+		\item {\sffamily\bfseries
+		Concaténation de deux listes}
+		
+			Écrire un module qui reçoit 2 listes et ajoute
+			à la suite de la première les éléments de la seconde; la seconde liste
+			n'est pas modifiée par cette opération.
+	\end{enumerate}
+	
+	\liststyleExercice
+	\setcounter{saveenum}{\value{enumi}}
+	\begin{enumerate}
+	\setcounter{enumi}{\value{saveenum}}
+		\item {\sffamily\bfseries
+		Fusion de deux listes}
+		
+			Soit deux listes \textbf{ordonnées}
+			d'entiers (redondances possibles). Écrire un module
+			qui les fusionne. Le résultat est une liste encore ordonnée contenant
+			tous les entiers des deux listes de départ (qu'on
+			laisse inchangées).
 
-{
-Écrire un module qui reçoit une liste de chaines en paramètre et
-supprime de cette liste tous les éléments de valeur donnée en
-paramètre. L'algorithme retournera le nombre de
-suppressions effectuées}
-\item {\sffamily\bfseries
-Somme d'une liste}
-\end{enumerate}
-{
-Écrire un module qui calcule la somme des éléments d’une liste
-d’entiers.}
+			Exemple : Si les 2 listes sont (1, 3, 7, 7) et (3, 9), 
+			le résultat est (1, 3, 3, 7, 7, 9).
+	\end{enumerate}
+	
+	\liststyleExercice
+	\setcounter{saveenum}{\value{enumi}}
+	\begin{enumerate}
+	\setcounter{enumi}{\value{saveenum}}
+		\item {\sffamily\bfseries
+		Éliminer les doublons d'une liste}
+		
+			Soit une liste \textbf{ordonnée} 
+			d'entiers avec de possibles redondances. Écrire un
+			module qui enlève les redondances de la liste.
+					
+			Exemple : Si la liste est (1, 3, 3, 7, 8, 8, 8),
+			le résultat est (1, 3, 7, 8).
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Les extrêmes}
-\end{enumerate}
-{
-Écrire un module qui supprime le minimum et le maximum des éléments
-d’une liste d’entiers. On peut supposer que le maximum et le minimum
-sont uniques.}
+			\begin{enumerate}
+				\item 
+					Faites l'exercice en créant une \textbf{nouvelle
+					liste} (la liste de départ reste inchangée)
+				\item 
+					Refaites l'exercice en \textbf{modifiant}
+					la liste de départ (pas de nouvelle liste)
+			\end{enumerate}
+	\end{enumerate}
+	
+	\liststyleExercice
+	\setcounter{saveenum}{\value{enumi}}
+	\begin{enumerate}
+	\setcounter{enumi}{\value{saveenum}}
+		\item {\sffamily\bfseries
+		La chaine}
+		
+			Nous utilisons déjà un type chaine.
+			Faisons-en une classe et dotons-la de
+			méthodes souvent utiles.
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Anniversaires}
-\end{enumerate}
-{
-Écrire un module qui reçoit une liste de Personne (nom + prénom + date
-de naissance ; cf. exercice dans le chapitre OO) et retourne la liste
-de ceux qui sont nés durant un mois passé en paramètre (entier entre 1
-et 12)}
+			\begin{center}
+			\tablehead{}
+			\begin{supertabular}{|m{11.597cm}|}
+			\hline
+			\centering\arraybslash  Chaine\\\hline
+			 {}- listeCar : Liste de caractères\\\hline
+			{ + Chaine( )\ \ // crée une chaine vide}
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Concaténation de deux listes}
-\end{enumerate}
-{
-\textstylePolicepardfauti{Écrire un module qui reçoit 2 listes et ajoute
-à la suite de la première les éléments de la seconde; la seconde liste
-n'est pas modifiée par cette opération.}}
+			{ {+ }Chaine( tab : tableau [1 à n] de caractères )
+			\ \ // crée une chaine initialisée au contenu du tableau}
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Fusion de deux listes}
-\end{enumerate}
-{
-\textstylePolicepardfauti{Soit deux listes
-}\textstylePolicepardfauti{\textbf{ordonnées}}\textstylePolicepardfauti{
-d'entiers (redondances possibles). Écrire un module
-qui les fusionne. Le résultat est une liste encore ordonnée contenant
-tous les entiers des deux listes de départ (qu'on
-laisse inchangées).}}
+			{ {+ getCaractère ( i : entier ) }\textsf{→} {caractère}}
 
-{
-\textstylePolicepardfauti{Exemple}\textstylePolicepardfauti{ : Si les 2
-listes sont (1, 3, 7, 7) et (3, 9), le résultat est (1, 3, 3, 7, 7,
-9).}}
+			{ + concatène( autre : Chaine ) // ajoute autre à
+			la fin de la chaine}
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Éliminer les doublons d'une liste}
-\end{enumerate}
-{
-\textstylePolicepardfauti{Soit une liste
-}\textstylePolicepardfauti{\textbf{ordonnée}}\textstylePolicepardfauti{
-d'entiers avec de possibles redondances. Écrire un
-module qui enlève les redondances de la liste.}}
+			{ {+ sousChaine( début,
+			taille : entiers ) }\textsf{→} {Chaine
+			\ \ // donne la chaine de taille donnée commençant à la
+			\ \ // position début. La chaine n'est pas modifiée}}
 
-{
-\textstylePolicepardfauti{Exemple}\textstylePolicepardfauti{ : Si la
-liste est (1, 3, 3, 7, 8, 8, 8) le résultat est (1, 3, 7, 8).}}
+			{ {+ existe(
+			chaineCherchée : Chaine, position~}\textsf{↑}
+			:{ entier ) }\textsf{→}
+			{booléen
+			\ \ // indique si la chaineCherchée est une sous-chaine;
+			\ \ // Si oui, donne la position de la sous-chaine
+			\ \ // Si la sous-chaine existe en plusieurs exemplaires, on
+			\ \ // donne la première occurrence.}}
 
-{
-\textstylePolicepardfauti{A. Faites l'exercice en
-créant une }\textstylePolicepardfauti{\textbf{nouvelle
-liste}}\textstylePolicepardfauti{ (la liste de départ reste
-inchangée)}}
+			{ {+ remplacer(
+			chaineARemplacer, par : Chaine ) }\textsf{→}
+			{booléen
+			\ \ // retourne un booléen indiquant si au moins un
+			\ \ // remplacement a eu lieu (ce qui ne sera pas le cas si la}}
 
-{
-\textstylePolicepardfauti{B. Refaites l'exercice en
-}\textstylePolicepardfauti{\textbf{modifiant
-}}\textstylePolicepardfauti{la liste de départ (pas de nouvelle
-liste)}}
+			{ \ \ // chaine à remplacer n’était pas
+			présente)}
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-\textstylePolicepardfauti{La chaine}}
-\end{enumerate}
-{
-\textstylePolicepardfauti{Nous utilisons déjà un type chaine.
-}{Faisons-en une classe et dotons-la de
-méthodes souvent utiles}\textstylePolicepardfauti{. }}
+			 {+ taille() }\textsf{→}
+			{entier \ // nb de caractères de la
+			chaine}\\\hline
+			\end{supertabular}
+			\end{center}
+			
+			Par facilité, on supposera qu’écrire une chaine littéralement revient à
+			créer un objet Chaine initialisé de la même façon. (ex : «~Bonjour~»
+			est équivalent à «~nouveau Chaine (tab)~» où tab est un tableau
+			contenant les caractères 'B',
+			'o',
+			'n',
+			'j',
+			'o',
+			'u',
+			'r'.
 
-\begin{center}
-\tablehead{}
-\begin{supertabular}{|m{11.597cm}|}
-\hline
-\centering\arraybslash  Chaine\\\hline
- {}- listeCar : Liste de caractères\\\hline
-{ + Chaine( )\ \ // crée une chaine vide}
+			\textbf{Utilisation de la chaine.}
 
-{ {+ }Chaine( tab
-:tableau [1 à n] de caractères )
-\ \ // crée une une chaine initialisée au contenu du tableau}
+			\liststyleListv
+			\begin{itemize}
+				\item 
+					Écrire un module qui reçoit un nom complet
+					sous la forme «~nom, prénom~» (le nom et le prénom sont donc séparés
+					par une virgule et un espace) et dissocie le nom du prénom. 
+				\item 
+					Écrire un module qui remplace dans une chaine
+					tous les «~HEB-ESI~» par «~ESI~»
+				\item 
+					Idem mais pour le changement inverse 
+					(remplacer tous les «~ESI~» par «~HEB-ESI~»)
+			\end{itemize}
 
-{ {+ getCaractère ( i :
-entier ) }\textsf{→} {caractère}}
+	\end{enumerate}
+		\liststyleExercice
+		
+	\liststyleExercice
+	\setcounter{saveenum}{\value{enumi}}
+	\begin{enumerate}
+	\setcounter{enumi}{\value{saveenum}}
+		\item {\sffamily\bfseries
+		La liste ordonnée}
+		
+			Une recherche dans une liste implique un parcours complet de la liste en
+			cas de recherche infructueuse. La recherche pourrait être plus rapide
+			si la liste était ordonnée (en utilisant la recherche dichotomique). La
+			contrainte principale est qu'il faudra maintenir le
+			caractère ordonné de la liste (notamment en cas
+			d'ajout). Écrivez les modules suivants, de façon à ce
+			que la liste reste ordonnée.
 
-{ + concatène( autre : Chaine ) // ajoute autre à
-la fin de la chaine}
+			\cadre{
+			\begin{pseudo}
+				\ModuleSign{ajouterOrdonné}{liste : Liste de T, valeur : T}{}
+				\ModuleSign{enleverOrdonné}{liste : Liste de T, valeur : T}{booléen}
+				\LComment retourne faux si valeur pas présente. 
+				\LComment Si la valeur est présente en plusieurs exemplaire, en enlève une.
+				\ModuleSign{existeOrdonné}{liste\In : Liste de T, valeur\In : T, pos\Out: entier}{booléen}
+				\LComment si la valeur n'est pas trouvée, pos donne la position où elle aurait dû être.
+			\end{pseudo}
+			}
 
-{ {+ sousChaine( début,
-taille : entiers ) }\textsf{→} {Chaine
-\ \ // donne la chaine de taille donnée commençant à la
-\ \ // position début. La chaine n'est pas modifiée}}
+	\end{enumerate}
+	
+	\liststyleExercice
+	\setcounter{saveenum}{\value{enumi}}
+	\begin{enumerate}
+	\setcounter{enumi}{\value{saveenum}}
+	\item {\sffamily\bfseries
+	Trier des mots}
+		
+			Écrivez un algorithme qui lit une série de mots (se terminant par une
+			chaine vide) sans aucun ordre et les affiche dans l’ordre alphabétique.
+			Vous pouvez utiliser les modules écrits lors de
+			l'exercice précédent.
+			
+	\end{enumerate}
 
-{ {+ existe(
-chaineCherchée : Chaine, position~}\textsf{↑}
-:{ entier ) }\textsf{→}
-{booléen
-\ \ // indique si la chaineCherchée est une sous-chaine;
-\ \ // Si oui, donne la position de la sous-chaine
-\ \ // Si la sous-chaine existe en plusieurs exemplaires, on
-\ \ // donne la première occurrence.}}
+	\liststyleExercice
+	\setcounter{saveenum}{\value{enumi}}
+	\begin{enumerate}
+	\setcounter{enumi}{\value{saveenum}}
+	\item {\sffamily\bfseries
+	Éviter les doublons}
+	
+			Modifiez l’exemple ci-dessus pour que deux mots identiques ne soient
+			introduits qu’une seule fois dans la liste.
+	\end{enumerate}
 
-{ {+ remplacer(
-chaineARemplacer, par : Chaine ) }\textsf{→}
-{booléen
-\ \ // retourne un booléen indiquant si au moins un
-\ \ // remplacement a eu lieu (ce qui ne sera pas le cas si la}}
+	\liststyleExercice
+	\setcounter{saveenum}{\value{enumi}}
+	\begin{enumerate}
+	\setcounter{enumi}{\value{saveenum}}
+		\item {\sffamily\bfseries
+		L'ensemble}
+		
+			La notion d’ensemble fini est une notion qui vous est déjà 
+			familière pour l’avoir rencontrée dans plusieurs cours. Nous rappelons
+			certaines de ses propriétés et opérations. 
+			
+			\bigskip
+			
+			Étant donnés deux ensembles
+			finis \textbf{S} et \textbf{T} ainsi qu’un élément \textbf{x} :
 
-{ \ \ // chaine à remplacer n’était pas
-présente)}
+			\liststyleListv
+			\begin{itemize}
+			\item 
+				\textbf{x} {${\in}$} \textbf{S} signifie que l’élément \textbf{x}
+				est un élément de l’ensemble \textbf{S}.
+			\item 
+				L’ensemble vide, noté \textbf{${\emptyset}$} 
+				est l’ensemble qui n’a pas d’élément 
+				(\textbf{x} {${\in}$} \textbf{${\emptyset}$} 
+				est faux quel que soit \textbf{x} ).
+			\item 
+				L’ordre des éléments dans un ensemble n’a
+				aucune signification, l’ensemble \{1,2\} est
+				identique à \{2,1\}.
+			\item 
+				Un élément \textbf{x} ne peut
+				pas être plus d’une fois élément d’un même ensemble 
+				(pas de répétition).
+			\item 
+				L’union \textbf{S ${\cup}$ T} 
+				est l’ensemble contenant les éléments qui sont dans 
+				\textbf{S} ou (non exclusif) dans \textbf{T}.
+			\item 
+				L’intersection \textbf{S ${\cap}$ T} 
+				est l’ensemble des éléments qui sont à la fois 
+				dans \textbf{S} et dans \textbf{T}.
+			\item 
+				La différence \textbf{S {\textbackslash} T} 
+				est l’ensemble des éléments qui sont 
+				dans \textbf{S} mais pas dans \textbf{T}.
+			\end{itemize}
+			
+			\bigskip
+			
+			Créez la classe \textstyleCodeInsr{Ensemble}
+			décrite ci-dessous.
+			
+			\cadre{
+			\begin{pseudo}
+				\Class{Ensemble de T}{} 
+				\RComment T est le type des éléments de l'ensemble
+				
+					\Public
+					\ConstrSign{Ensemble de T}{} 
+					\RComment construit un ensemble vide
+					\MethodSign{ajouter}{élt : T}{}
+					\RComment ajoute l'élément à l'ensemble
+					\MethodSign{enlever}{élt : T}{})
+					\RComment enlève un élément de l'ensemble
+					\MethodSign{contient}{élt : T}{booléen}
+					\RComment dit si l'élément est présent
+					\MethodSign{estVide}{}{booléen}
+					\RComment dit si l'ensemble est vide
+					\MethodSign{taille}{}{entier}
+					\RComment donne la taille de l'ensemble
+					\MethodSign{union}{autreEnsemble : Ensemble de T}{Ensemble de T}
+					\MethodSign{intersection}{autreEnsemble : Ensemble de T}{Ensemble de T}
+					\MethodSign{moins}{autreEnsemble : Ensemble de T}{Ensemble de T}
+					\MethodSign{liste}{}{Liste de T}
+					\RComment conversion en liste
+			\EndClass
+		\end{pseudo}
+		}
+		\bigskip
 
- {+ taille() }\textsf{→}
-{entier \ // nb de caractères de la
-chaine}\\\hline
-\end{supertabular}
-\end{center}
-{
-Par facilité, on supposera qu’écrire une chaine littéralement revient à
-créer un objet Chaine initialisé de la même façon. (ex : «~Bonjour~»
-est équivalent à «~nouveau Chaine (tab)~» où tab est un tableau
-contenant les caractères 'B',
-'o',
-'n',
-'j',
-'o',
-'u',
-'r'.}
+		\textstylePolicepardfaut{Quelques remarques :}
 
-{
-\textstylePolicepardfauti{\textbf{Utilisation de la
-chaine}}\textstylePolicepardfauti{. }}
+		\liststyleListv
+		\begin{itemize}
+			\item 
+				La méthode d'ajout (resp. de suppression) n'a
+				pas d'effet si l'élément est déjà
+				(resp. n'est pas) dans l'ensemble.
+			\item 
+				Les méthodes \textstyleCodeInsr{union()}, 
+				\textstyleCodeInsr{intersection()} et 
+				\textstyleCodeInsr{moins()} retournent un troisième ensemble, 
+				résultat des 2 premiers sans toucher
+				à ces 2 ensembles. On aurait pu envisager des méthodes modifiant
+				l'ensemble sur lequel on les appelle.
+			\item 
+				La méthode \textstyleCodeInsr{liste()}
+				est nécessaire si on veut parcourir les éléments de
+				l'ensemble (par exemple pour les afficher).
+		\end{itemize}
+	\end{enumerate}
+	
+	\liststyleExercice
+	\setcounter{saveenum}{\value{enumi}}
+	\begin{enumerate}
+	\setcounter{enumi}{\value{saveenum}}
+	\item {\sffamily\bfseries
+	Autres opérations ensemblistes}
+		
+		Nous avons défini des opérations ensemblistes ne touchant pas aux
+		ensembles de départ. Que deviennent-elles si on considère
+		qu'elles \textbf{modifient}
+		l'ensemble sur lequel elles sont appliquées ?
+	\end{enumerate}
 
-\liststyleListv
-\begin{itemize}
-\item {
-\textstylePolicepardfauti{Écrire un module qui reçoit un nom complet
-sous la forme «~nom, prénom~» (le nom et le prénom sont donc séparés
-par une virgule et un espace) et dissocie le nom du prénom. }}
-\item {
-\textstylePolicepardfauti{Écrire un module qui remplace dans une chaine
-tous les «~HEB-ESI~» par «~ESI~»}}
-\item {
-\textstylePolicepardfauti{{Idem mais pour le
-changement inverse (remplacer tous les «~ESI~» par «~HEB-ESI~»)}}}
-\end{itemize}
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-La liste ordonnée}
-\end{enumerate}
-{
-Une recherche dans une liste implique un parcours complet de la liste en
-cas de recherche infructueuse. La recherche pourrait être plus rapide
-si la liste était ordonnée (en utilisant la recherche dichotomique). La
-contrainte principale est qu'il faudra maintenir le
-caractère ordonné de la liste (notamment en cas
-d'ajout). Écrivez les modules suivants, de façon à ce
-que la liste reste ordonnée.}
+	
+	\liststyleExercice
+	\setcounter{saveenum}{\value{enumi}}
+	\begin{enumerate}
+	\setcounter{enumi}{\value{saveenum}}
+	\item {\sffamily\bfseries
+	Rendez-vous}
+	
+		Soit la structure «\textstyleCodeInsr{~RendezVous~}» composée d’une date
+		et d’un motif de rencontre. Écrire un module qui reçoit une liste de
+		rendez-vous et la met à jour en supprimant tous ceux qui sont désormais
+		passés. 
 
-{\sffamily
-\textstyleMotCl{\ \ \ \ module} ajouterOrdonné ( liste : Liste de T,
-valeur : T)}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ module} enleverOrdonné ( liste : Liste de T,
-valeur : T) → booléen
-\ \ // retourne faux si valeur pas présente. Si la valeur est présente
-en
-\ \ // plusieurs exemplaire, en enlève une.}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ module} existeOrdonné ( liste : Liste de T,
-valeur : T, pos~↑: entier ) → booléen}
-
-{\sffamily
-\ \ // si la valeur n'est pas trouvée, pos donne la
-position où elle aurait du être}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Trier des mots}
-\end{enumerate}
-{
-Écrivez un algorithme qui lit une série de mots (se terminant par une
-chaine vide) sans aucun ordre et les affiche dans l’ordre alphabétique.
-Vous pouvez utiliser les modules écrits lors de
-l'exercice précédent.}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Éviter les doublons}
-\end{enumerate}
-{
-Modifiez l’exemple ci-dessus pour que deux mots identiques ne soient
-introduits qu’une seule fois dans la liste.}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-\textstylePolicepardfauti{{L'ensemble}}}
-\end{enumerate}
-{
-\textstylePolicepardfaut{{La notion d’ensemble
-fini est une notion qui vous est déjà familière pour l’avoir rencontrée
-dans plusieurs cours. }}\textstylePolicepardfaut{Nous rappelons
-certaines de ses propriétés et opérations. Étant donnés deux ensembles
-finis }\textstylePolicepardfaut{\textbf{S}}\textstylePolicepardfaut{ et
-}\textstylePolicepardfaut{\textbf{T}}\textstylePolicepardfaut{ ainsi
-qu’un élément
-}\textstylePolicepardfaut{\textbf{x}}\textstylePolicepardfaut{ :}}
-
-\liststyleListv
-\begin{itemize}
-\item {
-\textstylePolicepardfaut{\textbf{x}}\textstylePolicepardfaut{
-}\textstylePolicepardfaut{${\in}$}\textstylePolicepardfaut{
-}\textstylePolicepardfaut{\textbf{S}}\textstylePolicepardfaut{ signifie
-que l’élément
-}\textstylePolicepardfaut{\textbf{x}}\textstylePolicepardfaut{ est un
-élément de l’ensemble
-}\textstylePolicepardfaut{\textbf{S}}\textstylePolicepardfaut{.}}
-\item {
-\textstylePolicepardfaut{L’ensemble vide, noté
-}\textstylePolicepardfaut{\textbf{${\emptyset}$}}\textstylePolicepardfaut{
-est l’ensemble qui n’a pas d’éléments 
-(}\textstylePolicepardfaut{\textbf{x}}\textstylePolicepardfaut{
-}\textstylePolicepardfaut{${\in}$}\textstylePolicepardfaut{
-}\textstylePolicepardfaut{\textbf{${\emptyset}$}}\textstylePolicepardfaut{
-est faux quel que soit
-}\textstylePolicepardfaut{\textbf{x}}\textstylePolicepardfaut{).}}
-\item {
-\textstylePolicepardfaut{L’ordre des éléments dans un ensemble n’a
-aucune signification, }\textstylePolicepardfaut{l’ensemble \{1,2\} est
-identique à \{2,1\}.}}
-\item {
-\textstylePolicepardfaut{Un élément
-}\textstylePolicepardfaut{\textbf{x}}\textstylePolicepardfaut{ ne peut
-pas être plus d’une fois élément d’un même ensemble (pas de
-répétition).}}
-\item {
-\textstylePolicepardfaut{L’union~}\textstylePolicepardfaut{\textbf{S
-}}\textstylePolicepardfaut{\textbf{${\cup}$}}\textstylePolicepardfaut{\textbf{
-T}}\textstylePolicepardfaut{ est l’ensemble contenant les éléments qui
-sont dans
-}\textstylePolicepardfaut{\textbf{S}}\textstylePolicepardfaut{ ou (non
-exclusif) dans
-}\textstylePolicepardfaut{\textbf{T}}\textstylePolicepardfaut{.}}
-\item {
-\textstylePolicepardfaut{L’intersection
-}\textstylePolicepardfaut{\textbf{S
-}}\textstylePolicepardfaut{\textbf{${\cap}$}}\textstylePolicepardfaut{\textbf{
-T}}\textstylePolicepardfaut{ est l’ensemble des éléments qui sont à la
-fois dans
-}\textstylePolicepardfaut{\textbf{S}}\textstylePolicepardfaut{ et dans
-}\textstylePolicepardfaut{\textbf{T}}\textstylePolicepardfaut{.}}
-\item {
-\textstylePolicepardfaut{{La différence
-}}\textstylePolicepardfaut{{\textbf{S
-{\textbackslash} T}}}\textstylePolicepardfaut{{
-est l’ensemble des éléments qui sont dans S mais pas dans
-}}\textstylePolicepardfaut{{\textbf{T}}}\textstylePolicepardfaut{{.}}}
-\end{itemize}
-{
-Créez la classe \textstyleCodeInsr{Ensemble}
-\textstylePolicepardfaut{{décrite
-ci-dessous.}}}
-
-{\sffamily
-\textstyleMotCl{classe} Ensemble de T\ \ // T est le type des éléments
-de l'ensemble}
-
-{\sffamily
-\textstyleMotCl{{public}}\textstylePolicepardfaut{{\textsf{
-:}}}}
-
-{\sffamily
-\textstylePolicepardfaut{{\textsf{\ \ }}}\textstyleMotCl{{constructeur}}\textstylePolicepardfaut{{\textsf{
-Ensemble de T()\ \ \ \ // construit un ensemble vide}}}}
-
-{\sffamily
-\textstylePolicepardfaut{{\textsf{\ \ }}}\textstyleMotCl{{méthode}}\textstylePolicepardfaut{{\textsf{
-ajouter( élt ↓ : T )\ \ \ \ \ \ // ajoute l'élément à
-l'ensemble}}}}
-
-{\sffamily
-\textstylePolicepardfaut{{\textsf{\ \ }}}\textstyleMotCl{{méthode}}\textstylePolicepardfaut{{\textsf{
-enlever( élt ↓ : T )\ \ \ \ \ \ // enlève un élément de
-l'ensemble}}}}
-
-{\sffamily
-\textstylePolicepardfaut{{\textsf{\ \ }}}\textstyleMotCl{{méthode}}\textstylePolicepardfaut{{\textsf{
-contient( élt ↓ : T ) → booléen\ \ // dit si l'élément
-est présent}}}}
-
-{\sffamily
-\textstylePolicepardfaut{{\textsf{\ \ }}}\textstyleMotCl{{méthode}}\textstylePolicepardfaut{{\textsf{
-estVide() → booléen\ \ \ \ // dit si l'ensemble est
-vide}}}}
-
-{\sffamily
-\textstylePolicepardfaut{{\textsf{\ \ }}}\textstyleMotCl{{méthode}}\textstylePolicepardfaut{{\textsf{
-taille() → entier\ \ \ \ \ \ // donne la taille de
-l'ensemble}}}}
-
-{\sffamily
-\textstylePolicepardfaut{{\textsf{\ \ }}}\textstyleMotCl{{méthode}}\textstylePolicepardfaut{{\textsf{
-union( autre ↓ : Ensemble de T ) → Ensemble de T}}}}
-
-{\sffamily
-\textstylePolicepardfaut{{\textsf{\ \ }}}\textstyleMotCl{{méthode}}\textstylePolicepardfaut{{\textsf{
-intersection( autre ↓ : Ensemble de T ) → Ensemble de T}}}}
-
-{\sffamily
-\textstylePolicepardfaut{{\textsf{\ \ }}}\textstyleMotCl{{méthode}}\textstylePolicepardfaut{{\textsf{
-moins( autre ↓ : Ensemble de T ) → Ensemble de T}}}}
-
-{\sffamily
-\textstylePolicepardfaut{{\textsf{\ \ }}}\textstyleMotCl{{méthode}}\textstylePolicepardfaut{{\textsf{
-liste( ) → Liste de
-T\ \ \ \ }}}\textstylePolicepardfaut{{\textsf{//
-conversion en liste}}}}
-
-{\sffamily
-\textstyleMotCl{{fin}}\textstylePolicepardfaut{{\textsf{
-}}}\textstyleMotCl{{classe}}}
-
-
-\bigskip
-
-
-\bigskip
-
-{
-\textstylePolicepardfaut{{Quelques remarques
-:}}}
-
-\liststyleListv
-\begin{itemize}
-\item {
-\textstylePolicepardfaut{{La méthode
-d'ajout (resp. de suppression) n'a
-pas d'effet si l'élément est déjà
-(resp. n'est pas) dans l'ensemble.}}}
-\item {
-\textstylePolicepardfaut{{Les méthodes
-}}\textstyleCodeInsr{{union()}}\textstylePolicepardfaut{{,
-}}\textstyleCodeInsr{{intersection()}}\textstylePolicepardfaut{{
-et
-}}\textstyleCodeInsr{{moins()}}\textstylePolicepardfaut{{
-retournent un troisième ensemble, résultat des 2 premiers sans toucher
-à ces 2 ensembles. On aurait pu envisager des méthodes modifiant
-l'ensemble sur lequel on les appelle.}}}
-\item {
-\textstylePolicepardfaut{{La méthode
-}}\textstyleCodeInsr{{liste()}}\textstylePolicepardfaut{{
-est nécessaire si on veut parcourir les éléments de
-l'ensemble (par exemple pour les afficher).}}}
-\end{itemize}
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Autres opérations ensemblistes}
-\end{enumerate}
-{
-Nous avons défini des opérations ensemblistes ne touchant pas aux
-ensembles de départ. Que deviennent-elles si on considère
-qu'elles \textbf{modifient}
-l'ensemble sur lequel elles sont appliquées ?}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {
-Soit la structure «\textstyleCodeInsr{~RendezVous~}» composée d’une date
-et d’un motif de rencontre. Écrire un module qui reçoit une liste de
-rendez-vous et la met à jour en supprimant tous ceux qui sont désormais
-passés. }
-
-{
-\textstyleCodeInsr{\textrm{Rappel}}\textstyleCodeInsr{\textrm{ : la date
-du jour s'obtient par le constructeur de
-}}\textstyleCodeInsr{Date}\textstyleCodeInsr{\textrm{ sans
-paramètre.}}}
-\end{enumerate}
+		\textstyleCodeInsr{\textrm{Rappel}}\textstyleCodeInsr{\textrm{ : la date
+		du jour s'obtient par le constructeur de
+		}}\textstyleCodeInsr{Date}\textstyleCodeInsr{\textrm{ sans
+		paramètre.}}
+	\end{enumerate}
