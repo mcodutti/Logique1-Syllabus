@@ -1,28 +1,28 @@
+%===================================
+\chapter{Les traitements de rupture}
+%===================================
 
-\chapter[Les traitements de rupture]{
-Les traitements de rupture}
-{
+\marginicon{objectif}
+
 Dans ce chapitre, on étudie une classe de problèmes qui peuvent tous se
 résoudre avec un même type d'algorithme :
 l'algorithme de rupture. À la fin du chapitre vous
-devrez être capable de :}
+devrez être capable de :
 
-\begin{center}
- [Warning: Image ignored] % Unhandled or unsupported graphics:
-%\includegraphics[width=1.268cm,height=1.268cm]{log1-img/log1-img158}
-
-\end{center}
-\liststyleListv
 \begin{itemize}
-\item {
-Détecter qu'on se trouve bien face à un problème qui
-peut entrer dans le cadre d'un algorithme de rupture.}
-\item {
-Adapter le squelette général de l'algorithme de rupture
-au problème donné.}
+	\item 
+		Détecter qu'on se trouve bien face à un problème qui
+		peut entrer dans le cadre d'un algorithme de rupture.
+	\item 
+		Adapter le squelette général de l'algorithme de rupture
+		au problème donné.
 \end{itemize}
+
+
+%===============================
 \section{Le classement complexe}
-{
+%===============================
+
 Dans le chapitre sur les tris, nous avons abordé naturellement la notion
 du classement des données. Néanmoins, les données concernées étaient
 dans ces cas des variables dites «~simples~» : nombres (entiers ou
@@ -30,9 +30,8 @@ réels) ou chaines, variables pour lesquelles la relation d’ordre est
 évidente (ordre numérique ou alphabétique). Les algorithmes mis en
 œuvre peuvent facilement s’adapter pour d’autre types, par exemple des
 objets Date, où l’opérateur de comparaison est remplacé par la méthode
-«~estAntérieure()~».}
+«~estAntérieure()~».
 
-{
 Noter que dans la plupart des cas, les données composées de plusieurs
 champs ou attributs, telles les variables structurées, ne possèdent pas
 de relation d’ordre naturelle ; par exemple les points d’un espace à
@@ -43,99 +42,93 @@ premier critère de classement (par exemple le nom ou la date de
 naissance) et en cas d’égalité sur le premier critère (deux personnes
 peuvent avoir un même nom ou être nées le même jour), il faudra
 départager sur un second critère, et éventuellement sur un troisième,
-et ainsi de suite.}
+et ainsi de suite.
 
-{
 Ces critères de classement sont bien entendu arbitraires, et dépendent
 de l’information qu’on veut retirer de l’ensemble des données. Notons
 aussi que l’ordre de classement peut être pour chaque critère croissant
-ou décroissant.}
+ou décroissant.
 
-{
 Prenons l’exemple d’une structure Etudiant, contenant les champs
 matricule, nom, prénom, dateNais (date de naissance) et option (G, I ou
-R). Pour l’exemple, considérons une liste de 6 étudiants :}
+R). Pour l’exemple, considérons une liste de 6 étudiants :
 
-{
-\ \ \textsf{29845\ \ \ \ Durant \ \ \ \ Kevin\ \ \ \ 20/01/84\ \ R}}
+{\ \ \textsf{29845\ \ \ \ Durant \ \ \ \ Kevin\ \ \ \ 20/01/94\ \ R}}
 
-{\sffamily
-\ \ 30125\ \ \ \ Dupont \ \ \ \ Fabrice\ \ \ \ 13/06/84\ \ G}
-
-{\sffamily
-\ \ 30351\ \ \ \ Simon\ \ \ \ André\ \ \ \ 18/11/84\ \ G}
+{\sffamily 
+\ \ 30125\ \ \ \ Dupont \ \ \ \ Fabrice\ \ \ \ 13/06/94\ \ G}
 
 {\sffamily
-\ \ 30597\ \ \ \ Dupont \ \ \ \ Charles\ \ \ \ 9/07/84\ \ \ \ G}
+\ \ 30351\ \ \ \ Simon\ \ \ \ André\ \ \ \ 18/11/94\ \ G}
 
 {\sffamily
-\ \ 31857\ \ \ \ Guilmant \ \ Léon\ \ \ \ 17/03/86\ \ R}
+\ \ 30597\ \ \ \ Dupont \ \ \ \ Charles\ \ \ \ 9/07/94\ \ \ \ G}
 
 {\sffamily
-\ \ 31886\ \ \ \ Durant \ \ \ \ Sam\ \ \ \ 30/05/84\ \ I}
+\ \ 31857\ \ \ \ Guilmant \ \ Léon\ \ \ \ 17/03/96\ \ R}
 
-{
+{\sffamily
+\ \ 31886\ \ \ \ Durant \ \ \ \ Sam\ \ \ \ 30/05/94\ \ I}
+
+
 Cette liste est classée sur le numéro de matricule. C’est un classement
 simple réalisé sur un seul champ des données. Le numéro de matricule
 étant dans ce cas-ci un \textbf{\textcolor{black}{identifiant}} des
-données, le problème de devoir départager ne se pose pas.}
+données, le problème de devoir départager ne se pose pas.
 
-{
 Si nous désirons à présent classer sur l’ordre alphabétique des noms, il
 faut décider de départager en cas de noms identiques sur un autre
 champ, de façon naturelle sur celui des prénoms. Ceci donnerait le
 classement double suivant, en \textbf{majeur} sur le nom et en
-\textbf{mineur} sur le prénom :}
+\textbf{mineur} sur le prénom :
 
 {\sffamily
-\ \ 30597\ \ \ \ Dupont \ \ \ \ Charles\ \ \ \ 9/07/84\ \ \ \ G}
+\ \ 30597\ \ \ \ Dupont \ \ \ \ Charles\ \ \ \ 9/07/94\ \ \ \ G}
 
 {\sffamily
-\ \ 30125\ \ \ \ Dupont \ \ \ \ Fabrice\ \ \ \ 13/06/84\ \ G}
+\ \ 30125\ \ \ \ Dupont \ \ \ \ Fabrice\ \ \ \ 13/06/94\ \ G}
 
 {\sffamily
-\ \ 29845\ \ \ \ Durant \ \ \ \ Kevin\ \ \ \ 20/01/84\ \ R}
+\ \ 29845\ \ \ \ Durant \ \ \ \ Kevin\ \ \ \ 20/01/94\ \ R}
 
 {\sffamily
-\ \ 31886\ \ \ \ Durant \ \ \ \ Sam\ \ \ \ 30/05/84\ \ I}
+\ \ 31886\ \ \ \ Durant \ \ \ \ Sam\ \ \ \ 30/05/94\ \ I}
 
 {\sffamily
-\ \ 31857\ \ \ \ Guilmant \ \ Léon\ \ \ \ 17/03/86\ \ R}
+\ \ 31857\ \ \ \ Guilmant \ \ Léon\ \ \ \ 17/03/96\ \ R}
 
 {\sffamily
-\ \ 30351\ \ \ \ Simon\ \ \ \ André\ \ \ \ 18/11/84\ \ G}
+\ \ 30351\ \ \ \ Simon\ \ \ \ André\ \ \ \ 18/11/94\ \ G}
 
-{
+
 Supposons enfin que nous voulions grouper les étudiants par sections,
 nous devons alors classer prioritairement sur l’option, départager sur
 les noms et ensuite sur les prénoms. C’est alors un classement triple :
 en \textbf{majeur} sur l’option, en \textbf{médian} sur le nom et en
-\textbf{mineur} sur le prénom : }
+\textbf{mineur} sur le prénom : 
 
 {\sffamily
-\ \ 30597\ \ \ \ Dupont \ \ \ \ Charles\ \ \ \ 9/07/84\ \ \ \ G}
+\ \ 30597\ \ \ \ Dupont \ \ \ \ Charles\ \ \ \ 9/07/94\ \ \ \ G}
 
 {\sffamily
-\ \ 30125\ \ \ \ Dupont \ \ \ \ Fabrice\ \ \ \ 13/06/84\ \ G}
+\ \ 30125\ \ \ \ Dupont \ \ \ \ Fabrice\ \ \ \ 13/06/94\ \ G}
 
 {\sffamily
-\ \ 30351\ \ \ \ Simon\ \ \ \ André\ \ \ \ 18/11/84\ \ G}
+\ \ 30351\ \ \ \ Simon\ \ \ \ André\ \ \ \ 18/11/94\ \ G}
 
 {\sffamily
-\ \ 31886\ \ \ \ Durant \ \ \ \ Sam\ \ \ \ 30/05/84\ \ I}
+\ \ 31886\ \ \ \ Durant \ \ \ \ Sam\ \ \ \ 30/05/94\ \ I}
 
 {\sffamily
-\ \ 29845\ \ \ \ Durant \ \ \ \ Kevin\ \ \ \ 20/01/84\ \ R}
+\ \ 29845\ \ \ \ Durant \ \ \ \ Kevin\ \ \ \ 20/01/94\ \ R}
 
 {\sffamily
-\ \ 31857\ \ \ \ Guilmant \ \ Léon\ \ \ \ 17/03/86\ \ R}
+\ \ 31857\ \ \ \ Guilmant \ \ Léon\ \ \ \ 17/03/96\ \ R}
 
-{
 Remarque : le classement sur l’option n’est pas forcément un classement
 alphabétique des trois lettres G, I, R ! Toute autre permutation de ces
-trois lettres serait une possibilité~acceptable.}
+trois lettres serait une possibilité~acceptable.
 
-{
 En résumé, les exemples ci-dessus constituent des exemples de
 \textbf{classements complexes}. On dira que des données sont classées
 sur la \textbf{clé complexe} champ1 – champ 2 – … – champ n (où «~champ
@@ -143,71 +136,65 @@ i~» est un champ de la structure des données) si le classement se fait
 prioritairement depuis le champ 1 jusqu’au champ n. Autrement dit, si
 deux données ont tous leurs champs 1, 2,…,i égaux (i {\textless} n), le
 classement se fait en départageant sur le champ i+1. L’indice du champ
-correspond au \textbf{niveau} du classement complexe.}
+correspond au \textbf{niveau} du classement complexe.
 
-{
 Par exemple, le dernier classement ci dessus est un classement sur la
 clé complexe option – nom – prénom. La terminologie «~majeur~»,
 «~médian~» et «~mineur~» sont couramment utilisées lorsqu’au plus trois
-champs interviennent dans le classement complexe.}
+champs interviennent dans le classement complexe.
 
+
+%=============================
 \section{La notion de rupture}
-{
+%==============================
+
 Nous nous plaçons dans le cadre d’un \textbf{ensemble logique} composé
 d’\textbf{éléments} de structure identique (variables simples ou
 structurées, enregistrements d’un fichier, éléments d’un tableau, d’une
 liste ordonnée ou non) et qui sont l’objet d’un \textbf{traitement
-itératif} où chaque élément de l’ensemble est parcouru. }
+itératif} où chaque élément de l’ensemble est parcouru.
 
-{
 Nous parlons de \textbf{rupture} lorsque dans ce traitement itératif, on
 constate que l’information courante que l’on souhaite traiter
 n’appartient plus à l’ensemble (ou au sous-ensemble) des informations
-déjà traitées précédemment. }
+déjà traitées précédemment.
 
-{
 Les ruptures sont intimement liées au classement complexe des données,
 et elles ne se qualifient que par rapport aux champs des données qui
 interviennent dans ce classement. On parle donc de \textit{rupture sur
-un champ} des données.}
+un champ} des données.
 
-{
 Par exemple, dans le dernier classement des étudiants ci-dessus, il y a
 rupture sur l’option au niveau de Durant Sam et de Durant Kevin. En
 effet, ces deux étudiants délimitent les sous-ensembles d’étudiants
-partageant une même option.}
+partageant une même option.
 
-{
 Par contre, cela n’aurait pas de sens de parler de rupture sur l’option
 dans les deux classements précédents. Ce champ n’appartenant pas à la
 clé complexe pour le classement de ces données, la succession des
 lettres G, I, R doit être considérée comme aléatoire dans ces deux cas
-et sans signification pour le traitement itératif.}
+et sans signification pour le traitement itératif.
 
-{
 Dans le 2\textsuperscript{ème} classement, nous pouvons parler de
 rupture sur les noms : l’étudiant Durant Kevin met fin au sous-ensemble
 des Dupont, et l’étudiant Guilmant met fin au sous-ensemble des Durant.
-}
 
-{
+
 Dans le 1\textsuperscript{er} classement, qui est un classement simple
 sur le numéro de matricule, on peut considérer qu’il n’y a qu’un
 ensemble de données d’un seul tenant sans ruptures, ou alors qu’il y a
 rupture à chaque étudiant, puisque chaque étudiant forme un
 sous-ensemble isolé par son numéro de matricule, vu qu’ils sont
-obligatoirement distincts.}
+obligatoirement distincts.
 
-{
 Notez que toute rupture à un niveau i de la clé de classement complexe
 entraine une rupture aux niveaux supérieurs à i. Ainsi, dans le
 classement triple, le passage à Durant Kevin entraine une rupture sur
 l’option mais aussi sur le nom. Le fait qu’il y ait dans ce classement
 deux Durant qui se succèdent doit être considéré comme une coïncidence.
 Bien qu’ayant le même nom, ces deux étudiants appartiennent à deux
-sous-ensembles différents lorsqu’on prend l’option en considération.}
+sous-ensembles différents lorsqu’on prend l’option en considération.
 
-{
 Notons encore que d’un point de vue théorique, deux éléments ont un rôle
 spécial et se singularisent quelque peu des autres : il s’agit du
 \textbf{premier} et du \textbf{dernier} élément qui ont pour rôle de
@@ -218,66 +205,48 @@ vide). Le dernier est particulier parce qu’il termine l’ensemble des
 données. Remarquez que RIEN dans ces deux éléments ne signale ces
 particularités! Autrement dit, il n’y a pas, à l’intérieur de ces
 éléments une information particulière signifiant \textit{je suis le
-premier élément} ou \textit{je suis le dernier}.}
+premier élément} ou \textit{je suis le dernier}.
 
-\section[Traitement des ruptures dans un fichier]{Traitement des
-ruptures dans un fichier}
-{
+
+%================================================
+\section{Traitement des ruptures dans un fichier}
+%=================================================
+
 Quel que soit l’ordre de tri des données d’un fichier, celui-ci contient
 toujours une information importante signalant la fin des données, il
 s’agit de la marque de fin de fichier, sa détection ayant pour effet de
 faire passer EOF à vrai. Cette marque de fin de fichier constitue donc
 la rupture principale d’un fichier, celle signalant la fin du parcours
-itératif. }
+itératif.
 
-{
 Sans le savoir, nous avons donc déjà traité la rupture générale d’un
 ensemble de données dans un fichier (c’est la rupture de «~niveau 0~»,
 car elle n’est pas liée à un champ des données, et est naturellement
 prioritaire sur ces champs). Pour illustrer cela, reprenons l’exemple
 de la liste d’étudiants, que nous imaginons contenue dans un fichier
 nommé Student dont les enregistrements sont de type Etudiant. Le
-parcours de base de ce fichier est le suivant :}
+parcours de base de ce fichier est le suivant :
 
-{\sffamily
-\textstyleMotCl{module} RuptureNiveau0(Student↓~: FichierEntrée
-d’Etudiant)}
+\cadre{
+\begin{pseudo}
+	\Module{RuptureNiveau}{Student\In: FichierEntrée d’Etudiant}{}
+		\Decl enr : Etudiant
+		\Stmt Student.ouvrir()
+		\Let enr \Gets Student.lire()
+		\While{NON Student.EOF()}
+			\LComment traitement de l’enregistrement
+			\Let enr \Gets Student.lire()
+		\EndWhile
+		\Stmt Student.fermer()
+	\EndModule
+\end{pseudo}
+}
 
-{\sffamily
-\ \ enr : Etudiant}
-
-{\sffamily
-\textit{\ \ }Student.ouvrir()}
-
-{\sffamily
-\ \ enr \textrm{[F0DF?]} Student.lire()}
-
-{\sffamily
-\ \ \textstyleMotCl{tant} \textstyleMotCl{que} NON Student.EOF()
-\textstyleMotCl{faire}\ \ \ \ \ \ \ \ }
-
-{\sffamily
-\ \ \ \ // traitement de l’enregistrement}
-
-{\sffamily
-\ \ \ \ enr \textrm{[F0DF?]} Student.lire()}
-
-{\sffamily
-\ \ \textstyleMotCl{fin} \textstyleMotCl{tant} \textstyleMotCl{que} }
-
-{\sffamily
-\ \ Student.fermer()}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-{
 Si nous voulons faire des statistiques globales sur l’ensemble des
 étudiants (par ex. simplement les compter), le traitement de
 l’information consiste à incrémenter un compteur, et l’algorithme
-ci-dessus peut fonctionner quel que soit l’ordre de classement choisi.}
+ci-dessus peut fonctionner quel que soit l’ordre de classement choisi.
 
-{
 Passons à présent au «~niveau 1~» ; c’est-à-dire un traitement de
 rupture correspondant à un classement complexe sur un champ. Imaginons
 que nous voulions savoir quel est le nombre d’étudiants dans chaque
@@ -289,90 +258,54 @@ le total d’étudiants dans l’option qui vient d’être parcourue. Ceci ne
 nécessite qu’un seul compteur remis à 0 à chaque fois qu’une nouvelle
 option est rencontrée, c’est-à-dire à chaque rupture. De plus
 l’algorithme serait aussi fonctionnel quelle que soit le nombre
-d’options. Voici une solution : }
+d’options. Voici une solution : 
 
-{\sffamily
-\textstyleMotCl{module} RuptureNiveau1(Student↓~: FichierEntrée
-d’Etudiant)}
+\cadre{
+\begin{pseudo}
+	\Module{RuptureNiveau1}{Student\In : FichierEntrée d’Etudiant}{}
+		\LComment on suppose les données classées en majeur sur l’option
+		\Decl enr : Etudiant
+		\Decl saveOption : caractère
+		\Decl cpt : entier
+		
+		\Stmt Student.ouvrir()
+		
+		\Let enr \Gets Student.lire()
+		
+		\While{NON Student.EOF()}
+			\Let saveOption \Gets enr.option
+			\Let cpt \Gets 0
+			\While{NON Student.EOF() ET saveOption = enr.option}
+				\LComment traitement de l’enregistrement
+				\Let cpt \Gets cpt + 1
+				\Let enr \Gets Student.lire()
+			\EndWhile
+			\Write cpt, «~étudiant dans l’option~», saveOption
+		\EndWhile
+		\Stmt Student.fermer()
+	\EndModule
+\end{pseudo}
+}
 
-{\sffamily
-\textstyleMotCl{\textmd{\ \ // on suppose les données classées en majeur
-sur l’option}}}
+Questions de réflexion :
 
-{\sffamily
-\ \ enr : Etudiant}
-
-{\sffamily
-\ \ saveOption : caractère}
-
-{\sffamily
-\ \ cpt : entier}
-
-{\sffamily
-\ \ Student.ouvrir()}
-
-{\sffamily
-\ \ enr \textrm{[F0DF?]} Student.lire()}
-
-{\sffamily
-\ \ \textstyleMotCl{tant} \textstyleMotCl{que} NON Student.EOF()
-\textstyleMotCl{faire}\ \ }
-
-{\sffamily
-\ \ \ \ saveOption \textrm{[F0DF?]} enr.option\ \ \ \ }
-
-{\sffamily
-\ \ \ \ cpt \textrm{[F0DF?]} 0}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ tant} \textstyleMotCl{que} NON Student.EOF() ET
-saveOption = enr.option \textstyleMotCl{faire}\ \ }
-
-{\sffamily
-\ \ \ \ \ \ // traitement de l’enregistrement}
-
-{\sffamily
-\ \ \ \ \ \ cpt \textrm{[F0DF?]} cpt + 1}
-
-{\sffamily
-\ \ \ \ \ \ enr \textrm{[F0DF?]} Student.lire()}
-
-{\sffamily\bfseries
-\ \ \ \ fin tant que}
-
-{\sffamily
-\textbf{\ \ \ \ écrire} cpt, «~étudiant dans l’option~», saveOption}
-
-{\sffamily
-\ \ \textstyleMotCl{fin} \textstyleMotCl{tant} \textstyleMotCl{que} }
-
-{\sffamily
-\ \ Student.fermer()}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-{
-Questions de réflexion : }
-
-\liststyleListv
 \begin{itemize}
-\item {
-pourquoi la condition \textstyleCodeInsr{NON Student.EOF()}
-apparait-elle une 2\textsuperscript{ème} fois dans la boucle intérieure
-?}
-\item {
-pourquoi l’ordre de lecture est-il dans la boucle centrale et pas
-ailleurs ?}
-\item {
-pourquoi dans l’instruction d’écriture, il apparait
-\textstyleCodeInsr{saveOption} plutôt que
-\textstyleCodeInsr{enr.option} ?}
-\item {
-l’ordre des conditions apparaissant dans le 2\textsuperscript{ème} tant
-que est-il important ?}
+	\item 
+		pourquoi la condition \textstyleCodeInsr{NON Student.EOF()}
+		apparait-elle une 2\textsuperscript{ème} fois dans la boucle 
+		intérieure ?
+	\item 
+		pourquoi l’ordre de lecture est-il dans la boucle centrale et pas
+		ailleurs ?
+	\item 
+		pourquoi dans l’instruction d’écriture, il apparait
+		\textstyleCodeInsr{saveOption} plutôt que
+		\textstyleCodeInsr{enr.option} ?
+	\item 
+		l’ordre des conditions apparaissant dans le 2\textsuperscript{ème} tant
+		que est-il important ?
 \end{itemize}
-{
+
 L’algorithme ci-dessus se généralise facilement si on ajoute davantage
 de niveaux de rupture. Pour illustrer le «~niveau 2~», prenons encore
 l’exemple suivant. On veut connaitre pour chaque groupe le nombre
@@ -380,818 +313,596 @@ d’étudiants nés dans les différentes années de naissance. L’algorithme
 correspondant s’écrit facilement et fonctionne lorsque le fichier est
 cette fois-ci classé en majeur sur le groupe et en mineur sur la date
 de naissance~(ou encore classement double sur la clé complexe option –
-dateNais) :}
+dateNais) :
 
-{\sffamily
-\textstyleMotCl{module} RuptureNiveau2(Student↓~: FichierEntrée
-d’Etudiant)}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ // on suppose les données classées en majeur
-sur l’option}}}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ // et en mineur sur la date de naissance
-(ordre chronologique)}}}
-
-{\sffamily
-\ \ enr : Etudiant}
-
-{\sffamily
-\ \ saveOption : caractère}
-
-{\sffamily
-\ \ saveAnneNaissance : entier}
-
-{\sffamily
-\ \ cpt : entier}
-
-{\sffamily
-\ \ Student.ouvrir()}
-
-{\sffamily
-\ \ enr \textrm{[F0DF?]} Student.lire()}
-
-{\sffamily
-\ \ \textstyleMotCl{tant} \textstyleMotCl{que} NON Student.EOF()
-\textstyleMotCl{faire}\ \ }
-
-{\sffamily
-\ \ \ \ saveOption \textrm{[F0DF?]} enr.option\ \ \ \ }
-
-{\sffamily
-\ \ \ \ \textbf{t}\textstyleMotCl{ant} \textstyleMotCl{que} NON
-Student.EOF() ET saveOption = enr.option \textstyleMotCl{faire}}
-
-{\sffamily
-\ \ \ \ \ \ saveAnneNaissance \textrm{[F0DF?]} enr.dateNais.getAnnée()}
-
-{\sffamily
-\textstyleMotCl{\textmd{\ \ \ \ \ \ cpt
-}}\textstyleMotCl{\textrm{\textmd{[F0DF?]}}}\textstyleMotCl{\textmd{
-0}}\textbf{\ \ }}
-
-{\sffamily
-\ \ \ \ \ \ \ \textbf{t}\textstyleMotCl{ant} \textstyleMotCl{que} NON
-Student.EOF() ET saveOption = enr.option }
-
-{\sffamily
-\textbf{\ \ \ \ \ \ \ \ }ET saveAnneNaissance =
-enr.dateNais.getAnnée()\textstyleMotCl{faire}}
-
-{\sffamily
-\ \ \ \ \ \ \ \ // traitement de l’enregistrement}
-
-{\sffamily
-\ \ \ \ \ \ \ \ cpt \textrm{[F0DF?]} cpt + 1}
-
-{\sffamily
-\ \ \ \ \ \ \ \ enr \textrm{[F0DF?]} Student.lire()}
-
-{\sffamily\bfseries
-\ \ \ \ \ \ fin tant que}
-
-{\sffamily
-\textbf{\ \ \ \ \ \ }ECRIRE cpt, «~étudiant dans l’option~», saveOption,
+\cadre{
+\begin{pseudo}
+	\Module{RuptureNiveau2}{Student\In : FichierEntrée d’Etudiant}{}
+		\LComment on suppose les données classées en majeur sur l’option
+		\LComment et en mineur sur la date de naissance (ordre chronologique)
+		\Decl enr : Etudiant
+		\Decl saveOption : caractère
+		\Decl saveAnneNaissance : entier
+		\Decl cpt : entier
+		
+		\Stmt Student.ouvrir()
+		
+		\Let enr \Gets Student.lire()
+		
+		\While{NON Student.EOF()}
+			\Let saveOption \Gets enr.option
+			\While{NON Student.EOF() ET saveOption = enr.option}
+				\Let saveAnneNaissance \Gets enr.dateNais.getAnnée()
+				\Let cpt \Gets 0
+				\While{NON Student.EOF() ET saveOption = enr.option 
+				ET saveAnneNaissance = enr.dateNais.getAnnée()}
+					\LComment traitement de l’enregistrement
+					\Let cpt \Gets cpt + 1
+					\Let enr \Gets Student.lire()
+				\EndWhile
+				\Write cpt, «~étudiant dans l’option~», saveOption, 
+				«~sont nés en~», saveAnneeNaissance
+			\EndWhile
+		\EndWhile
+		\Stmt Student.fermer()
+	\EndModule
+\end{pseudo}
 }
 
-{\sffamily
-\ \ \ \ \ \ \ \ \ \ \ \ «~sont nés en~», saveAnneeNaissance\ \ }
-
-{\sffamily\bfseries
-\ \ \ \ fin tant que}
-
-{\sffamily
-\ \ \textstyleMotCl{fin} \textstyleMotCl{tant} \textstyleMotCl{que} }
-
-{\sffamily
-\ \ Student.fermer()}
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-{
 Ces exemples montrent que l’algorithme de rupture et le classement du
 fichier sont étroitement liés. La structure de l’algorithme épouse le
 schéma de la clé complexe du classement des données. À un classement
 déterminé correspondra un algorithme bien précis, et le choix d’un
 classement d’un fichier peut être fait précisément en vue qu’un certain
-algorithme donne un résultat bien déterminé.}
+algorithme donne un résultat bien déterminé.
 
+
+%====================================================
 \section{Traitements de clôture et d’initialisation}
-{
+%====================================================
+
 Chaque rupture du traitement itératif des éléments d’un ensemble
 entraine un \textbf{traitement de clôture} sur cet ensemble. Comme une
 rupture à un niveau implique des ruptures en cascade sur tous les
 niveaux d’ordre plus grands, un traitement de clôture d’un ensemble ne
 pourra se faire que lorsque le dernier sous-ensemble de cet ensemble
-sera clôturé.}
+sera clôturé.
 
-{
 De la même manière, l’arrivée d’un élément appartenant à un nouvel
 ensemble nécessite un \textbf{traitement d’initialisation} de ce nouvel
-ensemble.}
+ensemble.
 
-{
 En fait, il ne s’agit que de généraliser ce qui se fait lors du
 traitement d’un fichier (travaux d’initialisation consistant par
 exemple à mettre des totalisateurs ou compteurs à zéro et travaux de
 clôture consistant par exemple à imprimer des résultats totaux
 particuliers) à tous les ensembles et sous-ensembles composant ce
-fichier !}
+fichier !
 
+
+%=======================
 \section{Généralisation}
-{
+%=======================
+
 L’algorithme de rupture vu ci-dessus s’adapte aussi à d’autres
 structures que les fichiers. S’il a été présenté avec des fichiers
 c’est parce qu’il a été développé à l’origine pour calculer certains
 résultats sur des grands ensembles de données sans nécessiter l’usage
-de tableaux. }
+de tableaux. 
 
-{
 Montrons simplement comment s’adapterait le modèle de rupture de niveau
 1 ci-dessus si les données étaient contenues dans un tableau plutôt
 qu’un fichier, ce tableau étant bien entendu ordonné de la même façon
-que précédemment.}
+que précédemment.
 
-{\sffamily
-\textstyleMotCl{module} RuptureNiveau1dansTableau(Student↓~: tableau[1 à
-n] d’Etudiant)}
+\cadre{
+\begin{pseudo}
+	\Module{RuptureNiveau1dansTableau}{Student\In: tableau[1 à n] d’Etudiant}{}
+		\LComment on suppose les données classées en majeur sur l’option
+		\Decl élément : Etudiant
+		\Decl saveOption : caractère
+		\Decl cpt, i : entier
+		
+		\Let i \Gets 1
+		\While{i ${\leq}$ n}
+			\Let saveOption \Gets tab[i].option
+			\Let cpt \Gets 0
+			\While{i ${\leq}$ n ET saveOption = tab[i].option}
+				\LComment traitement de l’élément
+				\Let cpt \Gets cpt + 1
+				\Let i \Gets i + 1
+			\EndWhile
+			\Write cpt, «~étudiant dans l’option~», saveOption
+		\EndWhile
+	\EndModule
+\end{pseudo}
+}
 
-{\sffamily
-\textstyleMotCl{\textmd{\ \ // on suppose les données classées en majeur
-sur l’option}}}
-
-{\sffamily
-\ \ élément : Etudiant}
-
-{\sffamily
-\ \ saveOption : caractère}
-
-{\sffamily
-\ \ cpt, i : entier}
-
-{\sffamily
-\ \ i \textrm{[F0DF?]} 1}
-
-{\sffamily
-\textbf{\ \ tant que} i ${\leq}$ n \textstyleMotCl{faire}\ \ }
-
-{\sffamily
-\ \ \ \ saveOption \textrm{[F0DF?]} tab[i].option\ \ \ \ }
-
-{\sffamily
-\ \ \ \ cpt \textrm{[F0DF?]} 0}
-
-{\sffamily
-\textstyleMotCl{\ \ \ \ tant} \textstyleMotCl{que} i ${\leq}$ n ET
-saveOption = tab[i].option \textstyleMotCl{faire}\ \ }
-
-{\sffamily
-\ \ \ \ \ \ // traitement de l’élément}
-
-{\sffamily
-\ \ \ \ \ \ cpt \textrm{[F0DF?]} cpt + 1}
-
-{\sffamily
-\ \ \ \ \ \ {i
-}\textrm{[F0DF?]}{ i + 1}}
-
-{\sffamily
-{\textbf{\ \ \ \ }}\textbf{fin tant que}}
-
-{\sffamily
-\textbf{\ \ \ \ écrire} cpt, «~étudiant dans l’option~», saveOption}
-
-{\sffamily
-\ \ \textstyleMotCl{fin} \textbf{tant que} }
-
-{\sffamily
-\textstyleMotCl{fin} \textstyleMotCl{module}}
-
-{
 Observer comment dans cet exemple se transforme la progression dans
 l’ensemble des données, la constatation de rupture à l’issue de chaque
-sous-groupe et à la fin de l’ensemble.}
+sous-groupe et à la fin de l’ensemble.
 
+
+%==================
 \section{Exercices}
-
-\bigskip
-
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-La chasse au gaspi.}
-\end{enumerate}
-{
-À l’ESI, les quantités de feuilles imprimées et photocopiées par les
-professeurs et les étudiants sont enregistrées dans un fichier
-séquentiel IMPRESSION, créé au début de l’année en cours et mis à jour
-tous les soirs. Le service technique désirant facturer les
-«~exagérations~», a demandé à pouvoir utiliser ce fichier de manière à
-établir des statistiques du nombre de feuilles imprimées par
-utilisateur.}
-
-{
-Le fichier IMPRESSION présente la structure d’enregistrement
-\textbf{Enr} suivante :}
-
-{
-login\ \ \ \ chaine\ \ \ \ login de l’utilisateur}
-
-{
-date\ \ \ \ \textbf{Date}\ \ \ \ date de la session d’impression }
-
-{
-moment\ \ \textbf{Moment}\ \ moment de la session}
-
-{
-nombre\ \ entier\ \ \ \ nombre de feuilles imprimées ou photocopiées}
-
-{
-De plus, il est ordonné croissant en majeur sur le champ login et en
-mineur sur la date. }
-
-\liststyleNumberingv
-\begin{enumerate}
-\item {
-Écrire un algorithme permettant d'écrire une ligne par
-utilisateur dont le nombre total de feuilles imprimées dépasse une
-valeur limite entrée en paramètre. Cette ligne contiendra le login et
-le nombre. }
-\item {
-Le fichier étant mis à jour tous les soirs, il est plus probable
-qu'il soit trié en majeur sur la date et en mineur sur
-le login. Décrivez l'allure générale de
-l'algorithme dans ce cas : variables nécessaires et
-grandes étapes de la solution.}
-\end{enumerate}
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Statistiques de ventes de voitures.}
-\end{enumerate}
-{
-Un grand quotidien dispose d’un fichier VENTES regroupant les ventes de
-voitures neuves pendant l’année dernière. Chaque demande
-d’immatriculation a donné naissance à un enregistrement dans ce
-fichier. Ce fichier est ordonné croissant en majeur sur la marque de
-voiture et en mineur sur le type. Chaque enregistrement de ce fichier
-(structure \textbf{Voiture}) comprend les champs suivants, chacun de
-type chaine sauf le dernier :}
-
-{
-plaque : \ \ numéro d’immatriculation}
-
-{
-marque :\ \ marque de la voiture (par ex. «~Citroën~»)}
-
-{
-type : \ \ \ \ type de modèle dans la marque (par ex. «~Berlingo~»)}
-
-{
-nom : \ \ \ \ nom du propriétaire}
-
-{
-adresse : \ \ adresse du propriétaire}
-
-{
-date:\ \ \ \ date de la demande d’immatriculation}
-
-{
-Afin de préparer le travail des journalistes, il a été demandé au
-service informatique de préparer un affichage qui globalise les ventes
-de voiture par marque et pour chaque marque, par type. Cet affichage
-contiendra les renseignements suivants :}
-
-\liststyleListv
-\begin{itemize}
-\item {
-un titre général «~Ventes de voitures neuves en ****~» où les étoiles
-seront remplacées par l’année concernée.}
-\item {
-pour chaque marque :}
-\item {
-le nom de la marque}
-\item {
-pour chaque type de modèle}
-\item {
-le nom de ce type et le nombre de voitures neuves vendues}
-\item {
-le nombre total de voitures vendues pour cette marque}
-\item {
-enfin, le total global du nombre de voitures vendues toutes marques
-confondues}
-\end{itemize}
-{
-À la fin, on souhaite également avoir le palmarès des ventes globales
-par marque donné en ordre décroissant des ventes (en cas d’égalité de
-ventes pour des marques différentes, on respectera l’ordre alphabétique
-pour la parution dans ce palmarès). On devra donc écrire d’abord la
-marque pour laquelle il y a eu le plus de ventes, et ainsi de suite
-jusque la marque pour laquelle il y en a eu le moins. Notez également
-qu’une marque pour laquelle il n’y a pas eu la moindre vente,
-n’apparaitra pas dans ce palmarès !}
-
-{
-Écrivez un algorithme produisant l'affichage décrit.}
-
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Les fanas d'info.}
-\end{enumerate}
-{
-Une grande société d’informatique a organisé durant les douze derniers
-mois une multitude de concours ouverts aux membres de clubs
-d’informatique. Elle souhaiterait récompenser le club qui aura été le
-plus «~méritant~» durant cette période au point de vue de la
-participation des mineurs. Chaque résultat individuel des participants
-(y compris des majeurs) a été enregistré dans un fichier RESULTATS dont
-la structure d’un enregistrement \textbf{Enr} est :}
-
-{
-nom: \ \ \ \ nom et prénom du participant}
-
-{
-âge: \ \ \ \ âge du participant au moment du concours (entier)}
-
-{
-référence: \ \ référence du club auquel appartient ce participant}
-
-{
-numéro: \ \ numéro du concours auquel il a participé}
-
-{
-résultat: \ \ résultat obtenu lors de ce concours (entier sur 100)}
-
-{
-Sachant que ce fichier est ordonné en majeur sur le champ la référence
-et en mineur sur le nom, on demande d’écrire l’algorithme qui écrit les
-informations suivantes :}
-
-{
-pour chaque club :}
-
-\liststyleListv
-\begin{itemize}
-\item {
-sa référence}
-\item {
-pour chaque membre mineur de ce club :}
-\item {
-son nom et prénom}
-\item {
-la cote moyenne sur 100 des concours auquel ce membre a participé}
-\item {
-le nombre total de participations des membres mineurs}
-\end{itemize}
-{
-\textbf{N.B. : }un membre mineur qui s’est inscrit à un concours = une
-participation. Un club qui n’aura eu aucun membre mineur participant
-figurera quand même dans le résultat avec la mention «~Pas de
-participation de membre mineur~». Par contre, un club dont aucun membre
-n’a participé au moindre concours ne sera pas écrit.}
-
-{
-À la fin, on affichera la référence du meilleur club, à savoir celui qui
-a eu le plus de cotes moyennes des membres mineurs supérieures ou
-égales à 80\%. En cas d’égalité, on départagera sur le club qui a eu le
-plus grand nombre de participations des mineurs (et on suppose qu’il
-n’y a pas d’ex-aequo sur ce point). }
-
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Degré ou de force.}
-\end{enumerate}
-{
-Soit le fichier séquentiel RELEVES reprenant par site où un capteur de
-température est installé, les relevés réalisés au cours des douze
-derniers mois. Deux relevés sur un même site sont distanciés au minimum
-de 30 secondes et au maximum de 10 minutes. Chaque enregistrement du
-fichier a la structure \textbf{Relevé} suivante :}
-
-{
-\ \ lieu: \ \ \ \ site d’un relevé (chaine)}
-
-{
-date:\ \ \ \ \textbf{Date}}
-
-{
-moment :\ \ \textbf{Moment}}
-
-{
-température :\ \ température relevée (réel)}
-
-{
-Ce fichier est ordonné croissant en majeur sur le lieu, en médian sur la
-date et en mineur sur le moment. On demande d’écrire l’algorithme
-permettant de~créer :}
-
-\liststyleListv
-\begin{itemize}
-\item {
-le fichier QUOTIDIEN qui reprend les températures maximale et minimale
-pour chaque site et chaque jour ; la structure d’un enregistrement sera
-LIEU – DATE – MAX – MIN}
-\item {
-le fichier MENSUEL qui reprend par site les températures maximale et
-minimale par mois ainsi que le nombre moyen de relevés quotidiens ; la
-structure d’un enregistrement sera LIEU – MOIS – MAX – MIN – NOMBRE}
-\end{itemize}
-
-\bigskip
-
-
-\bigskip
-
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-NBA actions.}
-\end{enumerate}
-{
-Soit le fichier RESULTATS reprenant l’ensemble des points marqués et
-concédés pour chaque équipe inscrite dans le championnat NBA de
-basket-ball. Chaque rencontre jouée du championnat donne naissance à
-deux enregistrements, un pour chacune des deux équipes disputant ce
-match. La structure d’un enregistrement de type \textbf{Résultat} est
-:}
-
-{
-équipe :\ \ chaine contenant le nom de l’équipe}
-
-{
-ptsGagnés : \ \ entier représentant les points marqués par l’équipe}
-
-{
-ptsPerdus : \ \ entier représentant les points encaissés par l’équipe}
-
-{
-date : \ \ \ \ Date donnant la date de la rencontre.}
-
-{
-Le fichier est ordonné croissant en majeur sur l'équipe
-et en mineur sur la date. On demande d’écrire l’algorithme qui
-permet~d’écrire :}
-
-\liststyleListv
-\begin{itemize}
-\item {
-un titre général : «~STATISTIQUES NBA~»}
-\item {
-pour chaque équipe : }
-\item {
-son nom \ }
-\item {
-le total des points marqués}
-\item {
-le total des points encaissés}
-\item {
-le plus grand écart de points lors d’une rencontre de cette équipe}
-\item {
-en fin de traitement :}
-\item {
-le nombre total de points marqués pour l’ensemble des équipes.}
-\item {
-le mois pendant lequel le plus de points ont été marqués}
-\item {
-le total de points pour le match le plus spectaculaire (plus grand total
-de points pour et contre lors d’un match)}
-\end{itemize}
-{
-De plus, cet algorithme enregistrera dans le fichier PLAYOFF le nom des
-équipes dont le pourcentage des victoires est au moins 50\% (une
-victoire se traduit par un enregistrement dans lequel le nombre de
-points marqués est supérieur au nombre de points encaissés, sachant que
-le match nul n’existe pas)}
-
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Le meilleur site.}
-\end{enumerate}
-{
-Pendant le mois de novembre dernier, le fournisseur d’accès ESINET a
-proposé aux internautes du monde entier d’élire le plus beau site du
-\textit{World Wide Web}. Pour ce faire, ESINET a enregistré dans un
-fichier séquentiel VOTES les votes émis par e-mail durant ce mois. Le
-règlement du concours était simple: on pouvait voter pour plusieurs
-sites, mais pas plusieurs fois pour le même site. Si cela arrivait
-quand même, les votes émis à partir d’une même adresse e-mail pour un
-même site étaient quand même enregistrés dans le fichier VOTES mais ne
-pouvaient compter que pour \textbf{un seul} vote valable. Sachant que
-ce fichier a la structure d’enregistrement suivante :}
-
-{
-URL : \ \ adresse du site choisi (ex. : «~http://www.heb.be~»)}
-
-{
-email : adresse e-mail du votant}
-
-{
-jour : \ \ jour du vote (de 1 à 30)}
-
-{
-et que le fichier est ordonné croissant en majeur sur
-l'URL et en mineur sur l'email,
-écrire un algorithme qui en une seule lecture du fichier écrit les
-informations suivantes :}
-
-
-\bigskip
-
-\liststyleListv
-\begin{itemize}
-\item {
-les adresses des sites pour lesquels il y a eu au moins un vote, ainsi
-que le nombre de votes valables recueillis }
-\item {
-le nom du site gagnant, c’est-à-dire celui qui a reçu le plus de votes
-valables, ainsi que le nombre de ces votes (on peut supposer qu’il n’y
-a pas eu d’ex-æquo)}
-\item {
-la date du jour qui a connu le plus d’activité, c’est-à-dire le plus
-grand nombre de votes (valables ou non).}
-\end{itemize}
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Quoi de neuf, doc ?}
-\end{enumerate}
-{
-Vous n’êtes pas sans savoir que les médicaments, dans la plupart des
-cas, doivent faire l’objet d’une prescription médicale pour pouvoir
-être délivrés. Sur la prescription de médicaments, appelée également
-l’ordonnance, on trouve les médicaments prescrits, le cachet du
-prescripteur ou médecin, avec son nom et son numéro d’agrément. }
-
-{
-Chaque ordonnance, lorsqu’elle est présentée au pharmacien, est scannée.
-L’image ainsi obtenue passe dans un programme de traitement
-informatique qui génère autant d’enregistrements dans un fichier qu’il
-y a de médicaments différents prescrits. Les ordinateurs des pharmacies
-sont reliés à un ordinateur central situé à Bruxelles. Ainsi, les
-enregistrements créés au niveau des pharmacies sont directement ajoutés
-à un fichier central annuel appelé PRESCRIPTIONS. }
-
-{
-La structure \textbf{Prescription} des enregistrements de ce fichier est
-la suivante :}
-
-{
-date : \ \ \ \ date de la prescription}
-
-{
-numéro : \ \ numéro d’agrément du médecin}
-
-{
-nom : \ \ \ \ nom du médicament}
-
-{
-qté : \ \ \ \ quantité de ce médicament prescrite sur cette ordonnance}
-
-{
-En supposant complété le fichier PRESCRIPTIONS pour l’année écoulée, on
-demande d’écrire l’algorithme d’une application qui permettra d’après
-ce fichier de compter le nombre de médecins différents qui ont prescrit
-des médicaments et d’afficher le résultat. }
-
-{
-Pour réaliser cela, expliquez brièvement de quelle façon ce fichier
-devrait être ordonné.}
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Vos papiers, SVP !}
-\end{enumerate}
-{
-La gendarmerie a enregistré dans un fichier PV toutes les infractions au
-code de la route commises par des automobilistes ayant une plaque belge
-durant l’année dernière. La structure \textbf{Infraction} d’un
-enregistrement comprend les champs :}
-
-{
-plaque:\ \ \ \ chaine}
-
-{
-date :\ \ \ \ \textbf{Date}}
-
-{
-moment:\ \ \textbf{Moment}}
-
-{
-type:\ \ chaine (code associé à une infraction donnée)}
-
-{
-Le fichier est ordonné croissant sur la plaque et ne contient aucune
-erreur. Il peut bien entendu y avoir dans le fichier plusieurs
-enregistrements ayant le même numéro de plaque.}
-
-{
-La gendarmerie dispose également d’une table \textstyleCodeInsr{amendes}
-de 60 éléments structurés de type \textbf{Amende} comprenant les champs
-:}
-
-{
-type:\ \ \ \ comme ci-dessus}
-
-{
-libellé:\ \ \ \ chaine décrivant l’infraction (ex. «~excès de vitesse~»,
-etc.)}
-
-{
-montant:\ \ montant de l’amende en €.}
-
-{
-Écrire l’algorithme qui, en une seule lecture du fichier PV, calcule et
-écrit dans le fichier STATS, pour chaque plaque apparaissant dans le
-fichier PV, une ligne contenant le numéro de plaque du véhicule et le
-montant total annuel des amendes pour cette plaque. On écrira également
-en fin de traitement le total des montants des amendes pour toutes les
-plaques recensées.}
-
-{
-Enfin, on écrira un tableau récapitulatif du nombre d’amendes par type
-d’amendes. Ce tableau reprendra le libellé et le nombre en commençant
-par les plus fréquentes jusqu’au moins fréquentes. }
-
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {\sffamily\bfseries
-Bruxelles-national}
-\end{enumerate}
-{
-Votre société d’informatique a signé un contrat avec l’aéroport national
-pour l’établissement informatique de statistiques sur le trafic aérien.
-Le service informatique de l’aéroport enregistre sans arrêt les
-atterrissages et décollages des avions ainsi que d’autres informations.
-Pour l’année dernière, toutes les informations sont enregistrées dans
-le fichier VOLS.}
-
-{
-La structure \textbf{Vol} des enregistrements de ce fichier contient les
-champs : }
-
-{
-numéro : \ \ chaine donnant le numéro du vol}
-
-{
-type  : \ \ \ \ une lettre : ‘A’ pour atterrissage ou ‘D’ pour
-décollage}
-
-{
-lieu : \ \ \ \ chaine donnant le lieu d’où provient le vol (si le type
-vaut ‘A’) }
-
-{
-\ \ \ \ ou le lieu de destination du vol (si le type vaut ‘D’)}
-
-{
-cie : \ \ \ \ compagnie aérienne propriétaire de l’avion}
-
-{
-nb : \ \ \ \ entier donnant le nombre de passagers (pouvant valoir 0)}
-
-{
-qté : \ \ \ \ réel donnant le tonnage de marchandise transportée }
-
-{
-\ \ \ \ (pouvant \ valoir 0)}
-
-{
-date : \ \ \ \ date du vol}
-
-{
-moment : \ \ heure de départ ou d’arrivée}
-
-{
-Sachant que ce fichier est ordonné croissant en majeur sur la compagnie
-et en mineur sur lieu, on vous demande d’établir l’algorithme qui
-permette d’établir les statistiques suivantes :}
-
-\liststyleListv
-\begin{itemize}
-\item {
-pour chaque compagnie apparaissant dans VOLS :}
-\item {
-une ligne titre avec le nom de la compagnie,}
-\item {
-pour chaque endroit desservi par cette compagnie, une seule ligne avec
-son nom, le nombre d’atterrissages d’avions provenant de ce lieu, le
-nombre de décollages d’avions vers ce lieu\ \ }
-\item {
-en fin de chaque compagnie, le nom du lieu d’où provient le plus grand
-nombre de passagers transportés par cette compagnie là, ainsi que le
-nom du lieu vers lequel la plus grande quantité totale de marchandises
-a été expédiée par cette compagnie là.}
-\end{itemize}
-
-\bigskip
-
-
-\bigskip
-
-\liststyleListv
-\begin{itemize}
-\item {
-à la \ fin on écrira : }
-\item {
-la différence entre le nombre \textbf{total} de passagers arrivés et
-partis ;}
-\item {
-le nombre de compagnies trouvées dans le fichier ;}
-\item {
-le nom de la compagnie ayant eu le moins de vols ;}
-\item {
-la tranche horaire où le trafic en nombre de vols est le plus intense
-(\textbf{N.B.:} on \ peut utiliser un tableau pour résoudre cette
-requête)}
-\end{itemize}
-{
-\textbf{N.B.:} Pour toutes les recherches de maxima ou minima, on les
-supposera uniques. La première tranche horaire est 0 et la dernière 23.
-}
-
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-\textstyleMotCl{Une suite logique}}
-\end{enumerate}
-{
-\textstyleMotCl{\textmd{Voici une petite suite logique :}}}
-
-\liststyleNumberingv
-\begin{enumerate}
-\item {
-\textstyleMotCl{\textmd{Comprenez la logique derrière cette suite et
-écrivez la ligne suivante.}}}
-\begin{center}
-\begin{minipage}{4.748cm}
-{
-\textstyleMotCl{\textmd{1}}}
-
-{
-\textstyleMotCl{\textmd{1 1}}}
-
-{
-\textstyleMotCl{\textmd{2 1}}}
-
-{
-\textstyleMotCl{\textmd{1 2 1 1}}}
-
-{
-\textstyleMotCl{\textmd{1 1 1 2 2 1}}}
-
-{
-\textstyleMotCl{\textmd{3 1 2 2 1 1}}}
-
-{
-\textstyleMotCl{\textmd{1 3 1 1 2 2 2 1}}}
-
-{
-\textstyleMotCl{\textmd{1 1 1 3 2 1 3 2 1 1}}}
-
-{
-\textstyleMotCl{\textmd{3 1 1 3 1 2 1 1 1 3 1 2 2 1}}}
-
-{
-\textstyleMotCl{\textmd{...}}}
-\end{minipage}
-\end{center}
-\item {
-Écrivez un module qui reçoit une ligne (sous forme
-d'une Liste d'entiers) et retourne la
-ligne suivante (sous forme d'une autre liste
-d'entiers). Votre première tâche sera probablement de
-comprendre ce que vient faire cet exercice dans le chapitre des
-ruptures.}
-\item {
-\textstylePolicepardfauti{{Écrivez le module qui
-reçoit N (un entier) et affiche les N premières lignes de cette suite
-logique.}}}
-\end{enumerate}
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Éliminer les doublons d'une liste.}
-\end{enumerate}
-{
-\textstylePolicepardfauti{Soit une liste
-}\textstylePolicepardfauti{\textbf{ordonnée}}\textstylePolicepardfauti{
-d'entiers avec des possibles redondances. Écrire un
-module qui enlève les redondances de la liste. On vous demande de créer
-une }\textstylePolicepardfauti{\textbf{nouvelle
-liste}}\textstylePolicepardfauti{ (la liste de départ reste
-inchangée)}}
-
-{
-\textstylePolicepardfauti{Exemple}\textstylePolicepardfauti{ : Si la
-liste est (1, 3, 3, 7, 8, 8, 8) le résultat est (1, 3, 7, 8).}
-}
+%===================
+
+\begin{Exercice}{La chasse au gaspi.}
+	À l’ESI, les quantités de feuilles imprimées et photocopiées par les
+	professeurs et les étudiants sont enregistrées dans un fichier
+	séquentiel IMPRESSION, créé au début de l’année en cours et mis à jour
+	tous les soirs. Le service technique désirant facturer les
+	«~exagérations~», a demandé à pouvoir utiliser ce fichier de manière à
+	établir des statistiques du nombre de feuilles imprimées par
+	utilisateur.
+
+	Le fichier IMPRESSION présente la structure d’enregistrement
+	\textbf{Enr} suivante :
+
+	{	login\ \ \ \ chaine\ \ \ \ login de l’utilisateur}
+
+	{	date\ \ \ \ \textbf{Date}\ \ \ \ date de la session d’impression }
+
+	{	moment\ \ \textbf{Moment}\ \ moment de la session}
+
+	{	nombre\ \ entier\ \ \ \ nombre de feuilles imprimées ou photocopiées}
+
+	De plus, il est ordonné croissant en majeur sur le champ login et en
+	mineur sur la date. 
+
+	\begin{enumerate}[label=\alph*)]
+		\item 
+			Écrire un algorithme permettant d'écrire une ligne par
+			utilisateur dont le nombre total de feuilles imprimées dépasse une
+			valeur limite entrée en paramètre. Cette ligne contiendra le login et
+			le nombre.
+		\item 
+			Le fichier étant mis à jour tous les soirs, il est plus probable
+			qu'il soit trié en majeur sur la date et en mineur sur
+			le login. Décrivez l'allure générale de
+			l'algorithme dans ce cas : variables nécessaires et
+			grandes étapes de la solution.
+	\end{enumerate}
+\end{Exercice}
+	
+\begin{Exercice}{Statistiques de ventes de voitures.}
+	Un grand quotidien dispose d’un fichier VENTES regroupant les ventes de
+	voitures neuves pendant l’année dernière. Chaque demande
+	d’immatriculation a donné naissance à un enregistrement dans ce
+	fichier. Ce fichier est ordonné croissant en majeur sur la marque de
+	voiture et en mineur sur le type. Chaque enregistrement de ce fichier
+	(structure \textbf{Voiture}) comprend les champs suivants, chacun de
+	type chaine sauf le dernier :
+
+	{	plaque : \ \ numéro d’immatriculation}
+
+	{	marque :\ \ marque de la voiture (par ex. «~Citroën~»)}
+
+	{	type : \ \ \ \ type de modèle dans la marque (par ex. «~Berlingo~»)}
+
+	{	nom : \ \ \ \ nom du propriétaire}
+
+	{	adresse : \ \ adresse du propriétaire}
+
+	{	date:\ \ \ \ date de la demande d’immatriculation}
+
+	Afin de préparer le travail des journalistes, il a été demandé au
+	service informatique de préparer un affichage qui globalise les ventes
+	de voiture par marque et pour chaque marque, par type. Cet affichage
+	contiendra les renseignements suivants :
+
+	\begin{liste}
+		\item 
+			un titre général «~Ventes de voitures neuves en ****~» où les étoiles
+			seront remplacées par l’année concernée.
+		\item 
+			pour chaque marque :
+			\begin{liste}
+				\item 
+					le nom de la marque
+				\item 
+					pour chaque type de modèle
+				\item 
+					le nom de ce type et le nombre de voitures neuves vendues
+				\item 
+					le nombre total de voitures vendues pour cette marque
+			\end{liste}
+		\item 
+			enfin, le total global du nombre de voitures vendues toutes marques
+			confondues
+	\end{liste}
+	
+	À la fin, on souhaite également avoir le palmarès des ventes globales
+	par marque donné en ordre décroissant des ventes (en cas d’égalité de
+	ventes pour des marques différentes, on respectera l’ordre alphabétique
+	pour la parution dans ce palmarès). On devra donc écrire d’abord la
+	marque pour laquelle il y a eu le plus de ventes, et ainsi de suite
+	jusque la marque pour laquelle il y en a eu le moins. Notez également
+	qu’une marque pour laquelle il n’y a pas eu la moindre vente,
+	n’apparaitra pas dans ce palmarès !
+
+	Écrivez un algorithme produisant l'affichage décrit.
+\end{Exercice}
+
+\begin{Exercice}{Les fanas d'info.}
+
+	Une grande société d’informatique a organisé durant les douze derniers
+	mois une multitude de concours ouverts aux membres de clubs
+	d’informatique. Elle souhaiterait récompenser le club qui aura été le
+	plus «~méritant~» durant cette période au point de vue de la
+	participation des mineurs. Chaque résultat individuel des participants
+	(y compris des majeurs) a été enregistré dans un fichier RESULTATS dont
+	la structure d’un enregistrement \textbf{Enr} est :
+
+	{	nom: \ \ \ \ nom et prénom du participant}
+
+	{	âge: \ \ \ \ âge du participant au moment du concours (entier)}
+
+	{	référence: \ \ référence du club auquel appartient ce participant}
+
+	{	numéro: \ \ numéro du concours auquel il a participé}
+
+	{	résultat: \ \ résultat obtenu lors de ce concours (entier sur 100)}
+
+	Sachant que ce fichier est ordonné en majeur sur le champ la référence
+	et en mineur sur le nom, on demande d’écrire l’algorithme qui écrit les
+	informations suivantes :
+
+	pour chaque club :
+
+	\liststyleListv
+	\begin{liste}
+		\item 
+			sa référence
+		\item 
+			pour chaque membre mineur de ce club :
+		\item 
+			son nom et prénom
+		\item 
+				la cote moyenne sur 100 des concours auquel ce membre a participé
+		\item 
+			le nombre total de participations des membres mineurs
+	\end{liste}
+	
+	\textbf{N.B. : }un membre mineur qui s’est inscrit à un concours = une
+	participation. Un club qui n’aura eu aucun membre mineur participant
+	figurera quand même dans le résultat avec la mention «~Pas de
+	participation de membre mineur~». Par contre, un club dont aucun membre
+	n’a participé au moindre concours ne sera pas écrit.
+
+	À la fin, on affichera la référence du meilleur club, à savoir celui qui
+	a eu le plus de cotes moyennes des membres mineurs supérieures ou
+	égales à 80\%. En cas d’égalité, on départagera sur le club qui a eu le
+	plus grand nombre de participations des mineurs (et on suppose qu’il
+	n’y a pas d’ex-aequo sur ce point). 
+\end{Exercice}
+
+\begin{Exercice}{Degré ou de force.}
+
+	Soit le fichier séquentiel RELEVES reprenant par site où un capteur de
+	température est installé, les relevés réalisés au cours des douze
+	derniers mois. Deux relevés sur un même site sont distanciés au minimum
+	de 30 secondes et au maximum de 10 minutes. Chaque enregistrement du
+	fichier a la structure \textbf{Relevé} suivante :
+
+	{	lieu: \ \ \ \ site d’un relevé (chaine)}
+
+	{	date:\ \ \ \ \textbf{Date}}
+
+	{	moment :\ \ \textbf{Moment}}
+
+	{	température :\ \ température relevée (réel)}
+
+	
+	Ce fichier est ordonné croissant en majeur sur le lieu, en médian sur la
+	date et en mineur sur le moment. On demande d’écrire l’algorithme
+	permettant de créer :
+
+	\begin{liste}
+		\item 
+			le fichier QUOTIDIEN qui reprend les températures maximale et minimale
+			pour chaque site et chaque jour ; la structure d’un enregistrement sera
+			LIEU – DATE – MAX – MIN
+		\item 
+			le fichier MENSUEL qui reprend par site les températures maximale et
+			minimale par mois ainsi que le nombre moyen de relevés quotidiens ; la
+			structure d’un enregistrement sera LIEU – MOIS – MAX – MIN – NOMBRE
+	\end{liste}
+\end{Exercice}
+
+\begin{Exercice}{NBA actions.}
+	Soit le fichier RESULTATS reprenant l’ensemble des points marqués et
+	concédés pour chaque équipe inscrite dans le championnat NBA de
+	basket-ball. Chaque rencontre jouée du championnat donne naissance à
+	deux enregistrements, un pour chacune des deux équipes disputant ce
+	match. La structure d’un enregistrement de type \textbf{Résultat} est
+	:
+
+	{	équipe :\ \ chaine contenant le nom de l’équipe}
+
+	{	ptsGagnés : \ \ entier représentant les points marqués par l’équipe}
+
+	{	ptsPerdus : \ \ entier représentant les points encaissés par l’équipe}
+
+	{	date : \ \ \ \ Date donnant la date de la rencontre.}
+
+	
+	Le fichier est ordonné croissant en majeur sur l'équipe
+	et en mineur sur la date. On demande d’écrire l’algorithme qui
+	permet~d’écrire :
+
+	\begin{liste}
+		\item 
+			un titre général : «~STATISTIQUES NBA~»
+		\item 
+			pour chaque équipe :
+			\begin{liste}
+				\item 
+					son nom 
+				\item 
+					le total des points marqués
+				\item 
+					le total des points encaissés
+				\item 
+					le plus grand écart de points lors d’une rencontre de cette équipe
+			\end{liste}
+		\item 
+			en fin de traitement :
+			\begin{liste}
+				\item 
+					le nombre total de points marqués pour l’ensemble des équipes.
+				\item 
+					le mois pendant lequel le plus de points ont été marqués
+				\item 
+					le total de points pour le match le plus spectaculaire (plus grand total
+					de points pour et contre lors d’un match)
+			\end{liste}
+	\end{liste}
+	
+	De plus, cet algorithme enregistrera dans le fichier PLAYOFF le nom des
+	équipes dont le pourcentage des victoires est au moins 50\% (une
+	victoire se traduit par un enregistrement dans lequel le nombre de
+	points marqués est supérieur au nombre de points encaissés, sachant que
+	le match nul n’existe pas)
+\end{Exercice}
+
+\begin{Exercice}{Le meilleur site.}
+	Pendant le mois de novembre dernier, le fournisseur d’accès ESINET a
+	proposé aux internautes du monde entier d’élire le plus beau site du
+	\textit{World Wide Web}. Pour ce faire, ESINET a enregistré dans un
+	fichier séquentiel VOTES les votes émis par e-mail durant ce mois. Le
+	règlement du concours était simple: on pouvait voter pour plusieurs
+	sites, mais pas plusieurs fois pour le même site. Si cela arrivait
+	quand même, les votes émis à partir d’une même adresse e-mail pour un
+	même site étaient quand même enregistrés dans le fichier VOTES mais ne
+	pouvaient compter que pour \textbf{un seul} vote valable. Sachant que
+	ce fichier a la structure d’enregistrement suivante :
+
+	{	URL : \ \ adresse du site choisi (ex. : «~http://www.heb.be~»)}
+
+	{	email : adresse e-mail du votant}
+
+	{	jour : \ \ jour du vote (de 1 à 30)}
+
+	et que le fichier est ordonné croissant en majeur sur
+	l'URL et en mineur sur l'email,
+	écrire un algorithme qui en une seule lecture du fichier écrit les
+	informations suivantes :
+
+	\begin{liste}
+		\item 
+			les adresses des sites pour lesquels il y a eu au moins un vote, ainsi
+			que le nombre de votes valables recueillis 
+		\item 
+			le nom du site gagnant, c’est-à-dire celui qui a reçu le plus de votes
+			valables, ainsi que le nombre de ces votes (on peut supposer qu’il n’y
+			a pas eu d’ex-æquo)
+		\item 
+			la date du jour qui a connu le plus d’activité, c’est-à-dire le plus
+			grand nombre de votes (valables ou non).
+	\end{liste}
+\end{Exercice}	
+
+\begin{Exercice}{Quoi de neuf, doc ?}
+	Vous n’êtes pas sans savoir que les médicaments, dans la plupart des
+	cas, doivent faire l’objet d’une prescription médicale pour pouvoir
+	être délivrés. Sur la prescription de médicaments, appelée également
+	l’ordonnance, on trouve les médicaments prescrits, le cachet du
+	prescripteur ou médecin, avec son nom et son numéro d’agrément.
+
+	Chaque ordonnance, lorsqu’elle est présentée au pharmacien, est scannée.
+	L’image ainsi obtenue passe dans un programme de traitement
+	informatique qui génère autant d’enregistrements dans un fichier qu’il
+	y a de médicaments différents prescrits. Les ordinateurs des pharmacies
+	sont reliés à un ordinateur central situé à Bruxelles. Ainsi, les
+	enregistrements créés au niveau des pharmacies sont directement ajoutés
+	à un fichier central annuel appelé PRESCRIPTIONS. 
+
+	La structure \textbf{Prescription} des enregistrements de ce fichier est
+	la suivante :
+
+	{	date : \ \ \ \ date de la prescription}
+
+	{	numéro : \ \ numéro d’agrément du médecin}
+
+	{	nom : \ \ \ \ nom du médicament}
+
+	{	qté : \ \ \ \ quantité de ce médicament prescrite sur cette ordonnance}
+
+	En supposant complété le fichier PRESCRIPTIONS pour l’année écoulée, on
+	demande d’écrire l’algorithme d’une application qui permettra d’après
+	ce fichier de compter le nombre de médecins différents qui ont prescrit
+	des médicaments et d’afficher le résultat.
+
+	Pour réaliser cela, expliquez brièvement de quelle façon ce fichier
+	devrait être ordonné.
+\end{Exercice}
+
+\begin{Exercice}{Vos papiers, SVP !}
+	La gendarmerie a enregistré dans un fichier PV toutes les infractions au
+	code de la route commises par des automobilistes ayant une plaque belge
+	durant l’année dernière. La structure \textbf{Infraction} d’un
+	enregistrement comprend les champs :
+
+	{	plaque :\ \ \ \ chaine}
+
+	{	date :\ \ \ \ \textbf{Date}}
+
+	{	moment :\ \ \textbf{Moment}}
+
+	{	type :\ \ chaine (code associé à une infraction donnée)}
+
+	Le fichier est ordonné croissant sur la plaque et ne contient aucune
+	erreur. Il peut bien entendu y avoir dans le fichier plusieurs
+	enregistrements ayant le même numéro de plaque.
+
+	La gendarmerie dispose également d’une table \textstyleCodeInsr{amendes}
+	de 60 éléments structurés de type \textbf{Amende} comprenant les champs :
+
+	{	type :\ \ \ \ comme ci-dessus}
+
+	{	libellé :\ \ \ \ chaine décrivant l’infraction (ex. «~excès de vitesse~»,
+	etc.)}
+
+	{	montant :\ \ montant de l’amende en €.}
+
+	Écrire l’algorithme qui, en une seule lecture du fichier PV, calcule et
+	écrit dans le fichier STATS, pour chaque plaque apparaissant dans le
+	fichier PV, une ligne contenant le numéro de plaque du véhicule et le
+	montant total annuel des amendes pour cette plaque. On écrira également
+	en fin de traitement le total des montants des amendes pour toutes les
+	plaques recensées.
+
+	Enfin, on écrira un tableau récapitulatif du nombre d’amendes par type
+	d’amendes. Ce tableau reprendra le libellé et le nombre en commençant
+	par les plus fréquentes jusqu’au moins fréquentes. 
+\end{Exercice}
+
+\begin{Exercice}{Bruxelles-national}
+	Votre société d’informatique a signé un contrat avec l’aéroport national
+	pour l’établissement informatique de statistiques sur le trafic aérien.
+	Le service informatique de l’aéroport enregistre sans arrêt les
+	atterrissages et décollages des avions ainsi que d’autres informations.
+	Pour l’année dernière, toutes les informations sont enregistrées dans
+	le fichier VOLS.
+
+	La structure \textbf{Vol} des enregistrements de ce fichier contient les
+	champs : 
+
+	{	numéro : \ \ chaine donnant le numéro du vol}
+
+	{	type  : \ \ \ \ une lettre : ‘A’ pour atterrissage ou ‘D’ pour
+	décollage}
+
+	{	lieu : \ \ \ \ chaine donnant le lieu d’où provient le vol (si le type
+	vaut ‘A’) }
+
+	{	\ \ \ \ ou le lieu de destination du vol (si le type vaut ‘D’)}
+
+	{	cie : \ \ \ \ compagnie aérienne propriétaire de l’avion}
+
+	{	nb : \ \ \ \ entier donnant le nombre de passagers (pouvant valoir 0)}
+
+	{	qté : \ \ \ \ réel donnant le tonnage de marchandise transportée }
+
+	{	\ \ \ \ (pouvant \ valoir 0)}
+
+	{	date : \ \ \ \ date du vol}
+
+	{	moment : \ \ heure de départ ou d’arrivée}
+
+	Sachant que ce fichier est ordonné croissant en majeur sur la compagnie
+	et en mineur sur lieu, on vous demande d’établir l’algorithme qui
+	permette d’établir les statistiques suivantes :
+
+	\begin{liste}
+		\item 
+			pour chaque compagnie apparaissant dans VOLS :
+		\item 
+			une ligne titre avec le nom de la compagnie,
+		\item 
+			pour chaque endroit desservi par cette compagnie, une seule ligne avec
+			son nom, le nombre d’atterrissages d’avions provenant de ce lieu, le
+			nombre de décollages d’avions vers ce lieu
+		\item 
+			en fin de chaque compagnie, le nom du lieu d’où provient le plus grand
+			nombre de passagers transportés par cette compagnie là, ainsi que le
+			nom du lieu vers lequel la plus grande quantité totale de marchandises
+			a été expédiée par cette compagnie là.
+	\end{liste}
+
+	\bigskip
+
+	\liststyleListv
+	\begin{liste}
+		\item 
+			à la \ fin on écrira : 
+		\item 
+			la différence entre le nombre \textbf{total} de passagers arrivés et
+			partis ;
+		\item 
+			le nombre de compagnies trouvées dans le fichier ;
+		\item 
+			le nom de la compagnie ayant eu le moins de vols ;
+		\item 
+			la tranche horaire où le trafic en nombre de vols est le plus intense
+			(\textbf{N.B.:} on \ peut utiliser un tableau pour résoudre cette
+			requête)
+	\end{liste}
+	
+	\textbf{N.B.:} Pour toutes les recherches de maxima ou minima, on les
+	supposera uniques. La première tranche horaire est 0 et la dernière 23.
+\end{Exercice}
+
+\begin{Exercice}{Une suite logique}
+	\textstyleMotCl{\textmd{Voici une petite suite logique :}}
+
+	\begin{enumerate}[label=\alph*)]
+		\item 
+			\textstyleMotCl{\textmd{Comprenez la logique derrière cette suite et
+			écrivez la ligne suivante.}}
+			\begin{center}
+			\begin{minipage}{4.748cm}
+			{\textstyleMotCl{\textmd{1}}}
+
+			{\textstyleMotCl{\textmd{1 1}}}
+
+			{\textstyleMotCl{\textmd{2 1}}}
+
+			{\textstyleMotCl{\textmd{1 2 1 1}}}
+
+			{\textstyleMotCl{\textmd{1 1 1 2 2 1}}}
+
+			{\textstyleMotCl{\textmd{3 1 2 2 1 1}}}
+
+			{\textstyleMotCl{\textmd{1 3 1 1 2 2 2 1}}}
+
+			{\textstyleMotCl{\textmd{1 1 1 3 2 1 3 2 1 1}}}
+
+			{\textstyleMotCl{\textmd{3 1 1 3 1 2 1 1 1 3 1 2 2 1}}}
+
+			{\textstyleMotCl{\textmd{...}}}
+			\end{minipage}
+			\end{center}
+		\item 
+			Écrivez un module qui reçoit une ligne (sous forme
+			d'une Liste d'entiers) et retourne la
+			ligne suivante (sous forme d'une autre liste
+			d'entiers). Votre première tâche sera probablement de
+			comprendre ce que vient faire cet exercice dans le chapitre des
+			ruptures.
+		\item 
+			Écrivez le module qui reçoit n (un entier) 
+			et affiche les n premières lignes de cette suite
+			logique.
+	\end{enumerate}
+\end{Exercice}
+
+\begin{Exercice}{Éliminer les doublons d'une liste.}
+	Soit une liste \textbf{ordonnée}
+	d'entiers avec des possibles redondances. Écrire un
+	module qui enlève les redondances de la liste. On vous demande de créer
+	une \textbf{nouvelle liste}(la liste de départ reste inchangée)
+
+	Exemple : Si la liste est (1, 3, 3, 7, 8, 8, 8) le résultat est (1, 3, 7, 8).
+\end{Exercice}
