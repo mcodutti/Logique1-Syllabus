@@ -210,7 +210,7 @@ provoquent toutes l’interruption de l’algorithme :
 
 \cadre{
 \begin{pseudo}
-	\Stmt \Write nomFichier ; nomVariable
+	\Stmt \Writef nomFichier ; nomVariable
 \end{pseudo}
 }
 
@@ -292,7 +292,7 @@ d'un fichier (en lecture) dans un autre (en écriture)
 		\Read fichierIn ; enregistrement
 		
 		\While{NON EOF(fichierIn)}
-			\Write fichierOut ; enregistrement
+			\Writef fichierOut ; enregistrement
 			\Read fichierIn ; enregistrement
 		\EndWhile
 		
