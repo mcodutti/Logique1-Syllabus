@@ -1,5 +1,6 @@
-
+%=================
 \chapter{La liste}
+%=================
 
 
 \marginicon{objectif}
@@ -17,7 +18,9 @@ Construisons une telle structure de données et appelons-la «~Liste~»
 pour rester en phase avec son appellation commune en Java.
 
 
+%========================
 \section{La classe Liste}
+%=========================
 
 Nous verrons plus loin comment la réaliser en pratique mais nous pouvons
 déjà définir le comportement qu’on en attend (les méthodes qu’elle doit
@@ -159,8 +162,9 @@ l’écrire ainsi :
 
 \bigskip
 
-
+%===================================
 \section{Comment implémenter l’état}
+%===================================
 
 Cette liste est bien utile mais comment la réaliser en pratique ?
 Comment représenter une liste variable d’éléments ? Pour
@@ -288,7 +292,9 @@ inférieure au tiers de la taille physique). Nous n’abordons toutefois
 pas cette problématique ici.
 
 
+%=======================================
 \section{Implémentation du comportement}
+%=======================================
 
 Nous avons à présent toutes les cartes en main pour écrire les méthodes
 publiques de la classe.
@@ -505,7 +511,9 @@ d'écrire explicitement une telle méthode de recherche
 en cas de besoin.
 
 
+%====================================
 \section{Et sans tableau dynamique ?}
+%=====================================
 
 Certains langages (c’est le cas de Cobol) ne permettent pas de créer
 dynamiquement un nouveau tableau. Il vous faudra travailler avec un
@@ -518,389 +526,305 @@ Les algorithmes d’ajout/suppression/recherche vus pour la liste peuvent
 faut générer une erreur.
 
 
+%==================
 \section{Exercices}
-\liststyleExercice
-\begin{enumerate}
-	\item {\sffamily\bfseries
-	Liste des premiers entiers}
+%===================
+
+\begin{Exercice}{Liste des premiers entiers}
+	Écrire un module qui reçoit un entier n en paramètre et retournant la
+	liste contenant les entiers de 1 à n dans l'ordre
+	décroissant. On peut supposer que n est positif.
+\end{Exercice}
 	
-		Écrire un module qui reçoit un entier n en paramètre et retournant la
-		liste contenant les entiers de 1 à n dans l'ordre
-		décroissant. On peut supposer que n est positif.
-	\end{enumerate}
-		
-	\liststyleExercice
-	\setcounter{saveenum}{\value{enumi}}
-	\begin{enumerate}
-	\setcounter{enumi}{\value{saveenum}}
-		\item {\sffamily\bfseries
-		Liste des premiers entiers}
+\begin{Exercice}{	Liste des premiers entiers}
+	Écrire un module qui reçoit une liste de chaines en paramètre et
+	supprime de cette liste tous les éléments de valeur donnée en
+	paramètre. L'algorithme retournera le nombre de
+	suppressions effectuées
+\end{Exercice}
 	
-		Écrire un module qui reçoit une liste de chaines en paramètre et
-		supprime de cette liste tous les éléments de valeur donnée en
-		paramètre. L'algorithme retournera le nombre de
-		suppressions effectuées
-	\end{enumerate}
-		
-	\liststyleExercice
-	\setcounter{saveenum}{\value{enumi}}
-	\begin{enumerate}
-	\setcounter{enumi}{\value{saveenum}}	
-		\item {\sffamily\bfseries
-		Somme d'une liste}
+\begin{Exercice}{Somme d'une liste}
+	Écrire un module qui calcule la somme des éléments d’une liste
+	d’entiers.
+\end{Exercice}
+
+\begin{Exercice}{Les extrêmes}
+		Écrire un module qui supprime le minimum et le maximum des éléments
+		d’une liste d’entiers. On peut supposer que le maximum et le minimum
+		sont uniques.
+\end{Exercice}
+
+\begin{Exercice}{Anniversaires}
+		Écrire un module qui reçoit une liste de Personne (nom + prénom + date
+		de naissance ; cf. exercice dans le chapitre OO) et retourne la liste
+		de ceux qui sont nés durant un mois passé en paramètre (entier entre 1
+		et 12)
+\end{Exercice}
 	
-		Écrire un module qui calcule la somme des éléments d’une liste
-		d’entiers.
-	\end{enumerate}
+\begin{Exercice}{Concaténation de deux listes}
+		Écrire un module qui reçoit 2 listes et ajoute
+		à la suite de la première les éléments de la seconde; la seconde liste
+		n'est pas modifiée par cette opération.
+\end{Exercice}
+
+\begin{Exercice}{Fusion de deux listes}
 	
-	\liststyleExercice
-	\setcounter{saveenum}{\value{enumi}}
-	\begin{enumerate}
-	\setcounter{enumi}{\value{saveenum}}
-		\item {\sffamily\bfseries
-		Les extrêmes}
-		
-			Écrire un module qui supprime le minimum et le maximum des éléments
-			d’une liste d’entiers. On peut supposer que le maximum et le minimum
-			sont uniques.
-	\end{enumerate}
+		Soit deux listes \textbf{ordonnées}
+		d'entiers (redondances possibles). Écrire un module
+		qui les fusionne. Le résultat est une liste encore ordonnée contenant
+		tous les entiers des deux listes de départ (qu'on
+		laisse inchangées).
 
-	\liststyleExercice
-	\setcounter{saveenum}{\value{enumi}}
-	\begin{enumerate}
-	\setcounter{enumi}{\value{saveenum}}
-		\item {\sffamily\bfseries
-		Anniversaires}
-		
-			Écrire un module qui reçoit une liste de Personne (nom + prénom + date
-			de naissance ; cf. exercice dans le chapitre OO) et retourne la liste
-			de ceux qui sont nés durant un mois passé en paramètre (entier entre 1
-			et 12)
-		\end{enumerate}
-		
-	\liststyleExercice
-	\setcounter{saveenum}{\value{enumi}}
-	\begin{enumerate}
-	\setcounter{enumi}{\value{saveenum}}
-		\item {\sffamily\bfseries
-		Concaténation de deux listes}
-		
-			Écrire un module qui reçoit 2 listes et ajoute
-			à la suite de la première les éléments de la seconde; la seconde liste
-			n'est pas modifiée par cette opération.
-	\end{enumerate}
-	
-	\liststyleExercice
-	\setcounter{saveenum}{\value{enumi}}
-	\begin{enumerate}
-	\setcounter{enumi}{\value{saveenum}}
-		\item {\sffamily\bfseries
-		Fusion de deux listes}
-		
-			Soit deux listes \textbf{ordonnées}
-			d'entiers (redondances possibles). Écrire un module
-			qui les fusionne. Le résultat est une liste encore ordonnée contenant
-			tous les entiers des deux listes de départ (qu'on
-			laisse inchangées).
+		Exemple : Si les 2 listes sont (1, 3, 7, 7) et (3, 9), 
+		le résultat est (1, 3, 3, 7, 7, 9).
+\end{Exercice}
 
-			Exemple : Si les 2 listes sont (1, 3, 7, 7) et (3, 9), 
-			le résultat est (1, 3, 3, 7, 7, 9).
-	\end{enumerate}
-	
-	\liststyleExercice
-	\setcounter{saveenum}{\value{enumi}}
-	\begin{enumerate}
-	\setcounter{enumi}{\value{saveenum}}
-		\item {\sffamily\bfseries
-		Éliminer les doublons d'une liste}
-		
-			Soit une liste \textbf{ordonnée} 
-			d'entiers avec de possibles redondances. Écrire un
-			module qui enlève les redondances de la liste.
-					
-			Exemple : Si la liste est (1, 3, 3, 7, 8, 8, 8),
-			le résultat est (1, 3, 7, 8).
-
-			\begin{enumerate}
-				\item 
-					Faites l'exercice en créant une \textbf{nouvelle
-					liste} (la liste de départ reste inchangée)
-				\item 
-					Refaites l'exercice en \textbf{modifiant}
-					la liste de départ (pas de nouvelle liste)
-			\end{enumerate}
-	\end{enumerate}
-	
-	\liststyleExercice
-	\setcounter{saveenum}{\value{enumi}}
-	\begin{enumerate}
-	\setcounter{enumi}{\value{saveenum}}
-		\item {\sffamily\bfseries
-		La chaine}
-		
-			Nous utilisons déjà un type chaine.
-			Faisons-en une classe et dotons-la de
-			méthodes souvent utiles.
-
-			\begin{center}
-			\tablehead{}
-			\begin{supertabular}{|m{11.597cm}|}
-			\hline
-			\centering\arraybslash  Chaine\\\hline
-			 {}- listeCar : Liste de caractères\\\hline
-			{ + Chaine( )\ \ // crée une chaine vide}
-
-			{ {+ }Chaine( tab : tableau [1 à n] de caractères )
-			\ \ // crée une chaine initialisée au contenu du tableau}
-
-			{ {+ getCaractère ( i : entier ) }\textsf{→} {caractère}}
-
-			{ + concatène( autre : Chaine ) // ajoute autre à
-			la fin de la chaine}
-
-			{ {+ sousChaine( début,
-			taille : entiers ) }\textsf{→} {Chaine
-			\ \ // donne la chaine de taille donnée commençant à la
-			\ \ // position début. La chaine n'est pas modifiée}}
-
-			{ {+ existe(
-			chaineCherchée : Chaine, position~}\textsf{↑}
-			:{ entier ) }\textsf{→}
-			{booléen
-			\ \ // indique si la chaineCherchée est une sous-chaine;
-			\ \ // Si oui, donne la position de la sous-chaine
-			\ \ // Si la sous-chaine existe en plusieurs exemplaires, on
-			\ \ // donne la première occurrence.}}
-
-			{ {+ remplacer(
-			chaineARemplacer, par : Chaine ) }\textsf{→}
-			{booléen
-			\ \ // retourne un booléen indiquant si au moins un
-			\ \ // remplacement a eu lieu (ce qui ne sera pas le cas si la}}
-
-			{ \ \ // chaine à remplacer n’était pas
-			présente)}
-
-			 {+ taille() }\textsf{→}
-			{entier \ // nb de caractères de la
-			chaine}\\\hline
-			\end{supertabular}
-			\end{center}
-			
-			Par facilité, on supposera qu’écrire une chaine littéralement revient à
-			créer un objet Chaine initialisé de la même façon. (ex : «~Bonjour~»
-			est équivalent à «~nouveau Chaine (tab)~» où tab est un tableau
-			contenant les caractères 'B',
-			'o',
-			'n',
-			'j',
-			'o',
-			'u',
-			'r'.
-
-			\textbf{Utilisation de la chaine.}
-
-			\liststyleListv
-			\begin{itemize}
-				\item 
-					Écrire un module qui reçoit un nom complet
-					sous la forme «~nom, prénom~» (le nom et le prénom sont donc séparés
-					par une virgule et un espace) et dissocie le nom du prénom. 
-				\item 
-					Écrire un module qui remplace dans une chaine
-					tous les «~HEB-ESI~» par «~ESI~»
-				\item 
-					Idem mais pour le changement inverse 
-					(remplacer tous les «~ESI~» par «~HEB-ESI~»)
-			\end{itemize}
-
-	\end{enumerate}
-		\liststyleExercice
-		
-	\liststyleExercice
-	\setcounter{saveenum}{\value{enumi}}
-	\begin{enumerate}
-	\setcounter{enumi}{\value{saveenum}}
-		\item {\sffamily\bfseries
-		La liste ordonnée}
-		
-			Une recherche dans une liste implique un parcours complet de la liste en
-			cas de recherche infructueuse. La recherche pourrait être plus rapide
-			si la liste était ordonnée (en utilisant la recherche dichotomique). La
-			contrainte principale est qu'il faudra maintenir le
-			caractère ordonné de la liste (notamment en cas
-			d'ajout). Écrivez les modules suivants, de façon à ce
-			que la liste reste ordonnée.
-
-			\cadre{
-			\begin{pseudo}
-				\ModuleSign{ajouterOrdonné}{liste : Liste de T, valeur : T}{}
-				\ModuleSign{enleverOrdonné}{liste : Liste de T, valeur : T}{booléen}
-				\LComment retourne faux si valeur pas présente. 
-				\LComment Si la valeur est présente en plusieurs exemplaire, en enlève une.
-				\ModuleSign{existeOrdonné}{liste\In : Liste de T, valeur\In : T, pos\Out: entier}{booléen}
-				\LComment si la valeur n'est pas trouvée, pos donne la position où elle aurait dû être.
-			\end{pseudo}
-			}
-
-	\end{enumerate}
-	
-	\liststyleExercice
-	\setcounter{saveenum}{\value{enumi}}
-	\begin{enumerate}
-	\setcounter{enumi}{\value{saveenum}}
-	\item {\sffamily\bfseries
-	Trier des mots}
-		
-			Écrivez un algorithme qui lit une série de mots (se terminant par une
-			chaine vide) sans aucun ordre et les affiche dans l’ordre alphabétique.
-			Vous pouvez utiliser les modules écrits lors de
-			l'exercice précédent.
-			
-	\end{enumerate}
-
-	\liststyleExercice
-	\setcounter{saveenum}{\value{enumi}}
-	\begin{enumerate}
-	\setcounter{enumi}{\value{saveenum}}
-	\item {\sffamily\bfseries
-	Éviter les doublons}
-	
-			Modifiez l’exemple ci-dessus pour que deux mots identiques ne soient
-			introduits qu’une seule fois dans la liste.
-	\end{enumerate}
-
-	\liststyleExercice
-	\setcounter{saveenum}{\value{enumi}}
-	\begin{enumerate}
-	\setcounter{enumi}{\value{saveenum}}
-		\item {\sffamily\bfseries
-		L'ensemble}
-		
-			La notion d’ensemble fini est une notion qui vous est déjà 
-			familière pour l’avoir rencontrée dans plusieurs cours. Nous rappelons
-			certaines de ses propriétés et opérations. 
-			
-			\bigskip
-			
-			Étant donnés deux ensembles
-			finis \textbf{S} et \textbf{T} ainsi qu’un élément \textbf{x} :
-
-			\liststyleListv
-			\begin{itemize}
-			\item 
-				\textbf{x} {${\in}$} \textbf{S} signifie que l’élément \textbf{x}
-				est un élément de l’ensemble \textbf{S}.
-			\item 
-				L’ensemble vide, noté \textbf{${\emptyset}$} 
-				est l’ensemble qui n’a pas d’élément 
-				(\textbf{x} {${\in}$} \textbf{${\emptyset}$} 
-				est faux quel que soit \textbf{x} ).
-			\item 
-				L’ordre des éléments dans un ensemble n’a
-				aucune signification, l’ensemble \{1,2\} est
-				identique à \{2,1\}.
-			\item 
-				Un élément \textbf{x} ne peut
-				pas être plus d’une fois élément d’un même ensemble 
-				(pas de répétition).
-			\item 
-				L’union \textbf{S ${\cup}$ T} 
-				est l’ensemble contenant les éléments qui sont dans 
-				\textbf{S} ou (non exclusif) dans \textbf{T}.
-			\item 
-				L’intersection \textbf{S ${\cap}$ T} 
-				est l’ensemble des éléments qui sont à la fois 
-				dans \textbf{S} et dans \textbf{T}.
-			\item 
-				La différence \textbf{S {\textbackslash} T} 
-				est l’ensemble des éléments qui sont 
-				dans \textbf{S} mais pas dans \textbf{T}.
-			\end{itemize}
-			
-			\bigskip
-			
-			Créez la classe \textstyleCodeInsr{Ensemble}
-			décrite ci-dessous.
-			
-			\cadre{
-			\begin{pseudo}
-				\Class{Ensemble de T}{} 
-				\RComment T est le type des éléments de l'ensemble
+\begin{Exercice}{Éliminer les doublons d'une liste}
+		Soit une liste \textbf{ordonnée} 
+		d'entiers avec de possibles redondances. Écrire un
+		module qui enlève les redondances de la liste.
 				
-					\Public
-					\ConstrSign{Ensemble de T}{} 
-					\RComment construit un ensemble vide
-					\MethodSign{ajouter}{élt : T}{}
-					\RComment ajoute l'élément à l'ensemble
-					\MethodSign{enlever}{élt : T}{})
-					\RComment enlève un élément de l'ensemble
-					\MethodSign{contient}{élt : T}{booléen}
-					\RComment dit si l'élément est présent
-					\MethodSign{estVide}{}{booléen}
-					\RComment dit si l'ensemble est vide
-					\MethodSign{taille}{}{entier}
-					\RComment donne la taille de l'ensemble
-					\MethodSign{union}{autreEnsemble : Ensemble de T}{Ensemble de T}
-					\MethodSign{intersection}{autreEnsemble : Ensemble de T}{Ensemble de T}
-					\MethodSign{moins}{autreEnsemble : Ensemble de T}{Ensemble de T}
-					\MethodSign{liste}{}{Liste de T}
-					\RComment conversion en liste
-			\EndClass
+		Exemple : Si la liste est (1, 3, 3, 7, 8, 8, 8),
+		le résultat est (1, 3, 7, 8).
+
+		\begin{enumerate}[label=\alph*)]
+			\item 
+				Faites l'exercice en créant une \textbf{nouvelle
+				liste} (la liste de départ reste inchangée)
+			\item 
+				Refaites l'exercice en \textbf{modifiant}
+				la liste de départ (pas de nouvelle liste)
+		\end{enumerate}
+\end{Exercice}
+
+\begin{Exercice}{La chaine}
+	Nous utilisons déjà un type chaine.
+	Faisons-en une classe et dotons-la de
+	méthodes souvent utiles.
+
+	\begin{center}
+	\tablehead{}
+	\begin{supertabular}{|m{11.597cm}|}
+		\hline
+		\centering\arraybslash  Chaine\\\hline
+		 {}- listeCar : Liste de caractères\\\hline
+		{ + Chaine( )\ \ // crée une chaine vide}
+
+		{ {+ }Chaine( tab : tableau [1 à n] de caractères )
+		\ \ // crée une chaine initialisée au contenu du tableau}
+
+		{ {+ getCaractère ( i : entier ) }\textsf{→} {caractère}}
+
+		{ + concatène( autre : Chaine ) // ajoute autre à
+		la fin de la chaine}
+
+		{ {+ sousChaine( début,
+		taille : entiers ) }\textsf{→} {Chaine
+		\ \ // donne la chaine de taille donnée commençant à la
+		\ \ // position début. La chaine n'est pas modifiée}}
+
+		{ {+ existe(
+		chaineCherchée : Chaine, position~}\textsf{↑}
+		:{ entier ) }\textsf{→}
+		{booléen
+		\ \ // indique si la chaineCherchée est une sous-chaine;
+		\ \ // Si oui, donne la position de la sous-chaine
+		\ \ // Si la sous-chaine existe en plusieurs exemplaires, on
+		\ \ // donne la première occurrence.}}
+
+		{ {+ remplacer(
+		chaineARemplacer, par : Chaine ) }\textsf{→}
+		{booléen
+		\ \ // retourne un booléen indiquant si au moins un
+		\ \ // remplacement a eu lieu (ce qui ne sera pas le cas si la}}
+
+		{ \ \ // chaine à remplacer n’était pas
+		présente)}
+
+		 {+ taille() }\textsf{→}
+		{entier \ // nb de caractères de la
+		chaine}\\\hline
+	\end{supertabular}
+	\end{center}
+	
+	Par facilité, on supposera qu’écrire une chaine littéralement revient à
+	créer un objet Chaine initialisé de la même façon. (ex : «~Bonjour~»
+	est équivalent à «~nouveau Chaine (tab)~» où tab est un tableau
+	contenant les caractères 'B',
+	'o',
+	'n',
+	'j',
+	'o',
+	'u',
+	'r'.
+
+	\textbf{Utilisation de la chaine.}
+
+	\liststyleListv
+	\begin{enumerate}[label=\alph*)]
+		\item 
+			Écrire un module qui reçoit un nom complet
+			sous la forme «~nom, prénom~» (le nom et le prénom sont donc séparés
+			par une virgule et un espace) et dissocie le nom du prénom. 
+		\item 
+			Écrire un module qui remplace dans une chaine
+			tous les «~HEB-ESI~» par «~ESI~»
+		\item 
+			Idem mais pour le changement inverse 
+			(remplacer tous les «~ESI~» par «~HEB-ESI~»)
+	\end{enumerate}
+\end{Exercice}
+
+	\liststyleExercice
+	
+\begin{Exercice}{La liste ordonnée}
+		Une recherche dans une liste implique un parcours complet de la liste en
+		cas de recherche infructueuse. La recherche pourrait être plus rapide
+		si la liste était ordonnée (en utilisant la recherche dichotomique). La
+		contrainte principale est qu'il faudra maintenir le
+		caractère ordonné de la liste (notamment en cas
+		d'ajout). Écrivez les modules suivants, de façon à ce
+		que la liste reste ordonnée.
+
+		\cadre{
+		\begin{pseudo}
+			\ModuleSign{ajouterOrdonné}{liste : Liste de T, valeur : T}{}
+			\ModuleSign{enleverOrdonné}{liste : Liste de T, valeur : T}{booléen}
+			\LComment retourne faux si valeur pas présente. 
+			\LComment Si la valeur est présente en plusieurs exemplaire, en enlève une.
+			\ModuleSign{existeOrdonné}{liste\In : Liste de T, valeur\In : T, pos\Out: entier}{booléen}
+			\LComment si la valeur n'est pas trouvée, pos donne la position où elle aurait dû être.
 		\end{pseudo}
 		}
-		\bigskip
 
-		\textstylePolicepardfaut{Quelques remarques :}
+\end{Exercice}
+
+\begin{Exercice}{Trier des mots}
+		Écrivez un algorithme qui lit une série de mots (se terminant par une
+		chaine vide) sans aucun ordre et les affiche dans l’ordre alphabétique.
+		Vous pouvez utiliser les modules écrits lors de
+		l'exercice précédent.
+		
+\end{Exercice}
+
+\begin{Exercice}{Éviter les doublons}
+		Modifiez l’exemple ci-dessus pour que deux mots identiques ne soient
+		introduits qu’une seule fois dans la liste.
+\end{Exercice}
+
+\begin{Exercice}{L'ensemble}
+		La notion d’ensemble fini est une notion qui vous est déjà 
+		familière pour l’avoir rencontrée dans plusieurs cours. Nous rappelons
+		certaines de ses propriétés et opérations. 
+		
+		\bigskip
+		
+		Étant donnés deux ensembles
+		finis \textbf{S} et \textbf{T} ainsi qu’un élément \textbf{x} :
 
 		\liststyleListv
 		\begin{itemize}
-			\item 
-				La méthode d'ajout (resp. de suppression) n'a
-				pas d'effet si l'élément est déjà
-				(resp. n'est pas) dans l'ensemble.
-			\item 
-				Les méthodes \textstyleCodeInsr{union()}, 
-				\textstyleCodeInsr{intersection()} et 
-				\textstyleCodeInsr{moins()} retournent un troisième ensemble, 
-				résultat des 2 premiers sans toucher
-				à ces 2 ensembles. On aurait pu envisager des méthodes modifiant
-				l'ensemble sur lequel on les appelle.
-			\item 
-				La méthode \textstyleCodeInsr{liste()}
-				est nécessaire si on veut parcourir les éléments de
-				l'ensemble (par exemple pour les afficher).
+		\item 
+			\textbf{x} {${\in}$} \textbf{S} signifie que l’élément \textbf{x}
+			est un élément de l’ensemble \textbf{S}.
+		\item 
+			L’ensemble vide, noté \textbf{${\emptyset}$} 
+			est l’ensemble qui n’a pas d’élément 
+			(\textbf{x} {${\in}$} \textbf{${\emptyset}$} 
+			est faux quel que soit \textbf{x} ).
+		\item 
+			L’ordre des éléments dans un ensemble n’a
+			aucune signification, l’ensemble \{1,2\} est
+			identique à \{2,1\}.
+		\item 
+			Un élément \textbf{x} ne peut
+			pas être plus d’une fois élément d’un même ensemble 
+			(pas de répétition).
+		\item 
+			L’union \textbf{S ${\cup}$ T} 
+			est l’ensemble contenant les éléments qui sont dans 
+			\textbf{S} ou (non exclusif) dans \textbf{T}.
+		\item 
+			L’intersection \textbf{S ${\cap}$ T} 
+			est l’ensemble des éléments qui sont à la fois 
+			dans \textbf{S} et dans \textbf{T}.
+		\item 
+			La différence \textbf{S {\textbackslash} T} 
+			est l’ensemble des éléments qui sont 
+			dans \textbf{S} mais pas dans \textbf{T}.
 		\end{itemize}
-	\end{enumerate}
-	
-	\liststyleExercice
-	\setcounter{saveenum}{\value{enumi}}
-	\begin{enumerate}
-	\setcounter{enumi}{\value{saveenum}}
-	\item {\sffamily\bfseries
-	Autres opérations ensemblistes}
 		
-		Nous avons défini des opérations ensemblistes ne touchant pas aux
-		ensembles de départ. Que deviennent-elles si on considère
-		qu'elles \textbf{modifient}
-		l'ensemble sur lequel elles sont appliquées ?
-	\end{enumerate}
+		\bigskip
+		
+		Créez la classe \textstyleCodeInsr{Ensemble}
+		décrite ci-dessous.
+		
+		\cadre{
+		\begin{pseudo}
+			\Class{Ensemble de T}{} 
+			\RComment T est le type des éléments de l'ensemble
+			
+				\Public
+				\ConstrSign{Ensemble de T}{} 
+				\RComment construit un ensemble vide
+				\MethodSign{ajouter}{élt : T}{}
+				\RComment ajoute l'élément à l'ensemble
+				\MethodSign{enlever}{élt : T}{})
+				\RComment enlève un élément de l'ensemble
+				\MethodSign{contient}{élt : T}{booléen}
+				\RComment dit si l'élément est présent
+				\MethodSign{estVide}{}{booléen}
+				\RComment dit si l'ensemble est vide
+				\MethodSign{taille}{}{entier}
+				\RComment donne la taille de l'ensemble
+				\MethodSign{union}{autreEnsemble : Ensemble de T}{Ensemble de T}
+				\MethodSign{intersection}{autreEnsemble : Ensemble de T}{Ensemble de T}
+				\MethodSign{moins}{autreEnsemble : Ensemble de T}{Ensemble de T}
+				\MethodSign{liste}{}{Liste de T}
+				\RComment conversion en liste
+		\EndClass
+	\end{pseudo}
+	}
+	\bigskip
 
-	
-	\liststyleExercice
-	\setcounter{saveenum}{\value{enumi}}
-	\begin{enumerate}
-	\setcounter{enumi}{\value{saveenum}}
-	\item {\sffamily\bfseries
-	Rendez-vous}
-	
-		Soit la structure «\textstyleCodeInsr{~RendezVous~}» composée d’une date
-		et d’un motif de rencontre. Écrire un module qui reçoit une liste de
-		rendez-vous et la met à jour en supprimant tous ceux qui sont désormais
-		passés. 
+	\textstylePolicepardfaut{Quelques remarques :}
 
-		\textstyleCodeInsr{\textrm{Rappel}}\textstyleCodeInsr{\textrm{ : la date
-		du jour s'obtient par le constructeur de
-		}}\textstyleCodeInsr{Date}\textstyleCodeInsr{\textrm{ sans
-		paramètre.}}
-	\end{enumerate}
+	\liststyleListv
+	\begin{itemize}
+		\item 
+			La méthode d'ajout (resp. de suppression) n'a
+			pas d'effet si l'élément est déjà
+			(resp. n'est pas) dans l'ensemble.
+		\item 
+			Les méthodes \textstyleCodeInsr{union()}, 
+			\textstyleCodeInsr{intersection()} et 
+			\textstyleCodeInsr{moins()} retournent un troisième ensemble, 
+			résultat des 2 premiers sans toucher
+			à ces 2 ensembles. On aurait pu envisager des méthodes modifiant
+			l'ensemble sur lequel on les appelle.
+		\item 
+			La méthode \textstyleCodeInsr{liste()}
+			est nécessaire si on veut parcourir les éléments de
+			l'ensemble (par exemple pour les afficher).
+	\end{itemize}
+\end{Exercice}
+
+\begin{Exercice}{Autres opérations ensemblistes}
+	Nous avons défini des opérations ensemblistes ne touchant pas aux
+	ensembles de départ. Que deviennent-elles si on considère
+	qu'elles \textbf{modifient}
+	l'ensemble sur lequel elles sont appliquées ?
+\end{Exercice}
+
+
+\begin{Exercice}{Rendez-vous}
+	Soit la structure «\textstyleCodeInsr{~RendezVous~}» composée d’une date
+	et d’un motif de rencontre. Écrire un module qui reçoit une liste de
+	rendez-vous et la met à jour en supprimant tous ceux qui sont désormais
+	passés. 
+
+	\textstyleCodeInsr{\textrm{Rappel}}\textstyleCodeInsr{\textrm{ : la date
+	du jour s'obtient par le constructeur de
+	}}\textstyleCodeInsr{Date}\textstyleCodeInsr{\textrm{ sans
+	paramètre.}}
+\end{Exercice}

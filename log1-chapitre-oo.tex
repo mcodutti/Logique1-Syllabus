@@ -1,4 +1,7 @@
+%========================
 \chapter{L'orienté objet}
+%=========================
+
 
 	\marginicon{objectif}
 		Dans ce chapitre, nous présentons les bases de la programmation orientée
@@ -9,7 +12,11 @@
 		l'orienté objet (\textit{héritage} et
 		\textit{polymorphisme}) ne seront pas vus cette année.
 
+
+%===================
 \section{Motivation}
+%====================
+
 	Depuis son apparition, la puissance de l'ordinateur
 	n'a cessé de croitre exponentiellement. Les tâches qui
 	lui sont confiées ont fait de même. Ainsi les programmes à écrire sont
@@ -57,7 +64,10 @@
 	de panier d'achats, de compte en banque, de banque, de
 	client, de portefeuille d'actions, ...
 
+
+%==========================
 \section{La notion d'objet}
+%==========================
 
 \marginicon{definition}
 {\sffamily\bfseries\upshape
@@ -472,7 +482,10 @@ Exercices – paramètres du comportement}
 
 \bigskip
 
+
+%=========================
 \section{L'encapsulation}
+%=========================
 
 Un objet possède un état qui est représenté par des attributs. Les
 bonnes pratiques de la programmation orientée objet préconisent
@@ -630,8 +643,9 @@ et mutateurs) pour le téléviseur. Lesquels ? En suivant la convention
 de nom pour les accesseurs, quels noms auraient-ils dû porter ?
 
 
-\section[La notion de classe et d'instance]{La notion
-de classe et d'instance}
+%====================================================
+\section{La notion de classe et d'instance}
+%=====================================================
 
 Pour pouvoir utiliser des objets nous allons devoir les définir
 (expliciter leur état et leur comportement). Cette définition est
@@ -860,7 +874,10 @@ Exercices – classe et instance}
 
 \bigskip
 
+
+%==========================
 \section{Les constructeurs}
+%===========================
 
 L'encapsulation nous permet de contrôler
 l'état de l'objet et de
@@ -999,7 +1016,9 @@ Exercices - constructeur}
 \bigskip
 
 
+%================================================
 \section{Du choix de la représentation de l'état}
+%=================================================
 
 Lorsqu'on définit une classe, il faut choisir les
 attributs qui vont permettre de représenter l'état des
@@ -1066,7 +1085,9 @@ de la classe. Pour l’utilisateur il s’agit d’une méthode comme les
 autres.
 
 
+%============================
 \section{La mort d'un objet}
+%============================
 
 On sait que déclarer une variable ou créer un objet réserve de l’espace
 en mémoire. On ne s’est jamais demandé quand cet espace mémoire est
@@ -1138,9 +1159,11 @@ approche, c'est à dire qu'il ne faut
 pas se préoccuper de ce problème ;-)
 
 
+%=====================================
 \section{Quelques éléments de syntaxe}
-{
-Clarifions certaines notations liées aux objets.}
+%=====================================
+
+Clarifions certaines notations liées aux objets.
 
 \liststyleListv
 \begin{itemize}
@@ -1308,8 +1331,10 @@ existe par défaut pour toutes les nouvelles classes.
 		}
 \end{itemize}
 	
-	
+
+%===============================================	
 \section{Représentation modélisée d'une classe}
+%===============================================
 
 Un dessin étant souvent plus lisible qu'un texte, on
 peut représenter graphiquement une classe. Une notation courante est
@@ -1357,7 +1382,9 @@ pourrait aussi omettre les paramètres et types de retour.
 \bigskip
 
 
+%=======================================
 \section{Un exemple complet : une durée}
+%=======================================
 
 Examinons un exemple complet pour fixer les notions introduites par ce
 chapitre. Lors de l'apprentissage du pseudo-code, vous
@@ -1642,7 +1669,9 @@ orienté objet : écrire de petites méthodes qui font chacune une et une
 seule chose bien précise.
 
 
+%===============================
 \section{Ce qu'on n'a pas vu...}
+%================================
 
 Nous n'avons évidemment pas épuisé le sujet de
 l'orienté objet. Celui-ci est composé de trois piliers
@@ -1694,178 +1723,152 @@ permet de construire du code ayant une architecture élégante, robuste
 et facilement adaptable.}
 
 
+%==================
 \section{Exercices}
+%==================
 
-\liststyleExercice
-\begin{enumerate}
-	\item {\sffamily\bfseries
-	L'étudiant}
-\end{enumerate}
-{
-Reprenez la classe \textstyleCodeInsr{Etudiant} qui a servi
-d'exemple. Identifiez et écrivez les méthodes qui vous
-paraissent utiles pour une telle classe.}
+\begin{Exercice}{L'étudiant}
+	Reprenez la classe \textstyleCodeInsr{Etudiant} qui a servi
+	d'exemple. Identifiez et écrivez les méthodes qui vous
+	paraissent utiles pour une telle classe.
+\end{Exercice}
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-	\item {\sffamily\bfseries
-	Une personne}
-\end{enumerate}
-{
-Créez une classe \textstyleCodeInsr{Personne}, une personne étant
-constituée d'un nom, d'un prénom et
-d'une date de naissance. Cette classe utilisera la
-classe \textstyleCodeInsr{Date} de l'exercice
-précédent.}
+\begin{Exercice}{Une personne}
+	Créez une classe \textstyleCodeInsr{Personne}, une personne étant
+	constituée d'un nom, d'un prénom et
+	d'une date de naissance. Cette classe utilisera la
+	classe \textstyleCodeInsr{Date}.
 
-{
-On doit pouvoir construire une personne :}
+	On doit pouvoir construire une personne :
 
-\liststyleListi
-\begin{itemize}
-	\item {
-		avec 3 arguments : le nom (\textstyleCodeInsr{chaine}), le prénom
-		(\textstyleCodeInsr{chaine}) et la date de naissance de la personne
-		(\textstyleCodeInsr{Date})}
-	\item {
-		avec 2 arguments de type chaine : le nom et le prénom de la personne; la
-		date de naissance est alors initialisée à «\textstyleCodeInsr{~rien~}»}
-\end{itemize}
+	\liststyleListi
+	\begin{itemize}
+		\item 
+			avec 3 arguments : le nom (\textstyleCodeInsr{chaine}), le prénom
+			(\textstyleCodeInsr{chaine}) et la date de naissance de la personne
+			(\textstyleCodeInsr{Date})
+		\item 
+			avec 2 arguments de type chaine : le nom et le prénom de la personne; la
+			date de naissance est alors initialisée à «\textstyleCodeInsr{~rien~}»
+	\end{itemize}
 
-Écrivez aussi tous les accesseurs et mutateurs que vous jugez
-pertinents. Dans un module principal, créez une personne :
+	Écrivez aussi tous les accesseurs et mutateurs que vous jugez
+	pertinents. Dans un module principal, créez une personne :
 
-\liststyleListi
-\begin{itemize}
-	\item {
-		sans argument}
-	\item {
-		avec comme arguments {\textquotedbl}Durant{\textquotedbl} et
-		{\textquotedbl}Zébulon{\textquotedbl}}
-	\item {
-		avec comme arguments {\textquotedbl}Durant{\textquotedbl},
-		{\textquotedbl}Zébulon{\textquotedbl} et la date de naissance du
-		01/02/1980}
-\end{itemize}
+	\begin{enumerate}[label=\alph*)]
+		\item 
+			sans argument
+		\item 
+			avec comme arguments {\textquotedbl}Durant{\textquotedbl} et
+			{\textquotedbl}Zébulon{\textquotedbl}
+		\item 
+			avec comme arguments {\textquotedbl}Durant{\textquotedbl},
+			{\textquotedbl}Zébulon{\textquotedbl} et la date de naissance du
+			01/02/1980
+	\end{enumerate}
 
-Pour réaliser les constructeurs recevant la date de naissance en
-paramètre, il faudra tester si cette date n’est pas antérieure à la
-date du jour. La date du jour est fournie par le constructeur de
-\textstyleCodeInsr{Date} sans paramètre.
+	Pour réaliser les constructeurs recevant la date de naissance en
+	paramètre, il faudra tester si cette date n’est pas antérieure à la
+	date du jour. La date du jour est fournie par le constructeur de
+	\textstyleCodeInsr{Date} sans paramètre.
+\end{Exercice}
 
-\liststyleExercice
-\begin{enumerate}
-	\item {\sffamily\bfseries
-	Anniversaire des personnes}
-\end{enumerate}
+\begin{Exercice}{Anniversaire des personnes}
+	Utilisons la classe \textstyleCodeInsr{Personne} écrite plus haut.
+	Écrire un module qui lit des \textstyleCodeInsr{Personne} (au clavier)
+	et affiche les noms et le nombre de celles nées ce mois-ci. On suppose
+	que la lecture de «~rien~» indique la fin des données.
+\end{Exercice}
 
-Utilisons la classe \textstyleCodeInsr{Personne} écrite plus haut.
-Écrire un module qui lit des \textstyleCodeInsr{Personne} (au clavier)
-et affiche les noms et le nombre de celles nées ce mois-ci. On suppose
-que la lecture de «~rien~» indique la fin des données.
+\begin{Exercice}{Le rectangle (version orientée objet)}
+	Nous avons déjà abordé les rectangles dans le chapitre des variables
+	structurées. Nous reprenons cet exercice sous l’angle de l’orienté
+	objet.
 
-\liststyleExercice
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-	\item {\sffamily\bfseries
-	Le rectangle (version orientée objet)}
-\end{enumerate}
+	Créez une classe \textbf{Rectangle}
+	permettant de définir des rectangles dont les cotés sont parallèles aux
+	axes des coordonnées dans un plan cartésien. Plusieurs représentations
+	sont possibles :
 
-Nous avons déjà abordé les rectangles dans le chapitre des variables
-structurées. Nous reprenons cet exercice sous l’angle de l’orienté
-objet.
+	\liststyleListi
+	\begin{itemize}
+		\item 
+			la position d’un des sommets et les mesures des cotés
+		\item 
+			les positions de deux sommets opposés
+		\item 
+			la position du centre et les demi-mesures des cotés, etc.
+	\end{itemize}
 
+	N’hésitez pas à utiliser la structure Point définissant un point dans un
+	plan cartésien.
 
-{Créez une classe
-}{\textbf{Rectangle}}{
-permettant de définir des rectangles dont les cotés sont parallèles aux
-axes des coordonnées dans un plan cartésien. Plusieurs représentations
-sont possibles : }
+	Une fois les attributs choisis, écrire divers constructeurs :
 
-\liststyleListi
-\begin{itemize}
-	\item {
-		la position d’un des sommets et les mesures des cotés}
-	\item {
-		les positions de deux sommets opposés}
-	\item {
-		la position du centre et les demi-mesures des cotés, etc.}
-\end{itemize}
+	\begin{enumerate}[label=\alph*)]
+		\item 
+			sans arguments : le rectangle est un carré de coté 1 centré en (0,0)
+		\item
+			avec deux paramètres : les mesures des cotés horizontaux et verticaux,
+			le rectangle étant centré en (0,0)
+		\item 
+			avec trois paramètres : la position du coin en haut à gauche (structure
+			Point) et les mesures des cotés horizontaux et verticaux 
+		\item 
+			avec deux paramètres de type Point : les positions de deux sommets
+			opposés
+	\end{enumerate}
 
-N’hésitez pas à utiliser la structure point définissant un point dans un
-plan cartésien.
+	Veillez à vérifier la validité des paramètres !
 
-Une fois les attributs choisis, écrire divers constructeurs :
+	Doter ensuite la classe de méthodes permettant :
 
-\liststyleListi
-\begin{itemize}
-	\item {
-		sans arguments : le rectangle est un carré de coté 1 centré en (0,0)}
-	\item {
-		avec deux paramètres : les mesures des cotés horizontaux et verticaux,
-		le rectangle étant centré en (0,0)}
-	\item {
-		avec trois paramètres : la position du coin en haut à gauche (structure
-		Point) et les mesures des cotés horizontaux et verticaux }
-	\item {
-		avec deux paramètres de type Point : les positions de deux sommets
-		opposés}
-\end{itemize}
+	\begin{enumerate}[label=\alph*)]
+		\item 
+			d’obtenir la position du centre
+		\item 
+			d’obtenir la position du coin inférieur droit
+		\item 
+			de calculer le périmètre du rectangle
+		\item 
+			de calculer la surface du rectangle
+		\item 
+			de déplacer le rectangle en donnant l’amplitude du déplacement au niveau
+			des abscisses et des ordonnées
+		\item 
+			de multiplier les dimensions du rectangle par un facteur k, le centre
+			restant au même endroit
+		\item 
+			de faire pivoter le rectangle de 90° autour de son centre
+		\item 
+			de vérifier si un rectangle à une intersection avec un autre rectangle
+	\end{enumerate}
 
-Veillez à vérifier la validité des paramètres !
+	Test : écrire un module TestRectangle en vue de tester le bon
+	fonctionnement de la classe rectangle. Ce module : 
 
-Doter ensuite la classe de méthodes permettant :
+	\begin{enumerate}[label=\alph*)]
+		\item 
+			Crée un rectangle R1 par défaut
+		\item 
+			Crée un rectangle R2 de cotés 5 et 7, et centré en (0,0)
+		\item 
+			Crée un rectangle R3 possédant les sommets (-2,3) et (4, -5)
+		\item 
+			Affiche la surface de R1 et le périmètre de R2
+		\item 
+			Déplace R1 d’une unité vers le bas
+		\item 
+			Déplace R2 de 2 unités vers la droite
+		\item 
+			Grossit R3 d’un facteur 3
+		\item 
+			Effectue une rotation de 90° à R2
+		\item 
+			Indique si R2 et R3 possèdent une intersection
+	\end{enumerate}
 
-\liststyleListi
-\begin{itemize}
-	\item 
-		d’obtenir la position du centre
-	\item 
-		d’obtenir la position du coin inférieur droit
-	\item 
-		de calculer le périmètre du rectangle
-	\item 
-		de calculer la surface du rectangle
-	\item 
-		de déplacer le rectangle en donnant l’amplitude du déplacement au niveau
-		des abscisses et des ordonnées
-	\item 
-		de multiplier les dimensions du rectangle par un facteur k, le centre
-		restant au même endroit
-	\item 
-		de faire pivoter le rectangle de 90° autour de son centre
-	\item 
-		de vérifier si un rectangle à une intersection avec un autre rectangle
-\end{itemize}
-
-Test : écrire un module TestRectangle en vue de tester le bon
-fonctionnement de la classe rectangle. Ce module : 
-
-\liststyleListi
-\begin{itemize}
-	\item 
-		Crée un rectangle R1 par défaut
-	\item 
-		Crée un rectangle R2 de cotés 5 et 7, et centré en (0,0)
-	\item 
-		Crée un rectangle R3 possédant les sommets (-2,3) et (4, -5)
-	\item 
-		Affiche la surface de R1 et le périmètre de R2
-	\item 
-		Déplace R1 d’une unité vers le bas
-	\item 
-		Déplace R2 de 2 unités vers la droite
-	\item 
-		Grossit R3 d’un facteur 3
-	\item 
-		Effectue une rotation de 90° à R2
-	\item 
-		Indique si R2 et R3 possèdent une intersection
-\end{itemize}
-
-À présent, choisissez une autre représentation des attributs et récrivez
-tout le contenu de la classe (très long, courage !) réécrire ensuite le
-module TestRectangle (très rapide !)
+	À présent, choisissez une autre représentation des attributs et récrivez
+	tout le contenu de la classe (très long, courage !) réécrire ensuite le
+	module TestRectangle (très rapide !)
+\end{Exercice}
