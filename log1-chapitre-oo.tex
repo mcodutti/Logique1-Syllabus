@@ -26,8 +26,7 @@
 	problème en sous-problèmes (qui peuvent à leur tour être découpés) ce
 	qui permet
 
-	\liststyleListv
-	\begin{itemize}
+	\begin{liste}
 		\item 
 			d'attaquer chaque problème séparément en évitant la
 			surcharge cognitive ;
@@ -44,7 +43,7 @@
 				sens d’une plus grande «~abstraction~» du code : un code qui s’éloigne
 				du langage simpliste compris par le processeur pour s’approcher de la
 				pensée humaine et des termes du problème à résoudre.
-	\end{itemize}
+	\end{liste}
 	
 	Les langages de programmation ont suivi cette approche en permettant
 	toujours plus d’abstraction. Dans un chapitre précédent, on vous a
@@ -76,8 +75,7 @@ Dabancourt (cf. bibliographie)}}
 
 Un \textbf{objet} est une entité logicielle qui :
 
-\liststyleListi
-\begin{itemize}
+\begin{liste}
 	\item 
 		a une \textbf{identité~}; c'est-à-dire que nous pouvons
 		identifier un objet par un nom (tout comme une variable possède un
@@ -92,7 +90,7 @@ Un \textbf{objet} est une entité logicielle qui :
 		l'objet. Ces opérations sont appelées des
 		\textbf{méthodes}. Ce sont des fonctions liées à des objets et qui
 		précisent le \textbf{comportement} de ces objets.
-\end{itemize}
+\end{liste}
 
 {\sffamily\bfseries\upshape
 État}
@@ -103,8 +101,7 @@ définissent son état.
 {\bfseries
 Exemples}
 
-\liststyleListv
-\begin{itemize}
+\begin{liste}
 	\item 
 		Pour un produit, l'état peut être :
 		l'intitulé du produit, son code barre, son prix, ... 
@@ -120,7 +117,7 @@ Exemples}
 	\item 
 		L'état d'une heure est le moment de la
 		journée qu'elle représente.
-\end{itemize}
+\end{liste}
 
 L'état d'un objet est mémorisé via des
 variables qu'on appelle des \textit{attributs}.
@@ -142,8 +139,7 @@ d'un objet.
 {
 \textbf{Exemples} }
 
-\liststyleListv
-\begin{itemize}
+\begin{liste}
 	\item 
 		L'intitulé d'un produit peut être
 		représenté par une chaine. C'est également le cas des
@@ -163,7 +159,7 @@ d'un objet.
 		représentée par une seule chaine mais également par un «~objet
 		adresse~» (qui contiendrait : une rue, un numéro, un code postal,
 		...).
-\end{itemize}
+\end{liste}
 
 \marginicon{attention}
 {\textbf{Remarque}\textbf{ : }Certaines parties de
@@ -172,11 +168,11 @@ D'autres parties sont immuables. Ainsi
 l'adresse d'une personne peut changer
 mais pas sa date de naissance. }
 
+\clearpage
 \marginicon{exercice}
 {\sffamily\bfseries\scshape
 Exercices - attributs}
 
-\liststyleWWviiiNumi
 \begin{enumerate}
 	\item 
 		Quel(s) attribut(s) prendriez-vous pour représenter
@@ -210,12 +206,11 @@ texte, modifier un fichier, ...).
 {
 \textbf{Exemples} }
 
-\liststyleListv
-\begin{itemize}
+\begin{liste}
 	\item {
 		Quels «~messages~» peut-on envoyer à une date ? On peut lui demander
 		(entre autres):}
-			\begin{itemize}
+			\begin{liste}
 				\item {
 					des informations sur le jour du mois, le mois, l'année,
 					le jour de la semaine ; }
@@ -228,10 +223,10 @@ texte, modifier un fichier, ...).
 					;}
 				\item {
 					de passer au jour suivant, à la semaine suivante, ...}
-			\end{itemize}
+			\end{liste}
 	\item 
 		Et pour un stock de produits ? On peut 
-		\begin{itemize}
+		\begin{liste}
 			\item {
 				lui demander la quantité disponible d'un produit donné
 				;}
@@ -244,10 +239,10 @@ texte, modifier un fichier, ...).
 			\item {
 				lui demander d'enlever une certaine quantité
 				d'un produit du stock.}
-		\end{itemize}
+		\end{liste}
 	\item {
 		Et pour un employé ? On peut}
-		\begin{itemize}
+		\begin{liste}
 			\item {
 				lui demander son adresse, son salaire ou sa fonction, ...}
 			\item {
@@ -257,11 +252,11 @@ texte, modifier un fichier, ...).
 			\item {
 				le licencier (penser à prévoir une date de départ dans
 				l'état !).}
-		\end{itemize}
+		\end{liste}
 	\item {
 		Pour un moment de la journée on peut demander s'il se
 		situe le matin ou pas, ...}	
-\end{itemize}
+\end{liste}
 
 \marginicon{exercice}
 {\sffamily\bfseries\scshape
@@ -287,8 +282,7 @@ l'orienté objet. }
 {\bfseries
 Exemples}
 
-\liststyleListv
-\begin{itemize}
+\begin{liste}
 	\item {
 		Pour permettre à une date de passer au jour suivant, nous allons définir
 		un méthode qui incrémente le jour du mois en tenant compte
@@ -318,7 +312,7 @@ Exemples}
 		Cet exemple devrait vous sembler familier à deux exceptions près}
 
 		\liststyleListv
-		\begin{itemize}
+		\begin{liste}
 			\item {
 				on utilise le mot «~\textstyleMotCl{méthode}~» en lieu et place de
 				«~\textstyleMotCl{module}~» ;}
@@ -326,14 +320,13 @@ Exemples}
 				les attributs (l'heure ici) ne sont pas passés en
 				paramètre. Un objet connait déjà son état et donc la valeur de ses
 				attributs. Nous verrons plus loin la syntaxe précise.}
-	\end{itemize}
-\end{itemize}
+	\end{liste}
+\end{liste}
 
 \marginicon{exercice}
 {\sffamily\bfseries\scshape
 Exercices - méthodes}
 
-\liststyleWWviiiNumi
 \begin{enumerate}
 	\item 
 		Dans le comportement d'un téléviseur, on retrouve
@@ -415,13 +408,12 @@ Ce qui donne la méthode suivante :
 \end{pseudo}
 }
 
-\bigskip
+\clearpage
 
 \marginicon{exercice}
 {\sffamily\bfseries\scshape
 Exercices – paramètres du comportement}
 
-\liststyleWWviiiNumi
 \begin{enumerate}
 	\item 
 		Prenons un objet représentant un étudiant. 
@@ -431,8 +423,7 @@ Exercices – paramètres du comportement}
 		Donnez les entêtes des méthodes suivantes qui permettent de
 		:
 
-		\liststyleListv
-		\begin{itemize}
+		\begin{liste}
 			\item 
 				demander le numéro d'un étudiant
 			\item 
@@ -443,35 +434,33 @@ Exercices – paramètres du comportement}
 				faire réussir un étudiant
 			\item 
 				faire rater un étudiant.
-		\end{itemize}
+		\end{liste}
 			
 	\item 
 		Prenons un objet représentant une date du calendrier grégorien. 
 		Donnez les entêtes des méthodes suivantes qui permettent de
 		:
 
-		\liststyleListv
-		\begin{itemize}
+		\begin{liste}
 			\item
 				demander le jour de la semaine d'une date
 			\item 
 				savoir si une date est antérieure ou non à une autre
 			\item 
 				connaitre le nombre de jours (absolu) séparant deux dates.
-		\end{itemize}
+		\end{liste}
 		
 	\item 
 		Utilisation. Soit «~date1~» et «~date2~», deux dates ; écrivez la
 		portion de code qui utilise les méthodes ci-dessus pour
 		
-		\liststyleListv
-		\begin{itemize}
+		\begin{liste}
 			\item 
 				vérifier quelle date précède l'autre;
 			\item 
 				calculer le nombre de jours d'écart entre ces deux
 				dates.
-		\end{itemize}
+		\end{liste}
 	
 	\item 
 		Précédemment, vous avez défini l'ensemble du
@@ -479,9 +468,6 @@ Exercices – paramètres du comportement}
 		méthodes correspondant à ce comportement ainsi qu'une
 		portion de code qui les utilise.
 \end{enumerate}
-
-\bigskip
-
 
 %=========================
 \section{L'encapsulation}
@@ -527,22 +513,23 @@ Puisqu'un attribut est privé, il est courant pour
 chacun des attributs de rencontrer une méthode destinée à connaitre la
 valeur de cet attribut et une autre qui permet de la modifier.
 
+\clearpage
 {\sffamily\bfseries\upshape
 Accesseur et mutateur}
 
 \marginicon{definition}
 {\sffamily\bfseries\upshape
 {
-\textbf{Accesseur}\footnote{\textstyleFootnoteSymbol{On utilise aussi
+\textbf{Accesseur}\footnote{{On utilise aussi
 souvent le mot anglais «~getter~». }} : méthode dont le but est de
 fournir la valeur d'un attribut
-\textbf{Mutateur}\footnote{\textstyleFootnoteSymbol{On utilise aussi
+\textbf{Mutateur}\footnote{{On utilise aussi
 souvent le mot anglais «~setter~»}} : méthode dont le but est de
 modifier la valeur d'un attribut}}
 
 Par convention, ces méthodes sont nommées «~getNom~» et «~setNom~» où
 «~nom~» est le nom de
-l'attribut\footnote{\textstyleFootnoteSymbol{Pour un
+l'attribut\footnote{{Pour un
 attribut booléen, on pourra préférer «~estNom~» au lieu de
 «~getNom~»}}. Par facilité, on utilisera parfois le terme «~accesseur~»
 pour désigner à la fois les «~accesseurs~» et les «~mutateurs~».
@@ -593,7 +580,7 @@ obligé de tenir compte de l’erreur.
 
 Les \textbf{exceptions} sont un mécanisme du même genre mais qui oblige
 à fournir un code de traitement de l’erreur. Il ne sera pas étudié en
-première année\footnote{\textstyleFootnoteSymbol{En tout cas pas au
+première année\footnote{{En tout cas pas au
 cours de Logique mais vous étudierez cette notion au cours de Java.}}.
 
 Cette année, nous nous contenterons d'indiquer
@@ -702,7 +689,7 @@ syntaxe utilisée pour définir une classe}
 \end{pseudo}
 }
 
-\bigskip
+\clearpage
 
 {
 \textbf{Exemple} : la classe Moment qui représente un moment de la
@@ -802,6 +789,7 @@ Après la déclaration (réf. 1), on a :
 \end{supertabular}
 \end{center}
 
+\clearpage
 Après la création (réf. 2), on a :
 
 \begin{center}
@@ -862,7 +850,6 @@ Après l'action des mutateurs (réf. 3), on a :
 {\sffamily\bfseries\scshape
 Exercices – classe et instance}
 
-\liststyleWWviiiNumi
 \begin{enumerate}
 	\item 
 		Pour les étudiants, vous avez déjà écrit les attributs et les en-têtes des
@@ -871,9 +858,6 @@ Exercices – classe et instance}
 	\item 
 		Écrivez un module qui fait rater un étudiant puis qui le fait réussir.
 \end{enumerate}
-
-\bigskip
-
 
 %==========================
 \section{Les constructeurs}
@@ -999,11 +983,11 @@ ainsi assuré que tous les objets manipulés sont valides ce qui permet
 d’éviter les situations où une méthode fait des dégâts suite à la
 manipulation d’un objet invalide.
 
+\clearpage
 \marginicon{exercice}
 {\sffamily\bfseries\scshape
 Exercices - constructeur}
 
-\liststyleWWviiiNumi
 \begin{enumerate}
 	\item {
 		Écrivez un ou des constructeur(s) pour un \textstyleCodeInsr{Etudiant}}
@@ -1012,8 +996,6 @@ Exercices - constructeur}
 		puis réussir l'étudiant "Dupont, g12345, en 1ère année,
 		non doubleur".}
 \end{enumerate}
-
-\bigskip
 
 
 %================================================
@@ -1058,7 +1040,6 @@ la programmation orientée objet.
 {\sffamily\bfseries\scshape
 Exercices – représentation de l'état}
 
-\liststyleWWviiiNumi
 \begin{enumerate}
 	\item 
 		Compléter la classe Moment en écrivant la méthode «~getHeure~» et celle
@@ -1069,8 +1050,6 @@ Exercices – représentation de l'état}
 		premier est avant le second. Ce code dépend-il des attributs choisis
 		pour définir la classe Moment ?
 \end{enumerate}
-
-\bigskip
 
 \marginicon{attention}
 {\bfseries
@@ -1124,8 +1103,7 @@ et ainsi de permettre au système de récupérer l’espace mémoire.
 Cette technique offre au programmeur un grand contrôle sur l’utilisation
 de la mémoire mais offre malheureusement quelques inconvénients.
 
-\liststyleListv
-\begin{itemize}
+\begin{liste}
 	\item 
 		Cela demande une grande attention lors de la programmation afin de
 		récupérer tout l’espace qui peut l’être. Dans le cas contraire, on
@@ -1139,7 +1117,7 @@ de la mémoire mais offre malheureusement quelques inconvénients.
 		Un objet peut contenir des références à d’autres objets. La destruction
 		est alors un processus non trivial qui peut sensiblement alourdir et
 		obscurcir le code.
-\end{itemize}
+\end{liste}
 
 {\sffamily\bfseries\upshape
 Utilisation d’un \textit{garbage collector} (ramasse-miettes)}
@@ -1165,8 +1143,7 @@ pas se préoccuper de ce problème ;-)
 
 Clarifions certaines notations liées aux objets.
 
-\liststyleListv
-\begin{itemize}
+\begin{liste}
 	\item {
 		On peut directement afficher un objet. Cela affiche son état,
 		c'est-à-dire les valeurs de ses attributs dans
@@ -1272,7 +1249,7 @@ Clarifions certaines notations liées aux objets.
 			\RComment faux
 		\end{pseudo}
 		}
-\end{itemize}
+\end{liste}
 
 \bigskip
 
@@ -1287,8 +1264,7 @@ Exercice – méthode égal()}
 N.B. : On supposera par la suite qu'une telle méthode
 existe par défaut pour toutes les nouvelles classes.
 
-\liststyleListv
-\begin{itemize}
+\begin{liste}
 	\item {
 		Un attribut privé n'est pas connu en dehors de la
 		classe. Précisons : un attribut privé n'est connu que
@@ -1329,7 +1305,7 @@ existe par défaut pour toutes les nouvelles classes.
 		\end{pseudo}
 		}
 		}
-\end{itemize}
+\end{liste}
 	
 
 %===============================================	
@@ -1457,8 +1433,7 @@ serait intéressant de fournir. Ce qui nous donne jusqu’à présent
 {\bfseries
 Quelques remarques}
 
-\liststyleListv
-\begin{itemize}
+\begin{liste}
 	\item {
 		On a deux constructeurs, ce qui offre plus de souplesse pour initialiser
 		un objet. Ceci est un exemple supplémentaire du concept de
@@ -1494,7 +1469,7 @@ Quelques remarques}
 	\item {
 		La méthode \textstyleCodeInsr{différence()}, elle, renvoie toujours une
 		durée (positive).}
-\end{itemize}
+\end{liste}
 
 {\sffamily\bfseries
 La représentation de l'état (les attributs)}
@@ -1502,8 +1477,7 @@ La représentation de l'état (les attributs)}
 La question suivante est : «~Comment représenter une durée en interne ?
 ». Plusieurs possibilités existent. Par exemple :
 
-\liststyleListv
-\begin{itemize}
+\begin{liste}
 	\item 
 		Via le nombre d’heures, de minutes et de secondes
 	\item 
@@ -1511,7 +1485,7 @@ La question suivante est : «~Comment représenter une durée en interne ?
 	\item 
 		Via une chaine, par exemple au format «~HH :MM :SS~» où HH pourrait
 		éventuellement excéder 23.
-\end{itemize}
+\end{liste}
 
 Le premier choix semble le plus évident mais réfléchissons-y de plus
 près. D’une part, pourquoi se limiter aux heures. On pourrait
@@ -1607,7 +1581,11 @@ donne pour la classe dans son entièreté :
 		\LComment On doit enlever les jours éventuels
 		\Return (totalSecondes DIV 3600) MOD 24
 	\EndMethod
-	\Empty
+\end{pseudo}
+}
+
+\cadre{
+\begin{pseudo}
 	\LComment Retourne le nombre de minutes dans une 
 	représentation JJ/HH:MM:SS
 	\Method{getMinute}{}{entier}
@@ -1691,13 +1669,12 @@ L'héritage}
 sert de base.} 
 On peut alors
 
-\liststyleListv
-\begin{itemize}
+\begin{liste}
 	\item {
 		Étendre son état}
 	\item {
 		Augmenter ou modifier son comportement}
-\end{itemize}
+\end{liste}
 
 Par exemple, on pourra définir un \textstyleCodeInsr{Etudiant} à partir
 de la notion de \textstyleCodeInsr{Personne}.
@@ -1741,8 +1718,7 @@ et facilement adaptable.}
 
 	On doit pouvoir construire une personne :
 
-	\liststyleListi
-	\begin{itemize}
+	\begin{liste}
 		\item 
 			avec 3 arguments : le nom (\textstyleCodeInsr{chaine}), le prénom
 			(\textstyleCodeInsr{chaine}) et la date de naissance de la personne
@@ -1750,7 +1726,7 @@ et facilement adaptable.}
 		\item 
 			avec 2 arguments de type chaine : le nom et le prénom de la personne; la
 			date de naissance est alors initialisée à «\textstyleCodeInsr{~rien~}»
-	\end{itemize}
+	\end{liste}
 
 	Écrivez aussi tous les accesseurs et mutateurs que vous jugez
 	pertinents. Dans un module principal, créez une personne :
@@ -1790,15 +1766,14 @@ et facilement adaptable.}
 	axes des coordonnées dans un plan cartésien. Plusieurs représentations
 	sont possibles :
 
-	\liststyleListi
-	\begin{itemize}
+	\begin{liste}
 		\item 
 			la position d’un des sommets et les mesures des cotés
 		\item 
 			les positions de deux sommets opposés
 		\item 
 			la position du centre et les demi-mesures des cotés, etc.
-	\end{itemize}
+	\end{liste}
 
 	N’hésitez pas à utiliser la structure Point définissant un point dans un
 	plan cartésien.

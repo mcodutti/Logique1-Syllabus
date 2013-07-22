@@ -31,7 +31,7 @@
 
 	La démarche générale se décompose en trois parties :
 
-	\begin{itemize}
+	\begin{liste}
 	\item {
 		le traitement de début de journée, qui consiste essentiellement à mettre
 		les compteurs des quantités vendues pour chaque produit à 0}
@@ -43,7 +43,7 @@
 	\item {
 		le traitement final, consistant à communiquer les valeurs des compteurs
 		pour chaque produit.}
-	\end{itemize}
+	\end{liste}
 
 	Vous trouverez sur la page suivante, 
 	une version possible de cet algorithme.
@@ -215,7 +215,6 @@
 	Cet indice varie entre la position du premier élément 
 	et la position du dernier élément, 
 	ces positions correspondant aux bornes de l’indice.
-
 	Notons qu'il n'y a pas de «~trou~» : 
 	tous les éléments existent entre le premier et le dernier indice.
 
@@ -298,7 +297,7 @@
 
 	\textbf{Exemples}
 
-	\begin{itemize}
+	\begin{liste}
 	\item
 		Reprenons l’exemple ci-dessus. 
 		S’il y a toujours exactement 10 produits, 
@@ -309,7 +308,7 @@
 		Si on désire stocker le chiffre d’affaire d’une entreprise 
 		pour une année donnée, mois par mois, un tableau de
 		taille 12 est suffisant (tableau statique)
-	\end{itemize}
+	\end{liste}
 
 	Certains langages (c’est le cas de Cobol) ne permettent 
 	que des tableaux statiques. Dans ce cas, il faudra souvent
@@ -330,7 +329,6 @@
 	(\textstyleCodeInsr{nbProduits}) pour retenir 
 	le nombre exact de produits différents actuellement en vente.
 
-	\marginicon{definition}
 	Pour déclarer un tableau dynamique, on sépare la déclaration du tableau
 	(où la taille n’est pas donnée) de sa création effective~(où on donne
 	la taille)
@@ -411,6 +409,8 @@
 	Et pour retourner l’indice du minimum ? 
 	réécrire l’algorithme de l’exercice précédent en utilisant celui-ci.
 \end{Exercice}
+
+\bigskip\bigskip\bigskip
 
 \begin{Exercice}{Nombre d'éléments d'un tableau}
 	Écrire un module qui reçoit en paramètre le tableau
@@ -495,6 +495,7 @@
 	de cumul devra donc contenir le total des ventes de l’année.
 \end{Exercice}
 
+\bigskip
 \begin{Exercice}{Occurrence des chiffres}
 	\marginicon{java}
 	Écrire un module qui reçoit un nombre entier positif ou nul en paramètre
@@ -660,6 +661,9 @@
 	\marginicon{java}
 	Vérifiez si un tableau contient au moins 2 éléments égaux.
 \end{Exercice}
+
+\bigskip
+\bigskip
 
 \begin{Exercice}{Mastermind}
 	\marginicon{java}

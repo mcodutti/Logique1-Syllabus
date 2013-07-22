@@ -92,8 +92,7 @@ modélisation vues au cours d’analyse.
 
 Rappelons brièvement les différentes structures étudiées dans ce cours :
 
-\liststyleListi
-\begin{itemize}
+\begin{liste}
 	\item 
 		les \textbf{données «~simples~»} (variables isolées : entiers, réels,
 		chaines, caractères, booléens)
@@ -113,7 +112,7 @@ Rappelons brièvement les différentes structures étudiées dans ce cours :
 	\item 
 		le \textbf{fichier séquentiel}, qui est un support physique permettant
 		le stockage «~à long terme~» de données
-\end{itemize}
+\end{liste}
 
 D’autres structures particulières s’ajouteront dans le cours de
 2\textsuperscript{ème} année : les listes chainées, les piles, les
@@ -137,8 +136,7 @@ lisibilité et d’efficience.
 Outre ces grands principes de base, ajoutons ici quelques conseils en
 vrac qui pourraient vous être utiles :
 
-\liststyleListi
-\begin{itemize}
+\begin{liste}
 	\item 
 		\textbf{parcours des données} : en général on évite de parcourir
 		plusieurs fois le contenu d’un ensemble de données (surtout s’il s’agit
@@ -162,7 +160,7 @@ vrac qui pourraient vous être utiles :
 		inutilement jusqu’au bout un ensemble de données. Le bon suivi de ce
 		principe intervient de façon primordiale dans l’efficacité d’un
 		algorithme ! 
-\end{itemize}
+\end{liste}
 
 
 %==================
@@ -195,8 +193,7 @@ vrac qui pourraient vous être utiles :
 	\textstyleCodeInsr{JeuPoursuite}
 	
 	Elle permet de représenter
-	\liststyleListi
-	\begin{itemize}
+	\begin{liste}
 		\item 
 			le circuit des 50 cases
 		\item 
@@ -205,9 +202,9 @@ vrac qui pourraient vous être utiles :
 			le nombre de tours effectués par chacun des joueurs
 		\item 
 			qui est le joueur courant
-	\end{itemize}
+	\end{liste}
 	Plusieurs possibilités existent ; faites votre choix !
-	\begin{itemize}
+	\begin{liste}
 		\item 
 			Le constructeur reçoit la configuration du circuit (pour savoir si les
 			cases contiennent \textstyleCodeInsr{vrai} ou
@@ -234,7 +231,7 @@ vrac qui pourraient vous être utiles :
 		\item 
 			la méthode «\textstyleCodeInsr{~joueurSuivant~}» qui permet de passer au
 			joueur suivant.
-	\end{itemize}
+	\end{liste}
 	
 	Avec ces 3 méthodes, la méthode publique
 	«\textstyleCodeInsr{~jouer~}» devient triviale.
@@ -272,8 +269,7 @@ vrac qui pourraient vous être utiles :
 	élément de ce tableau est une structure \textstyleCodeInsr{Case},
 	contenant les deux champs :
 
-	\liststyleListi
-	\begin{itemize}
+	\begin{liste}
 		\item 
 			\textstyleCodeInsr{noir} : variable booléenne affectée à
 			\textstyleCodeInsr{vrai} si la case correspondante de la grille est une
@@ -284,13 +280,12 @@ vrac qui pourraient vous être utiles :
 			encore blanche; lorsque \textstyleCodeInsr{noir} est vrai, le contenu
 			de \textstyleCodeInsr{lettre} est indéterminé et ne peut donc être
 			utilisé. 
-	\end{itemize}
+	\end{liste}
 	
 	Écrire une classe \textstyleCodeInsr{Grille} offrant les méthodes
 	suivantes :
 
-	\liststyleListi
-	\begin{itemize}
+	\begin{liste}
 		\item 
 			placer une lettre à un endroit de la grille (une case non noire bien
 			sûr)
@@ -300,6 +295,14 @@ vrac qui pourraient vous être utiles :
 			donner le nombre total de mots de la grille (donc y compris ceux que le
 			joueur n’a pas encore complétés). Attention, les mots
 			d'une seule lettre ne sont pas pris en compte.
+		\item 
+			donner le nombre de mots déjà complétés par le joueur
+	\end{liste}
+
+	Exemple : dans la grille ci-dessous, le nombre de cases noires est 14, le
+	nombre total de mots de la grille est 37 (19 horizontaux et 18
+	verticaux) et le nombre de mots déjà complété par le joueur est 6.
+	
 			\begin{center}
 			\begin{minipage}{5.749cm}
 			\begin{center}
@@ -480,13 +483,7 @@ vrac qui pourraient vous être utiles :
 			\end{center}
 			\end{minipage}
 			\end{center}
-		\item 
-			donner le nombre de mots déjà complétés par le joueur
-	\end{itemize}
 
-	Exemple : dans la grille ci-contre, le nombre de cases noires est 14, le
-	nombre total de mots de la grille est 37 (19 horizontaux et 18
-	verticaux) et le nombre de mots déjà complété par le joueur est 6.
 \end{Exercice}
 
 \begin{Exercice}{Mastermind}
@@ -521,7 +518,7 @@ vrac qui pourraient vous être utiles :
 	possibilités de réponses (dont une seule est correcte) sont proposées à
 	chaque fois. Au plus le candidat avance dans les bonnes réponses, au
 	plus son gain est grand. S’il répond correctement aux quinze questions,
-	il empoche la somme rondelette de 500.000 €.
+	il empoche la somme rondelette de 500.000~€.
 	
 	Par contre, si le candidat donne une mauvaise
 	réponse, il risque de perdre une partie du gain déjà acquis. Cependant,
@@ -841,12 +838,9 @@ vrac qui pourraient vous être utiles :
 	\cadre{
 	\begin{pseudo}
 		\MethodSign{numéroJour}{}{entier}
+		\RComment la position du jour dans l’année (entre 1 et 366)
 	\end{pseudo}
 	}
-
-	{\sffamily
-	{\textbackslash}{\textbackslash} renvoie la position du jour dans
-	l’année (entier entre 1 et 366)}
 
 	On utilisera aussi – si le besoin s’en fait sentir – le module réalisant
 	l’opération inverse : il associe à un entier \textit{n} entre 1 et 366
@@ -854,8 +848,7 @@ vrac qui pourraient vous être utiles :
 	
 	\cadre{
 	\begin{pseudo}
-		\Module{dateDuJour}{n : entier}{Date}
-		\EndModule
+		\ModuleSign{dateDuJour}{n : entier}{Date}
 	\end{pseudo}
 	}
 
@@ -934,7 +927,7 @@ vrac qui pourraient vous être utiles :
 	\textbf{après une seule lecture du
 	fichier}, 
 
-	\begin{itemize}
+	\begin{liste}
 		\item
 			affiche les noms des deux villes les plus éloignées de ce pays. (On
 			suppose qu’il n’y a pas de cas d’ex-aequo)
@@ -944,7 +937,7 @@ vrac qui pourraient vous être utiles :
 			de la ville maVille
 			(\textit{r} et maVille sont des
 			paramètres de l’algorithme)
-	\end{itemize}
+	\end{liste}
 	
 	Rappel : la distance entre deux
 	points
@@ -972,7 +965,6 @@ vrac qui pourraient vous être utiles :
 	Ce tableau permet de visualiser l’ensemble des congés des travailleurs,
 	et d’accorder ou non une demande de congé, suivant les règles suivantes :
 
-	\liststyleWWviiiNumiv
 	\begin{enumerate}
 		\item 
 			une période de congé ne peut excéder 15 jours
@@ -998,31 +990,19 @@ vrac qui pourraient vous être utiles :
 	\cadre{
 	\begin{pseudo}
 		\MethodSign{numéroJour}{}{entier}
-		\LComment renvoie la position du jour dans
-		l’année (entier entre 1 et 366)
+		\RComment la position du jour dans l’année (entre 1 et 366)
 	\end{pseudo}
 	}
 \end{Exercice}
 
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Ruptures et divorces}
-\end{enumerate}
+\begin{Exercice}{Ruptures et divorces}
 
-\bigskip
+Une commune gère la liste de ses couples mariés dans un fichier \textbf{UNIONS}.
+Ce fichier est classé dans l’ordre chronologique des mariages 
+et chacun de ses enregistrements, de type \textbf{Union},
+contient les champs suivants :
 
-{
-{Une commune gère la liste de ses couples mariés
-dans un fichier
-}{\textbf{UNIONS}}{. Ce
-fichier est classé dans l’ordre chronologique des mariages et chacun de
-ses enregistrements, de type
-}{\textbf{\textit{Union}}}{,
-contient les champs suivants :}}
-
-\liststyleListi
-\begin{itemize}
+\begin{liste}
 \item {
 DATE\ \ Date\ \ date du mariage}
 \item {
@@ -1033,7 +1013,7 @@ NUM1\ \ chaine\ \ numéro de registre national du premier conjoint}
 NOM2\ \ chaine\ \ nom du second conjoint}
 \item {
 NUM2\ \ chaine\ \ numéro de registre national du second conjoint}
-\end{itemize}
+\end{liste}
 {
 {Les demandes de divorces durant une certaine
 année ont été stockées dans le fichier
@@ -1054,7 +1034,6 @@ ont été répertoriés dans
 }{\textbf{un}}{
 algorithme qui :}}
 
-\liststyleNumberingi
 \begin{enumerate}
 \item {
 {crée un fichier
@@ -1079,13 +1058,10 @@ plusieurs fois dans l’année !}}
 donne le mois de l’année où le nombre de divorce a été le plus élevé.}
 \end{enumerate}
 
-\bigskip
+\end{Exercice}
 
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Le jeu de la vie}
-\end{enumerate}
+\begin{Exercice}{Le jeu de la vie}
+
 {
 {Le }{\textbf{jeu de la
 vie}}{ a été inventé en 1970 par le
@@ -1114,7 +1090,6 @@ cellule d’un stade à l’autre du jeu, appelé
 Les règles de vie et de mort des cellules lors du passage d’une
 génération à une autre sont les suivantes :}
 
-\liststyleNumberingi
 \begin{enumerate}
 \item {
 \ une cellule vivante ayant moins de 2 voisines disparait à la
@@ -1928,7 +1903,6 @@ une cellule morte).}}
 {
 On voudrait doter cette classe de méthodes permettant :}
 
-\liststyleNumberingi
 \begin{enumerate}
 \item {
 {de créer une configuration initiale à partir
@@ -1945,7 +1919,6 @@ seraient : (6,6), (2,3), (3,4), (4,2), (4,3), (4,4). Le premier couple
 donne donc les dimensions du tableau (6 x 6) et les 5 suivants les
 coordonnées des 5 cellules vivantes.}
 
-\liststyleNumberingi
 \setcounter{saveenum}{\value{enumi}}
 \begin{enumerate}
 \setcounter{enumi}{\value{saveenum}}
@@ -1966,8 +1939,7 @@ configuration de la génération courante.}}
 {
 N.B. :}
 
-\liststyleListi
-\begin{itemize}
+\begin{liste}
 \item {
 Veillez à prendre vos dispositions pour ne pas recopier deux fois le
 code apparaissant dans les méthodes 3 et 4 !}
@@ -1980,12 +1952,12 @@ vivantes se trouve sur le bord du tableau visible. Il suffit pour cela
 d’utiliser un tableau indicé de 0 à m+1 pour les lignes et de 0 à n+1
 pour les colonnes, avec comme conséquence que le traitement des n x m
 cases centrales sera identique pour chaque case.}}
-\end{itemize}
-\liststyleExercice
-\begin{enumerate}
-\item {\sffamily\bfseries
-Messages codés}
-\end{enumerate}
+\end{liste}
+
+\end{Exercice}
+
+\begin{Exercice}{Messages codés}
+
 {
 L'agent ESI 007 a imaginé un nouveau procédé de codage
 de ses messages secrets. Celui-ci fonctionne en trois étapes. La
@@ -2031,7 +2003,7 @@ le message obtenu après cette seconde étape est caché dans un fichier
 \textbf{SECRET} dont chaque enregistrement correspond à un mot du
 message codé, et contient les champs suivant :}
 
-\begin{itemize}
+\begin{liste}
 \item {
 ID : «~indice début~» : entier}
 \item {
@@ -2040,82 +2012,25 @@ IF : «~indice fin~» : entier}
 TABCAR : tableau[1 :20] de caractère qui représente un des mots du
 message codé. Ce mot se trouve entre les éléments d’indices ID et IF
 inclus, les autres éléments du tableau sont choisis aléatoirement.}
-\end{itemize}
+\end{liste}
 {
 Pour fixer les idées, le premier enregistrement de SECRET pourrait être
 :}
 
-{\ttfamily
-\textsf{\ \ \ \ }{\textsf{ID\ \ IF
-\ \ \ \ \ \ \ \ \ TABCAR}}}
-
-\begin{flushleft}
-\tablehead{}
-\begin{supertabular}{m{0.449cm}m{0.449cm}m{0.449cm}m{0.51600003cm}m{0.38200003cm}m{0.449cm}m{0.449cm}m{0.449cm}m{0.449cm}m{0.449cm}m{0.449cm}m{0.449cm}m{0.449cm}m{0.449cm}m{0.449cm}m{0.449cm}m{0.449cm}m{0.449cm}m{0.449cm}m{0.449cm}m{0.449cm}m{0.449cm}m{0.449cm}m{0.449cm}m{0.467cm}}
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\sffamily 1 &
-\sffamily 2 &
-\sffamily 3 &
-\sffamily 4 &
-\sffamily 5 &
-\sffamily 6 &
-\sffamily 7 &
-\sffamily 8 &
-\sffamily 9 &
-\sffamily 10 &
-\sffamily 11 &
-\sffamily 12 &
-\sffamily 13 &
-\sffamily 14 &
-\sffamily 15 &
-\sffamily 16 &
-\sffamily 17 &
-\sffamily 18 &
-\sffamily 19 &
-\sffamily 20\\\hhline{~-~-~--------------------}
-\multicolumn{1}{m{0.449cm}|}{~
-} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily 8} &
-\multicolumn{1}{m{0.449cm}|}{~
-} &
-\multicolumn{1}{m{0.51600003cm}|}{\sffamily 14}
-&
-\multicolumn{1}{m{0.38200003cm}|}{~
-} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily F} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily A} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily 3} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily P} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily Y} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily !} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily R} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily X} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily K} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily E} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily T} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily J} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily K} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily F} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily R} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily Z} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily ;} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily C} &
-\multicolumn{1}{m{0.449cm}|}{\sffamily W} &
-\multicolumn{1}{m{0.467cm}|}{\sffamily
-J}\\\hhline{~-~-~--------------------}
-\end{supertabular}
-\end{flushleft}
-
-\bigskip
+\begin{center}
+\begin{tabular}{*{1}{>{\small\centering\arraybackslash}m{0.30cm}}}
+ID \\
+8\\
+\end{tabular}
+\begin{tabular}{*{1}{>{\small\centering\arraybackslash}m{0.30cm}}}
+IF\\
+14\\
+\end{tabular}
+\begin{tabular}{*{20}{>{\small\centering\arraybackslash}m{0.30cm}}}
+TABCAR \\
+F & A & 3 & P & Y & ! & R & K & K & E & T & J & K & F & R & Z & ; & C & W & J \\
+\end{tabular}
+\end{center}
 
 {
 On retrouve en effet entre les éléments d’indice 8 et 14 le premier mot
@@ -2131,15 +2046,13 @@ mots par un caractère blanc !). Pour différencier les lettres des
 autres caractères (chiffres, ponctuation), vous pouvez utiliser la
 primitive}
 
-{\sffamily
-\textbf{estLettre}(car : caractère) \textrm{→}\textrm{ }booléen }
+\cadre{
+\begin{pseudo}
+\ModuleSign{estLettre}{car\In : caractère}{booléen}
+\end{pseudo}
+}
 
-{
 qui retourne \textbf{vrai} uniquement lorsque le caractère entré en
-paramètre est une des 26 lettres de l’alphabet.}
+paramètre est une des 26 lettres de l’alphabet.
 
-
-\bigskip
-
-
-\bigskip
+\end{Exercice}

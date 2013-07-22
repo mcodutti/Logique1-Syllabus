@@ -101,7 +101,7 @@
 		Algorithmes} (LDA en abrégé) est un langage formel et symbolique
 		utilisant :
 
-		\begin{itemize}
+		\begin{liste}
 		\item
 			des \textbf{noms symboliques} destinés à représenter les objets sur
 			lesquels s’effectuent des actions ;
@@ -110,7 +110,7 @@
 			opérations primitives exécutables par un exécutant donné ;
 		\item
 			des \textbf{structures de contrôle} types.
-		\end{itemize}
+		\end{liste}
 
 		Ce langage repose sur des conventions d’écriture. Il est destiné à
 		servir de vecteur de la compréhension permettant par exemple une
@@ -258,7 +258,7 @@
 
 			avec la signification suivante :
 
-			\begin{itemize}
+			\begin{liste}
 			\item
 				\textstyleCodeInsr{num1 (num2)} pour numérateur 
 				de la première (seconde) fraction ;
@@ -268,7 +268,7 @@
 			\item
 				\textstyleCodeInsr{numRes (denRes)}
 				pour numérateur (dénominateur) du résultat.
-			\end{itemize}
+			\end{liste}
 			
 			\marginicon{attention}
 			Attention, lors de la déclaration d’une variable, celle-ci n’a pas de
@@ -296,7 +296,7 @@
 			Voici quelques règles et limitations traditionnelles dans les langages
 			de programmation:
 
-			\begin{itemize}
+			\begin{liste}
 			\item 
 				Un nom de variable est généralement une suite de caractères
 				alphanumériques d’un seul tenant (pas de caractères blancs) et ne
@@ -335,7 +335,7 @@
 				entre les minuscules et majuscules, d’autres non. En logique, nous
 				admettons dans noms de variables les caractères accentués du français,
 				par ex. : durée, intérêts, etc.
-			\end{itemize}
+			\end{liste}
 
 			Il est impossible de décrire ici toutes les particularités des
 			différents langages, le programmeur se reportera aux règles spécifiques
@@ -601,13 +601,13 @@
 			{\bfseries
 			Remarques}
 
-			\begin{itemize}
+			\begin{liste}
 			\item
 				Il est de règle que le résultat de l’expression à droite du signe
 				d’affectation ($\gets$) soit de
 				même type que la variable à sa gauche. On tolère certaines exceptions
 				:
-				\begin{itemize}
+				\begin{liste}
 				\item
 					\textstyleCodeInsr{entier}{ $\gets$ }\textstyleCodeInsr{réel} : 
 					dans ce cas le contenu de la variable sera la valeur tronquée
@@ -622,7 +622,7 @@
 				\item 
 					\textstyleCodeInsr{chaine}{ $\gets$ }\textstyleCodeInsr{caractère} : 
 					le contraire n'est évidemment pas accepté.
-				\end{itemize}
+				\end{liste}
 			\item 
 				Seules les variables déclarées peuvent être affectées, que ce soit par
 				l’affectation externe ou interne!
@@ -635,7 +635,7 @@
 				Pour l’affectation interne, toutes les variables apparaissant dans
 				\textstyleCodeInsr{expression} doivent avoir été affectées
 				préalablement. Le contraire provoquerait un arrêt de l’algorithme.
-			\end{itemize}
+			\end{liste}
 			
 	\section{Communication des résultats}
 
@@ -657,7 +657,7 @@
 		{\bfseries
 		Remarques}
 
-		\begin{itemize}
+		\begin{liste}
 		\item
 			Ce ne serait pas une erreur fondamentale de remplacer
 			\textstyleCodeInsr{lire} par \textstyleCodeInsr{recevoir} ou
@@ -669,7 +669,7 @@
 		\item
 			Comme pour l’affectation interne, on ne peut \textstyleCodeInsr{écrire}
 			que des expressions dont les variables ont été affectées préalablement.
-		\end{itemize}
+		\end{liste}
 
 	\section{Structure générale d’un algorithme}
 
@@ -692,7 +692,7 @@
 		{\bfseries
 		Remarques}
 		
-		\begin{itemize}
+		\begin{liste}
 		\item {
 			Le code d'un algorithme sera toujours compris entre la
 			première ligne ; appelée «~entête~» qui commence par le mot «~module~»
@@ -717,7 +717,7 @@
 		\item {
 			Pour la lisibilité, on veillera toujours à ce que le texte d’un module
 			tienne sur une seule page.}
-		\end{itemize}
+		\end{liste}
 
 		À titre d’exemple, récrivons l’algorithme d’addition de fractions décrit
 		en début de chapitre :
@@ -1004,7 +1004,7 @@
 	modules. Voici de précieux conseils pour vous guider dans la résolution
 	de tels problèmes.
 
-	\begin{itemize}
+	\begin{liste}
 	\item {
 		il convient d’abord de bien comprendre le problème posé; assurez-vous
 		qu’il est parfaitement spécifié ;}
@@ -1019,7 +1019,7 @@
 	\item {
 		n’hésitez pas à faire une ébauche de résolution en français avant
 		d’élaborer l’algorithme définitif pseudo-codé.}
-	\end{itemize}
+	\end{liste}
 
 \begin{Exercice}{Surface d'un triangle}
 	\marginicon{java}

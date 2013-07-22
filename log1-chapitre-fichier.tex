@@ -189,8 +189,7 @@ considéré comme indéterminé.
 Attention à ne pas commettre les erreurs d’utilisation suivantes qui
 provoquent toutes l’interruption de l’algorithme :
 
-\liststyleListv
-\begin{itemize}
+\begin{liste}
 	\item 
 		lecture dans un fichier ouvert en écriture, ou non ouvert en lecture;
 	\item 
@@ -203,7 +202,7 @@ provoquent toutes l’interruption de l’algorithme :
 	\item 
 		appel à \textstyleCodeInsr{EOF(nomFichier)} alors
 		qu'aucune lecture n'a encore été faite.
-\end{itemize}
+\end{liste}
 
 {\sffamily\bfseries
 Écriture dans un fichier (ouvert en écriture) }
@@ -341,8 +340,7 @@ sortie.
 
 Quelques remarques s'imposent :
 
-\liststyleListv
-\begin{itemize}
+\begin{liste}
 	\item 
 		Dans la version non orienté objet, rien n'est dit sur
 		la localisation du fichier; on suppose que cela est déterminé par
@@ -354,7 +352,7 @@ Quelques remarques s'imposent :
 		rester proche de la version non OO, nous supposerons en logique
 		qu'un appel à la méthode \textstyleCodeInsr{ouvrir()}
 		est nécessaire.
-\end{itemize}
+\end{liste}
 
 {\sffamily\bfseries\scshape
 Exemple : parcours d'un fichier}
@@ -419,7 +417,6 @@ qu'il advient du cas d'un fichier
 vide (rappelons que c'est la première lecture qui
 permet d'identifier ce cas). Il y a 3 cas de figure :
 
-\liststyleNumberingii
 \begin{enumerate}
 	\item 
 		Le fichier vide est un cas particulier tout à fait acceptable et qui est
@@ -650,8 +647,7 @@ on doit d'abord demander s'il reste
 un élément à traiter avant de l'obtenir effectivement.
 Ce schéma est celui qu'on trouve notamment dans 
 
-\liststyleListv
-\begin{itemize}
+\begin{liste}
 	\item 
 		les curseurs en SQL
 	\item 
@@ -660,7 +656,7 @@ Ce schéma est celui qu'on trouve notamment dans
 		la lecture via la classe Scanner en Java
 	\item 
 		la lecture dans certains langages de programmation comme Visual Basic
-\end{itemize}
+\end{liste}
 
 On pourrait définir une telle séquence ainsi
 
@@ -786,19 +782,18 @@ non mais restez cohérents au sein d'un même exercice
 
 \begin{Exercice}{Statistiques sur les profs}
 	Soit le fichier FILEPROFS des professeurs de la
-	HEB. La structure des enregistrements de ce fichier est
-	{\textbf{Prof}}	contenant les champs suivants :
-
-	{	nom : \ \ \ \ chaine}
-
-	{	âge : \ \ \ \ entier}
-
-	{	sexe : \ \ \ \ logique	
-	(\textbf{vrai} si	masculin,	\textbf{faux} si féminin)}
-
-	{	dateIn : \ \ date d’entrée en fonction 
-	(objet \textstyleCodeInsr{Date})}
-
+	HEB. La structure des enregistrements de ce fichier est {\textbf{Prof}}
+	
+	\cadre{
+	\begin{pseudo}
+	\Struct{Prof}
+	\Decl nom : chaine
+	\Decl âge : entier
+	\Decl sexe : booléen \RComment {\textbf{vrai} si masculin, \textbf{faux} si féminin}
+	\Decl dateIn : Date \RComment date d’entrée en fonction 
+	\EndStruct
+	\end{pseudo}
+	}
 	
 	Écrire l’algorithme qui :
 	
@@ -820,30 +815,26 @@ non mais restez cohérents au sein d'un même exercice
 	rédigées indifféremment en français ou en néerlandais. Les
 	organisateurs du concours ont encodé tous les renseignements
 	nécessaires sur les candidates dans le fichier CANDI dont la structure
-	des enregistrements est de type \textbf{Candidat} comprenant les champs
-	suivants :
-
-	{ nom : \ \ \ \ chaine}
-
-	{	adresse : \ \ chaine}
-
-	{	téléphone :\ \ chaine}
-
-	{	date : \ \ \ \ date de naissance
-	(objet \textstyleCodeInsr{{Date}})}
-
-	{	taille : \ \ \ \ taille en mètre (réel)}
-
-	{	poids :\ \ \ \ poids en kilo (réel)}
-
-	{	pts : \ \ \ \ points obtenus à l’examen coté sur 150 (entier)}
-
+	des enregistrements est de type \textbf{Candidat} 
+	
+	\cadre{
+	\begin{pseudo}
+	\Struct{Candidat}
+	\Decl nom : chaine
+	\Decl adresse : chaine
+	\Decl téléphone : chaine
+	\Decl date : Date \RComment Date de naissance 
+	\Decl taille : réel \RComment La taille en mètre
+	\Decl poids : réel \RComment Le poids en kilo
+	\Decl pts : entier \RComment Points obtenus à l’examen coté sur 150
+	\EndStruct
+	\end{pseudo}
+	}
 	
 	En vue de réaliser une sélection, le jury a décidé d’éliminer les
 	candidates :
 
-	\liststyleListv
-	\begin{itemize}
+	\begin{liste}
 		\item 
 			n’ayant pas atteint 18 ans au 1\textsuperscript{er} novembre de l’année
 			en cours ;
@@ -858,7 +849,7 @@ non mais restez cohérents au sein d'un même exercice
 			taille ;
 		\item 
 			ayant obtenu moins de 70\% à l’examen de culture générale.
-	\end{itemize}
+	\end{liste}
 	
 	Écrire l’algorithme qui réalise, en une seule lecture du fichier CANDI,
 	cette sélection et qui écrit, sur le fichier SELECTION, les
@@ -874,19 +865,20 @@ non mais restez cohérents au sein d'un même exercice
 
 \begin{Exercice}{Le méli-mélo de cartes}
 	Soit le fichier CARTES dont chaque
-	enregistrement est une structure
-	{\textbf{Carte}}
-	contenant les champs :
+	enregistrement est une structure \textbf{Carte}
 
-	{ couleur : entier (0 pour PIQUE, 1 pour TREFLE, 
-	2 pour CARREAU et 3 pour CŒUR)~}
+	\cadre{
+	\begin{pseudo}
+	\Struct{Candidat}
+	\Decl couleur : entier 
+		\RComment 0 pour PIQUE, 1 pour TREFLE, 2 pour CARREAU et 3 pour CŒUR
+	\Decl figure : entier 
+		\RComment 1 pour l’AS, 2 pour le DEUX,\dots, 
+		\Empty \RComment 10 pour le DIX, 11 pour le VALET, 12 pour la DAME et 13 pour le ROI
+	\EndStruct
+	\end{pseudo}
+	}
 
-	{	figure : \ \ entier (1 pour l’AS, 2 pour le DEUX,…, 10 pour le DIX, 11
-	pour le VALET,}
-
-	{	\ \ \ \ \ \ 12 pour la DAME et 13 pour le ROI)}
-
-	
 	Le fichier décrit un nombre indéterminé de
 	cartes provenant de paquets différents ; comme le nombre de cartes est
 	élevé, chaque carte apparait certainement plusieurs fois dans le
@@ -898,33 +890,29 @@ non mais restez cohérents au sein d'un même exercice
 	Lorsqu’une partie d’échec est interrompue, on enregistre la position de
 	toutes les pièces sur l’échiquier de manière à pouvoir les replacer le
 	jour où la partie va reprendre. Le fichier de sauvegarde est JEU et
-	contient des enregistrements de type \textbf{Case}, chacun de ceux-ci
-	contenant les 3 champs :
-
-	{	\ \ nl : \ \ numéro de ligne où se trouve la pièce (entier entre 1 et
-	8)}
-
-	{	\ \ nc : \ \ numéro de colonne où se trouve la pièce (entier entre 1 et
-	8)}
-
-	{	\ \ val : \ \ valeur de la pièce de type \textbf{Pièce}}
-
-
-	\bigskip
-
-	{	\textbf{Pièce} contient 2 champs: }
-
-	{	type:\ \  \ les valeurs sont ROI, REINE, CAVALIER, FOU, TOUR, PION}
-
-	{	couleur: les valeurs sont BLANC et NOIR}
-
-
-	\bigskip
+	contient des enregistrements de type \textbf{Case}
+	
+	\cadre{
+	\begin{pseudo}
+	\Struct{Case}
+	\Decl nl : entier 
+		\RComment numéro de ligne où se trouve la pièce (entre 1 et 8)
+	\Decl nc : entier 
+		\RComment numéro de colonne où se trouve la pièce (entre 1 et 8)
+	\Decl val : Pièce 
+		\RComment valeur de la pièce
+	\EndStruct
+	\Empty
+	\Struct{Pièce}
+	\Decl type : énumération { ROI, REINE, CAVALIER, FOU, TOUR, PION}
+	\Decl couleur : énumération { BLANC, NOIR} 
+	\EndStruct	
+	\end{pseudo}
+	}
 
 	Écrire l’algorithme parcourant le fichier JEU et permettant :
 
-	\liststyleListv
-	\begin{itemize}
+	\begin{liste}
 		\item 
 			de replacer les pièces dans le tableau \textstyleCodeInsr{échiquier}
 			(tableau à deux dimensions 8 x 8 de \textbf{Pièce})
@@ -933,49 +921,41 @@ non mais restez cohérents au sein d'un même exercice
 		\item 
 			d’afficher la couleur du joueur possédant encore le plus de pièces sur
 			l’échiquier.
-	\end{itemize}
+	\end{liste}
 \end{Exercice}	
 
 \begin{Exercice}{Les stages}
 	Soit le tableau \textstyleCodeInsr{stages} de \textit{n} éléments de
-	structure \textbf{Stage} contenant les six champs : \ \ 
+	structure \textbf{Stage}
 
-	{	réfStage  : \ \ référence du stage}
-
-	{	âgeMin : \ \ âge minimum requis pour pouvoir participer}
-
-	{	âgeMax : \ \ âge maximum permis pour pouvoir participer}
-
-	{	nbMin : \ \ nombre minimum de participants requis pour que ce stage }
-
-	{	\ \ \ \ puisse avoir lieu}
-
-	{	nbMax : \ \ nombre maximum de participants admis}
-
-	{	nbDemande : \ \ nombre de demandes valables (au point de vue des limites}
-
-	{	\ \ \ \ d’âges) déjà enregistrées avant aujourd’hui.}
-
-	\bigskip
+	\cadre{
+	\begin{pseudo}
+	\Struct{Stage}
+	\Decl réfStage : chaine \RComment référence du stage
+	\Decl âgeMin : entier \RComment {âge minimum requis pour pouvoir participer}
+	\Decl âgeMax : entier \RComment {âge maximum permis pour pouvoir participer}
+	\Decl nbMin : entier \RComment nombre minimum de participants pour que ce stage puisse avoir lieu
+	\Decl nbMax : entier \RComment nombre maximum de participants admis
+	\Decl nbDemande : entier \RComment nombre de demandes valables 
+		\Empty \RComment (au point de vue des limites d’âges)  déjà enregistrées avant aujourd’hui
+	\EndStruct
+	\end{pseudo}
+	}
 
 	Soit le fichier \textstyleCodeInsr{DEMANDES} des nouvelles demandes de
 	participation à un stage. La structure \textbf{Demande} d’un
 	enregistrement de ce fichier est la suivante :
 
-	\bigskip
-
-	\bigskip
-
-	{	nom : \ \ \ \ nom et prénom du candidat}
-
-	{	âge : \ \ \ \ âge du candidat}
-
-	{	adresse : \ \ adresse du candidat}
-
-	{	réfStage : \ \ référence du stage pour lequel la demande est formulée.}
-
-
-	\bigskip
+	\cadre{
+	\begin{pseudo}
+	\Struct{Demande}
+	\Decl nom : chaine \RComment nom et prénom du candidat
+	\Decl âge : entier
+	\Decl adresse : chaine
+	\Decl réfStage : chaine \RComment référence du stage pour lequel la demande est formulée
+	\EndStruct
+	\end{pseudo}
+	}
 
 	Écrire un module qui reçoit en paramètres le tableau
 	\textstyleCodeInsr{stages}, le tableau \textstyleCodeInsr{messages} de
@@ -983,26 +963,24 @@ non mais restez cohérents au sein d'un même exercice
 	\textstyleCodeInsr{DEMANDES}. Ce module va traiter les nouvelles
 	demandes en mettant à jour le tableau \textstyleCodeInsr{stages} et en
 	créant un fichier \textstyleCodeInsr{REPONSES} de structure
-	d’enregistrement \textbf{InfoOut}. Cette structure comprend les champs
-	suivants :
+	d’enregistrement \textbf{InfoOut}. 
 
 	\bigskip
 
-	requête : \ \ structure \textbf{Demande}\textbf{\textit{ }}reprenant
-	toutes les informations 
+	\cadre{
+	\begin{pseudo}
+	\Struct{Demande}
+	\Decl requête : Demande \RComment reprenant toutes les informations fournies par un candidat
+	\Decl msg : chaine \RComment le message à envoyer au demandeur, issu du tableau \textstyleCodeInsr{messages}
+	\Decl adresse : chaine
+	\Decl réfStage : chaine \RComment référence du stage pour lequel la demande est formulée
+	\EndStruct
+	\end{pseudo}
+	}
 
-	{	\ \ \ \ fournies par un candidat}
+	Les messages possibles sont un des six suivants :
 
-	{	msg : \ \ \ \ chaine de caractères devant contenir le message à envoyer
-	au}
-
-	{	\ \ \ \ demandeur, issu du tableau \textstyleCodeInsr{messages}}
-
-	{	Les messages possibles sont un des six suivants : }
-
-	\begin{center}
-	\tablehead{}
-	\begin{supertabular}{|m{0.36400002cm}|m{13.407001cm}|}
+	\begin{tabular}{|m{0.36400002cm}|m{13.407001cm}|}
 		\hline
 		 1 &
 		 Le stage que vous avez demandé \textbf{n’existe
@@ -1014,26 +992,23 @@ non mais restez cohérents au sein d'un même exercice
 		 Vous être \textbf{trop âgé} pour participer au
 		stage que vous avez demandé !\\\hline
 		 4 &
-		 Désolé de ne pas prendre votre demande en
-		considération : le stage demandé \textbf{est complet}\\\hline
+		 Désolé ! Le stage demandé \textbf{est complet}\\\hline
 		 5 &
 		 Votre inscription pour le stage est \textbf{mise
 		en attente} car il n’y a pas encore assez d’inscrits\\\hline
 		 6 &
 		 Votre inscription pour le stage demandé
 		\textbf{est acceptée}\\\hline
-	\end{supertabular}
-	\end{center}
+	\end{tabular}
 	
-	\textstyleMotCl{\textmd{\textit{Notez qu’un seul message doit être
+	\textit{Notez qu’un seul message doit être
 	fourni en réponse à une demande. L’ordre de priorité des messages
-	correspond à l’ordre de leur apparition dans le tableau.}}}
+	correspond à l’ordre de leur apparition dans le tableau.}
 \end{Exercice}
 
 \begin{Exercice}{Séquence}
 	Écrivez un module qui reçoit une séquence d'entiers et
 	qui
-	\liststyleNumberingv
 	\begin{enumerate}
 		\item 
 			en affiche tous les éléments

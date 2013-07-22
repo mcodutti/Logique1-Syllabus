@@ -65,8 +65,7 @@ fournir)
 
 Quelques précisions s’imposent :
 
-\liststyleListv
-\begin{itemize}
+\begin{liste}
 	\item 
 		Comme les tableaux, les listes peuvent contenir des éléments de
 		n’importe quel type tout en restant uniforme au sein d’une même liste
@@ -122,7 +121,7 @@ Quelques précisions s’imposent :
 		partie de l’information qu’elle contient mais c’est difficile à
 		exprimer de façon générique c'est-à-dire lorsque le
 		type n'est pas connu à priori.
-\end{itemize}
+\end{liste}
 
 \bigskip
 
@@ -248,15 +247,14 @@ taille physique est de 8.
 Quand il faut insérer un élément (en position valide) ou en ajouter un
 en fin de liste, deux cas se présentent :
 
-\liststyleListv
-\begin{itemize}
+\begin{liste}
 	\item 
 		Si la taille logique est plus petite que la taille physique, il suffit
 		d’ajouter l’élément dans le tableau et d’adapter la taille logique.
 	\item 
 		Par contre, si la taille logique est égale à la taille physique, il faut
 		procéder à un agrandissement du tableau.
-\end{itemize}
+\end{liste}
 
 Présentons les attributs nécessaires et l'algorithme
 d’agrandissement du tableau.
@@ -660,7 +658,6 @@ faut générer une erreur.
 
 	\textbf{Utilisation de la chaine.}
 
-	\liststyleListv
 	\begin{enumerate}[label=\alph*)]
 		\item 
 			Écrire un module qui reçoit un nom complet
@@ -675,7 +672,6 @@ faut générer une erreur.
 	\end{enumerate}
 \end{Exercice}
 
-	\liststyleExercice
 	
 \begin{Exercice}{La liste ordonnée}
 		Une recherche dans une liste implique un parcours complet de la liste en
@@ -716,14 +712,11 @@ faut générer une erreur.
 		La notion d’ensemble fini est une notion qui vous est déjà 
 		familière pour l’avoir rencontrée dans plusieurs cours. Nous rappelons
 		certaines de ses propriétés et opérations. 
-		
-		\bigskip
-		
+				
 		Étant donnés deux ensembles
 		finis \textbf{S} et \textbf{T} ainsi qu’un élément \textbf{x} :
 
-		\liststyleListv
-		\begin{itemize}
+		\begin{liste}
 		\item 
 			\textbf{x} {${\in}$} \textbf{S} signifie que l’élément \textbf{x}
 			est un élément de l’ensemble \textbf{S}.
@@ -752,9 +745,7 @@ faut générer une erreur.
 			La différence \textbf{S {\textbackslash} T} 
 			est l’ensemble des éléments qui sont 
 			dans \textbf{S} mais pas dans \textbf{T}.
-		\end{itemize}
-		
-		\bigskip
+		\end{liste}
 		
 		Créez la classe \textstyleCodeInsr{Ensemble}
 		décrite ci-dessous.
@@ -789,8 +780,7 @@ faut générer une erreur.
 
 	\textstylePolicepardfaut{Quelques remarques :}
 
-	\liststyleListv
-	\begin{itemize}
+	\begin{liste}
 		\item 
 			La méthode d'ajout (resp. de suppression) n'a
 			pas d'effet si l'élément est déjà
@@ -806,7 +796,7 @@ faut générer une erreur.
 			La méthode \textstyleCodeInsr{liste()}
 			est nécessaire si on veut parcourir les éléments de
 			l'ensemble (par exemple pour les afficher).
-	\end{itemize}
+	\end{liste}
 \end{Exercice}
 
 \begin{Exercice}{Autres opérations ensemblistes}

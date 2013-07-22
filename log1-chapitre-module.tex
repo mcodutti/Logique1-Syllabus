@@ -169,7 +169,7 @@
 	}\textstyleCodeInsr{{max2(a, b,
 	temp)}}{ se déroule comme suit :}}
 	
-	\begin{itemize}
+	\begin{liste}
 	\item {
 	{le contenu des variables
 	}\textstyleCodeInsr{{a}}{
@@ -193,14 +193,14 @@
 	}\textstyleCodeInsr{{a}}{
 	et
 	}\textstyleCodeInsr{{b}}{.}}
-	\end{itemize}
+	\end{liste}
 
 	{
 	{L’instruction
 	}\textstyleCodeInsr{{max2(temp, c,
 	max)}}{ se déroule comme suit :}}
 	
-	\begin{itemize}
+	\begin{liste}
 	\item {
 	{le contenu des variables
 	}\textstyleCodeInsr{{temp}}{
@@ -221,7 +221,7 @@
 	est communiquée à la variable
 	}\textstyleCodeInsr{{max}}{,
 	qui contient à présent le maximum des 3 nombres de départ.}}
-	\end{itemize}
+	\end{liste}
 
 	{Il est évident que la présence de ces deux
 	instructions dans le module
@@ -262,7 +262,7 @@
 
 	{\bfseries Remarques}
 
-	\begin{itemize}
+	\begin{liste}
 	\item {
 	{un paramètre peut être à la fois paramètre
 	d’entrée et de sortie ; on le fait suivre alors de la double flèche
@@ -294,7 +294,7 @@
 	\item {
 	il faut s’assurer qu’à l’issue du module, tous les paramètres de sortie
 	aient été affectés lors de l’exécution de ce module.}
-	\end{itemize}
+	\end{liste}
 
 \section{Variables locales}
 
@@ -404,7 +404,7 @@
 	Il se distingue du module précédemment étudié par la flèche de renvoi à
 	droite, et possède les particularités suivantes :
 
-	\begin{itemize}
+	\begin{liste}
 	\item {
 		{ce module renvoie
 		}{\textbf{une}}{
@@ -451,7 +451,7 @@
 		pour appeler ce type de module, on utilise son nom \textbf{comme celui
 		d’une variable} dans le module appelant, mais jamais à gauche du signe
 		d’affectation.}
-	\end{itemize}
+	\end{liste}
 
 	Comme précédemment, il faut veiller, lors de l’appel du module renvoyant
 	une valeur, à ce que le nombre d’arguments ainsi que leur type
@@ -603,7 +603,7 @@ d'un exemple complet.
 	reconverti en heures-minutes-secondes.
 
 	\begin{center}
-	\includegraphics[width=0.9\textwidth]{image/module-conversion}
+	\includegraphics[width=0.8\textwidth]{image/module-conversion}
 	\end{center}
 
 \subsection*{Conversion en secondes}
@@ -622,17 +622,17 @@ d'un exemple complet.
 
 	La première question à se poser est donc celle des paramètres :
 
-	\begin{itemize}
+	\begin{liste}
 	\item 
 		Quelles sont les données dont a besoin l'algorithme
 		pour travailler ?
 	\item 
 		Quels résultats fournit-il ?
-	\end{itemize}
+	\end{liste}
 
 	Dans notre cas, la réponse est simple :
 
-	\begin{itemize}
+	\begin{liste}
 	\item {
 		Les données sont le moment à convertir en secondes. Ce moment est
 		représenté par trois entiers : les heures, les minutes et les secondes
@@ -640,7 +640,7 @@ d'un exemple complet.
 	\item {
 		Le résultat est le moment converti en secondes. Il est représenté par un
 		entier.}
-	\end{itemize}
+	\end{liste}
 
 	Lorsque le résultat est représenté par une seule donnée, on a le choix
 	entre un paramètre en sortie :
@@ -693,7 +693,7 @@ d'un exemple complet.
 	séquentiels. Mais il faut l'adapter à
 	l'usage de paramètres.
 
-	\begin{itemize}
+	\begin{liste}
 	\item {
 		Quelles sont les données ? Une seule, le moment exprimé en secondes}
 	\item {
@@ -703,7 +703,7 @@ d'un exemple complet.
 		pose pas ici ; impossible d'utiliser une valeur de
 		retour (qui doit être unique) ; on doit utiliser des paramètres en
 		sortie.}
-	\end{itemize}
+	\end{liste}
 
 	Ce qui donne :
 
@@ -904,7 +904,7 @@ d'un exemple complet.
 	systématiquement à optimiser son code ? Non ! On a souvent tendance à
 	surévaluer ce critère ce qui est dommageable pour trois raisons.}
 
-	\begin{itemize}
+	\begin{liste}
 	\item {
 		Souvent, l'approche directe est suffisante. Par
 		exemple, la plupart des applications sont interactives.
@@ -919,7 +919,7 @@ d'un exemple complet.
 		Accroitre la rapidité d'un code est presque toujours en
 		contradiction avec sa lisibilité. On va utiliser un algorithme moins
 		connu ou des raccourcis difficiles à suivre.}
-	\end{itemize}
+	\end{liste}
 
 	{
 	C'est pourquoi on recommande en général, face à un

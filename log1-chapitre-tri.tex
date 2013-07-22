@@ -162,9 +162,6 @@
 	Prenons comme exemple un tableau tab de 20 entiers. Au départ, le
 	sous-tableau trié est formé du premier élément tab[1] = 20 :
 
-
-	\bigskip
-
 	\begin{center}
 	\tablehead{}
 	\begin{supertabular}
@@ -223,9 +220,6 @@
 	L’étape suivante consiste à insérer tab[2] = 12 dans ce sous-tableau, de
 	taille 2 :
 
-
-	\bigskip
-
 	\begin{center}
 	\tablehead{}
 	\begin{supertabular}
@@ -283,9 +277,6 @@
 
 	Ensuite, c’est au tour de tab[3] = 18 d’être inséré :
 
-	\bigskip
-
-	
 	\begin{center}
 	\tablehead{}
 	\begin{supertabular}
@@ -614,26 +605,23 @@
 	\end{pseudo}
 	}
 
-	\bigskip
+	\subsection*{Exercices}
 
-	{\sffamily\bfseries\upshape
-	Exercices}
-
-	\liststyleExercice
-	\begin{enumerate}
-		\item 
-			Développez un algorithme similaire consistant à trier un tableau par
-			ordre croissant par sélection des \textbf{maxima} successifs. Le
-			sous-tableau trié apparaitra donc à droite du tableau, et les maxima
-			sélectionnés seront à chaque étape positionnés à droite du sous-tableau
-			non trié. 
-		\item 
-			Développez un algorithme combinant les deux recherches. À chaque étape,
-			on sélectionne donc le minimum et le maximum du sous-tableau restant à
-			trier et on les positionnera à l’endroit \textit{ad hoc}. N.B. : on
-			constatera que cette méthode n’apporte pas d’amélioration, ni en temps,
-			ni en simplicité, aux deux algorithmes de base !
-	\end{enumerate}
+	\begin{Exercice}{Sélection des maxima}
+		Développez un algorithme similaire consistant à trier un tableau par
+		ordre croissant par sélection des \textbf{maxima} successifs. Le
+		sous-tableau trié apparaitra donc à droite du tableau, et les maxima
+		sélectionnés seront à chaque étape positionnés à droite du sous-tableau
+		non trié. 
+	\end{Exercice}
+	
+	\begin{Exercice}{Maxima et minima}
+		Développez un algorithme combinant les deux recherches. À chaque étape,
+		on sélectionne donc le minimum et le maximum du sous-tableau restant à
+		trier et on les positionnera à l’endroit \textit{ad hoc}. N.B. : on
+		constatera que cette méthode n’apporte pas d’amélioration, ni en temps,
+		ni en simplicité, aux deux algorithmes de base !
+	\end{Exercice}
 	
 
 %==================
@@ -656,8 +644,7 @@
 	d’indice 1 qui contient alors la «~bulle~»,
 	c'est-à-dire la plus petite valeur du tableau, soit 1 :
 
-	\bigskip
-
+	\clearpage
 	\begin{center}
 	\tablehead{}
 	\begin{supertabular}
@@ -699,9 +686,6 @@
 	\end{supertabular}
 	\end{center}
 
-	\bigskip
-	
-	
 	\begin{center}
 	\tablehead{}
 	\begin{supertabular}
@@ -727,8 +711,6 @@
 	\end{supertabular}
 	\end{center}
 
-	\bigskip
-	
 	\begin{center}
 	\tablehead{}
 	\begin{supertabular}
@@ -754,9 +736,6 @@
 	\end{supertabular}
 	\end{center}
 
-	\bigskip
-	
-	
 	\begin{center}
 	\tablehead{}
 	\begin{supertabular}
@@ -782,8 +761,6 @@
 	\end{supertabular}
 	\end{center}
 
-	\bigskip
-	
 	\begin{center}
 	\tablehead{}
 	\begin{supertabular}
@@ -809,8 +786,6 @@
 	\end{supertabular}
 	\end{center}
 
-	\bigskip
-	
 	\begin{center}
 	\tablehead{}
 	\begin{supertabular}
@@ -835,8 +810,6 @@
 		\multicolumn{1}{m{0.828cm}|}{  5}\\\hline
 	\end{supertabular}
 	\end{center}
-
-	\bigskip
 	
 	\begin{center}
 	\tablehead{}
@@ -863,8 +836,6 @@
 	\end{supertabular}
 	\end{center}
 
-	\bigskip
-	
 	\begin{center}
 	\tablehead{}
 	\begin{supertabular}
@@ -890,8 +861,6 @@
 	\end{supertabular}
 	\end{center}
 
-	\bigskip
-	
 	\begin{center}
 	\tablehead{}
 	\begin{supertabular}
@@ -917,8 +886,6 @@
 	\end{supertabular}
 	\end{center}
 
-	\bigskip
-	
 	\begin{center}
 	\tablehead{}
 	\begin{supertabular}
@@ -944,8 +911,6 @@
 	\end{supertabular}
 	\end{center}
 
-	\bigskip
-	
 	\begin{center}
 	\tablehead{}
 	\begin{supertabular}
@@ -970,8 +935,6 @@
 		\multicolumn{1}{m{0.828cm}|}{  5}\\\hline
 	\end{supertabular}
 	\end{center}
-
-	\bigskip
 	
 	\begin{center}
 	\tablehead{}
@@ -997,8 +960,6 @@
 		\multicolumn{1}{m{0.828cm}|}{  5}\\\hline
 	\end{supertabular}
 	\end{center}
-
-	\bigskip
 	
 	\begin{center}
 	\tablehead{}
@@ -1025,8 +986,6 @@
 	\end{supertabular}
 	\end{center}
 
-	\bigskip
-	
 	\begin{center}
 	\tablehead{}
 	\begin{supertabular}
@@ -1052,13 +1011,10 @@
 	\end{supertabular}
 	\end{center}
 
-	\bigskip
-
 	Ceci achève le premier parcours. On recommence à présent le même
 	processus dans le sous-tableau débutant au deuxième élément, ce qui
 	donnera le contenu suivant :
 
-	\bigskip
 	\begin{center}
 	\tablehead{}
 	\begin{supertabular}
@@ -1121,14 +1077,9 @@
 
 	\bigskip
 
-	{\sffamily\bfseries\upshape
-	Exercices}
+	\subsection*{Exercices}
 
-	\liststyleExercice
-	\setcounter{saveenum}{\value{enumi}}
-	\begin{enumerate}
-	\setcounter{enumi}{\value{saveenum}}
-		\item 
+	\begin{Exercice}{Amélioration 1}
 			Écrire une amélioration du tri bulle consistant à mémoriser à chaque
 			étape l’indice de la dernière permutation, celui-ci délimitant en fait
 			la véritable taille du sous-tableau trié à l’issue d’une étape. En lieu
@@ -1136,7 +1087,9 @@
 			bulle que de 1 à la fois, on écrira une boucle \textstyleMotCl{tant
 			que} à l’issue de laquelle \textstyleCodeInsr{indiceBulle} prendra la
 			valeur de l’indice de dernière permutation + 1.
-		\item 
+	\end{Exercice}
+	
+	\begin{Exercice}{Amélioration 2}
 			L’amélioration précédente est issue de l’observation du sous-tableau
 			déjà trié en début du tableau initial. On peut de même étudier la
 			possibilité d’avoir un sous-tableau, trié également, mais cadré à
@@ -1149,10 +1102,14 @@
 			sous-tableau non trié en augmentant sa borne inférieure et en diminuant
 			sa borne supérieure. Écrire l’algorithme qui réalise cette méthode de
 			tri.
-		\item 
+	\end{Exercice}
+	
+	\begin{Exercice}{Tri de dates}
 			Écrire un algorithme qui trie un tableau de (variables structurées)
 			dates par ordre chronologique croissant.
-		\item 
+	\end{Exercice}
+	
+	\begin{Exercice}{Tri de personnes}
 			Écrire un algorithme qui trie un tableau de personnes sur leur date
 			d'anniversaire (sans tenir compte de
 			l'année). Deux personnes nées le même jour seront
@@ -1171,9 +1128,7 @@
 			\end{pseudo}
 			}
 			
-		\end{enumerate}
-		
-		\bigskip
+	\end{Exercice}
 
 
 %=========================
@@ -1328,9 +1283,7 @@
 					\Let pos \Gets indiceGauche
 					\RComment dans le cas où la valeur n’est pas trouvée,
 					\\
-					\RComment on vérifiera que indiceGauche donne la
-					\\
-					\RComment valeur où elle pourrait être insérée.
+					\RComment on vérifiera que indiceGauche donne la valeur où elle pourrait être insérée.
 				\EndIf
 				\Return trouvé
 			\EndModule
@@ -1414,6 +1367,7 @@
 		}\textstyleCodeInsr{indiceGauche}\textstyleWWPolicepardfaut{ = 11 et
 		}\textstyleCodeInsr{indiceDroit}\textstyleWWPolicepardfaut{ = 20.}
 		
+		\bigskip
 		
 		\begin{center}
 		\tablehead{}
@@ -1856,7 +1810,7 @@
 	quelques problèmes
 			
 	\liststyleListv
-	\begin{itemize}
+	\begin{liste}
 		\item 
 			Il faut que les programmes soient exécutés dans des environnements
 			strictement identiques ce qui n’est pas toujours facile
@@ -1864,7 +1818,7 @@
 			Le test ne porte que sur un (voir quelques uns) jeu(x) de tests. Comment
 			en tirer un enseignement général ? Que se passerait-il avec des données
 			plus importantes ? Avec des données différentes ?
-	\end{itemize}
+	\end{liste}
 	
 	En fait, un chiffre précis ne nous intéresse pas. Ce qui est intéressant
 	à connaitre, c’est l’évolution de la rapidité de l’algorithme (plus
@@ -1947,12 +1901,10 @@
 	complexité est logarithmique, et on le note O( log\textsubscript{2 }N
 	).
 
-	
 	Comparons les complexités les plus courantes.
 
 	\begin{center}
-	\tablehead{}
-	\begin{supertabular}{|m{3.167cm}|m{1.074cm}|m{1.43cm}|m{1.074cm}|m{1.4319999cm}|m{1.287cm}|m{1.425cm}|m{1.714cm}|}
+	\begin{tabular}{|m{3.167cm}|m{1.074cm}|m{1.43cm}|m{1.074cm}|m{1.4319999cm}|m{1.287cm}|m{1.425cm}|m{1.714cm}|}
 	\hline
 	\raggedleft \bfseries taille problème &
 	\raggedleft \bfseries 10 &
@@ -2017,7 +1969,7 @@
 	\raggedleft  10\textsuperscript{301029} &
 	\raggedleft\arraybslash 
 	10\textsuperscript{301029995}\\\hline
-	\end{supertabular}
+	\end{tabular}
 	\end{center}
 	
 	On voit ainsi que si on trouve un algorithme correct pour résoudre un
@@ -2065,7 +2017,7 @@
 %====================
 
 	\liststyleListv
-	\begin{itemize}
+	\begin{liste}
 		\item {
 			\url{http://interstices.info/jcms/c_6973/les-algorithmes-de-tri}
 
@@ -2073,4 +2025,4 @@
 			fonctionnement. Il présente tous les tris vus en première plus quelques
 			autres comme le «~tri rapide~» («~quicksort~») que vous verrez en
 			deuxième année. }}
-	\end{itemize}
+	\end{liste}
