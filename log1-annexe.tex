@@ -1,243 +1,86 @@
-\chapter*{Aide-mémoire}
+\chapter{Aide-mémoire}
 
-{
 Cet aide-mémoire peut vous accompagner lors d'une
 interrogation ou d'un examen. Il vous est permis
 d’utiliser ces classes et méthodes sans les développer. S’il vous est
 besoin d’utiliser un objet ou une méthode qui
 n'apparait pas ici, il faudra en écrire explicitement
-le contenu et le code.}
-
-
-\bigskip
-
-{\sffamily
-\textbf{classe} Date}
-
-{\sffamily\bfseries
-public :}
-
-{\sffamily
-\textstyleMotCl{\ \ constructeur} Date( )\ \ \ \ \ \ // Crée la date du
-jour}
-
-{\sffamily
-\textstyleMotCl{\ \ constructeur} Date( j, m, a : entiers )}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} getJour( ) \textrm{[F0E0?]} entier}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} getMois( ) \textrm{[F0E0?]} entier}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} getAnnée( ) \textrm{[F0E0?]} entier}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} setJour( j : entier )}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} setMois( m : entier )}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} setAnnée( a : entier )}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} égale( autreDate : Date ) \textrm{[F0E0?]}
-booléen}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} estAntérieure( autreDate : Date )
-\textrm{[F0E0?]} booléen}
-
-{\sffamily
-\textstyleMotCl{fin classe}}
-
-
-\bigskip
-
-{\sffamily
-\textbf{classe} Moment}
-
-{\sffamily\bfseries
-public :}
-
-{\sffamily
-\textstyleMotCl{\ \ constructeur} Moment( )\ \ \ \ \ \ // Crée le moment
-courant}
-
-{\sffamily
-\textstyleMotCl{\ \ constructeur} Moment( h, m, s : entiers )}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} getHeure( ) \textrm{[F0E0?]} entier}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} getMinute( ) \textrm{[F0E0?]} entier}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} getSeconde( ) \textrm{[F0E0?]} entier}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} setHeure( h : entier )}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} setMinute( m : entier )}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} setSeconde( s : entier )}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} égal( autreMoment : Moment )
-\textrm{[F0E0?]} booléen}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} estAntérieur( autreMoment : Moment )
-\textrm{[F0E0?]} booléen}
-
-{\sffamily
-\textstyleMotCl{fin classe}}
-
-
-\bigskip
-
-{\sffamily
-\textbf{classe} Durée}
-
-{\sffamily\bfseries
-public :}
-
-{\sffamily
-\textstyleMotCl{\ \ constructeur} Durée( secondes : entier )}
-
-{\sffamily
-\textstyleMotCl{\ \ constructeur} Durée( h, m, s : entiers )}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} getJour( ) \textrm{[F0E0?]} entier}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} getHeure( ) \textrm{[F0E0?]} entier}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} getMinute( ) \textrm{[F0E0?]} entier}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} getSeconde( ) \textrm{[F0E0?]} entier}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} getTotalHeure( ) \textrm{[F0E0?]} entier}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} getTotalMinute( ) \textrm{[F0E0?]} entier}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} getTotalSeconde( ) \textrm{[F0E0?]} entier}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} ajouter( autreDurée : Durée )}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} soustraire( autreDurée : Durée )}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} égale( autreDurée : Durée )
-\textrm{[F0E0?]} booléen}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} plusPetit( autreDurée : Durée )
-\textrm{[F0E0?]} booléen}
-
-{\sffamily
-\textstyleMotCl{fin classe}}
-
-{\sffamily
-\textbf{classe} Liste de T}
-
-{\sffamily\bfseries
-public :}
-
-{\sffamily
-\textstyleMotCl{\ \ constructeur} Liste de T( )}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} get ( pos : entier ) \textrm{[F0E0?]}
-T\ \ // retourne l’élément en position pos}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} set ( pos : entier, valeur : T )\ \ //
-modifie l’élément en position pos}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} taille( ) \textrm{[F0E0?]} entier\ \ //
-retourne la taille de la liste}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} ajouter( valeur :T )\ \ // ajoute une
-valeur en fin de liste}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} insérer( pos : entier, valeur : T )\ \ //
-insère un élément en position pos}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} supprimer( ) \textrm{[F0E0?]} T\ \ //
-supprime le dernier élément}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} supprimer( pos : entier ) \textrm{[F0E0?]}
-T\ \ // supprime l’élément en position pos}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} supprimer( valeur : T ) \textrm{[F0E0?]}
-booléen\ \ // supprime l’élément de valeur donnée}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} vider( )\ \ // vide la liste}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} estVide( ) \textrm{[F0E0?]} booléen\ \ //
-indique si la liste est vide}
-
-{\sffamily
-\textbf{\ \ méthode} existe( valeur
-{↓}{ :} T, pos
-{↑} : entier ) \textrm{[F0E0?]} booléen\ \ //
-recherche un élément}
-
-{\sffamily
-\textstyleMotCl{fin classe}}
-
-
-\bigskip
-
-{\sffamily
-\textbf{classe} FichierEntrée de T\ \ \ \ \textbf{classe} FichierSortie
-de T}
-
-{\sffamily\bfseries
-public :\ \ \ \ public :}
-
-{\sffamily
-\textstyleMotCl{\ \ constructeur} FichierEntrée de T(loc :
-chaine)\ \ \ \ \ \ \textstyleMotCl{constructeur} FichierSortie de T(
-loc : chaine )}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} ouvrir(
-)\ \ \ \ \ \ \textstyleMotCl{méthode} ouvrir( )}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} lire( ) \textrm{[F0E0?]}
-T\ \ \ \ \ \ \textstyleMotCl{méthode} écrire( enr : T )}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} EOF( ) \textrm{[F0E0?]}
-booléen\ \ \ \ \ \ \textbf{m}\textstyleMotCl{éthode} fermer( )}
-
-{\sffamily
-\textstyleMotCl{\ \ méthode} fermer( )\ \ \ \ \textstyleMotCl{fin
-classe}}
-
-{\sffamily
-\textstyleMotCl{fin classe}}
+le contenu et le code.
+
+
+\cadre{
+\begin{pseudo}
+\Class{Date}
+\Public
+	\ConstrSign{Date}{} \RComment Crée la date du jour
+	\ConstrSign{Date}{j, m, a : entiers} 
+	\MethodSign{getJour}{}{entier}
+	\MethodSign{getMois}{}{entier}
+	\MethodSign{getAnnée}{}{entier}
+	\MethodSign{setJour}{j : entier}{}
+	\MethodSign{setMois}{m : entier}{}
+	\MethodSign{setAnnée}{a : entier}{}
+	\MethodSign{égale}{autreDate : Date}{booléen}
+	\MethodSign{estAntérieure}{autreDate : Date}{booléen}
+\EndClass
+\end{pseudo}
+}
+
+\cadre{
+\begin{pseudo}
+\Class{Moment}
+\Public
+	\ConstrSign{Moment}{} \RComment Crée le moment courant
+	\ConstrSign{Moment}{h, m, s : entiers} 
+	\MethodSign{getHeure}{}{entier}
+	\MethodSign{getMinute}{}{entier}
+	\MethodSign{getSeconde}{}{entier}
+	\MethodSign{setHeure}{h : entier}{}
+	\MethodSign{setMinute}{m : entier}{}
+	\MethodSign{setSeconde}{s : entier}{}
+	\MethodSign{égal}{autreMoment : Moment}{booléen}
+	\MethodSign{estAntérieur}{autreMoment : Moment}{booléen}
+\EndClass
+\end{pseudo}
+}
+
+\cadre{
+\begin{pseudo}
+\Class{Durée}
+\Public
+	\ConstrSign{Durée}{secondes : entier} 
+	\ConstrSign{Durée}{h, m, s : entiers} 
+	\MethodSign{getJour}{}{entier}
+	\MethodSign{getHeure}{}{entier}
+	\MethodSign{getMinute}{}{entier}
+	\MethodSign{getSeconde}{}{entier}
+	\MethodSign{getTotalHeure}{}{entier}
+	\MethodSign{getTotalMinute}{}{entier}
+	\MethodSign{getTotalSeconde}{}{entier}
+	\MethodSign{ajouter}{autreDurée : Durée}{}
+	\MethodSign{soustraire}{autreDurée : Durée}{}
+	\MethodSign{égale}{autreDurée : Durée}{booléen}
+	\MethodSign{plusPetit}{autreDurée : Durée}{booléen}
+\EndClass
+\end{pseudo}
+}
+
+\cadre{
+\begin{pseudo}
+\Class{Liste de T}
+\Public
+	\ConstrSign{Liste de T}{} 
+	\MethodSign{get}{pos : entier}{T} \RComment retourne l’élément en position pos
+	\MethodSign{set}{pos : entier, valeur : T}{} \RComment modifie l’élément en position pos
+	\MethodSign{taille}{}{entier} \RComment retourne la taille de la liste
+	\MethodSign{ajouter}{valeur : T}{} \RComment ajoute une valeur en fin de liste
+	\MethodSign{insérer}{pos : entier, valeur : T}{} \RComment insère un élément en position pos
+	\MethodSign{supprimer}{}{} \RComment supprime le dernier élément
+	\MethodSign{supprimer}{pos : entier}{T} \RComment supprime l’élément en position pos
+	\MethodSign{supprimer}{valeur : T}{booléen} \RComment supprime l’élément de valeur donnée
+	\MethodSign{vider}{}{} \RComment vide la liste
+	\MethodSign{estVide}{}{booléen} \RComment indique si la liste est vide
+	\MethodSign{existe}{valeur\In : T, pos\Out : entier}{booléen} \RComment recherche un élément
+\EndClass
+\end{pseudo}
+}
