@@ -127,16 +127,18 @@
 
 % Met en évidence un ou des paragraphes
 % titre en gras + barre grise à gauche
-\newenvironment{Emphase}[1]{%
-	\smallskip%
-	\colorbox{gray!25}{\textbf{#1}}%
-	\smallskip%
-	%\vspace{-2mm}
-	%\subsection*{\normalsize\colorbox{gray!25}{\textbf{#1}}}
-	%\vspace{-2mm}
+\newenvironment{Emphase}[2][]{%
+	\begin{minipage}{\textwidth}%
+	\ifthenelse{\not\equal{#1}{}}{\marginicon{#1}}{}%
+	\begin{minipage}{\textwidth}
+	\vspace{2mm}
+	\section*{\normalsize\colorbox{gray!25}{\textbf{#2}}}
+	\vspace{-2mm}
 	\begin{leftbar}
 }{
 	\end{leftbar}
+	\end{minipage}
+	\end{minipage}
 	\smallskip
 }
 
@@ -156,9 +158,12 @@
 % Pour un exercice avec numérotation automatique
 \newenvironment{Exercice}[1]{%
 	\refstepcounter{exercicenum}%
-	\medskip
-	{\color{MidnightBlue}\Cadre{\theexercicenum}}\quad%
-	{\sffamily\bfseries#1}
-	\medskip\\
+	\vspace{-2mm}
+	\subsection*{\normalsize{\color{MidnightBlue}\Cadre{\theexercicenum}}\quad{\sffamily\bfseries#1}}
+	\vspace{-2mm}
+%	\medskip
+%	{\color{MidnightBlue}\Cadre{\theexercicenum}}\quad%
+%	{\sffamily\bfseries#1}
+%	\medskip\\
 	}{%
 	}

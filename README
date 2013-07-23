@@ -10,7 +10,7 @@ via l'outil writer2latex (w2l).
 Le document LaTeX esr découpé en plusieurs parties
 log1.tex			: Le document maitre
 	log1.sty		: Le style fait maison 
-	algoesi.sty		: style en préparation pour de beaux algorithmes
+	algoesi.sty		: style pour de beaux algorithmes
 	auto.sty		: Le style créé par l'outil de conversion
 	log1-debut.tex	: les premières pages (page de garde, toc)
 	log1-chapitre-*	: les chapitres
