@@ -11,8 +11,7 @@ Cette structure permet d'exécuter une partie de code ou
 une autre en fonction de la valeur de vérité d'une
 condition.
 
-\marginicon{definition}
-\begin{Emphase}{si – alors}
+\begin{Emphase}[definition]{si – alors}
 \cadre{
 \begin{pseudo}
 \If{condition}
@@ -37,8 +36,8 @@ Lorsque la condition est fausse, les instructions se trouvant entre
 \textstyleMotCl{alors} et \textstyleMotCl{fin si} sont tout simplement
 ignorées.
 
-\marginicon{definition}
-\begin{Emphase}{si – alors - sinon}
+
+\begin{Emphase}[definition]{si – alors - sinon}
 \cadre{
 \begin{pseudo}
 \If{condition}
@@ -52,8 +51,8 @@ ignorées.
 
 Dans cette structure, une et une seule des deux séquences est exécutée.
 
-\marginicon{exercice}
-\begin{Emphase}{Exercice résolu : Signe d'un nombre}
+
+\begin{Emphase}[exercice]{Exercice résolu : Signe d'un nombre}
 Écrire un algorithme qui dit si un nombre lu est positif (zéro inclus)
 ou strictement négatif.
 
@@ -74,8 +73,8 @@ ou strictement négatif.
 }
 \end{Emphase}
 
-\marginicon{exercice}
-\begin{Emphase}{Exercice : Signe d'un nombre (amélioré)}
+
+\begin{Emphase}[exercice]{Exercice : Signe d'un nombre (amélioré)}
 Écrire un algorithme qui dit si un nombre lu est positif, négatif ou
 nul.
 \end{Emphase}
@@ -113,8 +112,10 @@ sont disponibles. L'ordinateur choisit la branche à
 exécuter en fonction de la valeur d'une variable ou de
 la condition qui est vraie.
 
-\marginicon{definition}
-\begin{Emphase}{selon que (version avec listes de valeurs)}
+%
+\clearpage
+%
+\begin{Emphase}[definition]{selon que (version avec listes de valeurs)}
 \cadre{
 \begin{pseudo}
 \Switch{expression \K{vaut}}
@@ -162,8 +163,8 @@ d’écriture de plusieurs alternatives imbriquées. Elle est équivalente à
 
 Noter que le cas \textstyleMotCl{autres} est facultatif.
 
-\marginicon{definition}
-\begin{Emphase}{selon que (version avec conditions)}
+
+\begin{Emphase}[definition]{selon que (version avec conditions)}
 \cadre{
 \begin{pseudo}
 \Switch{}
@@ -216,6 +217,7 @@ dimanche) et qui affiche en clair ce jour de la semaine.
 
 \cadre{
 \begin{pseudo}
+\footnotesize
 \Module{jourSemaine}{}{}
 \Decl jour : entier
 \Read jour
@@ -233,8 +235,8 @@ dimanche) et qui affiche en clair ce jour de la semaine.
 }
 \end{Emphase}
 
-\marginicon{exercice}
-\begin{Emphase}{Exercice résolu : Nombre de jours (avec énumération)}
+
+\begin{Emphase}[exercice]{Exercice résolu : Nombre de jours (avec énumération)}
 
 Reprendre l'algorithme qui affiche le nombre de jours
 dans un mois en utilisant une énumération.
@@ -243,6 +245,7 @@ dans un mois en utilisant une énumération.
 
 \cadre{
 \begin{pseudo}
+\footnotesize
 \Stmt \K{énumération} Mois {JANVIER, FEVRIER, \dots, DECEMBRE}
 \Module{nbJours}{}{}
 	\Decl mois : Mois
@@ -262,15 +265,14 @@ dans un mois en utilisant une énumération.
 }
 \end{Emphase}
 
-\marginicon{exercice}
-\begin{Emphase}{Exercice : Signe d'un nombre (avec selon-que)}
+\begin{Emphase}[exercice]{Exercice : Signe d'un nombre (avec selon-que)}
 Réécrire l'algorithme donnant le signe
 d'un nombre (positif, négatif ou nul) en utilisant le
 «~selon-que~». Quelle version préférez-vous et pourquoi ?
 \end{Emphase}
 
-\marginicon{exercice}
-\begin{Emphase}{Exercice : Nombre de jours dans un mois}
+
+\begin{Emphase}[exercice]{Exercice : Nombre de jours dans un mois}
 Écrire un algorithme qui donne le nombre de jours dans un mois. Le mois
 est lu sous forme d'un entier (1 pour janvier, ...).
 On ne tient pas compte ici des années bissextiles; le mois de février

@@ -160,7 +160,7 @@ Lecture dans un fichier (ouvert en lecture) }
 
 \cadre{
 \begin{pseudo}
-	\Stmt \Read nomFichier ; nomVariable
+	\Read nomFichier ; nomVariable
 \end{pseudo}
 }
 
@@ -209,7 +209,7 @@ provoquent toutes l’interruption de l’algorithme :
 
 \cadre{
 \begin{pseudo}
-	\Stmt \Writef nomFichier ; nomVariable
+	\Writef nomFichier ; nomVariable
 \end{pseudo}
 }
 
@@ -255,16 +255,17 @@ fichier.
 
 \cadre{
 \begin{pseudo}
+\footnotesize
 	\Module{parcoursFichier}{}{}
 		\Decl nomFichier : fichier de T
 		\Decl enregistrement : T
 		
 		\Stmt \K{ouvrir} nomFichier (lecture)
-		\Stmt \Read nomFichier ; enregistrement
+		\Read nomFichier ; enregistrement
 		
 		\While{NON EOF(nomFichier)}
 			\LComment traitement de l’information contenue dans enregistrement
-			\Stmt \Read nomFichier ; enregistrement
+			\Read nomFichier ; enregistrement
 		\EndWhile
 		
 		\Stmt \K{fermer} nomFichier
@@ -282,6 +283,7 @@ d'un fichier (en lecture) dans un autre (en écriture)
 
 \cadre{
 \begin{pseudo}
+\footnotesize
 	\Module{copieFichier}{}{}
 		\Decl fichierIn : fichier de T
 		\Decl fichierOut : fichier de T

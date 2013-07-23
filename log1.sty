@@ -128,17 +128,12 @@
 % Met en évidence un ou des paragraphes
 % titre en gras + barre grise à gauche
 \newenvironment{Emphase}[2][]{%
-	\begin{minipage}{\textwidth}%
-	\ifthenelse{\not\equal{#1}{}}{\marginicon{#1}}{}%
-	\begin{minipage}{\textwidth}
-	\vspace{2mm}
-	\section*{\normalsize\colorbox{gray!25}{\textbf{#2}}}
-	\vspace{-2mm}
-	\begin{leftbar}
+	\section*{\ifthenelse{\not\equal{#1}{}}{\marginnote{\includegraphics[width=25px]{icon/#1}}[2pt]}{}\ovalbox{\normalsize\textbf{#2}}}
+	\vspace{-10mm}
+	{\color{gray}\par\hfill\rlap{\kern-0.5cm\rule{1cm}{0.4pt}\kern-0.2cm\rule[-0.8cm]{0.4pt}{1cm}}}%
+    \vskip-\baselineskip
 }{
-	\end{leftbar}
-	\end{minipage}
-	\end{minipage}
+	{\color{gray}\par\kern-0.8cm\hskip-0.25cm\rule{0.4pt}{1cm}\kern-0.2cm\rule[0.2cm]{1cm}{0.4pt}\par}
 	\smallskip
 }
 
@@ -161,9 +156,5 @@
 	\vspace{-2mm}
 	\subsection*{\normalsize{\color{MidnightBlue}\Cadre{\theexercicenum}}\quad{\sffamily\bfseries#1}}
 	\vspace{-2mm}
-%	\medskip
-%	{\color{MidnightBlue}\Cadre{\theexercicenum}}\quad%
-%	{\sffamily\bfseries#1}
-%	\medskip\\
 	}{%
 	}

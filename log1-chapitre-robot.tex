@@ -89,8 +89,7 @@
 	instructions élémentaires comprises par le robot ? Les instructions les
 	plus rudimentaires sont :
 	
-	\marginicon{definition}
-	\begin{Emphase}{Instructions élémentaires}
+	\begin{Emphase}[definition]{Instructions élémentaires}
 		\cadre{
 		\begin{pseudo}
 		\Stmt \K{Avancer}
@@ -105,8 +104,7 @@
 	Nous allons commencer par quelque chose de très simple : demandons au
 	robot de faire demi-tour.
 
-	\marginicon{exercice}
-	\begin{Emphase}{Exercice résolu : demi-tour}
+	\begin{Emphase}[exercice]{Exercice résolu : demi-tour}
 
 		«~Faire demi-tour~» n'est pas une instruction
 		élémentaire comprise par le robot. Il nous faut la découper en une
@@ -139,8 +137,8 @@
 	Tentons à présent un exercice un peu plus compliqué
 	(même si cela n'apparait pas tout de suite)
 
-	\marginicon{exercice}
-	\begin{Emphase}{Exercice : avancer de deux cases}
+	
+	\begin{Emphase}[exercice]{Exercice : avancer de deux cases}
 
 		\textbf{Conditions initiales}
 
@@ -169,8 +167,8 @@
 	que vous l'avez essayé et que le robot a effectivement
 	avancé de 2 cases. 
 
-	\marginicon{reflexion}
-	\begin{Emphase}{Test de la logique}
+	
+	\begin{Emphase}[reflexion]{Test de la logique}
 
 		Si vous avez trouvé la solution ci-dessus, exécutez-la de nombreuses
 		fois, vous finirez par tomber sur un cas où cela ne se passe pas bien.
@@ -240,8 +238,8 @@
 	donner deux séries d'instructions; il exécutera la
 	première série ou la deuxième en fonction du résultat du test.
 
-	\marginicon{definition}
-	\begin{Emphase}{Les tests}
+	
+	\begin{Emphase}[definition]{Les tests}
 		\cadre{
 		\begin{pseudo}
 		\Stmt \K{devantMur}
@@ -260,8 +258,8 @@
 		}
 	\end{Emphase}
 
-	\marginicon{definition}
-	\begin{Emphase}{Les alternatives}
+	
+	\begin{Emphase}[definition]{Les alternatives}
 		\cadre{
 		\begin{pseudo}
 		\If{condition}
@@ -308,8 +306,8 @@
 	Comment utiliser les alternatives pour améliorer notre programme ?
 	Commençons par un exemple simple.
 
-	\marginicon{exercice}
-	\begin{Emphase}{Exercice : avancer d'une case}
+	
+	\begin{Emphase}[exercice]{Exercice : avancer d'une case}
 
 		\textbf{Conditions initiales}
 
@@ -338,8 +336,8 @@
 	Si cet exemple est bien compris, 
 	essayez de résoudre par vous-même celui-ci :
 
-	\marginicon{exercice}
-	\begin{Emphase}{Exercice : avancer de deux cases (amélioré)}
+	
+	\begin{Emphase}[exercice]{Exercice : avancer de deux cases (amélioré)}
 
 		\textbf{Conditions initiales}
 
@@ -370,8 +368,8 @@
 	lui fournit également une condition qui lui permet de savoir
 	s'il doit continuer ou non cette tâche répétitive.
 
-	\marginicon{definition}
-	\begin{Emphase}{Les répétitions}
+	
+	\begin{Emphase}[definition]{Les répétitions}
 	\cadre{
 	\begin{pseudo}
 		\While{condition}
@@ -391,8 +389,8 @@
 	Nous avons à présent tout ce qu'il faut pour résoudre
 	notre problème.
 
-	\marginicon{exercice}
-	\begin{Emphase}{Exercice : avancer jusqu'au mur}
+	
+	\begin{Emphase}[exercice]{Exercice : avancer jusqu'au mur}
 
 		\textbf{Conditions initiales}
 
@@ -419,8 +417,8 @@
 	coordonnées de la case de départ ou encore le nombre de cases
 	parcourues avant d'arriver au mur.
 
-	\marginicon{definition}
-	\begin{Emphase}{Instructions élémentaires}
+	
+	\begin{Emphase}[definition]{Instructions élémentaires}
 		\cadre{
 		\begin{pseudo}
 		\Stmt \K{ajouterMarque} 
@@ -445,8 +443,8 @@
 	mais vous avez tout ce qu'il faut pour le résoudre :
 	courage !
 
-	\marginicon{exercice}
-	\begin{Emphase}{Exercice : avancer jusqu'au mur et revenir}
+	
+	\begin{Emphase}[exercice]{Exercice : avancer jusqu'au mur et revenir}
 
 		\textbf{Conditions initiales}
 
@@ -503,8 +501,8 @@
 	\includegraphics[width=\textwidth]{image/robot-procedure}
 	\end{center}
 
-	\marginicon{exercice}
-	\begin{Emphase}{Exercice : procédure pour le demi-tour}
+	
+	\begin{Emphase}[exercice]{Exercice : procédure pour le demi-tour}
 	
 		Écrire une procédure «~demi-tour~» et l'utiliser dans
 		le problème précédent (avancer jusqu'au mur et revenir
@@ -613,9 +611,7 @@ Quand peut-on affirmer qu'un algorithme est correct ?
 		\begin{Exercice}{Nord-ouest}
 			Le robot doit aller jusqu'au coin nord-ouest.
 		\end{Exercice}
-%
-\clearpage
-%
+
 		\begin{Exercice}{Nord-ouest et retour}
 			Le robot doit aller jusqu'au coin nord-ouest
 			puis revenir sur sa case de départ.
