@@ -126,7 +126,8 @@
 % ===================================================
 
 % Met en évidence un ou des paragraphes
-% titre en gras + barre grise à gauche
+% titre en gras encadré + croix
+% cf. http://tex.stackexchange.com/questions/33078/frame-with-only-crosses-in-two-opposite-corners
 \newenvironment{Emphase}[2][]{%
 	\section*{\ifthenelse{\not\equal{#1}{}}{\marginnote{\includegraphics[width=25px]{icon/#1}}[2pt]}{}\ovalbox{\normalsize\textbf{#2}}}
 	\vspace{-10mm}
