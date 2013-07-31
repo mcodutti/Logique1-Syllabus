@@ -303,186 +303,23 @@ vrac qui pourraient vous être utiles :
 	nombre total de mots de la grille est 37 (19 horizontaux et 18
 	verticaux) et le nombre de mots déjà complété par le joueur est 6.
 	
-			\begin{center}
-			\begin{minipage}{5.749cm}
-			\begin{center}
-			\tablehead{}
-			\begin{supertabular}{|m{0.37cm}|m{0.37cm}|m{0.37cm}|m{0.37cm}|m{0.37cm}|m{0.37cm}|m{0.37cm}|m{0.37cm}|m{0.37cm}|m{0.41900003cm}|}
-			\hline
-			~
-			 &
-			~
-			 &
-			\centering  A &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			\\\hline
-			~
-			 &
-			~
-			 &
-			\centering  L &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			\\\hline
-			\centering  L &
-			\centering  O &
-			\centering  G &
-			\centering  I &
-			\centering  Q &
-			\centering  U &
-			\centering  E &
-			~
-			 &
-			~
-			 &
-			~
-			\\\hline
-			~
-			 &
-			~
-			 &
-			\centering  O &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			\\\hline
-			~
-			 &
-			~
-			 &
-			\centering  R &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			\\\hline
-			\centering  E &
-			\centering  S &
-			\centering  I &
-			~
-			 &
-			\centering  O &
-			~
-			 &
-			\centering  H &
-			~
-			 &
-			~
-			 &
-			~
-			\\\hline
-			~
-			 &
-			~
-			 &
-			\centering  T &
-			\centering  A &
-			\centering  B &
-			\centering  L &
-			\centering  E &
-			\centering  A &
-			\centering  U &
-			~
-			\\\hline
-			~
-			 &
-			~
-			 &
-			\centering  H &
-			~
-			 &
-			\centering  J &
-			~
-			 &
-			\centering  B &
-			~
-			 &
-			~
-			 &
-			~
-			\\\hline
-			~
-			 &
-			~
-			 &
-			\centering  M &
-			~
-			 &
-			\centering  E &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			\\\hline
-			~
-			 &
-			~
-			 &
-			\centering  E &
-			~
-			 &
-			\centering  T &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			 &
-			~
-			\\\hline
-			\end{supertabular}
-			\end{center}
-			\end{minipage}
-			\end{center}
+	\begin{footnotesize}
+	\begin{center}
+	\begin{tabular}{|*{10}{>{\centering\arraybackslash}m{0.30cm}|}}
+	\hline
+	~ & ~ & A & ~ & ~ & ~ & \cellcolor{gray!50} & ~ & ~ & ~ \\\hline
+	~ & ~ & L & ~ & \cellcolor{gray!50} & ~ & ~ & ~ & ~ & ~ \\\hline
+	L & O & G & I & Q & U & E & \cellcolor{gray!50} & ~ & ~ \\\hline
+	~ & ~ & O & \cellcolor{gray!50} & ~ & ~ & ~ & \cellcolor{gray!50} & ~ & ~ \\\hline
+	\cellcolor{gray!50} & ~ & R & ~ & \cellcolor{gray!50} & ~ & \cellcolor{gray!50} & ~ & ~ & ~ \\\hline
+	E & S & I & \cellcolor{gray!50} & O & ~ & H & ~ & \cellcolor{gray!50} & ~ \\\hline
+	~ & \cellcolor{gray!50} & T & A & B & L & E & A & U & \cellcolor{gray!50} \\\hline
+	~ & ~ & H & \cellcolor{gray!50} & J & ~ & B & ~ & ~ & ~ \\\hline
+	~ & ~ & M & ~ & E & ~ & \cellcolor{gray!50} & ~ & ~ & ~ \\\hline
+	~ & ~ & E & ~ & T & ~ & ~ & ~ & ~ & ~ \\\hline
+	\end{tabular}
+	\end{center}
+	\end{footnotesize}
 
 \end{Exercice}
 
@@ -1062,897 +899,248 @@ donne le mois de l’année où le nombre de divorce a été le plus élevé.}
 
 \begin{Exercice}{Le jeu de la vie}
 
-{
-{Le }{\textbf{jeu de la
-vie}}{ a été inventé en 1970 par le
-mathématicien anglais John Horton Conway. Ce «~jeu~» ne demandant
-aucune interaction du «~joueur~» autre que le choix d’une configuration
-initiale est l’exemple le plus connu
-d’}{\textit{automate
-cellulaire}}{.}}
+	Le \textbf{jeu de la vie} a été inventé en 1970 
+	par le mathématicien anglais John Horton Conway. 
+	Ce «~jeu~» ne demandant aucune interaction du «~joueur~» 
+	autre que le choix d’une configuration initiale 
+	est l’exemple le plus connu d’\textit{automate cellulaire}.
 
-{
-{Il se déroule sur un quadrillage (en théorie
-infini) dont les carrés, appelés ici
-}{\textit{cellules}}{
-peuvent posséder deux états : ils sont soit
-}{\textit{vivants}}{
-soit
-}{\textit{morts}}{, ce
-qui sera respectivement représenté par un carré noir ou blanc. Chaque
-cellule interagit avec ses 8 cellules voisines (les 8 cellules
-adjacentes par un coté ou un sommet) et c’est le nombre de cellules
-avoisinantes qui détermine la naissance, la survie ou la mort d’une
-cellule d’un stade à l’autre du jeu, appelé
-}{\textit{génération}}{.}}
+	Il se déroule sur un quadrillage 
+	(en théorie infini) dont les carrés, 
+	appelés ici \textit{cellules}
+	peuvent posséder deux états : 
+	ils sont soit \textit{vivants} soit \textit{morts}, 
+	ce qui sera respectivement représenté par un carré noir ou blanc. 
+	Chaque cellule interagit avec ses 8 cellules voisines 
+	(les 8 cellules adjacentes par un coté ou un sommet) 
+	et c’est le nombre de cellules avoisinantes qui détermine la naissance, 
+	la survie ou la mort d’une cellule d’un stade à l’autre du jeu, 
+	appelé \textit{génération}.
 
-{
-Les règles de vie et de mort des cellules lors du passage d’une
-génération à une autre sont les suivantes :}
+	Les règles de vie et de mort des cellules lors du passage d’une
+	génération à une autre sont les suivantes :
 
-\begin{enumerate}
-\item {
-\ une cellule vivante ayant moins de 2 voisines disparait à la
-génération suivante (mort par isolation)}
-\item {
-\ une cellule vivante ayant plus de 3 voisines disparait à la génération
-suivante (mort par surpopulation)}
-\item {
-une cellule vivante ayant 2 ou 3 voisines survit à la génération
-suivante}
-\item {
-une cellule morte entourée de 3 voisines vivantes (re)nait à la
-génération suivante.}
-\end{enumerate}
-{
-Le jeu consiste donc simplement à observer l’évolution d’une
-configuration de départ lors des passages successifs d’une génération à
-la suivante. Certaines configurations sont statiques, d’autres
-cycliques, d’autres encore évoluent de manière imprévisible.}
+	\begin{enumerate}
+	\item 
+		une cellule vivante ayant moins de 2 voisines disparait à la
+		génération suivante (mort par isolation)
+	\item 
+		une cellule vivante ayant plus de 3 voisines disparait à la génération
+		suivante (mort par surpopulation)
+	\item
+		une cellule vivante ayant 2 ou 3 voisines survit à la génération
+		suivante
+	\item
+		une cellule morte entourée de 3 voisines vivantes (re)nait à la
+		génération suivante.
+	\end{enumerate}
 
-{\bfseries
-{Exemples}{ : }}
+	Le jeu consiste donc simplement à observer l’évolution d’une
+	configuration de départ lors des passages successifs d’une génération à
+	la suivante. Certaines configurations sont statiques, d’autres
+	cycliques, d’autres encore évoluent de manière imprévisible.
 
-{\sffamily
-{1) }{\textbf{Un
-oscillateur}}}
+	\subsection*{Exemples}
 
+	\subsubsection*{(1) Un oscillateur}
 
-\bigskip
+	La configuration de départ est constituée de 3 cellules voisines alignées horizontalement. 
+	Les deux cellules extrêmes vont disparaitre, car elles n’ont qu’une seule voisine. 
+	La cellule centrale va survivre car elle est entourée de 2 voisines. 
+	Les deux cellules mortes marquées d’une croix vont devenir vivantes, 
+	de sorte que la configuration à la 2\up{ème} génération 
+	sera constituée de 3 cellules alignées verticalement. 
+	Par symétrie, la 3\up{ème} génération sera identique à la première, 
+	et les générations suivantes formeront donc une situation
+	oscillante entre la position horizontale et verticale.
 
-{\sffamily
-{\textit{La configuration de départ est
-constituée de 3 cellules voisines alignées horizontalement. Les deux
-cellules extrêmes vont disparaitre, car elles n’ont qu’une seule
-voisine. La cellule centrale va survivre car elle est entourée de 2
-voisines. Les deux cellules mortes marquées d’une croix vont devenir
-vivantes, de sorte que la configuration à la
-2}}ème{\textit{ génération sera constituée de 3
-cellules alignées verticalement. Par symétrie, la
-3}}ème{\textit{ génération sera identique à la
-première, et les générations suivantes formeront donc une situation
-oscillante entre la position horizontale et verticale.}}}
+	\begin{footnotesize}
+	\sffamily
+	\begin{minipage}{0.3\textwidth}
+	\begin{center}
+	Configuration de départ\\
+	\begin{tabular}{|*{6}{>{\centering\arraybackslash}m{0.2cm}|}}
+	\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & ~ & X & ~ & ~ & ~ \\\hline
+	~ & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} & ~ & ~ \\\hline
+	~ & ~ & X & ~ & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	\end{tabular}
+	\end{center}
+	\end{minipage}
+	\begin{minipage}{0.3\textwidth}
+	\begin{center}
+	2\up{ème} génération\\
+	\begin{tabular}{|*{6}{>{\centering\arraybackslash}m{0.2cm}|}}
+	\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & ~ & \cellcolor{gray!50} & ~ & ~ & ~ \\\hline
+	~ & ~ & \cellcolor{gray!50} & ~ & ~ & ~ \\\hline
+	~ & ~ & \cellcolor{gray!50} & ~ & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	\end{tabular}
+	\end{center}
+	\end{minipage}
+	\begin{minipage}{0.3\textwidth}
+	\begin{center}
+	3\up{ème} génération\\
+	\begin{tabular}{|*{6}{>{\centering\arraybackslash}m{0.2cm}|}}
+	\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	\end{tabular}
+	\end{center}
+	\end{minipage}
+	\end{footnotesize}
 
-\begin{center}
-\begin{minipage}{10.793cm}
-\begin{center}
-\tablehead{}
-\begin{supertabular}{|m{0.301cm}|m{0.301cm}|m{0.357cm}|m{0.301cm}|m{0.301cm}|m{0.301cm}|m{0.301cm}|m{0.301cm}|m{0.301cm}|m{0.301cm}|m{0.301cm}|m{0.301cm}|m{0.301cm}|m{0.301cm}|m{0.301cm}|m{0.301cm}|m{0.301cm}|m{0.301cm}|m{0.301cm}|m{0.319cm}|}
-\multicolumn{6}{m{2.8619998cm}}{\sffamily
-configuration de départ} &
-\multicolumn{1}{m{0.301cm}}{~
-} &
-\multicolumn{6}{m{2.8059998cm}}{\sffamily
-{2}{\textsuperscript{ème}}{
-génération}} &
-\multicolumn{1}{m{0.301cm}}{~
-} &
-\multicolumn{6}{m{2.824cm}}{\sffamily
-{3}{\textsuperscript{ème}}{
-génération}}\\\hhline{------~------~------}
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{------~------~------}
-~
- &
-~
- &
-\sffamily x &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{------~------~------}
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{------~------~------}
-~
- &
-~
- &
-\sffamily x &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{------~------~------}
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{------~------~------}
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{------~------~------}
-\end{supertabular}
-\end{center}
+	\subsubsection*{(2) Le vaisseau spatial}
 
-\bigskip
-\end{minipage}
-\end{center}
+	Dans cet exemple, le motif de 5 cellules retrouve sa forme initiale
+	toutes les 4 générations, mais s’est déplacé d’une position en
+	direction diagonale.
 
-\bigskip
+	\begin{center}
+	\begin{footnotesize}
+	\sffamily
+	\begin{minipage}{0.3\textwidth}
+	\begin{center}
+	départ\\
+	\begin{tabular}{|*{6}{>{\centering\arraybackslash}m{0.2cm}|}}
+	\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & ~ & \cellcolor{gray!50} & ~ & ~ & ~ \\\hline
+	~ & ~ & ~ & \cellcolor{gray!50} & ~ & ~ \\\hline
+	~ & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	\end{tabular}
+	\end{center}
+	\end{minipage}
+	\begin{minipage}{0.3\textwidth}
+	\begin{center}
+	2\up{ème} génération\\
+	\begin{tabular}{|*{6}{>{\centering\arraybackslash}m{0.2cm}|}}
+	\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & \cellcolor{gray!50} & ~ & \cellcolor{gray!50} & ~ & ~ \\\hline
+	~ & ~ & \cellcolor{gray!50} & \cellcolor{gray!50} & ~ & ~ \\\hline
+	~ & ~ & \cellcolor{gray!50} & ~ & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	\end{tabular}
+	\end{center}
+	\end{minipage}
+	\begin{minipage}{0.3\textwidth}
+	\begin{center}
+	3\up{ème} génération\\
+	\begin{tabular}{|*{6}{>{\centering\arraybackslash}m{0.2cm}|}}
+	\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & ~ & ~ & \cellcolor{gray!50} & ~ & ~ \\\hline
+	~ & \cellcolor{gray!50} & ~ & \cellcolor{gray!50} & ~ & ~ \\\hline
+	~ & ~ & \cellcolor{gray!50} & \cellcolor{gray!50} & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	\end{tabular}
+	\end{center}
+	\end{minipage}
+	\end{footnotesize}
+	\end{center}
+	
+	\begin{center}
+	\begin{footnotesize}
+	\sffamily
+	\begin{minipage}{0.3\textwidth}
+	\begin{center}
+	4\up{ème} génération\\
+	\begin{tabular}{|*{6}{>{\centering\arraybackslash}m{0.2cm}|}}
+	\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & ~ & \cellcolor{gray!50} & ~ & ~ & ~ \\\hline
+	~ & ~ & ~ & \cellcolor{gray!50} & \cellcolor{gray!50} & ~ \\\hline
+	~ & ~ & \cellcolor{gray!50} & \cellcolor{gray!50} & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	\end{tabular}
+	\end{center}
+	\end{minipage}
+	\begin{minipage}{0.3\textwidth}
+	\begin{center}
+	5\up{ème} génération\\
+	\begin{tabular}{|*{6}{>{\centering\arraybackslash}m{0.2cm}|}}
+	\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	~ & ~ & ~ & \cellcolor{gray!50} & ~ & ~ \\\hline
+	~ & ~ & ~ & ~ & \cellcolor{gray!50} & ~ \\\hline
+	~ & ~ & \cellcolor{gray!50} & \cellcolor{gray!50} & \cellcolor{gray!50} & ~ \\\hline
+	~ & ~ & ~ & ~ & ~ & ~ \\\hline
+	\end{tabular}
+	\end{center}
+	\end{minipage}
+	\end{footnotesize}
+	\end{center}
+	
+	\bigskip
 
-{\sffamily
-{2) }{\textbf{Le
-vaisseau spatial}}}
+	On veut créer une classe permettant d’implémenter 
+	la représentation du jeu de la vie sur un tableau à deux
+	dimensions possédant un nombre $n$ de lignes et $m$ de colonnes, 
+	les éléments de ce tableau étant des booléens 
+	(vrai pour une cellule vivante et faux pour une cellule morte).
+	
+	On voudrait doter cette classe de méthodes permettant :
 
+	\begin{enumerate}
+	\item 
+		de créer une configuration initiale à partir
+		d’un fichier INIT de \textbf{Couples}
+		(structure constituée de deux entiers). 
+		Le premier enregistrement du fichier donnerait les dimensions du tableau,
+		et les suivants donneraient les coordonnées des cases vivantes de la
+		configuration initiale.
+		
+		Par exemple, les couples du fichier INIT pour le vaisseau spatial
+		seraient : (6,6), (2,3), (3,4), (4,2), (4,3), (4,4). Le premier couple
+		donne donc les dimensions du tableau (6 x 6) et les 5 suivants les
+		coordonnées des 5 cellules vivantes.
+	\item 
+		de connaitre le nombre de cellules vivantes de la génération en cours
+	\item
+		de passer à la génération suivante ; cette méthode remplace donc le
+		tableau représentant une génération par le tableau représentant la
+		génération suivante
+	\item
+		de connaitre le nombre de cellules qui seront
+		vivantes $k$ générations plus tard
+		($k$ étant un paramètre entier). 
+		Attention, cette méthode ne doit pas perdre la configuration de la génération courante.
+	\end{enumerate}
 
+	\subsubsection*{N.B. :}
 
-\begin{center}
-\begin{minipage}{6.705cm}
-\begin{flushleft}
-\tablehead{}
-\begin{supertabular}{|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}}
-\multicolumn{6}{m{2.5419998cm}}{\sffamily départ}
-&
-\multicolumn{1}{m{0.25699997cm}}{~
-} &
-\multicolumn{5}{m{2.0849998cm}}{\sffamily
-{2}{\textsuperscript{ème}}{
-gén.}} &
-\multicolumn{1}{m{0.25699997cm}}{~
-} &
-~
-\\\hhline{------~------~}
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{------~------~}
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{------~------~}
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{------~------~}
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{------~------~}
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{------~------~}
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
-\\\hhline{------~------~}
-\end{supertabular}
-\end{flushleft}
-
-\bigskip
-\end{minipage}
-\end{center}
-
-\bigskip
-
-{\sffamily\itshape
-Dans cet exemple, le motif de 5 cellules retrouve sa forme initiale
-toutes les 4 générations, mais s’est déplacé d’une position en
-direction diagonale.}
-
-
-\bigskip
-
-
-\bigskip
-
-
-
-\begin{center}
-\begin{minipage}{9.869cm}
-\begin{flushleft}
-\tablehead{}
-\begin{supertabular}{|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}|m{0.25699997cm}m{0.25699997cm}|}
-\multicolumn{6}{m{2.5419998cm}}{\sffamily
-{3}{\textsuperscript{ème}}{
-gén.}} &
-\multicolumn{1}{m{0.25699997cm}}{~
-} &
-\multicolumn{6}{m{2.5419998cm}}{\sffamily
-{4}{\textsuperscript{ème}}{
-gén.}} &
-\multicolumn{1}{m{0.25699997cm}}{~
-} &
-\multicolumn{6}{m{2.5419998cm}}{\sffamily
-{5}{\textsuperscript{ème}}{
-gén.}} &
-\multicolumn{1}{m{0.25699997cm}}{~
-}\\\hhline{------~------~-------}
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{0.714cm}|}{~
-}\\\hhline{------~------~-------}
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{0.714cm}|}{~
-}\\\hhline{------~------~-------}
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{0.714cm}|}{~
-}\\\hhline{------~------~-------}
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{0.714cm}|}{~
-}\\\hhline{------~------~-------}
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{0.714cm}|}{~
-}\\\hhline{------~------~-------}
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-~
- &
-\multicolumn{2}{m{0.714cm}|}{~
-}\\\hhline{------~------~-------}
-\end{supertabular}
-\end{flushleft}
-
-\bigskip
-\end{minipage}
-\end{center}
-
-\bigskip
-
-
-\bigskip
-
-
-\bigskip
-
-
-\bigskip
-
-{
-{On veut créer une classe permettant
-d’implémenter la représentation du jeu de la vie sur un tableau à deux
-dimensions possédant un nombre
-}{\textit{m}}{ de
-lignes et
-}{\textit{n}}{ de
-colonnes, les éléments de ce tableau étant des booléens
-(}{\textbf{vrai}}{ pour
-une cellule vivante et
-}{\textbf{faux}}{ pour
-une cellule morte).}}
-
-{
-On voudrait doter cette classe de méthodes permettant :}
-
-\begin{enumerate}
-\item {
-{de créer une configuration initiale à partir
-d’un fichier INIT de
-}{\textbf{Couples}}{
-(structure constituée de deux entiers). Le premier enregistrement du
-fichier }{donnerait les dimensions du tableau,
-et les suivants donneraient les coordonnées des cases vivantes de la
-configuration initiale.}}
-\end{enumerate}
-{
-Par exemple, les couples du fichier INIT pour le vaisseau spatial
-seraient : (6,6), (2,3), (3,4), (4,2), (4,3), (4,4). Le premier couple
-donne donc les dimensions du tableau (6 x 6) et les 5 suivants les
-coordonnées des 5 cellules vivantes.}
-
-\setcounter{saveenum}{\value{enumi}}
-\begin{enumerate}
-\setcounter{enumi}{\value{saveenum}}
-\item {
-de connaitre le nombre de cellules vivantes de la génération en cours}
-\item {
-de passer à la génération suivante ; cette méthode remplace donc le
-tableau représentant une génération par le tableau représentant la
-génération suivante}
-\item {
-{de connaitre le nombre de cellules qui seront
-vivantes }{\textit{n}}{
-générations plus tard
-(}{\textit{n}}{ étant
-un paramètre entier). Attention, cette méthode ne doit pas perdre la
-configuration de la génération courante.}}
-\end{enumerate}
-{
-N.B. :}
-
-\begin{liste}
-\item {
-Veillez à prendre vos dispositions pour ne pas recopier deux fois le
-code apparaissant dans les méthodes 3 et 4 !}
-\item {
-{Astuce pour simplifier votre
-algorithme}{ : on peut considérer que le bord
-du tableau est encore entouré d’une couche de cellules mortes – aucune
-d’elles ne prend donc naissance, même si un alignement de 3 cellules
-vivantes se trouve sur le bord du tableau visible. Il suffit pour cela
-d’utiliser un tableau indicé de 0 à m+1 pour les lignes et de 0 à n+1
-pour les colonnes, avec comme conséquence que le traitement des n x m
-cases centrales sera identique pour chaque case.}}
-\end{liste}
+	\begin{liste}
+	\item
+		Veillez à prendre vos dispositions pour ne pas recopier deux fois le
+		code apparaissant dans les méthodes 3 et 4 !
+	\item
+		Astuce pour simplifier votre algorithme : 
+		on peut considérer que le bord du tableau est encore entouré 
+		d’une couche de cellules mortes 
+		– aucune d’elles ne prend donc naissance, même si un alignement de 3 cellules
+		vivantes se trouve sur le bord du tableau visible. 
+		Il suffit pour cela d’utiliser un tableau indicé de $0$ à $n+1$ pour les lignes 
+		et de $0$ à $m+1$ pour les colonnes, 
+		avec comme conséquence que le traitement des $m$ x $n$ cases centrales 
+		sera identique pour chaque case.
+	\end{liste}
 
 \end{Exercice}
 
