@@ -53,23 +53,16 @@ Prenons l’exemple d’une structure Etudiant, contenant les champs
 matricule, nom, prénom, dateNais (date de naissance) et option (G, I ou
 R). Pour l’exemple, considérons une liste de 6 étudiants :
 
-{\ \ \textsf{29845\ \ \ \ Durant \ \ \ \ Kevin\ \ \ \ 20/01/94\ \ R}}
-
-{\sffamily 
-\ \ 30125\ \ \ \ Dupont \ \ \ \ Fabrice\ \ \ \ 13/06/94\ \ G}
-
-{\sffamily
-\ \ 30351\ \ \ \ Simon\ \ \ \ André\ \ \ \ 18/11/94\ \ G}
-
-{\sffamily
-\ \ 30597\ \ \ \ Dupont \ \ \ \ Charles\ \ \ \ 9/07/94\ \ \ \ G}
-
-{\sffamily
-\ \ 31857\ \ \ \ Guilmant \ \ Léon\ \ \ \ 17/03/96\ \ R}
-
-{\sffamily
-\ \ 31886\ \ \ \ Durant \ \ \ \ Sam\ \ \ \ 30/05/94\ \ I}
-
+\begin{center}
+\begin{tabular}{*{5}{>{\sffamily\arraybackslash}m{2cm}}}
+29845 & Durant & Kevin   & 20/01/94 & R\\
+30125 & Dupont & Fabrice & 13/06/94 & G\\
+30351 & Simon  & André   & 18/11/94 & G\\
+30597 & Dupont & Charles & 9/07/94  & G\\
+31857 & Guilmant & Léon  & 17/03/96 & R\\
+31886 & Durant & Sam     & 30/05/94 & I
+\end{tabular}
+\end{center}
 
 Cette liste est classée sur le numéro de matricule. C’est un classement
 simple réalisé sur un seul champ des données. Le numéro de matricule
@@ -82,24 +75,16 @@ champ, de façon naturelle sur celui des prénoms. Ceci donnerait le
 classement double suivant, en \textbf{majeur} sur le nom et en
 \textbf{mineur} sur le prénom :
 
-{\sffamily
-\ \ 30597\ \ \ \ Dupont \ \ \ \ Charles\ \ \ \ 9/07/94\ \ \ \ G}
-
-{\sffamily
-\ \ 30125\ \ \ \ Dupont \ \ \ \ Fabrice\ \ \ \ 13/06/94\ \ G}
-
-{\sffamily
-\ \ 29845\ \ \ \ Durant \ \ \ \ Kevin\ \ \ \ 20/01/94\ \ R}
-
-{\sffamily
-\ \ 31886\ \ \ \ Durant \ \ \ \ Sam\ \ \ \ 30/05/94\ \ I}
-
-{\sffamily
-\ \ 31857\ \ \ \ Guilmant \ \ Léon\ \ \ \ 17/03/96\ \ R}
-
-{\sffamily
-\ \ 30351\ \ \ \ Simon\ \ \ \ André\ \ \ \ 18/11/94\ \ G}
-
+\begin{center}
+\begin{tabular}{*{5}{>{\sffamily\arraybackslash}m{2cm}}}
+30597 & Dupont & Charles & 9/07/94  & G\\
+30125 & Dupont & Fabrice & 13/06/94 & G\\
+29845 & Durant & Kevin   & 20/01/94 & R\\
+31886 & Durant & Sam     & 30/05/94 & I\\
+31857 & Guilmant & Léon  & 17/03/96 & R\\
+30351 & Simon  & André   & 18/11/94 & G
+\end{tabular}
+\end{center}
 
 Supposons enfin que nous voulions grouper les étudiants par sections,
 nous devons alors classer prioritairement sur l’option, départager sur
@@ -107,23 +92,16 @@ les noms et ensuite sur les prénoms. C’est alors un classement triple :
 en \textbf{majeur} sur l’option, en \textbf{médian} sur le nom et en
 \textbf{mineur} sur le prénom : 
 
-{\sffamily
-\ \ 30597\ \ \ \ Dupont \ \ \ \ Charles\ \ \ \ 9/07/94\ \ \ \ G}
-
-{\sffamily
-\ \ 30125\ \ \ \ Dupont \ \ \ \ Fabrice\ \ \ \ 13/06/94\ \ G}
-
-{\sffamily
-\ \ 30351\ \ \ \ Simon\ \ \ \ André\ \ \ \ 18/11/94\ \ G}
-
-{\sffamily
-\ \ 31886\ \ \ \ Durant \ \ \ \ Sam\ \ \ \ 30/05/94\ \ I}
-
-{\sffamily
-\ \ 29845\ \ \ \ Durant \ \ \ \ Kevin\ \ \ \ 20/01/94\ \ R}
-
-{\sffamily
-\ \ 31857\ \ \ \ Guilmant \ \ Léon\ \ \ \ 17/03/96\ \ R}
+\begin{center}
+\begin{tabular}{*{5}{>{\sffamily\arraybackslash}m{2cm}}}
+30597 & Dupont & Charles & 9/07/94  & G\\
+30125 & Dupont & Fabrice & 13/06/94 & G\\
+30351 & Simon  & André   & 18/11/94 & G\\
+31886 & Durant & Sam     & 30/05/94 & I\\
+29845 & Durant & Kevin   & 20/01/94 & R\\
+31857 & Guilmant & Léon  & 17/03/96 & R
+\end{tabular}
+\end{center}
 
 Remarque : le classement sur l’option n’est pas forcément un classement
 alphabétique des trois lettres G, I, R ! Toute autre permutation de ces
