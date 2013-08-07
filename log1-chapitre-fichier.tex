@@ -5,10 +5,7 @@
 
 \marginicon{objectif}
 
-Dans ce chapitre, on voit comment manipuler les fichiers séquentiels via
-deux notations : une notation procédurale et une notation orienté objet
-(nous vous laisserons utiliser celle que vous préférez). 
-
+Dans ce chapitre, on voit comment manipuler les fichiers séquentiels.
 Ensuite, on généralise la notion de fichier à la notion de «~séquence~»
 qui peut englober aussi d'autres structures comme les
 listes et les tableaux.
@@ -68,11 +65,10 @@ deuxième année. Ce point est, lui aussi, abordé en fin de chapitre.
 
 
 %==========================================
-\section{Primitives – notation procédurale}
+\section{Primitives}
 %===========================================
 
-Voyons les notations utilisées pour manipuler des fichiers dans un
-contexte non orienté-objet.
+Voyons les notations utilisées pour manipuler des fichiers.
 
 {\sffamily\bfseries\upshape
 Déclaration d’un fichier séquentiel}
@@ -124,7 +120,7 @@ Pour ouvrir plusieurs fichiers en lecture :
 \cadre{
 \begin{pseudo}
 	\Stmt \K{ouvrir} nomFichier1, nomFichier2, nomFichier3 (\K{lecture})
-	\RComment ou \K{IN} ou\K{INPUT}
+	\RComment ou \K{IN} ou \K{INPUT}
 \end{pseudo}
 }
 
@@ -259,14 +255,17 @@ fichier.
 	\Module{parcoursFichier}{}{}
 		\Decl nomFichier : fichier de T
 		\Decl enregistrement : T
-		
+		\Empty
+
 		\Stmt \K{ouvrir} nomFichier (lecture)
 		\Read nomFichier ; enregistrement
+		\Empty
 		
 		\While{NON EOF(nomFichier)}
 			\LComment traitement de l’information contenue dans enregistrement
 			\Read nomFichier ; enregistrement
 		\EndWhile
+		\Empty
 		
 		\Stmt \K{fermer} nomFichier
 	\EndModule
@@ -288,14 +287,17 @@ d'un fichier (en lecture) dans un autre (en écriture)
 		\Decl fichierIn : fichier de T
 		\Decl fichierOut : fichier de T
 		\Decl enregistrement : T 
+		\Empty
 		
 		\Stmt \K{ouvrir} fichierIn (lecture), fichierOut (écriture)
 		\Read fichierIn ; enregistrement
+		\Empty
 		
 		\While{NON EOF(fichierIn)}
 			\Writef fichierOut ; enregistrement
 			\Read fichierIn ; enregistrement
 		\EndWhile
+		\Empty
 		
 		\Stmt \K{fermer} fichierIn, fichierOut
 	\EndModule
@@ -303,111 +305,111 @@ d'un fichier (en lecture) dans un autre (en écriture)
 }
 
 
-%============================================
-\section{Primitives – notation orienté objet}
-%============================================
+%%============================================
+%\section{Primitives – notation orienté objet}
+%%============================================
 
-On peut aussi définir une notation orienté objet pour la manipulation
-d'un fichier. On utilise une classe pour les fichiers
-séquentiels en entrée et une autre pour les fichiers séquentiels en
-sortie.
+%On peut aussi définir une notation orienté objet pour la manipulation
+%d'un fichier. On utilise une classe pour les fichiers
+%séquentiels en entrée et une autre pour les fichiers séquentiels en
+%sortie.
 
-\cadre{
-\begin{pseudo}
-	\Class{FichierEntrée de T}
-		\Public 
-			\ConstrSign{FichierEntrée de T}{localisation : chaine}
-			\MethodSign{ouvrir}{}{}
-			\MethodSign{lire}{}{T}
-			\MethodSign{EOF}{}{booléen}
-			\MethodSign{fermer}{}{}
-	\EndClass
-\end{pseudo}
-}
+%\cadre{
+%\begin{pseudo}
+	%\Class{FichierEntrée de T}
+		%\Public 
+			%\ConstrSign{FichierEntrée de T}{localisation : chaine}
+			%\MethodSign{ouvrir}{}{}
+			%\MethodSign{lire}{}{T}
+			%\MethodSign{EOF}{}{booléen}
+			%\MethodSign{fermer}{}{}
+	%\EndClass
+%\end{pseudo}
+%}
 
-\bigskip
+%\bigskip
 
 
-\cadre{
-\begin{pseudo}
-	\Class{FichierSortie de T}
-		\Public 
-			\ConstrSign{FichierSortie de T}{localisation : chaine}
-			\MethodSign{ouvrir}{}{}
-			\MethodSign{écrire}{enregistrement : T}{}
-			\MethodSign{fermer}{}{}
-	\EndClass
-\end{pseudo}
-}
+%\cadre{
+%\begin{pseudo}
+	%\Class{FichierSortie de T}
+		%\Public 
+			%\ConstrSign{FichierSortie de T}{localisation : chaine}
+			%\MethodSign{ouvrir}{}{}
+			%\MethodSign{écrire}{enregistrement : T}{}
+			%\MethodSign{fermer}{}{}
+	%\EndClass
+%\end{pseudo}
+%}
 
-Quelques remarques s'imposent :
+%Quelques remarques s'imposent :
 
-\begin{liste}
-	\item 
-		Dans la version non orienté objet, rien n'est dit sur
-		la localisation du fichier; on suppose que cela est déterminé par
-		ailleurs. Ici, nous supposerons que le lien est fait à la
-		construction.
-	\item 
-		En Java, l'appel au constructeur «~ouvre~» le fichier;
-		la tête de lecture/écriture est positionnée au début. Toutefois, pour
-		rester proche de la version non OO, nous supposerons en logique
-		qu'un appel à la méthode \textstyleCodeInsr{ouvrir()}
-		est nécessaire.
-\end{liste}
+%\begin{liste}
+	%\item 
+		%Dans la version non orienté objet, rien n'est dit sur
+		%la localisation du fichier; on suppose que cela est déterminé par
+		%ailleurs. Ici, nous supposerons que le lien est fait à la
+		%construction.
+	%\item 
+		%En Java, l'appel au constructeur «~ouvre~» le fichier;
+		%la tête de lecture/écriture est positionnée au début. Toutefois, pour
+		%rester proche de la version non OO, nous supposerons en logique
+		%qu'un appel à la méthode \textstyleCodeInsr{ouvrir()}
+		%est nécessaire.
+%\end{liste}
 
-{\sffamily\bfseries\scshape
-Exemple : parcours d'un fichier}
+%{\sffamily\bfseries\scshape
+%Exemple : parcours d'un fichier}
 
-Récrivons l'algorithme de base en notation orienté
-objet.
+%Récrivons l'algorithme de base en notation orienté
+%objet.
 
-\cadre{
-\begin{pseudo}
-	\Module{parcoursFichier}{}{}
-		\Decl fichier : FichierEntrée de T
-		\Decl enregistrement : T
+%\cadre{
+%\begin{pseudo}
+	%\Module{parcoursFichier}{}{}
+		%\Decl fichier : FichierEntrée de T
+		%\Decl enregistrement : T
 		
-		\Let fichier \Gets \K{nouveau} FichierEntrée de T(data.txt)
+		%\Let fichier \Gets \K{nouveau} FichierEntrée de T(data.txt)
 		
-		\Stmt fichier.ouvrir()
-		\Let enregistrement \Gets fichier.lire()
+		%\Stmt fichier.ouvrir()
+		%\Let enregistrement \Gets fichier.lire()
 		
-		\While{NON fichier.EOF()}
-			\LComment traitement de l’information contenue dans enregistrement
-			\Let enregistrement \Gets fichier.lire()
-		\EndWhile
+		%\While{NON fichier.EOF()}
+			%\LComment traitement de l’information contenue dans enregistrement
+			%\Let enregistrement \Gets fichier.lire()
+		%\EndWhile
 		
-		\Stmt fichier.fermer()
-	\EndModule
-\end{pseudo}
-}
+		%\Stmt fichier.fermer()
+	%\EndModule
+%\end{pseudo}
+%}
 
-Bien souvent, le fichier sera un paramètre du module. Dans ce cas, il
-aura déjà été créé. Illustrons ce point pour
-l'algorithme de copie de fichier.
+%Bien souvent, le fichier sera un paramètre du module. Dans ce cas, il
+%aura déjà été créé. Illustrons ce point pour
+%l'algorithme de copie de fichier.
 
 
-\cadre{
-\begin{pseudo}
-	\Module{copieFichier}{fichierIn : FichierEntrée de T, fichierOut : FichierSortie de T}{}
-		\Decl enregistrement : T
+%\cadre{
+%\begin{pseudo}
+	%\Module{copieFichier}{fichierIn : FichierEntrée de T, fichierOut : FichierSortie de T}{}
+		%\Decl enregistrement : T
 		
-		\Stmt fichierIn.ouvrir()
-		\Stmt fichierOut.ouvrir()
+		%\Stmt fichierIn.ouvrir()
+		%\Stmt fichierOut.ouvrir()
 		
-		\Let enregistrement \Gets fichierIn.lire()
+		%\Let enregistrement \Gets fichierIn.lire()
 		
-		\While{NON fichierIn.EOF()}
-			\Stmt fichierOut.écrire(enregistrement)
-			\Let enregistrement \Gets fichierIn.lire()
-		\EndWhile
+		%\While{NON fichierIn.EOF()}
+			%\Stmt fichierOut.écrire(enregistrement)
+			%\Let enregistrement \Gets fichierIn.lire()
+		%\EndWhile
 		
-		\Stmt fichierIn.fermer()
-		\Stmt fichierOut.fermer()
-	\EndModule
-\end{pseudo}
-}
+		%\Stmt fichierIn.fermer()
+		%\Stmt fichierOut.fermer()
+	%\EndModule
+%\end{pseudo}
+%}
 
 
 %==================================
@@ -453,29 +455,35 @@ peut être donnée dans le cas d'un fichier vide (cas 3)
 à moins que l'analyse n'ait
 clairement indiqué la réponse à donner dans ce cas (cas 2).
 Concentrons-nous sur le calcul de la moyenne d’une série de nombres
-contenus dans un fichier. Voici un premier exemple avec la notation OO
+contenus dans un fichier. Voici un premier exemple
 :
 
 
 \cadre{
 \begin{pseudo}
-	\Module{calculMoyenne}{fileNb : fichierEntrée de réels}{réel}
+\footnotesize
+	\Module{calculMoyenne}{fileNb : fichier de réels}{réel}
 		\Decl somme, nombre : réels
 		\Decl cpt : entier
+		\Empty
 		
-		\Stmt fileNb.ouvrir()
+		\Open fileNb (lecture)
+		\Empty
 		
 		\Let cpt \Gets 0
 		\Let somme \Gets 0
-		\Let nombre \Gets fileNb.lire()
+		\Readf fileNb; nombre
+		\Empty
 		
-		\While{NON fileNb.EOF()}
+		\While{NON EOF(fileNb)}
 			\Let cpt \Gets cpt + 1
 			\Let somme \Gets somme + nombre
-			\Let nombre \Gets fileNb.lire()
+			\Readf fileNb; nombre
 		\EndWhile
+		\Empty
 		
-		\Stmt fileNb.fermer()
+		\Close fileNb
+		\Empty
 		
 		\Return somme / cpt
 	\EndModule
@@ -491,28 +499,34 @@ Une possibilité consiste à discriminer ce cas en fin de traitement :
 
 \cadre{
 \begin{pseudo}
-	\Module{calculMoyenne}{fileNb : fichierEntrée de réels}{réel}
+\footnotesize
+	\Module{calculMoyenne}{fileNb : fichier de réels}{réel}
 		\Decl somme, nombre : réels
 		\Decl cpt : entier
+		\Empty
 		
-		\Stmt fileNb.ouvrir()
+		\Open fileNb (lecture)
+		\Empty
 		
 		\Let cpt \Gets 0
 		\Let somme \Gets 0
-		\Let nombre \Gets fileNb.lire()
+		\Readf fileNb; nombre
+		\Empty
 		
-		\While{NON fileNb.EOF()}
+		\While{NON EOF(fileNb)}
 			\Let cpt \Gets cpt + 1
 			\Let somme \Gets somme + nombre
-			\Let nombre \Gets fileNb.lire()
+			\Readf fileNb; nombre
 		\EndWhile
+		\Empty
 		
-		\Stmt fileNb.fermer()
+		\Close fileNb
+		\Empty
 		
 		\If{cpt>0}
 			\Return somme / cpt
 		\Else
-			\Stmt \K{erreur} Fichier vide
+			\Error "Fichier vide"
 		\EndIf
 	\EndModule
 \end{pseudo}
@@ -528,47 +542,56 @@ première lecture.
 
 \cadre{
 \begin{pseudo}
-	\Module{calculMoyenne}{fileNb : fichierEntrée de réels}{réel}
+\footnotesize
+	\Module{calculMoyenne}{fileNb : fichier de réels}{réel}
 		\Decl somme, nombre : réels
 		\Decl cpt : entier
+		\Empty
 		
-		\Stmt fileNb.ouvrir()
+		\Open fileNb (lecture)
+		\Empty
 		
 		\Let cpt \Gets 0
 		\Let somme \Gets 0
-		\Let nombre \Gets fileNb.lire()
+		\Readf fileNb; nombre
+		\Empty
 		
-		\If{fileNb.EOF()}
-			\Stmt fileNb.fermer()
-			\Stmt \K{erreur} Fichier vide
+		\If{EOF(fileNb)}
+			\Close fileNb
+			\Error "Fichier vide"
 		\EndIf
+		\Empty
 		
-		\While{NON fileNb.EOF()}
+		\While{NON EOF(fileNb)}
 			\Let cpt \Gets cpt + 1
 			\Let somme \Gets somme + nombre
-			\Let nombre \Gets fileNb.lire()
+			\Readf fileNb; nombre
 		\EndWhile
+		\Empty
 		
-		\Stmt fileNb.fermer()
+		\Close fileNb
+		\Empty
 		
 		\Return somme / cpt
 	\EndModule
 \end{pseudo}
 }
 
-\bigskip
-
 Écrivons l'algorithme général de traitement
 d'un fichier séquentiel :
 
 \cadre{
 \begin{pseudo}
+\footnotesize
 	\Module{algorithmeDeTraitementSurFichier}{}{}
+		\Empty
 	
 		\LComment déclaration des variables, fichiers,... éventuellement en paramètres
+		\Empty
 		
 		\Stmt \K{ouvrir} fichier (lecture)
 		\Read fichier ; élément
+		\Empty
 		
 		\If {EOF(fichier)}
 			\LComment traitement spécial fichier vide
@@ -580,6 +603,7 @@ d'un fichier séquentiel :
 			\EndWhile
 			\LComment clôture du traitement de l’ensemble
 		\EndIf
+		\Empty
 		
 		\Stmt \K{fermer} fichier
 	\EndModule

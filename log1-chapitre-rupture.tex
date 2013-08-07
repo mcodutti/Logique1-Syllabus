@@ -9,14 +9,14 @@ résoudre avec un même type d'algorithme :
 l'algorithme de rupture. À la fin du chapitre vous
 devrez être capable de :
 
-\begin{itemize}
+\begin{liste}
 	\item 
 		Détecter qu'on se trouve bien face à un problème qui
 		peut entrer dans le cadre d'un algorithme de rupture.
 	\item 
 		Adapter le squelette général de l'algorithme de rupture
 		au problème donné.
-\end{itemize}
+\end{liste}
 
 
 %===============================
@@ -229,15 +229,15 @@ parcours de base de ce fichier est le suivant :
 
 \cadre{
 \begin{pseudo}
-	\Module{RuptureNiveau}{Student\In: FichierEntrée d’Etudiant}{}
+	\Module{RuptureNiveau}{student\In: Fichier d’Etudiant}{}
 		\Decl enr : Etudiant
-		\Stmt Student.ouvrir()
-		\Let enr \Gets Student.lire()
-		\While{NON Student.EOF()}
+		\Open student (lecture)
+		\Readf student; enr
+		\While{NON EOF(student)}
 			\LComment traitement de l’enregistrement
-			\Let enr \Gets Student.lire()
+			\Readf student; enr
 		\EndWhile
-		\Stmt Student.fermer()
+		\Close student
 	\EndModule
 \end{pseudo}
 }
@@ -262,34 +262,36 @@ d’options. Voici une solution :
 
 \cadre{
 \begin{pseudo}
-	\Module{RuptureNiveau1}{Student\In : FichierEntrée d’Etudiant}{}
+	\Module{RuptureNiveau1}{student\In : Fichier d’Etudiant}{}
 		\LComment on suppose les données classées en majeur sur l’option
 		\Decl enr : Etudiant
 		\Decl saveOption : caractère
 		\Decl cpt : entier
+		\Empty
 		
-		\Stmt Student.ouvrir()
+		\Open student (lecture)
+		\Readf student; enr
+		\Empty		
 		
-		\Let enr \Gets Student.lire()
-		
-		\While{NON Student.EOF()}
+		\While{NON EOF(student)}
 			\Let saveOption \Gets enr.option
 			\Let cpt \Gets 0
-			\While{NON Student.EOF() ET saveOption = enr.option}
+			\While{NON EOF(student) ET saveOption = enr.option}
 				\LComment traitement de l’enregistrement
 				\Let cpt \Gets cpt + 1
-				\Let enr \Gets Student.lire()
+				\Readf student; enr
 			\EndWhile
 			\Write cpt, «~étudiant dans l’option~», saveOption
 		\EndWhile
-		\Stmt Student.fermer()
+		\Empty		
+
+		\Close student
 	\EndModule
 \end{pseudo}
 }
 
-Questions de réflexion :
-
-\begin{itemize}
+\begin{Emphase}[reflexion]{Questions de réflexion}
+\begin{enumerate}
 	\item 
 		pourquoi la condition \textstyleCodeInsr{NON Student.EOF()}
 		apparait-elle une 2\textsuperscript{ème} fois dans la boucle 
@@ -304,7 +306,8 @@ Questions de réflexion :
 	\item 
 		l’ordre des conditions apparaissant dans le 2\textsuperscript{ème} tant
 		que est-il important ?
-\end{itemize}
+\end{enumerate}
+\end{Emphase}
 
 L’algorithme ci-dessus se généralise facilement si on ajoute davantage
 de niveaux de rupture. Pour illustrer le «~niveau 2~», prenons encore
@@ -317,34 +320,37 @@ dateNais) :
 
 \cadre{
 \begin{pseudo}
-	\Module{RuptureNiveau2}{Student\In : FichierEntrée d’Etudiant}{}
+	\Module{RuptureNiveau2}{student\In : Fichier d’Etudiant}{}
 		\LComment on suppose les données classées en majeur sur l’option
 		\LComment et en mineur sur la date de naissance (ordre chronologique)
 		\Decl enr : Etudiant
 		\Decl saveOption : caractère
 		\Decl saveAnneNaissance : entier
 		\Decl cpt : entier
+		\Empty
+
+		\Open student (lecture)
+		\Readf student; enr
+		\Empty
 		
-		\Stmt Student.ouvrir()
-		
-		\Let enr \Gets Student.lire()
-		
-		\While{NON Student.EOF()}
+		\While{NON EOF(student)}
 			\Let saveOption \Gets enr.option
-			\While{NON Student.EOF() ET saveOption = enr.option}
+			\While{NON EOF(student) ET saveOption = enr.option}
 				\Let saveAnneNaissance \Gets enr.dateNais.getAnnée()
 				\Let cpt \Gets 0
-				\While{NON Student.EOF() ET saveOption = enr.option 
+				\While{NON EOF(student) ET saveOption = enr.option 
 				ET saveAnneNaissance = enr.dateNais.getAnnée()}
 					\LComment traitement de l’enregistrement
 					\Let cpt \Gets cpt + 1
-					\Let enr \Gets Student.lire()
+					\Readf student; enr
 				\EndWhile
 				\Write cpt, «~étudiant dans l’option~», saveOption, 
 				«~sont nés en~», saveAnneeNaissance
 			\EndWhile
 		\EndWhile
-		\Stmt Student.fermer()
+		\Empty
+
+		\Close student
 	\EndModule
 \end{pseudo}
 }
