@@ -316,15 +316,15 @@ dateNais) :
 			\While{NON EOF(student) ET saveOption = enr.option}
 				\Let saveAnneNaissance \Gets enr.dateNais.getAnnée()
 				\Let cpt \Gets 0
-				\While{NON EOF(student) ET saveOption = enr.option 
-				ET saveAnneNaissance = enr.dateNais.getAnnée()}
+				\Custom \algorithmicwhile\ NON EOF(student) ET saveOption = enr.option
+					\Suite ET saveAnneNaissance = enr.dateNais.getAnnée() \algorithmicdo
 					\LComment traitement de l’enregistrement
 					\Let cpt \Gets cpt + 1
 					\Readf student; enr
-				\EndWhile
+				\EndCustom \algorithmicend\ \algorithmicwhile
 				\Write cpt, «~étudiant dans l’option~», saveOption, 
-				«~sont nés en~», saveAnneeNaissance
-			\EndWhile
+					\Suite «~sont nés en~», saveAnneeNaissance
+			\EndWhile 
 		\EndWhile
 		\Empty
 

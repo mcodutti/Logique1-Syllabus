@@ -72,6 +72,9 @@
 \algdef{SE}[CLASS]{Class}{EndClass}[1]
   {\printandpush\algorithmicclass\ #1}
   {\popandprint\algorithmicend\ \algorithmicclass}%
+\algdef{SE}[CUSTOM]{Custom}{EndCustom}
+  {\printandpush}
+  {\popandprint}%
   
 % ==============================================================================
 % Fin du code pour les lignes verticales
@@ -148,6 +151,7 @@
 \newcommand{\LComment}{\Empty\hskip-1em\Comment}
 \newcommand{\RComment}{\hfill\Comment}
 \newcommand{\Indent}{\expandafter\hskip\algorithmicindent\relax}
+\newcommand{\Suite}{\Stmt\Indent\Indent}
 
 % =====
 \newenvironment{pseudo}{%
