@@ -405,7 +405,7 @@
 		\Module{afficherPair}{}{} 
 			\Decl i, n : entier
 			\Read n
-			\For{nb \K{de} 1 \K{à} n DIV 2} 
+			\For{i \K{de} 1 \K{à} n DIV 2} 
 				\Write 2 * i 
 			\EndFor
 		\EndModule
@@ -443,7 +443,7 @@
 
 	\subsection{Exemple 5 -- Somme de nombres}
 
-		Changeons de problème. On veut pouvoir calculer
+		Changeons de problème. On veut pouvoir calculer (et retourner)
 		la somme d'une série de nombres donnés par
 		l'utilisateur. Il faut d'abord se
 		demander comment l'utilisateur va pouvoir indiquer
@@ -456,7 +456,7 @@
 		
 		\cadre{
 		\begin{pseudo}
-		\Module{sommeNombres}{}{} \RComment Variante 1
+		\Module{sommeNombres}{}{entier} \RComment Variante 1
 			\Decl nbValeurs : entier \RComment nb de valeurs à additionner
 			\Decl valeur : entier \RComment un des termes de l'addition
 			\Decl somme : entier \RComment la somme
@@ -467,7 +467,7 @@
 				\Read valeur
 				\Let somme \Gets somme + valeur 
 			\EndFor
-			\Write somme
+			\Return somme
 		\EndModule
 		\end{pseudo}
 		}
@@ -484,7 +484,7 @@
 
 		\cadre{
 		\begin{pseudo}
-		\Module{sommeNombres}{}{} \RComment Variante 2a
+		\Module{sommeNombres}{}{entier} \RComment Variante 2a
 			\Decl encore : booléen \RComment est-ce qu'il reste encore une valeur à additionner ?
 			\Decl valeur : entier \RComment un des termes de l'addition
 			\Decl somme : entier \RComment la somme
@@ -494,7 +494,7 @@
 				\Let somme \Gets somme + valeur 
 				\Read encore
 			\Until{NON encore}
-			\Write somme
+			\Return somme
 		\EndModule
 		\end{pseudo}
 		}
@@ -507,7 +507,7 @@
 
 		\cadre{
 		\begin{pseudo}
-		\Module{sommeNombres}{}{} \RComment Variante 2b
+		\Module{sommeNombres}{}{entier} \RComment Variante 2b
 			\Decl encore : booléen \RComment est-ce qu'il reste encore une valeur à additionner ?
 			\Decl valeur : entier \RComment un des termes de l'addition
 			\Decl somme : entier \RComment la somme
@@ -518,7 +518,7 @@
 				\Let somme \Gets somme + valeur 
 				\Read encore
 			\EndWhile
-			\Write somme
+			\Return somme
 		\EndModule
 		\end{pseudo}
 		}
@@ -541,7 +541,7 @@
 
 		\cadre{
 		\begin{pseudo}
-		\Module{sommeNombres}{}{} \RComment Variante 3
+		\Module{sommeNombres}{}{entier} \RComment Variante 3
 			\Decl valeur : entier \RComment un des termes de l'addition
 			\Decl somme : entier \RComment la somme
 			\Let somme \Gets 0
@@ -550,7 +550,7 @@
 				\Let somme \Gets somme + valeur 
 				\Read valeur \RComment remarquer l'endroit où on lit une valeur.
 			\EndWhile
-			\Write somme
+			\Return somme
 		\EndModule
 		\end{pseudo}
 		}
