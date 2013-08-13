@@ -222,13 +222,13 @@ dimanche) et qui affiche en clair ce jour de la semaine.
 \Decl jour : entier
 \Read jour
 	\Switch{jour \K{vaut}}
-		\Stmt 1 : \K{écrire} "lundi"
-		\Stmt 2 : \K{écrire} "mardi"
-		\Stmt 3 : \K{écrire} "mercredi"
-		\Stmt 4 : \K{écrire} "jeudi"
-		\Stmt 5 : \K{écrire} "vendredi"
-		\Stmt 6 : \K{écrire} "samedi"
-		\Stmt 7 : \K{écrire} "dimanche"
+		\Stmt 1 : \K{afficher} "lundi"
+		\Stmt 2 : \K{afficher} "mardi"
+		\Stmt 3 : \K{afficher} "mercredi"
+		\Stmt 4 : \K{afficher} "jeudi"
+		\Stmt 5 : \K{afficher} "vendredi"
+		\Stmt 6 : \K{afficher} "samedi"
+		\Stmt 7 : \K{afficher} "dimanche"
 	\EndSwitch
 \EndModule
 \end{pseudo}
@@ -246,16 +246,17 @@ dans un mois en utilisant une énumération.
 \cadre{
 \begin{pseudo}
 \footnotesize
-\Stmt \K{énumération} Mois {JANVIER, FEVRIER, \dots, DECEMBRE}
+\Stmt \K{énumération} Mois \{JANVIER, FÉVRIER, MARS, AVRIL, MAI, JUIN, JUILLET, AOÛT, SEPTEMBRE, OCTOBRE, NOVEMBRE, DÉCEMBRE\}
 \Module{nbJours}{}{}
 	\Decl mois : Mois
 	\Read mois
+	\RComment on lira la valeur JANVIER ou FÉVRIER ou MARS ou ... ou DÉCEMBRE
 	\Switch{mois \K{vaut}}
-		\Case{JANVIER, MARS, MAI, JUILLET, AOUT, OCTOBRE, DECEMBRE}
+		\Case{JANVIER, MARS, MAI, JUILLET, AOÛT, OCTOBRE, DÉCEMBRE}
 			\Write 31
 		\Case{AVRIL, JUIN, SEPTEMBRE, NOVEMBRE}
 			\Write 30
-		\Case{FEVRIER} \Comment{on ne tient pas compte ici des années bissextiles}
+		\Case{FÉVRIER} \Comment{on ne tient pas compte ici des années bissextiles}
 			\Write 28
 		\Case{\K{autre}}
 			\Write "Mois invalide"
