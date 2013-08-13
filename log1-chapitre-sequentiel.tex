@@ -287,7 +287,7 @@
 			\textstyleCodeInsr{tintin}, \textstyleCodeInsr{bidule,
 			premierNumérateur}) et qui ne prête pas à confusion (par exemple ne pas
 			utiliser un des mots réservés du pseudo-code comme
-			\textstyleMotCl{\textsf{lire}}, \textstyleMotCl{\textsf{écrire}},
+			\textstyleMotCl{\textsf{lire}}, \textstyleMotCl{\textsf{afficher}},
 			\textstyleMotCl{\textsf{pour}}…). Il faut aussi tenir compte que les
 			langages de programmation imposent certaines limitations (parfois
 			différentes d'un langage à l'autre)
@@ -658,13 +658,13 @@
 		\item
 			Ce ne serait pas une erreur fondamentale de remplacer
 			\textstyleCodeInsr{lire} par \textstyleCodeInsr{recevoir} ou
-			\textstyleCodeInsr{écrire} par \textstyleCodeInsr{afficher}. Il n’y a
+			\textstyleCodeInsr{afficher} par \textstyleCodeInsr{écrire}. Il n’y a
 			évidemment pas de confusion possible à partir du moment où l’on sait
 			qu’il s’agit de primitives d’échange entre l’extérieur et l’ordinateur
 			exécutant la procédure, mais par principe, il est conseillé d’utiliser
 			une syntaxe commune et limitée à un petit nombre de mots clés.
 		\item
-			Comme pour l’affectation interne, on ne peut \textstyleCodeInsr{écrire}
+			Comme pour l’affectation interne, on ne peut \textstyleCodeInsr{afficher}
 			que des expressions dont les variables ont été affectées préalablement.
 		\end{liste}
 
@@ -807,20 +807,46 @@
 
 			Parfois, une variable ne peut prendre qu'un ensemble
 			fixe et fini de valeurs. Par exemple une variable représentant une
-			saison ne peut prendre que quatre valeurs (HIVER, PRINTEMPS, ETE,
+			saison ne peut prendre que quatre valeurs (HIVER, PRINTEMPS, ÉTÉ,
 			AUTOMNE). On va l'indiquer grâce à
 			l'énumération qui introduit un \textbf{nouveau type}
 			de donnée.
 
 			\cadre{
 			\begin{pseudo}
-			\Stmt \K{énumération} Saison \{ HIVER, PRINTEMPS, ETE, AUTOMNE \}
+			\Stmt \K{énumération} Saison \{ HIVER, PRINTEMPS, ÉTÉ, AUTOMNE \}
 			\end{pseudo}
 			}
 
 			Il y a deux avantages à cela : une indication claire des possibilités de
 			la variable lors de la déclaration et une lisibilité du code grâce à
 			l'utilisation des valeurs explicites.
+			
+			Par exemple, 
+			
+			\cadre{
+				\begin{pseudo}
+					\Module{particularitéSaisonnière}{}{}
+						\Decl uneSaison : Saison
+						\Read uneSaison
+						\RComment on lira la valeur HIVER ou PRINTEMPS ou ÉTÉ ou AUTOMNE
+						\If{uneSaison = HIVER}
+							\Write "il neige"
+						\Else
+							\If{uneSaison = PRINTEMPS}
+								\Write "les fleurs poussent"
+							\Else
+								\If{uneSaison = ÉTÉ}
+									\Write "le soleil brille"
+								\Else
+									\Write "les feuilles tombent"
+								\EndIf
+							\EndIf
+						\EndIf
+					\EndModule
+				\end{pseudo}
+			}
+
 
 			
 			\begin{Emphase}[exercice]{Exercice : Autres situations}
@@ -844,17 +870,20 @@
 
 			\subsubsection*{Lien avec les entiers}
 
-				Dans l'exemple ci dessus, on lit un Mois mais souvent
+				Dans l'exemple ci dessus, on lit une Saison mais souvent,
+				si on travaille avec les Mois par exemple,
 				on disposera plutôt d'un entier. Il faut pouvoir
 				convertir les valeurs. Chaque langage de programmation propose sa
 				propre technique; nous allons adopter la syntaxe suivante :
 
 				\cadre{
 				\begin{pseudo}
-				\Stmt Mois(3) 
-					\RComment donne l'énumération du mois numéro 3 (on commence à 1)
-				\Stmt Entier(mois)
-					\RComment donne l'entier associé à un mois					
+				\Stmt Saison(3) 
+					\RComment donne l'énumération de la saison numéro 3 (on commence à 1);
+					\LComment donne ÉTÉ dans notre exemple.
+				\Stmt Entier(uneSaison)
+					\RComment donne l'entier associé à une saison;
+					\LComment si on a lu HIVER comme valeur pour uneSaison, donne la valeur 1.
 				\end{pseudo}
 				}
 
