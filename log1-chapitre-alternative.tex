@@ -248,10 +248,10 @@ dans un mois en utilisant une énumération.
 \footnotesize
 \Stmt \K{énumération} Mois \{JANVIER, FÉVRIER, MARS, AVRIL, MAI, JUIN, JUILLET, AOÛT, SEPTEMBRE, OCTOBRE, NOVEMBRE, DÉCEMBRE\}
 \Module{nbJours}{}{}
-	\Decl mois : Mois
-	\Read mois
+	\Decl unMois : Mois
+	\Read unMois
 	\RComment on lira la valeur JANVIER ou FÉVRIER ou MARS ou ... ou DÉCEMBRE
-	\Switch{mois \K{vaut}}
+	\Switch{unMois \K{vaut}}
 		\Case{JANVIER, MARS, MAI, JUILLET, AOÛT, OCTOBRE, DÉCEMBRE}
 			\Write 31
 		\Case{AVRIL, JUIN, SEPTEMBRE, NOVEMBRE}
