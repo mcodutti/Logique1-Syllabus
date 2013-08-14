@@ -120,7 +120,7 @@
 	plus être lues) tandis que celles accompagnées d’une flèche vers le
 	haut (\textsf{↑}) sont des \textbf{paramètres de sortie} qui permettent
 	de renvoyer des résultats à l’\textbf{issue} de l’exécution du module
-	(résultats qui ne doivent donc plus être écrits). 
+	(résultats qui ne doivent donc plus être affichées). 
 
 	Par exemple, ceci donnerait pour le module \textstyleCodeInsr{max2} :
 
@@ -137,7 +137,7 @@
 	}
 
 	Notons que, sous cette forme, ce module est devenu «~inactif~», il ne
-	lit rien ni n’écrit rien, mais il est cependant prêt à être utilisé. Il
+	lit rien ni n'affiche rien, mais il est cependant prêt à être utilisé. Il
 	suffit pour cela de lui fournir les valeurs de \textstyleCodeInsr{a} et
 	\textstyleCodeInsr{b} (paramètres d’entrée) pour qu’il entre en action.
 	Une fois le maximum calculé, celui-ci est affecté à la variable
@@ -240,8 +240,8 @@
 	nom dans le code. Cette }{instruction est
 	reconnue comme telle car elle ne s’apparente pas aux autres types
 	}{d’instruction vus précédemment (primitives
-	}\textstyleMotCl{{lire}}{,
-	}\textstyleMotCl{{écrire}}{,
+	}\K{lire}{,
+	}\K{afficher}{,
 	affectation
 	(}\Gets{)}{,
 	structures }{de contrôle
@@ -1042,7 +1042,7 @@ d'un exemple complet.
 	\Stmt [6] a \Gets PGCD( a, b ) + PGCD( a, c )
 	\Stmt [7] a \Gets PGCD( a, PGCD( a, b ) )
 	\Stmt [8] \K{lire} PGCD( a, b )
-	\Stmt [9] \K{écrire} PGCD( a, b)
+	\Stmt [9] \K{afficher} PGCD( a, b)
 	\Stmt [10] PGCD(a, b ) \Gets c
 	\end{pseudo}
 	}
@@ -1131,6 +1131,8 @@ entières passées en paramètres.
 \begin{Exercice}{Valeur absolue}
 Écrire un module qui retourne la valeur absolue d'un
 réel reçu en paramètre.
+\\Quel est l'avantage pour un module de retourner la réponse 
+plutôt que de l'afficher ?
 \end{Exercice}
 
 \begin{Exercice}{Maximum de 4 nombres}
