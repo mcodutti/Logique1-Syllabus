@@ -698,3 +698,24 @@
 	\end{pseudo}
 	}
 \end{Exercice}
+
+\begin{Exercice}{Casser le chiffre de César}
+	Dans le chapitre sur les boucles, l'exercice \vref{ex:cesar}
+	vous a montré la technique de César pour chiffrer ses messages.
+	
+	Ce chiffre est en fait assez facile à casser grâce à l'analyse statistique.
+	En effet, dans un texte général, les lettres de l'alphabet ne sont pas
+	présentes avec la même fréquence. 
+	Par exemple, en français, la lettre 'E' est la plus présente\footnote{Il y a
+	évidemment des exceptions. cf. "La disparition" de Georges Perec.}
+	Ainsi, si on trouve un message chiffré 
+	(et si on sait que c'est du français et que c'est chiffré par le chiffre de César)
+	on peut tenter de le comprendre via une analyse statistique. 
+	On analyse la fréquence de chaque lettre du message et la plus fréquente remplace
+	probablement le 'E'. Par exemple, si la lettre la plus fréquente est le 'B',
+	il est probable que le message soit chiffré avec un décalage de 3.
+	
+	Écrivez un module qui reçoit un message chiffré par le chiffre de César
+	et retourne une valeur probable pour le déplacement utilisé pour le chiffrer.
+\end{Exercice}
+

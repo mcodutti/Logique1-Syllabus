@@ -523,6 +523,39 @@
 			}\textstyleCodeInsr{${\leq}$}\textstyleCodeInsr{
 			{\textquotedbl}java{\textquotedbl}})
 
+		\subsection{Manipuler les chaines}
+		
+			Pour les chaines, nous allons introduire quelques notations\footnote{
+			Le lecteur averti reconnaitra la notation modulaire}
+			qui vont nous permettre de les manipuler plus facilement.
+		
+			\begin{liste}
+			\item \textstyleCodeInsr{long(s)}
+				donne la taille (le nombre de caractères) de la chaine s
+			\item \textstyleCodeInsr{car(s,p)}
+				donne le caractère en position p (à partir de 1) dans la chaine s
+			\item \textstyleCodeInsr{concat(s1,s2)}
+				concatène les chaines s1 et s2 
+				(ex: \textstyleCodeInsr{concat("Bon","jour")} donne \textstyleCodeInsr{"Bonjour"})
+			\end{liste}
+
+		\subsection{Manipuler les caractères}
+
+			Introduisons également quelques notations pour les caractères.
+
+			\begin{liste}
+			\item \textstyleCodeInsr{chaine(car)} transforme le caractère \textstyleCodeInsr{car} en une chaine de taille 1
+			\item \textstyleCodeInsr{estLettre(car)} est vrai si le caractère \textstyleCodeInsr{car} est une lettre
+				(idem pour \textstyleCodeInsr{estChiffre}, 
+				\textstyleCodeInsr{estMajuscule}, 
+				\textstyleCodeInsr{estMinuscule})
+			\item \textstyleCodeInsr{majuscule(car)} donne la majuscule de la lettre \textstyleCodeInsr{car}
+				(idem pour \textstyleCodeInsr{minuscule})
+			\item \textstyleCodeInsr{numLettre(car)} donne la position de \textstyleCodeInsr{car} dans l'alphabet (ex: \textstyleCodeInsr{numLettre('E')} donne 5)
+			\item \textstyleCodeInsr{lettre(num)} l'inverse de la précédente (ex: \textstyleCodeInsr{lettre(4)} donne 'D')			
+			\end{liste}
+
+			 
 	\section{L’affectation d’une valeur à une variable}
 
 		Cette opération est probablement l’opération la plus importante. En
