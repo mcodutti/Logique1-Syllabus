@@ -730,10 +730,10 @@ non mais restez cohérents au sein d'un même exercice
 
 \begin{Exercice}{Algorithmes de base}
 	
-	Soit le fichier FILE dont chacun des enregistrements est de type
-	\textbf{Elément}. Cette structure contient les champs
-	\textstyleCodeInsr{numéro} (entier), \textstyleCodeInsr{clé} (chaine)
-	et \ \textstyleCodeInsr{info} (chaine). Écrire des modules réalisant
+	Soit un fichier dont chacun des enregistrements est de type
+	\code{Elément}. Cette structure contient les champs
+	\code{numéro} (entier), \code{clé} (chaine)
+	et \code{info} (chaine). Écrire des modules réalisant
 	les requêtes suivantes :
 
 	\begin{enumerate}[label=\alph*)]
@@ -741,7 +741,7 @@ non mais restez cohérents au sein d'un même exercice
 			détermination de la \textbf{longueur} du fichier (c’est-à-dire le nombre
 			d’enregistrements du fichier)
 		\item 
-			affichage de la valeur minimale du champ \textstyleCodeInsr{numéro}
+			affichage de la valeur minimale du champ \code{numéro}
 			parmi les enregistrements du fichier
 		\item
 			recherche du \textit{n}{}-ème enregistrement du fichier. L’entier
@@ -751,7 +751,7 @@ non mais restez cohérents au sein d'un même exercice
 		\item 
 			recherche d’un élément connaissant sa «~clé~», c’est-à-dire renvoi en
 			paramètre du premier enregistrement du fichier dont le champ
-			\textstyleCodeInsr{clé} est égal à la valeur \textstyleCodeInsr{val}
+			\code{clé} est égal à la valeur \code{val}
 			entrée en paramètre. On renverra également un paramètre booléen
 			traduisant l’existence ou non de l’élément cherché. 
 	\end{enumerate}
@@ -783,7 +783,7 @@ non mais restez cohérents au sein d'un même exercice
 
 \begin{Exercice}{Fichiers ordonnés}
 
-	Soit FILENUM un fichier d’entiers. Écrire un algorithme :
+	Soit \code{fileNum} un fichier d’entiers. Écrire un algorithme :
 
 	\begin{enumerate}[label=\alph*)]
 		\item 
@@ -795,20 +795,20 @@ non mais restez cohérents au sein d'un même exercice
 			de ces possibilités)
 	\end{enumerate}
 	
-	En supposant à présent FILENUM ordonné en mode croissant, écrire un
+	En supposant à présent \code{fileNum} ordonné en mode croissant, écrire un
 	algorithme :
 
 	\begin{enumerate}[label=\alph*)]
 		\item 
-			qui insère la valeur VAL dans une copie de ce fichier
+			qui insère la valeur \code{val} dans une copie de ce fichier
 		\item 
 			qui crée une copie du fichier débarrassé de ses redondances
 	\end{enumerate}
 \end{Exercice}
 
 \begin{Exercice}{Statistiques sur les profs}
-	Soit le fichier FILEPROFS des professeurs de la
-	HEB. La structure des enregistrements de ce fichier est {\textbf{Prof}}
+	Soit le fichier \code{fileProfs} des professeurs de la
+	HEB. La structure des enregistrements de ce fichier est {\code{Prof}}
 	
 	\cadre{
 	\begin{pseudo}
@@ -840,8 +840,8 @@ non mais restez cohérents au sein d'un même exercice
 	un examen de culture générale au cours duquel les questions étaient
 	rédigées indifféremment en français ou en néerlandais. Les
 	organisateurs du concours ont encodé tous les renseignements
-	nécessaires sur les candidates dans le fichier CANDI dont la structure
-	des enregistrements est de type \textbf{Candidat} 
+	nécessaires sur les candidates dans le fichier \code{fileCandidat} dont la structure
+	des enregistrements est de type \code{Candidat} 
 	
 	\cadre{
 	\begin{pseudo}
@@ -862,10 +862,10 @@ non mais restez cohérents au sein d'un même exercice
 
 	\begin{liste}
 		\item 
-			n’ayant pas atteint 18 ans au 1\textsuperscript{er} novembre de l’année
+			n’ayant pas atteint 18 ans au 1\up{er} novembre de l’année
 			en cours ;
 		\item 
-			ayant 30 ans ou plus au 1\textsuperscript{er} décembre de l’année en
+			ayant 30 ans ou plus au 1\up{er} décembre de l’année en
 			cours ;
 		\item 
 			de moins de 1m70 ou de plus de 1m90 ;
@@ -877,25 +877,25 @@ non mais restez cohérents au sein d'un même exercice
 			ayant obtenu moins de 70\% à l’examen de culture générale.
 	\end{liste}
 	
-	Écrire l’algorithme qui réalise, en une seule lecture du fichier CANDI,
-	cette sélection et qui écrit, sur le fichier SELECTION, les
+	Écrire l’algorithme qui réalise, en une seule lecture du fichier \code{fileCandidat},
+	cette sélection et qui écrit, sur le fichier \code{fileSélection}, les
 	enregistrements des candidates sélectionnées qui pourront continuer le
 	concours.
 \end{Exercice}
 
 \begin{Exercice}{Le top 10}
-	Soit le fichier FILENB dont les enregistrements
+	Soit le fichier \code{fileNb} dont les enregistrements
 	sont des nombres entiers. Écrire l’algorithme qui relève les dix plus
 	petites valeurs différentes dans ce fichier et les affiche.
 \end{Exercice}
 
 \begin{Exercice}{Le méli-mélo de cartes}
-	Soit le fichier CARTES dont chaque
-	enregistrement est une structure \textbf{Carte}
+	Soit le fichier \code{fileCartes} dont chaque
+	enregistrement est une structure \code{Carte}
 
 	\cadre{
 	\begin{pseudo}
-	\Struct{Candidat}
+	\Struct{Carte}
 	\Decl couleur : entier 
 		\RComment 0 pour PIQUE, 1 pour TREFLE, 2 pour CARREAU et 3 pour CŒUR
 	\Decl figure : entier 
@@ -915,8 +915,8 @@ non mais restez cohérents au sein d'un même exercice
 \begin{Exercice}{La partie d’échec}
 	Lorsqu’une partie d’échec est interrompue, on enregistre la position de
 	toutes les pièces sur l’échiquier de manière à pouvoir les replacer le
-	jour où la partie va reprendre. Le fichier de sauvegarde est JEU et
-	contient des enregistrements de type \textbf{Case}
+	jour où la partie va reprendre. Le fichier de sauvegarde est \code{jeu} et
+	contient des enregistrements de type \code{Case}
 	
 	\cadre{
 	\begin{pseudo}
@@ -936,12 +936,12 @@ non mais restez cohérents au sein d'un même exercice
 	\end{pseudo}
 	}
 
-	Écrire l’algorithme parcourant le fichier JEU et permettant :
+	Écrire l’algorithme parcourant le fichier \code{jeu} et permettant :
 
 	\begin{liste}
 		\item 
-			de replacer les pièces dans le tableau \textstyleCodeInsr{échiquier}
-			(tableau à deux dimensions 8 x 8 de \textbf{Pièce})
+			de replacer les pièces dans le tableau \code{échiquier}
+			(tableau à deux dimensions 8 x 8 de \code{Pièce})
 		\item 
 			de compter combien de cavaliers sont encore présents sur l’échiquier
 		\item 
@@ -951,8 +951,8 @@ non mais restez cohérents au sein d'un même exercice
 \end{Exercice}	
 
 \begin{Exercice}{Les stages}
-	Soit le tableau \textstyleCodeInsr{stages} de \textit{n} éléments de
-	structure \textbf{Stage}
+	Soit le tableau \code{stages} de \textit{n} éléments de
+	structure \code{Stage}
 
 	\cadre{
 	\begin{pseudo}
@@ -968,8 +968,8 @@ non mais restez cohérents au sein d'un même exercice
 	\end{pseudo}
 	}
 
-	Soit le fichier \textstyleCodeInsr{DEMANDES} des nouvelles demandes de
-	participation à un stage. La structure \textbf{Demande} d’un
+	Soit le fichier \code{demandes} des nouvelles demandes de
+	participation à un stage. La structure \code{Demande} d’un
 	enregistrement de ce fichier est la suivante :
 
 	\cadre{
@@ -984,20 +984,20 @@ non mais restez cohérents au sein d'un même exercice
 	}
 
 	Écrire un module qui reçoit en paramètres le tableau
-	\textstyleCodeInsr{stages}, le tableau \textstyleCodeInsr{messages} de
+	\code{stages}, le tableau \code{messages} de
 	6 éléments de type chaine (décrit ci-dessous) et le fichier
-	\textstyleCodeInsr{DEMANDES}. Ce module va traiter les nouvelles
-	demandes en mettant à jour le tableau \textstyleCodeInsr{stages} et en
-	créant un fichier \textstyleCodeInsr{REPONSES} de structure
-	d’enregistrement \textbf{InfoOut}. 
+	\code{demandes}. Ce module va traiter les nouvelles
+	demandes en mettant à jour le tableau \code{stages} et en
+	créant un fichier \code{réponses} de structure
+	d’enregistrement \code{InfoOut}. 
 
 	\bigskip
 
 	\cadre{
 	\begin{pseudo}
-	\Struct{Demande}
+	\Struct{InfoOut}
 	\Decl requête : Demande \RComment reprenant toutes les informations fournies par un candidat
-	\Decl msg : chaine \RComment le message à envoyer au demandeur, issu du tableau \textstyleCodeInsr{messages}
+	\Decl msg : chaine \RComment le message à envoyer au demandeur, issu du tableau \code{messages}
 	\Decl adresse : chaine
 	\Decl réfStage : chaine \RComment référence du stage pour lequel la demande est formulée
 	\EndStruct
@@ -1044,7 +1044,7 @@ non mais restez cohérents au sein d'un même exercice
 			détermine si la séquence est (strictement) croissante (erreur si la
 			séquence est vide)
 		\item 
-			détermine si la valeur \textstyleCodeInsr{val} (passée en paramètre) est
+			détermine si la valeur \code{val} (passée en paramètre) est
 			présente ou non.
 	\end{enumerate}
 \end{Exercice}
