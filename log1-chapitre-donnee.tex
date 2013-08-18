@@ -186,7 +186,7 @@ vrac qui pourraient vous être utiles :
 	qui se terminera par l’affichage du vainqueur ainsi que le nombre de
 	tours complets parcourus par ce vainqueur. 
 	Le lancement du dé sera simulé par l’appel du module sans argument
-	\textstyleCodeInsr{LancerDé( )} qui retourne
+	\textstyleCodeInsr{lancerDé( )} qui retourne
 	une valeur aléatoire entre 1 et 6.
 
 	\textbf{Aide} :	Définissez la classe
@@ -240,7 +240,7 @@ vrac qui pourraient vous être utiles :
 \begin{Exercice}{La course à la case 64}
 	Une piste de 65 cases (numérotées de 0 à 64)
 	doit être parcourue le plus rapidement possible par quatre joueurs. Un
-	tableau Joueur de quatre chaines contient les noms et prénoms des
+	tableau \code{joueurs} de quatre chaines contient les noms et prénoms des
 	joueurs. Au départ, tous les joueurs se trouvent sur la case de départ
 	(la case numéro 0). Les joueurs jouent à tour de rôle, dans l’ordre où
 	ils apparaissent dans le tableau Joueur. Le joueur qui gagne est celui
@@ -255,7 +255,7 @@ vrac qui pourraient vous être utiles :
 
 	Écrire un algorithme de simulation de ce jeu
 	qui fournit le nom du vainqueur. Comme dans l’exercice précédent, le
-	lancement du dé est simulé par le module \textstyleCodeInsr{LancerDé(
+	lancement du dé est simulé par le module \textstyleCodeInsr{lancerDé(
 	)} qui retourne une valeur aléatoire entre 1 et 6.
 
 	Imaginez la classe \textstyleCodeInsr{Course64} qui va permettre
@@ -264,9 +264,9 @@ vrac qui pourraient vous être utiles :
 \end{Exercice}
 
 \begin{Exercice}{Mots croisés}
-	Un tableau Grille à 10 lignes et 10 colonnes contient les données
+	Un tableau \code{grille} à 10 lignes et 10 colonnes contient les données
 	relatives à un jeu de mots croisés simulé sur ordinateur. Chaque
-	élément de ce tableau est une structure \textstyleCodeInsr{Case},
+	élément de ce tableau est une structure \code{Case},
 	contenant les deux champs :
 
 	\begin{liste}
@@ -332,7 +332,7 @@ vrac qui pourraient vous être utiles :
 	B indique le nombre de pions de la proposition qui sont corrects et
 	bien placés et le nombre de pions corrects mais mal placés. 
 
-	Supposons une énumération Couleur avec toutes les couleurs possibles de
+	Supposons une énumération \code{Couleur} avec toutes les couleurs possibles de
 	pion.
 
 	\begin{enumerate}[label=\alph*)]
@@ -641,18 +641,19 @@ vrac qui pourraient vous être utiles :
 \end{Exercice}
 
 \begin{Exercice}{Joyeux anniversaire}
-	Un fichier BIRTHDAY contient les données d’une série de personnes dans
+	Un fichier \code{birthday} contient les données d’une série de personnes dans
 	un ordre non déterminé. Chaque enregistrement du fichier (de type
-	structuré Personne) contient les champs :
+	structuré \code{Personne}) contient les champs :
 
-	\begin{liste}
-		\item 
-			nom\ \ \ \ \ \ chaine
-		\item 
-			prénom\ \ \ \ chaine
-		\item 
-			dateNais\ \ \ \ objet de la classe Date (date de naissance)
-	\end{liste}
+	\cadre{
+	\begin{pseudo}
+	\Struct{Personne}
+	\Decl nom : chaine 
+	\Decl prénom : chaine 
+	\Decl dateNais : Date 
+	\EndStruct
+	\end{pseudo}
+	}
 	
 	Écrire \textbf{un} algorithme qui, \textbf{après un seul parcours du
 	fichier}, affichera les résultats suivants :
@@ -670,7 +671,7 @@ vrac qui pourraient vous être utiles :
 	\end{enumerate}
 	
 	Il est permis d’utiliser pour résoudre cet exercice la méthode suivante
-	de la classe Date, sans devoir détailler son code :
+	de la classe \code{Date}, sans devoir détailler son code :
 
 	\cadre{
 	\begin{pseudo}
@@ -712,7 +713,9 @@ vrac qui pourraient vous être utiles :
 	%\begin{center}
 	%\tablehead{}
 	%\begin{supertabular}{m{3.626cm}m{10.175cm}}
-		\includegraphics[width=0.25\textwidth]{image/puissance4} \\
+		\begin{center}
+		\includegraphics[width=0.25\textwidth]{image/puissance4}
+		\end{center}
 	%	&
 		N.B. : sur ce dessin noir et
 		blanc, les jetons rouges apparaissent en noir, les jetons jaunes en
@@ -751,7 +754,7 @@ vrac qui pourraient vous être utiles :
 
 \begin{Exercice}{Cartographie}
 
-	Un fichier GEO contient les villes d’un pays avec
+	Un fichier \code{géo} contient les villes d’un pays avec
 	leurs coordonnées dans un plan
 	\textit{xy}. Chaque
 	enregistrement du fichier contient le nom d’une ville, la position
@@ -804,11 +807,11 @@ vrac qui pourraient vous être utiles :
 
 	\begin{enumerate}
 		\item 
-			une période de congé ne peut excéder 15 jours
+			une période de congé ne peut excéder 15 jours ;
 		\item 
-			un employé a droit à maximum 40 jours de congé par an
+			un employé a droit à maximum 40 jours de congé par an ;
 		\item 
-			à tout moment, 50\% des employés doivent être présents dans la firme
+			à tout moment, 50\% des employés doivent être présents dans la firme.
 	\end{enumerate}
 	
 	Écrire un algorithme qui détermine si cette demande peut être accordée
@@ -834,65 +837,54 @@ vrac qui pourraient vous être utiles :
 
 \begin{Exercice}{Ruptures et divorces}
 
-Une commune gère la liste de ses couples mariés dans un fichier \textbf{UNIONS}.
+Une commune gère la liste de ses couples mariés dans un fichier \code{unions}.
 Ce fichier est classé dans l’ordre chronologique des mariages 
-et chacun de ses enregistrements, de type \textbf{Union},
+et chacun de ses enregistrements, de type \code{Union},
 contient les champs suivants :
 
-\begin{liste}
-\item {
-DATE\ \ Date\ \ date du mariage}
-\item {
-NOM1\ \ chaine\ \ nom du premier conjoint}
-\item {
-NUM1\ \ chaine\ \ numéro de registre national du premier conjoint}
-\item {
-NOM2\ \ chaine\ \ nom du second conjoint}
-\item {
-NUM2\ \ chaine\ \ numéro de registre national du second conjoint}
-\end{liste}
-{
-{Les demandes de divorces durant une certaine
-année ont été stockées dans le fichier
-}{\textbf{DIVORCES}}{
-et ses enregistrements sont similaires à ceux de
-}{\textbf{UNIONS}}{ :
+	\cadre{
+	\begin{pseudo}
+	\Struct{Union}
+	\Decl date : Date \RComment date du mariage
+	\Decl nom1 : chaine \RComment nom du premier conjoint
+	\Decl num1 : entier \RComment numéro de registre national du premier conjoint
+	\Decl nom2 : chaine \RComment nom du second conjoint
+	\Decl num2 : entier \RComment numéro de registre national du second conjoint
+	\EndStruct
+	\end{pseudo}
+	}
+
+Les demandes de divorces durant une certaine année 
+ont été stockées dans le fichier \code{divorces}
+et ses enregistrements sont similaires à ceux de \code{unions} :
 chaque enregistrement contient également les noms et numéros des deux
 conjoints demandant la séparation, et la date est cette fois-ci celle
 du divorce. Le fichier est également classé par ordre chronologique des
 demandes de divorces. On peut supposer l’absence d’erreur, c’est-à-dire
-que tous les enregistrements de
-}{\textbf{DIVORCES}}{
-ont été répertoriés dans
-}{\textbf{UNIONS}}{.}}
+que tous les enregistrements de \code{divorces}
+ont été répertoriés dans \code{unions}.
 
-{
-{Sur base de ces données, écrire
-}{\textbf{un}}{
-algorithme qui :}}
+Sur base de ces données, écrire \textbf{un} algorithme qui :
 
 \begin{enumerate}
 \item {
-{crée un fichier
-}{\textbf{UNIONSUPDATE}}{
-résultant de la mise à jour du fichier
-}{\textbf{UNIONS}}{. Le
-nouveau fichier ne contiendra plus les couples divorcés renseignées
-dans le fichier des divorces. Pour comparer les contenus des fichiers
-en entrée, on se fiera uniquement aux numéros de registre national (car
-il est possible que des personnes différentes puissent avoir le même
-nom). Attention, il est possible que les noms des conjoints soient
-inversés dans
-}{\textbf{DIVORCES}}{
-par rapport à l’ordre de
-}{\textbf{UNIONS}}{.
-Veillez aussi à comparer les deux noms avant de supprimer un
-enregistrement de
-}{\textbf{UNIONS}}{,
-car on peut imaginer le cas de personnes se remariant et divorçant
-plusieurs fois dans l’année !}}
-\item {
-donne le mois de l’année où le nombre de divorce a été le plus élevé.}
+	crée un fichier \code{unionsUpdate} 
+	résultant de la mise à jour du fichier \code{unions}}. 
+	Le nouveau fichier ne contiendra plus les couples divorcés 
+	renseignées dans le fichier des divorces. 
+	Pour comparer les contenus des fichiers en entrée, 
+	on se fiera uniquement aux numéros de registre national 
+	(car il est possible que des personnes différentes 
+	puissent avoir le même nom). 
+	Attention, il est possible que les noms des conjoints 
+	soient inversés dans \code{divorces}
+	par rapport à l’ordre de \code{unions}.
+	Veillez aussi à comparer les deux noms 
+	avant de supprimer un enregistrement de \code{unions}
+	car on peut imaginer le cas de personnes se remariant et divorçant
+	plusieurs fois dans l’année !
+\item
+	donne le mois de l’année où le nombre de divorce a été le plus élevé.
 \end{enumerate}
 
 \end{Exercice}
@@ -1101,15 +1093,15 @@ donne le mois de l’année où le nombre de divorce a été le plus élevé.}
 	\begin{enumerate}
 	\item 
 		de créer une configuration initiale à partir
-		d’un fichier INIT de \textbf{Couples}
+		d’un fichier \code{init} de \code{Couples}
 		(structure constituée de deux entiers). 
 		Le premier enregistrement du fichier donnerait les dimensions du tableau,
 		et les suivants donneraient les coordonnées des cases vivantes de la
 		configuration initiale.
 		
-		Par exemple, les couples du fichier INIT pour le vaisseau spatial
+		Par exemple, les couples du fichier \code{init} pour le vaisseau spatial
 		seraient : (6,6), (2,3), (3,4), (4,2), (4,3), (4,4). Le premier couple
-		donne donc les dimensions du tableau (6 x 6) et les 5 suivants les
+		donne donc les dimensions du tableau (6~x~6) et les 5 suivants les
 		coordonnées des 5 cellules vivantes.
 	\item 
 		de connaitre le nombre de cellules vivantes de la génération en cours
@@ -1193,11 +1185,11 @@ message codé, et contient les champs suivant :}
 
 \begin{liste}
 \item {
-ID : «~indice début~» : entier}
+id : «~indice début~» : entier}
 \item {
-IF : «~indice fin~» : entier}
+if : «~indice fin~» : entier}
 \item {
-TABCAR : tableau[1 :20] de caractère qui représente un des mots du
+tabCar : tableau[1 à 20] de caractère qui représente un des mots du
 message codé. Ce mot se trouve entre les éléments d’indices ID et IF
 inclus, les autres éléments du tableau sont choisis aléatoirement.}
 \end{liste}
@@ -1207,40 +1199,26 @@ Pour fixer les idées, le premier enregistrement de SECRET pourrait être
 
 \begin{center}
 \begin{tabular}{*{1}{>{\small\centering\arraybackslash}m{0.30cm}}}
-ID \\
+id \\
 8\\
 \end{tabular}
 \begin{tabular}{*{1}{>{\small\centering\arraybackslash}m{0.30cm}}}
-IF\\
+if\\
 14\\
 \end{tabular}
 \begin{tabular}{*{20}{>{\small\centering\arraybackslash}m{0.30cm}}}
-TABCAR \\
+tabCar \\
 F & A & 3 & P & Y & ! & R & K & K & E & T & J & K & F & R & Z & ; & C & W & J \\
 \end{tabular}
 \end{center}
 
-{
 On retrouve en effet entre les éléments d’indice 8 et 14 le premier mot
 codé du message «~\textit{XKETJKF~}». On peut supposer que dans tous
-les cas, 1 ${\leq}$ ID ${\leq}$ IF ${\leq}$ 20.}
+les cas, 1 ${\leq}$ id ${\leq}$ if ${\leq}$ 20.
 
-{
 Connaissant le procédé de cryptage d’ESI 007, on vous demande d’écrire
 un algorithme qui \textbf{décrypte} un message crypté par cette
 méthode. Les lettres du message \textbf{décrypté} seront écrites une
-par une dans le fichier LISEZ\_MOI (en n’oubliant pas de séparer les
-mots par un caractère blanc !). Pour différencier les lettres des
-autres caractères (chiffres, ponctuation), vous pouvez utiliser la
-primitive}
-
-\cadre{
-\begin{pseudo}
-\ModuleSign{estLettre}{car\In : caractère}{booléen}
-\end{pseudo}
-}
-
-qui retourne \textbf{vrai} uniquement lorsque le caractère entré en
-paramètre est une des 26 lettres de l’alphabet.
-
+par une dans le fichier \code{lisezMoi} (en n’oubliant pas de séparer les
+mots par un caractère blanc !). 
 \end{Exercice}
