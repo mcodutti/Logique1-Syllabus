@@ -178,9 +178,9 @@ Exercices - attributs}
 		Quel(s) attribut(s) prendriez-vous pour représenter
 		(l'état d') une date ?
 	\item 
-		Et pour un étudiant ?
-	\item 
 		Et pour un dé à 6 faces ?
+	\item 
+		Et pour un article de magasin ?
 	\item 
 		Et pour une télévision ? \ (on peut en trouver vraiment beaucoup !)
 \end{enumerate}
@@ -266,7 +266,7 @@ Exercice - comportement}
 	\item {
 		Quel comportement voyez-vous pour un téléviseur ?}
 	\item {
-		Et pour un étudiant ?}
+		Et pour un article de magasin ?}
 \end{enumerate}
 
 \bigskip
@@ -288,6 +288,11 @@ Exemples}
 		un méthode qui incrémente le jour du mois en tenant compte
 		d'un possible basculement au mois suivant ou à
 		l'année suivante.}
+	\item {
+		Pour calculer le prix de vente hors tva d'un article, nous allons définir
+		un méthode qui, à partir du prix d'achat et du bénéfice,
+		calcule le prix de vente hors tva .}
+	
 	\item {
 		Pour permettre à un moment d'indiquer
 		s'il est le matin ou pas, nous allons définir une
@@ -334,6 +339,8 @@ Exercices - méthodes}
 		méthodes ?
 	\item 
 		Écrivez la méthode qui permet de passer au jour suivant.
+	\item 
+		Écrivez la méthode qui calcule le prix de vente hors tva d'un article.
 \end{enumerate}
 
 \bigskip
@@ -416,24 +423,25 @@ Exercices – paramètres du comportement}
 
 \begin{enumerate}
 	\item 
-		Prenons un objet représentant un étudiant. 
-		Nous supposerons qu'un étudiant a un \textit{numéro}, un 
-		\textit{nom}, une \textit{annéeÉtude}, est ou non 
-		\textit{doubleur} et est ou non \textit{ancien}
-		Donnez les entêtes des méthodes suivantes qui permettent de
+		Prenons un objet représentant un article de magasin. 
+		Nous supposerons qu'un article a un \textit{numéro}, un 
+		\textit{libellé}, un \textit{prixAchat}, un
+		\textit{pourcentageBénéfice}, un \textit{tauxTVA}
+		et une \textit{quantitéEnStock}
+		Donnez les \textbf{entêtes} des méthodes suivantes qui permettent de
 		:
 
 		\begin{liste}
 			\item 
-				demander le numéro d'un étudiant
+				calculer le bénéfice net en euros
 			\item 
-				demander si un étudiant est doubleur ou non
+				calculer le prix de vente hors tva
 			\item 
-				modifier l'année détude d'un étudiant
+				calculer le prix de vente tvac
 			\item 
-				faire réussir un étudiant
+				donner la quantité restant en stock
 			\item 
-				faire rater un étudiant.
+				dire si oui ou non l'article est en rupture de stock.
 		\end{liste}
 			
 	\item 
@@ -522,10 +530,11 @@ Accesseur et mutateur}
 {
 \textbf{Accesseur}\footnote{{On utilise aussi
 souvent le mot anglais «~getter~». }} : méthode dont le but est de
-fournir la valeur d'un attribut
+fournir la valeur d'un attribut.
+
 \textbf{Mutateur}\footnote{{On utilise aussi
 souvent le mot anglais «~setter~»}} : méthode dont le but est de
-modifier la valeur d'un attribut}}
+modifier la valeur d'un attribut.}}
 
 Par convention, ces méthodes sont nommées «~getNom~» et «~setNom~» où
 «~nom~» est le nom de
@@ -625,9 +634,10 @@ plus loin.
 {\sffamily\bfseries\scshape
 Exercice - encapsulation}
 
-Sans le savoir, vous avez déjà défini des accesseurs (lisez: accesseurs
-et mutateurs) pour le téléviseur. Lesquels ? En suivant la convention
-de nom pour les accesseurs, quels noms auraient-ils dû porter ?
+Sans le savoir, vous avez déjà défini des accesseurs et des 
+mutateurs pour le téléviseur. Lesquels ? En suivant la convention
+de nom pour les accesseurs et les mutateurs, 
+quels noms auraient-ils dû porter ?
 
 
 %====================================================
@@ -636,9 +646,9 @@ de nom pour les accesseurs, quels noms auraient-ils dû porter ?
 
 Pour pouvoir utiliser des objets nous allons devoir les définir
 (expliciter leur état et leur comportement). Cette définition est
-commune à tous les objets similaires. Par exemple toutes les dates ont
-un même comportement et un même type d'état (une
-journée du calendrier).
+commune à tous les objets similaires. Par exemple toutes les moments ont
+un même comportement et un même type d'état (des heures, des minutes et
+des secondes).
 
 \marginicon{definition}
 {\sffamily\bfseries\upshape
@@ -660,8 +670,9 @@ est à une classe ce qu'une variable est à un type.
 
 Comprenons bien que les objets d'une même classe ont le
 même «~type~» d'état mais pas le même état proprement
-dit. Deux objets «~date~» représentent tous deux une date du calendrier
-mais pas (forcement) la même ! Ils auront donc les mêmes attributs mais
+dit. Deux objets «~moment~» représentent tous deux un moment 
+(heures, minutes, secondes) de la journée mais pas (forcement) 
+le même ! Ils auront donc les mêmes attributs mais
 avec des valeurs différentes !
 
 {\sffamily\bfseries\upshape
@@ -740,6 +751,13 @@ classe.}
 \end{pseudo}
 }
 
+Dans ce cours de logique, nous adopterons le fait que 
+les noms des paramètres soient différents de ceux des 
+attributs (on préconisera d’imaginer des noms variés tels 
+que uneDate, maDate, laListe, autreObjet…), ce qui évitera 
+toute ambigüité (entre minuscule et majuscule par exemple).
+
+
 {
 \textbf{Exemple} : pour créer un moment de la journée}
 
@@ -817,6 +835,8 @@ Après la création (réf. 2), on a :
 \end{supertabular}
 \end{center}
 
+Remarquez qu'il n'y a pas d'initialisation par défaut.
+
 Après l'action des mutateurs (réf. 3), on a :
 
 \bigskip
@@ -852,11 +872,12 @@ Exercices – classe et instance}
 
 \begin{enumerate}
 	\item 
-		Pour les étudiants, vous avez déjà écrit les attributs et les en-têtes des
-		méthodes. Regroupez le tout en une classe \textstyleCodeInsr{Etudiant
-		en respectant les notations que vous venez de voir.}
+		Pour les articles, vous avez déjà écrit les attributs et les en-têtes des
+		méthodes. Regroupez le tout en une classe \textstyleCodeInsr{Article}
+		\textbf{en respectant les notations que vous venez de voir.}
 	\item 
-		Écrivez un module qui fait rater un étudiant puis qui le fait réussir.
+		Écrivez un module qui affiche le prix d'achat d'un article, son prix 
+		de vente hors tva et son prix de vente tvac.
 \end{enumerate}
 
 %==========================
@@ -882,12 +903,12 @@ objet lors de sa création effective. Elle porte le même nom que sa
 classe et ne retourne pas de valeur.}}
 
 Il peut y avoir plusieurs constructeurs ce qui permet
-d'offrir plusieurs possibilités
-d'indiquer l'état initial de
-l'objet.
+d'offrir plusieurs possibilités d'indiquer l'état initial de
+l'objet. Toutefois, nous limiterons au maximum le nombre 
+de constructeurs dans une classe.
 
-Remarquez que cela demande de définir plusieurs méthodes qui portent le
-même nom. C'est ce qu'on appelle la
+Remarquez que cela demande de définir plusieurs méthodes 
+qui portent le même nom. C'est ce qu'on appelle la
 \textbf{surcharge}. Des méthodes éponymes (c-à-d de même nom) doivent
 pouvoir être différenciées via leur signature (la liste de leurs
 paramètres).
@@ -930,12 +951,6 @@ Exemple}
 		\Stmt setHeure(uneHeure)
 		\Stmt setMinute(uneMinute)
 		\Stmt setSeconde(uneSeconde)
-		\LComment Il est courant en logique qu'un constructeur 
-		appelle les mutateurs 
-		\LComment afin d'effectuer les tests sans avoir à les
-		dupliquer.
-		\LComment Mais c'est une démarche que vous éviterez de
-		\LComment faire en Java par exemple.
 	\EndConstr
 	
 	\Empty
@@ -957,6 +972,17 @@ Exemple}
 
 \end{pseudo}
 }
+
+Contrairement à ce qu'on peut trouver dans certains langages, 
+comme Java par exemple, nous n'autorisons pas ici d'appel 
+d'un constructeur d'une classe A dans un autre constructeur 
+de cette même classe A.
+
+Par contre, il est courant en logique qu'un constructeur 
+appelle les mutateurs afin d'effectuer les tests sans 
+avoir à les dupliquer.
+Mais c'est une démarche que vous éviterez de faire dans
+des langages comme Java par exemple.
 
 Lorsqu'on instancie un objet, les paramètres
 qu'on donne déterminent le constructeur qui est
@@ -983,18 +1009,18 @@ ainsi assuré que tous les objets manipulés sont valides ce qui permet
 d’éviter les situations où une méthode fait des dégâts suite à la
 manipulation d’un objet invalide.
 
-\clearpage
 \marginicon{exercice}
 {\sffamily\bfseries\scshape
 Exercices - constructeur}
 
 \begin{enumerate}
 	\item {
-		Écrivez un ou des constructeur(s) pour un \textstyleCodeInsr{Etudiant}}
+		Écrivez un ou des constructeur(s) pour un \textstyleCodeInsr{Article}}
 	\item {
-		Adaptez le module écrit plus haut pour qu'il fasse rater 
-		puis réussir l'étudiant "Dupont, g12345, en 1ère année,
-		non doubleur".}
+		Adaptez le module écrit plus haut pour qu'il affiche le prix hors tva
+		puis le prix tvac de l'article n°105176, Lego réveil figurine policier, 
+		au prix d'achat de 20,00 euros, un bénéfice de 15\%, une tva de 21\% et 
+		dont il y a 10 exemplaires en stock.}
 \end{enumerate}
 
 
@@ -1267,7 +1293,9 @@ existe par défaut pour toutes les nouvelles classes.
 \begin{liste}
 	\item {
 		Un attribut privé n'est pas connu en dehors de la
-		classe. Précisons : un attribut privé n'est connu que
+		classe. 
+		
+		Précisons : un attribut privé n'est connu que
 		des instances de cette classe, ce qui signifie qu'il
 		est également connu par tous les autres objets de la même
 		classe.
@@ -1335,17 +1363,17 @@ pourrait aussi omettre les paramètres et types de retour.
 \tablehead{}
 \begin{supertabular}{|m{4.7050004cm}|}
 \hline
-\centering\arraybslash \bfseries Date\\\hline
-{ {}- jour : entier}
+\centering\arraybslash \bfseries Moment\\\hline
+{ {}- heure : entier}
 
-{ {}- mois : entier}
+{ {}- minute : entier}
 
- {}- année : entier\\\hline
-{ + getJour() \textsf{→} entier}
+ {}- seconde : entier\\\hline
+{ + getHeure() \textsf{→} entier}
 
-{ + setJour( j: entier )}
+{ + setHeure( uneHeure : entier )}
 
-{ + avancer1Jour()}
+{ + avancer1Heure()}
 
  ...\\\hline
 \end{supertabular}
@@ -1704,10 +1732,14 @@ et facilement adaptable.}
 \section{Exercices}
 %==================
 
-\begin{Exercice}{L'étudiant}
-	Reprenez la classe \textstyleCodeInsr{Etudiant} qui a servi
+\begin{Exercice}{Un article}
+	Reprenez la classe \textstyleCodeInsr{Article} qui a servi
 	d'exemple. Identifiez et écrivez les méthodes qui vous
 	paraissent utiles pour une telle classe.
+	
+	À partir de là, écrivez la classe Stock. Qu'utiliseriez-vous 
+	comme attributs et quelles méthodes vous paraissent utiles pour
+	cette classe ?
 \end{Exercice}
 
 \begin{Exercice}{Une personne}
@@ -1732,8 +1764,6 @@ et facilement adaptable.}
 	pertinents. Dans un module principal, créez une personne :
 
 	\begin{enumerate}[label=\alph*)]
-		\item 
-			sans argument
 		\item 
 			avec comme arguments {\textquotedbl}Durant{\textquotedbl} et
 			{\textquotedbl}Zébulon{\textquotedbl}
