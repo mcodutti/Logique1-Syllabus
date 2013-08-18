@@ -271,18 +271,17 @@ d’options. Voici une solution :
 \begin{Emphase}[reflexion]{Questions de réflexion}
 \begin{enumerate}
 	\item 
-		pourquoi la condition \textstyleCodeInsr{NON Student.EOF()}
-		apparait-elle une 2\textsuperscript{ème} fois dans la boucle 
+		pourquoi la condition \code{NON EOF(student)}
+		apparait-elle une 2\up{ème} fois dans la boucle 
 		intérieure ?
 	\item 
 		pourquoi l’ordre de lecture est-il dans la boucle centrale et pas
 		ailleurs ?
 	\item 
-		pourquoi dans l’instruction d’écriture, il apparait
-		\textstyleCodeInsr{saveOption} plutôt que
-		\textstyleCodeInsr{enr.option} ?
+		pourquoi dans l’instruction d'affichage, on trouve
+		\code{saveOption} plutôt que \code{enr.option} ?
 	\item 
-		l’ordre des conditions apparaissant dans le 2\textsuperscript{ème} tant
+		l’ordre des conditions apparaissant dans le 2\up{ème} tant
 		que est-il important ?
 \end{enumerate}
 \end{Emphase}
@@ -414,22 +413,25 @@ sous-groupe et à la fin de l’ensemble.
 \begin{Exercice}{La chasse au gaspi.}
 	À l’ESI, les quantités de feuilles imprimées et photocopiées par les
 	professeurs et les étudiants sont enregistrées dans un fichier
-	séquentiel IMPRESSION, créé au début de l’année en cours et mis à jour
+	séquentiel \code{impression}, créé au début de l’année en cours et mis à jour
 	tous les soirs. Le service technique désirant facturer les
 	«~exagérations~», a demandé à pouvoir utiliser ce fichier de manière à
 	établir des statistiques du nombre de feuilles imprimées par
 	utilisateur.
 
-	Le fichier IMPRESSION présente la structure d’enregistrement
-	\textbf{Enr} suivante :
-
-	{	login\ \ \ \ chaine\ \ \ \ login de l’utilisateur}
-
-	{	date\ \ \ \ \textbf{Date}\ \ \ \ date de la session d’impression }
-
-	{	moment\ \ \textbf{Moment}\ \ moment de la session}
-
-	{	nombre\ \ entier\ \ \ \ nombre de feuilles imprimées ou photocopiées}
+	Le fichier \code{impression} présente la structure d’enregistrement
+	\code{Enr} suivante :
+	
+	\cadre{
+	\begin{pseudo}
+	\Struct{Enr}
+	\Decl login : chaine \RComment login de l’utilisateur
+	\Decl date : Date \RComment date de la session d’impression
+	\Decl moment : Moment \RComment moment de la session
+	\Decl nombre : entier \RComment nombre de feuilles imprimées ou photocopiées
+	\EndStruct
+	\end{pseudo}
+	}
 
 	De plus, il est ordonné croissant en majeur sur le champ login et en
 	mineur sur la date. 
@@ -450,25 +452,25 @@ sous-groupe et à la fin de l’ensemble.
 \end{Exercice}
 	
 \begin{Exercice}{Statistiques de ventes de voitures.}
-	Un grand quotidien dispose d’un fichier VENTES regroupant les ventes de
+	Un grand quotidien dispose d’un fichier \code{ventes} regroupant les ventes de
 	voitures neuves pendant l’année dernière. Chaque demande
 	d’immatriculation a donné naissance à un enregistrement dans ce
 	fichier. Ce fichier est ordonné croissant en majeur sur la marque de
 	voiture et en mineur sur le type. Chaque enregistrement de ce fichier
-	(structure \textbf{Voiture}) comprend les champs suivants, chacun de
-	type chaine sauf le dernier :
+	est de type structure \code{Voiture}.
 
-	{	plaque : \ \ numéro d’immatriculation}
-
-	{	marque :\ \ marque de la voiture (par ex. «~Citroën~»)}
-
-	{	type : \ \ \ \ type de modèle dans la marque (par ex. «~Berlingo~»)}
-
-	{	nom : \ \ \ \ nom du propriétaire}
-
-	{	adresse : \ \ adresse du propriétaire}
-
-	{	date:\ \ \ \ date de la demande d’immatriculation}
+	\cadre{
+	\begin{pseudo}
+	\Struct{Voiture}
+	\Decl plaque : chaine \RComment numéro d’immatriculation
+	\Decl marque : chaine \RComment marque de la voiture (par ex. «~Citroën~»)
+	\Decl type : chaine \RComment marque de la voiture (par ex. «~Citroën~»)
+	\Decl nom : chaine \RComment nom du propriétaire
+	\Decl adresse : chaine \RComment dresse du propriétaire
+	\Decl date : Date \RComment date de la demande d’immatriculation
+	\EndStruct
+	\end{pseudo}
+	}
 
 	Afin de préparer le travail des journalistes, il a été demandé au
 	service informatique de préparer un affichage qui globalise les ventes
@@ -515,18 +517,20 @@ sous-groupe et à la fin de l’ensemble.
 	d’informatique. Elle souhaiterait récompenser le club qui aura été le
 	plus «~méritant~» durant cette période au point de vue de la
 	participation des mineurs. Chaque résultat individuel des participants
-	(y compris des majeurs) a été enregistré dans un fichier RESULTATS dont
-	la structure d’un enregistrement \textbf{Enr} est :
+	(y compris des majeurs) a été enregistré dans un fichier \code{résultats} dont
+	la structure d’un enregistrement \code{Enr} est :
 
-	{	nom: \ \ \ \ nom et prénom du participant}
-
-	{	âge: \ \ \ \ âge du participant au moment du concours (entier)}
-
-	{	référence: \ \ référence du club auquel appartient ce participant}
-
-	{	numéro: \ \ numéro du concours auquel il a participé}
-
-	{	résultat: \ \ résultat obtenu lors de ce concours (entier sur 100)}
+	\cadre{
+	\begin{pseudo}
+	\Struct{Enr}
+	\Decl nom : chaine \RComment nom et prénom du participant
+	\Decl âge : entier \RComment {âge du participant au moment du concours}
+	\Decl référence : chaine \RComment référence du club auquel appartient ce participant
+	\Decl numéro : entier \RComment numéro du concours auquel il a participé
+	\Decl résultat : entier \RComment résultat obtenu lors de ce concours (sur 100)
+	\EndStruct
+	\end{pseudo}
+	}
 
 	Sachant que ce fichier est ordonné en majeur sur le champ la référence
 	et en mineur sur le nom, on demande d’écrire l’algorithme qui écrit les
@@ -563,20 +567,22 @@ sous-groupe et à la fin de l’ensemble.
 
 \begin{Exercice}{Degré ou de force.}
 
-	Soit le fichier séquentiel RELEVES reprenant par site où un capteur de
+	Soit le fichier séquentiel \code{relevés} reprenant par site où un capteur de
 	température est installé, les relevés réalisés au cours des douze
 	derniers mois. Deux relevés sur un même site sont distanciés au minimum
 	de 30 secondes et au maximum de 10 minutes. Chaque enregistrement du
-	fichier a la structure \textbf{Relevé} suivante :
+	fichier a la structure \code{Relevé} suivante :
 
-	{	lieu: \ \ \ \ site d’un relevé (chaine)}
-
-	{	date:\ \ \ \ \textbf{Date}}
-
-	{	moment :\ \ \textbf{Moment}}
-
-	{	température :\ \ température relevée (réel)}
-
+	\cadre{
+	\begin{pseudo}
+	\Struct{Relevé}
+	\Decl lieu : chaine \RComment site d’un relevé
+	\Decl date : Date \RComment {âge du participant au moment du concours}
+	\Decl moment : Moment \RComment référence du club auquel appartient ce participant
+	\Decl température : réel \RComment température relevée
+	\EndStruct
+	\end{pseudo}
+	}
 	
 	Ce fichier est ordonné croissant en majeur sur le lieu, en médian sur la
 	date et en mineur sur le moment. On demande d’écrire l’algorithme
@@ -584,33 +590,35 @@ sous-groupe et à la fin de l’ensemble.
 
 	\begin{liste}
 		\item 
-			le fichier QUOTIDIEN qui reprend les températures maximale et minimale
+			le fichier \code{quotidien} qui reprend les températures maximale et minimale
 			pour chaque site et chaque jour ; la structure d’un enregistrement sera
 			LIEU – DATE – MAX – MIN
 		\item 
-			le fichier MENSUEL qui reprend par site les températures maximale et
+			le fichier \code{mensuel} qui reprend par site les températures maximale et
 			minimale par mois ainsi que le nombre moyen de relevés quotidiens ; la
 			structure d’un enregistrement sera LIEU – MOIS – MAX – MIN – NOMBRE
 	\end{liste}
 \end{Exercice}
 
 \begin{Exercice}{NBA actions.}
-	Soit le fichier RESULTATS reprenant l’ensemble des points marqués et
+	Soit le fichier \code{résultats} reprenant l’ensemble des points marqués et
 	concédés pour chaque équipe inscrite dans le championnat NBA de
 	basket-ball. Chaque rencontre jouée du championnat donne naissance à
 	deux enregistrements, un pour chacune des deux équipes disputant ce
-	match. La structure d’un enregistrement de type \textbf{Résultat} est
+	match. La structure d’un enregistrement de type \code{Résultat} est
 	:
-
-	{	équipe :\ \ chaine contenant le nom de l’équipe}
-
-	{	ptsGagnés : \ \ entier représentant les points marqués par l’équipe}
-
-	{	ptsPerdus : \ \ entier représentant les points encaissés par l’équipe}
-
-	{	date : \ \ \ \ Date donnant la date de la rencontre.}
-
 	
+	\cadre{
+	\begin{pseudo}
+	\Struct{Résultat}
+	\Decl équipe : chaine \RComment le nom de l’équipe
+	\Decl ptsGagnés : entier \RComment les points marqués par l’équipe
+	\Decl ptsPerdus : entier \RComment les points encaissés par l’équipe
+	\Decl date : Date \RComment la date de la rencontre
+	\EndStruct
+	\end{pseudo}
+	}
+
 	Le fichier est ordonné croissant en majeur sur l'équipe
 	et en mineur sur la date. On demande d’écrire l’algorithme qui
 	permet~d’écrire :
@@ -643,7 +651,7 @@ sous-groupe et à la fin de l’ensemble.
 			\end{liste}
 	\end{liste}
 	
-	De plus, cet algorithme enregistrera dans le fichier PLAYOFF le nom des
+	De plus, cet algorithme enregistrera dans le fichier \code{playoff} le nom des
 	équipes dont le pourcentage des victoires est au moins 50\% (une
 	victoire se traduit par un enregistrement dans lequel le nombre de
 	points marqués est supérieur au nombre de points encaissés, sachant que
@@ -654,19 +662,23 @@ sous-groupe et à la fin de l’ensemble.
 	Pendant le mois de novembre dernier, le fournisseur d’accès ESINET a
 	proposé aux internautes du monde entier d’élire le plus beau site du
 	\textit{World Wide Web}. Pour ce faire, ESINET a enregistré dans un
-	fichier séquentiel VOTES les votes émis par e-mail durant ce mois. Le
+	fichier séquentiel \code{votes} les votes émis par e-mail durant ce mois. Le
 	règlement du concours était simple: on pouvait voter pour plusieurs
 	sites, mais pas plusieurs fois pour le même site. Si cela arrivait
 	quand même, les votes émis à partir d’une même adresse e-mail pour un
-	même site étaient quand même enregistrés dans le fichier VOTES mais ne
+	même site étaient quand même enregistrés dans le fichier \code{votes} mais ne
 	pouvaient compter que pour \textbf{un seul} vote valable. Sachant que
 	ce fichier a la structure d’enregistrement suivante :
 
-	{	URL : \ \ adresse du site choisi (ex. : «~http://www.heb.be~»)}
-
-	{	email : adresse e-mail du votant}
-
-	{	jour : \ \ jour du vote (de 1 à 30)}
+	\cadre{
+	\begin{pseudo}
+	\Struct{Vote}
+	\Decl url : chaine \RComment adresse du site choisi (ex. : «~http://www.heb.be~»)
+	\Decl email : entier \RComment adresse e-mail du votant
+	\Decl jour : entier \RComment jour du vote (de 1 à 31)
+	\EndStruct
+	\end{pseudo}
+	}
 
 	et que le fichier est ordonné croissant en majeur sur
 	l'URL et en mineur sur l'email,
@@ -700,21 +712,23 @@ sous-groupe et à la fin de l’ensemble.
 	y a de médicaments différents prescrits. Les ordinateurs des pharmacies
 	sont reliés à un ordinateur central situé à Bruxelles. Ainsi, les
 	enregistrements créés au niveau des pharmacies sont directement ajoutés
-	à un fichier central annuel appelé PRESCRIPTIONS. 
+	à un fichier central annuel appelé \code{prescriptions}. 
 
-	La structure \textbf{Prescription} des enregistrements de ce fichier est
+	La structure \code{Prescription} des enregistrements de ce fichier est
 	la suivante :
 
-	{	date : \ \ \ \ date de la prescription}
+	\cadre{
+	\begin{pseudo}
+	\Struct{Prescription}
+	\Decl date : Date \RComment  date de la prescription
+	\Decl numéro : entier \RComment numéro d’agrément du médecin
+	\Decl nom : chaine \RComment nom du médicament
+	\Decl qté : entier \RComment quantité de ce médicament prescrite sur cette ordonnance
+	\EndStruct
+	\end{pseudo}
+	}
 
-	{	numéro : \ \ numéro d’agrément du médecin}
-
-	{	nom : \ \ \ \ nom du médicament}
-
-	{	qté : \ \ \ \ quantité de ce médicament prescrite sur cette ordonnance}
-
-	En supposant complété le fichier PRESCRIPTIONS pour l’année écoulée, on
-	demande d’écrire l’algorithme d’une application qui permettra d’après
+	On demande d’écrire l’algorithme d’une application qui permettra d’après
 	ce fichier de compter le nombre de médecins différents qui ont prescrit
 	des médicaments et d’afficher le résultat.
 
@@ -723,36 +737,42 @@ sous-groupe et à la fin de l’ensemble.
 \end{Exercice}
 
 \begin{Exercice}{Vos papiers, SVP !}
-	La gendarmerie a enregistré dans un fichier PV toutes les infractions au
+	La gendarmerie a enregistré dans un fichier \code{pv} toutes les infractions au
 	code de la route commises par des automobilistes ayant une plaque belge
-	durant l’année dernière. La structure \textbf{Infraction} d’un
+	durant l’année dernière. La structure \code{Infraction} d’un
 	enregistrement comprend les champs :
 
-	{	plaque :\ \ \ \ chaine}
-
-	{	date :\ \ \ \ \textbf{Date}}
-
-	{	moment :\ \ \textbf{Moment}}
-
-	{	type :\ \ chaine (code associé à une infraction donnée)}
+	\cadre{
+	\begin{pseudo}
+	\Struct{Infraction}
+	\Decl plaque : chaine
+	\Decl date : Date 
+	\Decl moment : Moment
+	\Decl type : chaine \RComment code associé à une infraction donnée
+	\EndStruct
+	\end{pseudo}
+	}
 
 	Le fichier est ordonné croissant sur la plaque et ne contient aucune
 	erreur. Il peut bien entendu y avoir dans le fichier plusieurs
 	enregistrements ayant le même numéro de plaque.
 
-	La gendarmerie dispose également d’une table \textstyleCodeInsr{amendes}
-	de 60 éléments structurés de type \textbf{Amende} comprenant les champs :
+	La gendarmerie dispose également d’une table \code{amendes}
+	de 60 éléments structurés de type \code{Amende} comprenant les champs :
 
-	{	type :\ \ \ \ comme ci-dessus}
+	\cadre{
+	\begin{pseudo}
+	\Struct{Amende}
+	\Decl type : chaine \RComment code associé à une infraction donnée
+	\Decl libellé : chaine \RComment l’infraction (ex. «~excès de vitesse~»)
+	\Decl montant : entier \RComment montant de l’amende en €
+	\EndStruct
+	\end{pseudo}
+	}
 
-	{	libellé :\ \ \ \ chaine décrivant l’infraction (ex. «~excès de vitesse~»,
-	etc.)}
-
-	{	montant :\ \ montant de l’amende en €.}
-
-	Écrire l’algorithme qui, en une seule lecture du fichier PV, calcule et
-	écrit dans le fichier STATS, pour chaque plaque apparaissant dans le
-	fichier PV, une ligne contenant le numéro de plaque du véhicule et le
+	Écrire l’algorithme qui, en une seule lecture du fichier \code{pv}, calcule et
+	écrit dans le fichier \code{stats}, pour chaque plaque apparaissant dans le
+	fichier \code{pv}, une ligne contenant le numéro de plaque du véhicule et le
 	montant total annuel des amendes pour cette plaque. On écrira également
 	en fin de traitement le total des montants des amendes pour toutes les
 	plaques recensées.
@@ -768,32 +788,24 @@ sous-groupe et à la fin de l’ensemble.
 	Le service informatique de l’aéroport enregistre sans arrêt les
 	atterrissages et décollages des avions ainsi que d’autres informations.
 	Pour l’année dernière, toutes les informations sont enregistrées dans
-	le fichier VOLS.
+	le fichier \code{vols}.
 
-	La structure \textbf{Vol} des enregistrements de ce fichier contient les
-	champs : 
+	La structure \code{Vol} des enregistrements de ce fichier est : 
 
-	{	numéro : \ \ chaine donnant le numéro du vol}
-
-	{	type  : \ \ \ \ une lettre : ‘A’ pour atterrissage ou ‘D’ pour
-	décollage}
-
-	{	lieu : \ \ \ \ chaine donnant le lieu d’où provient le vol (si le type
-	vaut ‘A’) }
-
-	{	\ \ \ \ ou le lieu de destination du vol (si le type vaut ‘D’)}
-
-	{	cie : \ \ \ \ compagnie aérienne propriétaire de l’avion}
-
-	{	nb : \ \ \ \ entier donnant le nombre de passagers (pouvant valoir 0)}
-
-	{	qté : \ \ \ \ réel donnant le tonnage de marchandise transportée }
-
-	{	\ \ \ \ (pouvant \ valoir 0)}
-
-	{	date : \ \ \ \ date du vol}
-
-	{	moment : \ \ heure de départ ou d’arrivée}
+	\cadre{
+	\begin{pseudo}
+	\Struct{Vol}
+	\Decl numéro : chaine \RComment le numéro du vol
+	\Decl type : caractère \RComment {‘A’ pour atterrissage ou ‘D’ pour décollage}
+	\Decl lieu : chaine \RComment le lieu d’où provient le vol (type ‘A’) ou sa destination (type ‘D’)
+	\Decl cie : chaine \RComment compagnie aérienne propriétaire de l’avion
+	\Decl nb : entier \RComment le nombre de passagers (pouvant valoir 0)
+	\Decl qté : réel \RComment le tonnage de marchandise transportée (pouvant valoir 0)
+	\Decl date : Date \RComment date du vol
+	\Decl moment : Moment \RComment heure de départ ou d’arrivée
+	\EndStruct
+	\end{pseudo}
+	}
 
 	Sachant que ce fichier est ordonné croissant en majeur sur la compagnie
 	et en mineur sur lieu, on vous demande d’établir l’algorithme qui
@@ -801,37 +813,35 @@ sous-groupe et à la fin de l’ensemble.
 
 	\begin{liste}
 		\item 
-			pour chaque compagnie apparaissant dans VOLS :
+			pour chaque compagnie apparaissant dans \code{vols} :
+		\begin{liste}
+			\item 
+				une ligne titre avec le nom de la compagnie,
+			\item 
+				pour chaque endroit desservi par cette compagnie, une seule ligne avec
+				son nom, le nombre d’atterrissages d’avions provenant de ce lieu, le
+				nombre de décollages d’avions vers ce lieu
+			\item 
+				en fin de chaque compagnie, le nom du lieu d’où provient le plus grand
+				nombre de passagers transportés par cette compagnie là, ainsi que le
+				nom du lieu vers lequel la plus grande quantité totale de marchandises
+				a été expédiée par cette compagnie là.
+		\end{liste}
 		\item 
-			une ligne titre avec le nom de la compagnie,
-		\item 
-			pour chaque endroit desservi par cette compagnie, une seule ligne avec
-			son nom, le nombre d’atterrissages d’avions provenant de ce lieu, le
-			nombre de décollages d’avions vers ce lieu
-		\item 
-			en fin de chaque compagnie, le nom du lieu d’où provient le plus grand
-			nombre de passagers transportés par cette compagnie là, ainsi que le
-			nom du lieu vers lequel la plus grande quantité totale de marchandises
-			a été expédiée par cette compagnie là.
-	\end{liste}
-
-	\bigskip
-
-	\liststyleListv
-	\begin{liste}
-		\item 
-			à la \ fin on écrira : 
-		\item 
-			la différence entre le nombre \textbf{total} de passagers arrivés et
-			partis ;
-		\item 
-			le nombre de compagnies trouvées dans le fichier ;
-		\item 
-			le nom de la compagnie ayant eu le moins de vols ;
-		\item 
-			la tranche horaire où le trafic en nombre de vols est le plus intense
-			(\textbf{N.B.:} on \ peut utiliser un tableau pour résoudre cette
-			requête)
+			à la fin on écrira : 
+		\begin{liste}
+			\item 
+				la différence entre le nombre \textbf{total} de passagers arrivés et
+				partis ;
+			\item 
+				le nombre de compagnies trouvées dans le fichier ;
+			\item 
+				le nom de la compagnie ayant eu le moins de vols ;
+			\item 
+				la tranche horaire où le trafic en nombre de vols est le plus intense
+				(\textbf{N.B.:} on peut utiliser un tableau pour résoudre cette
+				requête)
+		\end{liste}
 	\end{liste}
 	
 	\textbf{N.B.:} Pour toutes les recherches de maxima ou minima, on les
@@ -886,7 +896,7 @@ sous-groupe et à la fin de l’ensemble.
 	Soit une liste \textbf{ordonnée}
 	d'entiers avec des possibles redondances. Écrire un
 	module qui enlève les redondances de la liste. On vous demande de créer
-	une \textbf{nouvelle liste}(la liste de départ reste inchangée)
+	une \textbf{nouvelle liste} (la liste de départ reste inchangée)
 
 	Exemple : Si la liste est (1, 3, 3, 7, 8, 8, 8) le résultat est (1, 3, 7, 8).
 \end{Exercice}
