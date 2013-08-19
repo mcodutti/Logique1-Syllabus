@@ -53,13 +53,15 @@ Dans cette structure, une et une seule des deux séquences est exécutée.
 
 
 \begin{Emphase}[exercice]{Exercice résolu : Signe d'un nombre}
-Écrire un algorithme qui dit si un nombre lu est positif (zéro inclus)
+Écrire un algorithme qui affiche si un nombre lu est positif (zéro inclus)
 ou strictement négatif.
 
 {\bfseries Solution}
 
 \cadre{
 \begin{pseudo}
+\LComment Ce module lit un nombre et affiche si ce nombre est positif (zéro inclus)
+ou strictement négatif
 \Module{signeNombre}{}{}
 	\Decl nb : entier
 	\Read nb
@@ -119,14 +121,15 @@ la condition qui est vraie.
 \cadre{
 \begin{pseudo}
 \Switch{expression \K{vaut}}
-	\Case{liste\_1 de valeurs}
+	\Case{liste\_1 de valeurs séparées par des virgules }
 		\LComment instructions lorsque la valeur est dans liste\_1
-	\Case{liste\_2 de valeurs}
+	\Case{liste\_2 de valeurs séparées par des virgules }
 		\LComment instructions lorsque la valeur est dans liste\_2
-	\Case{\dots}
-	\Case{liste\_n de valeurs}
+		
+	\dots
+	\Case{liste\_n de valeurs séparées par des virgules }
 		\LComment instructions lorsque la valeur est dans liste\_n
-	\Case{\K{autres}}
+	\Case{\K{autres }}
 		\LComment instructions lorsque la valeur de l'expression
 		\LComment ne se trouve dans aucune des listes précédentes
 \EndSwitch
@@ -149,7 +152,8 @@ d’écriture de plusieurs alternatives imbriquées. Elle est équivalente à
 	\If{expression = une des valeurs de la liste\_2}
 		\LComment instructions lorsque la valeur est dans liste\_2
 	\Else
-		\LComment \dots
+		
+		\dots
 		\If{expression = une des valeurs de la liste\_n}
 			\LComment instructions lorsque la valeur est dans liste\_n
 		\Else
@@ -168,14 +172,15 @@ Noter que le cas \textstyleMotCl{autres} est facultatif.
 \cadre{
 \begin{pseudo}
 \Switch{}
-	\Case{condition\_1}
+	\Case{condition\_1 }
 		\LComment instructions lorsque la condition\_1 est vraie
-	\Case{condition\_2}
+	\Case{condition\_2 }
 		\LComment instructions lorsque la condition\_2 est vraie
-	\Case{\dots}
-	\Case{condition\_n}
+	
+	\dots
+	\Case{condition\_n }
 		\LComment instructions lorsque la condition\_n est vraie
-	\Case{\K{autres}}
+	\Case{\K{autres }}
 		\LComment instructions à exécuter quand aucune
 		\LComment des conditions précédentes n’est vérifiée
 \EndSwitch
@@ -196,7 +201,8 @@ simultanément. C'est équivalent à :
 	\If{condition\_2}
 		\LComment instructions lorsque la condition\_2 est vraie
 	\Else
-		\LComment \dots
+		
+		\dots
 		\If{condition\_n}
 			\LComment instructions lorsque la condition\_n est vraie
 		\Else
@@ -217,7 +223,7 @@ dimanche) et qui affiche en clair ce jour de la semaine.
 
 \cadre{
 \begin{pseudo}
-\footnotesize
+\LComment Ce module lit un nombre entre 1 et 7 et affiche en clair le jour de la semaine correspondant.
 \Module{jourSemaine}{}{}
 \Decl jour : entier
 \Read jour
@@ -247,6 +253,13 @@ dans un mois en utilisant une énumération.
 \begin{pseudo}
 \footnotesize
 \Stmt \K{énumération} Mois \{JANVIER, FÉVRIER, MARS, AVRIL, MAI, JUIN, JUILLET, AOÛT, SEPTEMBRE, OCTOBRE, NOVEMBRE, DÉCEMBRE\}
+\end{pseudo}
+}
+
+\cadre{
+\begin{pseudo}
+\LComment Ce module lit un Mois et affiche le nombre de jours correspondant
+\LComment (en ne tenant pas compte des années bissextiles).
 \Module{nbJours}{}{}
 	\Decl unMois : Mois
 	\Read unMois
@@ -483,7 +496,7 @@ mercredi » et \textit{n} = 10, l’algorithme indiquera « samedi ».}
 
 \begin{Exercice}{Les cosinus}
 Écrire un algorithme qui pour un entier \textit{n} donné, affiche la
-valeur de cos(\textit{n} $\pi $/2)
+valeur de $cos(n * \pi/2)$
 \end{Exercice}
 
 \begin{Exercice}{Le stationnement alternatif}
