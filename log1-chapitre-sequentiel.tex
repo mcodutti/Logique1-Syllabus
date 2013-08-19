@@ -65,7 +65,7 @@
 		de calculer ce dernier serait très fastidieuse à rédiger en langage
 		«~naturel~».
 
-		On comprend bien au travers de cet exemple que
+		On comprend bien, au travers de cet exemple, que
 		le français n’est pas adapté à la description de problèmes au contenu
 		mathématique ou scientifique. Le langage naturel est, en effet, un mode
 		de représentation trop riche des algorithmes. Il faut comprendre par
@@ -184,9 +184,9 @@
 			exemple ceux qui apparaissent sur un clavier : ‘a’, ‘1’, ‘\#’, etc…)\\
 			\raggedleft  \textstyleMotCl{chaine} &
 			{ pour les variables contenant plusieurs
-			caractères ou aucun}
-			
-			 (la chaine vide)\\
+			caractères ou aucun (la chaine vide)}
+			(par exemple : "Bonjour", "Bonjour le monde", "a", "", etc.)
+			\\
 			\raggedleft  \textstyleMotCl{booléen} &
 			 les variables de ce type ne peuvent valoir que
 			\textbf{vrai} ou \textbf{faux}\\
@@ -422,6 +422,34 @@
 			fonctions mathématiques sous leur forme la plus courante dans la
 			plupart des langages de programmation (exemples :
 			\textstyleCodeInsr{sin(x), tan(x), log(2*x), exp(a-b)}, ...)
+			
+		
+		\subsection{Opérateurs de comparaison}
+	
+			Ces opérateurs agissent généralement sur des variables numériques ou des
+			chaines et donnent un résultat booléen.
+	
+			\begin{center}
+			\tablehead{}
+			\begin{supertabular}{m{2cm}|m{11cm}}
+			\raggedleft  \textstyleCodeInsr{\textless} & (strictement) plus petit que\\
+			\raggedleft  \textstyleCodeInsr{\textgreater} & (strictement) plus grand que\\
+			\raggedleft  \textstyleCodeInsr{=} & égal\\
+			\raggedleft  \textstyleCodeInsr{{\textless}{\textgreater}}
+				ou \textstyleCodeInsr{${\neq}$} &  différent de\\
+			\raggedleft  \textstyleCodeInsr{${\leq}$} & plus petit ou égal\\
+			\raggedleft  \textstyleCodeInsr{${\geq}$} & plus grand ou égal\\
+			\end{supertabular}
+			\end{center}
+	
+			Pour les chaines, c'est l’ordre alphabétique qui
+			détermine le résultat (par exemple
+			\textstyleCodeInsr{{\textquotedbl}milou{\textquotedbl} {\textless}
+			{\textquotedbl}tintin{\textquotedbl}} est \textbf{vrai} de même que
+			\textstyleCodeInsr{{\textquotedbl}assembleur{\textquotedbl}
+			}\textstyleCodeInsr{${\leq}$}\textstyleCodeInsr{
+			{\textquotedbl}java{\textquotedbl}})
+			
 	
 		\subsection{Opérateurs logiques}
 	
@@ -446,6 +474,12 @@
 			\textstyleCodeInsr{cond1 ET (cond2 OU cond3).} En cas
 			d'oubli de parenthèses, il faudra se rappeler que
 			\textstyleCodeInsr{ET} est prioritaire sur le \textstyleCodeInsr{OU}.
+			
+			Pour rappel aussi, pour un booléen \textstyleCodeInsr{ok}~: 
+			\textstyleCodeInsr{ok = faux} est équivalent à \textstyleCodeInsr{NON ok},
+			\textstyleCodeInsr{ok = vrai} est équivalent à \textstyleCodeInsr{ok} et 
+			\textstyleCodeInsr{NON NON ok} est équivalent à \textstyleCodeInsr{ok}.
+			Dans les trois cas, nous préconiserons la seconde écriture.
 	
 		\subsection{Évaluation complète et court-circuitée}
 	
@@ -497,32 +531,6 @@
 			d’utiliser l’évaluation court-circuitée apparaitra dans plusieurs
 			exemples tout au long du cours.
 	
-		\subsection{Opérateurs de comparaison}
-	
-			Ces opérateurs agissent généralement sur des variables numériques ou des
-			chaines et donnent un résultat booléen.
-	
-			\begin{center}
-			\tablehead{}
-			\begin{supertabular}{m{2cm}|m{11cm}}
-			\raggedleft  \textstyleCodeInsr{\textless} & (strictement) plus petit que\\
-			\raggedleft  \textstyleCodeInsr{\textgreater} & (strictement) plus grand que\\
-			\raggedleft  \textstyleCodeInsr{=} & égal\\
-			\raggedleft  \textstyleCodeInsr{{\textless}{\textgreater}}
-				ou \textstyleCodeInsr{${\neq}$} &  différent de\\
-			\raggedleft  \textstyleCodeInsr{${\leq}$} & plus petit ou égal\\
-			\raggedleft  \textstyleCodeInsr{${\geq}$} & plus grand ou égal\\
-			\end{supertabular}
-			\end{center}
-	
-			Pour les chaines, c'est l’ordre alphabétique qui
-			détermine le résultat (par exemple
-			\textstyleCodeInsr{{\textquotedbl}milou{\textquotedbl} {\textless}
-			{\textquotedbl}tintin{\textquotedbl}} est \textbf{vrai} de même que
-			\textstyleCodeInsr{{\textquotedbl}assembleur{\textquotedbl}
-			}\textstyleCodeInsr{${\leq}$}\textstyleCodeInsr{
-			{\textquotedbl}java{\textquotedbl}})
-
 		\subsection{Manipuler les chaines}
 		
 			Pour les chaines, nous allons introduire quelques notations\footnote{
@@ -551,7 +559,8 @@
 				\textstyleCodeInsr{estMinuscule})
 			\item \textstyleCodeInsr{majuscule(car)} donne la majuscule de la lettre \textstyleCodeInsr{car}
 				(idem pour \textstyleCodeInsr{minuscule})
-			\item \textstyleCodeInsr{numLettre(car)} donne la position de \textstyleCodeInsr{car} dans l'alphabet (ex: \textstyleCodeInsr{numLettre('E')} donne 5)
+			\item \textstyleCodeInsr{numLettre(car)} donne la position de \textstyleCodeInsr{car} dans l'alphabet (ex: \textstyleCodeInsr{numLettre('E')} donne 5, 
+			idem pour \textstyleCodeInsr{numLettre('e')})
 			\item \textstyleCodeInsr{lettre(num)} l'inverse de la précédente (ex: \textstyleCodeInsr{lettre(4)} donne 'D')			
 			\end{liste}
 
@@ -616,9 +625,9 @@
 			
 			Rappelons qu’une \textbf{expression} 
 			est une combinaison de variables et
-			d’opérateurs.
+			d’opérateurs. L'expression a une valeur.
 			
-			\subsubsection*{Exemples}
+			\subsubsection*{Exemples d'affectation corrects}
 			
 			\cadre{
 			\begin{pseudo}
@@ -627,9 +636,22 @@
 			\Let cpt \Gets cpt + 1
 			\Let delta \Gets b**2 – 4*a*c
 			\Let test \Gets a < b \RComment pour une variable logique
+			\Let maChaine \Gets "Bon"
+			\Let uneChaine \Gets concat(maChaine, "jour")
 			\end{pseudo}
 			}
-
+			
+			\subsubsection*{Exemples d'affectation incorrects}
+			
+			\cadre{
+			\begin{pseudo}
+			\Let somme + 1 \Gets 3
+			\RComment somme + 1 n'est pas une variable
+			\Let somme \Gets 3n
+			\RComment 3n n'est ni un nom de variable correct ni une expression correcte
+			\end{pseudo}
+			}
+			
 			\subsubsection*{Remarques}
 
 			\begin{liste}
@@ -640,31 +662,33 @@
 				:
 				\begin{liste}
 				\item
-					\textstyleCodeInsr{entier}{ $\gets$ }\textstyleCodeInsr{réel} : 
-					dans ce cas le contenu de la variable sera la valeur tronquée
+					\textstyleCodeInsr{varEntière}{ $\gets$ }\textstyleCodeInsr{varRéelle} : 
+					dans ce cas le contenu de la variable sera la valeur \textbf{tronquée}
 					de l’expression réelle. 
 					Par exemple si «~\textstyleCodeInsr{nb}~» est
 					une variable de type entier, son contenu après l’instruction
 					«~\textstyleCodeInsr{nb}{ $\gets$ }\textstyleCodeInsr{$15/4$}~» 
 					sera 3
 				\item 
-					\textstyleCodeInsr{réel}{ $\gets$ }\textstyleCodeInsr{entier} :
-					ici, il n'y a évidemment pas de perte de valeur.
+					\textstyleCodeInsr{varRéelle}{ $\gets$ }\textstyleCodeInsr{varEntière} :
+					ici, il n'y a pas de perte de valeur.
 				\item 
-					\textstyleCodeInsr{chaine}{ $\gets$ }\textstyleCodeInsr{caractère} : 
-					le contraire n'est évidemment pas accepté.
+					\textstyleCodeInsr{varChaine}{ $\gets$ }\textstyleCodeInsr{varCaractère} : 
+					équivalent à \textstyleCodeInsr{varChaine}{ $\gets$ }\textstyleCodeInsr{chaine(varCaractère)}.
+					
+					Le contraire n'est évidemment pas accepté.
 				\end{liste}
 			\item 
 				Seules les variables déclarées peuvent être affectées, que ce soit par
 				l’affectation externe ou interne!
 			\item 
-				On veillera à ne pas mélanger la déclaration d’une variable et son
+				Nous ne mélangerons pas la déclaration d’une variable et son
 				affectation interne dans une même ligne de code, donc pas
 				d’instructions hybrides du genre 
 				\textsf{x}{ $\gets$ }\textstyleCodeInsr{2 : entier}
 			\item 
 				Pour l’affectation interne, toutes les variables apparaissant dans
-				\textstyleCodeInsr{expression} doivent avoir été affectées
+				l'\textstyleCodeInsr{expression} doivent avoir été affectées
 				préalablement. Le contraire provoquerait un arrêt de l’algorithme.
 			\end{liste}
 			
@@ -676,7 +700,7 @@
 
 			\cadre{
 			\begin{pseudo}
-			\Write expression ou liste de variables
+			\Write \textit{expression} ou \textit{liste de variables séparées par des virgules}
 			\end{pseudo}
 			}
 
@@ -698,7 +722,8 @@
 			une syntaxe commune et limitée à un petit nombre de mots clés.
 		\item
 			Comme pour l’affectation interne, on ne peut \textstyleCodeInsr{afficher}
-			que des expressions dont les variables ont été affectées préalablement.
+			que des expressions dont les variables qui la composent ont été 
+			affectées préalablement.
 		\end{liste}
 
 	\section{Structure générale d’un algorithme}
@@ -734,7 +759,7 @@
 			l'étude des structures alternatives et répétitives.}
 		\item {
 			Comme pour les variables, le nomDuModule devra être approprié au contenu
-			! Par exemple, sommeNombres, additionnerFractions plutôt que goPartez
+			! Par exemple, sommerNombres, additionnerFractions plutôt que goPartez
 			!
 			Le rôle des parenthèses qui suivent le nom du module sera expliqué plus
 			tard.}
@@ -745,11 +770,124 @@
 			communiquer des résultats,...}
 		\item {
 			Pour la lisibilité, on veillera toujours à ce qu'un module
-			tienne sur une seule page.}
+			tienne sur une vingtaine de lignes (donc, en pratique, sur un écran 
+			de 40 x 80 caractères ou une page). Ceci implique que si le module 
+			devait être plus long, il faudrait le découper, comme nous le verrons 
+			plus loin.}
 		\end{liste}
 
+		\bigskip
+
+		Analysons les algorithmes suivants~:
+		
+		\cadre{
+		\begin{pseudo}
+		\Module{exempleValide}{}{}
+			\Declare{a, b, c}{entiers}
+			\Let a \Gets 12
+			\Let b \Gets 5
+			\Let c \Gets a - b
+			\Let a \Gets a + c
+			\Let b \Gets a
+		\EndModule
+		\end{pseudo}
+		}
+		
+		\begin{center}
+		\tablehead{}
+		\begin{supertabular}
+			{m{3cm}m{3cm}m{3cm}m{3cm}}
+			\multicolumn{1}{|m{3cm}|}{} &
+			\multicolumn{1}{m{3cm}|}{a} &
+			\multicolumn{1}{m{3cm}|}{b} &
+			\multicolumn{1}{m{3cm}|}{c}\\\hline
+			
+			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{a, b, c : entiers}} &
+			\multicolumn{1}{m{3cm}|}{indéfini} &
+			\multicolumn{1}{m{3cm}|}{indéfini} &
+			\multicolumn{1}{m{3cm}|}{indéfini}\\\hline
+			
+			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{a}{ $\gets$ } 12} &
+			\multicolumn{1}{m{3cm}|}{12} &
+			\multicolumn{1}{m{3cm}|}{indéfini} &
+			\multicolumn{1}{m{3cm}|}{indéfini}\\\hline
+			
+			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{b}{ $\gets$ } 5} &
+			\multicolumn{1}{m{3cm}|}{12} &
+			\multicolumn{1}{m{3cm}|}{5} &
+			\multicolumn{1}{m{3cm}|}{indéfini}\\\hline
+			
+			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{c}{ $\gets$ }  \textstyleCodeInsr{a - b}} &
+			\multicolumn{1}{m{3cm}|}{12} &
+			\multicolumn{1}{m{3cm}|}{5} &
+			\multicolumn{1}{m{3cm}|}{7}\\\hline
+			
+			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{a}{ $\gets$ }  \textstyleCodeInsr{a + c}} &
+			\multicolumn{1}{m{3cm}|}{19} &
+			\multicolumn{1}{m{3cm}|}{5} &
+			\multicolumn{1}{m{3cm}|}{7}\\\hline
+			
+			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{b}{ $\gets$ }  \textstyleCodeInsr{a}} &
+			\multicolumn{1}{m{3cm}|}{19} &
+			\multicolumn{1}{m{3cm}|}{19} &
+			\multicolumn{1}{m{3cm}|}{7}\\\hline
+			
+		\end{supertabular}
+		\end{center}
+
+		\bigskip
+		
+		\bigskip
+
+		\cadre{
+		\begin{pseudo}
+		\Module{exempleInvalide}{}{}
+			\Declare{a, b, c}{entiers}
+			\Let a \Gets 12
+			\Let c \Gets a - b
+			\Let d \Gets c - 2
+		\EndModule
+		\end{pseudo}
+		}
+		
+		\begin{center}
+		\tablehead{}
+		\begin{supertabular}
+			{m{3cm}m{3cm}m{3cm}m{3cm}}
+			\multicolumn{1}{|m{3cm}|}{} &
+			\multicolumn{1}{m{3cm}|}{a} &
+			\multicolumn{1}{m{3cm}|}{b} &
+			\multicolumn{1}{m{3cm}|}{c}\\\hline
+			
+			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{a, b, c : entiers}} &
+			\multicolumn{1}{m{3cm}|}{indéfini} &
+			\multicolumn{1}{m{3cm}|}{indéfini} &
+			\multicolumn{1}{m{3cm}|}{indéfini}\\\hline
+			
+			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{a}{ $\gets$ } 12} &
+			\multicolumn{1}{m{3cm}|}{12} &
+			\multicolumn{1}{m{3cm}|}{indéfini} &
+			\multicolumn{1}{m{3cm}|}{indéfini}\\\hline
+			
+			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{c}{ $\gets$ }  \textstyleCodeInsr{a - b}} &
+			\multicolumn{1}{m{3cm}|}{12} &
+			\multicolumn{1}{m{3cm}|}{indéfini} &
+			\multicolumn{1}{m{3cm}|}{???}\\\hline
+			
+			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{d}{ $\gets$ }  \textstyleCodeInsr{c - 2}} &
+			\multicolumn{1}{m{3cm}|}{12} &
+			\multicolumn{1}{m{3cm}|}{indéfini} &
+			\multicolumn{1}{m{3cm}|}{???}\\\hline
+		\end{supertabular}
+		\end{center}
+		
+		\textstyleCodeInsr{c} ne peut pas être calculé car b n'a pas été initialisé;
+		quant à \textstyleCodeInsr{d}, il n'est même pas déclaré !
+
+		\bigskip
+			
 		À titre d’exemple, récrivons l’algorithme d’addition de fractions décrit
-		en début de chapitre :
+		en début de chapitre~:
 
 		\cadre{
 		\begin{pseudo}
@@ -773,7 +911,7 @@
 		personne, mais aussi souvent l'auteur qui se perd dans
 		son propre texte lorsqu'il y replonge après une
 		interruption). Ces commentaires (introduits par
-		«~\textstyleCodeInsr{//~» }) seront bien entendu ignorés par
+		«~\textstyleCodeInsr{//~»}) seront bien entendu ignorés par
 		l’exécutant de l’algorithme.
 
 		\cadre{
@@ -811,6 +949,8 @@
 		\Empty \RComment c1 est le nouveau capital, c0 est l’ancien capital, t est le taux
 		\end{pseudo}
 		}
+		
+		Nous prendrons l'habitude de commenter chaque module en précisant ce qu'il fait.
 
 	\section{Compléments de pseudo-code}
 
@@ -859,6 +999,7 @@
 			
 			\cadre{
 				\begin{pseudo}
+					\LComment Ce module lit une saison et affiche sa particularité
 					\Module{particularitéSaisonnière}{}{}
 						\Decl uneSaison : Saison
 						\Read uneSaison
@@ -926,7 +1067,7 @@
 
 \begin{Exercice}{Compréhension d'algorithme}
 
-	Pour ces exercices, on vous demande de comprendre des algorithmes
+	Pour ces exercices, nous vous demandons de comprendre des algorithmes
 	donnés. Plus précisément, que vont-ils afficher si à chaque fois les
 	deux nombres lus au départ sont successivement $2$ et $3$ ?
 
@@ -994,8 +1135,8 @@
 
 \begin{Exercice}{Le jeu des $n$ erreurs}
 
-	Pouvez-vous identifier les erreurs et/ou les
-	problèmes dans les modules suivants ?
+	Identifier les erreurs et/ou les
+	problèmes dans les modules suivants~:
 
 	\cadre{
 	\begin{pseudo}

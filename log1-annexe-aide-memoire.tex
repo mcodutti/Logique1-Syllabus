@@ -7,6 +7,32 @@ Si vous sentez le besoin d’utiliser un objet ou une méthode qui
 n'apparait pas ici, il faudra en écrire explicitement
 le contenu et le code.
 
+Pour manipuler les chaines et les caractères
+\cadre{
+	\textstyleCodeInsr{long(s)}
+				donne la taille (le nombre de caractères) de la chaine s
+	\textstyleCodeInsr{car(s,p)}
+				donne le caractère en position p (à partir de 1) dans la chaine s
+	\textstyleCodeInsr{concat(s1,s2)}
+				concatène les chaines s1 et s2 
+	\textstyleCodeInsr{chaine(car)} 
+				transforme le caractère \textstyleCodeInsr{car} 
+				en une chaine de taille 1
+	\textstyleCodeInsr{estLettre(car)} 
+				est vrai si le caractère \textstyleCodeInsr{car} est une lettre
+				(idem pour \textstyleCodeInsr{estChiffre}, 
+				\textstyleCodeInsr{estMajuscule}, 
+				\textstyleCodeInsr{estMinuscule})
+	\textstyleCodeInsr{majuscule(car)} 
+				donne la majuscule de la lettre \textstyleCodeInsr{car}
+				(idem pour \textstyleCodeInsr{minuscule})
+	\textstyleCodeInsr{numLettre(car)} 
+				donne la position de \textstyleCodeInsr{car} dans l'alphabet 
+	\textstyleCodeInsr{lettre(num)} 
+				l'inverse de la précédente
+	}
+
+
 \cadre{
 \begin{pseudo}
 \Class{Date}
