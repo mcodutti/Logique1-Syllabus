@@ -13,18 +13,19 @@
 	pas de même lorsque croissent la complexité et la longueur des
 	algorithmes. Il est courant que les lignes de codes de programmes se
 	comptent en centaines ou en milliers. Dès lors, le découpage en modules
-	est indispensable. En outre, lors de l’écriture d’un algorithme sur
-	papier, on conseille dans un souci de lisibilité qu’aucun des modules
-	ne dépasse la longueur d’une page.
+	est indispensable. En outre, lors de l’écriture d’un algorithme, on 
+	conseille, dans un souci de lisibilité, qu’aucun des modules
+	ne dépasse la longueur d’une vingtaine de lignes.
 	
 	Illustrons l’approche modulaire sur l’exercice du chapitre précédent
 	demandant de calculer le maximum de 3 nombres. Commençons par écrire la
-	solution du problème plus simple : le maximum de 2 nombres.
+	solution du problème plus simple~: le maximum de 2 nombres.
 
 	\cadre{
 	\begin{pseudo}
+	\LComment Ce module lit deux nombres et affiche le maximum des deux.
 	\Module{max2}{}{}
-		\Decl a,b,max : réels
+		\Decl a,b,max~: réels
 		\Read a,b
 		\If{a > b}
 			\Let max \Gets a
@@ -37,7 +38,7 @@
 	}
 	
 	Pour le maximum de 3 nombres, il existe plusieurs approches. Voyons
-	celle-ci :
+	celle-ci~:
 
 	\cadre{
 	\begin{pseudo}
@@ -53,7 +54,7 @@
 	}\textstyleCodeInsr{{max2}}{
 	dans le module
 	}\textstyleCodeInsr{{max3}}{,
-	toutefois en adaptant son contenu au contexte de ce module : les
+	toutefois en adaptant son contenu au contexte de ce module~: les
 	nombres
 	}\textstyleCodeInsr{{a}}{
 	et
@@ -61,12 +62,13 @@
 	ne doivent plus être systématiquement lus et la valeur du maximum ne
 	doit plus être systématiquement affichée. Ainsi
 	}\textstyleCodeInsr{{temp}}{
-	est calculé et ré-utilisé dans un calcul ultérieur. Ceci donnerait :}
+	est calculé et ré-utilisé dans un calcul ultérieur. Ceci donnerait~:}
 
 	\cadre{
 	\begin{pseudo}
 	\Module{max3}{}{}
-		\Decl a,b,c,temp,max : réels
+		\LComment Ce module lit trois nombres et affiche le maximum des trois.
+		\Decl a, b, c, temp, max~: réels
 		\Read a,b,c
 		\If{a > b}
 			\Let temp \Gets a
@@ -88,7 +90,7 @@
 	algorithmes. Imaginons qu’il aurait fallu de cette façon «~mixer~» deux
 	algorithmes d’une cinquantaine de lignes chacun. Le résultat serait un
 	algorithme d’une centaine de lignes qui perdrait en lisibilité et
-	clarté. De plus, l’opération effectuée n’est pas sans risques : que se
+	clarté. De plus, l’opération effectuée n’est pas sans risques~: que se
 	passerait-il si les deux modules contiennent chacun une variable nommée
 	de manière identique ? Cette «~transplantation~» demande donc la
 	vérification de toutes les variables utilisées, la réécriture des
@@ -120,13 +122,14 @@
 	plus être lues) tandis que celles accompagnées d’une flèche vers le
 	haut (\textsf{↑}) sont des \textbf{paramètres de sortie} qui permettent
 	de renvoyer des résultats à l’\textbf{issue} de l’exécution du module
-	(résultats qui ne doivent donc plus être affichées). 
+	(résultats qui ne doivent donc plus être affichés). 
 
-	Par exemple, ceci donnerait pour le module \textstyleCodeInsr{max2} :
+	Par exemple, ceci donnerait pour le module \textstyleCodeInsr{max2}~:
 
 	\cadre{
 	\begin{pseudo}
-	\Module{max2}{a\In, b\In : réels, max\Out : réel}{}
+	\LComment Ce module reçoit deux nombres et sort le maximum des deux.
+	\Module{max2}{a\In, b\In~: réels, max\Out~: réel}{}
 		\If{a > b}
 			\Let max \Gets a
 		\Else
@@ -145,8 +148,8 @@
 	contiendra et renverra le résultat voulu.
 
 	{Pour faire appel aux services de ce module, il
-	suffit à présent d’écrire son nom suivi d’un nombre de variables (ou
-	d'expressions) en accord avec son entête. Montrons par
+	suffit à présent d’écrire son nom suivi d’un nombre de variables (ou,
+	en entrée, d'expressions) en accord avec son entête. Montrons par
 	un exemple comment le module
 	}\textstyleCodeInsr{{max3}}{
 	peut faire appel au module
@@ -154,9 +157,10 @@
 
 	\cadre{
 	\begin{pseudo}
+	\LComment Ce module lit trois nombres et affiche le maximum des trois.
 	\Module{max3}{}{}
-		\Decl a,b,c,temp,max : réels
-		\Read a,b,c
+		\Decl a, b, c, temp, max~: réels
+		\Read a, b, c
 		\Stmt max2( a, b, temp )
 		\Stmt max2( temp, c, max )
 		\Write max
@@ -164,10 +168,9 @@
 	\end{pseudo}
 	}
 
-	{
 	{L’instruction
-	}\textstyleCodeInsr{{max2(a, b,
-	temp)}}{ se déroule comme suit :}}
+	\textstyleCodeInsr{{max2(a, b,
+	temp)}} se déroule comme suit~:}
 	
 	\begin{liste}
 	\item {
@@ -198,7 +201,7 @@
 	{
 	{L’instruction
 	}\textstyleCodeInsr{{max2(temp, c,
-	max)}}{ se déroule comme suit :}}
+	max)}}{ se déroule comme suit~:}}
 	
 	\begin{liste}
 	\item {
@@ -315,7 +318,7 @@
 	l’exécution terminée, cet emplacement est récupéré en mémoire.
 
 	Plutôt qu’une restriction, cette propriété est
-	une aide confortable au programmeur : si, de
+	une aide confortable au programmeur~: si, de
 	façon fortuite, des variables appartenant à des modules différents
 	possédaient le même nom, il n’y aurait pas d’interférence entre ces
 	variables, ni confusion possible de leur
@@ -340,17 +343,18 @@
 	\textstyleCodeInsr{lirePositif} ci-dessous
 	vérifie si un nombre lu est positif et affiche un message
 	d'erreur sinon. Le texte complet de l’algorithme est
-	le suivant :
+	le suivant~:
 
 	\cadre{
 	\begin{pseudo}
+	\LComment Ce module lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
-		\Decl a,b,c,temp,max : réels
+		\Decl a,b,c,temp,max~: réels
 		\Stmt lirePositif(a)
 		\Stmt lirePositif(b)
 		\Stmt lirePositif(c)
-		\Stmt max2( a, b, temp )
-		\Stmt max2( temp, c, max )
+		\Stmt max2(a, b, temp)
+		\Stmt max2(temp, c, max)
 		\Write max
 	\EndModule
 	\end{pseudo}
@@ -358,9 +362,10 @@
 
 	\cadre{
 	\begin{pseudo}
-	\Module{lirePositif}{a\Out : réel}{}
+	\LComment Ce module lit un nombre, le sort s'il est positif et sinon lance une erreur.
+	\Module{lirePositif}{a\Out~: réel}{}
 		\Read a
-		\If{a<0}
+		\If{a < 0}
 			\Error Le nombre n'est pas positif !
 		\EndIf
 	\EndModule
@@ -369,7 +374,8 @@
 
 	\cadre{
 	\begin{pseudo}
-	\Module{max2}{a\In, b\In : réels, max\Out : réel}{}
+	\LComment Ce module reçoit deux nombres et sort le maximum des deux.
+	\Module{max2}{a\In, b\In~: réels, max\Out~: réel}{}
 		\If{a > b}
 			\Let max \Gets a
 		\Else
@@ -393,16 +399,16 @@
 	Un deuxième type de module est le 
 	\textbf{module renvoyant une valeur}. 
 	(On désigne aussi ce type de modules par le terme \textbf{fonction}).
-	Son entête est du type suivant :
+	Son entête est du type suivant~:
 
 	\cadre{
 	\begin{pseudo}
-	\ModuleSign{exemple}{var1\In:type1,var2\In:type2,\dots,varN\In:typeN}{typeRes}
+	\ModuleSign{exemple}{var1\In~: type1,var2\In~: type2,\dots,varN\In~: typeN}{typeRes}
 	\end{pseudo}
 	}
 
 	Il se distingue du module précédemment étudié par la flèche de renvoi à
-	droite, et possède les particularités suivantes :
+	droite, et possède les particularités suivantes~:
 
 	\begin{liste}
 	\item {
@@ -430,7 +436,7 @@
 		}\textstyleCodeInsr{{varN}}{
 		sont les paramètres du module (aussi appelés
 		}{\textbf{arguments}}{)
-		; ce sont le plus souvent des paramètres d’entrée, les paramètres de
+		; ce sont, le plus souvent, des paramètres d’entrée, les paramètres de
 		sortie }{étant plus rares dans ce type de
 		module ;}}
 	\item {
@@ -468,13 +474,14 @@
 
 	\cadre{
 	\begin{pseudo}
+	\LComment Ce module lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
-		\Decl a,b,c,temp,max : réels
+		\Decl a,b,c,temp,max~: réels
 		\Let a \Gets lirePositif()
 		\Let b \Gets lirePositif()
 		\Let c \Gets lirePositif()
-		\Let temp \Gets max2(a,b)
-		\Let max  \Gets max2(temp,c)
+		\Let temp \Gets max2(a, b)
+		\Let max  \Gets max2(temp, c)
 		\Write max
 	\EndModule
 	\end{pseudo}
@@ -482,10 +489,11 @@
 
 	\cadre{
 	\begin{pseudo}
+	\LComment Ce module lit un nombre, le retourne s'il est positif et sinon lance une erreur.
 	\Module{lirePositif}{}{réel}
-		\Decl a : réel
+		\Decl a~: réel
 		\Read a
-		\If{a<0}
+		\If{a < 0}
 			\Error Le nombre n'est pas positif !
 		\EndIf
 		\Return a
@@ -495,8 +503,9 @@
 
 	\cadre{
 	\begin{pseudo}
-	\Module{max2}{a\In, b\In : réels}{réel}
-		\Decl max : réel
+	\LComment Ce module reçoit deux nombres et retourne le maximum des deux.
+	\Module{max2}{a\In, b\In~: réels}{réel}
+		\Decl max~: réel
 		\If{a > b}
 			\Let max \Gets a
 		\Else
@@ -508,41 +517,44 @@
 	}
 
 	L'écriture avec une valeur de retour permet une
-	écriture plus compacte :
+	écriture plus compacte~:
 
 	\cadre{
 	\begin{pseudo}
+	\LComment Ce module lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
-		\Decl a,b,c,temp,max : réels
+		\Decl a,b,c,temp,max~: réels
 		\Let a \Gets lirePositif()
 		\Let b \Gets lirePositif()
 		\Let c \Gets lirePositif()
-		\Let max  \Gets max2(max2(a,b),c)
+		\Let max  \Gets max2(max2(a, b), c)
 		\Write max
 	\EndModule
 	\end{pseudo}
 	}
 
-	ou encore (mais on perd un peu en clarté) :
+	ou encore (mais on perd un peu en clarté)~:
 
 	\cadre{
 	\begin{pseudo}
+	\LComment Ce module lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
-		\Decl a,b,c,temp,max : réels
+		\Decl a,b,c,temp,max~: réels
 		\Let a \Gets lirePositif()
 		\Let b \Gets lirePositif()
 		\Let c \Gets lirePositif()
-		\Write max2(max2(a,b),c)
+		\Write max2(max2(a, b), c)
 	\EndModule
 	\end{pseudo}
 	}
 
-	ou même (et là, ce n'est plus du tout lisible !) :
+	ou même (et là, ce n'est plus du tout lisible !)~:
 
 	\cadre{
 	\begin{pseudo}
+	\LComment Ce module lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
-		\Write max2(max2(lirePositif(),lirePositif()),lirePositif())
+		\Write max2(max2(lirePositif(), lirePositif()), lirePositif())
 	\EndModule
 	\end{pseudo}
 	}
@@ -553,7 +565,7 @@ Synthétisons les notions vues dans ce chapitre au travers
 d'un exemple complet.
 
 
-\begin{Emphase}[exercice]{Exercice résolu : Écart entre 2 moments}
+\begin{Emphase}[exercice]{Exercice résolu~: Écart entre 2 moments}
 	Étant donné deux moments dans une journée donnés chacun par trois
 	nombres (heure, minute, seconde), écrire un algorithme qui calcule et
 	affiche le délai écoulé entre ces deux moments en heure(s), minute(s),
@@ -610,7 +622,7 @@ d'un exemple complet.
 
 	Une des sous-tâches est donc la conversion en secondes
 	d'un moment exprimé en heures-minutes-secondes
-	(H-M-S). Il nous faut adapter la solution trouvée pour
+	(h-). Il nous faut adapter la solution trouvée pour
 	l'exercice du chapitre sur les algorithmes séquentiels
 	car il n'est pas question ici que les données soient
 	lues ni que le résultat soit écrit ; l'interaction ne
@@ -620,7 +632,7 @@ d'un exemple complet.
 	données à l'utilisateur mais un tel module serait
 	moins souvent réutilisable.}
 
-	La première question à se poser est donc celle des paramètres :
+	La première question à se poser est donc celle des paramètres~:
 
 	\begin{liste}
 	\item 
@@ -630,12 +642,12 @@ d'un exemple complet.
 		Quels résultats fournit-il ?
 	\end{liste}
 
-	Dans notre cas, la réponse est simple :
+	Dans notre cas, la réponse est simple~:
 
 	\begin{liste}
 	\item {
 		Les données sont le moment à convertir en secondes. Ce moment est
-		représenté par trois entiers : les heures, les minutes et les secondes
+		représenté par trois entiers~: les heures, les minutes et les secondes
 		;}
 	\item {
 		Le résultat est le moment converti en secondes. Il est représenté par un
@@ -643,19 +655,21 @@ d'un exemple complet.
 	\end{liste}
 
 	Lorsque le résultat est représenté par une seule donnée, on a le choix
-	entre un paramètre en sortie :
+	entre un paramètre en sortie~:
 
 	\cadre{
 	\begin{pseudo}
-		\ModuleSign{HMSversSec}{H\In,M\In,S\In,secondes\Out : entiers}{}
+		\LComment Ce module reçoit trois entiers~: des heures, des minutes et des secondes et sort le nombre de secondes correspondant.
+		\ModuleSign{hmsVersSec}{h\In, m\In, s\In, secondes\Out~: entiers}{}
 	\end{pseudo}
 	}
 	
-	ou une valeur de retour :
+	ou une valeur de retour~:
 
 	\cadre{
 	\begin{pseudo}
-		\ModuleSign{HMSversSec}{H\In,M\In,S\In : entiers}{entier}
+		\LComment Ce module reçoit trois entiers~: des heures, des minutes et des secondes et retourne le nombre de secondes correspondant.
+		\ModuleSign{hmsVersSec}{h\In, m\In, s\In~: entiers}{entier}
 	\end{pseudo}
 	}
 
@@ -663,24 +677,26 @@ d'un exemple complet.
 	on privilégie souvent la valeur de retour car cela
 	facilite l'écriture lors de l'appel.
 
-	L'algorithme s'écrit alors :
+	L'algorithme s'écrit alors~:
 
 	\cadre{
 	\begin{pseudo}
-		\Module{HMSversSec}{H\In,M\In,S\In : entiers}{entier}
-			\Decl secondes : entier \RComment A déclarer puisque ce n'est pas un paramètre
-			\Let secondes \Gets  H * 3600 + M * 60 + S
+	\LComment Ce module reçoit trois entiers~: des heures, des minutes et des secondes et retourne le nombre de secondes correspondant.
+		\Module{hmsVersSec}{h\In, m\In, s\In~: entiers}{entier}
+			\Decl secondes~: entier \RComment {À déclarer puisque ce n'est pas un paramètre}
+			\Let secondes \Gets  h * 3600 + m * 60 + s
 			\Return secondes
 		\EndModule
 	\end{pseudo}
 	}
 
-	ou de manière équivalente mais plus concise :
+	ou de manière équivalente mais plus concise~:
 
 	\cadre{
 	\begin{pseudo}
-		\Module{HMSversSec}{H\In,M\In,S\In : entiers}{entier}
-			\Return H * 3600 + M * 60 + S
+	\LComment Ce module reçoit trois entiers~: des heures, des minutes et des secondes et retourne le nombre de secondes correspondant.
+		\Module{hmsVersSec}{h\In, m\In, s\In~: entiers}{entier}
+			\Return h * 3600 + m * 60 + s
 		\EndModule
 	\end{pseudo}
 	}
@@ -705,14 +721,15 @@ d'un exemple complet.
 		sortie.}
 	\end{liste}
 
-	Ce qui donne :
+	Ce qui donne~:
 
 	\cadre{
 	\begin{pseudo}
-		\Module{secVersHMS}{secondes\In,S\Out,M\Out,S\Out : entiers}{}
-			\Let H \Gets secondes DIV 3600
-			\Let M \Gets secondes MOD 3600 DIV 60
-			\Let S \Gets secondes MOD 60
+		\LComment Ce module reçoit un nombre de secondes et sort les heures, les minutes et les secondes correspondant.
+		\Module{secVersHMS}{secondes\In, s\Out, m\Out, s\Out~: entiers}{}
+			\Let h \Gets secondes DIV 3600
+			\Let m \Gets secondes MOD 3600 DIV 60
+			\Let s \Gets secondes MOD 60
 		\EndModule
 	\end{pseudo}
 	}
@@ -723,14 +740,15 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
+		\LComment Ce module lit deux moments (h-m-s) et affiche le moment de la différence entre les deux.
 		\Module{différenceEntreHeures}{}{} \RComment Pas de paramètres !
-			\Decl H1, M1, S1, H2, M2, S2 : entiers \RComment Les 2 moments à soustraire
-			\Decl secondes1, secondes2 : entiers \RComment Ces 2 moments en secondes
-			\Decl diffSecondes : entier \RComment La différence en secondes
-			\Decl diffH, diffM, diffS : entiers \RComment La différence en H-M-S
-			\Read H1, M1, S1, H2, M2, S2
-			\Let secondes1 \Gets HMSversSec( H1, M1, S1 )
-			\Let secondes2 \Gets HMSversSec( H2, M2, S2 )
+			\Decl h1, m1, s1, h2, m2, s2~: entiers \RComment Les 2 moments à soustraire
+			\Decl secondes1, secondes2~: entiers \RComment Ces 2 moments en secondes
+			\Decl diffSecondes~: entier \RComment La différence en secondes
+			\Decl diffH, diffM, diffS~: entiers \RComment La différence en H-M-S
+			\Read h1, m1, s1, h2, m2, s2
+			\Let secondes1 \Gets hmsVersSec( h1, m1, s1 )
+			\Let secondes2 \Gets hmsVersSec( h2, m2, s2 )
 			\Let diffSecondes \Gets secondes2 – secondes1
 			\Stmt secVersHMS( diffSecondes, diffH, diffM, diffS )
 			\Write diffH, diffM, diffS
@@ -765,10 +783,11 @@ d'un exemple complet.
 
 	{
 	Pour exemple, le module additionnerFractions (première version dans le
-	chapitre 3) pourrait se découper ainsi :}
+	chapitre 3) pourrait se découper ainsi~:}
 
 	\cadre{
 	\begin{pseudo}
+	\LComment Ce module lit les contenus de 2 fractions et affiche leur somme
 		\Module{additionnerFractions}{}{}
 			\Stmt déclaration
 			\Stmt lectureDonnées
@@ -780,8 +799,8 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-	\Block{declaration}
-		\Decl num1, den1, num2, den2, numRes, denRes : entiers
+	\Block{déclaration}
+		\Decl num1, den1, num2, den2, numRes, denRes~: entiers
 	\EndBlock
 	\end{pseudo}
 	}
@@ -825,8 +844,8 @@ d'un exemple complet.
 	d'un code ? De nombreux critères existent. Citons ici,
 	parmi les plus pertinents, ceux qui sont le plus liés à ce
 	cours\footnote{Pour approfondir cette notion,
-	l'étudiant pourra lire par exemple : Bertrand Meyer,
-	«~\textit{Conception et programmation par objets : pour du logiciel de
+	l'étudiant pourra lire par exemple~: Bertrand Meyer,
+	«~\textit{Conception et programmation par objets~: pour du logiciel de
 	qualité}~», aux éditions «\textit{~interéditions~}»}. }
 
 \subsection{La validité}
@@ -899,7 +918,7 @@ d'un exemple complet.
 
 	{
 	Ce critère s'intéresse à la bonne utilisation des
-	ressources informatiques. Est ce qu'il va tourner
+	ressources informatiques. Est-ce qu'il va tourner
 	suffisamment vite, utiliser peu de mémoire ? Faut-il chercher
 	systématiquement à optimiser son code ? Non ! On a souvent tendance à
 	surévaluer ce critère ce qui est dommageable pour trois raisons.}
@@ -938,19 +957,19 @@ d'un exemple complet.
 	\cadre{
 	\begin{pseudo}
 	\Module{ex1}{}{}
-		\Decl x, y : entiers
-		\Stmt addition( 3, 4, x )
+		\Decl x, y~: entiers
+		\Stmt addition(3, 4, x)
 		\Write x
 		\Let x \Gets 3
 		\Let y \Gets 5
-		\Stmt addition( x, y, y )
+		\Stmt addition(x, y, y)
 		\Write y
 	\EndModule
 
 	\Empty
 
-	\Module{addition}{a\In,b\In,c\Out: entiers}{}
-		\Decl somme : entier
+	\Module{addition}{a\In, b\In, c\Out~: entiers}{}
+		\Decl somme~: entier
 		\Let somme \Gets a + b
 		\Let c \Gets somme
 	\EndModule
@@ -960,12 +979,12 @@ d'un exemple complet.
 	\cadre{
 	\begin{pseudo}
 	\Module{ex2}{}{}
-		\Decl a, b : entiers
-		\Stmt addition( 3, 4, a ) \Comment voir ci-dessus
+		\Decl a, b~: entiers
+		\Stmt addition(3, 4, a) \Comment voir ci-dessus
 		\Write a
 		\Let a \Gets 3
 		\Let b \Gets 5
-		\Stmt addition( b, a, b )
+		\Stmt addition(b, a, b)
 		\Write b
 	\EndModule
 	\end{pseudo}
@@ -974,17 +993,17 @@ d'un exemple complet.
 	\cadre{
 	\begin{pseudo}
 	\Module{ex3}{}{}
-		\Decl a, b, c : entiers
-		\Stmt calcul( 3, 4, c )
+		\Decl a, b, c~: entiers
+		\Stmt calcul(3, 4, c)
 		\Write c
 		\Let a \Gets 3
 		\Let b \Gets 4
 		\Let c \Gets 5
-		\Stmt calcul( b, c, a )
+		\Stmt calcul(b, c, a)
 		\Write a, b, c
 	\EndModule
 	\Empty
-	\Module{calcul}{a\In,b\In,c\Out: entiers}{}
+	\Module{calcul}{a\In, b\In, c\Out~: entiers}{}
 		\Let a \Gets 2 * a
 		\Let b \Gets 3 * b
 		\Let c \Gets a + b
@@ -995,7 +1014,7 @@ d'un exemple complet.
 	\cadre{
 	\begin{pseudo}
 	\Module{ex4}{}{}
-		\Decl a, b, c : entiers
+		\Decl a, b, c~: entiers
 		\Let a \Gets 3
 		\Let b \Gets 4
 		\Let c \Gets f(b)
@@ -1004,14 +1023,14 @@ d'un exemple complet.
 		\Write a, b, c
 	\EndModule
 	\Empty
-	\Module{calcul2}{a\In,b\In,c\Out: entiers}{}
+	\Module{calcul2}{a\In, b\In, c\Out~: entiers}{}
 		\Let a \Gets f(a)
 		\Let c \Gets 3 * b
 		\Let c \Gets a + c
 	\EndModule
 	\Empty
-	\Module{f}{a\In: entier}{entier}
-		\Decl b : entier
+	\Module{f}{a\In~: entier}{entier}
+		\Decl b~: entier
 		\Let b \Gets 2 * a + 1
 		\Return b
 	\EndModule
@@ -1034,16 +1053,16 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-	\Stmt [1] a \Gets PGCD( 24, 32 )
-	\Stmt [2] a \Gets PGCD( a, 24 )
-	\Stmt [3] b \Gets 3 * PGCD( a + b, 2*c ) + 120
-	\Stmt [4] PGCD( 20, 30)
-	\Stmt [5] a \Gets PGCD( a, b, c )
-	\Stmt [6] a \Gets PGCD( a, b ) + PGCD( a, c )
-	\Stmt [7] a \Gets PGCD( a, PGCD( a, b ) )
-	\Stmt [8] \K{lire} PGCD( a, b )
-	\Stmt [9] \K{afficher} PGCD( a, b)
-	\Stmt [10] PGCD(a, b ) \Gets c
+	\Stmt [1] a \Gets PGCD(24, 32)
+	\Stmt [2] a \Gets PGCD(a, 24)
+	\Stmt [3] b \Gets 3 * PGCD(a + b, 2*c) + 120
+	\Stmt [4] PGCD(20, 30)
+	\Stmt [5] a \Gets PGCD(a, b, c)
+	\Stmt [6] a \Gets PGCD(a, b) + PGCD(a, c)
+	\Stmt [7] a \Gets PGCD(a, PGCD(a, b))
+	\Stmt [8] \K{lire} PGCD(a, b)
+	\Stmt [9] \K{afficher} PGCD(a, b)
+	\Stmt [10] PGCD(a, b) \Gets c
 	\end{pseudo}
 	}
 \end{Exercice}
@@ -1054,8 +1073,9 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\Module{estPair}{nb\In: entier}{booléen}
-		\Decl pair : booléen
+		\LComment Ce module reçoit un entier et retourne vrai si il est pair et faux sinon.
+		\Module{estPair}{nb\In~: entier}{booléen}
+		\Decl pair~: booléen
 		\Let pair \Gets faux
 		\If{nb MOD 2 = 0}
 			\Let pair \Gets vrai
@@ -1067,8 +1087,9 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\Module{estPair}{nb\In: entier}{booléen}
-		\Decl pair : booléen
+		\LComment Ce module reçoit un entier et retourne vrai si il est pair et faux sinon.
+		\Module{estPair}{nb\In~: entier}{booléen}
+		\Decl pair~: booléen
 		\If{nb MOD 2 = 0}
 			\Let pair \Gets vrai
 		\Else
@@ -1081,17 +1102,19 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\Module{estPair}{nb\In: entier}{booléen}
-		\Decl pair : booléen
-		\Let pair \Gets nb MOD 2 = 0
-		\Return pair
+		\LComment Ce module reçoit un entier et retourne vrai si il est pair et faux sinon.
+		\Module{estPair}{nb\In~: entier}{booléen}
+			\Decl pair~: booléen
+			\Let pair \Gets nb MOD 2 = 0
+			\Return pair
 		\EndModule
 	\end{pseudo}
 	}
 
 	\cadre{
 	\begin{pseudo}
-		\Module{estPair}{nb\In: entier}{booléen}
+		\LComment Ce module reçoit un entier et retourne vrai si il est pair et faux sinon.
+		\Module{estPair}{nb\In~: entier}{booléen}
 		\Return nb MOD 2 = 0
 		\EndModule
 	\end{pseudo}
@@ -1099,7 +1122,8 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\Module{estPair}{nb\In: entier}{booléen}
+		\LComment Ce module reçoit un entier et retourne vrai si il est pair et faux sinon.
+		\Module{estPair}{nb\In~: entier}{booléen}
 		\If{nb MOD 2 = 0}
 			\Return vrai
 		\Else
@@ -1111,7 +1135,8 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\Module{estPair}{nb\In: entier}{booléen}
+		\LComment Ce module reçoit un entier et retourne vrai si il est pair et faux sinon.
+		\Module{estPair}{nb\In~: entier}{booléen}
 		\If{nb MOD 2 = 0}
 			\Return vrai
 		\EndIf

@@ -10,13 +10,13 @@
 	dits «~simples~» (entier, réel, booléen, caractère, chaine) ne pouvant
 	contenir qu’une seule valeur à la fois. Cependant, certains types
 	d’information consistent en un regroupement de plusieurs données
-	élémentaires. Quelques exemples :
+	élémentaires. Quelques exemples~:
 
 	\begin{liste}
 	\item {
 		une \textbf{date} est composée de trois éléments (le jour, le mois,
-		l’année), le mois s’exprimant tantôt par un entier (15/10/2004) tantôt
-		par une chaine (15 octobre 2004)}
+		l’année), le mois s’exprimant tantôt par un entier (15/10/2014) tantôt
+		par une chaine (15 octobre 2014)}
 	\item {
 		un \textbf{moment} de la journée est un triple d’entiers (heures,
 		minutes, secondes)}
@@ -26,7 +26,7 @@
 		l’ordonnée \textit{y}) ou polaires (le rayon \textit{r} et l’angle
 		\textit{$\theta $})}
 	\item {
-		une \textbf{adresse }est composée de plusieurs données : un nom de rue,
+		une \textbf{adresse }est composée de plusieurs données~: un nom de rue,
 		un numéro de maison, parfois un numéro de boite postale, un code
 		postal, le nom de la localité, un nom ou code de pays pour une adresse
 		à l’étranger\dots}
@@ -50,35 +50,36 @@
 % ===================================
 
 	\marginicon{definition}
-	La définition d’un type structuré adoptera le modèle suivant :
+	La définition d’un type structuré adoptera le modèle suivant~:
 
 	\cadre{
 	\begin{pseudo}
 	\Struct{NomDeLaStructure}
-		\Decl nomChamp1 : type1
-		\Decl nomChamp2 : type2
+		\Decl nomChamp1~: type1
+		\Decl nomChamp2~: type2
 		\Decl \dots
-		\Decl nomChampN : typeN
+		\Decl nomChampN~: typeN
 	\EndStruct
 	\end{pseudo}
 	}
 
-	nomChamp1, \dots, nomChampN 
+	\textstyleCodeInsr{nomChamp1}, \dots, \textstyleCodeInsr{nomChampN }
 	sont les noms des différents champs de la structure, 
-	et type1, \dots, typeN les types de ces champs. 
+	et \textstyleCodeInsr{type1}, \dots, \textstyleCodeInsr{typeN} 
+	les types de ces champs. 
 	Ces types sont soit les types «~simples~» étudiés
 	précédemment (entier, réel, booléen, caractère, chaine) soit d’autres
 	types structurés dont la structure aura été préalablement définie.
 
 	Pour exemple, nous définissons ci-dessous trois
-	types structurés que nous utiliserons souvent par la suite :
+	types structurés que nous utiliserons souvent par la suite~:
 
 	\cadre{
 	\begin{pseudo}
 	\Struct{Date}
-		\Decl jour : entier
-		\Decl mois : entier
-		\Decl année : entier
+		\Decl jour~: entier
+		\Decl mois~: entier
+		\Decl année~: entier
 	\EndStruct
 	\end{pseudo}
 	}
@@ -86,9 +87,9 @@
 	\cadre{
 	\begin{pseudo}
 	\Struct{Moment}
-		\Decl heure : entier
-		\Decl minute : entier
-		\Decl seconde : entier
+		\Decl heure~: entier
+		\Decl minute~: entier
+		\Decl seconde~: entier
 	\EndStruct
 	\end{pseudo}
 	}
@@ -96,8 +97,8 @@
 	\cadre{
 	\begin{pseudo}
 	\Struct{Point}
-		\Decl x : réel
-		\Decl y : réel
+		\Decl x~: réel
+		\Decl y~: réel
 	\EndStruct
 	\end{pseudo}
 	}
@@ -108,13 +109,13 @@
 
 	Une fois un type structuré défini, la
 	déclaration de variables de ce type est identique à celle des variables
-	simples. Par exemple :
+	simples. Par exemple~:
 
 	\cadre{
 	\begin{pseudo}
-	\Decl anniversaire, jourJ : Date
-	\Decl départ, arrivée, unMoment : Moment
-	\Decl a, b, centreGravité : Point
+	\Decl anniversaire, jourJ~: Date
+	\Decl départ, arrivée, unMoment~: Moment
+	\Decl a, b, centreGravité~: Point
 	\end{pseudo}
 	}
 
@@ -127,7 +128,7 @@
 	champs en utilisant les opérations permises selon leur type. Pour
 	accéder à l’un des champs d’une variable structurée, il faut mentionner
 	le nom de ce champ ainsi que celui de la variable dont il fait partie.
-	Nous utiliserons la notation «~pointée~» :
+	Nous utiliserons la notation «~pointée~»~:
 
 	\cadre{
 	\begin{pseudo}
@@ -136,7 +137,7 @@
 	}
 
 	Exemple d’instructions utilisant les variables
-	déclarées au paragraphe précédent :
+	déclarées au paragraphe précédent~:
 
 	\cadre{
 	\begin{pseudo}
@@ -148,11 +149,11 @@
 	\end{pseudo}
 	}
 
-	On peut cependant dans certains cas utiliser
+	On peut cependant, dans certains cas, utiliser
 	une variable structurée de manière globale (c’est-à-dire d’une façon
 	qui agit simultanément sur chacun de ses champs). Le cas le plus
 	courant est l’affectation interne entre deux variables structurées de
-	même type, par exemple :
+	même type, par exemple~:
 
 	\cadre{
 	\begin{pseudo}
@@ -160,7 +161,7 @@
 	\end{pseudo}
 	}
 
-	qui résume les trois instructions suivantes :
+	qui résume les trois instructions suivantes~:
 
 	\cadre{
 	\begin{pseudo}
@@ -174,11 +175,11 @@
 	paramètre d’un module, et un module peut également renvoyer une
 	«~valeur~» de type structuré. Par exemple, l’en-tête d’un module
 	renvoyant le nombre de secondes écoulées entre une heure de départ et
-	d’arrivée serait :
+	d’arrivée serait~:
 
 	\cadre{
 	\begin{pseudo}
-	\ModuleSign{nbSecondesEcoulées}{ départ\In, arrivée\In : Moment}{entier}
+	\ModuleSign{nbSecondesEcoulées}{ départ\In, arrivée\In~: Moment}{entier}
 	\end{pseudo}
 	}
 
@@ -206,11 +207,11 @@
 	comparaison adaptés aux structures utilisées.
 
 	Par facilité, on peut assigner tous les champs en une fois via des
-	«~\{\}~». Exemple :
+	«~\{\}~». Exemple~:
 
 	\cadre{
 	\begin{pseudo}
-	\Let anniversaire \Gets \{1,9,1989\}
+	\Let anniversaire \Gets \{1, 9, 1989\}
 	\end{pseudo}
 	}
 
@@ -225,8 +226,12 @@
 
 	\cadre{
 	\begin{pseudo}
-	\Module{comparerDates}{date1\In, date2\In}{entier}
-		\Decl résultat : entier
+	\LComment Ce module reçoit 2 dates en paramètres et retourne la valeur
+	\LComment {–1 si la première date est antérieure à la deuxième}
+	\LComment 0 si les deux	dates sont identiques
+	\LComment 1 si la première date est postérieure à la deuxième.
+	\Module{comparerDates}{date1\In, date2\In~: Date}{entier}
+		\Decl résultat~: entier
 		\Let  résultat \Gets -1
 		\If{date1.année ${\geq}$ date2.année}
 			\If{date1.année $>$ date2.année}
@@ -276,7 +281,7 @@
 
 \begin{Exercice}{Milieu de 2 points}
 	Écrire un module recevant les coordonnées de
-	deux points distincts du plan et retournant les coordonnées du point
+	deux points distincts du plan et qui retourne les coordonnées du point
 	situé au milieu des deux.
 \end{Exercice}
 
@@ -291,6 +296,7 @@
 	Définir un type \textbf{Rectangle} pouvant décrire de façon
 	commode un rectangle dans un espace à deux dimensions et dont les côtés
 	sont parallèles aux axes des coordonnées. 
+	
 	Écrire ensuite
 
 	\begin{enumerate}[label=\alph*)]
@@ -305,7 +311,7 @@
 		l'intérieur du rectangle R ;}
 	\item {
 		un module recevant en paramètre un rectangle R et les coordonnées
-		d'un \ point P, et renvoyant 
+		d'un point P, et renvoyant 
 		\textbf{vrai} si et seulement si le point P est sur le bord du
 		rectangle R ;}
 	\item {
@@ -318,6 +324,7 @@
 \begin{Exercice}{Un cercle}
 	Définir un type \textbf{Cercle} pouvant décrire de façon
 	commode un cercle quelconque dans un espace à deux dimensions. 
+	
 	Écrire ensuite
 	
 	\begin{enumerate}[label=\alph*)]
