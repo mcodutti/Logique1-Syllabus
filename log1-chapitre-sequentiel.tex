@@ -1224,6 +1224,20 @@
 	\marginicon{java}
 	Écrire un algorithme qui calcule et affiche la surface
 	d'un triangle connaissant sa base et sa hauteur.
+	
+	\begin{Solution}
+		\cadre{
+		\begin{pseudo}
+			\Module{surfaceTriangle}{}{}
+				\Decl base, hauteur, surface : réels
+				\Read base
+				\Read hauteur
+				\Let surface \Gets ( base * hauteur ) / 2
+				\Write surface
+			\EndModule
+		\end{pseudo}
+		}
+	\end{Solution}
 \end{Exercice}
 
 \begin{Exercice}{Placement}

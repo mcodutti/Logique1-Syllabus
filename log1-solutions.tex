@@ -1,0 +1,98 @@
+% Cours de Logique 1ère à la HEB-ESI
+% ----------------------------------
+\documentclass[a4paper,oneside]{book}
+\input{log1.sty}     % Style principal pour le bouquin
+\input{algoesi.sty}  % Définition pour les algorithmes
+%\input{auto.sty}     % Style généré par l'outil de conversion 
+
+\renewenvironment{sol}[1]{%
+	\vspace{-2mm}
+	\subsection*{\normalsize{\color{MidnightBlue}\Cadre{#1}}}
+	\vspace{-2mm}
+	}{%
+	}
+
+% Constantes
+% -----------------------------------------------
+\newcommand{\ecole}{Haute École de Bruxelles}
+\newcommand{\entite}{École Supérieure d'Informatique}
+\newcommand{\entiteadresse}{Rue Royale 67 – 1000 Bruxelles}
+\newcommand{\entitesite}{www.heb.be/esi}
+\newcommand{\entitetel}{02/219.15.46}
+\newcommand{\entitemail}{esi@heb.be}
+\newcommand{\etude}{Bachelor en Informatique}
+\newcommand{\cours}{Logique\\\&\\Techniques de programmation}
+\newcommand{\siglecours}{LOG1}
+\newcommand{\annee}{1\up{ère}}
+\newcommand{\ladate}{\today}
+
+\title{Cours de Logique \annee}
+\author{}
+\date{\today}
+
+\begin{document}
+	
+% ===================================
+% 1ère page
+% ===================================
+
+\thispagestyle{empty}
+\begin{minipage}{3cm}
+	\includegraphics[width=25mm]{image/logo-esi}
+\end{minipage}
+\begin{minipage}{13cm}
+\vspace{-6\baselineskip}
+\sffamily
+\Large\ecole\\\entite
+\bigskip\\
+\large\entiteadresse\\\entitetel{} – \entitemail
+\end{minipage}
+
+\vfill
+
+\begin{center}
+\sffamily
+\Huge\cours{}
+\bigskip\\
+\Large\etude{} -- \annee\ année\\
+\small Version du \today.{}
+\end{center}
+
+
+% ===================================
+% 2ème page
+% ===================================
+
+\vfill{}
+{
+\color{MidnightBlue}
+\Cadre{
+\begin{minipage}{\textwidth}
+\begin{Huge}
+\begin{center}
+\begin{bfseries}
+\medskip
+Recueil de solutions.
+
+Ne pas diffuser ce document aux étudiants !
+\medskip
+\end{bfseries}
+\end{center}
+\end{Huge}
+\end{minipage}
+}
+}
+\vfill{}
+
+% ===================================
+% Les solutions
+% ===================================
+\clearpage{}
+
+\begin{Emphase}{Remarque}
+Le premier nombre indique le numéro du chapitre
+et le second, le numéro de l'exercice dans ce chapitre.
+\end{Emphase}
+
+\input{solutions}
+\end{document}
