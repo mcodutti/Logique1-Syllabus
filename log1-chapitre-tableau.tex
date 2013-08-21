@@ -15,7 +15,7 @@
 	dans lequel l’utilité de cette structure de données 
 	apparaitra de façon naturelle.
 
-	\begin{Emphase}{Exemple : Statistiques de vente}
+	\begin{Emphase}{Exemple~: Statistiques de vente}
 
 		{\itshape
 		Un gérant d’une entreprise commerciale souhaite connaitre l’impact d’une
@@ -29,14 +29,14 @@
 
 	\end{Emphase}
 
-	La démarche générale se décompose en trois parties :
+	La démarche générale se décompose en trois parties~:
 
 	\begin{liste}
 	\item {
 		le traitement de début de journée, qui consiste essentiellement à mettre
 		les compteurs des quantités vendues pour chaque produit à 0}
 		\item {
-		le traitement itératif durant toute la journée : au fur et à mesure des
+		le traitement itératif durant toute la journée~: au fur et à mesure des
 		ventes, il convient de les enregistrer, c’est-à-dire d’ajouter au
 		compteur des ventes d’un produit la quantité vendue de ce produit ; ce
 		traitement itératif s’interrompra lorsque la valeur 0 sera introduite}
@@ -53,11 +53,12 @@
 %	\label{algo:tab-stat}
 	\cadre{
 	\begin{pseudo}
+	\LComment Ce module calcule et affiche la quantité vendue de 10 produits.
 	\Module{statistiquesVentesSansTableau}{}{}
 		\Empty
-		\Decl cpt1, cpt2, cpt3, cpt4, cpt5 : entiers
-		\Decl cpt6, cpt7, cpt8, cpt9, cpt10 : entiers
-		\Decl numéroProduit, quantité : entiers
+		\Decl cpt1, cpt2, cpt3, cpt4, cpt5~: entiers
+		\Decl cpt6, cpt7, cpt8, cpt9, cpt10~: entiers
+		\Decl numéroProduit, quantité~: entiers
 		\Empty
 		\Let cpt1 \Gets 0
 		\Let cpt2 \Gets 0
@@ -70,42 +71,42 @@
 		\Let cpt9 \Gets 0
 		\Let cpt10 \Gets 0
 		\Empty
-		\Write "Introduisez le numéro du produit :"
+		\Write "Introduisez le numéro du produit~:"
 		\Read numéroProduit
 		\Empty
 		\While{numéroProduit > 0}
 		\Empty
-			\Write "Introduisez la quantité vendue :"
+			\Write "Introduisez la quantité vendue~:"
 			\Read quantité
 			\Empty
 			\Switch{numéroProduit \K{vaut}}
-				\Stmt 1 : cpt1 \Gets cpt1 + quantité
-				\Stmt 2 : cpt2 \Gets cpt2 + quantité
-				\Stmt 3 : cpt3 \Gets cpt3 + quantité
-				\Stmt 4 : cpt4 \Gets cpt4 + quantité
-				\Stmt 5 : cpt5 \Gets cpt5 + quantité
-				\Stmt 6 : cpt6 \Gets cpt6 + quantité
-				\Stmt 7 : cpt7 \Gets cpt7 + quantité
-				\Stmt 8 : cpt8 \Gets cpt8 + quantité
-				\Stmt 9 : cpt9 \Gets cpt9 + quantité
-				\Stmt 10 :cpt10 \Gets cpt10 + quantité
+				\Stmt 1~: cpt1 \Gets cpt1 + quantité
+				\Stmt 2~: cpt2 \Gets cpt2 + quantité
+				\Stmt 3~: cpt3 \Gets cpt3 + quantité
+				\Stmt 4~: cpt4 \Gets cpt4 + quantité
+				\Stmt 5~: cpt5 \Gets cpt5 + quantité
+				\Stmt 6~: cpt6 \Gets cpt6 + quantité
+				\Stmt 7~: cpt7 \Gets cpt7 + quantité
+				\Stmt 8~: cpt8 \Gets cpt8 + quantité
+				\Stmt 9~: cpt9 \Gets cpt9 + quantité
+				\Stmt 10~:cpt10 \Gets cpt10 + quantité
 			\EndSwitch
 			\Empty
-			\Write "Introduisez le numéro du produit :"
+			\Write "Introduisez le numéro du produit~:"
 			\Read numéroProduit
 			\Empty
 		\EndWhile
 		\Empty
-		\Write "quantité vendue de produit 1 :", cpt1
-		\Write "quantité vendue de produit 2 :", cpt2
-		\Write "quantité vendue de produit 3 :", cpt3
-		\Write "quantité vendue de produit 4 :", cpt4
-		\Write "quantité vendue de produit 5 :", cpt5
-		\Write "quantité vendue de produit 6 :", cpt6
-		\Write "quantité vendue de produit 7 :", cpt7
-		\Write "quantité vendue de produit 8 :", cpt8
-		\Write "quantité vendue de produit 9 :", cpt9
-		\Write "quantité vendue de produit 10 :", cpt10
+		\Write "quantité vendue de produit 1~:", cpt1
+		\Write "quantité vendue de produit 2~:", cpt2
+		\Write "quantité vendue de produit 3~:", cpt3
+		\Write "quantité vendue de produit 4~:", cpt4
+		\Write "quantité vendue de produit 5~:", cpt5
+		\Write "quantité vendue de produit 6~:", cpt6
+		\Write "quantité vendue de produit 7~:", cpt7
+		\Write "quantité vendue de produit 8~:", cpt8
+		\Write "quantité vendue de produit 9~:", cpt9
+		\Write "quantité vendue de produit 10~:", cpt10
 		\Empty
 	\EndModule
 	\end{pseudo}
@@ -117,16 +118,16 @@
 	traiter était de 20 ou 100 ? Le but de l’informatique étant de
 	dispenser l’humain des tâches répétitives, le programmeur peut en
 	espérer autant de la part d’un langage de programmation ! La solution
-	est apportée par un nouveau type de variables : les \textbf{variables
+	est apportée par un nouveau type de variables~: les \textbf{variables
 	indicées} ou \textbf{tableaux}.
 
 	Au lieu d’avoir à manier dix compteurs distincts
 	(\textstyleCodeInsr{cpt1}, \textstyleCodeInsr{cpt2}, etc.), nous allons
-	envisager une seule «~grande~» variable cpt compartimentée en dix
-	«~sous-variables~» qui se distingueront les unes des autres par un
-	indice : \textstyleCodeInsr{cpt1} deviendrait ainsi
-	\textstyleCodeInsr{cpt[1]}, \textstyleCodeInsr{cpt2} deviendrait
-	\textstyleCodeInsr{cpt[2]}, et ainsi de suite jusqu’à
+	envisager une seule «~grande~» variable \textstyleCodeInsr{cpt} 
+	compartimentée en dix «~sous-variables~» qui se distingueront 
+	les unes des autres par un indice~: \textstyleCodeInsr{cpt1} 
+	deviendrait ainsi \textstyleCodeInsr{cpt[1]}, \textstyleCodeInsr{cpt2} 
+	deviendrait	\textstyleCodeInsr{cpt[2]}, et ainsi de suite jusqu’à
 	\textstyleCodeInsr{cpt10} qui deviendrait \textstyleCodeInsr{cpt[10]}.
 
 	\begin{center}
@@ -169,26 +170,27 @@
 
 	\cadre{
 	\begin{pseudo}
+	\LComment Ce module calcule et affiche la quantité vendue de 10 produits.
 	\Module{statistiquesVentesAvecTableau}{}{}
 		\Empty
-		\Decl cpt : \K{tableau} [1 à 10] d’entiers
-		\Decl i, numéroProduit, quantité : entiers
+		\Decl cpt~: \K{tableau} [1 à 10] d’entiers
+		\Decl i, numéroProduit, quantité~: entiers
 		\Empty
 		\For{i \K{de} 1 \K{à} 10}
 			\Let cpt[i] \Gets 0
 		\EndFor
 		\Empty
-		\Write "Introduisez le numéro du produit :"
+		\Write "Introduisez le numéro du produit~:"
 		\Read numéroProduit
 		\Empty
 		\While{numéroProduit > 0}
 		\Empty
-			\Write "Introduisez la quantité vendue :"
+			\Write "Introduisez la quantité vendue~:"
 			\Read quantité
 			\Empty
 			\Let cpt[numéroProduit] \Gets cpt[numéroProduit] + quantité
 			\Empty
-			\Write "Introduisez le numéro du produit :"
+			\Write "Introduisez le numéro du produit~:"
 			\Read numéroProduit
 			\Empty
 		\EndWhile
@@ -215,7 +217,7 @@
 	Cet indice varie entre la position du premier élément 
 	et la position du dernier élément, 
 	ces positions correspondant aux bornes de l’indice.
-	Notons qu'il n'y a pas de «~trou~» : 
+	Notons qu'il n'y a pas de «~trou~»~: 
 	tous les éléments existent entre le premier et le dernier indice.
 
 	\marginicon{definition}
@@ -237,11 +239,11 @@
 % ==================
 
 	\marginicon{definition}
-	Pour déclarer un tableau, on écrit :
+	Pour déclarer un tableau, on écrit~:
 
 	\cadre{
 	\begin{pseudo}
-	\Decl nomTableau : \K{tableau} [borneMin à borneMax] de TypeElément
+	\Decl nomTableau~: \K{tableau} [borneMin à borneMax] de TypeElément
 	\end{pseudo}
 	}
 	
@@ -257,27 +259,28 @@
 	paramètres ayant une valeur connue lors de la déclaration. Une fois un
 	tableau déclaré, seuls les éléments d’indice compris entre
 	\textstyleCodeInsr{borneMin} et \textstyleCodeInsr{borneMax} peuvent
-	être utilisés. Par exemple, si on déclare :
+	être utilisés. Par exemple, si on déclare~:
 
 	\cadre{
 	\begin{pseudo}
-	\Decl tabEntiers : \K{tableau} [1 à 100] d’entiers
+	\Decl tabEntiers~: \K{tableau} [1 à 100] d’entiers
 	\end{pseudo}
 	}
 	
 	Il est interdit d’utiliser \textstyleCodeInsr{tabEntiers[0]} ou
 	\textstyleCodeInsr{tabEntiers[101]}. De plus, chaque élément
-	\textstyleCodeInsr{tabEntiers[i]} (avec 1 ${\leq}$ i ${\leq}$ 100) doit
+	\textstyleCodeInsr{tabEntiers[i]} (avec $1 \leq i \leq 100$) doit
 	être manié avec la même précaution qu’une variable simple, c’est-à-dire
 	qu’on ne peut utiliser un élément du tableau qui n’aurait pas été
 	préalablement affecté ou initialisé.
 
-	N.B. : Il n'est pas interdit de prendre 0 pour la borne
+	N.B.~: Il n'est pas interdit de prendre 0 pour la borne
 	inférieure ou même d'utiliser des bornes négatives
-	(par exemple : \textstyleCodeInsr{tabTempératures[ -20 à 50 ]}).
+	(par exemple~: \textstyleCodeInsr{tabTempératures~: 
+	\textbf{tableau} [-20 à 50] de réels}).
 
 	\marginicon{attention}
-	En Java, un tableau est défini par sa taille n et les bornes sont
+	En Java, un tableau est défini par sa taille $n$ et les bornes sont
 	automatiquement $0$ et $n-1$. Ce n'est pas le cas en
 	Logique où on a plus de liberté dans le choix des bornes.
 
@@ -335,7 +338,7 @@
 
 	\cadre{
 	\begin{pseudo}
-	\Decl nomTableau : \K{tableau} de TypeElément
+	\Decl nomTableau~: \K{tableau} de TypeElément
 	\LComment Le code peut déterminer ici les bornes
 	\Let nomTableau \Gets \K{nouveau} \K{tableau} [ borneMin à borneMax ] de TypeElément
 	\end{pseudo}
@@ -354,21 +357,30 @@
 	tableau reçu en paramètre est déclarée avec une variable (qui peut être
 	considéré comme un paramètre entrant).
 
-	\textbf{Exemple~:}
+	\textbf{Exemples~:}
 	
 	\cadre{
 	\begin{pseudo}
-	\Module{brol}{tab\In : \K{tableau} [1 à n] d'entiers}{}
+	\Module{brol}{tab\In~: \K{tableau} [1 à n] d'entiers}{}
 		\Write "J’ai reçu un tableau de ", n, " éléments".
 	\EndModule
 	\end{pseudo}
 	}
 
-	Ce \textstyleCodeInsr{n} va prendre la taille précise du tableau
+	Ce $n$ va prendre la taille précise du tableau
 	(statique ou dynamique) utilisé à chaque appel et peut être utilisé
 	dans le corps du module. Bien sûr il s’agit là de la taille physique du
 	tableau. Si une partie seulement du tableau doit être traitée, il
 	convient de passer également la taille logique en paramètre.
+	
+	\cadre{
+	\begin{pseudo}
+	\Module{brol}{tab\In~: \K{tableau} [1 à n] d'entiers, tailleLogique~: entier}{}
+		\Write "J’ai reçu un tableau rempli de ", tailleLogique, " éléments sur ", n, " éléments au total."
+	\EndModule
+	\end{pseudo}
+	}
+
 	
 	Notons qu’on admet également qu’un module retourne un tableau. Par
 	contre, on ne peut pas lire ou afficher un tableau en une seule
@@ -385,14 +397,14 @@
 \begin{Exercice}{Somme}
 	\marginicon{java}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de \textstyleCodeInsr{n} entiers 
+	\textstyleCodeInsr{tabEnt} de $n$ entiers 
 	et qui retourne la somme de ses éléments.
 \end{Exercice}
 
 \begin{Exercice}{Maximum/minimum}
 	\marginicon{java}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de \textstyleCodeInsr{n} entiers et qui
+	\textstyleCodeInsr{tabEnt} de $n$ entiers et qui
 	retourne la plus grande valeur de ce tableau. Idem pour le minimum.
 \end{Exercice}
 
@@ -400,34 +412,34 @@
 	\label{ex:indiceminmax}
 	\marginicon{java}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de \textstyleCodeInsr{n} entiers et qui
+	\textstyleCodeInsr{tabEnt} de $n$ entiers et qui
 	retourne l’indice de l’élément contenant la plus grande valeur de ce
 	tableau. 
 	En cas d’ex-æquo, c’est l’indice le plus petit qui sera renvoyé.
 	
 	Que faut-il changer pour renvoyer l’indice le plus grand ?
 	Et pour retourner l’indice du minimum ? 
-	réécrire l’algorithme de l’exercice précédent en utilisant celui-ci.
+	Réécrire l’algorithme de l’exercice précédent en utilisant celui-ci.
 \end{Exercice}
 
 \bigskip\bigskip\bigskip
 
 \begin{Exercice}{Nombre d'éléments d'un tableau}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de \textstyleCodeInsr{n} entiers et qui
+	\textstyleCodeInsr{tabEnt} de $n$ entiers et qui
 	retourne le nombre d’éléments du tableau.
 \end{Exercice}
 
 \begin{Exercice}{La présence d'un 0}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de \textstyleCodeInsr{n} entiers 
+	\textstyleCodeInsr{tabEnt} de $n$ entiers 
 	et qui retourne un booléen 
 	indiquant s'il contient au moins un 0. 
 \end{Exercice}
 
 \begin{Exercice}{Plus grand écart absolu}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de \textstyleCodeInsr{n} entiers et qui
+	\textstyleCodeInsr{tabEnt} de $n$ entiers et qui
 	retourne le plus grand écart absolu entre deux éléments consécutifs de
 	ce tableau.
 	Et si on veut le plus petit écart ?
@@ -435,14 +447,14 @@
 
 \begin{Exercice}{Remplacement de valeurs}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de \textstyleCodeInsr{n} entiers et qui
+	\textstyleCodeInsr{tabEnt} de $n$ entiers et qui
 	remplace dans ce tableau toutes les valeurs multiples de 3 par 0.
 \end{Exercice}
 
 \begin{Exercice}{Tableau ordonné ?}
 	\marginicon{java}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de \textstyleCodeInsr{n} entiers et qui
+	\textstyleCodeInsr{tabEnt} de $n$ entiers et qui
 	vérifie si ce tableau est ordonné (strictement) croissant sur les
 	valeurs. Le module retournera \textbf{vrai} si le tableau est ordonné,
 	\textbf{faux} sinon.
@@ -451,7 +463,7 @@
 \begin{Exercice}{Position des minimums}
 	\marginicon{java}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de \textstyleCodeInsr{n} entiers et qui
+	\textstyleCodeInsr{tabEnt} de $n$ entiers et qui
 	affiche le ou les indice(s) des éléments contenant la valeur minimale
 	du tableau.
 
@@ -459,7 +471,8 @@
 	\item 
 		écrire une première version «~classique~» avec deux parcours de tableau
 	\item
-		écrire une deuxième version qui ne parcourt qu’une seule fois tabEnt en
+		écrire une deuxième version qui ne parcourt qu’une seule fois 
+		\textstyleCodeInsr{tabEnt} en
 		stockant dans un deuxième tableau les indices des plus petits éléments
 		rencontrés (ce tableau étant à chaque fois réinitialisé lorsqu’un
 		nouveau minimum est rencontré)
@@ -469,7 +482,7 @@
 \begin{Exercice}{Renverser un tableau}
 	\marginicon{java}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de \textstyleCodeInsr{n} entiers, et qui
+	\textstyleCodeInsr{tabEnt} de $n$ entiers, et qui
 	«~renverse~» ce tableau, c’est-à-dire qui permute le premier élément
 	avec le dernier, le deuxième élément avec l’avant-dernier et ainsi de
 	suite.
@@ -477,18 +490,20 @@
 
 \begin{Exercice}{Tableau symétrique ?}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de \textstyleCodeInsr{n} entiers et qui
+	\textstyleCodeInsr{tabEnt} de $n$ entiers et qui
 	vérifie si ce tableau est symétrique, c’est-à-dire si le premier
 	élément est identique au dernier, le deuxième à l’avant-dernier et
 	ainsi de suite.
 \end{Exercice}
 
 \begin{Exercice}{Cumul des ventes}
-	Soit le tableau \textstyleCodeInsr{ventes[1~à 12]} d’entiers où le
+	Soit le tableau \textstyleCodeInsr{ventes~: 
+	\textbf{tableau} [1~à 12]} d’entiers où le
 	premier élément contient le montant total des ventes pour janvier, le
 	second pour février, et ainsi de suite jusqu'à
 	décembre. Écrire l’algorithme qui reçoit ce tableau en paramètre, et
-	renvoie le tableau \textstyleCodeInsr{cumul[1~à 12]} ; chaque élément
+	renvoie le tableau \textstyleCodeInsr{cumul~: 
+	\textbf{tableau}[1~à 12]} ; chaque élément
 	de ce tableau devra contenir le cumul de toutes les ventes depuis le
 	début de l’année jusqu’au mois correspondant à
 	l'indice de l’élément en question. Le dernier élément
@@ -507,9 +522,10 @@
 \end{Exercice}
 
 \begin{Exercice}{Palindrome}
-	Soit le tableau \textstyleCodeInsr{phrase[1 à n]} dont chaque élément
-	est un caractère alphabétique, le caractère d’espacement ou un
-	caractère de ponctuation. Dans ce tableau, des lettres qui se suivent
+	Soit le tableau \textstyleCodeInsr{phrase~: 
+	\textbf{tableau}[1 à n]} de caractères 
+	(caractère alphabétique, le caractère d’espacement ou un
+	caractère de ponctuation). Dans ce tableau, des lettres qui se suivent
 	constituent un mot. Ces mots sont séparés les uns des autres par un ou
 	plusieurs caractères d’espacement ou de ponctuation. Écrire un module
 	qui reçoit en paramètre ce tableau et qui vérifie si la phrase formée
@@ -518,7 +534,7 @@
 	phrase palindrome est une phrase qui peut se lire dans les deux sens
 	sans tenir compte des espacements et de la ponctuation.
 	
-	Exemple du contenu du tableau phrase :
+	Exemple du contenu du tableau phrase~:
 
 	\begin{center}
 	\begin{tabular}{|*{21}{>{\small\centering\arraybackslash}m{0.30cm}|}}
@@ -548,13 +564,13 @@
 	\end{tabular}
 	\end{center}
 
-	\textbf{Aide} : il est permis d’utiliser les modules suivants :
+	\textbf{Aide}~: il est permis d’utiliser les modules suivants~:
 
 	\cadre{
 	\begin{pseudo}
-	\ModuleSign{estEspace}{car : caractère}{booléen} 
+	\ModuleSign{estEspace}{car~: caractère}{booléen} 
 		\Stmt \RComment retourne vrai si car est un caractère d’espacement.
-	\ModuleSign{estPonctuation}{car : caractère}{booléen} 
+	\ModuleSign{estPonctuation}{car~: caractère}{booléen} 
 		\Stmt \RComment retourne vrai si car est un caractère de ponctuation.
 	\end{pseudo}
 	}
@@ -563,7 +579,7 @@
 \begin{Exercice}{Moyenne d'éléments}
 	\marginicon{java}
 	Soit le tableau \textstyleCodeInsr{tabEnt} contenant
-	\textstyleCodeInsr{n} entiers \textbf{différents}. Écrire l’algorithme
+	$n$ entiers \textbf{différents}. Écrire l’algorithme
 	qui calcule et affiche la moyenne des éléments situés entre les valeurs
 	minimale et maximale du tableau (ces deux valeurs participant au calcul
 	de cette moyenne). Dans l’exemple ci-dessous, le maximum est 85, le
@@ -599,15 +615,15 @@
 \end{Exercice}
 
 \begin{Exercice}{OXO}
-	Soit le tableau \textstyleCodeInsr{Oxo} contenant \textstyleCodeInsr{n}
+	Soit le tableau \textstyleCodeInsr{oxo} contenant $n$
 	caractères. Chaque élément est le caractère ‘O’ ou ‘X’. Écrire
 	l’algorithme qui permet de compter et d’afficher le nombre de séquences
 	distinctes des valeurs consécutives ‘O’, ‘X’, ‘O’. Lorsqu’un ‘O’ fait
 	partie de deux séquences, on ne comptabilise qu’une seule séquence
 	(ainsi le ‘O’ en position 6 ci-dessous est le dernier d’une séquence et
-	le premier d’une autre : on ne comptabilisera qu’une seule séquence
+	le premier d’une autre~: on ne comptabilisera qu’une seule séquence
 	pour ces deux séquences qui se chevauchent). Dans l’exemple ci-dessous,
-	il y a donc 3 séquences à comptabiliser :
+	il y a donc 3 séquences à comptabiliser~:
 
 	\begin{center}
 	\begin{tabular}{*{20}{>{\centering\arraybackslash}m{0.35cm}}}
@@ -692,7 +708,7 @@
 	\cadre{
 	\begin{pseudo}
 	\ModuleSign{testerProposition}{
-		proposition\In, solution\In : 
+		proposition\In, solution\In~: 
 		\K{tableau} [1 à k ] de Couleur,
 		\\\hfill bienPlacés\Out, malPlacés\Out: entiers}{}
 	\end{pseudo}
@@ -706,8 +722,8 @@
 	Ce chiffre est en fait assez facile à casser grâce à l'analyse statistique.
 	En effet, dans un texte général, les lettres de l'alphabet ne sont pas
 	présentes avec la même fréquence. 
-	Par exemple, en français, la lettre 'E' est la plus présente\footnote{Il y a
-	évidemment des exceptions. cf. "La disparition" de Georges Perec.}
+	Par exemple, en français, la lettre 'E' est la plus présente.\footnote{Il y a
+	évidemment des exceptions, cf. "La disparition" de Georges Perec.}
 	Ainsi, si on trouve un message chiffré 
 	(et si on sait que c'est du français et que c'est chiffré par le chiffre de César)
 	on peut tenter de le comprendre via une analyse statistique. 
@@ -715,7 +731,8 @@
 	probablement le 'E'. Par exemple, si la lettre la plus fréquente est le 'B',
 	il est probable que le message soit chiffré avec un décalage de 3.
 	
-	Écrivez un module qui reçoit un message chiffré par le chiffre de César
+	Écrivez un module qui reçoit une chaine, 
+	le message chiffré par le chiffre de César
 	et retourne une valeur probable pour le déplacement utilisé pour le chiffrer.
 \end{Exercice}
 
