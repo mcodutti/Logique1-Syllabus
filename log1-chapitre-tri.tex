@@ -4,7 +4,7 @@
 
 	\marginicon{objectif}
 		Dans ce chapitre nous voyons quelques algorithmes simples pour trier un
-		ensemble d'informations : recherche des maxima, tri
+		ensemble d'informations~: recherche des maxima, tri
 		par insertion et tri bulle. Des algorithmes plus efficaces seront vus
 		en deuxième année.
 
@@ -45,7 +45,7 @@
 
 	Le problème central est donc le tri des informations. Celui-ci a pour
 	but d’organiser un ensemble d’informations qui ne l’est pas \textit{à
-	priori}. On peut distinguer trois grands cas de figure :
+	priori}. On peut distinguer trois grands cas de figure~:
 
 	\liststyleWWviiiNumi
 	\begin{enumerate}
@@ -61,7 +61,7 @@
 			Ensuite les situations où on s’arrange pour ne jamais devoir trier la
 			totalité des éléments d’un ensemble, qui resterait cependant à tout
 			moment ordonné. Imaginons le cas d’une bibliothèque~dont les livres
-			sont rangés par ordre alphabétique des auteurs : à l’achat d’un nouveau
+			sont rangés par ordre alphabétique des auteurs~: à l’achat d’un nouveau
 			livre, ou au retour de prêt d’un livre, celui-ci est immédiatement
 			rangé à la bonne place. Ainsi, l’ordre global de la bibliothèque est
 			maintenu par la répétition d’une seule opération élémentaire consistant
@@ -77,9 +77,9 @@
 			les copies apparaissent dans cet ordre dans chacun des groupes.
 	\end{enumerate}
 	
-	Le dernier exemple illustre un classement sur une \textbf{clé complexe}
+	Le dernier cas illustre un classement sur une \textbf{clé complexe}
 	(ou \textbf{composée}) impliquant la comparaison de plusieurs champs
-	d’une même structure : le premier classement se fait sur le numéro de
+	d’une même structure~: le premier classement se fait sur le numéro de
 	groupe, et à numéro de groupe égal, l’ordre se départage sur le nom de
 	l’étudiant. On dira de cet ensemble qu’il est classé en \textbf{majeur}
 	sur le numéro de groupe et en \textbf{mineur} sur le nom d’étudiant.
@@ -102,21 +102,21 @@
 	Certains tris sont évidemment plus performants que d’autres. Le choix
 	d’un tri particulier dépend de la taille de l’ensemble à trier et de la
 	manière dont il se présente, c’est-à-dire déjà plus ou moins ordonné.
-	La performance quant à elle se juge sur deux critères : le nombre de
+	La performance quant à elle se juge sur deux critères~: le nombre de
 	tests effectués (comparaisons de valeurs) et le nombre de transferts de
 	valeurs réalisés. 
 	
 	Les algorithmes classiques de tri présentés dans ce chapitre le sont
 	surtout à titre pédagogique. Ils ont tous une «~complexité en
-	\textit{n}²~», ce qui veut dire que si \textit{n} est le nombre
+	$n^2$~», ce qui veut dire que si $n$ est le nombre
 	d’éléments à trier, le nombre d’opérations élémentaires (tests et
-	transferts de valeurs) est proportionnel à \textit{n}². Ils conviennent
+	transferts de valeurs) est proportionnel à $n^2$. Ils conviennent
 	donc pour des ensembles de «~taille raisonnable~», mais peuvent devenir
 	extrêmement lents à l’exécution pour le tri de grands ensembles, comme
 	par exemple les données de l’annuaire téléphonique. Plusieurs solutions
 	existent, comme la méthode de tri \textbf{Quicksort}. Cet algorithme
 	très efficace faisant appel à la récursivité et qui sera étudié en
-	deuxième année a une complexité en \textit{n} log \textit{n}. 
+	deuxième année a une complexité en $n \log(n)$. 
 
 	\marginicon{attention}
 	Dans ce chapitre, les algorithmes traiteront du tri dans un
@@ -125,13 +125,13 @@
 	définition de la relation d’ordre propre au type de données utilisé. Ce
 	sera par exemple, l’ordre alphabétique pour les chaines de caractères,
 	l’ordre chronologique pour des objets \textstyleCodeInsr{Date} ou
-	\textstyleCodeInsr{Moment }\textstyleCodeInsr{\textrm{(que nous verrons
-	plus tard)}}, etc. De plus, le seul ordre envisagé sera l’ordre
+	\textstyleCodeInsr{Moment} (que nous verrons
+	plus tard), etc. De plus, le seul ordre envisagé sera l’ordre
 	\textbf{croissant} des données. On peut tout aussi bien envisager le
-	tri d’une liste en lieu et place d’un tableau.
+	tri d’une liste (que nous verrons plus tard) en lieu et place d’un tableau.
 
 	Enfin, dans toutes les méthodes de tri abordées, nous supposerons la
-	taille physique du tableau à trier (notée \textit{n}) égale à sa taille
+	taille physique du tableau à trier (notée $n$) égale à sa taille
 	logique, celle-ci n’étant pas modifiée par l’action de tri.
 
 
@@ -146,7 +146,7 @@
 	{\sffamily\bfseries\upshape
 	Description de l’algorithme}
 
-	Le tableau à trier sera à chaque étape subdivisé en deux sous-tableaux :
+	Le tableau à trier sera à chaque étape subdivisé en deux sous-tableaux~:
 	le premier cadré à gauche contiendra des éléments déjà ordonnés, et le
 	second, cadré à droite, ceux qu’il reste à insérer dans le sous-tableau
 	trié. Celui-ci verra sa taille s’accroitre au fur et à mesure des
@@ -159,8 +159,10 @@
 	élément du sous-tableau non trié et à l’insérer à la bonne place dans
 	le sous-tableau trié.
 
-	Prenons comme exemple un tableau tab de 20 entiers. Au départ, le
-	sous-tableau trié est formé du premier élément tab[1] = 20 :
+	Prenons comme exemple un tableau tab de 20 entiers. 
+	
+	Au départ, le	sous-tableau trié est formé du premier élément, 
+	$tab[1]$ qui vaut 20~:
 
 	\begin{center}
 	\tablehead{}
@@ -217,8 +219,8 @@
 
 	\bigskip
 	
-	L’étape suivante consiste à insérer tab[2] = 12 dans ce sous-tableau, de
-	taille 2 :
+	L’étape suivante consiste à insérer $tab[2]$, qui vaut 12, dans ce sous-tableau, de
+	taille 2~:
 
 	\begin{center}
 	\tablehead{}
@@ -275,7 +277,7 @@
 
 	\bigskip
 
-	Ensuite, c’est au tour de tab[3] = 18 d’être inséré :
+	Ensuite, c’est au tour de tab[3], qui vaut 18, d’être inséré~:
 
 	\begin{center}
 	\tablehead{}
@@ -343,8 +345,9 @@
 
 	\cadre{
 	\begin{pseudo}
-		\Module{triInsertion}{tab\InOut : tableau[1 à n] d’entiers}{}
-			\Decl i, j, valAInsérer : entiers
+		\LComment Ce module trie le tableau reçu en paramètre (via un tri par insertion).
+		\Module{triInsertion}{tab\InOut~: tableau[1 à n] d’entiers}{}
+			\Decl i, j, valAInsérer~: entiers
 			\For{i \K{de} 2 \K{à} n}
 				\Let valAInsérer \Gets tab[i]
 				\LComment Recherche de l’endroit où insérer valAInsérer dans le 
@@ -374,7 +377,9 @@
 	{\sffamily\bfseries\upshape
 	Description de l’algorithme}
 
-	Prenons par exemple un tableau de 20 entiers. La première étape consiste
+	Prenons par exemple un tableau de 20 entiers. 
+	
+	La première étape consiste
 	à rechercher la valeur minimale du tableau. Il s’agit de l’élément
 	d’indice 10 et de valeur 17.
 	
@@ -435,7 +440,7 @@
 	tableau. Hors, cette position est occupée par la valeur 20. Comment
 	procéder dès lors pour ne perdre aucune valeur et sans faire appel à un
 	second tableau ? La solution est simple, il suffit d’échanger le
-	contenu des deux éléments d’indices 1 et 10 :
+	contenu des deux éléments d’indices 1 et 10~:
 	
 	\begin{center}
 	\tablehead{}
@@ -491,12 +496,12 @@
 	\end{center}
 	
 	Le tableau se subdivise à présent en deux sous-tableaux, un sous-tableau
-	déjà trié (pour le moment réduit au seul élément tab[1]) et le
+	déjà trié (pour le moment réduit au seul élément $tab[1]$) et le
 	sous-tableau des autres valeurs non encore triées (de l’indice 2 à 20).
-	On recommence ce processus dans ce second sous-tableau : le minimum est
+	On recommence ce processus dans ce second sous-tableau~: le minimum est
 	à présent l'élément d’indice 17 et de valeur 19.
 	Celui-ci viendra donc en 2\textsuperscript{ème} position, échangeant sa
-	place avec la valeur 52 qui s’y trouvait :
+	place avec la valeur 52 qui s’y trouvait~:
 
 	\begin{center}
 	\tablehead{}
@@ -553,14 +558,14 @@
 
 	Le sous-tableau trié est maintenant formé des deux premiers éléments, et
 	le sous-tableau non trié par les 18 éléments suivants. À
-	l’étape~\textit{i} de cet algorithme, on sélectionne donc le minimum du
-	sous-tableau non trié (entre les indices \textit{i} et \textit{n}). Une
+	l’étape $i$ de cet algorithme, on sélectionne donc le minimum du
+	sous-tableau non trié (entre les indices $i$ et $n$). Une
 	fois le minimum localisé, on l’échange avec l’élément d’indice
-	\textit{i}. À chaque étape, la taille du sous-tableau trié augmente de
+	$i$. À chaque étape, la taille du sous-tableau trié augmente de
 	1 et celle du sous-tableau non trié diminue de 1. L’algorithme s’arrête
-	à la \textit{n}\textsuperscript{ème} étape, lorsque le sous-tableau
+	à la $n$\textsuperscript{ème} étape, lorsque le sous-tableau
 	trié correspond au tableau de départ. En pratique l’arrêt se fait après
-	l’étape \textit{n} – 1, car lorsque le sous-tableau non trié n’est plus
+	l’étape $n – 1$, car lorsque le sous-tableau non trié n’est plus
 	que de taille 1, il contient nécessairement le maximum de l’ensemble.
 
 	{\sffamily\bfseries\upshape
@@ -568,8 +573,9 @@
 	
 	\cadre{
 	\begin{pseudo}
-		\Module{triSélectionMinimaSuccessifs}{tab\InOut : tableau[1 à n] d’entiers}{}
-			\Decl i, indiceMin : entiers
+		\LComment Ce module trie le tableau reçu en paramètre (via un tri par sélection des minima successifs).
+		\Module{triSélectionMinimaSuccessifs}{tab\InOut~: tableau[1 à n] d’entiers}{}
+			\Decl i, indiceMin~: entiers
 			\For{i \K{de} 1 \K{à} n – 1}
 			\RComment i correspond à l’étape de l’algorithme
 				\Let indiceMin \Gets positionMin( tab, i, n )
@@ -583,9 +589,9 @@
 
 	\cadre{
 	\begin{pseudo}
-		\LComment recherche de l’indice du minimum entre les indices début et fin
-		\Module{positionMin}{tab\In : tableau[1 à n] d’entiers, début, fin : entiers}{entier}
-			\Decl indiceMin, i : entiers
+		\LComment Ce module retourne de l’indice du minimum entre les indices début et fin du tableau reçu.
+		\Module{positionMin}{tab\In~: tableau[1 à n] d’entiers, début, fin~: entiers}{entier}
+			\Decl indiceMin, i~: entiers
 			\Let indiceMin \Gets début
 			\For{i \K{de} début+1 \K{à} fin}
 				\If{tab[i] < tab[indiceMin]}
@@ -595,9 +601,9 @@
 			\Return indiceMin
 		\EndModule
 		\Empty
-		\LComment module d'échange entre 2 variables
-		\Module{swap}{a\InOut, b\InOut : entiers}{}
-			\Decl aux : entiers
+		\LComment Ce module échange le contenu de 2 variables.
+		\Module{swap}{a\InOut, b\InOut~: entiers}{}
+			\Decl aux~: entiers
 			\Let aux \Gets a
 			\Let a \Gets b
 			\Let b \Gets aux
@@ -618,7 +624,7 @@
 	\begin{Exercice}{Maxima et minima}
 		Développez un algorithme combinant les deux recherches. À chaque étape,
 		on sélectionne donc le minimum et le maximum du sous-tableau restant à
-		trier et on les positionnera à l’endroit \textit{ad hoc}. N.B. : on
+		trier et on les positionnera à l’endroit \textit{ad hoc}. N.B.~: on
 		constatera que cette méthode n’apporte pas d’amélioration, ni en temps,
 		ni en simplicité, aux deux algorithmes de base !
 	\end{Exercice}
@@ -642,7 +648,7 @@
 	valeurs consécutives. Quand deux valeurs sont dans le désordre, on les
 	permute. Le premier parcours s’achève lorsqu’on arrive à l’élément
 	d’indice 1 qui contient alors la «~bulle~»,
-	c'est-à-dire la plus petite valeur du tableau, soit 1 :
+	c'est-à-dire la plus petite valeur du tableau, soit 1~:
 
 	\clearpage
 	\begin{center}
@@ -1013,7 +1019,7 @@
 
 	Ceci achève le premier parcours. On recommence à présent le même
 	processus dans le sous-tableau débutant au deuxième élément, ce qui
-	donnera le contenu suivant :
+	donnera le contenu suivant~:
 
 	\begin{center}
 	\tablehead{}
@@ -1041,10 +1047,10 @@
 	\end{center}
 
 	Comme pour le tri par recherche des minima successifs, à l’issue de
-	l’étape \textit{i} de l’algorithme, on obtient un sous-tableau trié
+	l’étape $i$ de l’algorithme, on obtient un sous-tableau trié
 	(entre les indices 1 et \textit{i }) et un tableau non encore trié
-	(entre les indices \textit{i} + 1 et \textit{n}). Le tri est donc
-	achevé à l’issue de l’étape \textit{n} – 1. Cependant, on notera que
+	(entre les indices $i + 1$ et $n$). Le tri est donc
+	achevé à l’issue de l’étape $n – 1$. Cependant, on notera que
 	petit à petit, outre le déplacement de la bulle, les éléments plus
 	petits évoluent progressivement vers la gauche, et les plus gros vers
 	la droite, de sorte qu’il est fréquent que le nombre d’étapes effectif
@@ -1061,8 +1067,9 @@
 	
 	\cadre{
 	\begin{pseudo}
-		\Module{triBulle}{tab\InOut : tableau[1 à n] d’entiers}{}
-			\Decl indiceBulle, j : entiers
+	\LComment Ce module trie le tableau reçu en paramètre (via un tri bulle).
+		\Module{triBulle}{tab\InOut~: tableau[1 à n] d’entiers}{}
+			\Decl indiceBulle, j~: entiers
 			\For{indiceBulle \K{de} 1 \K{à} n}
 				\For{j \K{de} n – 1 \K{à} indiceBulle \K{par} – 1}
 					\If{tab[j] > tab[j + 1]}
@@ -1122,8 +1129,8 @@
 			\cadre{
 			\begin{pseudo}
 				\Struct{Personne}
-					\Decl nom : chaine
-					\Decl dateNaissance : Date
+					\Decl nom~: chaine
+					\Decl dateNaissance~: Date
 				\EndStruct
 			\end{pseudo}
 			}
@@ -1139,7 +1146,7 @@
 	Tri partiel}
 
 		Parfois, on n’est pas intéressé par un tri complet de l’ensemble mais on
-		veut uniquement les «~k~» plus petites (ou plus grandes) valeurs. Le
+		veut uniquement les «~$k$~» plus petites (ou plus grandes) valeurs. Le
 		tri par recherche des minima et le tri bulle sont particulièrement
 		adaptés à cette situation ; il suffit de les arrêter plus tôt. Par
 		contre, le tri par insertion est inefficace car il ne permet pas un
@@ -1152,12 +1159,12 @@
 		(voir plus loin) dans le cas général mais comment se comportent-ils
 		dans le cas d’un tableau (presque) trié ? Dans ce cas, on peut vérifier
 		que le tri par recherche des minima successifs reste quadratique alors
-		que les deux autres deviennent linéaires (en n).
+		que les deux autres deviennent linéaires (en $n$).
 
 	{\sffamily\bfseries\upshape
 	Sélection des meilleurs}
 
-		Une autre situation courante est la suivante : \ un ensemble de valeurs
+		Une autre situation courante est la suivante~: \ un ensemble de valeurs
 		sont traitées (lues, calculées, ...) et il ne faut \ garder que les
 		\textstyleCodeInsr{k} plus petites (ou plus grandes).
 		L'algorithme est plus simple à écrire si on utilise
@@ -1167,17 +1174,17 @@
 		exact de valeurs dans le tableau.
 
 	{\sffamily\bfseries\scshape
-	Exemple : les k plus petites valeurs}
+	Exemple~: les k plus petites valeurs}
 
 		On lit un ensemble de valeurs strictement positives (un 0 indique la fin
-		de la lecture) et on ne garde que les «~k~» plus petites valeurs.
+		de la lecture) et on ne garde que les «~$k$~» plus petites valeurs.
 
 		\bigskip
 		
 		\cadre{
 		\begin{pseudo}
-			\Module{meilleurs}{plusPetits\InOut : tableau[1 à k + 1] d’entiers, nbValeurs\Out : entier}{}
-				\Decl val : entier
+			\Module{meilleurs}{plusPetits\InOut~: tableau[1 à k + 1] d’entiers, nbValeurs\Out~: entier}{}
+				\Decl val~: entier
 				\Let nbValeurs \Gets 0
 				\Read val
 				\While{val ${\neq}$ 0}
@@ -1188,8 +1195,8 @@
 			
 			\Empty
 			
-			\Module{insérer}{val\In : entier, plusPetits\InOut : tableau[1 à k + 1] d’entiers, nbValeurs\InOut : entier}{}
-				\Decl i : entiers
+			\Module{insérer}{val\In~: entier, plusPetits\InOut~: tableau[1 à k + 1] d’entiers, nbValeurs\InOut~: entier}{}
+				\Decl i~: entiers
 				\Let i \Gets nbValeurs
 				\Read val
 				\While{i > 0 ET val < plusPetits[i]}
@@ -1236,28 +1243,26 @@
 	2}}
 	\par}
 
-	On compare alors \textstyleCodeInsr{{val}}{
+	On compare alors \textstyleCodeInsr{val}
 	avec la valeur de cet élément médian ; il est possible qu’on ait trouvé
 	la valeur cherchée; sinon, on partage la zone de recherche en deux
-	parties :}\textstyleWWPolicepardfaut{ une qui
-	}\textstyleWWPolicepardfaut{\textbf{ne contient certainement
-	pas}}\textstyleWWPolicepardfaut{ la valeur cherchée et une qui
-	}\textstyleWWPolicepardfaut{\textbf{pourrait la
-	contenir}}\textstyleWWPolicepardfaut{. C’est cette deuxième partie qui
+	parties~: une qui \textbf{ne contient certainement pas}
+	la valeur cherchée et une qui \textbf{pourrait la
+	contenir}. C’est cette deuxième partie qui 
 	devient la nouvelle zone de recherche. On
 	réitère le processus jusqu’à ce que la valeur cherchée soit trouvée ou
 	que la zone de recherche soit réduite à sa plus simple expression,
-	c’est-à-dire un seul élément.}
+	c’est-à-dire un seul élément.
 
 	{\sffamily\bfseries
 	Algorithme}
 	
 	\cadre{
 		\begin{pseudo}
-			\Module{rechercheDichotomique}{tab\InOut : tableau[1 à k + 1] de T, valeur\In : T, pos\Out : entier}{booléen}
-				\Decl indiceDroit, indiceGauche, indiceMédian : entiers
-				\Decl candidat : T
-				\Decl trouvé : booléen
+			\Module{rechercheDichotomique}{tab\InOut~: tableau[1 à k + 1] de T, valeur\In~: T, pos\Out~: entier}{booléen}
+				\Decl indiceDroit, indiceGauche, indiceMédian~: entiers
+				\Decl candidat~: T
+				\Decl trouvé~: booléen
 				\Empty
 				\Let indiceGauche \Gets 1
 				\Let indiceDroit \Gets n
@@ -1294,12 +1299,12 @@
 		Exemple de recherche fructueuse}
 
 		Supposons que l’on recherche la valeur
-		{\textbf{23}} dans un
+		\textbf{23} dans un
 		tableau de 20 entiers. La zone ombrée représente à chaque fois la
 		partie de recherche, qui est au départ le tableau dans son entièreté.
 		Au départ,
-		\textstyleCodeInsr{{indiceGauche}} = 1 et
-		\textstyleCodeInsr{{indiceDroit}}	= 20.
+		\textstyleCodeInsr{indiceGauche} vaut 1 et
+		\textstyleCodeInsr{indiceDroit}	vaut 20.
 			
 		\begin{center}
 		\tablehead{}
@@ -1356,16 +1361,13 @@
 
 		\bigskip
 
-		\textstyleWWPolicepardfaut{\textit{Première
-		étape}}\textstyleWWPolicepardfaut{ :
-		}\textstyleCodeInsr{indiceMédian}\textstyleWWPolicepardfaut{
-		}\textsf{←}\textstyleWWPolicepardfaut{ }\textstyleCodeInsr{(1 + 20)
-		}\textstyleCodeInsr{DIV}\textstyleCodeInsr{
-		2}\textstyleWWPolicepardfaut{, c’est-à-dire 10. Comme la valeur en
+		\textit{Première étape}~:
+		\textstyleCodeInsr{indiceMédian} \textsf{←} 
+		\textstyleCodeInsr{(1 + 20) DIV	2}, c’est-à-dire 10. Comme la valeur en
 		position 10 est 15, la valeur cherchée doit se trouver à sa droite, et
 		on prend comme nouvelle zone de recherche celle délimitée par
-		}\textstyleCodeInsr{indiceGauche}\textstyleWWPolicepardfaut{ = 11 et
-		}\textstyleCodeInsr{indiceDroit}\textstyleWWPolicepardfaut{ = 20.}
+		\textstyleCodeInsr{indiceGauche} qui vaut 11 et
+		\textstyleCodeInsr{indiceDroit} qui vaut 20.
 		
 		\bigskip
 		
@@ -1424,14 +1426,11 @@
 
 		\bigskip
 
-		\textstyleWWPolicepardfaut{\textit{Deuxième
-		étape}}\textstyleWWPolicepardfaut{ :
-		}\textstyleCodeInsr{indiceMédian}\textstyleWWPolicepardfaut{
-		}\textsf{←}\textstyleWWPolicepardfaut{ }\textstyleCodeInsr{(11 + 20)
-		}\textstyleCodeInsr{DIV}\textstyleCodeInsr{
-		2}\textstyleWWPolicepardfaut{, c’est-à-dire 15. Comme on y trouve la
+		\textit{Deuxième étape}~:
+		\textstyleCodeInsr{indiceMédian} \textsf{←} 
+		\textstyleCodeInsr{(11 + 20) DIV 2}, c’est-à-dire 15. Comme on y trouve la
 		valeur 25, on garde les éléments situées à la gauche de celui-ci ; la
-		nouvelle zone de recherche est [11, 14].}
+		nouvelle zone de recherche est [11, 14].
 		
 		
 		\begin{center}
@@ -1489,15 +1488,12 @@
 
 		\bigskip
 
-		\textstyleWWPolicepardfaut{\textit{Troisième
-		étape}}\textstyleWWPolicepardfaut{ :
-		}\textstyleCodeInsr{indiceMédian}\textstyleWWPolicepardfaut{
-		}\textsf{←}\textstyleWWPolicepardfaut{ }\textstyleCodeInsr{(11 + 14)
-		}\textstyleCodeInsr{DIV}\textstyleCodeInsr{
-		2}\textstyleWWPolicepardfaut{, c’est-à-dire 12 où se trouve l’élément
+		\textit{Troisième étape}~:
+		\textstyleCodeInsr{indiceMédian} \textsf{←} 
+		\textstyleCodeInsr{(11 + 14) DIV 2}, c’est-à-dire 12 où se trouve l’élément
 		20. La zone de recherche devient
-		}\textstyleCodeInsr{indiceGauche}\textstyleWWPolicepardfaut{ = 13 et
-		}\textstyleCodeInsr{indiceDroit}\textstyleWWPolicepardfaut{ = 14.}
+		\textstyleCodeInsr{indiceGauche} vaut 13 et
+		\textstyleCodeInsr{indiceDroit} vaut 14.
 
 		
 		\begin{center}
@@ -1556,18 +1552,15 @@
 		\bigskip
 
 
-		\textstyleWWPolicepardfaut{\textit{Quatrième étape
-		:}}\textstyleWWPolicepardfaut{
-		}\textstyleCodeInsr{indiceMédian}\textstyleWWPolicepardfaut{
-		}\textsf{←}\textstyleWWPolicepardfaut{ }\textstyleCodeInsr{(13 + 14)
-		}\textstyleCodeInsr{DIV}\textstyleCodeInsr{
-		2}\textstyleWWPolicepardfaut{, c’est-à-dire 13 où se trouve la valeur
-		cherchée ; la recherche est terminée.}
+		\textit{Quatrième étape~:}
+		\textstyleCodeInsr{indiceMédian} \textsf{←} 
+		\textstyleCodeInsr{(13 + 14) DIV 2}, c’est-à-dire 13 où se trouve la valeur
+		cherchée ; la recherche est terminée.
 
 	{\sffamily\bfseries\upshape
 	Exemple de recherche infructueuse}
 
-		Recherchons à présent la valeur {\textbf{8}}. Les premières étapes vont donner
+		Recherchons à présent la valeur \textbf{8}. Les premières étapes vont donner
 		
 		
 		\begin{center}
@@ -1829,7 +1822,7 @@
 	Dans le cas de la recherche, la taille du problème est la taille du
 	tableau dans lequel on recherche un élément. On peut considérer que
 	l’opération de base est la comparaison avec un élément du tableau. La
-	question est alors la suivante : pour un tableau de taille $n$, à combien
+	question est alors la suivante~: pour un tableau de taille $n$, à combien
 	de comparaisons faut-il procéder pour trouver l’élément (ou se rendre
 	compte de son absence) ?
 
@@ -1837,32 +1830,32 @@
 	Pour la recherche linéaire}
 
 		Cela dépend évidemment de la position de la valeur à trouver. Dans le
-		meilleur des cas c’est 1, dans le pire c’est N mais on peut dire, qu’en
-		moyenne, cela entraine «~N/2~» comparaisons (que ce soit pour la
+		meilleur des cas c’est 1, dans le pire c’est $n$ mais on peut dire, qu’en
+		moyenne, cela entraine «~$n/2$~» comparaisons (que ce soit pour la
 		trouver ou se rendre compte de son absence).
 
 	{\bfseries
 	Pour la recherche dichotomique}
 
 		Ici, la zone de recherche est divisée par 2, à chaque étape. Imaginons
-		une liste de 64 éléments : après 6 étapes, on arrive à un élément
-		isolé. Pour une liste de taille N, on peut en déduire que le nombre de
+		une liste de 64 éléments~: après 6 étapes, on arrive à un élément
+		isolé. Pour une liste de taille $n$, on peut en déduire que le nombre de
 		comparaisons est au maximum l'exposant
-		qu'il faut donner à 2 pour obtenir N, soit
-		«~log\textsubscript{2 }N~».
+		qu'il faut donner à 2 pour obtenir $n$, soit
+		«~$\log_2(n)$~».
 
 	{\sffamily\bfseries\upshape
 	Comparaisons}
 
 	
 	Voici un tableau comparatif du nombre de comparaison en fonction de la
-	taille N
+	taille $n$
 
 	\begin{center}
 	\tablehead{}
 	\begin{supertabular}{|m{4.4300003cm}|m{0.507cm}|m{0.71900004cm}|m{0.93100005cm}|m{1.2479999cm}|m{1.4599999cm}|m{1.671cm}|}
 	\hline
-	\raggedleft \bfseries N &
+	\raggedleft \bfseries $n$ &
 	\raggedleft \bfseries 10 &
 	\raggedleft \bfseries 100 &
 	\raggedleft \bfseries 1000 &
@@ -1895,11 +1888,10 @@
 	
 	On dira que la recherche simple est un algorithme de complexité linéaire
 	(c'est-à-dire que le nombre
-	d'opérations est de l'ordre de N ou
-	proportionnel à N) ce qu’on note en langage plus mathématique O(N)
-	(prononcé «~grand O de N~»). Pour la recherche dichotomique, la
-	complexité est logarithmique, et on le note O( log\textsubscript{2 }N
-	).
+	d'opérations est de l'ordre de $n$ ou
+	proportionnel à $n$) ce qu’on note en langage plus mathématique $O(n)$
+	(prononcé «~grand $O$ de $n$~»). Pour la recherche dichotomique, la
+	complexité est logarithmique, et on le note $O(\log_2(n))$.
 
 	Comparons les complexités les plus courantes.
 
@@ -1915,7 +1907,7 @@
 	\raggedleft \bfseries 10\textsuperscript{6} &
 	\raggedleft\arraybslash \bfseries
 	10\textsuperscript{9}\\\hline
-	\centering  O( 1 ) &
+	\centering  $O(1)$ &
 	\raggedleft  1 &
 	\raggedleft  1 &
 	\raggedleft  1 &
@@ -1923,9 +1915,7 @@
 	\raggedleft  1 &
 	\raggedleft  1 &
 	\raggedleft\arraybslash  1\\\hline
-	\centering  {O(
-	log}{\textsubscript{2
-	}}{N )} &
+	\centering  $O(\log_2(n))$ &
 	\raggedleft  4 &
 	\raggedleft  7 &
 	\raggedleft  10 &
@@ -1933,7 +1923,7 @@
 	\raggedleft  17 &
 	\raggedleft  20 &
 	\raggedleft\arraybslash  30\\\hline
-	\centering  O( N ) &
+	\centering  $O(n)$ &
 	\raggedleft  10 &
 	\raggedleft  100 &
 	\raggedleft  1000 &
@@ -1942,7 +1932,7 @@
 	\raggedleft  10\textsuperscript{6} &
 	\raggedleft\arraybslash 
 	10\textsuperscript{9}\\\hline
-	\centering  O( N\textsuperscript{2} ) &
+	\centering  $O(n^2)$ &
 	\raggedleft  100 &
 	\raggedleft  10.000 &
 	\raggedleft  10\textsuperscript{6} &
@@ -1951,7 +1941,7 @@
 	\raggedleft  10\textsuperscript{12} &
 	\raggedleft\arraybslash 
 	10\textsuperscript{18}\\\hline
-	\centering  O( N\textsuperscript{3} ) &
+	\centering  $O(n^3)$ &
 	\raggedleft  1000 &
 	\raggedleft  10\textsuperscript{6} &
 	\raggedleft  10\textsuperscript{9} &
@@ -1960,7 +1950,7 @@
 	\raggedleft  10\textsuperscript{18} &
 	\raggedleft\arraybslash 
 	10\textsuperscript{27}\\\hline
-	\centering  O( 2\textsuperscript{N} ) &
+	\centering  $O(2^n)$ &
 	\raggedleft  1024 &
 	\raggedleft  10\textsuperscript{30} &
 	\raggedleft  10\textsuperscript{301} &
@@ -1993,7 +1983,7 @@
 				\item 
 					Quelle est la complexité d'un algorithme qui remplace
 					par 0 toutes les occurrences du maximum d'un tableau
-					de N éléments ?
+					de $n$ éléments ?
 				\item 
 					Quelle est la complexité d'un algorithme qui vérifie si
 					un tableau contient deux éléments égaux ?
