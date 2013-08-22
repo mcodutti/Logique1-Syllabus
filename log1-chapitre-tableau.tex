@@ -170,6 +170,7 @@
 
 	\cadre{
 	\begin{pseudo}
+	\label{tableau:tab1DStock10Articles}
 	\LComment Ce module calcule et affiche la quantité vendue de 10 produits.
 	\Module{statistiquesVentesAvecTableau}{}{}
 		\Empty
@@ -305,13 +306,20 @@
 		Reprenons l’exemple ci-dessus. 
 		S’il y a toujours exactement 10 produits, 
 		alors on peut utiliser un tableau statique. 
+	\item
 		Dans la pratique, il est probable que ce nombre puisse évoluer 
 		au cours de l’histoire de l’entreprise.
+		On peut au moins demander au gérant le nombre d'articles dans son stock.
+		On utilisera alors un tableau dynamique.
 	\item 
 		Si on désire stocker le chiffre d’affaire d’une entreprise 
 		pour une année donnée, mois par mois, un tableau de
 		taille 12 est suffisant (tableau statique)
+	
 	\end{liste}
+	
+	\textbf{Concrètement, comment choisir?}
+	Le choix dépend du langage.
 
 	Certains langages (c’est le cas de Cobol) ne permettent 
 	que des tableaux statiques. Dans ce cas, il faudra souvent
@@ -321,9 +329,13 @@
 	à savoir la partie du tableau réellement utilisée.
 	Bien sûr cette solution entraine souvent une perte de place mémoire due
 	à une réservation inutilement grande (ou, pire, une saturation du
-	tableau qui n’aura pas été prévu assez grand)
+	tableau qui n’aura pas été prévu assez grand).
+	
+	D'autres, comme Java, n'ont que des tableaux dynamiques. La taille ne doit 
+	pas forcément être connue à la compilation, mais doit être connue à
+	l'exécution. Vous verrez les détails dans votre cours de Java.
 
-	\textbf{Exemple}
+	\textbf{Exemple statique}
 
 	Reprenons encore l’exemple de la vente de produits. 
 	Si on ne dispose pas de tableau dynamique, on peut réserver
@@ -331,7 +343,47 @@
 	pas plus de 1000 produits différents) et ajouter une variable entière
 	(\textstyleCodeInsr{nbProduits}) pour retenir 
 	le nombre exact de produits différents actuellement en vente.
+	
+	\cadre{
+	\begin{pseudo}
+	\label{tableau:tab1DStock10Articles}
+	\LComment Ce module calcule et affiche la quantité vendue de x produits.
+	\Module{statistiquesVentes}{}{}
+		\Empty
+		\Decl cpt~: \K{tableau} [1 à 1000] d’entiers
+		\Decl i, numéroProduit, quantité~: entiers
+		\Decl nbArticles~: entier
+		\Read nbArticles
+		\Empty
+		\For{i \K{de} 1 \K{à} nbArticles}
+			\Let cpt[i] \Gets 0
+		\EndFor
+		\Empty
+		\Write "Introduisez le numéro du produit~:"
+		\Read numéroProduit
+		\Empty
+		\While{numéroProduit > 0 ET numéroProduit < nbArticles}
+		\Empty
+			\Write "Introduisez la quantité vendue~:"
+			\Read quantité
+			\Empty
+			\Let cpt[numéroProduit] \Gets cpt[numéroProduit] + quantité
+			\Empty
+			\Write "Introduisez le numéro du produit~:"
+			\Read numéroProduit
+			\Empty
+		\EndWhile
+		\Empty
+		\For{i \K{de} 1 \K{à} 10}
+			\Write "quantité vendue de produit ", i, ": ", cpt[i]
+		\EndFor
+		\Empty
+	\EndModule
+	\end{pseudo}
+	}
 
+	\textbf{Exemple dynamique}
+	
 	Pour déclarer un tableau dynamique, on sépare la déclaration du tableau
 	(où la taille n’est pas donnée) de sa création effective~(où on donne
 	la taille)
@@ -346,6 +398,46 @@
 
 	où \textstyleCodeInsr{borneMin} et \textstyleCodeInsr{borneMax} sont des
 	expressions entières quelconques.
+	
+		\cadre{
+	\begin{pseudo}
+	\label{tableau:tab1DStock10Articles}
+	\LComment Ce module calcule et affiche la quantité vendue de 10 produits.
+	\Module{statistiquesVentesAvecTableau}{}{}
+		\Empty
+		\Decl cpt~: \K{tableau} d’entiers
+		\Decl i, numéroProduit, quantité~: entiers
+		\Decl nbArticles~: entier
+		\Read nbArticles
+		\Let cpt \Gets \K{nouveau} \K{tableau} [1 à nbArticles] d'entiers
+		\Empty
+		\For{i \K{de} 1 \K{à} nbArticles}
+			\Let cpt[i] \Gets 0
+		\EndFor
+		\Empty
+		\Write "Introduisez le numéro du produit~:"
+		\Read numéroProduit
+		\Empty
+		\While{numéroProduit > 0 ET numéroProduit < nbArticles}
+		\Empty
+			\Write "Introduisez la quantité vendue~:"
+			\Read quantité
+			\Empty
+			\Let cpt[numéroProduit] \Gets cpt[numéroProduit] + quantité
+			\Empty
+			\Write "Introduisez le numéro du produit~:"
+			\Read numéroProduit
+			\Empty
+		\EndWhile
+		\Empty
+		\For{i \K{de} 1 \K{à} 10}
+			\Write "quantité vendue de produit ", i, ": ", cpt[i]
+		\EndFor
+		\Empty
+	\EndModule
+	\end{pseudo}
+	}
+
 
 % ==============================
 \section{Tableau et paramètres}
@@ -376,16 +468,44 @@
 	\cadre{
 	\begin{pseudo}
 	\Module{brol}{tab\In~: \K{tableau} [1 à n] d'entiers, tailleLogique~: entier}{}
-		\Write "J’ai reçu un tableau rempli de ", tailleLogique, " éléments sur ", n, " éléments au total."
+		\Write "J’ai reçu un tableau rempli de ", tailleLogique, " éléments "
+		\Write "sur ", n, " éléments au total."
 	\EndModule
 	\end{pseudo}
 	}
 
 	
-	Notons qu’on admet également qu’un module retourne un tableau. Par
-	contre, on ne peut pas lire ou afficher un tableau en une seule
-	instruction ; il faut des instructions de lecture ou
+	Notons qu’on admet également qu’un module retourne un tableau. 
+	
+	\cadre{
+	\begin{pseudo}
+	\LComment Ce module crée un tableau statique d'entiers de taille 10, l'initialise à 0 et le retourne.
+	\Module{créerTableau}{}{\K{tableau} [1 à 10] d'entiers}
+		\Decl tab~: \K{tableau} [1 à 10] d'entiers
+		\Decl i~: entier
+		\For{i \K{de} 1 \K{à} 10}
+			\Let tab[i] \Gets 0
+		\EndFor
+		\Return tab
+	\EndModule
+	\Empty
+	\Module{principalAppelTableau}{}{}
+		\Decl entiers~: \K{tableau} [1 à 10] d'entiers
+		\Decl i~: entier
+		\Empty
+		\Let entiers \Gets créerTableau()
+		\Empty
+		\For{i \K{de} 1 \K{à} 10}
+			\Write entiers[i]
+		\EndFor
+	\EndModule
+	\end{pseudo}
+	}
+	
+	Par contre, on ne peut pas lire ou afficher un tableau en une seule
+	instruction; il faut des instructions de lecture ou
 	d'affichage individuelles pour chacun de ses éléments.
+	
 
 % ==================
 \section{Exercices}
@@ -421,8 +541,6 @@
 	Et pour retourner l’indice du minimum ? 
 	Réécrire l’algorithme de l’exercice précédent en utilisant celui-ci.
 \end{Exercice}
-
-\bigskip\bigskip\bigskip
 
 \begin{Exercice}{Nombre d'éléments d'un tableau}
 	Écrire un module qui reçoit en paramètre le tableau

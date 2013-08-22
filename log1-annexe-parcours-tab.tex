@@ -1,4 +1,4 @@
-\chapter{Les parcours de tableaux}
+\chapter{Les parcours de tableaux} \label{Les parcours de tableaux}
 
 Les tableaux interviennent dans de nombreux problèmes 
 et savoir les parcourir en utilisant des algorithmes
@@ -15,13 +15,23 @@ mais ils ne représentent aucune difficulté nouvelle.
 \section{Parcours d'un tableau à une dimension}
 % ==============================================
 
-Soit le tableau \textit{tab} déclaré ainsi
+Soit le tableau statique \textit{tab} déclaré ainsi
 
 \cadre{
 \begin{pseudo}
-	\Decl tab : tableau [1 à n] de T \RComment où \textit{T} est un type quelconque
+	\Decl tab~: \K{tableau} [1 à n] de T \RComment où \textit{T} est un type quelconque
 \end{pseudo}
 }
+
+Ou oit le tableau dynamique \textit{tab} déclaré ainsi
+
+\cadre{
+\begin{pseudo}
+	\Decl tab~: \K{tableau} de T \RComment où \textit{T} est un type quelconque
+	\Let tab \Gets \K{nouveau} \K{tableau} [1 à n] de T
+\end{pseudo}
+}
+
 
 Envisageons d'abord le parcours complet
 et voyons ensuite les parcours avec arrêt prématuré.
@@ -30,7 +40,7 @@ et voyons ensuite les parcours avec arrêt prématuré.
 
 Pour le parcourir, on peut utiliser la boucle \K{pour}
 comme dans l'algorithme \vref{algo:parcours1-complet-pour}
-où "traiter" va dépendre du problème concret posé :
+où "traiter" va dépendre du problème concret posé~:
 afficher, modifier, sommer, \dots
 
 \begin{algorithm}[H]
@@ -48,7 +58,7 @@ afficher, modifier, sommer, \dots
 
 Parfois, on ne doit pas forcement parcourir le tableau jusqu'au bout
 mais on pourra s'arrêter prématurément si une certaine condition est remplie.
-Par exemple :
+Par exemple~:
 \begin{liste}
 \item on cherche la présence d'un élément et on vient de le trouver ;
 \item on vérifie qu'il n'y a pas de $0$ et on vient d'en trouver un.
@@ -128,16 +138,27 @@ Par exemple, si la variable s'appelle "continue"
 
 % ================================================
 \section{Parcours d'un tableau à deux dimensions}
+\label{algo:Tab2D}
 % ================================================
 
 Considérons à présent un tableau à deux dimensions 
 (m lignes et n colonnes)
 
+Déclaration d'un tableau statique~:
 \cadre{
 \begin{pseudo}
-	\Decl tab : tableau [1 à m, 1 à n] de T
+	\Decl tab~: tableau [1 à m, 1 à n] de T
 \end{pseudo}
 }
+
+Déclaration d'un tableau dynamique~:
+\cadre{
+	\begin{pseudo}
+	\Decl tab~: \K{tableau} de T
+	\Let tab \Gets \K{nouveau} \K{tableau} [1 à m, 1 à n] de T
+	\end{pseudo}
+	}
+
 
 Commençons par des cas plus simples 
 où on ne parcourt qu'une seule des dimensions 
@@ -171,7 +192,7 @@ Ce qui donne l'algorithme \vref{algo:parcours2-ligne}.
 \end{pseudo}
 \end{algorithm}
 
-Retenons : Pour parcourir une ligne, on utilise une boucle sur les colonnes. 
+Retenons~: Pour parcourir une ligne, on utilise une boucle sur les colonnes. 
 
 Symétriquement, on pourrait considérer le parcours de la colonne $c$
 comme avec l'algorithme \vref{algo:parcours2-col}.
