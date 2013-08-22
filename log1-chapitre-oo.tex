@@ -22,7 +22,7 @@
 	lui sont confiées ont fait de même. Ainsi les programmes à écrire sont
 	de plus en plus gros et de plus en plus complexes.
 	
-	Face à la complexité, la démarche est toujours la même : découper le
+	Face à la complexité, la démarche est toujours la même~: découper le
 	problème en sous-problèmes (qui peuvent à leur tour être découpés) ce
 	qui permet
 
@@ -40,7 +40,7 @@
 				des termes de plus haut niveau, plus proches du problème à résoudre.
 				Ainsi, là où un tri devra être fait, on trouvera le mot «~trier~» qui
 				fera référence à la partie de code qui s’occupe du tri. Cela va dans le
-				sens d’une plus grande «~abstraction~» du code : un code qui s’éloigne
+				sens d’une plus grande «~abstraction~» du code~: un code qui s’éloigne
 				du langage simpliste compris par le processeur pour s’approcher de la
 				pensée humaine et des termes du problème à résoudre.
 	\end{liste}
@@ -52,7 +52,7 @@
 	des données. Il s'agit là de deux approches	dissociées. 
 
 	C'est cette lacune que se propose de combler
-	l'orienté objet : permettre de définir des
+	l'orienté objet~: permettre de définir des
 	\textbf{objets} (composés de \textbf{données} et
 	\textbf{d'instructions}) qui sont proches du problème
 	à résoudre. Cela va permettre une meilleure lisibilité et une plus
@@ -73,7 +73,7 @@
 Définition\footnote{Les définitions sont tirées du livre de Cardon et
 Dabancourt (cf. bibliographie)}}
 
-Un \textbf{objet} est une entité logicielle qui :
+Un \textbf{objet} est une entité logicielle qui~:
 
 \begin{liste}
 	\item 
@@ -103,10 +103,10 @@ Exemples}
 
 \begin{liste}
 	\item 
-		Pour un produit, l'état peut être :
+		Pour un produit, l'état peut être~:
 		l'intitulé du produit, son code barre, son prix, ... 
 	\item 
-		Pour un employé, on peut avoir : son nom, son prénom, son adresse, sa
+		Pour un employé, on peut avoir~: son nom, son prénom, son adresse, sa
 		date d'embauche, son salaire mensuel, sa fonction, son
 		téléphone, ... 
 	\item 
@@ -151,18 +151,18 @@ d'un objet.
 	\item 
 		Un moment de la journée peut aussi être un objet représenté par trois
 		entiers\footnote{Toutefois, on verra que ce n'est
-		peut-être pas la meilleure solution.} : les heures, les minutes et les
+		peut-être pas la meilleure solution.}~: les heures, les minutes et les
 		secondes (en supposant qu'on désire une précision de
 		l'ordre de la seconde).
 	\item 
 		L'adresse d'un employé peut être
 		représentée par une seule chaine mais également par un «~objet
-		adresse~» (qui contiendrait : une rue, un numéro, un code postal,
+		adresse~» (qui contiendrait~: une rue, un numéro, un code postal,
 		...).
 \end{liste}
 
 \marginicon{attention}
-{\textbf{Remarque}\textbf{ : }Certaines parties de
+{\textbf{Remarque}\textbf{~: }Certaines parties de
 l'état peuvent évoluer au fil du temps.
 D'autres parties sont immuables. Ainsi
 l'adresse d'une personne peut changer
@@ -180,7 +180,7 @@ Exercices - attributs}
 	\item 
 		Et pour un dé à 6 faces ?
 	\item 
-		Et pour un article de magasin ?
+		Et pour un produit de magasin ?
 	\item 
 		Et pour une télévision ? \ (on peut en trouver vraiment beaucoup !)
 \end{enumerate}
@@ -195,7 +195,7 @@ Comportement}
 l'ensemble des messages ou requêtes auxquels il peut
 répondre.}
 
-Pour ce faire, il exécute une fonction (un module) qui pourra
+Pour ce faire, il exécute un module qui pourra
 éventuellement retourner une information à l'émetteur
 du message.
 
@@ -266,7 +266,7 @@ Exercice - comportement}
 	\item {
 		Quel comportement voyez-vous pour un téléviseur ?}
 	\item {
-		Et pour un article de magasin ?}
+		Et pour un produit de magasin ?}
 \end{enumerate}
 
 \bigskip
@@ -289,9 +289,9 @@ Exemples}
 		d'un possible basculement au mois suivant ou à
 		l'année suivante.}
 	\item {
-		Pour calculer le prix de vente hors tva d'un article, nous allons définir
-		un méthode qui, à partir du prix d'achat et du bénéfice,
-		calcule le prix de vente hors tva .}
+		Pour calculer le bénéfice d'un produit, nous allons définir
+		un méthode qui, à partir du prix d'achat et du prix de vente,
+		calcule le bénéfice.}
 	
 	\item {
 		Pour permettre à un moment d'indiquer
@@ -340,7 +340,7 @@ Exercices - méthodes}
 	\item 
 		Écrivez la méthode qui permet de passer au jour suivant.
 	\item 
-		Écrivez la méthode qui calcule le prix de vente hors tva d'un article.
+		Écrivez la méthode qui calcule le prix de vente hors tva d'un produit.
 \end{enumerate}
 
 \bigskip
@@ -405,17 +405,15 @@ Exemple}
 Si on veut modifier le salaire d'un employé, il faut
 que notre message contienne le nouveau salaire. Autrement dit, il faut
 communiquer ce nouveau salaire à la méthode de changement du salaire.
-Ce qui donne la méthode suivante :
+Ce qui donne la méthode suivante~:
 
 \cadre{
 \begin{pseudo}
-	\Method{modifierSalaire}{nouveauSalaire : entier}{}
+	\Method{modifierSalaire}{nouveauSalaire~: entier}{}
 		\Stmt salaire \Gets nouveauSalaire
 	\EndMethod
 \end{pseudo}
 }
-
-\clearpage
 
 \marginicon{exercice}
 {\sffamily\bfseries\scshape
@@ -423,25 +421,22 @@ Exercices – paramètres du comportement}
 
 \begin{enumerate}
 	\item 
-		Prenons un objet représentant un article de magasin. 
-		Nous supposerons qu'un article a un \textit{numéro}, un 
+		Prenons un objet représentant un produit de magasin. 
+		Nous supposerons qu'un produit a un \textit{numéro}, un 
 		\textit{libellé}, un \textit{prixAchat}, un
-		\textit{pourcentageBénéfice}, un \textit{tauxTVA}
-		et une \textit{quantitéEnStock}
+		\textit{prix de vente} et une \textit{quantitéEnStock}
 		Donnez les \textbf{entêtes} des méthodes suivantes qui permettent de
 		:
 
 		\begin{liste}
 			\item 
-				calculer le bénéfice net en euros
+				obtenir le prix de vente
 			\item 
-				calculer le prix de vente hors tva
-			\item 
-				calculer le prix de vente tvac
+				calculer le bénéfice
 			\item 
 				donner la quantité restant en stock
 			\item 
-				dire si oui ou non l'article est en rupture de stock.
+				dire si oui ou non le produit est en rupture de stock.
 		\end{liste}
 			
 	\item 
@@ -515,7 +510,7 @@ les méthodes restent publiques. Toutefois, on pourra trouver également
 des méthodes privées. Ce sera notamment le cas si plusieurs méthodes
 d'un objet ont une partie commune; \ il sera
 intéressant de la \textit{factoriser}, c-à-d en faire une méthode
-privée (ex : un calcul de maximum).
+privée (ex~: un calcul de maximum).
 
 Puisqu'un attribut est privé, il est courant pour
 chacun des attributs de rencontrer une méthode destinée à connaitre la
@@ -529,17 +524,17 @@ Accesseur et mutateur}
 {\sffamily\bfseries\upshape
 {
 \textbf{Accesseur}\footnote{{On utilise aussi
-souvent le mot anglais «~getter~». }} : méthode dont le but est de
+souvent le mot anglais «~getter~». }}~: méthode dont le but est de
 fournir la valeur d'un attribut.
 
 \textbf{Mutateur}\footnote{{On utilise aussi
-souvent le mot anglais «~setter~»}} : méthode dont le but est de
+souvent le mot anglais «~setter~»}}~: méthode dont le but est de
 modifier la valeur d'un attribut.}}
 
 Par convention, ces méthodes sont nommées «~getNom~» et «~setNom~» où
 «~nom~» est le nom de
 l'attribut\footnote{{Pour un
-attribut booléen, on pourra préférer «~estNom~» au lieu de
+attribut booléen, on pourra préférer «~estNom~» ou «~isNom~» au lieu de
 «~getNom~»}}. Par facilité, on utilisera parfois le terme «~accesseur~»
 pour désigner à la fois les «~accesseurs~» et les «~mutateurs~».
 
@@ -562,7 +557,7 @@ la journée
 
 \cadre{
 \begin{pseudo}
-	\Method{setHeure}{uneHeure : entier}{}
+	\Method{setHeure}{uneHeure~: entier}{}
 		\Stmt heure \Gets uneHeure
 	\EndMethod
 \end{pseudo}
@@ -608,11 +603,11 @@ La syntaxe que nous allons retenir est
 
 \bigskip
 
-Ce qui donne :
+Ce qui donne~:
 
 \cadre{
 \begin{pseudo}
-	\Method{setHeure}{uneHeure : entier}{}
+	\Method{setHeure}{uneHeure~: entier}{}
 		\If{uneHeure < 0 OU uneHeure > 23}
 			\Stmt \K{erreur} "heure invalide"
 		\EndIf
@@ -623,7 +618,7 @@ heure valide
 \end{pseudo}
 }
 
-\textbf{Remarque} : Accéder à la valeur d’un attribut ne pose pas de
+\textbf{Remarque}~: Accéder à la valeur d’un attribut ne pose pas de
 problème de validité. Alors pourquoi rendre l’attribut complètement
 privé plutôt que de n’empêcher que des modifications directes (une
 sorte d’attribut en \textit{lecture seule}) ? Cela permet de changer de
@@ -646,7 +641,7 @@ quels noms auraient-ils dû porter ?
 
 Pour pouvoir utiliser des objets nous allons devoir les définir
 (expliciter leur état et leur comportement). Cette définition est
-commune à tous les objets similaires. Par exemple toutes les moments ont
+commune à tous les objets similaires. Par exemple tous les moments ont
 un même comportement et un même type d'état (des heures, des minutes et
 des secondes).
 
@@ -703,23 +698,23 @@ syntaxe utilisée pour définir une classe}
 \clearpage
 
 {
-\textbf{Exemple} : la classe Moment qui représente un moment de la
+\textbf{Exemple}~: la classe Moment qui représente un moment de la
 journée}
 
 \cadre{
 \begin{pseudo}
 	\Class{Moment}
 		\Private
-			\Decl heure : entier
-			\Decl minute : entier
-			\Decl seconde : entier
+			\Decl heure~: entier
+			\Decl minute~: entier
+			\Decl seconde~: entier
 		\Public
 			\MethodSign{getHeure}{}{entier}
 			\MethodSign{getMinute}{}{entier}
 			\MethodSign{getSeconde}{}{entier}
-			\MethodSign{setHeure}{uneHeure : entier}{}
-			\MethodSign{setMinute}{uneMinute : entier}{}
-			\MethodSign{setSeconde}{uneSeconde : entier}{}
+			\MethodSign{setHeure}{uneHeure~: entier}{}
+			\MethodSign{setMinute}{uneMinute~: entier}{}
+			\MethodSign{setSeconde}{uneSeconde~: entier}{}
 			\MethodSign{estMatin}{}{booléen}
 	\EndClass
 	
@@ -744,14 +739,14 @@ classe.}
 
 \cadre{
 \begin{pseudo}
-	\Decl nomObjet : nomClasse 
+	\Decl nomObjet~: nomClasse 
 	\RComment déclaration de l'objet
 	\Let nomObjet \Gets \K{nouveau} nomClasse() 
 	\RComment instanciation de l'objet
 \end{pseudo}
 }
 
-Dans ce cours de logique, nous adopterons le fait que 
+Dans ce cours de Logique, nous adopterons le fait que 
 les noms des paramètres soient différents de ceux des 
 attributs (on préconisera d’imaginer des noms variés tels 
 que uneDate, maDate, laListe, autreObjet…), ce qui évitera 
@@ -759,12 +754,12 @@ toute ambigüité (entre minuscule et majuscule par exemple).
 
 
 {
-\textbf{Exemple} : pour créer un moment de la journée}
+\textbf{Exemple}~: pour créer un moment de la journée}
 
 \cadre{
 \begin{pseudo}
 	\Module{test}{}{}
-		\Decl midi : Moment
+		\Decl midi~: Moment
 		\RComment réf. 1
 		\Let midi \Gets \K{nouveau} Moment()
 		\RComment réf. 2
@@ -796,7 +791,9 @@ parle de variable «\textit{~dynamique~}». Le nom est alors~une
 «~référence~» vers l’objet. Les avantages de cette dissociation seront
 évidents lorsque nous parlerons de la notion de \textit{constructeur}.
 
-Après la déclaration (réf. 1), on a :
+\clearpage
+
+Après la déclaration (réf. 1), on a~:
 
 \begin{center}
 \tablehead{}
@@ -807,8 +804,7 @@ Après la déclaration (réf. 1), on a :
 \end{supertabular}
 \end{center}
 
-\clearpage
-Après la création (réf. 2), on a :
+Après la création (réf. 2), on a~:
 
 \begin{center}
 \tablehead{}
@@ -837,7 +833,7 @@ Après la création (réf. 2), on a :
 
 Remarquez qu'il n'y a pas d'initialisation par défaut.
 
-Après l'action des mutateurs (réf. 3), on a :
+Après l'action des mutateurs (réf. 3), on a~:
 
 \bigskip
 
@@ -872,11 +868,11 @@ Exercices – classe et instance}
 
 \begin{enumerate}
 	\item 
-		Pour les articles, vous avez déjà écrit les attributs et les en-têtes des
-		méthodes. Regroupez le tout en une classe \textstyleCodeInsr{Article}
+		Pour les produits, vous avez déjà écrit les attributs et les en-têtes des
+		méthodes. Regroupez le tout en une classe \textstyleCodeInsr{Produit}
 		\textbf{en respectant les notations que vous venez de voir.}
 	\item 
-		Écrivez un module qui affiche le prix d'achat d'un article, son prix 
+		Écrivez un module qui affiche le prix d'achat d'un produit, son prix 
 		de vente hors tva et son prix de vente tvac.
 \end{enumerate}
 
@@ -916,30 +912,30 @@ paramètres).
 {\bfseries
 Exemple}
 
-Écrivons des constructeurs pour un moment de la journée :
+Écrivons des constructeurs pour un moment de la journée~:
 
 \cadre{
 \begin{pseudo}
 	\Class{Moment}
 		\Private
 			\LComment pas de changement
-			\Decl heure : entier
-			\Decl minute : entier
-			\Decl seconde : entier
+			\Decl heure~: entier
+			\Decl minute~: entier
+			\Decl seconde~: entier
 		\Public
-			\ConstrSign{Moment}{uneHeure, uneMinute, uneSeconde : entiers}
-			\ConstrSign{Moment}{uneHeure, uneMinute : entiers}
+			\ConstrSign{Moment}{uneHeure, uneMinute, uneSeconde~: entiers}
+			\ConstrSign{Moment}{uneHeure, uneMinute~: entiers}
 			\RComment 0 seconde par défaut
-			\ConstrSign{Moment}{uneHeure : entier}
+			\ConstrSign{Moment}{uneHeure~: entier}
 			\RComment initialiser à une heure pile
 			\Empty
-			\LComment pas de changement au niveau des méthodes :
+			\LComment pas de changement au niveau des méthodes~:
 			\MethodSign{getHeure}{}{entier}
 			\MethodSign{getMinute}{}{entier}
 			\MethodSign{getSeconde}{}{entier}
-			\MethodSign{setHeure}{uneHeure : entier}{}
-			\MethodSign{setMinute}{uneMinute : entier}{}
-			\MethodSign{setSeconde}{uneSeconde : entier}{}
+			\MethodSign{setHeure}{uneHeure~: entier}{}
+			\MethodSign{setMinute}{uneMinute~: entier}{}
+			\MethodSign{setSeconde}{uneSeconde~: entier}{}
 			\MethodSign{estMatin}{}{booléen}
 	\EndClass
 	\end{pseudo}
@@ -947,21 +943,21 @@ Exemple}
 
 \cadre{
 \begin{pseudo}
-	\Constr{Moment}{uneHeure, uneMinute, uneSeconde : entiers}
+	\Constr{Moment}{uneHeure, uneMinute, uneSeconde~: entiers}
 		\Stmt setHeure(uneHeure)
 		\Stmt setMinute(uneMinute)
 		\Stmt setSeconde(uneSeconde)
 	\EndConstr
 	
 	\Empty
-	\Constr{Moment}{uneHeure, uneMinute : entiers}
+	\Constr{Moment}{uneHeure, uneMinute~: entiers}
 		\Stmt setHeure(uneHeure)
 		\Stmt setMinute(uneMinute)
 		\Stmt setSeconde(0)
 	\EndConstr
 	
 	\Empty
-	\Constr{Moment}{uneHeure : entier}
+	\Constr{Moment}{uneHeure~: entier}
 		\Stmt setHeure(uneHeure)
 		\Stmt setMinute(0)
 		\Stmt setSeconde(0)
@@ -990,7 +986,7 @@ effectivement utilisé pour initialiser l'état de
 l'objet.
 
 {
-\textbf{Exemple} : Instancions quelques moments de la journée}
+\textbf{Exemple}~: Instancions quelques moments de la journée}
 
 \cadre{
 \begin{pseudo}
@@ -1015,11 +1011,11 @@ Exercices - constructeur}
 
 \begin{enumerate}
 	\item {
-		Écrivez un ou des constructeur(s) pour un \textstyleCodeInsr{Article}}
+		Écrivez un ou des constructeur(s) pour un \textstyleCodeInsr{Produit}}
 	\item {
 		Adaptez le module écrit plus haut pour qu'il affiche le prix hors tva
-		puis le prix tvac de l'article n°105176, Lego réveil figurine policier, 
-		au prix d'achat de 20,00 euros, un bénéfice de 15\%, une tva de 21\% et 
+		puis le prix tvac du produit n°105176, Lego réveil figurine policier, 
+		au prix d'achat de 20,00 euros, au prix de vente de 30,00 euros et 
 		dont il y a 10 exemplaires en stock.}
 \end{enumerate}
 
@@ -1046,7 +1042,7 @@ Ces deux représentations sont tout-à-fait équivalentes en terme de
 potentiel mais la grande différence est l'efficacité
 du code des méthodes. 
 
-Prenons deux méthodes symptomatiques : celle qui donne
+Prenons deux méthodes symptomatiques~: celle qui donne
 l'heure et celle qui compare deux moments de la
 journée. La première est beaucoup plus simple à écrire et plus rapide
 avec la première représentation alors que la seconde méthode est plus
@@ -1099,7 +1095,7 @@ en mémoire. On ne s’est jamais demandé quand cet espace mémoire est
 libéré.
 
 Pour les variables locales d’un module ou d'une
-méthode, la réponse est simple : l’espace mémoire est récupéré
+méthode, la réponse est simple~: l’espace mémoire est récupéré
 lorsqu’on arrive à la fin du module ou de la méthode.
 
 Pour les objets, c’est un peu plus compliqué. L’espace réservé pour
@@ -1179,7 +1175,7 @@ Clarifions certaines notations liées aux objets.
 		\bigskip
 		\cadre{
 		\begin{pseudo}
-			\Decl rendezVous : Moment
+			\Decl rendezVous~: Moment
 			\Let rendezVous \Gets \K{nouveau} Moment(14, 23, 56)
 			\Write rendezVous 
 			\RComment affichera 14, 23 et 56 dans un format lisible quelconque
@@ -1197,7 +1193,7 @@ Clarifions certaines notations liées aux objets.
 		\bigskip
 		\cadre{
 		\begin{pseudo}
-			\Decl moment1, moment2 : Moment
+			\Decl moment1, moment2~: Moment
 			\Let moment1 \Gets \K{nouveau} Moment(14, 23, 56)
 			\Let moment2 \Gets moment1
 			\RComment moment1 et moment2 désignent le même objet
@@ -1252,7 +1248,7 @@ Clarifions certaines notations liées aux objets.
 		\bigskip
 		\cadre{
 		\begin{pseudo}
-			\Decl moment1, moment2, moment3 : Moment
+			\Decl moment1, moment2, moment3~: Moment
 			\Empty
 			\Let moment1 \Gets {nouveau} Moment( 14, 23, 56 )
 			\Let moment2 \Gets moment1 
@@ -1287,7 +1283,7 @@ Exercice – méthode égal()}
 
 \bigskip
 
-N.B. : On supposera par la suite qu'une telle méthode
+N.B.~: On supposera par la suite qu'une telle méthode
 existe par défaut pour toutes les nouvelles classes.
 
 \begin{liste}
@@ -1295,19 +1291,19 @@ existe par défaut pour toutes les nouvelles classes.
 		Un attribut privé n'est pas connu en dehors de la
 		classe. 
 		
-		Précisons : un attribut privé n'est connu que
+		Précisons~: un attribut privé n'est connu que
 		des instances de cette classe, ce qui signifie qu'il
 		est également connu par tous les autres objets de la même
 		classe.
 
-		\textbf{Exemple} : écrivons la méthode qui teste si un moment précède un
+		\textbf{Exemple}~: écrivons la méthode qui teste si un moment précède un
 		autre (en supposant que l'état est représenté par un
 		seul entier, totalSecondes, le nombre de secondes depuis minuit)
 		\\
 		\bigskip
 		\cadre{
 		\begin{pseudo}
-			\Method{estAntérieur}{autre : Moment}{booléen}
+			\Method{estAntérieur}{autre~: Moment}{booléen}
 				\Return totalSecondes < autre.totalSecondes
 				\LComment c'est équivalent à \textstyleMotCl{retourner} totalSecondes < autre.getTotalSecondes()
 			\EndMethod
@@ -1324,7 +1320,7 @@ existe par défaut pour toutes les nouvelles classes.
 		\bigskip
 		\cadre{
 		\begin{pseudo}
-			\Decl moment : Moment
+			\Decl moment~: Moment
 			\RComment moment = rien
 			\Let moment \Gets \K{nouveau} Moment( 14, 23, 56 )
 			\RComment moment ${\neq}$ rien
@@ -1345,7 +1341,7 @@ peut représenter graphiquement une classe. Une notation courante est
 celle utilisée en UML\footnote{{Unified
 Modeling Langage. }On vous en parlera plus en détail au cours
 d'Analyse.}. Pour faire simple, une classe est
-représentée par un rectangle composé de 3 zones : la première pour le
+représentée par un rectangle composé de 3 zones~: la première pour le
 nom de la classe, la deuxième pour les attributs et la troisième pour
 les méthodes. On indique par un signe «~+~» (resp. «~-~») que le membre
 est public (resp. privé)
@@ -1358,20 +1354,20 @@ pas le code associé. En fonction du niveau de détail désiré, on
 pourrait aussi omettre les paramètres et types de retour.
 
 \begin{center}
-\begin{minipage}{4.905cm}
+\begin{minipage}{5cm}
 \begin{center}
 \tablehead{}
-\begin{supertabular}{|m{4.7050004cm}|}
+\begin{supertabular}{|m{5cm}|}
 \hline
 \centering\arraybslash \bfseries Moment\\\hline
-{ {}- heure : entier}
+{ {}- heure~: entier}
 
-{ {}- minute : entier}
+{ {}- minute~: entier}
 
- {}- seconde : entier\\\hline
+ {}- seconde~: entier\\\hline
 { + getHeure() \textsf{→} entier}
 
-{ + setHeure( uneHeure : entier )}
+{ + setHeure( uneHeure~: entier )}
 
 { + avancer1Heure()}
 
@@ -1387,7 +1383,7 @@ pourrait aussi omettre les paramètres et types de retour.
 
 
 %=======================================
-\section{Un exemple complet : une durée}
+\section{Un exemple complet~: une durée}
 %=======================================
 
 Examinons un exemple complet pour fixer les notions introduites par ce
@@ -1428,8 +1424,8 @@ serait intéressant de fournir. Ce qui nous donne jusqu’à présent
 		\Private
 			\LComment rien encore
 		\Public
-			\ConstrSign{Durée}{secondes : entier}
-			\ConstrSign{Durée}{heure, minute, seconde : entiers}
+			\ConstrSign{Durée}{secondes~: entier}
+			\ConstrSign{Durée}{heure, minute, seconde~: entiers}
 			\Empty
 			\MethodSign{getJour}{}{entier}
 			\RComment nb de jours dans une durée
@@ -1447,10 +1443,10 @@ serait intéressant de fournir. Ce qui nous donne jusqu’à présent
 			\MethodSign{getTotalSecondes}{}{entier}
 			\RComment Le nombre total de secondes
 			\Empty
-			\MethodSign{ajouter}{autreDurée : Durée}{}
-			\MethodSign{différence}{autreDurée : Durée}{Durée}
-			\MethodSign{égale}{autreDurée : Durée}{booléen}
-			\MethodSign{plusPetit}{autreDurée : Durée}{booléen}
+			\MethodSign{ajouter}{autreDurée~: Durée}{}
+			\MethodSign{différence}{autreDurée~: Durée}{Durée}
+			\MethodSign{égale}{autreDurée~: Durée}{booléen}
+			\MethodSign{plusPetit}{autreDurée~: Durée}{booléen}
 	\EndClass
 \end{pseudo}
 }
@@ -1472,7 +1468,7 @@ Quelques remarques}
 		exemple, la méthode \textstyleCodeInsr{getMinute()} retourne la valeur
 		de la composante «~minutes~» dans une représentation HMS tandis que la
 		méthode \textstyleCodeInsr{getTotalMinutes()} retourne le nombre total
-		de minutes pour cette durée. Ex : pour 1h23’12’’,
+		de minutes pour cette durée. Ex~: pour 1h23’12’’,
 		\textstyleCodeInsr{getMinute()} retourne 23 et
 		\textstyleCodeInsr{getTotalMinutes()} retourne 83. Idem avec les heures
 		et les secondes.}
@@ -1502,8 +1498,8 @@ Quelques remarques}
 {\sffamily\bfseries
 La représentation de l'état (les attributs)}
 
-La question suivante est : «~Comment représenter une durée en interne ?
-». Plusieurs possibilités existent. Par exemple :
+La question suivante est~: «~Comment représenter une durée en interne ?
+». Plusieurs possibilités existent. Par exemple~:
 
 \begin{liste}
 	\item 
@@ -1511,7 +1507,7 @@ La question suivante est : «~Comment représenter une durée en interne ?
 	\item 
 		Via le nombre total de secondes
 	\item 
-		Via une chaine, par exemple au format «~HH :MM :SS~» où HH pourrait
+		Via une chaine, par exemple au format «~HH~:MM~:SS~» où HH pourrait
 		éventuellement excéder 23.
 \end{liste}
 
@@ -1531,7 +1527,7 @@ nous donne
 \begin{pseudo}
 	\Class{Durée}
 		\Private
-			\Decl totalSecondes : entier
+			\Decl totalSecondes~: entier
 		\Public
 			\LComment idem
 	\EndClass
@@ -1542,16 +1538,16 @@ nous donne
 L'implémentation}
 
 On est à présent prêt pour écrire le code des méthodes. Ce qui nous
-donne pour la classe dans son entièreté :
+donne pour la classe dans son entièreté~:
 
 \cadre{
 \begin{pseudo}
 	\Class{Durée}
 		\Private
-			\Decl totalSecondes : entier
+			\Decl totalSecondes~: entier
 		\Public
-			\ConstrSign{Durée}{secondes : entier}
-			\ConstrSign{Durée}{heure, minute, seconde : entiers}
+			\ConstrSign{Durée}{secondes~: entier}
+			\ConstrSign{Durée}{heure, minute, seconde~: entiers}
 			\Empty
 			\MethodSign{getJour}{}{entier}
 			\RComment nb de jours dans une durée
@@ -1569,24 +1565,24 @@ donne pour la classe dans son entièreté :
 			\MethodSign{getTotalSecondes}{}{entier}
 			\RComment Le nombre total de secondes
 			\Empty
-			\MethodSign{ajouter}{autreDurée : Durée}{}
-			\MethodSign{différence}{autreDurée : Durée}{Durée}
-			\MethodSign{égale}{autreDurée : Durée}{booléen}
-			\MethodSign{plusPetit}{autreDurée : Durée}{booléen}
+			\MethodSign{ajouter}{autreDurée~: Durée}{}
+			\MethodSign{différence}{autreDurée~: Durée}{Durée}
+			\MethodSign{égale}{autreDurée~: Durée}{booléen}
+			\MethodSign{plusPetit}{autreDurée~: Durée}{booléen}
 	\EndClass
 \end{pseudo}
 }
 
 \cadre{
 \begin{pseudo}
-	\Constr{Durée}{secondes : entier}
+	\Constr{Durée}{secondes~: entier}
 		\If{secondes < 0}
 			\Stmt \K{erreur} "paramètre négatif"
 		\EndIf
 		\Let totalSecondes \Gets secondes
 	\EndConstr
 	\Empty
-	\Constr{Durée}{heure, minute, seconde : entiers}
+	\Constr{Durée}{heure, minute, seconde~: entiers}
 		\If{heure < 0 OU minute < 0 OU seconde < 0}
 			\Stmt \K{erreur} "un des paramètres est négatif"
 		\EndIf
@@ -1652,26 +1648,26 @@ donne pour la classe dans son entièreté :
 
 \cadre{
 \begin{pseudo}
-	\Method{ajouter}{autreDurée : Durée}{}
+	\Method{ajouter}{autreDurée~: Durée}{}
 		\Let totalSecondes \Gets totalSecondes + autreDurée.totalSecondes
 	\EndMethod
 	\Empty
-	\Method{différence}{autreDurée : Durée}{Durée}
+	\Method{différence}{autreDurée~: Durée}{Durée}
 		\Return \K{nouvelle} Durée(valeurAbsolue(totalSecondes - autreDurée.totalSecondes))
 	\EndMethod
 	\Empty
-	\Method{égale}{autreDurée : Durée}{booléen}
+	\Method{égale}{autreDurée~: Durée}{booléen}
 		\Return totalSecondes = autreDurée.totalSecondes
 	\EndMethod
 	\Empty
-	\Method{plusPetit}{autreDurée : Durée}{booléen}
+	\Method{plusPetit}{autreDurée~: Durée}{booléen}
 		\Return totalSecondes < autreDurée.totalSecondes
 	\EndMethod
 \end{pseudo}
 }
 
 Et c’est tout ! Chaque méthode est très petite. C’est une constante en
-orienté objet : écrire de petites méthodes qui font chacune une et une
+orienté objet~: écrire de petites méthodes qui font chacune une et une
 seule chose bien précise.
 
 
@@ -1687,7 +1683,7 @@ l'\textbf{héritage} et le \textbf{polymorphisme}.
 Nous venons de voir l'essentiel de la partie
 «~encapsulation~». Les deux autres notions, plus complexes, seront
 abordées au cours de Java mais également au cours de Logique de
-deuxième année. En voici un aperçu :
+deuxième année. En voici un aperçu~:
 
 \marginicon{definition}
 {\sffamily\bfseries\upshape
@@ -1732,36 +1728,36 @@ et facilement adaptable.}
 \section{Exercices}
 %==================
 
-\begin{Exercice}{Un article}
-	Reprenez la classe \textstyleCodeInsr{Article} qui a servi
-	d'exemple. Identifiez et écrivez les méthodes qui vous
+\begin{Exercice}{Un produit}
+	Reprendre la classe \textstyleCodeInsr{Produit} qui a servi
+	d'exemple. Identifier et écrire les méthodes qui vous
 	paraissent utiles pour une telle classe.
 	
-	À partir de là, écrivez la classe Stock. Qu'utiliseriez-vous 
+	À partir de là, écrire la classe Stock. Qu'utiliseriez-vous 
 	comme attributs et quelles méthodes vous paraissent utiles pour
 	cette classe ?
 \end{Exercice}
 
 \begin{Exercice}{Une personne}
-	Créez une classe \textstyleCodeInsr{Personne}, une personne étant
+	Créer une classe \textstyleCodeInsr{Personne}, une personne étant
 	constituée d'un nom, d'un prénom et
 	d'une date de naissance. Cette classe utilisera la
 	classe \textstyleCodeInsr{Date}.
 
-	On doit pouvoir construire une personne :
+	On doit pouvoir construire une personne~:
 
 	\begin{liste}
 		\item 
-			avec 3 arguments : le nom (\textstyleCodeInsr{chaine}), le prénom
+			avec 3 arguments~: le nom (\textstyleCodeInsr{chaine}), le prénom
 			(\textstyleCodeInsr{chaine}) et la date de naissance de la personne
 			(\textstyleCodeInsr{Date})
 		\item 
-			avec 2 arguments de type chaine : le nom et le prénom de la personne; la
+			avec 2 arguments de type chaine~: le nom et le prénom de la personne; la
 			date de naissance est alors initialisée à «\textstyleCodeInsr{~rien~}»
 	\end{liste}
 
-	Écrivez aussi tous les accesseurs et mutateurs que vous jugez
-	pertinents. Dans un module principal, créez une personne :
+	Écrire aussi tous les accesseurs et mutateurs que vous jugez
+	pertinents. Dans un module principal, créer une personne~:
 
 	\begin{enumerate}[label=\alph*)]
 		\item 
@@ -1775,13 +1771,14 @@ et facilement adaptable.}
 
 	Pour réaliser les constructeurs recevant la date de naissance en
 	paramètre, il faudra tester si cette date n’est pas antérieure à la
-	date du jour. La date du jour est fournie par le constructeur de
+	date du jour. Nous supposerons que la date 
+	du jour est fournie par le constructeur de
 	\textstyleCodeInsr{Date} sans paramètre.
 \end{Exercice}
 
 \begin{Exercice}{Anniversaire des personnes}
-	Utilisons la classe \textstyleCodeInsr{Personne} écrite plus haut.
-	Écrire un module qui lit des \textstyleCodeInsr{Personne} (au clavier)
+	À l'aide de la classe \textstyleCodeInsr{Personne} écrite plus haut,
+	écrire un module qui lit des \textstyleCodeInsr{Personne} (au clavier)
 	et affiche les noms et le nombre de celles nées ce mois-ci. On suppose
 	que la lecture de «~rien~» indique la fin des données.
 \end{Exercice}
@@ -1791,16 +1788,16 @@ et facilement adaptable.}
 	structurées. Nous reprenons cet exercice sous l’angle de l’orienté
 	objet.
 
-	Créez une classe \textbf{Rectangle}
+	Créer une classe \textbf{Rectangle}
 	permettant de définir des rectangles dont les cotés sont parallèles aux
 	axes des coordonnées dans un plan cartésien. Plusieurs représentations
-	sont possibles :
+	sont possibles~:
 
 	\begin{liste}
 		\item 
-			la position d’un des sommets et les mesures des cotés
+			la position d’un des sommets et les mesures des cotés;
 		\item 
-			les positions de deux sommets opposés
+			les positions de deux sommets opposés;
 		\item 
 			la position du centre et les demi-mesures des cotés, etc.
 	\end{liste}
@@ -1808,25 +1805,25 @@ et facilement adaptable.}
 	N’hésitez pas à utiliser la structure Point définissant un point dans un
 	plan cartésien.
 
-	Une fois les attributs choisis, écrire divers constructeurs :
+	Une fois les attributs choisis, écrire divers constructeurs~:
 
 	\begin{enumerate}[label=\alph*)]
 		\item 
-			sans arguments : le rectangle est un carré de coté 1 centré en (0,0)
+			sans arguments~: le rectangle est un carré de coté 1 centré en (0,0)
 		\item
-			avec deux paramètres : les mesures des cotés horizontaux et verticaux,
+			avec deux paramètres~: les mesures des cotés horizontaux et verticaux,
 			le rectangle étant centré en (0,0)
 		\item 
-			avec trois paramètres : la position du coin en haut à gauche (structure
+			avec trois paramètres~: la position du coin en haut à gauche (structure
 			Point) et les mesures des cotés horizontaux et verticaux 
 		\item 
-			avec deux paramètres de type Point : les positions de deux sommets
+			avec deux paramètres de type Point~: les positions de deux sommets
 			opposés
 	\end{enumerate}
 
 	Veillez à vérifier la validité des paramètres !
 
-	Doter ensuite la classe de méthodes permettant :
+	Doter ensuite la classe de méthodes permettant~:
 
 	\begin{enumerate}[label=\alph*)]
 		\item 
@@ -1849,8 +1846,8 @@ et facilement adaptable.}
 			de vérifier si un rectangle à une intersection avec un autre rectangle
 	\end{enumerate}
 
-	Test : écrire un module TestRectangle en vue de tester le bon
-	fonctionnement de la classe rectangle. Ce module : 
+	Test~: écrire un module TestRectangle en vue de tester le bon
+	fonctionnement de la classe rectangle. Ce module~: 
 
 	\begin{enumerate}[label=\alph*)]
 		\item 
@@ -1873,7 +1870,8 @@ et facilement adaptable.}
 			Indique si R2 et R3 possèdent une intersection
 	\end{enumerate}
 
-	À présent, choisissez une autre représentation des attributs et récrivez
-	tout le contenu de la classe (très long, courage !) réécrire ensuite le
+	À présent, choisir une autre représentation des attributs et récrire
+	tout le contenu de la classe (très long, courage !).
+	Récrire ensuite le
 	module TestRectangle (très rapide !)
 \end{Exercice}
