@@ -978,6 +978,39 @@
 	utilisée pour le chiffrer et retourne le message en clair.
 	Attention ! Ce second module est \textbf{très simple}.
 
+	\begin{Solution}
+		\cadre{
+		\begin{pseudo}
+			\LComment{Chiffrer un message en utilisant le chiffre de César}
+			\Module{chiffrerCésar}{msgClair\In: chaine, déplacement\In: entier}{chaine}
+				\Decl msgChiffré : chaine
+				\Decl carClair : caractère
+				\Decl i : entier
+				\Empty
+				\Let msgChiffré \Gets ""
+				\For{i \K{de} 1 \K{à} long(msgClair)}
+					\Let carClair \Gets car(msgClair,i)
+					\Let carChiffré \Gets avancer(carClair, déplacement)
+					\Let msgChiffré \Gets concat( msgChiffré, chaine(carChiffré) )
+				\EndFor
+				\Return msgChiffré
+			\EndModule
+
+			\Empty
+			\LComment{Calcule la lettre qui est "delta" position plus loin dans l'alphabet (circulairement)}
+			\Module{avancer}{lettre\In: caractère, delta\In: entier}{caractère}
+				\Return lettre( (numLettre(lettre) + delta - 1) MOD 26 + 1 ) 
+			\EndModule
+
+			\Empty
+			\LComment{Déchiffrer un message chiffré avec le chiffre de César}
+			\Module{déchiffrerCésar}{msgClair\In: chaine, déplacement\In: entier}{chaine}
+				\Return chiffrerCésar(msgClair, 26 - déplacement)
+			\EndModule
+		\end{pseudo}
+		}
+	\end{Solution}
+	
 \end{Exercice}
 
 

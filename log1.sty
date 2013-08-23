@@ -127,12 +127,6 @@
 % -------------------------------------------------------------
 \usepackage{answers}
 \Newassociation{Solution}{sol}{solutions}
-\renewenvironment{sol}[1]{%
-	\vspace{-2mm}
-	\subsection*{\normalsize{\color{MidnightBlue}\Cadre{\ExerciceNumber} - \ExerciceLabel}}
-	\vspace{-2mm}	
-	}{%
-	}
 \newcommand{\contrib}[1]{\textit{(solution proposée par #1)\\}}
 
 % ===================================================
@@ -168,7 +162,7 @@
 % Pour un exercice avec numérotation automatique
 \newenvironment{Exercice}[1]{%
 	\refstepcounter{exercicenum}%
-	\renewcommand{\Currentlabel}{\arabic{chapter}.\theexercicenum\ - #1}% Pour référence dans la solution
+	\renewcommand{\Currentlabel}{\arabic{chapter}.\theexercicenum}% Pour référence dans la solution
 	\vspace{-2mm}
 	\subsection*{\normalsize{\color{MidnightBlue}\Cadre{\theexercicenum}}\quad{\sffamily\bfseries#1}}
 	\vspace{-2mm}
