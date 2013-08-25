@@ -2,10 +2,10 @@
 \chapter{Algorithmes séquentiels}
 
 	\marginicon{objectif}
-	Avec ce chapitre, vous apprendrez à écrire un algorithme séquentiel pour
+	Dans ce chapitre, vous apprendrez à écrire un algorithme séquentiel pour
 	résoudre un problème informatique. C'est aussi
 	l'occasion de fixer la syntaxe du pseudo-code que nous
-	allons utiliser. Nous commençons dans ce chapitre avec les algorithmes
+	allons utiliser. Nous commençons avec les algorithmes
 	séquentiels qui sont de simples séquences de suites
 	d'instructions. Les structures alternatives et
 	répétitives seront vues dans les chapitres suivants.
@@ -35,8 +35,9 @@
 		comprendre !
 
 		De plus, les notions de dénominateur commun et
-		de simplification de fraction, bien qu'élémentaires
-		pour le cerveau, ne sont pas immédiates d'un point de
+		de simplification de fraction, qui vous sont 
+		familières depuis l'école primaire, 
+		ne sont pas immédiates d'un point de
 		vue algorithmique. Un algorithme proche d'un langage
 		de programmation ne devrait mentionner que les opérations élémentaires
 		de calcul telles que $+$, -, $*$, $/$.
@@ -140,7 +141,7 @@
 
 		Enfin, et ce n’est pas la chose la moins importante, la définition d’un
 		pseudo-code doit être telle qu’il puisse \textbf{faciliter
-		l’apprentissage d’une logique de programmation} par des personnes
+		l’apprentissage de la logique de programmation} par des personnes
 		désireuses de faire de l’informatique un métier. Dans cette optique, il
 		est inutile de les embarrasser de contraintes syntaxiques ou autres qui
 		risquent de les éloigner du but poursuivi.
@@ -198,15 +199,20 @@
 			beaucoup de langages de programmation.
 
 			
-			\begin{Emphase}[exercice]{Exercice : Une date}
+			\begin{Emphase}[exercice]{Exercices}
 				Quel(s) type(s) de données utiliseriez-vous 
-				pour représenter une date du calendrier ?
-			\end{Emphase}
-
-			
-			\begin{Emphase}[exercice]{Exercice : Un moment}
-			Quel(s) type(s) de données utiliseriez-vous 
-			pour représenter un moment dans la journée ?
+				pour représenter 
+				\begin{itemize}
+					\item une date du calendrier ?
+					\item un moment dans la journée ?
+					\item le prix d'un produit en grande surface ?
+					\item votre nom ?
+					\item vos initiales ?
+					\item votre adresse ?
+				\end{itemize}
+				
+				\bigskip
+				
 			\end{Emphase}
 
 		\subsection{Déclaration de variables}
@@ -260,14 +266,14 @@
 
 			\begin{liste}
 			\item
-				\textstyleCodeInsr{num1 (num2)} pour numérateur 
+				\textstyleCodeInsr{num1 (num2)}~: le numérateur 
 				de la première (seconde) fraction ;
 			\item
-				\textstyleCodeInsr{den1 (den2)} pour dénominateur 
+				\textstyleCodeInsr{den1 (den2)}~: le dénominateur 
 				de la première (seconde) fraction ;
 			\item
-				\textstyleCodeInsr{numRes (denRes)}
-				pour numérateur (dénominateur) du résultat.
+				\textstyleCodeInsr{numRes (denRes)}~:
+				le numérateur (dénominateur) du résultat.
 			\end{liste}
 			
 			\marginicon{attention}
@@ -285,10 +291,9 @@
 			explicite (ainsi \textstyleCodeInsr{num1} est plus approprié pour
 			désigner le \textit{premier numérateur }que \textstyleCodeInsr{zozo1},
 			\textstyleCodeInsr{tintin}, \textstyleCodeInsr{bidule,
-			premierNumérateur}) et qui ne prête pas à confusion (par exemple ne pas
-			utiliser un des mots réservés du pseudo-code comme
-			\textstyleMotCl{\textsf{lire}}, \textstyleMotCl{\textsf{afficher}},
-			\textstyleMotCl{\textsf{pour}}…). Il faut aussi tenir compte que les
+			premierNumérateur}) et qui ne prête pas à confusion (par exemple
+			appeler \textbf{den} la variable représentant le numérateur.
+			Il faut aussi tenir compte que les
 			langages de programmation imposent certaines limitations (parfois
 			différentes d'un langage à l'autre)
 			ce qui peut nécessiter une modification du nom lors de la traduction.
@@ -326,8 +331,12 @@
 				\textstyleCodeInsr{m²)}
 			\item
 				Les mots clés du langage sont interdits (par exemple
-				\textstyleMotCl{for}, \textstyleMotCl{if}, \textstyleMotCl{while }pour
-				Java et Cobol).
+				\textstyleMotCl{for}, \textstyleMotCl{if}, 
+				\textstyleMotCl{while }pour Java et Cobol) et on déconseille 
+				d'utiliser les mots-clés du pseudo-code (tels que
+				\textstyleMotCl{\textsf{lire}}, 
+				\textstyleMotCl{\textsf{afficher}}, 
+				\textstyleMotCl{\textsf{pour}}…)
 			\item
 				Certains langages n’autorisent pas les caractères accentués (tels que
 				\textit{à, ç, ê, ø,} etc.) ou les lettres des alphabets non latins
@@ -421,7 +430,7 @@
 			Si nécessaire, on se permettra d'utiliser les autres
 			fonctions mathématiques sous leur forme la plus courante dans la
 			plupart des langages de programmation (exemples :
-			\textstyleCodeInsr{sin(x), tan(x), log(2*x), exp(a-b)}, ...)
+			$sin(x)$, $tan(x)$, $log(x)$, $exp(x)$, ...)
 			
 		
 		\subsection{Opérateurs de comparaison}
@@ -432,11 +441,11 @@
 			\begin{center}
 			\tablehead{}
 			\begin{supertabular}{m{2cm}|m{11cm}}
-			\raggedleft  \textstyleCodeInsr{\textless} & (strictement) plus petit que\\
-			\raggedleft  \textstyleCodeInsr{\textgreater} & (strictement) plus grand que\\
 			\raggedleft  \textstyleCodeInsr{=} & égal\\
 			\raggedleft  \textstyleCodeInsr{{\textless}{\textgreater}}
 				ou \textstyleCodeInsr{${\neq}$} &  différent de\\
+			\raggedleft  \textstyleCodeInsr{\textless} & (strictement) plus petit que\\
+			\raggedleft  \textstyleCodeInsr{\textgreater} & (strictement) plus grand que\\
 			\raggedleft  \textstyleCodeInsr{${\leq}$} & plus petit ou égal\\
 			\raggedleft  \textstyleCodeInsr{${\geq}$} & plus grand ou égal\\
 			\end{supertabular}
@@ -507,11 +516,12 @@
 				disjonction ne se fera que si \textstyleCodeInsr{cond1} est faux.
 			\end{description}
 	
-			Dans le cadre de ce cours, nous opterons pour la deuxième définition.
-			Montrons sur un exemple l’avantage de cette interprétation. Considérons
-			l’expression 
+			Dans le cadre de ce cours, nous opterons pour la deuxième 
+			interprétation.
+			Montrons son avantage sur un exemple.
+			Considérons	l’expression 
 			\textstyleCodeInsr{n }\textstyleCodeInsr{${\neq}$}\textstyleCodeInsr{ 0
-			ET s/n {\textgreater} 10}. Si on teste sa valeur de vérité avec une
+			ET m/n {\textgreater} 10}. Si on teste sa valeur de vérité avec une
 			valeur de \textstyleCodeInsr{n} non nulle, la première condition est
 			vraie et le résultat de la conjonction dépendra de la valeur de la
 			deuxième condition. Supposons à présent que \textstyleCodeInsr{n} soit
@@ -538,12 +548,15 @@
 			qui vont nous permettre de les manipuler plus facilement.
 		
 			\begin{liste}
-			\item \textstyleCodeInsr{long(s)}
-				donne la taille (le nombre de caractères) de la chaine s
-			\item \textstyleCodeInsr{car(s,p)}
-				donne le caractère en position p (à partir de 1) dans la chaine s
-			\item \textstyleCodeInsr{concat(s1,s2)}
-				concatène les chaines s1 et s2 
+			\item \textstyleCodeInsr{long(maChaine)}
+				donne la taille (le nombre de caractères) de la chaine 
+				\textstyleCodeInsr{maChaine}.
+			\item \textstyleCodeInsr{car(maChaine,pos)}
+				donne le caractère en position \textstyleCodeInsr{pos} 
+				(à partir de 1) dans la chaine \textstyleCodeInsr{maChaine}.
+			\item \textstyleCodeInsr{concat(maChaine1,maChaine2)}
+				concatène les chaines \textstyleCodeInsr{maChaine1} 
+				et \textstyleCodeInsr{maChaine2}.
 				(ex: \textstyleCodeInsr{concat("Bon","jour")} donne \textstyleCodeInsr{"Bonjour"})
 			\end{liste}
 
@@ -552,16 +565,16 @@
 			Introduisons également quelques notations pour les caractères.
 
 			\begin{liste}
-			\item \textstyleCodeInsr{chaine(car)} transforme le caractère \textstyleCodeInsr{car} en une chaine de taille 1
+			\item \textstyleCodeInsr{chaine(car)} transforme le caractère \textstyleCodeInsr{car} en une chaine de taille 1.
 			\item \textstyleCodeInsr{estLettre(car)} est vrai si le caractère \textstyleCodeInsr{car} est une lettre
 				(idem pour \textstyleCodeInsr{estChiffre}, 
 				\textstyleCodeInsr{estMajuscule}, 
-				\textstyleCodeInsr{estMinuscule})
+				\textstyleCodeInsr{estMinuscule}).
 			\item \textstyleCodeInsr{majuscule(car)} donne la majuscule de la lettre \textstyleCodeInsr{car}
-				(idem pour \textstyleCodeInsr{minuscule})
-			\item \textstyleCodeInsr{numLettre(car)} donne la position de \textstyleCodeInsr{car} dans l'alphabet (ex: \textstyleCodeInsr{numLettre('E')} donne 5, 
-			idem pour \textstyleCodeInsr{numLettre('e')})
-			\item \textstyleCodeInsr{lettre(num)} l'inverse de la précédente (ex: \textstyleCodeInsr{lettre(4)} donne 'D')			
+				(idem pour \textstyleCodeInsr{minuscule}).
+			\item \textstyleCodeInsr{position(car)} donne la position de \textstyleCodeInsr{car} dans l'alphabet (ex: \textstyleCodeInsr{numLettre('E')} donne 5, 
+			idem pour \textstyleCodeInsr{numLettre('e')}).
+			\item \textstyleCodeInsr{lettre(num)} l'inverse de la précédente (ex: \textstyleCodeInsr{lettre(4)} donne le caractère 'D').
 			\end{liste}
 
 			 
@@ -605,9 +618,9 @@
 			l’utilisateur les valeurs des variables à lire. Ces valeurs viennent
 			donc de l’\textit{extérieur~}; une fois introduites dans le système,
 			elles sont affectées aux variables concernées et l’algorithme peut
-			reprendre son cours. Par \textit{extérieur} nous entendons ici tout
-			support d’introduction des données extérieur à la mémoire du programme.
-			Les possibilités sont nombreuses : citons par exemple l’encodage de
+			reprendre son cours. 
+			Les possibilités d'introduction de données 
+			sont nombreuses : citons par exemple l’encodage de
 			données au clavier, un clic de souris, le toucher d'un
 			écran tactile, des données provenant d’un fichier, etc.
 
@@ -685,7 +698,8 @@
 				Nous ne mélangerons pas la déclaration d’une variable et son
 				affectation interne dans une même ligne de code, donc pas
 				d’instructions hybrides du genre 
-				\textsf{x}{ $\gets$ }\textstyleCodeInsr{2 : entier}
+				\textsf{x}{ $\gets$ }\textstyleCodeInsr{2 : entier} ou encore 
+				\textsf{x~: entier(0)}.
 			\item 
 				Pour l’affectation interne, toutes les variables apparaissant dans
 				l'\textstyleCodeInsr{expression} doivent avoir été affectées
@@ -695,8 +709,8 @@
 	\section{Communication des résultats}
 
 		L’instruction de communication des résultats consiste à donner à
-		l’extérieur (donc à l’utilisateur) la valeur d’un résultat de
-		l’exécution de l’algorithme. Nous écrirons :
+		l’extérieur (donc à l’utilisateur) la valeur d’un résultat 
+		calculé au cours de l’exécution de l’algorithme. Nous écrirons :
 
 			\cadre{
 			\begin{pseudo}
@@ -749,8 +763,9 @@
 		\begin{liste}
 		\item {
 			Le code d'un algorithme sera toujours compris entre la
-			première ligne ; appelée «~entête~» qui commence par le mot «~module~»
-			suivi du nom choisi pour l'algorithme ; et la ligne
+			première ligne, appelée «~entête~» qui commence par 
+			le mot «~module~»
+			suivi du nom choisi pour l'algorithme, et la ligne
 			finale «~fin module~». Le code compris entre l'entête
 			et la ligne finale sera toujours légèrement décalé vers la droite,
 			c'est un premier exemple
@@ -759,8 +774,9 @@
 			l'étude des structures alternatives et répétitives.}
 		\item {
 			Comme pour les variables, le nomDuModule devra être approprié au contenu
-			! Par exemple, sommerNombres, additionnerFractions plutôt que goPartez
-			!
+			! Par exemple, \textstyleCodeInsr{sommerNombres)}, 
+			\textstyleCodeInsr{additionnerFractions()} plutôt que 
+			\textstyleCodeInsr{goPartez()}!
 			Le rôle des parenthèses qui suivent le nom du module sera expliqué plus
 			tard.}
 		\item {
@@ -900,6 +916,11 @@
 		\EndModule
 		\end{pseudo}
 		}
+		
+		\textbf{Remarque~:}
+		rappelons que la fraction affichée n'est sans doute pas simplifiée. 
+		Nous n'avons pas encore tous les atouts suffisants pour réaliser 
+		cela à ce niveau. Patience !
 
 	\section{Commenter un algorithme}
 
@@ -909,7 +930,7 @@
 		l'algorithme et destiné à faciliter au maximum la
 		compréhension d’un algorithme par le lecteur (parfois une autre
 		personne, mais aussi souvent l'auteur qui se perd dans
-		son propre texte lorsqu'il y replonge après une
+		son propre texte lorsqu'il s'y replonge après une
 		interruption). Ces commentaires (introduits par
 		«~\textstyleCodeInsr{//~»}) seront bien entendu ignorés par
 		l’exécutant de l’algorithme.
@@ -1022,7 +1043,6 @@
 			}
 
 
-			
 			\begin{Emphase}[exercice]{Exercice : Autres situations}
 
 				Pouvez-vous identifier d'autres données qui pourraient
@@ -1055,7 +1075,7 @@
 				\Stmt Saison(3) 
 					\RComment donne l'énumération de la saison numéro 3 (on commence à 1);
 					\LComment donne ÉTÉ dans notre exemple.
-				\Stmt Entier(uneSaison)
+				\Stmt position(uneSaison)
 					\RComment donne l'entier associé à une saison;
 					\LComment si on a lu HIVER comme valeur pour uneSaison, donne la valeur 1.
 				\end{pseudo}
@@ -1200,8 +1220,8 @@
 \subsection{Exercices d’apprentissage}
 
 	Il est temps de se lancer et d'écrire vos premiers
-	modules. Voici de précieux conseils pour vous guider dans la résolution
-	de tels problèmes.
+	modules. Voici quelques précieux conseils pour vous 
+	guider dans la résolution de tels problèmes~:
 
 	\begin{liste}
 	\item {
@@ -1210,8 +1230,7 @@
 	\item {
 		déclarez ensuite les variables (et leur type) qui interviennent dans
 		l’algorithme ; les noms des variables risquant de ne pas être
-		suffisamment explicites, donnez les renseignements nécessaires à la
-		compréhension de l’existence de ces variables ;}
+		suffisamment explicites;}
 	\item {
 		mettez en évidence les variables «~données~», les variables
 		«~résultats~» et les variables de travail ;}
@@ -1243,7 +1262,7 @@
 \begin{Exercice}{Placement}
 	Écrire un algorithme qui, étant donné le montant d’un capital placé (en
 	€) et le taux d’intérêt annuel (en \%), calcule et affiche la valeur
-	totale acquise après un an de ce placement.
+	nouvelle de ce capital après un an de ce placement.
 \end{Exercice}
 
 \begin{Exercice}{Prix TTC}
