@@ -3,12 +3,12 @@
 	\marginicon{objectif}
 	Dans ce chapitre nous allons appréhender les bases de la logique de
 	programmation au travers d'une petite application
-	ludique : le «~robot logique~». Nous pourrons ainsi faire connaissance
-	avec les concepts suivants :
+	ludique~: le «~robot logique~». Nous pourrons ainsi faire connaissance
+	avec les concepts suivants~:
 	
 	\begin{liste}
 	\item La séquence
-	\item Les choix
+	\item Les choix ou alternatives
 	\item Les répétitions
 	\item Les modules
 	\end{liste}
@@ -21,7 +21,7 @@
 
 	Pour introduire les bases de la logique de programmation, nous utilisons
 	le «~robot logique~», un programme d'aide à
-	l'apprentissage de la logique écrit par Marc Tommasi
+	l'apprentissage de l'algorithmique conçu par Marc Tommasi
 	de l'université de Lille
 	3\footnote{http://jrobot.gforge.inria.fr/}.
 	
@@ -29,12 +29,13 @@
 	\includegraphics[width=5.553cm,height=5.302cm]{image/robot-grille}
 	\end{center}
 	
-	Un robot se déplace dans un domaine rectangulaire délimité par une
-	frontière. On peut y placer un trésor. Le but est de trouver
+	Un robot se déplace dans un domaine rectangulaire sous 
+	forme d'une grille délimitée par un mur.
+	On peut y placer un trésor. Le but est de trouver
 	l'algorithme qui va permettre au robot
 	d'effectuer une tâche donnée (par exemple trouver le
 	trésor). Pour cela, il faut combiner les ordres de base (les
-	primitives) qu'il connait (par exemple : «~avancer~»,
+	primitives) qu'il connait (par exemple~: «~avancer~»,
 	«~à droite~», ...) en utilisant éventuellement des structures
 	conditionnelles ou répétitives.
 
@@ -70,7 +71,7 @@
 		\begin{enumerate}
 		\item 
 			La première permet d'indiquer la \textbf{situation
-			initiale} : position et orientation du robot, position du trésor.
+			initiale}~: position et orientation du robot, position du trésor.
 		\item 
 			La deuxième permet de «~programmer~» le robot, lui donner la
 			\textbf{séquence d'instructions}
@@ -78,16 +79,16 @@
 			qu'il comprend sont rudimentaires. 
 		\end{enumerate}
 
-		Une troisième fenêtre montre la grille et le robot et permet de voir
+		Une troisième fenêtre montre la grille avec le robot et permet de voir
 		«~tourner~» le programme.
 
 \section{La séquence}
 
 	Nous l'avons vu dans le chapitre
-	d'introduction, un algorithme est une séquence
+	d'introduction~: un algorithme est une séquence
 	d'instructions élémentaires. Quelles sont les
 	instructions élémentaires comprises par le robot ? Les instructions les
-	plus rudimentaires sont :
+	plus rudimentaires sont~:
 	
 	\begin{Emphase}[definition]{Instructions élémentaires}
 		\cadre{
@@ -101,10 +102,10 @@
 		}
 	\end{Emphase}
 		
-	Nous allons commencer par quelque chose de très simple : demandons au
-	robot de faire demi-tour.
+	Nous allons commencer par quelque chose de très simple~: demandons au
+	robot de faire un demi-tour (sur place).
 
-	\begin{Emphase}[exercice]{Exercice résolu : demi-tour}
+	\begin{Emphase}[exercice]{Exemple~: demi-tour}
 
 		«~Faire demi-tour~» n'est pas une instruction
 		élémentaire comprise par le robot. Il nous faut la découper en une
@@ -119,7 +120,7 @@
 		\item La position du trésor n'est pas importante
 		\end{itemize}
 
-		\textbf{But} : Le robot doit faire demi-tour.
+		\textbf{But}~: Le robot doit faire demi-tour.
 
 		\textbf{Solution}
 
@@ -138,7 +139,7 @@
 	(même si cela n'apparait pas tout de suite)
 
 	
-	\begin{Emphase}[exercice]{Exercice : avancer de deux cases}
+	\begin{Emphase}[exercice]{Exercice~: avancer de deux cases}
 
 		\textbf{Conditions initiales}
 
@@ -147,12 +148,12 @@
 		\item La position du trésor n'est pas importante
 		\end{itemize}
 		
-		\textbf{But} : Le robot doit avancer de deux cases dans la direction
+		\textbf{But}~: Le robot doit avancer de deux cases dans la direction
 		vers laquelle il regarde.
 
 	\end{Emphase}
 
-	Vous avez peut-être trouvé la solution suivante :
+	Vous avez peut-être trouvé la solution suivante~:
 
 	\cadre{
 	\begin{pseudo}
@@ -168,7 +169,7 @@
 	avancé de 2 cases. 
 
 	
-	\begin{Emphase}[reflexion]{Test de la logique}
+	\begin{Emphase}[reflexion]{Test de l'algorithme}
 
 		Si vous avez trouvé la solution ci-dessus, exécutez-la de nombreuses
 		fois, vous finirez par tomber sur un cas où cela ne se passe pas bien.
@@ -195,7 +196,7 @@
 	n'a d'ailleurs \textbf{aucune idée du
 	but à atteindre, du sens de ce qu'il fait}.
 	
-	Ici, le problème vient d'abord de
+	Ici, le problème vient également de
 	l'énoncé qui ne stipule pas clairement ce
 	qu'il faut faire dans ces cas-là.
 
@@ -213,7 +214,7 @@
 	Cela met en évidence l'importance de la \textbf{phase
 	d'analyse} dans le développement d'un
 	programme. \textbf{Que faut-il faire exactement ?} Normalement la
-	réponse est à chercher chez le client pour qui on programme\footnote{Et
+	réponse est à chercher chez la personne pour qui on programme\footnote{Et
 	à l'école, dans l'énoncé fourni par
 	le professeur ! }.
 	
@@ -226,7 +227,7 @@
 
 \section{Les alternatives}
 
-	Reposons le problème précisément : on veut que le robot avance de 2
+	Reposons le problème précisément~: on veut que le robot avance de 2
 	cases sauf si un mur l'en empêche, auquel cas il
 	s'arrête juste devant le mur.
 	
@@ -240,6 +241,8 @@
 
 	
 	\begin{Emphase}[definition]{Les tests}
+	Les tests disponibles sont~:
+	
 		\cadre{
 		\begin{pseudo}
 		\Stmt \K{devantMur}
@@ -291,9 +294,9 @@
 	qu'il doit utiliser à bon escient pour améliorer son
 	comportement.
 
-	Ainsi on ne dit pas : «~si, à un moment donné, tu es face à un mur,
+	Ainsi on ne dit pas~: «~si, à un moment donné, tu es face à un mur,
 	n'avance pas si on te le demande~» mais bien quelque
-	chose comme : «~si tu n'es pas devant un mur
+	chose comme~: «~si tu n'es pas devant un mur
 	\textbf{MAINTENANT} alors tu peux avancer~»
 
 	Notez aussi que le robot exécute \textbf{toutes} les instructions liées
@@ -307,7 +310,7 @@
 	Commençons par un exemple simple.
 
 	
-	\begin{Emphase}[exercice]{Exercice : avancer d'une case}
+	\begin{Emphase}[exercice]{Exemple~: avancer d'une case}
 
 		\textbf{Conditions initiales}
 
@@ -316,9 +319,9 @@
 		\item La position du trésor n'est pas importante
 		\end{itemize}
 		
-		\textbf{But} : Le robot doit avancer d'\textbf{une
+		\textbf{But}~: Le robot doit avancer d'\textbf{une
 		case} tout droit (dans la direction vers laquelle il regarde). 
-		Si un mur l'en empêche, il devra s'arrêter juste devant le mur.
+		Si un mur l'en empêche, il devra s'arrêter juste devant ce mur.
 
 	\end{Emphase}
 
@@ -334,10 +337,10 @@
 	}
 	
 	Si cet exemple est bien compris, 
-	essayez de résoudre par vous-même celui-ci :
+	essayez de résoudre par vous-même celui-ci~:
 
 	
-	\begin{Emphase}[exercice]{Exercice : avancer de deux cases (amélioré)}
+	\begin{Emphase}[exercice]{Exercice~: avancer de deux cases (amélioré)}
 
 		\textbf{Conditions initiales}
 
@@ -346,7 +349,7 @@
 		\item La position du trésor n'est pas importante
 		\end{itemize}
 		
-		\textbf{But} : Le robot doit avancer de \textbf{deux cases} tout droit
+		\textbf{But}~: Le robot doit avancer de \textbf{deux cases} tout droit
 		(dans la direction vers laquelle il regarde). Si un mur
 		l'en empêche, il devra s'arrêter
 		juste devant le mur.
@@ -356,7 +359,7 @@
 \section{La répétition}
 
 	Continuons notre apprentissage de l'algorithmique et
-	posons-nous le problème suivant : «~On voudrait que le robot avance
+	posons-nous le problème suivant~: «~On voudrait que le robot avance
 	\textbf{jusqu'au} mur face à lui.~».
 	
 	Que se passe-t-il ici ? Le robot va devoir avancer un certain nombre de
@@ -369,7 +372,7 @@
 	s'il doit continuer ou non cette tâche répétitive.
 
 	
-	\begin{Emphase}[definition]{Les répétitions}
+	\begin{Emphase}[definition]{La répétition}
 	\cadre{
 	\begin{pseudo}
 		\While{condition}
@@ -390,7 +393,7 @@
 	notre problème.
 
 	
-	\begin{Emphase}[exercice]{Exercice : avancer jusqu'au mur}
+	\begin{Emphase}[exercice]{Exercice~: avancer jusqu'au mur}
 
 		\textbf{Conditions initiales}
 
@@ -399,7 +402,7 @@
 		\item La position du trésor n'est pas importante
 		\end{itemize}
 		
-		\textbf{But} : Le robot doit avancer jusqu'au mur
+		\textbf{But}~: Le robot doit avancer jusqu'au mur
 		devant lui et s'y arrêter.
 
 	\end{Emphase}
@@ -440,11 +443,11 @@
 
 	Nous avons à présent tout ce qu'il faut pour résoudre
 	notre problème. Il est déjà d'une belle complexité
-	mais vous avez tout ce qu'il faut pour le résoudre :
+	mais vous avez tout ce qu'il faut pour le résoudre~:
 	courage !
 
 	
-	\begin{Emphase}[exercice]{Exercice : avancer jusqu'au mur et revenir}
+	\begin{Emphase}[exercice]{Exercice~: avancer jusqu'au mur et revenir}
 
 		\textbf{Conditions initiales}
 
@@ -453,9 +456,8 @@
 		\item La position du trésor n'est pas importante
 		\end{itemize}
 		
-		\textbf{But} : Le robot doit avancer jusqu'au mur
-		devant lui, faire demi-tour et revenir à sa position de départ 
-		(et y reprendre sa direction d'origine).
+		\textbf{But}~: Le robot doit avancer jusqu'au mur
+		devant lui, faire demi-tour et revenir à sa position de départ.
 
 	\end{Emphase}
 
@@ -467,7 +469,9 @@
 	expliquer au robot comment faire. C'est gênant !
 
 	\begin{liste}
-	\item C'est un travail rébarbatif et une perte de temps.
+	\item 
+		L'algorithme devient répétitif car il contient du code dupliqué
+		(deux fois «~à droite~»).
 	\item 
 		À la lecture de l'algorithme, 
 		il n'apparait pas clairement qu'on demande au robot 
@@ -487,22 +491,24 @@
 
 	\marginicon{definition}
 	Une \textbf{procédure} (on dira aussi \textbf{module}, \textbf{fonction}
-	ou \textbf{méthode}) est un morceau d'algorithme
+	ou \textbf{méthode}) est une portion d'algorithme
 	auquel on a donné un \textbf{nom} et qui peut être «~utilisé~»
 	(\textbf{appelé}) dans d'autres algorithmes.
 
 	Lorsque le robot rencontre un nom de procédure, il exécute toutes les
 	instructions de cette procédure puis revient continuer le premier
-	algorithme.
+	algorithme là où il a été interrompu.
 
-	Exemple : L'algorithme A appelle la procédure «~Brol~».
+	Exemple~: L'algorithme A appelle la procédure «~Brol~».
 
 	\begin{center}
 	\includegraphics[width=\textwidth]{image/robot-procedure}
+	
+	{Remarque~: une procédure est également un algorithme !}
 	\end{center}
 
 	
-	\begin{Emphase}[exercice]{Exercice : procédure pour le demi-tour}
+	\begin{Emphase}[exercice]{Exercice~: procédure pour le demi-tour}
 	
 		Écrire une procédure «~demi-tour~» et l'utiliser dans
 		le problème précédent (avancer jusqu'au mur et revenir
@@ -528,8 +534,9 @@
 
 	\subsection{Exercices de réflexion}
 
+		\textit{
 		Pour ces exercices, on vous demande de réfléchir sur le concept
-		d'algorithme.
+		d'algorithme.}
 
 \begin{Exercice}{Un algorithme correct}
 Quand peut-on affirmer qu'un algorithme est correct ?
@@ -548,8 +555,9 @@ Quand peut-on affirmer qu'un algorithme est correct ?
 \end{Exercice}
 
 	\subsection{Séquences simples}
-
-		Au départ, le robot se trouve dans le coin sud-ouest, 
+	
+		Pour les exercices suivants, le robot se trouve 
+		au départ dans le coin sud-ouest, 
 		orienté vers le nord.
 
 \begin{Exercice}{Avancer simplement}
@@ -574,10 +582,12 @@ Quand peut-on affirmer qu'un algorithme est correct ?
 	\subsection{Alternatives}
 
 \begin{Exercice}{Avancer d'une case}
+	Le robot est placé au hasard.
 	Le robot avance si la case devant lui est libre (pas devant un mur).
 \end{Exercice}
 
 \begin{Exercice}{Avancer ou demi-tour}
+	Le robot est placé au hasard. 
 	Le robot avance si la case devant lui est libre,
 	sinon il fait demi-tour.
 \end{Exercice}
@@ -614,7 +624,7 @@ Quand peut-on affirmer qu'un algorithme est correct ?
 
 		\begin{Exercice}{Nord-ouest et retour}
 			Le robot doit aller jusqu'au coin nord-ouest
-			puis revenir sur sa case de départ.
+			puis revenir sur sa case de départ par le même chemin.
 		\end{Exercice}
 
 		\begin{Exercice}{Nord-est}
@@ -655,8 +665,9 @@ Quand peut-on affirmer qu'un algorithme est correct ?
 			le robot est orienté vers l'est.
 		\end{Exercice}
 
-		\begin{Exercice}{Un coint}
-			Le robot est placé au hasard. Écrire un module qui va dans un coin, peu
+		\begin{Exercice}{Un coin}
+			Le robot est placé au hasard. 
+			Écrire un module qui va dans un coin, peu
 			importe lequel. 
 		\end{Exercice}
 
@@ -672,7 +683,7 @@ Quand peut-on affirmer qu'un algorithme est correct ?
 			\item La position du trésor n'est pas importante.
 			\end{itemize}
 
-			\textbf{Conseil} : L'utilisation de procédures rendra
+			\textbf{Conseil}~: L'utilisation de procédures rendra
 			votre programme plus court et plus lisible.
 		\end{Exercice}
 
@@ -684,7 +695,7 @@ Quand peut-on affirmer qu'un algorithme est correct ?
 			\item Le trésor est sur le bord supérieur.
 			\end{itemize}
 
-			\textbf{Attention} : 
+			\textbf{Attention}~: 
 			Testez bien votre solution; il existe un cas très particulier.
 		\end{Exercice}
 
