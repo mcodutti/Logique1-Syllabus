@@ -345,7 +345,7 @@
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Ce module trie le tableau reçu en paramètre (via un tri par insertion).
+		\LComment Trie le tableau reçu en paramètre (via un tri par insertion).
 		\Module{triInsertion}{tab\InOut~: tableau[1 à n] d’entiers}{}
 			\Decl i, j, valAInsérer~: entiers
 			\For{i \K{de} 2 \K{à} n}
@@ -573,7 +573,7 @@
 	
 	\cadre{
 	\begin{pseudo}
-		\LComment Ce module trie le tableau reçu en paramètre (via un tri par sélection des minima successifs).
+		\LComment Trie le tableau reçu en paramètre (via un tri par sélection des minima successifs).
 		\Module{triSélectionMinimaSuccessifs}{tab\InOut~: tableau[1 à n] d’entiers}{}
 			\Decl i, indiceMin~: entiers
 			\For{i \K{de} 1 \K{à} n – 1}
@@ -589,7 +589,7 @@
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Ce module retourne de l’indice du minimum entre les indices début et fin du tableau reçu.
+		\LComment Retourne de l’indice du minimum entre les indices début et fin du tableau reçu.
 		\Module{positionMin}{tab\In~: tableau[1 à n] d’entiers, début, fin~: entiers}{entier}
 			\Decl indiceMin, i~: entiers
 			\Let indiceMin \Gets début
@@ -601,7 +601,7 @@
 			\Return indiceMin
 		\EndModule
 		\Empty
-		\LComment Ce module échange le contenu de 2 variables.
+		\LComment {Échange le contenu de 2 variables.}
 		\Module{swap}{a\InOut, b\InOut~: entiers}{}
 			\Decl aux~: entiers
 			\Let aux \Gets a
@@ -1067,7 +1067,7 @@
 	
 	\cadre{
 	\begin{pseudo}
-	\LComment Ce module trie le tableau reçu en paramètre (via un tri bulle).
+	\LComment Trie le tableau reçu en paramètre (via un tri bulle).
 		\Module{triBulle}{tab\InOut~: tableau[1 à n] d’entiers}{}
 			\Decl indiceBulle, j~: entiers
 			\For{indiceBulle \K{de} 1 \K{à} n}

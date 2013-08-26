@@ -23,7 +23,7 @@
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Ce module lit deux nombres et affiche le maximum des deux.
+	\LComment Lit deux nombres et affiche le maximum des deux.
 	\Module{max2}{}{}
 		\Decl a,b,max~: réels
 		\Read a,b
@@ -67,7 +67,7 @@
 	\cadre{
 	\begin{pseudo}
 	\Module{max3}{}{}
-		\LComment Ce module lit trois nombres et affiche le maximum des trois.
+		\LComment Lit trois nombres et affiche le maximum des trois.
 		\Decl a, b, c, temp, max~: réels
 		\Read a,b,c
 		\If{a > b}
@@ -128,7 +128,7 @@
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Ce module reçoit deux nombres et sort le maximum des deux.
+	\LComment Affiche deux nombres et sort le maximum des deux.
 	\Module{max2}{a\In, b\In~: réels, max\Out~: réel}{}
 		\If{a > b}
 			\Let max \Gets a
@@ -157,7 +157,7 @@
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Ce module lit trois nombres et affiche le maximum des trois.
+	\LComment Lit trois nombres et affiche le maximum des trois.
 	\Module{max3}{}{}
 		\Decl a, b, c, temp, max~: réels
 		\Read a, b, c
@@ -347,7 +347,7 @@
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Ce module lit trois nombres positifs et affiche le maximum des trois.
+	\LComment Lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
 		\Decl a,b,c,temp,max~: réels
 		\Stmt lirePositif(a)
@@ -362,7 +362,7 @@
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Ce module lit un nombre, le sort s'il est positif et sinon lance une erreur.
+	\LComment Lit un nombre, le sort s'il est positif et sinon lance une erreur.
 	\Module{lirePositif}{a\Out~: réel}{}
 		\Read a
 		\If{a < 0}
@@ -374,7 +374,7 @@
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Ce module reçoit deux nombres et sort le maximum des deux.
+	\LComment Affiche deux nombres et sort le maximum des deux.
 	\Module{max2}{a\In, b\In~: réels, max\Out~: réel}{}
 		\If{a > b}
 			\Let max \Gets a
@@ -474,7 +474,7 @@
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Ce module lit trois nombres positifs et affiche le maximum des trois.
+	\LComment Lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
 		\Decl a,b,c,temp,max~: réels
 		\Let a \Gets lirePositif()
@@ -489,7 +489,7 @@
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Ce module lit un nombre, le retourne s'il est positif et sinon lance une erreur.
+	\LComment Lit un nombre, le retourne s'il est positif et sinon lance une erreur.
 	\Module{lirePositif}{}{réel}
 		\Decl a~: réel
 		\Read a
@@ -503,7 +503,7 @@
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Ce module reçoit deux nombres et retourne le maximum des deux.
+	\LComment Affiche deux nombres et retourne le maximum des deux.
 	\Module{max2}{a\In, b\In~: réels}{réel}
 		\Decl max~: réel
 		\If{a > b}
@@ -521,7 +521,7 @@
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Ce module lit trois nombres positifs et affiche le maximum des trois.
+	\LComment Lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
 		\Decl a,b,c,temp,max~: réels
 		\Let a \Gets lirePositif()
@@ -537,7 +537,7 @@
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Ce module lit trois nombres positifs et affiche le maximum des trois.
+	\LComment Lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
 		\Decl a,b,c,temp,max~: réels
 		\Let a \Gets lirePositif()
@@ -552,7 +552,7 @@
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Ce module lit trois nombres positifs et affiche le maximum des trois.
+	\LComment Lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
 		\Write max2(max2(lirePositif(), lirePositif()), lirePositif())
 	\EndModule
@@ -659,7 +659,7 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Ce module reçoit trois entiers~: des heures, des minutes et des secondes et sort le nombre de secondes correspondant.
+		\LComment Affiche trois entiers~: des heures, des minutes et des secondes et sort le nombre de secondes correspondant.
 		\ModuleSign{hmsVersSec}{h\In, m\In, s\In, secondes\Out~: entiers}{}
 	\end{pseudo}
 	}
@@ -668,7 +668,7 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Ce module reçoit trois entiers~: des heures, des minutes et des secondes et retourne le nombre de secondes correspondant.
+		\LComment Affiche trois entiers~: des heures, des minutes et des secondes et retourne le nombre de secondes correspondant.
 		\ModuleSign{hmsVersSec}{h\In, m\In, s\In~: entiers}{entier}
 	\end{pseudo}
 	}
@@ -681,7 +681,7 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Ce module reçoit trois entiers~: des heures, des minutes et des secondes et retourne le nombre de secondes correspondant.
+	\LComment Affiche trois entiers~: des heures, des minutes et des secondes et retourne le nombre de secondes correspondant.
 		\Module{hmsVersSec}{h\In, m\In, s\In~: entiers}{entier}
 			\Decl secondes~: entier \RComment {À déclarer puisque ce n'est pas un paramètre}
 			\Let secondes \Gets  h * 3600 + m * 60 + s
@@ -694,7 +694,7 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Ce module reçoit trois entiers~: des heures, des minutes et des secondes et retourne le nombre de secondes correspondant.
+	\LComment Affiche trois entiers~: des heures, des minutes et des secondes et retourne le nombre de secondes correspondant.
 		\Module{hmsVersSec}{h\In, m\In, s\In~: entiers}{entier}
 			\Return h * 3600 + m * 60 + s
 		\EndModule
@@ -725,7 +725,7 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Ce module reçoit un nombre de secondes et sort les heures, les minutes et les secondes correspondant.
+		\LComment Affiche un nombre de secondes et sort les heures, les minutes et les secondes correspondant.
 		\Module{secVersHMS}{secondes\In, s\Out, m\Out, s\Out~: entiers}{}
 			\Let h \Gets secondes DIV 3600
 			\Let m \Gets secondes MOD 3600 DIV 60
@@ -740,7 +740,7 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Ce module lit deux moments (h-m-s) et affiche le moment de la différence entre les deux.
+		\LComment Lit deux moments (h-m-s) et affiche le moment de la différence entre les deux.
 		\Module{différenceEntreHeures}{}{} \RComment Pas de paramètres !
 			\Decl h1, m1, s1, h2, m2, s2~: entiers \RComment Les 2 moments à soustraire
 			\Decl secondes1, secondes2~: entiers \RComment Ces 2 moments en secondes
@@ -787,7 +787,7 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Ce module lit les contenus de 2 fractions et affiche leur somme
+	\LComment Lit les contenus de 2 fractions et affiche leur somme
 		\Module{additionnerFractions}{}{}
 			\Stmt déclaration
 			\Stmt lectureDonnées
@@ -1073,7 +1073,7 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Ce module reçoit un entier et retourne vrai si il est pair et faux sinon.
+		\LComment Affiche un entier et retourne vrai si il est pair et faux sinon.
 		\Module{estPair}{nb\In~: entier}{booléen}
 		\Decl pair~: booléen
 		\Let pair \Gets faux
@@ -1087,7 +1087,7 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Ce module reçoit un entier et retourne vrai si il est pair et faux sinon.
+		\LComment Affiche un entier et retourne vrai si il est pair et faux sinon.
 		\Module{estPair}{nb\In~: entier}{booléen}
 		\Decl pair~: booléen
 		\If{nb MOD 2 = 0}
@@ -1102,7 +1102,7 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Ce module reçoit un entier et retourne vrai si il est pair et faux sinon.
+		\LComment Affiche un entier et retourne vrai si il est pair et faux sinon.
 		\Module{estPair}{nb\In~: entier}{booléen}
 			\Decl pair~: booléen
 			\Let pair \Gets nb MOD 2 = 0
@@ -1113,7 +1113,7 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Ce module reçoit un entier et retourne vrai si il est pair et faux sinon.
+		\LComment Affiche un entier et retourne vrai si il est pair et faux sinon.
 		\Module{estPair}{nb\In~: entier}{booléen}
 		\Return nb MOD 2 = 0
 		\EndModule
@@ -1122,7 +1122,7 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Ce module reçoit un entier et retourne vrai si il est pair et faux sinon.
+		\LComment Affiche un entier et retourne vrai si il est pair et faux sinon.
 		\Module{estPair}{nb\In~: entier}{booléen}
 		\If{nb MOD 2 = 0}
 			\Return vrai
@@ -1135,7 +1135,7 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Ce module reçoit un entier et retourne vrai si il est pair et faux sinon.
+		\LComment Affiche un entier et retourne vrai si il est pair et faux sinon.
 		\Module{estPair}{nb\In~: entier}{booléen}
 		\If{nb MOD 2 = 0}
 			\Return vrai
