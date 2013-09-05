@@ -15,7 +15,8 @@
 	\begin{liste}
 	\item {
 		une \textbf{date} est composée de trois éléments (le jour, le mois,
-		l’année), le mois s’exprimant tantôt par un entier (15/10/2014) tantôt
+		l’année), le mois s’exprimant, selon le format,
+		tantôt par un entier (15/10/2014) tantôt
 		par une chaine (15 octobre 2014)}
 	\item {
 		un \textbf{moment} de la journée est un triple d’entiers (heures,
@@ -35,7 +36,7 @@
 	Pour stocker et manipuler de tels ensembles de données, nous utiliserons
 	des \textbf{types structurés} ou \textbf{structures}\footnote{Nous
 	verrons dans un chapitre ultérieur que l'approche
-	«~orienté objet~» offre également une solution élégante pour manipuler
+	«~orientée objet~» offre également une solution élégante pour manipuler
 	des données complexes}. Une \textbf{structure} est donc un ensemble
 	fini d’éléments pouvant être de types distincts. Chaque élément de cet
 	ensemble, appelé \textbf{champ} de la structure, possède un nom unique.
@@ -43,7 +44,7 @@
 	Noter qu’un champ d’une structure peut lui-même être une structure. Par
 	exemple, une \textbf{carte d’identité} inclut parmi ses informations
 	une \textbf{date} de naissance, l’\textbf{adresse} de son
-	propriétaire\dots
+	propriétaire (cachée dans la puce électronique!),\dots
 
 % ===================================
 \section{Définition d'une structure}
@@ -144,8 +145,8 @@
 	\Let anniversaire.jour \Gets 15
 	\Let anniversaire.mois \Gets 10
 	\Let anniversaire.année \Gets 2014
-	\Let arrivée.heure \Gets départ.heure+2
-	\Let centreGravité.x \Gets (a.x+b.x)/2
+	\Let arrivée.heure \Gets départ.heure + 2
+	\Let centreGravité.x \Gets (a.x + b.x) / 2
 	\end{pseudo}
 	}
 
@@ -173,7 +174,7 @@
 
 	Une variable structurée peut aussi être le
 	paramètre d’un module, et un module peut également renvoyer une
-	«~valeur~» de type structuré. Par exemple, l’en-tête d’un module
+	«~valeur~» de type structuré. Par exemple, l’entête d’un module
 	renvoyant le nombre de secondes écoulées entre une heure de départ et
 	d’arrivée serait~:
 
@@ -206,8 +207,8 @@
 	structurées se fait sentir, il faudra dans ce cas écrire des modules de
 	comparaison adaptés aux structures utilisées.
 
-	Par facilité, on peut assigner tous les champs en une fois via des
-	«~\{\}~». Exemple~:
+	Par facilité d'écriture, on peut assigner tous les champs en une 
+	fois via des «~\{\}~». Exemple~:
 
 	\cadre{
 	\begin{pseudo}
@@ -233,18 +234,19 @@
 	\Module{comparerDates}{date1\In, date2\In~: Date}{entier}
 		\Decl résultat~: entier
 		\Let  résultat \Gets -1
+		\RComment valeur choisie par défaut
 		\If{date1.année ${\geq}$ date2.année}
 			\If{date1.année $>$ date2.année}
 				\Let  résultat \Gets 1
-			\Else \RComment Les années sont identiques
+			\Else \RComment les années sont identiques
 				\If{date1.mois ${\geq}$ date2.mois}
 					\If{date1.mois $>$ date2.mois}
 						\Let  résultat \Gets 1
-					\Else \RComment Les mois sont identiques
+					\Else \RComment les années et les mois sont identiques
 						\If{date1.jour ${\geq}$ date2.jour}
 							\If{date1.jour $>$ date2.jour}
 								\Let  résultat \Gets 1
-							\Else \RComment Les jours sont identiques
+							\Else \RComment les années, les mois et les jours sont identiques
 								\Let  résultat \Gets 0
 							\EndIf
 						\EndIf
@@ -291,6 +293,27 @@
 	la distance entre ces deux points.
 \end{Exercice}
 
+\begin{Exercice}{Un cercle}
+	Définir un type \textbf{Cercle} pouvant décrire de façon
+	commode un cercle quelconque dans un espace à deux dimensions. 
+	
+	Écrire ensuite
+	
+	\begin{enumerate}[label=\alph*)]
+	\item {
+		un module calculant la surface du cercle reçu en paramètre ;}
+	\item {
+		un module recevant 2 points en paramètre et retournant le cercle dont le
+		diamètre est le segment reliant ces 2 points ;}
+	\item {
+		un module qui détermine si un point donné est dans un cercle ;}
+	\item {
+		un module qui indique si 2 cercles ont une intersection.
+	}
+	\end{enumerate}
+\end{Exercice}
+
+
 \begin{Exercice}{Un rectangle}
 	\marginicon{java}
 	Définir un type \textbf{Rectangle} pouvant décrire de façon
@@ -318,26 +341,6 @@
 		un module recevant en paramètre deux rectangles et renvoyant la valeur
 		booléenne \textbf{vrai} si et seulement si ces deux rectangles ont une
 		intersection.}
-	\end{enumerate}
-\end{Exercice}
-
-\begin{Exercice}{Un cercle}
-	Définir un type \textbf{Cercle} pouvant décrire de façon
-	commode un cercle quelconque dans un espace à deux dimensions. 
-	
-	Écrire ensuite
-	
-	\begin{enumerate}[label=\alph*)]
-	\item {
-		un module calculant la surface du cercle reçu en paramètre ;}
-	\item {
-		un module recevant 2 points en paramètre et retournant le cercle dont le
-		diamètre est défini par ces 2 points ;}
-	\item {
-		un module qui détermine si un point donné est dans un cercle ;}
-	\item {
-		un module qui indique si 2 cercles ont une intersection.
-	}
 	\end{enumerate}
 \end{Exercice}
 
