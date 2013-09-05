@@ -6,13 +6,13 @@
 	\marginicon{objectif}
 	Les ordinateurs révèlent tout leur potentiel dans leur capacité à
 	répéter inlassablement les mêmes tâches. Nous voyons ici comment
-	spécifier des boucles dans nos codes et comment les utiliser à bon
+	incorporer des boucles dans nos codes et comment les utiliser à bon
 	escient.
 
 	\marginicon{attention}
 	Attention ! D'expérience, nous savons que ce chapitre
-	est difficile à appréhender par les étudiants. Beaucoup
-	d'entre-vous perdent pied ici. Accrochez-vous et
+	est difficile à appréhender. Beaucoup
+	d'entre vous perdent pied ici. Accrochez-vous et
 	faites bien tous les exercices proposés !
 
 
@@ -21,12 +21,12 @@
 % =======================================
 
 	Si on veut faire effectuer un travail répétitif, 
-	il faut indiquer deux choses
+	il faut indiquer deux choses~:
 	
 	\begin{enumerate}
 	\item Le travail à répéter
-	\item Comment savoir s'il faut continuer la répétition 
-		ou l'arrêter.
+	\item La manière de continuer la répétition 
+		ou de l'arrêter.
 	\end{enumerate}
 
 	Examinons quelques exemples pour fixer notre propos.
@@ -85,7 +85,7 @@
 % ==============================
 
 	Chacune des structures suivantes traduit une volonté de faire exécuter
-	un certain nombre de fois une séquence d’instructions. 
+	de façon répétée une séquence d’instructions. 
 
 	\subsection{«~tant que~»}
 
@@ -106,9 +106,11 @@
 		qu’il y ait dans la séquence d’instructions comprise entre
 		\textstyleMotCl{tant que} et \textstyleMotCl{fin tant que} au moins une
 		instruction qui modifie une des composantes de la condition de telle
-		manière qu’elle puisse devenir \textbf{fausse} à un moment donné
-		(sinon, boucle infinie!). La figure \vref{fig:boucle-tq} donne 
-		un ordinogramme mettant en évidence la dynamique de cette structure. 
+		manière qu’elle puisse devenir \textbf{fausse} à un moment donné. Dans
+		le cas contraire, la condition reste indéfiniment vraie et la boucle va
+		tourner sans fin, c'est ce qu'on appelle une \textbf{boucle infinie}. 
+		La figure \vref{fig:boucle-tq} est un ordinogramme 
+		décrivant le déroulement de cette structure. 
 		On remarquera que si la condition est fausse dès le début, 
 		la tâche n'est jamais exécutée.
 
@@ -146,8 +148,7 @@
 		que} contienne au moins une instruction qui modifie la condition de
 		telle manière qu’elle puisse devenir \textbf{vraie} à un moment donné
 		pour arrêter l'itération. 
-		La figure \vref{fig:boucle-faire} donne 
-		un ordinogramme mettant en évidence la dynamique de cette structure. 
+		La figure \vref{fig:boucle-faire} décrit le déroulement de cette boucle. 
 
 		\begin{figure}[h]
 		\centering
@@ -174,9 +175,9 @@
 
 		Dans ce type de structure, \textbf{début}, \textbf{fin} et \textbf{pas}
 		peuvent être des constantes, des variables ou des expressions (le plus
-		souvent à valeurs entières mais on admettra aussi des réels). Le
-		\textbf{pas} est facultatif, et généralement omis. Dans ce cas, la
-		valeur par défaut est 1. Ce pas est parfois négatif, dans le cas
+		souvent à valeurs entières mais on admettra parfois des réels). Le
+		\textbf{pas} est facultatif, et généralement omis (dans ce cas, sa valeur 
+		par défaut est 1). Ce pas est parfois négatif, dans le cas
 		d'un compte à rebours, par exemple
 		\textstyleCodeInsr{pour n de 10 à 1 par -1}.
 
@@ -262,7 +263,7 @@
 		\cadre{
 		\begin{pseudo}
 		\LComment Affiche les nombres de 1 à 10.
-		\Module{compterJusque10}{}{} \RComment Une mauvaise solution !
+		\Module{compterJusque10}{}{} \RComment une mauvaise solution !
 		\Write 1
 		\Write 2
 		\Write 3
@@ -281,7 +282,7 @@
 		(imaginer l'algorithme pour afficher les nombres de 1 à 10000 !) 
 		mais c'est très peu souple.
 		Cela ne fonctionne que pour 10 : il faut modifier l'algorithme pour
-		un autre décompte. La boucle va nous permettre
+		un autre comptage. La boucle va nous permettre
 		d'obtenir un algorithme qui s'adapte
 		à la limite du décompte.
 
@@ -304,28 +305,28 @@
 		\cadre{
 		\begin{pseudo}
 		\LComment A les nombres de 1 à 10.
-		\Module{compterJusque10}{}{} \RComment Version avec tant que
+		\Module{compterJusque10}{}{} \RComment version avec tant que
 			\Decl nb : entier
-			\Let nb \Gets 1 \RComment C'est le premier nombre à afficher
-			\While{nb $\leq$ 10} \RComment Tant que le nb à afficher est toujours bon
-				\Write nb \RComment On affiche la valeur de la variable nb
-				\Let nb \Gets nb + 1 \RComment On passe au nombre suivant
+			\Let nb \Gets 1 \RComment c'est le premier nombre à afficher
+			\While{nb $\leq$ 10} \RComment tant que le nb à afficher est toujours bon
+				\Write nb \RComment on affiche la valeur de la variable nb
+				\Let nb \Gets nb + 1 \RComment on passe au nombre suivant
 			\EndWhile
 		\EndModule
 		\end{pseudo}
 		}
 
 		Mais ici, on pourrait aussi l'écrire avec un «~pour~» vu qu'on
-		connait exactement le nombre de passages dans la boucle (10). 
+		connait exactement le nombre d'exécutions de la boucle (10). 
 		La variable de contrôle va évoluer de 1 à 10 ce qui tombe bien car
 		c'est justement le nombre à afficher à chaque fois.
 
 		\cadre{
 		\begin{pseudo}
 		\LComment Affiche les nombres de 1 à 10.
-		\Module{compterJusque10}{}{} \RComment Version avec pour
+		\Module{compterJusque10}{}{} \RComment version avec pour
 			\Decl nb : entier
-			\For{nb \K{de} 1 \K{à} 10} \RComment Par défaut le pas est de 1
+			\For{nb \K{de} 1 \K{à} 10} \RComment par défaut le pas est de 1
 				\Write nb 
 			\EndFor
 		\EndModule
@@ -393,6 +394,7 @@
 		\Module{afficherPair}{}{} 
 			\Decl nb, n : entier
 			\Read n
+			\RComment limite des nombres à afficher
 			\For{nb \K{de} 2 \K{à} n \K{par} 2} 
 				\Write nb 
 			\EndFor
@@ -411,6 +413,7 @@
 		\Module{afficherPair}{}{} 
 			\Decl i, n : entier
 			\Read n
+			\RComment limite des nombres à afficher
 			\For{i \K{de} 1 \K{à} n DIV 2} 
 				\Write 2 * i 
 			\EndFor
@@ -441,7 +444,8 @@
 		\Module{afficherPair}{}{} 
 			\Decl i, n : entier
 			\Read n
-			\For{nb \K{de} 1 \K{à} n} 
+			\RComment le nombre de nombres à afficher
+			\For{i \K{de} 1 \K{à} n} 
 				\Write 2 * i 
 			\EndFor
 		\EndModule
@@ -457,7 +461,8 @@
 		combien de nombres il faut additionner ou quand est-ce que le dernier
 		nombre à additionner a été entré. Voyons quelques possibilités.
 
-		\textbf{Variante 1} : 
+		\textbf{Variante 1}~: 
+		
 		L'utilisateur indique le nombre de termes au départ.
 		Ce problème est proche de ce qui a déjà été fait.
 		
@@ -471,7 +476,7 @@
 			\Decl i : entier \RComment itérateur
 			\Let somme \Gets 0 \RComment la somme se construit petit à petit. 0 au départ
 			\Read nbValeurs
-			\For{nb \K{de} 1 \K{à} nbValeurs} 
+			\For{i \K{de} 1 \K{à} nbValeurs} 
 				\Read valeur
 				\Let somme \Gets somme + valeur 
 			\EndFor
@@ -480,12 +485,14 @@
 		\end{pseudo}
 		}
 
-		\textbf{Variante 2} : Après chaque nombre, 
+		\textbf{Variante 2}~: 
+		
+		Après chaque nombre, 
 		on demande à l'utilisateur s'il y a encore un nombre à additionner.
 
 		Ici, il faut chercher une solution différente
 		car on ne connait pas au départ le nombre de valeurs à additionner et
-		donc le nombre de passages dans la boucle. On va devoir passer à un
+		donc le nombre d'exécution de la boucle. On va devoir passer à un
 		«~tant que~» ou un «faire - jusqu'à ce que». On peut
 		envisager de demander en fin de boucle si il reste
 		encore un nombre à additionner. Ce qui donne :
@@ -533,7 +540,8 @@
 		\end{pseudo}
 		}
 
-		\textbf{Variante 3} :
+		\textbf{Variante 3}~:
+		
 		L'utilisateur entre une valeur spéciale pour indiquer la fin. 
 		On parle de valeur \textbf{sentinelle}. 
 		Ceci n'est possible que si cette valeur \textbf{sentinelle} ne peut pas être
@@ -557,7 +565,7 @@
 			\Decl somme : entier \RComment la somme
 			\Let somme \Gets 0
 			\Read valeur
-			\While{valeur ${\neq}$ -1} 
+			\While{valeur ${\geq}$ 0} 
 				\Let somme \Gets somme + valeur 
 				\Read valeur \RComment remarquer l'endroit où on lit une valeur.
 			\EndWhile
@@ -792,18 +800,23 @@
 	suites suivantes:
 
 	\begin{enumerate}[label=\alph*)]
-	\item {
+	\item {Le pas croissant 
+	
 	1, 2, 4, 7, 11, 16, \dots}
-	\item {
+	\item {La boiteuse
+	
 	1, 2, 4, 5, 7, 8, 10, 11, \dots}
-	\item {
-	0, 1, 1, 2, 3, 5, 8, 13, 21, \dots\ (suite de Fibonacci)}
-	\item {
-	1, 2, 3, 4, 3, 2, 3, 4, 5, 4, 3, 4, 5, 6, 5, 4, 5, 6, \dots\ 
-	(la procession d'Echternach)}
-	\item {
+	\item {La suite de Fibonacci
+	
+	0, 1, 1, 2, 3, 5, 8, 13, 21, \dots }
+	\item {La procession d'Echternach
+	
+	1, 2, 3, 4, 3, 2, 3, 4, 5, 4, 3, 4, 5, 6, 5, 4, 5, 6, \dots}
+	\item {La combinaison de deux suites
+	
 	1, 2, 3, 3, 5, 4, 7, 5, 9, 6, 11, 7, 13, 8, \dots }
-	\item {
+	\item {La capricieuse
+	
 	1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11,
 	21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 40, 39, 38, \dots, 31, 41, 42, \dots}
 	\end{enumerate}
@@ -822,7 +835,7 @@
 	Écrire un algorithme qui retourne la somme des chiffres qui forment un
 	nombre naturel $n$. Attention, on donne au départ \textbf{le} nombre et
 	pas ses chiffres. Exemple: 133045 doit donner comme résultat 16,
-	puisque 1 + 3 + 3 + 0 + 4 + 5 = 16.
+	car 1 + 3 + 3 + 0 + 4 + 5 = 16.
 \end{Exercice}
 
 \begin{Exercice}{Conversion binaire-décimale}
@@ -894,8 +907,9 @@
 	\marginicon{java}
 	Écrire un algorithme qui simule le jeu de la
 	fourchette. Ce jeu consiste à essayer de découvrir un nombre quelconque
-	compris entre 1 et 100 inclus, tiré au sort par l’ordinateur (primitive
-	\textstyleCodeInsr{Hasard}). L’utilisateur a droit à huit essais
+	compris entre 1 et 100 inclus, tiré au sort par l’ordinateur (la primitive
+	\textstyleCodeInsr{hasard(n~: entier)} retourne un entier entre 1 et $n$). 
+	L’utilisateur a droit à huit essais
 	maximum. À chaque essai, l’algorithme devra afficher un message
 	indicatif «~nombre donné trop petit~» ou «~nombre donné trop grand~».
 	En conclusion, soit «~bravo, vous avez trouvé en [nombre] essais~» soit
@@ -906,12 +920,38 @@
 	L’IMC (\textit{Indice de Masse Corporelle}) est une mesure permettant à
 	chacun d’entre nous de se situer sur une échelle de corpulence. On
 	obtient l’IMC en divisant le poids en kilo par le carré de la taille en
-	mètre. Pour un homme, un IMC supérieur à 30 veut dire obèse ; entre 25
-	exclu et 30, excès pondéral ; entre 20 inclus et 25 inclus corpulence
-	normale ; en dessous de 20 corpulence maigre. Pour une femme, un IMC
-	supérieur à 30 veut dire obèse ; entre 24 exclu et 30, excès pondéral ;
-	entre 19 inclus et 24 inclus corpulence normale ; en dessous de 19
-	corpulence maigre. Écrire un algorithme qui lit les données d’une série
+	mètre. 
+	
+	La catégorie de corpulence en fonction de l'IMC est donnée par le tableau 
+	suivant~:
+	
+	\begin{center}
+		\begin{supertabular}{m{4.5cm}m{4.5cm}m{4.5cm}}
+			\\\hline
+			\multicolumn{1}{|m{4.5cm}|}{\centering{catégorie de corpulence}} &
+			\multicolumn{1}{m{4.5cm}|} {\centering{IMC homme}} &
+			\multicolumn{1}{m{4.5cm}|} {\centering\arraybslash{IMC femme}}
+			\\\hline
+			\multicolumn{1}{|m{4.5cm}|}{\centering{maigre}} &
+			\multicolumn{1}{m{4.5cm}|} {\centering{strictement moins de 20}} &
+			\multicolumn{1}{m{4.5cm}|} {\centering\arraybslash{strictement moins de 19}}
+			\\\hline
+			\multicolumn{1}{|m{4.5cm}|}{\centering{normal}} &
+			\multicolumn{1}{m{4.5cm}|} {\centering{entre 20 et 25 inclus}} &
+			\multicolumn{1}{m{4.5cm}|} {\centering\arraybslash{entre 19 et 24 inclus}}
+			\\\hline
+			\multicolumn{1}{|m{4.5cm}|}{\centering{excès pondéral}} &
+			\multicolumn{1}{m{4.5cm}|} {\centering{entre 25 exclu et 30 inclus}} &
+			\multicolumn{1}{m{4.5cm}|} {\centering\arraybslash{entre 24 exclu et 30 inclus}}
+			\\\hline
+			\multicolumn{1}{|m{4.5cm}|}{\centering{obèse}} &
+			\multicolumn{1}{m{4.5cm}|} {\centering{plus de 30}} &
+			\multicolumn{1}{m{4.5cm}|} {\centering\arraybslash{plus de 30}}
+			\\\hline
+		\end{supertabular}
+	\end{center}
+	
+	Écrire un algorithme qui lit les données d’une série
 	de personnes (sexe (‘H’ ou ‘F’), poids et taille) et affiche à la fin
 	le pourcentage de personnes obèses.
 
@@ -969,7 +1009,7 @@
 	Bien sûr, il faut que l'expéditeur du message et le récepteur
 	se soient mis d'accord sur la valeur de $k$.
 	
-	On vout demande d'écrire un module qui reçoit une chaine ne contenant
+	On vous demande d'écrire un module qui reçoit une chaine ne contenant
 	que des lettres majuscules ainsi que la valeur de $k$ et qui retourne
 	la version chiffrée du message.
 
