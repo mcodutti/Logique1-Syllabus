@@ -98,9 +98,9 @@
 	module «~greffé~», le «~raccord~» correct des données lues et écrites
 	par ce module aux variables du module principal, etc… 
 	
-	Imaginons, par exemple, que l'on doit calculer le
+	Imaginons, par exemple, que l'on doive calculer le
 	maximum de 4 ou même 5 nombres. Le résultat serait un code long et
-	composé de lignes fort proches. Une erreur serait vite arrivée et
+	à l'allure répétitive. Une erreur serait vite arrivée et
 	serait difficile à détecter.
 	
 	L’idéal serait de pouvoir garder deux modules séparés, conservant chacun
@@ -184,7 +184,7 @@
 	}\textstyleCodeInsr{{b}}{
 	du module
 	}\textstyleCodeInsr{{max2}}{,
-	puis ce module peut entrer en action ;}}
+	puis ce module peut entrer en action~;}}
 	\item {
 	{à l’issue du module
 	}\textstyleCodeInsr{{max2}}{,
@@ -215,7 +215,7 @@
 	}\textstyleCodeInsr{{b}}{
 	du module
 	}\textstyleCodeInsr{{max2}}{,
-	puis ce module peut entrer en action ;}}
+	puis ce module peut entrer en action~;}}
 	\item {
 	{à l’issue du module
 	}\textstyleCodeInsr{{max2}}{,
@@ -268,8 +268,8 @@
 	\begin{liste}
 	\item {
 	{un paramètre peut être à la fois paramètre
-	d’entrée et de sortie ; on le fait suivre alors de la double flèche
-	}{↓↑}{ ;}}
+	d’entrée et de sortie~; on le fait suivre alors de la double flèche
+	}{↓↑}{~;}}
 	\item {
 	si tous les paramètres sont en entrée, on peut omettre les flèches;}
 	\item {
@@ -278,22 +278,22 @@
 	entrée un nombre et dont la seule fonction est de l’afficher à
 	l’écran), ou inversement sans paramètre d’entrée (un module qui simule
 	un lancer de dé, et renvoie en paramètre une valeur aléatoire entre 1
-	et 6) ;}
+	et 6)~;}
 	\item {
 	{pour appeler correctement un module, il faut
 	fournir des noms de variables, des expressions ou des constantes
 	}{\textbf{en même
 	nombre}}{ et en même ordre que les paramètres
-	du module ;}}
+	du module~;}}
 	\item {
 	en outre, les types des variables doivent correspondre entre l’appel et
-	l’en-tête du module ;}
+	l’en-tête du module~;}
 	\item {
 	ne peut être affectée à un paramètre d’entrée du module qu’une
-	constante, une expression ou une variable préalablement affectée ;}
+	constante, une expression ou une variable préalablement affectée~;}
 	\item {
 	à un paramètre de sortie d’un module doit toujours correspondre une
-	autre variable, jamais une constante ou une expression ;}
+	autre variable, jamais une constante ou une expression~;}
 	\item {
 	il faut s’assurer qu’à l’issue du module, tous les paramètres de sortie
 	aient été affectés lors de l’exécution de ce module.}
@@ -307,7 +307,7 @@
 	Toute variable est \textbf{locale} au module 
 	dans lequel elle apparait, ce qui veut dire que son existence
 	est ignorée en dehors de ce module. 
-	Nous n’envisageons donc pas ici l’utilisation de 
+	Nous n’envisageons donc pas ici l’utilisation déconseillée de 
 	\textbf{variables globales} 
 	(variables dont le contenu est reconnu 
 	par tous les modules d’un programme).
@@ -349,7 +349,7 @@
 	\begin{pseudo}
 	\LComment Lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
-		\Decl a,b,c,temp,max~: réels
+		\Decl a, b, c, temp, max~: réels
 		\Stmt lirePositif(a)
 		\Stmt lirePositif(b)
 		\Stmt lirePositif(c)
@@ -403,7 +403,7 @@
 
 	\cadre{
 	\begin{pseudo}
-	\ModuleSign{exemple}{var1\In~: type1,var2\In~: type2,\dots,varN\In~: typeN}{typeRes}
+	\ModuleSign{exemple }{var1\In~: type1, var2\In~: type2, \dots, varN\In~: typeN}{typeRes}
 	\end{pseudo}
 	}
 
@@ -422,14 +422,14 @@
 		{à droite de la flèche de renvoi ne se trouve
 		donc pas le nom d’un paramètre de sortie, mais le
 		}{\textbf{type}}{ de la
-		valeur renvoyée ;}}
+		valeur renvoyée~;}}
 	\item {
 		\textstyleCodeInsr{{typeRes}}{
-		est le type de la valeur renvoyée ; en théorie, ce peut être un type
-		simple (entier, réel, booléen, chaine, caractère), un type structuré ou
-		même un tableau (ces types seront vus dans les chapitres suivants). En
-		pratique il conviendra de s’en tenir aux limitations du langage utilisé
-		;}}
+		est le type de la valeur renvoyée~; en théorie, ce peut être un type
+		simple (entier, réel, booléen, chaine, caractère), un type structuré,
+		un tableau ou même un objet (ces types seront vus dans les chapitres 
+		suivants). En pratique il conviendra de s’en tenir aux limitations 
+		du langage utilisé~;}}
 	\item {
 		\textstyleCodeInsr{{var1}}{,
 		...,
@@ -438,11 +438,11 @@
 		}{\textbf{arguments}}{)
 		; ce sont, le plus souvent, des paramètres d’entrée, les paramètres de
 		sortie }{étant plus rares dans ce type de
-		module ;}}
+		module~;}}
 	\item {
 		ces arguments deviennent automatiquement des variables locales du module
 		; déclarées dans son en-tête, elles ne doivent plus l’être dans la
-		partie déclarative ;}
+		partie déclarative~;}
 	\item {
 		{la valeur renvoyée est définie à la fin du
 		module via la primitive
@@ -455,12 +455,13 @@
 		;}}
 	\item {
 		pour appeler ce type de module, on utilise son nom \textbf{comme celui
-		d’une variable} dans le module appelant, mais jamais à gauche du signe
+		d’une variable} ou dans une expression apparaissant 
+		dans le module appelant, mais jamais à gauche du signe
 		d’affectation.}
 	\end{liste}
 
-	Comme précédemment, il faut veiller, lors de l’appel du module renvoyant
-	une valeur, à ce que le nombre d’arguments ainsi que leur type
+	Comme précédemment, il faut veiller, lors de l’appel de ce 
+	type de module, à ce que le nombre d’arguments ainsi que leur type
 	correspondent à ceux spécifiés dans l’entête.
 
 	Pour exemple, transformons une fois de plus la
@@ -476,7 +477,7 @@
 	\begin{pseudo}
 	\LComment Lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
-		\Decl a,b,c,temp,max~: réels
+		\Decl a, b, c, temp, max~: réels
 		\Let a \Gets lirePositif()
 		\Let b \Gets lirePositif()
 		\Let c \Gets lirePositif()
@@ -523,7 +524,7 @@
 	\begin{pseudo}
 	\LComment Lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
-		\Decl a,b,c,temp,max~: réels
+		\Decl a, b, c, max~: réels
 		\Let a \Gets lirePositif()
 		\Let b \Gets lirePositif()
 		\Let c \Gets lirePositif()
@@ -539,7 +540,7 @@
 	\begin{pseudo}
 	\LComment Lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
-		\Decl a,b,c,temp,max~: réels
+		\Decl a, b, c~: réels
 		\Let a \Gets lirePositif()
 		\Let b \Gets lirePositif()
 		\Let c \Gets lirePositif()
@@ -622,10 +623,10 @@ d'un exemple complet.
 
 	Une des sous-tâches est donc la conversion en secondes
 	d'un moment exprimé en heures-minutes-secondes
-	(h-). Il nous faut adapter la solution trouvée pour
+	(h-m-s). Il nous faut adapter la solution trouvée pour
 	l'exercice du chapitre sur les algorithmes séquentiels
 	car il n'est pas question ici que les données soient
-	lues ni que le résultat soit écrit ; l'interaction ne
+	lues ni que le résultat soit écrit~; l'interaction ne
 	se fait pas avec l'utilisateur mais avec le module
 	principal qui va l'utiliser.\footnote{On pourrait,
 	dans notre cas précis, imaginer que le module de conversion demande les
@@ -716,8 +717,8 @@ d'un exemple complet.
 		Quels sont les résultats calculés par le module ? Ce même moment exprimé
 		en heures-minutes-secondes. Trois entiers sont requis ce qui fait que
 		le choix entre un paramètre en sortie et une valeur de retour ne se
-		pose pas ici ; impossible d'utiliser une valeur de
-		retour (qui doit être unique) ; on doit utiliser des paramètres en
+		pose pas ici~; impossible d'utiliser une valeur de
+		retour (qui doit être unique)~; on doit utiliser des paramètres en
 		sortie.}
 	\end{liste}
 
@@ -728,7 +729,7 @@ d'un exemple complet.
 		\LComment Affiche un nombre de secondes et sort les heures, les minutes et les secondes correspondant.
 		\Module{secVersHMS}{secondes\In, s\Out, m\Out, s\Out~: entiers}{}
 			\Let h \Gets secondes DIV 3600
-			\Let m \Gets secondes MOD 3600 DIV 60
+			\Let m \Gets (secondes MOD 3600) DIV 60
 			\Let s \Gets secondes MOD 60
 		\EndModule
 	\end{pseudo}
@@ -757,7 +758,7 @@ d'un exemple complet.
 	}
 
 	
-	\begin{Emphase}[reflexion]{Variante}
+	\begin{Emphase}[reflexion]{Réflexion}
 		Dans la solution ci-dessus, 
 		quelle est ou quelles sont la/les variable(s) locale(s) 
 		dont on pourrait se passer moyennant une réécriture de
@@ -879,22 +880,23 @@ d'un exemple complet.
 
 \subsection{La réutilisabilité}
 
-	{
-	On désigne ici la capacité à réutiliser un bout de code
-	d'un projet dans un autre projet. Cette réutilisation
-	doit être aisée et sûre. Réutiliser du code permet
-	d'utiliser du code qui a déjà été éprouvé et de gagner
-	du temps que l'on pourra utiliser à améliorer le code
-	que l'on doit encore écrire. La découpe en modules
-	joue ici un rôle essentiel.}
+	{On désigne par ce terme la capacité de réutiliser 
+	un bout de code d’un projet dans un autre projet de 
+	façon aisée et sûre. L’avantage est de pouvoir employer 
+	à nouveau un code qui a déjà fait ses preuves dans le 
+	but de gagner du temps que l’on pourra investir dans les 
+	aspects algorithmiques propres au nouveau projet. 
+	Le découpage en modules joue ici un rôle essentiel.
+}
 
 \subsection{La lisibilité}
 
 	{
 	La lisibilité d'un code recouvre une notion globale et
 	locale. Au niveau global, on doit facilement comprendre la structure
-	générale du code afin de pouvoir aisément comprendre où se trouve le
-	code qui nous intéresse. Au niveau local, on doit pouvoir comprendre
+	générale du code afin de pouvoir aisément comprendre où se trouve 
+	la portion de	code qui nous intéresse. 
+	Au niveau local, on doit pouvoir comprendre
 	aisément chaque bout de code.}
 
 	{
@@ -918,7 +920,7 @@ d'un exemple complet.
 
 	{
 	Ce critère s'intéresse à la bonne utilisation des
-	ressources informatiques. Est-ce qu'il va tourner
+	ressources informatiques. Est-ce que le programme va tourner
 	suffisamment vite, utiliser peu de mémoire ? Faut-il chercher
 	systématiquement à optimiser son code ? Non ! On a souvent tendance à
 	surévaluer ce critère ce qui est dommageable pour trois raisons.}
@@ -936,7 +938,7 @@ d'un exemple complet.
 		Chercher à optimiser chaque ligne de code est une perte de temps.}
 	\item {
 		Accroitre la rapidité d'un code est presque toujours en
-		contradiction avec sa lisibilité. On va utiliser un algorithme moins
+		contradiction avec sa lisibilité. On risque d'utiliser un algorithme moins
 		connu ou des raccourcis difficiles à suivre.}
 	\end{liste}
 
@@ -1149,21 +1151,22 @@ d'un exemple complet.
 
 \begin{Exercice}{Échange de variables}
 \marginicon{java}
-Écrire un module \textit{swap} qui échange le contenu des deux variables
+Écrire un module \textit{swap} qui échange le contenu de deux variables
 entières passées en paramètres.
 \end{Exercice}
 
 \begin{Exercice}{Valeur absolue}
 Écrire un module qui retourne la valeur absolue d'un
 réel reçu en paramètre.
-\\Quel est l'avantage pour un module de retourner la réponse 
+Quel est l'avantage pour un module de retourner la réponse 
 plutôt que de l'afficher ?
 \end{Exercice}
 
 \begin{Exercice}{Maximum de 4 nombres}
 \marginicon{java}
 Écrire un module qui retourne le maximum de 4
-nombres donnés en paramètres.
+nombres donnés en paramètres en utilisant les modules
+max2 et/ou max3 déjà développés dans ce chapitre.
 \end{Exercice}
 
 \begin{Exercice}{Validité d'une date}
