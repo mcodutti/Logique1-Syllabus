@@ -1,7 +1,7 @@
 \chapter{Les alternatives}
 
 \marginicon{objectif}
-Avec ce chapitre, nous abordons les structures alternatives qui
+Dans ce chapitre, nous abordons les structures alternatives qui
 permettent de conditionner des parties d'algorithmes.
 Elles ne seront exécutées que si une condition est satisfaite.
 
@@ -52,7 +52,7 @@ ignorées.
 Dans cette structure, une et une seule des deux séquences est exécutée.
 
 
-\begin{Emphase}[exercice]{Exercice résolu : Signe d'un nombre}
+\begin{Emphase}[exercice]{Exemple : Signe d'un nombre}
 Écrire un algorithme qui affiche si un nombre lu est positif (zéro inclus)
 ou strictement négatif.
 
@@ -93,7 +93,7 @@ Les \textbf{balises} encadrant toute structure de contrôle devront être
 parfaitement à la verticale l’une de l’autre : \textstyleMotCl{module}
 et \textstyleMotCl{fin} \textstyleMotCl{module~}; \textstyleMotCl{si}
 [, \textstyleMotCl{sinon}] et \textstyleMotCl{fin}
-\textstyleMotCl{si~}; (mais aussi celles que nous allons voir plus tard
+\textstyleMotCl{si~}; (c'est vrai aussi pour celles que nous allons voir plus tard
 : \textstyleMotCl{selon} \textstyleMotCl{que}; \textstyleMotCl{tant}
 \textstyleMotCl{que}; \textstyleMotCl{faire}
 \textstyleMotCl{jusqu'à} \textstyleMotCl{ce}
@@ -102,16 +102,17 @@ et \textstyleMotCl{fin} \textstyleMotCl{module~}; \textstyleMotCl{si}
 Les lignes situées entre toute paire de balises devront être décalées
 d'une tabulation vers la droite.}
 \item {
-On pourra aussi tracer une \textbf{ligne verticale} entre le début et la
+On pensera aussi à tracer une \textbf{ligne verticale} entre le début et la
 fin d'une structure de contrôle afin de mieux la
-délimiter encore. }
+délimiter encore (surtout lorsqu'on travaille sur papier). }
 \end{liste}
 
 \section{«~selon que~»}
 
 Avec ces structures, plusieurs branches d'exécution
 sont disponibles. L'ordinateur choisit la branche à
-exécuter en fonction de la valeur d'une variable ou de
+exécuter en fonction de la valeur d'une variable 
+(ou parfois d'une expression) ou de
 la condition qui est vraie.
 
 %
@@ -120,7 +121,7 @@ la condition qui est vraie.
 \begin{Emphase}[definition]{selon que (version avec listes de valeurs)}
 \cadre{
 \begin{pseudo}
-\Switch{expression \K{vaut}}
+\Switch{(variable(/expression) \K{vaut}}
 	\Case{liste\_1 de valeurs séparées par des virgules }
 		\LComment instructions lorsque la valeur est dans liste\_1
 	\Case{liste\_2 de valeurs séparées par des virgules }
@@ -146,15 +147,15 @@ d’écriture de plusieurs alternatives imbriquées. Elle est équivalente à
 
 \cadre{
 \begin{pseudo}
-\If{expression = une des valeurs de la liste\_1}
+\If{variable/expression = une des valeurs de la liste\_1}
 	\LComment instructions lorsque la valeur est dans liste\_1
 \Else
-	\If{expression = une des valeurs de la liste\_2}
+	\If{variable/expression = une des valeurs de la liste\_2}
 		\LComment instructions lorsque la valeur est dans liste\_2
 	\Else
 		
 		\dots
-		\If{expression = une des valeurs de la liste\_n}
+		\If{variableexpression = une des valeurs de la liste\_n}
 			\LComment instructions lorsque la valeur est dans liste\_n
 		\Else
 			\LComment instructions lorsque la valeur de l'expression
@@ -214,7 +215,7 @@ simultanément. C'est équivalent à :
 \end{pseudo}
 }
 
-\begin{Emphase}[exercice]{Exercice résolu : Jour de la semaine en clair}
+\begin{Emphase}[exercice]{Exemple : Jour de la semaine en clair}
 Écrire un algorithme qui lit un jour de la semaine sous forme
 d'un nombre entier (1 pour lundi, \dots, 7 pour
 dimanche) et qui affiche en clair ce jour de la semaine.
@@ -242,7 +243,7 @@ dimanche) et qui affiche en clair ce jour de la semaine.
 \end{Emphase}
 
 
-\begin{Emphase}[exercice]{Exercice résolu : Nombre de jours (avec énumération)}
+\begin{Emphase}[exercice]{Exemple : Nombre de jours (avec énumération)}
 
 Reprendre l'algorithme qui affiche le nombre de jours
 dans un mois en utilisant une énumération.
@@ -279,26 +280,12 @@ dans un mois en utilisant une énumération.
 }
 \end{Emphase}
 
-\begin{Emphase}[exercice]{Exercice : Signe d'un nombre (avec selon-que)}
-Réécrire l'algorithme donnant le signe
-d'un nombre (positif, négatif ou nul) en utilisant le
-«~selon-que~». Quelle version préférez-vous et pourquoi ?
-\end{Emphase}
-
-
-\begin{Emphase}[exercice]{Exercice : Nombre de jours dans un mois}
-Écrire un algorithme qui donne le nombre de jours dans un mois. Le mois
-est lu sous forme d'un entier (1 pour janvier, ...).
-On ne tient pas compte ici des années bissextiles; le mois de février
-comprend toujours 28 jours.
-\end{Emphase}
-
 \section{Exercices}
 
 \begin{Exercice}{Compréhension}
 
 Qu’affichent les algorithmes suivants si à chaque fois les deux nombres
-lus au départ sont successivement 2 et 3 ? Même question avec 4 et 1.
+lus au départ sont, dans l'ordre, 2 et 3 ? Même question avec 4 et 1.
 
 \cadre{
 \begin{pseudo}
@@ -405,10 +392,10 @@ d’instructions qui auront un effet équivalent.
 \begin{Exercice}{Maximum de 2 nombres}
 \marginicon{java}
 Écrire un algorithme qui, étant donné deux nombres quelconques,
-recherche et affiche la valeur la plus grande. Attention ! On ne veut
+recherche et affiche le plus grand des deux. Attention ! On ne veut
 pas savoir si c'est le premier ou le deuxième qui est
 le plus grand mais bien quelle est cette plus grande valeur. Le
-problème est donc bien défini même si les deux nombres lus sont
+problème est donc bien défini même si les deux nombres sont
 identiques.
 \end{Exercice}
 
@@ -420,12 +407,12 @@ recherche et affiche le plus grand des trois.
 
 \begin{Exercice}{Le signe}
 \marginicon{java}
-Écrire un algorithme qui lit un entier et affiche un message indiquant
-s'il est strictement négatif, nul ou strictement
+Écrire un algorithme qui affiche un message indiquant
+si un entier est strictement négatif, nul ou strictement
 positif.
 \end{Exercice}
 
-\begin{Exercice}{Test d'intervalle}
+\begin{Exercice}{La fourchette}
 {
 Écrire un algorithme qui, étant donné trois nombres, recherche et
 affiche si le premier des trois appartient à l’intervalle donné par le
@@ -434,15 +421,19 @@ qui change si on inclut les bornes ?}
 \end{Exercice}
 
 \begin{Exercice}{Équation du deuxième degré}
-{
 {Écrire un algorithme qui, étant donné une
 équation du deuxième degré, déterminée par le coefficient de
-}{\textit{x}}{\textsuperscript{2}}{,
+{\textit{x}}{\textsuperscript{2}},
 le coefficient de
-}{\textit{x}}{ et le
-terme indépendant, recherche et affiche la ou les racine(s) de
+{\textit{x}} et le
+terme indépendant, recherche et affiche la (ou les) racine(s) de
 l’équation (ou un message adéquat s'il
-n'existe pas de racine réelle) }}
+n'existe pas de racine réelle).}
+\end{Exercice}
+
+\begin{Exercice}{Une petite minute}
+{Écrire un algorithme qui, à partir d'un moment exprimé par 2 entiers, 
+heure et minute, affiche le moment qu'il sera une minute plus tard.}
 \end{Exercice}
 
 \begin{Exercice}{Calcul de salaire}
@@ -452,6 +443,15 @@ partie du salaire mensuel qui dépasse 1200 €. Écrire un algorithme qui
 calcule le salaire net à partir du salaire brut. En quoi l’utilisation
 de constantes convient-elle pour améliorer cet algorithme ?}
 \end{Exercice}
+
+
+\begin{Exercice}{Nombre de jours dans un mois}
+Écrire un algorithme qui donne le nombre de jours dans un mois. Le mois
+est lu sous forme d'un entier (1 pour janvier, ...).
+On considère dans cet exercice que le mois de février
+comprend toujours 28 jours.
+\end{Exercice}
+
 
 \begin{Exercice}{Année bissextile}
 \marginicon{java}
@@ -483,7 +483,7 @@ l’année, le mois et le jour.}
 \marginicon{java}
 {
 Écrire un algorithme qui lit un jour du mois de novembre de cette année
-(sous forme d'un entier) et qui affiche le nom du jour
+(sous forme d'un entier entre 1 et 30) et qui affiche le nom du jour
 («~lundi~», «~mardi~», ...)}
 \end{Exercice}
 
@@ -494,7 +494,7 @@ jours plus tard qu’un jour donné. Par exemple si le jour donné est «
 mercredi » et \textit{n} = 10, l’algorithme indiquera « samedi ».}
 \end{Exercice}
 
-\begin{Exercice}{Les cosinus}
+\begin{Exercice}{Un peu de trigono}
 Écrire un algorithme qui pour un entier \textit{n} donné, affiche la
 valeur de $cos(n * \pi/2)$
 \end{Exercice}
