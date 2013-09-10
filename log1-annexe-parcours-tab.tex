@@ -1,11 +1,12 @@
 \chapter{Les parcours de tableaux} \label{Les parcours de tableaux}
 
 Les tableaux interviennent dans de nombreux problèmes 
-et savoir les parcourir en utilisant des algorithmes
-corrects, efficaces et lisibles est primordial.
+et il est primordial de savoir les parcourir 
+en utilisant des algorithmes
+corrects, efficaces et lisibles.
 
 Examinons les situations courantes et voyons quelles solutions conviennent.
-Abordons d'abord le cas, plus facile, des tableaux à une dimension
+Commençons par le cas, plus facile, des tableaux à une dimension
 avant de passer à ceux à deux dimensions.
 On pourrait aussi envisager d'autres parcours
 (à l'envers, une case sur deux, \dots) 
@@ -145,6 +146,7 @@ Considérons à présent un tableau à deux dimensions
 (m lignes et n colonnes)
 
 Déclaration d'un tableau statique~:
+
 \cadre{
 \begin{pseudo}
 	\Decl tab~: tableau [1 à m, 1 à n] de T
@@ -152,6 +154,7 @@ Déclaration d'un tableau statique~:
 }
 
 Déclaration d'un tableau dynamique~:
+
 \cadre{
 	\begin{pseudo}
 	\Decl tab~: \K{tableau} de T
@@ -275,7 +278,7 @@ Les tableaux suivants montrent dans quel ordre chaque case est visitée dans ces
 \begin{minipage}{0.4\textwidth}
 \begin{center}
 Parcours ligne par ligne\\
-\begin{tabular}{|*{5}{>{\centering\arraybackslash}m{0.3cm}|}}
+\begin{tabular}{|*{5}{>{\centering\arraybackslash}m{0.35cm}|}}
 \hline
 1 & 2 & 3 & 4 & 5 \\
 \hline
@@ -290,7 +293,7 @@ Parcours ligne par ligne\\
 \begin{minipage}{0.4\textwidth}
 \begin{center}
 Parcours colonne par colonne\\
-\begin{tabular}{|*{5}{>{\centering\arraybackslash}m{0.3cm}|}}
+\begin{tabular}{|*{5}{>{\centering\arraybackslash}m{0.35cm}|}}
 \hline
 1 & 4 & 7 & 10 & 13 \\
 \hline
@@ -461,7 +464,7 @@ alors que l'algorithme \vref{algo:parcours2-1bcl-arret} introduit un test
 Envisageons un parcours plus difficile illustré par le tableau suivant.
 
 \begin{center}
-\begin{tabular}{|*{5}{>{\centering\arraybackslash}m{0.3cm}|}}
+\begin{tabular}{|*{5}{>{\centering\arraybackslash}m{0.35cm}|}}
 \hline
 1 & 2 & 3 & 4 & 5 \\
 \hline

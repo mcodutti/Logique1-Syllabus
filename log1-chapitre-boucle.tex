@@ -926,29 +926,19 @@
 	suivant~:
 	
 	\begin{center}
-		\begin{supertabular}{m{4.5cm}m{4.5cm}m{4.5cm}}
+		\begin{tabular}{|*{3}{>{\centering\arraybackslash}m{4.4cm}|}}
+			\hline
+			catégorie de corpulence & IMC homme & IMC femme 
 			\\\hline
-			\multicolumn{1}{|m{4.5cm}|}{\centering{catégorie de corpulence}} &
-			\multicolumn{1}{m{4.5cm}|} {\centering{IMC homme}} &
-			\multicolumn{1}{m{4.5cm}|} {\centering\arraybslash{IMC femme}}
+			maigre & strictement moins de 20 & strictement moins de 19
 			\\\hline
-			\multicolumn{1}{|m{4.5cm}|}{\centering{maigre}} &
-			\multicolumn{1}{m{4.5cm}|} {\centering{strictement moins de 20}} &
-			\multicolumn{1}{m{4.5cm}|} {\centering\arraybslash{strictement moins de 19}}
+			normal & entre 20 et 25 inclus & entre 19 et 24 inclus
 			\\\hline
-			\multicolumn{1}{|m{4.5cm}|}{\centering{normal}} &
-			\multicolumn{1}{m{4.5cm}|} {\centering{entre 20 et 25 inclus}} &
-			\multicolumn{1}{m{4.5cm}|} {\centering\arraybslash{entre 19 et 24 inclus}}
+			excès pondéral & entre 25 exclu et 30 inclus & entre 24 exclu et 30 inclus
 			\\\hline
-			\multicolumn{1}{|m{4.5cm}|}{\centering{excès pondéral}} &
-			\multicolumn{1}{m{4.5cm}|} {\centering{entre 25 exclu et 30 inclus}} &
-			\multicolumn{1}{m{4.5cm}|} {\centering\arraybslash{entre 24 exclu et 30 inclus}}
+			obèse & plus de 30 & plus de 30
 			\\\hline
-			\multicolumn{1}{|m{4.5cm}|}{\centering{obèse}} &
-			\multicolumn{1}{m{4.5cm}|} {\centering{plus de 30}} &
-			\multicolumn{1}{m{4.5cm}|} {\centering\arraybslash{plus de 30}}
-			\\\hline
-		\end{supertabular}
+		\end{tabular}
 	\end{center}
 	
 	Écrire un algorithme qui lit les données d’une série

@@ -8,34 +8,48 @@ n'apparait pas ici, il faudra en écrire explicitement
 le contenu et le code.
 
 Pour manipuler les chaines et les caractères
+
 \cadre{
-	\textstyleCodeInsr{long(maChaine)}
+	\begin{liste}
+	\item
+		\textstyleCodeInsr{long(maChaine)}
 				donne la taille (le nombre de caractères) de la chaine \textstyleCodeInsr{maChaine}
+	\item
 	\textstyleCodeInsr{car(maChaine,pos)}
 				donne le caractère en position \textstyleCodeInsr{pos} 
-				(à partir de 1) dans la chaine \textstyleCodeInsr{maChaine}
+				(à partir de 1) 
+				\\dans la chaine \textstyleCodeInsr{maChaine}
+	\item
 	\textstyleCodeInsr{concat(maChaine1,maChaine2)}
 				concatène les chaines \textstyleCodeInsr{maChaine1} 
 				et \textstyleCodeInsr{maChaine2}
+	\item
 	\textstyleCodeInsr{chaine(car)} 
 				transforme le caractère \textstyleCodeInsr{car} 
 				en une chaine de taille 1
+	\item
 	\textstyleCodeInsr{estLettre(car)} 
 				est vrai si le caractère \textstyleCodeInsr{car} est une lettre
-				(idem pour \textstyleCodeInsr{estChiffre}, 
+				\\(idem pour \textstyleCodeInsr{estChiffre}, 
 				\textstyleCodeInsr{estMajuscule}, 
 				\textstyleCodeInsr{estMinuscule})
+	\item
 	\textstyleCodeInsr{majuscule(car)} 
 				donne la majuscule de la lettre \textstyleCodeInsr{car}
 				(idem pour \textstyleCodeInsr{minuscule})
+	\item
 	\textstyleCodeInsr{position(car)} 
 				donne la position de \textstyleCodeInsr{car} dans l'alphabet 
+	\item
 	\textstyleCodeInsr{lettre(num)} 
 				l'inverse de la précédente
+	\item
 	\textstyleCodeInsr{estEspace(car~: caractère)}
 			retourne vrai si car est un caractère d’espacement et faux sinon.
+	\item
 	\textstyleCodeInsr{estPonctuation(car~: caractère)}
 			retourne vrai si car est un caractère de ponctuation et faux sinon.
+	\end{liste}
 	}
 
 
