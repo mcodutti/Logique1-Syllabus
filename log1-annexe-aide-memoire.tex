@@ -109,20 +109,23 @@ Pour manipuler les chaines et les caractères
 
 \cadre{
 \begin{pseudo}
-\Class{Liste de T}
+\Class{Liste <T>}
 \Public
-	\ConstrSign{Liste de T}{} 
+	\ConstrSign{Liste <T>}{} 
 	\MethodSign{get}{pos : entier}{T} \RComment retourne l’élément en position pos
 	\MethodSign{set}{pos : entier, valeur : T}{} \RComment modifie l’élément en position pos
 	\MethodSign{taille}{}{entier} \RComment retourne la taille de la liste
 	\MethodSign{ajouter}{valeur : T}{} \RComment ajoute une valeur en fin de liste
 	\MethodSign{insérer}{pos : entier, valeur : T}{} \RComment insère un élément en position pos
 	\MethodSign{supprimer}{}{} \RComment supprime le dernier élément
-	\MethodSign{supprimerPos}{pos : entier}{T} \RComment supprime l’élément en position pos
-	\MethodSign{supprimer}{valeur : T}{booléen} \RComment supprime l’élément de valeur donnée
+	\MethodSign{supprimerPos}{pos : entier}{} \RComment supprime l’élément en position pos
+	\MethodSign{supprimer}{valeur : T}{} \RComment supprime l’élément de valeur donnée
 	\MethodSign{vider}{}{} \RComment vide la liste
 	\MethodSign{estVide}{}{booléen} \RComment indique si la liste est vide
 	\MethodSign{existe}{valeur\In : T, pos\Out : entier}{booléen} \RComment recherche un élément
 \EndClass
 \end{pseudo}
 }
+
+% Une méthode égale pour tous.
+% ajouter valeurAbsolue(entier)

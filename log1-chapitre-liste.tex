@@ -28,12 +28,12 @@ fournir)
 
 \cadre{
 \begin{pseudo}
-	\Class{Liste de T}
+	\Class{Liste <T>}
 		\RComment T est un type quelconque
 		\Private
 			\LComment sera complété plus tard	
 		\Public
-			\ConstrSign{Liste de T}{}			
+			\ConstrSign{Liste <T>}{}			
 				\RComment construit une liste vide
 			\MethodSign{get}{pos : entier}{T}
 				\RComment donne un élément en position pos
@@ -55,7 +55,7 @@ fournir)
 				\RComment vide la liste
 			\MethodSign{estVide}{}{booléen}
 				\RComment la liste est-elle vide ?
-			\MethodSign{existe}{valeur \In : T, poso \Out : entier}{}
+			\MethodSign{existe}{valeur \In : T, poso \Out : entier}{booléen}
 				\RComment recherche un élément
 		\EndClass
 \end{pseudo}
@@ -137,11 +137,11 @@ l’écrire ainsi :
 \cadre{
 \begin{pseudo}
 \footnotesize
-	\Module{indicesMinimum}{tab : tableau [1 à n] d'entiers}{Liste d’entiers}
+	\Module{indicesMinimum}{tab : tableau [1 à n] d'entiers}{Liste <entier>}
 		\Decl i, min : entier
-		\Decl indicesMin : Liste d'entiers
+		\Decl indicesMin : Liste <entier>
 		\Let min \Gets tab[1]
-		\Let indicesMin \Gets \K{nouvelle} Liste d'entiers()
+		\Let indicesMin \Gets \K{nouvelle} Liste <entier>()
 		\Stmt indicesMin.ajouter( 1 )
 		\For{i \K{de} 2 \K{à} n}
 			\Switch{} 
@@ -263,7 +263,7 @@ d’agrandissement du tableau.
 \cadre{
 \begin{pseudo}
 \footnotesize
-	\Class{Liste de T}
+	\Class{Liste <T>}
 		\Private
 			\Decl éléments : \K{tableau} de T
 			\Decl tailleLogique : entier
@@ -301,7 +301,7 @@ publiques de la classe.
 
 \cadre{
 \begin{pseudo}
-	\Constr{Liste de T()}{}
+	\Constr{Liste <T>}{}
 		\Let tailleLogique \Gets 0
 		\RComment La liste est vide au départ
 		\Let taillePhysique \Gets 32
@@ -317,7 +317,7 @@ publiques de la classe.
 \begin{pseudo}
 	\Method{get}{pos : entier}{T}
 		\If{ pos < 1 OU pos > tailleLogique}
-			\K{erreur} position invalide
+			\Error position invalide
 		\EndIf
 		\Return éléments[ pos ]
 	\EndMethod
@@ -330,7 +330,7 @@ publiques de la classe.
 \begin{pseudo}
 	\Method{set}{pos : entier, valeur : T}{}
 		\If{ pos < 1 OU pos > tailleLogique}
-			\K{erreur} position invalide
+			\Error position invalide
 		\EndIf
 		\Let éléments[ pos ] \Gets valeur
 	\EndMethod
@@ -388,7 +388,7 @@ publiques de la classe.
 \begin{pseudo}
 	\Method{supprimer}{}{}
 		\If{tailleLogique = 0}
-			\K{erreur} liste vide
+			\Error liste vide
 		\EndIf
 		\Let tailleLogique \Gets tailleLogique - 1
 	\EndMethod
@@ -401,7 +401,7 @@ publiques de la classe.
 \begin{pseudo}
 	\Method{supprimerPos}{pos : entier}{}
 		\If{ pos < 1 OU pos > tailleLogique}
-			\K{erreur} position invalide
+			\Error position invalide
 		\EndIf
 		\Stmt décalerGauche( pos + 1 )
 		\Let tailleLogique\Gets tailleLogique - 1
@@ -413,7 +413,7 @@ publiques de la classe.
 
 \cadre{
 \begin{pseudo}
-	\Method{supprimer}{valeur: T}{booléen}
+	\Method{supprimer}{valeur: T}{}
 		\Decl existe : booléen
 		\Decl pos : entier
 		\Let existe \Gets existe(valeur, pos)
@@ -607,7 +607,7 @@ faut générer une erreur.
 	\begin{supertabular}{|m{11.597cm}|}
 		\hline
 		\centering\arraybslash  Chaine\\\hline
-		 {}- listeCar : Liste de caractères\\\hline
+		 {}- listeCar : Liste <caractères>\\\hline
 		{ + Chaine( )\ \ // crée une chaine vide}
 
 		{ {+ }Chaine( tab : tableau [1 à n] de caractères )
@@ -754,11 +754,11 @@ faut générer une erreur.
 		
 		\cadre{
 		\begin{pseudo}
-			\Class{Ensemble de T}{} 
+			\Class{Ensemble <T>}{} 
 			\RComment T est le type des éléments de l'ensemble
 			
 				\Public
-				\ConstrSign{Ensemble de T}{} 
+				\ConstrSign{Ensemble <T>}{} 
 				\RComment construit un ensemble vide
 				\MethodSign{ajouter}{élt : T}{}
 				\RComment ajoute l'élément à l'ensemble
@@ -770,10 +770,10 @@ faut générer une erreur.
 				\RComment dit si l'ensemble est vide
 				\MethodSign{taille}{}{entier}
 				\RComment donne la taille de l'ensemble
-				\MethodSign{union}{autreEnsemble : Ensemble de T}{Ensemble de T}
-				\MethodSign{intersection}{autreEnsemble : Ensemble de T}{Ensemble de T}
-				\MethodSign{moins}{autreEnsemble : Ensemble de T}{Ensemble de T}
-				\MethodSign{liste}{}{Liste de T}
+				\MethodSign{union}{autreEnsemble : Ensemble <T>}{Ensemble <T>}
+				\MethodSign{intersection}{autreEnsemble : Ensemble <T>}{Ensemble <T>}
+				\MethodSign{moins}{autreEnsemble : Ensemble <T>}{Ensemble <T>}
+				\MethodSign{liste}{}{Liste <T>}
 				\RComment conversion en liste
 		\EndClass
 	\end{pseudo}

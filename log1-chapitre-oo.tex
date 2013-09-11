@@ -98,8 +98,7 @@ Un \textbf{objet} est une entité logicielle qui~:
 Un objet contient de l'information, des données qui
 définissent son état.
 
-{\bfseries
-Exemples}
+\begin{Emphase}{Exemples}
 
 \begin{liste}
 	\item 
@@ -118,6 +117,7 @@ Exemples}
 		L'état d'une heure est le moment de la
 		journée qu'elle représente.
 \end{liste}
+\end{Emphase}
 
 L'état d'un objet est mémorisé via des
 variables qu'on appelle des \textit{attributs}.
@@ -136,14 +136,13 @@ d'un objet.
 Nous verrons plus loin la syntaxe précise pour définir les attributs
 d'un objet.
 
-{
-\textbf{Exemples} }
+\begin{Emphase}{Exemples}
 
 \begin{liste}
 	\item 
 		L'intitulé d'un produit peut être
 		représenté par une chaine. C'est également le cas des
-		nom et prénom(s) d'un employé.
+		nom(s) et prénom(s) d'un employé.
 	\item 
 		La date d'embauche peut être représentée par un «~objet
 		date~» (une date est rarement un type primitif du langage utilisé). Un
@@ -160,6 +159,7 @@ d'un objet.
 		adresse~» (qui contiendrait~: une rue, un numéro, un code postal,
 		...).
 \end{liste}
+\end{Emphase}
 
 \marginicon{attention}
 {\textbf{Remarque}\textbf{~: }Certaines parties de
@@ -170,8 +170,7 @@ mais pas sa date de naissance. }
 
 \clearpage
 \marginicon{exercice}
-{\sffamily\bfseries\scshape
-Exercices - attributs}
+\begin{Emphase}{Exercices - attributs}
 
 \begin{enumerate}
 	\item 
@@ -184,7 +183,7 @@ Exercices - attributs}
 	\item 
 		Et pour une télévision ? \ (on peut en trouver vraiment beaucoup !)
 \end{enumerate}
-
+\end{Emphase}
 \bigskip
 
 \marginicon{definition}
@@ -259,8 +258,7 @@ texte, modifier un fichier, ...).
 \end{liste}
 
 \marginicon{exercice}
-{\sffamily\bfseries\scshape
-Exercice - comportement}
+\begin{Emphase}{Exercices - comportement}
 
 \begin{enumerate}
 	\item {
@@ -268,6 +266,7 @@ Exercice - comportement}
 	\item {
 		Et pour un produit de magasin ?}
 \end{enumerate}
+\end{Emphase}
 
 \bigskip
 
@@ -285,18 +284,18 @@ Exemples}
 \begin{liste}
 	\item {
 		Pour permettre à une date de passer au jour suivant, nous allons définir
-		un méthode qui incrémente le jour du mois en tenant compte
+		une méthode qui incrémente le jour du mois en tenant compte
 		d'un possible basculement au mois suivant ou à
 		l'année suivante.}
 	\item {
 		Pour calculer le bénéfice d'un produit, nous allons définir
-		un méthode qui, à partir du prix d'achat et du prix de vente,
+		une méthode qui, à partir du prix d'achat et du prix de vente,
 		calcule le bénéfice.}
 	
 	\item {
 		Pour permettre à un moment d'indiquer
 		s'il est le matin ou pas, nous allons définir une
-		méthode comme celle-ci \ (nous verrons plus tard comment
+		méthode comme celle-ci (nous verrons plus tard comment
 		l'associer aux objets)}
 
 		\bigskip
@@ -306,7 +305,7 @@ Exemples}
 			\LComment On suppose que 'heure' est un des attributs utilisés
 			\LComment pour représenter l'état (le moment dans la journée)
 			\Method{estMatin}{}{booléen}
-				\Return heure > 12 \RComment on considère que midi est situé l'après-midi
+				\Return heure < 12 \RComment on considère que midi est situé l'après-midi
 			\EndMethod
 		\end{pseudo}
 		}
@@ -328,8 +327,7 @@ Exemples}
 \end{liste}
 
 \marginicon{exercice}
-{\sffamily\bfseries\scshape
-Exercices - méthodes}
+\begin{Emphase}{Exercices - méthodes}
 
 \begin{enumerate}
 	\item 
@@ -339,9 +337,9 @@ Exercices - méthodes}
 	\item 
 		Écrivez la méthode qui permet de passer au jour suivant.
 	\item 
-		Écrivez la méthode qui calcule le prix de vente hors tva d'un produit.
+		Écrivez la méthode qui calcule le bénéfice réalisé lors de la vente d'un produit.
 \end{enumerate}
-
+\end{Emphase}
 \bigskip
 
 {\sffamily\bfseries
@@ -359,8 +357,7 @@ courante) est la notation pointée}
 \end{pseudo}
 }
 
-{\bfseries
-Exemple}
+\begin{Emphase}{Exemple}
 
 {
 Supposons que le nom «~maintenant~» désigne un objet contenant un moment
@@ -374,17 +371,16 @@ est le matin, on peut écrire}
 	\EndIf
 \end{pseudo}
 }
-
-
+\end{Emphase}
 \bigskip
 
 \marginicon{exercice}
-{\sffamily\bfseries\scshape
-Exercice – activer un comportement}
+\begin{Emphase}{Exercice – activer un comportement}
 
 Écrire la portion de code qui allume une télévision (désignée par
 «~maTélévision~») et puis l'éteint aussitôt après.
 
+\end{Emphase}
 
 \bigskip
 
@@ -398,8 +394,7 @@ d'envoyer à l'objet des informations
 complémentaires pour préciser notre demande ce qui se fait via
 l'utilisation des paramètres.}
 
-{\bfseries
-Exemple}
+\begin{Emphase}{Exemple}
 
 Si on veut modifier le salaire d'un employé, il faut
 que notre message contienne le nouveau salaire. Autrement dit, il faut
@@ -413,10 +408,10 @@ Ce qui donne la méthode suivante~:
 	\EndMethod
 \end{pseudo}
 }
+\end{Emphase}
 
 \marginicon{exercice}
-{\sffamily\bfseries\scshape
-Exercices – paramètres du comportement}
+\begin{Emphase}{Exercices – paramètres du comportement}
 
 \begin{enumerate}
 	\item 
@@ -435,7 +430,7 @@ Exercices – paramètres du comportement}
 			\item 
 				donner la quantité restant en stock
 			\item 
-				dire si oui ou non le produit est en rupture de stock.
+				dire si le produit est en rupture de stock.
 		\end{liste}
 			
 	\item 
@@ -445,15 +440,15 @@ Exercices – paramètres du comportement}
 
 		\begin{liste}
 			\item
-				demander le jour de la semaine d'une date
+				demander le nom du jour correspondant à une date (par exemple lundi, mardi, ...)
 			\item 
-				savoir si une date est antérieure ou non à une autre
+				savoir si une date est antérieure à une autre
 			\item 
 				connaitre le nombre de jours (absolu) séparant deux dates.
 		\end{liste}
 		
 	\item 
-		Utilisation. Soit «~date1~» et «~date2~», deux dates ; écrivez la
+		Utilisation. Soit deux dates $date1$ et $date2$ ; écrivez la
 		portion de code qui utilise les méthodes ci-dessus pour
 		
 		\begin{liste}
@@ -470,6 +465,7 @@ Exercices – paramètres du comportement}
 		méthodes correspondant à ce comportement ainsi qu'une
 		portion de code qui les utilise.
 \end{enumerate}
+\end{Emphase}
 
 %=========================
 \section{L'encapsulation}
@@ -497,7 +493,7 @@ de l'état de l'objet. Si on pouvait
 accéder directement à un attribut (et donc le modifier), on pourrait y
 mettre une valeur incohérente. Par exemple, on pourrait dire que les
 minutes d'un moment valent -3 ou 75 ou encore que le
-jour de la date est 32 !
+jour d'une date est 32 !
 
 Dès lors, il nous faudra préciser pour chaque \textbf{membre} (attributs
 et méthodes) d'un objet s'il est
@@ -516,6 +512,10 @@ chacun des attributs de rencontrer une méthode destinée à connaitre la
 valeur de cet attribut et une autre qui permet de la modifier.
 
 \clearpage
+%-------------------
+% todo everywhere :
+% subsubsection
+% -------------------
 {\sffamily\bfseries\upshape
 Accesseur et mutateur}
 
@@ -568,13 +568,13 @@ la journée
 Que faire si le paramètre est invalide ? }
 
 Dans l'exemple précédent, que se passerait-il si le
-paramètre \textstyleCodeInsr{uneHeure} vaut 25 ? Une valeur aberrante sera
+paramètre \textstyleCodeInsr{uneHeure} vaut 25 ? Une valeur aberrante serait
 affectée à l'attribut \textstyleCodeInsr{heure}.
 
 Dans le cas de paramètres invalides, la plus mauvaise solution est de ne
 rien faire. Le programme continuerait en croyant que tout s’est bien
 passé et il court à la catastrophe. Il est préférable qu’un programme
-se plante plutôt que de fournir une mauvaise réponse. 
+s'interrompe plutôt que de fournir une mauvaise réponse. 
 
 Dans certains langages (comme le C), l’usage est que chaque module
 retourne un entier indiquant s'il y a eu une erreur
@@ -610,8 +610,6 @@ Ce qui donne~:
 		\If{uneHeure < 0 OU uneHeure > 23}
 			\Stmt \K{erreur} "heure invalide"
 		\EndIf
-		\LComment Pour être précis, il faudrait tenir compte que 24h00 est une
-heure valide
 		\Stmt heure \Gets uneHeure
 	\EndMethod
 \end{pseudo}
@@ -625,14 +623,13 @@ façon transparente la représentation des données. \ Nous y reviendrons
 plus loin.
 
 \marginicon{exercice}
-{\sffamily\bfseries\scshape
-Exercice - encapsulation}
+\begin{Emphase}{Exercice - encapsulation}
 
 Sans le savoir, vous avez déjà défini des accesseurs et des 
 mutateurs pour le téléviseur. Lesquels ? En suivant la convention
 de nom pour les accesseurs et les mutateurs, 
 quels noms auraient-ils dû porter ?
-
+\end{Emphase}
 
 %====================================================
 \section{La notion de classe et d'instance}
@@ -659,8 +656,8 @@ classe et qui a des valeurs particulières pour ses attributs.
 
 On peut établir le parallélisme avec les types de base que vous avez
 déjà vus. Définir une classe revient à définir un nouveau type de
-données. En gros, on peut dire qu'un\textbf{ }objet
-est à une classe ce qu'une variable est à un type.
+données. En gros, on peut dire qu'un \textbf{objet
+est à une classe ce qu'une variable est à un type}.
 
 Comprenons bien que les objets d'une même classe ont le
 même «~type~» d'état mais pas le même état proprement
@@ -681,11 +678,11 @@ syntaxe utilisée pour définir une classe}
 \begin{pseudo}
 	\Class{NomDeLaClasse}
 		\Private
-			\LComment La liste des attributs (donc privés par convention)
+			\LComment liste des attributs (donc privés par convention)
 		\Public
-			\LComment La liste des méthodes publiques
+			\LComment liste des méthodes publiques
 		\Private
-			\LComment La liste des méthodes privées
+			\LComment liste des méthodes privées
 	\EndClass
 	\LComment Par souci de lisibilité, on pourra indiquer uniquement 
 	les signatures des
@@ -759,13 +756,15 @@ toute ambigüité (entre minuscule et majuscule par exemple).
 \begin{pseudo}
 	\Module{test}{}{}
 		\Decl midi~: Moment
-		\RComment réf. 1
+		\RComment déclaration
 		\Let midi \Gets \K{nouveau} Moment()
-		\RComment réf. 2
+		\RComment instanciation
 		\Stmt midi.setHeure( 12 )
+		\RComment mutateur
 		\Stmt midi.setMinute( 0 )
+		\RComment " "
 		\Stmt midi.setSeconde( 0 )
-		\RComment réf. 3
+		\RComment " "
 		\If{midi.estMatin()}
 			\Write "Midi est considéré comme
 			étant encore le matin"
@@ -785,14 +784,14 @@ C'est différent avec les objets. La déclaration
 n'entraine qu'une réservation mémoire
 pour une «~référence~» vers un objet. Celui-ci
 n'existe pas encore. Il sera créé (et sa mémoire
-allouée) via une instruction spécifique (\textstyleMotCl{nouveau}). On
+allouée) via une instruction spécifique (\code{nouveau}). On
 parle de variable «\textit{~dynamique~}». Le nom est alors~une
 «~référence~» vers l’objet. Les avantages de cette dissociation seront
 évidents lorsque nous parlerons de la notion de \textit{constructeur}.
 
 \clearpage
 
-Après la déclaration (réf. 1), on a~:
+Après la déclaration, on a~:
 
 \begin{center}
 \tablehead{}
@@ -803,7 +802,7 @@ Après la déclaration (réf. 1), on a~:
 \end{supertabular}
 \end{center}
 
-Après la création (réf. 2), on a~:
+Après l'instanciation (ou création), on a~:
 
 \begin{center}
 \tablehead{}
@@ -830,9 +829,9 @@ Après la création (réf. 2), on a~:
 \end{supertabular}
 \end{center}
 
-Remarquez qu'il n'y a pas d'initialisation par défaut.
+Remarquez qu'il n'y a pas d'initialisation par défaut, pour le moment.
 
-Après l'action des mutateurs (réf. 3), on a~:
+Après l'action des mutateurs, on a~:
 
 \bigskip
 
@@ -862,8 +861,7 @@ Après l'action des mutateurs (réf. 3), on a~:
 \end{center}
 
 \marginicon{exercice}
-{\sffamily\bfseries\scshape
-Exercices – classe et instance}
+\begin{Emphase}{Exercices – classe et instance}
 
 \begin{enumerate}
 	\item 
@@ -872,8 +870,10 @@ Exercices – classe et instance}
 		\textbf{en respectant les notations que vous venez de voir.}
 	\item 
 		Écrivez un module qui affiche le prix d'achat d'un produit, son prix 
-		de vente hors tva et son prix de vente tvac.
+		de vente hors TVA et son prix de vente TVA comprise.
 \end{enumerate}
+
+\end{Emphase}
 
 %==========================
 \section{Les constructeurs}
@@ -904,7 +904,7 @@ de constructeurs dans une classe.
 
 Remarquez que cela demande de définir plusieurs méthodes 
 qui portent le même nom. C'est ce qu'on appelle la
-\textbf{surcharge}. Des méthodes éponymes (c-à-d de même nom) doivent
+\textbf{surcharge}. Des méthodes homonymes (c-à-d de même nom) doivent
 pouvoir être différenciées via leur signature (la liste de leurs
 paramètres).
 
@@ -977,7 +977,8 @@ Par contre, il est courant en logique qu'un constructeur
 appelle les mutateurs afin d'effectuer les tests sans 
 avoir à les dupliquer.
 Mais c'est une démarche que vous éviterez de faire dans
-des langages comme Java par exemple.
+des langages comme Java par exemple (cela vous sera expliqué
+plus tard).
 
 Lorsqu'on instancie un objet, les paramètres
 qu'on donne déterminent le constructeur qui est
@@ -989,9 +990,9 @@ l'objet.
 
 \cadre{
 \begin{pseudo}
-	\Let moment11 \Gets \K{nouveau} Moment(14, 23, 56)
-	\Let moment11 \Gets \K{nouveau} Moment(9, 30)
-	\Let moment11 \Gets \K{nouveau} Moment(17)
+	\Let heureDépart \Gets \K{nouveau} Moment(14, 23, 56)
+	\Let heureLever \Gets \K{nouveau} Moment(9, 30)
+	\Let heureGouter \Gets \K{nouveau} Moment(17)
 \end{pseudo}
 }
 
@@ -1012,9 +1013,9 @@ Exercices - constructeur}
 	\item {
 		Écrivez un ou des constructeur(s) pour un \textstyleCodeInsr{Produit}}
 	\item {
-		Adaptez le module écrit plus haut pour qu'il affiche le prix hors tva
-		puis le prix tvac du produit n°105176, Lego réveil figurine policier, 
-		au prix d'achat de 20,00 euros, au prix de vente de 30,00 euros et 
+		Adaptez le module écrit plus haut pour qu'il affiche le prix hors TVA
+		puis le prix TVA comprise du produit n°105176 (Lego réveil figurine policier)
+		au prix d'achat de 25\texteuro, au prix de vente de 30\texteuro et 
 		dont il y a 10 exemplaires en stock.}
 \end{enumerate}
 
@@ -1028,8 +1029,7 @@ attributs qui vont permettre de représenter l'état des
 objets. Cela peut paraitre immédiat mais il n'en est
 rien.
 
-{\bfseries
-Exemple}
+\begin{Emphase}{Exemple}
 
 Pour un moment de la journée, nous avons choisi
 d'utiliser trois attributs entiers (les heures, les
@@ -1056,10 +1056,10 @@ représentation. Il faudra bien sûr réécrire les méthodes de la classe
 mais il ne faudra rien changer au reste du code, c-à-d les lignes du
 code utilisant la classe. C’est d’ailleurs là une des grandes forces de
 la programmation orientée objet.
+\end{Emphase}
 
 \marginicon{exercice}
-{\sffamily\bfseries\scshape
-Exercices – représentation de l'état}
+\begin{Emphase}{Exercices – représentation de l'état}
 
 \begin{enumerate}
 	\item 
@@ -1071,6 +1071,7 @@ Exercices – représentation de l'état}
 		premier est avant le second. Ce code dépend-il des attributs choisis
 		pour définir la classe Moment ?
 \end{enumerate}
+\end{Emphase}
 
 \marginicon{attention}
 {\bfseries
@@ -1078,7 +1079,7 @@ Remarque}
 
 Précédemment, nous avons défini un \textbf{accesseur} comme une méthode
 permettant d’accéder à la valeur d’un attribut. Mais c’est au
-développeur à définir quels sont les attributs ; c’est totalement caché
+développeur de définir quels sont les attributs ; c’est totalement caché
 à l’utilisateur de la classe. On voit donc bien que cette notion
 d’accesseur n’a pleinement de sens qu’en interne, pour le développeur
 de la classe. Pour l’utilisateur il s’agit d’une méthode comme les
@@ -1185,7 +1186,7 @@ Clarifions certaines notations liées aux objets.
 
 	\item {
 		Un nom d'objet est en fait une \textbf{référence} à
-		l'objet. Ainsi l'assignation ne copie
+		l'objet. Ainsi l'affectation ne copie
 		pas l'objet mais sa référence. Au final, nous avons
 		deux noms identifiant le même objet}
 		\\
@@ -1274,31 +1275,22 @@ Clarifions certaines notations liées aux objets.
 
 \bigskip
 
-\marginicon{exercice}
-{\sffamily\bfseries\scshape
-Exercice – méthode égal()}
-
-Écrire la méthode égal() pour la classe Moment.
-
-\bigskip
-
-N.B.~: On supposera par la suite qu'une telle méthode
-existe par défaut pour toutes les nouvelles classes.
-
 \begin{liste}
 	\item {
-		Un attribut privé n'est pas connu en dehors de la
-		classe. 
+		\textbf{Un attribut privé n'est pas connu en dehors de la
+		classe.}
 		
 		Précisons~: un attribut privé n'est connu que
 		des instances de cette classe, ce qui signifie qu'il
 		est également connu par tous les autres objets de la même
 		classe.
 
-		\textbf{Exemple}~: écrivons la méthode qui teste si un moment précède un
+		\begin{Emphase}{Exemple}~: 	
+		écrivons la méthode qui teste si un moment précède un
 		autre (en supposant que l'état est représenté par un
 		seul entier, totalSecondes, le nombre de secondes depuis minuit)
-		\\
+		\end{Emphase}
+		
 		\bigskip
 		\cadre{
 		\begin{pseudo}
@@ -1331,6 +1323,17 @@ existe par défaut pour toutes les nouvelles classes.
 \end{liste}
 	
 
+\marginicon{exercice}
+\begin{Emphase}{Exercice – méthode égal()}
+
+Écrire la méthode égal() pour la classe Moment.
+
+\bigskip
+
+N.B.~: On supposera par la suite qu'une telle méthode
+existe par défaut pour toutes les nouvelles classes.
+\end{Emphase}
+
 %===============================================	
 \section{Représentation modélisée d'une classe}
 %===============================================
@@ -1345,18 +1348,17 @@ nom de la classe, la deuxième pour les attributs et la troisième pour
 les méthodes. On indique par un signe «~+~» (resp. «~-~») que le membre
 est public (resp. privé)
 
-{\bfseries
-Exemple}
+\begin{Emphase}{Exemple}
 
 Remarquons qu'on indique la signature des méthodes mais
 pas le code associé. En fonction du niveau de détail désiré, on
 pourrait aussi omettre les paramètres et types de retour.
 
 \begin{center}
-\begin{minipage}{6cm}
+\begin{minipage}{7cm}
 \begin{center}
 \tablehead{}
-\begin{supertabular}{|m{5cm}|}
+\begin{supertabular}{|m{7cm}|}
 \hline
 \centering\arraybslash \bfseries Moment\\\hline
 { {}- heure~: entier}
@@ -1376,9 +1378,7 @@ pourrait aussi omettre les paramètres et types de retour.
 \end{minipage}
 \end{center}
 
-\bigskip
-
-\bigskip
+\end{Emphase}
 
 
 %=======================================
@@ -1411,7 +1411,7 @@ Le comportement (les méthodes)}
 La première question à se poser est celle des services qu’on veut
 fournir, c’est-à-dire des méthodes publiques de la classe. On doit
 pouvoir \textit{construire} une durée. On doit pouvoir connaitre le
-nombre d’heures, minutes ou secondes correspondant à une durée. On doit
+nombre de jours, d’heures, minutes ou secondes correspondant à une durée. On doit
 pouvoir effectuer des calculs avec des durées (addition, soustraction).
 Enfin, on doit pouvoir comparer des durées. Arrêtons-nous là, mais en
 pratique, on pourrait trouver encore bon nombre d’autres méthodes qu’il
@@ -1467,10 +1467,10 @@ Quelques remarques}
 		exemple, la méthode \textstyleCodeInsr{getMinute()} retourne la valeur
 		de la composante «~minutes~» dans une représentation HMS tandis que la
 		méthode \textstyleCodeInsr{getTotalMinutes()} retourne le nombre total
-		de minutes pour cette durée. Ex~: pour 1h23’12’’,
+		de minutes entières pour cette durée. Ex~: pour 1h23’12’’,
 		\textstyleCodeInsr{getMinute()} retourne 23 et
-		\textstyleCodeInsr{getTotalMinutes()} retourne 83. Idem avec les heures
-		et les secondes.}
+		\textstyleCodeInsr{getTotalMinutes()} retourne 83. Idem avec 
+		les jours, les heures	et les secondes.}
 	\item {
 		Les méthodes \textstyleCodeInsr{getTotalXXX()} retournent le nombre
 		(toujours entier) de XXX contenus dans la durée. Exemple, avec la durée
@@ -1502,11 +1502,11 @@ La question suivante est~: «~Comment représenter une durée en interne ?
 
 \begin{liste}
 	\item 
-		Via le nombre d’heures, de minutes et de secondes
+		via le nombre d’heures, de minutes et de secondes
 	\item 
-		Via le nombre total de secondes
+		via le nombre total de secondes
 	\item 
-		Via une chaine, par exemple au format «~HH~:MM~:SS~» où HH pourrait
+		via une chaine, par exemple au format «~HH~:MM~:SS~» où HH pourrait
 		éventuellement excéder 23.
 \end{liste}
 
@@ -1694,9 +1694,9 @@ On peut alors
 
 \begin{liste}
 	\item {
-		Étendre son état}
+		étendre son état}
 	\item {
-		Augmenter ou modifier son comportement}
+		augmenter ou modifier son comportement}
 \end{liste}
 
 Par exemple, on pourra définir un \textstyleCodeInsr{Etudiant} à partir
@@ -1765,12 +1765,12 @@ et facilement adaptable.}
 		\item 
 			avec comme arguments {\textquotedbl}Durant{\textquotedbl},
 			{\textquotedbl}Zébulon{\textquotedbl} et la date de naissance du
-			01/02/1980
+			$1^{er}$ février 1989
 	\end{enumerate}
 
 	Pour réaliser les constructeurs recevant la date de naissance en
 	paramètre, il faudra tester si cette date n’est pas antérieure à la
-	date du jour. Nous supposerons que la date 
+	date du jour. On considérera que la date 
 	du jour est fournie par le constructeur de
 	\textstyleCodeInsr{Date} sans paramètre.
 \end{Exercice}
@@ -1782,7 +1782,7 @@ et facilement adaptable.}
 	que la lecture de «~rien~» indique la fin des données.
 \end{Exercice}
 
-\begin{Exercice}{Le rectangle (version orientée objet)}
+\begin{Exercice}{La classe rectangle (version orientée objet)}
 	Nous avons déjà abordé les rectangles dans le chapitre des variables
 	structurées. Nous reprenons cet exercice sous l’angle de l’orienté
 	objet.
@@ -1837,36 +1837,40 @@ et facilement adaptable.}
 			de déplacer le rectangle en donnant l’amplitude du déplacement au niveau
 			des abscisses et des ordonnées
 		\item 
-			de multiplier les dimensions du rectangle par un facteur k, le centre
+			de multiplier les dimensions du rectangle par un facteur $k$, le centre
 			restant au même endroit
 		\item 
 			de faire pivoter le rectangle de 90° autour de son centre
 		\item 
 			de vérifier si un rectangle à une intersection avec un autre rectangle
 	\end{enumerate}
+	
+\end{Exercice}
+
+\begin{Exercice}{Test}
 
 	Test~: écrire un module TestRectangle en vue de tester le bon
-	fonctionnement de la classe rectangle. Ce module~: 
+	fonctionnement de la classe \code{Rectangle} de l'exercice précédent. Ce module~: 
 
 	\begin{enumerate}[label=\alph*)]
 		\item 
-			Crée un rectangle R1 par défaut
+			crée un rectangle R1 par défaut
 		\item 
-			Crée un rectangle R2 de cotés 5 et 7, et centré en (0,0)
+			crée un rectangle R2 de cotés 5 et 7, et centré en (0,0)
 		\item 
-			Crée un rectangle R3 possédant les sommets (-2,3) et (4, -5)
+			crée un rectangle R3 possédant les sommets (-2,3) et (4, -5)
 		\item 
-			Affiche la surface de R1 et le périmètre de R2
+			affiche la surface de R1 et le périmètre de R2
 		\item 
-			Déplace R1 d’une unité vers le bas
+			déplace R1 d’une unité vers le bas
 		\item 
-			Déplace R2 de 2 unités vers la droite
+			déplace R2 de 2 unités vers la droite
 		\item 
-			Grossit R3 d’un facteur 3
+			grossit R3 d’un facteur 3
 		\item 
-			Effectue une rotation de 90° à R2
+			effectue une rotation de 90° à R2
 		\item 
-			Indique si R2 et R3 possèdent une intersection
+			indique si R2 et R3 possèdent une intersection
 	\end{enumerate}
 
 	À présent, choisir une autre représentation des attributs et récrire

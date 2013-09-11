@@ -5,7 +5,8 @@
 	\marginicon{objectif}
 		Dans ce chapitre nous voyons quelques algorithmes simples pour trier un
 		ensemble d'informations~: recherche des maxima, tri
-		par insertion et tri bulle. Des algorithmes plus efficaces seront vus
+		par insertion et tri bulle dans un tableau. 
+		Des algorithmes plus efficaces seront vus
 		en deuxième année.
 
 
@@ -24,7 +25,7 @@
 
 
 	La recherche efficace d’information implique un tri préalable de
-	celle-ci. En effet, si l’information n’est pas classée ou triée, le
+	celle-ci. En effet, si les données ne sont pas classées ou triées, le
 	seul algorithme possible reviendrait à parcourir entièrement l’ensemble
 	des informations. Pour exemple, il suffit d’imaginer un dictionnaire
 	dans lequel les mots seraient mélangés de façon aléatoire au lieu
@@ -50,8 +51,8 @@
 	\liststyleWWviiiNumi
 	\begin{enumerate}
 		\item 
-			D’abord les situations impliquant un classement total d’un ensemble de
-			données «~bru\-tes~», c’est-à-dire complètement désordonnées. Prenons
+			D’abord les situations impliquant le classement total d’un ensemble de
+			données «~brutes~», c’est-à-dire complètement désordonnées. Prenons
 			pour exemple les feuilles récoltées en vrac à l’issue d’un examen ; il
 			y a peu de chances que celles-ci soient remises à l’examinateur de
 			manière ordonnée ; celui-ci devra donc procéder au tri de l’ensemble
@@ -66,7 +67,8 @@
 			rangé à la bonne place. Ainsi, l’ordre global de la bibliothèque est
 			maintenu par la répétition d’une seule opération élémentaire consistant
 			à insérer à la bonne place un livre parmi la collection. C’est la
-			situation que nous avons considérée avec la liste ordonnée.
+			situation que nous considérerions dans le cas d'une structure
+			où les éléments sont ordonnés.
 		\item 
 			Enfin, les situations qui consistent à devoir re-trier des données
 			préalablement ordonnées sur un autre critère. Prenons l’exemple d’un
@@ -90,7 +92,7 @@
 	clé, ce qui évite de faire des comparaisons sur les deux champs à la
 	fois. Les méthodes nommées \textbf{tri par insertion}, \textbf{tri
 	bulle} et \textbf{tri par recherche de minima successifs }(que nous
-	allons aborder ci-après) sont stables.
+	allons aborder dans ce chapitre) sont stables.
 
 	Le tri d’un ensemble d’informations n’offre que des avantages. Outre le
 	fait déjà mentionné de permettre une recherche et une obtention rapide
@@ -111,7 +113,7 @@
 	$n^2$~», ce qui veut dire que si $n$ est le nombre
 	d’éléments à trier, le nombre d’opérations élémentaires (tests et
 	transferts de valeurs) est proportionnel à $n^2$. Ils conviennent
-	donc pour des ensembles de «~taille raisonnable~», mais peuvent devenir
+	donc pour des ensembles de taille «~raisonnable~», mais peuvent devenir
 	extrêmement lents à l’exécution pour le tri de grands ensembles, comme
 	par exemple les données de l’annuaire téléphonique. Plusieurs solutions
 	existent, comme la méthode de tri \textbf{Quicksort}. Cet algorithme
@@ -127,8 +129,8 @@
 	l’ordre chronologique pour des objets \textstyleCodeInsr{Date} ou
 	\textstyleCodeInsr{Moment} (que nous verrons
 	plus tard), etc. De plus, le seul ordre envisagé sera l’ordre
-	\textbf{croissant} des données. On peut tout aussi bien envisager le
-	tri d’une liste (que nous verrons plus tard) en lieu et place d’un tableau.
+	\textbf{croissant} des données. Plus loin, on envisagera le tri 
+	d'autres structures de données.
 
 	Enfin, dans toutes les méthodes de tri abordées, nous supposerons la
 	taille physique du tableau à trier (notée $n$) égale à sa taille
@@ -140,8 +142,7 @@
 %===========================
 
 	Cette méthode de tri repose sur le principe d’insertion de valeurs dans
-	un tableau ordonné que nous allons développer lors de la description de
-	la liste ordonnée. 
+	un tableau ordonné. 
 
 	{\sffamily\bfseries\upshape
 	Description de l’algorithme}
@@ -159,10 +160,10 @@
 	élément du sous-tableau non trié et à l’insérer à la bonne place dans
 	le sous-tableau trié.
 
-	Prenons comme exemple un tableau tab de 20 entiers. 
+	Prenons comme exemple un tableau \code{tab} de 20 entiers. 
 	
 	Au départ, le	sous-tableau trié est formé du premier élément, 
-	$tab[1]$ qui vaut 20~:
+	\code{tab[1]} qui vaut 20~:
 
 	\begin{center}
 	\begin{tabular}{*{20}{>{\centering\sffamily\itshape\arraybackslash}m{0.47cm}}}
@@ -215,7 +216,7 @@
 
 	\bigskip
 	
-	L’étape suivante consiste à insérer $tab[2]$, qui vaut 12, dans ce sous-tableau, de
+	L’étape suivante consiste à insérer \code{tab[2]}, qui vaut 12, dans ce sous-tableau, de
 	taille 2~:
 
 	\begin{center}
@@ -269,7 +270,7 @@
 
 	\bigskip
 
-	Ensuite, c’est au tour de tab[3], qui vaut 18, d’être inséré~:
+	Ensuite, c’est au tour de \code{tab[3]}, qui vaut 18, d’être inséré~:
 
 	\begin{center}
 	\begin{tabular}{*{20}{>{\centering\sffamily\itshape\arraybackslash}m{0.47cm}}}
@@ -338,8 +339,8 @@
 			\Decl i, j, valAInsérer~: entiers
 			\For{i \K{de} 2 \K{à} n}
 				\Let valAInsérer \Gets tab[i]
-				\LComment Recherche de l’endroit où insérer valAInsérer dans le 
-				\LComment sous-tableau trié et décalage simultané des éléments.
+				\LComment recherche de l’endroit où insérer valAInsérer dans le 
+				\LComment sous-tableau trié et décalage simultané des éléments
 				\Let j \Gets i - 1
 				\While{j ${\geq}$ 1 ET valAInsérer < tab[j]}
 					\Let tab[j+1] \Gets tab[j]
@@ -359,8 +360,8 @@
 %=================================================
 	
 	Dans ce tri, on recherche à chaque étape la plus petite valeur de
-	l’ensemble non encore trié et on peut la placer à sa position
-	définitive.
+	l’ensemble non encore trié et on peut la placer immédiatement 
+	à sa position	définitive.
 
 	{\sffamily\bfseries\upshape
 	Description de l’algorithme}
@@ -533,8 +534,10 @@
 	\end{center}
 
 	Le sous-tableau trié est maintenant formé des deux premiers éléments, et
-	le sous-tableau non trié par les 18 éléments suivants. À
-	l’étape $i$ de cet algorithme, on sélectionne donc le minimum du
+	le sous-tableau non trié par les 18 éléments suivants. 
+	
+	Pour un tableau de taille $n$, 
+	à l’étape $i$ de cet algorithme, on sélectionne donc le minimum du
 	sous-tableau non trié (entre les indices $i$ et $n$). Une
 	fois le minimum localisé, on l’échange avec l’élément d’indice
 	$i$. À chaque étape, la taille du sous-tableau trié augmente de
@@ -551,7 +554,7 @@
 	\begin{pseudo}
 		\LComment Trie le tableau reçu en paramètre (via un tri par sélection des minima successifs).
 		\Module{triSélectionMinimaSuccessifs}{tab\InOut~: tableau[1 à n] d’entiers}{}
-			\Decl i, indiceMin~: entiers
+			\Decl i, indiceMin~: entier
 			\For{i \K{de} 1 \K{à} n – 1}
 			\RComment i correspond à l’étape de l’algorithme
 				\Let indiceMin \Gets positionMin( tab, i, n )
@@ -587,23 +590,6 @@
 	\end{pseudo}
 	}
 
-	\subsection*{Exercices}
-
-	\begin{Exercice}{Sélection des maxima}
-		Développez un algorithme similaire consistant à trier un tableau par
-		ordre croissant par sélection des \textbf{maxima} successifs. Le
-		sous-tableau trié apparaitra donc à droite du tableau, et les maxima
-		sélectionnés seront à chaque étape positionnés à droite du sous-tableau
-		non trié. 
-	\end{Exercice}
-	
-	\begin{Exercice}{Maxima et minima}
-		Développez un algorithme combinant les deux recherches. À chaque étape,
-		on sélectionne donc le minimum et le maximum du sous-tableau restant à
-		trier et on les positionnera à l’endroit \textit{ad hoc}. N.B.~: on
-		constatera que cette méthode n’apporte pas d’amélioration, ni en temps,
-		ni en simplicité, aux deux algorithmes de base !
-	\end{Exercice}
 	
 
 %==================
@@ -964,11 +950,11 @@
 	\begin{pseudo}
 	\LComment Trie le tableau reçu en paramètre (via un tri bulle).
 		\Module{triBulle}{tab\InOut~: tableau[1 à n] d’entiers}{}
-			\Decl indiceBulle, j~: entiers
+			\Decl indiceBulle, i~: entiers
 			\For{indiceBulle \K{de} 1 \K{à} n}
-				\For{j \K{de} n – 1 \K{à} indiceBulle \K{par} – 1}
-					\If{tab[j] > tab[j + 1]}
-						\Stmt swap( tab[j], tab[j+1] )
+				\For{i \K{de} n – 1 \K{à} indiceBulle \K{par} – 1}
+					\If{tab[i] > tab[i + 1]}
+						\Stmt swap( tab[i], tab[i + 1] )
 						\RComment voir algorithme précédent
 					\EndIf
 				\EndFor
@@ -978,60 +964,6 @@
 	}
 
 	\bigskip
-
-	\subsection*{Exercices}
-
-	\begin{Exercice}{Amélioration 1}
-			Écrire une amélioration du tri bulle consistant à mémoriser à chaque
-			étape l’indice de la dernière permutation, celui-ci délimitant en fait
-			la véritable taille du sous-tableau trié à l’issue d’une étape. En lieu
-			et place de la boucle \textstyleMotCl{pour} n’incrémentant l’indice
-			bulle que de 1 à la fois, on écrira une boucle \textstyleMotCl{tant
-			que} à l’issue de laquelle \textstyleCodeInsr{indiceBulle} prendra la
-			valeur de l’indice de dernière permutation + 1.
-	\end{Exercice}
-	
-	\begin{Exercice}{Amélioration 2}
-			L’amélioration précédente est issue de l’observation du sous-tableau
-			déjà trié en début du tableau initial. On peut de même étudier la
-			possibilité d’avoir un sous-tableau, trié également, mais cadré à
-			droite dans le tableau à trier. Cette symétrie suggère une amélioration
-			supplémentaire qui consiste à changer de sens à la fin d’un parcours
-			pour entamer le parcours suivant. Lorsqu’on change de sens, on amènera
-			l’élément le plus grand (qu’on peut nommer le «~plomb~») au fond du
-			tableau non trié. L’association des deux méthodes donne ce qu’on
-			appelle le \textbf{tri shaker}, dont le but est de restreindre le
-			sous-tableau non trié en augmentant sa borne inférieure et en diminuant
-			sa borne supérieure. Écrire l’algorithme qui réalise cette méthode de
-			tri.
-	\end{Exercice}
-	
-	\begin{Exercice}{Tri de dates}
-			Écrire un algorithme qui trie un tableau de (variables structurées)
-			dates par ordre chronologique croissant.
-	\end{Exercice}
-	
-	\begin{Exercice}{Tri de personnes}
-			Écrire un algorithme qui trie un tableau de personnes sur leur date
-			d'anniversaire (sans tenir compte de
-			l'année). Deux personnes nées le même jour seront
-			départagées par leur nom.
-
-			Une personne est représentée par la structure 
-			
-			\bigskip
-			
-			\cadre{
-			\begin{pseudo}
-				\Struct{Personne}
-					\Decl nom~: chaine
-					\Decl dateNaissance~: Date
-				\EndStruct
-			\end{pseudo}
-			}
-			
-	\end{Exercice}
-
 
 %=========================
 \section{Cas particuliers}
@@ -1047,6 +979,10 @@
 		contre, le tri par insertion est inefficace car il ne permet pas un
 		arrêt anticipé.
 
+%--------------------------------------------
+% @mcd : le chef demande si on peut virer 
+% le paragraphe qui suit ?
+% --------------------------------------------
 	{\sffamily\bfseries\upshape
 	Ensemble (presque) trié}
 
@@ -1059,9 +995,9 @@
 	{\sffamily\bfseries\upshape
 	Sélection des meilleurs}
 
-		Une autre situation courante est la suivante~: \ un ensemble de valeurs
-		sont traitées (lues, calculées, ...) et il ne faut \ garder que les
-		\textstyleCodeInsr{k} plus petites (ou plus grandes).
+		Une autre situation courante est la suivante~: un ensemble de valeurs
+		sont traitées (lues, calculées, ...) et il ne faut garder que les
+		$k$ plus petites (ou plus grandes).
 		L'algorithme est plus simple à écrire si on utilise
 		une position supplémentaire en fin de tableau. Notons aussi qu’il faut
 		tenir compte du cas où il y a moins de valeurs que le nombre de valeurs
@@ -1069,10 +1005,10 @@
 		exact de valeurs dans le tableau.
 
 	{\sffamily\bfseries\scshape
-	Exemple~: les k plus petites valeurs}
+	Exemple~: les $k$ plus petites valeurs}
 
 		On lit un ensemble de valeurs strictement positives (un 0 indique la fin
-		de la lecture) et on ne garde que les «~$k$~» plus petites valeurs.
+		de la lecture) et on ne garde que les $k$ plus petites valeurs.
 
 		\bigskip
 		
@@ -1111,7 +1047,7 @@
 \section{Recherche dichotomique}
 %================================
 
-	La recherche dichotomique (ou binaire) a pour essence de réduire à
+	La recherche dichotomique a pour essence de réduire à
 	chaque étape la taille de l’ensemble de recherche de moitié, jusqu’à ce
 	qu’il ne reste qu’un seul élément dont la valeur devrait être celle
 	recherchée, sauf bien entendu en cas d’inexistence de cette valeur dans
@@ -1138,6 +1074,8 @@
 	2}}
 	\par}
 
+	N.B.~: cet élément médian n'est pas tout à fait au milieu dans 
+	le cas d'une zone contenant un nombre pair d'éléments.
 	On compare alors \textstyleCodeInsr{val}
 	avec la valeur de cet élément médian ; il est possible qu’on ait trouvé
 	la valeur cherchée; sinon, on partage la zone de recherche en deux
@@ -1154,7 +1092,7 @@
 	
 	\cadre{
 		\begin{pseudo}
-			\Module{rechercheDichotomique}{tab\InOut~: tableau[1 à k + 1] de T, valeur\In~: T, pos\Out~: entier}{booléen}
+			\Module{rechercheDichotomique}{tab\InOut~: tableau[1 à n] de T, valeur\In~: T, pos\Out~: entier}{booléen}
 				\Decl indiceDroit, indiceGauche, indiceMédian~: entiers
 				\Decl candidat~: T
 				\Decl trouvé~: booléen
@@ -1439,7 +1377,8 @@
 	{\sffamily\bfseries\upshape
 	Exemple de recherche infructueuse}
 
-		Recherchons à présent la valeur \textbf{8}. Les premières étapes vont donner
+		Recherchons à présent la valeur \textbf{8}. Les étapes de la recherche 
+		vont donner successivement
 		
 		
 		\begin{center}
@@ -1669,7 +1608,8 @@
 	\begin{liste}
 		\item 
 			Il faut que les programmes soient exécutés dans des environnements
-			strictement identiques ce qui n’est pas toujours facile
+			strictement identiques ce qui n’est pas toujours le cas ou facile 
+			à vérifier.
 		\item 
 			Le test ne porte que sur un (voir quelques uns) jeu(x) de tests. Comment
 			en tirer un enseignement général ? Que se passerait-il avec des données
@@ -1682,7 +1622,8 @@
 	\textbf{taille} du problème à résoudre. Comment va-t-il se comporter
 	sur de «~gros~» problèmes ?
 
-	Dans le cas de la recherche, la taille du problème est la taille du
+	Dans le cas de la recherche dans un tableau, 
+	la taille du problème est la taille du
 	tableau dans lequel on recherche un élément. On peut considérer que
 	l’opération de base est la comparaison avec un élément du tableau. La
 	question est alors la suivante~: pour un tableau de taille $n$, à combien
@@ -1718,7 +1659,7 @@
 	\tablehead{}
 	\begin{supertabular}{|m{4.4300003cm}|m{0.507cm}|m{0.71900004cm}|m{0.93100005cm}|m{1.2479999cm}|m{1.4599999cm}|m{1.671cm}|}
 	\hline
-	\raggedleft \bfseries $n$ &
+	\raggedright \bfseries $n$ &
 	\raggedleft \bfseries 10 &
 	\raggedleft \bfseries 100 &
 	\raggedleft \bfseries 1000 &
@@ -1726,14 +1667,14 @@
 	\raggedleft \bfseries 100.000 &
 	\raggedleft\arraybslash \bfseries 1
 	million\\\hline
-	\raggedleft \bfseries recherche linéaire &
+	\raggedright \bfseries recherche linéaire &
 	\raggedleft  5 &
 	\raggedleft  50 &
 	\raggedleft  500 &
 	\raggedleft  5.000 &
 	\raggedleft  50.000 &
 	\raggedleft\arraybslash  500.000\\\hline
-	\raggedleft \bfseries recherche dichotomique &
+	\raggedright \bfseries recherche dichotomique &
 	\raggedleft  4 &
 	\raggedleft  7 &
 	\raggedleft  10 &
@@ -1761,7 +1702,7 @@
 	\begin{center}
 	\begin{tabular}{|m{3.1cm}|m{1.0cm}|m{1.3cm}|m{1.074cm}|m{1.3cm}|m{1.287cm}|m{1.425cm}|m{1.714cm}|}
 	\hline
-	\centering \bfseries taille problème &
+	\centering \bfseries $n$ &
 	\raggedleft \bfseries 10 &
 	\raggedleft \bfseries 100 &
 	\raggedleft \bfseries 1000 &
@@ -1837,6 +1778,81 @@
 \section{	Exercices}
 %=====================
 
+	\begin{Exercice}{Sélection des maxima}
+		Développez un algorithme similaire consistant à trier un tableau par
+		ordre croissant par sélection des \textbf{maxima} successifs. Le
+		sous-tableau trié apparaitra donc à droite du tableau, et les maxima
+		sélectionnés seront à chaque étape positionnés à droite du sous-tableau
+		non trié. 
+	\end{Exercice}
+	
+	\begin{Exercice}{Maxima et minima}
+		Développez un algorithme combinant les deux recherches. À chaque étape,
+		on sélectionne donc le minimum et le maximum du sous-tableau restant à
+		trier et on les positionnera à l’endroit \textit{ad hoc}. 
+		Cette méthode apporte-t-elle une amélioration en temps ou
+		en simplicité aux deux algorithmes de base ?
+	\end{Exercice}
+
+	\begin{Exercice}{Amélioration 1}
+			Écrire une amélioration du tri bulle consistant à mémoriser à chaque
+			étape l’indice de la dernière permutation, celui-ci délimitant en fait
+			la véritable taille du sous-tableau trié à l’issue d’une étape. En lieu
+			et place de la boucle \textstyleMotCl{pour} n’incrémentant l’indice
+			bulle que de 1 à la fois, on écrira une boucle \textstyleMotCl{tant
+			que} à l’issue de laquelle \textstyleCodeInsr{indiceBulle} prendra la
+			valeur de l’indice de dernière permutation + 1.
+	\end{Exercice}
+	
+	\begin{Exercice}{Amélioration 2}
+			L’amélioration précédente est issue de l’observation du sous-tableau
+			déjà trié en début du tableau initial. On peut de même étudier la
+			possibilité d’avoir un sous-tableau, trié également, mais cadré à
+			droite dans le tableau à trier. Cette symétrie suggère une amélioration
+			supplémentaire qui consiste à changer de sens à la fin d’un parcours
+			pour entamer le parcours suivant. Lorsqu’on change de sens, on amènera
+			l’élément le plus grand (qu’on peut nommer le «~plomb~») au fond du
+			tableau non trié. L’association des deux méthodes donne ce qu’on
+			appelle le \textbf{tri shaker}, dont le but est de restreindre le
+			sous-tableau non trié en augmentant sa borne inférieure et en diminuant
+			sa borne supérieure. Écrire l’algorithme qui réalise cette méthode de
+			tri.
+	\end{Exercice}
+	
+	\begin{Exercice}{Tri de dates}
+			Écrire un algorithme qui trie un tableau de 
+			dates par ordre chronologique croissant.
+			Les dates sont des structures Date (cfr. chap. 6)
+	\end{Exercice}
+	
+	\begin{Exercice}{Tri de personnes}
+			Écrire un algorithme qui trie un tableau de personnes sur leur date
+			d'anniversaire (sans tenir compte de
+			l'année). Deux personnes nées le même jour seront
+			départagées par leur nom.
+
+			Une personne est représentée par la structure 
+			
+			
+			\cadre{
+			\begin{pseudo}
+				\Struct{Personne}
+					\Decl nom~: chaine
+					\Decl dateNaissance~: Date
+				\EndStruct
+			\end{pseudo}
+			}
+			
+	\end{Exercice}
+	
+	\begin{Exercice}{tableau de Point}
+		Écrire un algorithme qui reçoit un tableau de structures Point 
+		et trie celui-ci sur l'ordre d'éloignement de ces points par 
+		rapport à l'origine du plan. Les premiers éléments seront donc
+		ceux les plus proches du point (0, 0) et les derniers seront 
+		les points les plus éloignés.
+	\end{Exercice}
+
 	\begin{Exercice}{Calcul de complexités}
 			
 			\begin{enumerate}[label=\alph*)]
@@ -1855,7 +1871,7 @@
 					recherche des minima successifs ?
 				\item 
 					Quelle est la complexité d'un algorithme qui vérifie si
-					un tableau est un palindrome ?
+					les éléments d'un tableau forment un palindrome ?
 			\end{enumerate}
 		\end{Exercice}
 		
