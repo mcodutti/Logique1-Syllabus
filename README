@@ -18,8 +18,15 @@ log1.tex			: Le document maitre
 	log1-fin		: les dernières pages (vide pour l'instant)
 	
 Pour produire le document : pdflatex log1.tex
+
+Pour inclure l'index, il faut compiler avec :
+
+   pdflatex log1.tex
+   makeindex -s perso.ist exemple.idx
+   pdflatex log1.tex
+
 Le document est gros.
 Pour compiler plus vite, on peut 
-- décommenter la ligne \incldueonly
-- ou utiliser rubber qui offre une option 
-  pour choisir le chapitre à compiler 
+   - décommenter la ligne \incldueonly
+   - ou utiliser rubber qui offre une option 
+     pour choisir le chapitre à compiler 
