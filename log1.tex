@@ -5,6 +5,9 @@
 \input{algoesi.sty}  % Définition pour les algorithmes
 \input{auto.sty}     % Style généré par l'outil de conversion 
 
+\usepackage{makeidx} % pour générer un index
+\makeindex
+
 % Pour n'inclure que quelques chapitres
 % (plus rapide en phase d'écriture)
 % -------------------------------------
@@ -59,8 +62,11 @@
 \include{log1-chapitre-rupture}
 \include{log1-chapitre-donnee}
 \appendix
-\include{log1-annexe-parcours-tab}
-\include{log1-annexe-suites}
+%\include{log1-annexe-parcours-tab}
+%\include{log1-annexe-suites}
 \include{log1-annexe-aide-memoire}
 \include{log1-fin}
+
+\printindex
+
 \end{document}
