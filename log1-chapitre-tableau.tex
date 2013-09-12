@@ -474,7 +474,6 @@
 	\end{pseudo}
 	}
 
-	
 	Notons qu’on admet également qu’un module retourne un tableau. 
 	
 	\cadre{
@@ -505,6 +504,133 @@
 	Par contre, on ne peut pas lire ou afficher un tableau en une seule
 	instruction; il faut des instructions de lecture ou
 	d'affichage individuelles pour chacun de ses éléments.
+	
+	
+% ==============================================
+\section{Parcours d'un tableau à une dimension} \label{Les parcours de tableaux}
+% ==============================================
+
+Soit le tableau statique \textit{tab} déclaré ainsi
+
+\cadre{
+\begin{pseudo}
+	\Decl tab~: \K{tableau} [1 à n] de T \RComment où \code{T} est un type quelconque
+\end{pseudo}
+}
+
+ou soit le tableau dynamique \textit{tab} déclaré ainsi
+
+\cadre{
+\begin{pseudo}
+	\Decl tab~: \K{tableau} de T \RComment où \code{T} est un type quelconque
+	\Let tab \Gets \K{nouveau} \K{tableau} [1 à n] de T
+\end{pseudo}
+}
+
+
+Envisageons d'abord le parcours complet
+et voyons ensuite les parcours avec arrêt prématuré.
+
+\subsection{Parcours complet}
+
+Pour le parcourir, on peut utiliser la boucle \K{pour}
+comme dans l'algorithme \vref{algo:parcours1-complet-pour}
+où "traiter" va dépendre du problème concret posé~:
+afficher, modifier, sommer, \dots
+
+\begin{algorithm}[H]
+\begin{pseudo}
+	\caption{Parcours complet d'un tableau via une boucle pour}
+	\label{algo:parcours1-complet-pour}
+	\LComment Les déclarations sont omises pour ne pas alourdir les algorithmes.
+	\For{i de 1 à n}
+		\Stmt traiter tab[i]
+	\EndFor
+\end{pseudo}
+\end{algorithm}
+
+\subsection{Parcours avec sortie prématurée}
+
+Parfois, on ne doit pas forcement parcourir le tableau jusqu'au bout
+mais on pourra s'arrêter prématurément si une certaine condition est remplie.
+Par exemple~:
+\begin{liste}
+\item on cherche la présence d'un élément et on vient de le trouver ;
+\item on vérifie qu'il n'y a pas de $0$ et on vient d'en trouver un.
+\end{liste}
+
+La première étape est de transformer le \K{pour} en \K{tant que}
+ce qui donne l'algorithme \vref{algo:parcours1-complet-tq}.
+
+\begin{algorithm}[H]
+\begin{pseudo}
+	\caption{Parcours complet d'un tableau via une boucle tant-que}
+	\label{algo:parcours1-complet-tq}
+	\Let i \Gets 1
+	\While{i $\le$ n}
+		\Stmt traiter tab[i]
+		\Let i \Gets i + 1
+	\EndWhile
+\end{pseudo}
+\end{algorithm}
+
+On peut à présent introduire le test d'arrêt.
+Une contrainte est qu'on voudra, à la fin de la boucle, savoir
+si oui ou non on s'est arrêté prématurément et, si c'est le cas,
+à quel indice.
+
+Il existe essentiellement deux solutions, avec ou sans variable booléenne.
+En général, la solution [A] sera plus claire si le test est court.
+
+\subsubsection*{[A] Sans variable booléenne}
+
+\begin{algorithm}[H]
+\begin{pseudo}
+	\caption{Parcours partiel d'un tableau sans variable booléenne}
+	\label{algo:parcours1-partiel-sans-bool}
+	\Let i \Gets 1
+	\While{i $\le$ n ET \textit{test sur \code{tab[i]} dit que on continue}}
+		\Let i \Gets i + 1
+	\EndWhile
+	\If{i $>$ n}
+		\LComment on est arrivé au bout
+	\Else
+		\LComment arrêt prématuré à l'indice i.
+	\EndIf
+\end{pseudo}
+\end{algorithm}
+
+On pourrait inverser les deux branches du \K{si-sinon} en inversant le test
+mais attention à ne pas tester tab[i] car $i$ n'est peut-être pas valide.
+
+\subsubsection*{[B] Avec variable booléenne}
+
+\begin{algorithm}[H]
+\begin{pseudo}
+	\caption{Parcours partiel d'un tableau avec variable booléenne}
+	\label{algo:parcours1-partiel-avec-bool}
+	\Let i \Gets 1
+	\Let trouvé \Gets faux
+	\While{i $\le$ n ET NON trouvé}
+		\If{\textit{test sur \code{tab[i]} dit que on a trouvé}}
+			\Let trouvé \Gets vrai
+		\Else
+			\Let i \Gets i + 1
+		\EndIf
+	\EndWhile
+	\LComment tester le booléen pour savoir si arrêt prématuré.
+\end{pseudo}
+\end{algorithm}
+
+Attention à bien choisir un nom de booléen adapté au problème
+et à l'initialiser à la bonne valeur. 
+Par exemple, si la variable s'appelle "continue"
+\begin{liste}
+\item initialiser la variable à vrai ;
+\item le test de la boucle est "\dots ET continue" ;
+\item mettre la variable à faux pour sortir de la boucle.
+\end{liste}
+
 	
 
 % ==================
@@ -544,45 +670,51 @@
 
 \begin{Exercice}{Nombre d'éléments d'un tableau}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de $n$ entiers et qui
+	\textstyleCodeInsr{tabRéels} de $n$ réels et qui
 	retourne le nombre d’éléments du tableau.
 \end{Exercice}
 
-\begin{Exercice}{La présence d'un 0}
+\begin{Exercice}{Y a-t-il un pilote dans l'avion}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de $n$ entiers 
+	\textstyleCodeInsr{avion} de $n$ chaines 
 	et qui retourne un booléen 
-	indiquant s'il contient au moins un 0. 
+	indiquant s'il contient au moins un élément de 
+	valeur <<pilote>>. 
 \end{Exercice}
 
 \begin{Exercice}{Plus grand écart absolu}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de $n$ entiers et qui
-	retourne le plus grand écart absolu entre deux éléments consécutifs de
-	ce tableau.
+	\textstyleCodeInsr{températures} de $n$ réels et qui
+	retourne le plus grand écart absolu entre deux températures 
+	consécutives de ce tableau.
 	Et si on veut le plus petit écart ?
 \end{Exercice}
 
 \begin{Exercice}{Remplacement de valeurs}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de $n$ entiers et qui
-	remplace dans ce tableau toutes les valeurs multiples de 3 par 0.
+	\textstyleCodeInsr{prénoms} de $n$ chaines et qui
+	contrôle si tous les prénoms commencent par une majuscule.
+	Dans la négative, il remplacera la première lettre du prénom 
+	par une majuscule.
+	
+	\textit{Rappel}~: pour manipuler les chaines et les caractères,
+	vous avez à votre disposition les modules fournis en annexe.
 \end{Exercice}
 
 \begin{Exercice}{Tableau ordonné ?}
 	\marginicon{java}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de $n$ entiers et qui
+	\textstyleCodeInsr{valeurs} de $n$ entiers et qui
 	vérifie si ce tableau est ordonné (strictement) croissant sur les
 	valeurs. Le module retournera \textbf{vrai} si le tableau est ordonné,
 	\textbf{faux} sinon.
 \end{Exercice}
 
-\begin{Exercice}{Position des minimums}
+\begin{Exercice}{Position des maxima}
 	\marginicon{java}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de $n$ entiers et qui
-	affiche le ou les indice(s) des éléments contenant la valeur minimale
+	\textstyleCodeInsr{cotes} de $n$ entiers et qui
+	affiche le ou les indice(s) des éléments contenant la valeur maximale
 	du tableau.
 
 	\begin{enumerate}[label=\alph*)]
@@ -590,17 +722,17 @@
 		écrire une première version «~classique~» avec deux parcours de tableau
 	\item
 		écrire une deuxième version qui ne parcourt qu’une seule fois 
-		\textstyleCodeInsr{tabEnt} en
+		\textstyleCodeInsr{cotes} en
 		stockant dans un deuxième tableau les indices des plus petits éléments
 		rencontrés (ce tableau étant à chaque fois réinitialisé lorsqu’un
-		nouveau minimum est rencontré)
+		nouveau maximum est rencontré)
 	\end{enumerate}
 \end{Exercice}
 
 \begin{Exercice}{Renverser un tableau}
 	\marginicon{java}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de $n$ entiers, et qui
+	\textstyleCodeInsr{tabCar} de $n$ caractères, et qui
 	«~renverse~» ce tableau, c’est-à-dire qui permute le premier élément
 	avec le dernier, le deuxième élément avec l’avant-dernier et ainsi de
 	suite.
@@ -608,7 +740,7 @@
 
 \begin{Exercice}{Tableau symétrique ?}
 	Écrire un module qui reçoit en paramètre le tableau
-	\textstyleCodeInsr{tabEnt} de $n$ entiers et qui
+	\textstyleCodeInsr{tabChaines} de $n$ chaines et qui
 	vérifie si ce tableau est symétrique, c’est-à-dire si le premier
 	élément est identique au dernier, le deuxième à l’avant-dernier et
 	ainsi de suite.

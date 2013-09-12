@@ -172,7 +172,7 @@ Pour détecter la fin de fichier, on utilise la
 \textbf{notation}\footnote{Dans certains langages, il
 s'agira d'une variable en lecture
 seule; dans d'autres langages, ce sera un appel de
-module ou de méthode.}\textstyleCodeInsr{EOF(nomFichier)}.
+module ou de méthode.} \textstyleCodeInsr{EOF(nomFichier)}.
 Après une lecture \textstyleCodeInsr{EOF(nomFichier)} prend la valeur
 \textbf{vrai} si la \textbf{fin de fichier} a été détectée et
 \textbf{faux} sinon.
@@ -714,19 +714,15 @@ la séquence.
 
 \bigskip
 
-{\sffamily\bfseries\scshape
-Exercice – Adaptation aux tableaux et aux listes}
+\begin{Emphase}{Exercice – Adaptation aux tableaux et aux listes}
 
 Que deviennent les méthodes de la classe Séquence de T pour un
 tableau/une liste ?
+\end{Emphase}
 
 %==================
 \section{Exercices}
 %==================
-
-Pour ces exercices, vous pouvez utiliser les notations orienté objet ou
-non mais restez cohérents au sein d'un même exercice
-(pas de mélange).
 
 \begin{Exercice}{Algorithmes de base}
 	
@@ -752,30 +748,29 @@ non mais restez cohérents au sein d'un même exercice
 			recherche d’un élément connaissant sa «~clé~», c’est-à-dire renvoi en
 			paramètre du premier enregistrement du fichier dont le champ
 			\code{clé} est égal à la valeur \code{val}
-			entrée en paramètre. On renverra également un paramètre booléen
+			entrée en paramètre. On retournera également un booléen
 			traduisant l’existence ou non de l’élément cherché. 
 	\end{enumerate}
 \end{Exercice}
 
 \begin{Exercice}{Copies et modifications de fichiers}
 	
-	Les énoncés suivants sont volontairement «~flous~». À vous de préciser
-	leur modalités de fonctionnement et de prévoir les différents scénarios
-	possibles.
+	On considère un fichier d'\code{Elément} comme à l'exercice 1. 
+	Pensez à prévoir les différents scénarios possibles.
 	
 	\begin{enumerate}[label=\alph*)]
 		\item 
-			Écrire un algorithme qui supprime le \textit{n}{}-ème élément d’un
+			Écrire un algorithme qui supprime le $n$-ème élément d’un
 			fichier
 		\item 
 			Écrire un algorithme qui supprime d’un fichier les éléments dont la
-			valeur d’un certain champ est égale à une valeur entrée en paramètre 
+			valeur du champs \code{info} est égale à une valeur entrée en paramètre 
 		\item 
 			Écrire un algorithme qui insère dans un fichier une valeur entrée en
-			paramètre en \textit{n}{}-ème position
+			paramètre (type \code{Elément}) en $n$-ème position
 		\item 
 			Écrire un algorithme qui «~éclate~» un fichier en deux fichiers ; le
-			premier contiendra les éléments dont la valeur d’un certain champ est
+			premier contiendra les éléments dont la valeur du champs \code{numéro} est
 			inférieure à une valeur entrée en paramètre, et le deuxième contiendra
 			les autres éléments.
 	\end{enumerate}
@@ -815,7 +810,7 @@ non mais restez cohérents au sein d'un même exercice
 	\Struct{Prof}
 	\Decl nom : chaine
 	\Decl âge : entier
-	\Decl sexe : booléen \RComment {\textbf{vrai} si masculin, \textbf{faux} si féminin}
+	\Decl sexe : énumération \{ HOMME, FEMME \} 
 	\Decl dateIn : Date \RComment date d’entrée en fonction 
 	\EndStruct
 	\end{pseudo}
@@ -828,7 +823,7 @@ non mais restez cohérents au sein d'un même exercice
 			affiche les noms des professeurs qui auront 20 ans d’ancienneté ou plus
 			au 31 décembre prochain
 		\item 
-			affiche l’âge moyen du corps professora
+			affiche l’âge moyen du corps professoral
 		\item 
 			affiche en \% la proportion de femmes dans le corps professoral
 	\end{enumerate}
@@ -849,10 +844,10 @@ non mais restez cohérents au sein d'un même exercice
 	\Decl nom : chaine
 	\Decl adresse : chaine
 	\Decl téléphone : chaine
-	\Decl date : Date \RComment Date de naissance 
-	\Decl taille : réel \RComment La taille en mètre
-	\Decl poids : réel \RComment Le poids en kilo
-	\Decl pts : entier \RComment Points obtenus à l’examen coté sur 150
+	\Decl date : Date \RComment date de naissance 
+	\Decl taille : réel \RComment taille en mètre
+	\Decl poids : réel \RComment poids en kilo
+	\Decl pts : entier \RComment points obtenus à l’examen coté sur 150
 	\EndStruct
 	\end{pseudo}
 	}
@@ -884,9 +879,11 @@ non mais restez cohérents au sein d'un même exercice
 \end{Exercice}
 
 \begin{Exercice}{Le top 10}
-	Soit le fichier \code{fileNb} dont les enregistrements
-	sont des nombres entiers. Écrire l’algorithme qui relève les dix plus
-	petites valeurs différentes dans ce fichier et les affiche.
+	Soit le fichier \code{coureurs} dont les enregistrements
+	sont des structures contenant un \code{nom} et un \code{timing} 
+	(objet de la classe Moment). 
+	Écrire l’algorithme qui affiche le palmarès des dix 
+	coureurs les plus rapides.
 \end{Exercice}
 
 \begin{Exercice}{Le méli-mélo de cartes}
@@ -1004,25 +1001,26 @@ non mais restez cohérents au sein d'un même exercice
 	\end{pseudo}
 	}
 
-	Les messages possibles sont un des six suivants :
+	Le contenu du tableau \code{messages} est le suivant
+	(ce sont les seuls messages possibles)~:
 
 	\begin{tabular}{|>{\centering\arraybackslash}m{0.36cm}|m{13cm}|}
 		\hline
-		 1 &
+		 1~:
 		 Le stage que vous avez demandé \textbf{n’existe
 		pas} ! La référence est incorrecte\\\hline
-		 2 &
+		 2~:
 		 Votre êtes \textbf{trop jeune} pour participer
 		au stage que vous avez demandé !\\\hline
-		 3 &
+		 3~:
 		 Vous être \textbf{trop âgé} pour participer au
 		stage que vous avez demandé !\\\hline
-		 4 &
+		 4~:
 		 Désolé ! Le stage demandé \textbf{est complet}\\\hline
-		 5 &
+		 5~:
 		 Votre inscription pour le stage est \textbf{mise
 		en attente} ; pas encore assez d’inscrits\\\hline
-		 6 &
+		 6~:
 		 Votre inscription pour le stage demandé
 		\textbf{est acceptée}\\\hline
 	\end{tabular}

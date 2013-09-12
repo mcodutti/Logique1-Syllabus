@@ -575,12 +575,14 @@
 		}
 
 		\marginicon{reflexion}
-		\textbf{Réflexion} : 
+		\textbf{Réflexions}~: 
+		\begin{itemize}
+		\item
 		Quelle valeur sentinelle prendrait-on 
 		pour additionner une série de cotes d'interrogations ? 
 		Une série de températures ?
 
-		\textbf{Réflexion} : 
+		\item
 		Dans les solutions 2 et 3 on lit une variable booléenne. 
 		Comment un programmeur pourrait-il réaliser 
 		cette instruction de façon pratique ?
@@ -588,6 +590,136 @@
 		Voilà ! Vous devriez à présent être en mesure de
 		résoudre les exercices qui suivent.
 		Courage ! Et n'en passez aucun !
+		\end{itemize}
+		
+
+Ce chapitre propose en exercice des suites.
+Toutes ces suites peuvent se résoudre 
+en suivant un même squelette d'algorithme 
+que nous allons expliquer ici.
+
+Un exemple simple pourrait être celui-ci~:
+
+\subsection{Exemple 6~: Suite des nombres pairs}
+	Écrire l'algorithme qui affiche les $n$ premiers termes
+	de la suite: $2$, $4$, $6$ \dots.
+
+
+Puisqu'on doit écrire plusieurs nombres et qu'on sait exactement combien,
+on se tournera tout naturellement vers une boucle \K{pour}.
+
+Le cas le plus simple est lorsque le nombre à afficher à l'étape $i$
+peut être calculé en fonction de $i$ seulement.
+L'algorithme est alors
+
+\cadre{
+\begin{pseudo}
+\For{i de 1 à n}
+	\Write $f(i)$
+\EndFor
+\end{pseudo}
+}
+
+Dans ce cas, la fonction est $f(i)=2*i$
+(Si vous n'êtes pas convaincu, vérifiez qu'à l'étape $1$ on affiche $2$,
+à l'étape $2$ on affiche $4$ \dots) ce qui donne
+
+\cadre{
+\begin{pseudo}
+\Module{nombrePair}{n\In: entier}{}
+	\Decl i : entier
+	\For{i de 1 à n}
+		\Write 2 * i
+	\EndFor
+\EndModule
+\end{pseudo}
+}
+
+Parfois, il est difficile (voire impossible) de trouver $f(i)$.
+On suivra alors une autre approche qui revient à calculer un nombre
+à afficher à partir du nombre précédemment affiché
+(ou, plus exactement, de calculer le suivant à partir du nombre
+qu'on vient d'afficher).
+La structure générale est alors
+
+\cadre{
+\begin{pseudo}
+\Let nb \Gets \textit{\{1\up{ère} valeur à afficher\}}
+\For{i de 1 à n}
+	\Write nb
+	\Let nb \Gets \textit{\{calculer ici le nb suivant\}}
+\EndFor
+\end{pseudo}
+}
+
+Dans l'exemple de la suite paire, le 1\up{er} nombre à afficher est $2$
+et le nombre suivant se calcule en ajoutant $2$ au nombre courant.
+
+\cadre{
+\begin{pseudo}
+\Module{suite1}{n\In: entier}{}
+	\Decl nb, i : entiers
+	\Let nb \Gets 2
+	\For{i de 1 à n}
+		\Write nb
+		\Let nb \Gets nb + 2
+	\EndFor
+\EndModule
+\end{pseudo}
+}
+
+On remarque que, lors du dernier passage dans la boucle,
+on calcule une valeur qui ne sera pas affichée.
+Cette petite perte de temps est dommage mais négligeable
+et permet de garder une structure claire et générale à la solution.
+
+Dans certains cas,
+il n'est pas possible de déduire directement le nombre suivant
+en connaissant juste le nombre précédent.
+Prenons un exemple un peu plus compliqué pour l'illustrer.
+
+\subsection{Exemple 7~: 3 pas en avant, 2 pas en arrière} 
+	Écrire l'algorithme qui affiche les $n$ premiers termes
+	de la suite: $1$, $2$, $3$, $4$, $3$, $2$, $3$, $4$, $5$, $4$, $3$ \dots.
+
+Si on vient d'écrire, disons un $3$,
+impossible sans information supplémentaire,
+de connaitre le nombre suivant.
+Il faudrait savoir si on est en phase d'avancement ou de recul
+et combien de pas il reste à faire dans cette direction.
+
+Ajoutons des variables pour retenir l'\emph{état} où on est.
+
+\cadre{
+\begin{pseudo}
+\Module{suite3Avant2Arrière}{n\In: entier}{} 
+	\Decl nb, nbPasRestants, direction, i : entiers
+	\Let nb \Gets 1
+	\Let nbPasRestants \Gets 3 \RComment 3 pas
+	\Let direction \Gets 1 \RComment en avant
+	\For{i de 1 à n}
+		\Write nb
+		\Let nb \Gets nb + direction \RComment faire un pas dans la bonne direction
+		\Let nbPasRestants \Gets nbPasRestants - 1
+		\If{nbPasRestants $=$ 0} \RComment il est temps de changer de direction
+			\Let direction \Gets -direction
+			\If{direction $=$ 1}
+				\Let nbPasRestants \Gets 3 
+			\Else 
+				\Let nbPasRestants \Gets 2
+			\EndIf
+		\EndIf
+	\EndFor
+\EndModule
+\end{pseudo}
+}
+
+On obtient un algorithme plus long 
+mais qui respecte toujours le schéma vu.
+
+\textbf{Un conseil}~: essayez de respecter ce schéma 
+et vous obtiendrez plus facilement un algorithme
+correct et lisible, également dans les cas particuliers.
 		
 
 % ==================

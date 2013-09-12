@@ -55,7 +55,7 @@ fournir)
 				\RComment vide la liste
 			\MethodSign{estVide}{}{booléen}
 				\RComment la liste est-elle vide ?
-			\MethodSign{existe}{valeur \In : T, poso \Out : entier}{booléen}
+			\MethodSign{existe}{valeur \In : T, pos \Out : entier}{booléen}
 				\RComment recherche un élément
 		\EndClass
 \end{pseudo}
@@ -80,7 +80,8 @@ Quelques précisions s’imposent :
 	\item 
 		Les méthodes «\textstyleCodeInsr{~get~}» et «\textstyleCodeInsr{~set~}»
 		permettent de connaitre ou modifier un élément de la liste. On
-		considère que le premier élément de la liste est en position 1.
+		considère, au cours de logique, que le premier élément de 
+		la liste est en position 1.
 	\item 
 		«\textstyleCodeInsr{~ajouter~}» ajoute un élément en fin de liste (elle
 		grandit donc d’une unité)
@@ -103,19 +104,21 @@ Quelques précisions s’imposent :
 		paramètre enlève un élément de valeur donnée. Elle retourne un booléen
 		indiquant si la suppression a pu se faire ou pas (ce qui sera le cas si
 		la valeur n’est pas présente dans la liste). Si la valeur existe en
-		plusieurs exemplaires, la méthode n’en supprime que la première
-		occurrence.
+		plusieurs exemplaires, on prendra la convention arbitraire que
+		la méthode n’en supprime que la première	occurrence.
 	\item 
 		La méthode «\textstyleCodeInsr{~existe~}» permet de savoir si un élément
 		donné existe dans la liste. 
-	\item 
-		si c’est le cas, elle donne aussi sa position.
-	\item 
-		si l’élément n’existe pas, le paramètre ‘\textstyleCodeInsr{pos}’ est
-		indéterminé 
-	\item 
-		si l’élément est présent en plusieurs exemplaires, la méthode donne la
-		position de la première occurrence.
+		\begin{liste}
+			\item 
+				si c’est le cas, elle précise aussi sa position dans le paramètre sortant 
+				\code{pos}
+			\item 
+				si l’élément n’existe pas, ce paramètre est	indéterminé 
+			\item 
+				si l’élément est présent en plusieurs exemplaires, la méthode donne la
+				position de la première occurrence.
+		\end{liste}
 	\item 
 		En pratique, il serait intéressant de chercher un élément à partir d’une
 		partie de l’information qu’elle contient mais c’est difficile à
@@ -250,10 +253,10 @@ en fin de liste, deux cas se présentent :
 
 \begin{liste}
 	\item 
-		Si la taille logique est plus petite que la taille physique, il suffit
+		si la taille logique est plus petite que la taille physique, il suffit
 		d’ajouter l’élément dans le tableau et d’adapter la taille logique.
 	\item 
-		Par contre, si la taille logique est égale à la taille physique, il faut
+		si la taille logique est égale à la taille physique, il faut
 		procéder à un agrandissement du tableau.
 \end{liste}
 
@@ -288,8 +291,8 @@ d’agrandissement du tableau.
 \textbf{Réduction du tableau}. Tout comme on agrandit le tableau si
 nécessaire, on pourrait le réduire lorsque des suppressions d’éléments
 le rendent sous-utilisé (par exemple lorsque la taille logique devient
-inférieure au tiers de la taille physique). Nous n’abordons toutefois
-pas cette problématique ici.
+inférieure au tiers de la taille physique). 
+Nous aborderons cette problématique dans un des exercices qui suivent.
 
 
 %=======================================
@@ -303,7 +306,7 @@ publiques de la classe.
 \begin{pseudo}
 	\Constr{Liste <T>}{}
 		\Let tailleLogique \Gets 0
-		\RComment La liste est vide au départ
+		\RComment la liste est vide au départ
 		\Let taillePhysique \Gets 32
 		\RComment une bonne valeur pour commencer
 		\Let éléments \Gets \K{nouveau} \K{tableau} [ 1 à taillePhysique ] de T
@@ -317,7 +320,7 @@ publiques de la classe.
 \begin{pseudo}
 	\Method{get}{pos : entier}{T}
 		\If{ pos < 1 OU pos > tailleLogique}
-			\Error position invalide
+			\Error "position invalide"
 		\EndIf
 		\Return éléments[ pos ]
 	\EndMethod
@@ -330,7 +333,7 @@ publiques de la classe.
 \begin{pseudo}
 	\Method{set}{pos : entier, valeur : T}{}
 		\If{ pos < 1 OU pos > tailleLogique}
-			\Error position invalide
+			\Error "position invalide"
 		\EndIf
 		\Let éléments[ pos ] \Gets valeur
 	\EndMethod
@@ -343,7 +346,7 @@ publiques de la classe.
 \begin{pseudo}
 	\Method{taille}{}{entier}
 		\Return tailleLogique
-		\RComment Et pas la taille physique !
+		\RComment et pas la taille physique !
 	\EndMethod
 \end{pseudo}
 }
@@ -369,7 +372,7 @@ publiques de la classe.
 \begin{pseudo}
 	\Method{insérer}{pos : entier, valeur : T}{}
 		\If{ pos < 1 OU pos > tailleLogique+1}
-			\K{erreur} position invalide
+			\Error "position invalide"
 		\EndIf
 		\If{tailleLogique = taillePhysique}
 			\Stmt agrandir()
@@ -387,8 +390,9 @@ publiques de la classe.
 \cadre{
 \begin{pseudo}
 	\Method{supprimer}{}{}
+		\LComment supprime le dernier élément
 		\If{tailleLogique = 0}
-			\Error liste vide
+			\Error "liste vide"
 		\EndIf
 		\Let tailleLogique \Gets tailleLogique - 1
 	\EndMethod
@@ -401,9 +405,10 @@ publiques de la classe.
 \begin{pseudo}
 	\Method{supprimerPos}{pos : entier}{}
 		\If{ pos < 1 OU pos > tailleLogique}
-			\Error position invalide
+			\Error "position invalide"
 		\EndIf
 		\Stmt décalerGauche( pos + 1 )
+		\RComment voir méthode ci-dessous
 		\Let tailleLogique\Gets tailleLogique - 1
 	\EndMethod
 \end{pseudo}
@@ -414,13 +419,13 @@ publiques de la classe.
 \cadre{
 \begin{pseudo}
 	\Method{supprimer}{valeur: T}{}
-		\Decl existe : booléen
+		\Decl estPrésent : booléen
 		\Decl pos : entier
-		\Let existe \Gets existe(valeur, pos)
-		\If{existe}
+		\Let estPrésent \Gets existe(valeur, pos)
+		\If{estPrésent}
 			\Stmt supprimer( pos )
 		\EndIf
-		\Return existe
+		\Return estPrésent
 	\EndMethod
 \end{pseudo}
 }
@@ -454,10 +459,10 @@ publiques de la classe.
 		\Let pos \Gets 1
 		\LComment Rq : le ET ci-dessous est une évaluation 
 		court-circuitée (cf. chapitre 3)
-		\While{ pos{${\leq}$}tailleLogique ET éléments[ pos ]{${\neq}$}valeur}
+		\While{ pos {${\leq}$} tailleLogique ET éléments[ pos ] {${\neq}$} valeur}
 			\Let pos \Gets pos + 1
 		\EndWhile
-		\Return pos{${\leq}$}tailleLogique
+		\Return pos {${\leq}$} tailleLogique
 	\EndMethod
 \end{pseudo}
 }
@@ -531,16 +536,16 @@ faut générer une erreur.
 %===================
 
 \begin{Exercice}{Liste des premiers entiers}
-	Écrire un module qui reçoit un entier n en paramètre et retournant la
-	liste contenant les entiers de 1 à n dans l'ordre
-	décroissant. On peut supposer que n est positif.
+	Écrire un module qui reçoit un entier $n$ en paramètre et retourne la
+	liste contenant les entiers de 1 à $n$ dans l'ordre
+	décroissant. On peut supposer que $n$ est positif.
 \end{Exercice}
 	
-\begin{Exercice}{	Liste des premiers entiers}
+\begin{Exercice}{Le nettoyage}
 	Écrire un module qui reçoit une liste de chaines en paramètre et
 	supprime de cette liste tous les éléments de valeur donnée en
 	paramètre. L'algorithme retournera le nombre de
-	suppressions effectuées
+	suppressions effectuées.
 \end{Exercice}
 	
 \begin{Exercice}{Somme d'une liste}
@@ -557,8 +562,8 @@ faut générer une erreur.
 \begin{Exercice}{Anniversaires}
 		Écrire un module qui reçoit une liste de Personne (nom + prénom + date
 		de naissance ; cf. exercice dans le chapitre OO) et retourne la liste
-		de ceux qui sont nés durant un mois passé en paramètre (entier entre 1
-		et 12)
+		de ceux qui sont nés durant un mois passé en paramètre (donné sous la 
+		forme d'un entier entre 1	et 12).
 \end{Exercice}
 	
 \begin{Exercice}{Concaténation de deux listes}
@@ -597,81 +602,90 @@ faut générer une erreur.
 		\end{enumerate}
 \end{Exercice}
 
-\begin{Exercice}{La chaine}
-	Nous utilisons déjà un type chaine.
-	Faisons-en une classe et dotons-la de
-	méthodes souvent utiles.
+\begin{Exercice}{Perfectionnement de la classe Liste}
+	Dans l’implémentation de la liste, nous avons écrit 
+	une méthode privée \code{agrandir} qui remplace le tableau 
+	\code{éléments} par un autre tableau deux fois plus grand. 
+	On demande à présent d’implémenter dans la classe 
+	une méthode \code{rétrécir}, qui consistera à diviser la 
+	taille physique du tableau par 2 lorsque la taille 
+	logique devient inférieure au tiers de la taille physique.
+	Adapter également le code des méthodes qui sont concernées 
+	par ce rétrécissement du tableau éléments.
 
+\end{Exercice}
+
+\begin{Exercice}{Une classe texte}
+	Un texte est composé de mots et de caractères de ponctuation. 
+	Ils sont séparés par des espaces (caractères «~blanc~») dont 
+	nous ne tenons pas compte ici. Dans notre implémentation, nous 
+	représenterons les mots par des chaines et les caractères de ponctuation 
+	(‘.’, ‘?’, ‘!’, ‘~:’, ‘;’,~etc.) par des chaines d’un seul caractère. 
+	Un texte peut alors être vu comme une Liste <chaines>. 
+	Exemple~: le texte <<Qu’il est bon d’être à l’ESI~!>>
+	sera représenté par une liste contenant les 13 éléments suivants~:
 	\begin{center}
 	\tablehead{}
-	\begin{supertabular}{|m{11.597cm}|}
+	\begin{supertabular}{|m{8cm}|}
 		\hline
-		\centering\arraybslash  Chaine\\\hline
-		 {}- listeCar : Liste <caractères>\\\hline
-		{ + Chaine( )\ \ // crée une chaine vide}
-
-		{ {+ }Chaine( tab : tableau [1 à n] de caractères )
-		\ \ // crée une chaine initialisée au contenu du tableau}
-
-		{ {+ getCaractère ( i : entier ) }\textsf{→} {caractère}}
-
-		{ + concatène( autre : Chaine ) // ajoute autre à
-		la fin de la chaine}
-
-		{ {+ sousChaine( début,
-		taille : entiers ) }\textsf{→} {Chaine
-		\ \ // donne la chaine de taille donnée commençant à la
-		\ \ // position début. La chaine n'est pas modifiée}}
-
-		{ {+ existe(
-		chaineCherchée : Chaine, position~}\textsf{↑}
-		:{ entier ) }\textsf{→}
-		{booléen
-		\ \ // indique si la chaineCherchée est une sous-chaine;
-		\ \ // Si oui, donne la position de la sous-chaine
-		\ \ // Si la sous-chaine existe en plusieurs exemplaires, on
-		\ \ // donne la première occurrence.}}
-
-		{ {+ remplacer(
-		chaineARemplacer, par : Chaine ) }\textsf{→}
-		{booléen
-		\ \ // retourne un booléen indiquant si au moins un
-		\ \ // remplacement a eu lieu (ce qui ne sera pas le cas si la}}
-
-		{ \ \ // chaine à remplacer n’était pas
-		présente)}
-
-		 {+ taille() }\textsf{→}
-		{entier \ // nb de caractères de la
-		chaine}\\\hline
+		Qu \\
+		’	\\
+		il \\
+		est \\
+		bon \\
+		d \\
+		’ \\
+		être \\
+		à \\
+		l \\
+		’ \\
+		ESI \\
+		! \\\hline
 	\end{supertabular}
 	\end{center}
 	
-	Par facilité, on supposera qu’écrire une chaine littéralement revient à
-	créer un objet Chaine initialisé de la même façon. (ex : «~Bonjour~»
-	est équivalent à «~nouveau Chaine (tab)~» où tab est un tableau
-	contenant les caractères 'B',
-	'o',
-	'n',
-	'j',
-	'o',
-	'u',
-	'r'.
-
-	\textbf{Utilisation de la chaine.}
-
-	\begin{enumerate}[label=\alph*)]
-		\item 
-			Écrire un module qui reçoit un nom complet
-			sous la forme «~nom, prénom~» (le nom et le prénom sont donc séparés
-			par une virgule et un espace) et dissocie le nom du prénom. 
-		\item 
-			Écrire un module qui remplace dans une chaine
-			tous les «~HEB-ESI~» par «~ESI~»
-		\item 
-			Idem mais pour le changement inverse 
-			(remplacer tous les «~ESI~» par «~HEB-ESI~»)
+	Nous allons définir une classe Texte dont le seul attribut privé sera~: 
+	\code{listeTxt~: Liste <chaines>}
+	On demande d’écrire~:
+	\begin{enumerate}
+	\item
+		un constructeur sans paramètre créant un texte vide
+	\item
+		un constructeur recevant en paramètre un tableau de chaines 
+		(possédant $n$ éléments) et qui initialise le texte avec 
+		le contenu du tableau
+	\item
+		une méthode \code{taille} qui retourne le nombre de mots du texte 
+		(les caractères de ponctuation ne sont pas comptés par cette méthode~; 
+		ainsi, la taille du texte de l’exemple ci-dessus est 9)
+	\item
+		une méthode \code{extrait(départ, nombre~: entier)} $\rightarrow$ 
+		\code{Texte} 
+		qui retourne la portion de texte débutant à l’indice départ 
+		de la liste et possédant le nombre d’éléments spécifié par 
+		le paramètre nombre (mots et caractères de ponctuation confondus). 
+		Par exemple, extrait(5, 4) appliqué au texte ci-dessus renverrait 
+		le texte <<bon d’être>>
+	\item
+		une méthode \code{identique(autreTexte~: Texte)} $\rightarrow$ \code{booléen} 
+		qui indique si 2 textes sont identiques au caractère de ponctuation près
+	\item
+		une méthode \code{quasiIdentique(autreTexte~: Texte)} $\rightarrow$ \code{booléen} 
+		qui indique si les mots des 2 textes sont les mêmes, des différences 
+		pouvant être admises au niveau de la ponctuation. Par exemple, les textes~:
+		
+		<<Il m’a dit, en me regardant dans les yeux, que j’étais stupide.>>
+		
+		et
+		
+		<<Il m’a dit en me regardant dans les yeux que j’étais… «~stupide~»~!>>
+		
+		sont quasi identiques, mais pas identiques.
 	\end{enumerate}
+		Détaillez le code de cette classe. Vous pouvez utiliser (sans le détailler) le module
+		\code{estPonctuation(ch~: chaine)} $\rightarrow$ \code{booléen}
+		qui indique si une chaine est un caractère de ponctuation.
+			
 \end{Exercice}
 
 	
@@ -773,7 +787,7 @@ faut générer une erreur.
 				\MethodSign{union}{autreEnsemble : Ensemble <T>}{Ensemble <T>}
 				\MethodSign{intersection}{autreEnsemble : Ensemble <T>}{Ensemble <T>}
 				\MethodSign{moins}{autreEnsemble : Ensemble <T>}{Ensemble <T>}
-				\MethodSign{liste}{}{Liste <T>}
+				\MethodSign{listeÉléments}{}{Liste <T>}
 				\RComment conversion en liste
 		\EndClass
 	\end{pseudo}
@@ -795,7 +809,7 @@ faut générer une erreur.
 			à ces 2 ensembles. On aurait pu envisager des méthodes modifiant
 			l'ensemble sur lequel on les appelle.
 		\item 
-			La méthode \textstyleCodeInsr{liste()}
+			La méthode \textstyleCodeInsr{listeÉlément()}
 			est nécessaire si on veut parcourir les éléments de
 			l'ensemble (par exemple pour les afficher).
 	\end{liste}

@@ -5,16 +5,16 @@
 \marginicon{objectif}
 
 Dans ce chapitre, on étudie une classe de problèmes qui peuvent tous se
-résoudre avec un même type d'algorithme :
+résoudre avec un même type d'algorithme~:
 l'algorithme de rupture. À la fin du chapitre vous
-devrez être capable de :
+devrez être capable de~:
 
 \begin{liste}
 	\item 
-		Détecter qu'on se trouve bien face à un problème qui
+		détecter qu'on se trouve bien face à un problème qui
 		peut entrer dans le cadre d'un algorithme de rupture.
 	\item 
-		Adapter le squelette général de l'algorithme de rupture
+		adapter le squelette général de l'algorithme de rupture
 		au problème donné.
 \end{liste}
 
@@ -24,9 +24,9 @@ devrez être capable de :
 %===============================
 
 Dans le chapitre sur les tris, nous avons abordé naturellement la notion
-du classement des données. Néanmoins, les données concernées étaient
-dans ces cas des variables dites «~simples~» : nombres (entiers ou
-réels) ou chaines, variables pour lesquelles la relation d’ordre est
+du classement des données. Le plus souvent, les données concernées étaient
+des variables dites «~simples~»~: nombres (entiers ou
+réels), chaines ou variables pour lesquelles la relation d’ordre est
 évidente (ordre numérique ou alphabétique). Les algorithmes mis en
 œuvre peuvent facilement s’adapter pour d’autre types, par exemple des
 objets Date, où l’opérateur de comparaison est remplacé par la méthode
@@ -49,9 +49,10 @@ de l’information qu’on veut retirer de l’ensemble des données. Notons
 aussi que l’ordre de classement peut être pour chaque critère croissant
 ou décroissant.
 
-Prenons l’exemple d’une structure Etudiant, contenant les champs
-matricule, nom, prénom, dateNais (date de naissance) et option (G, I ou
-R). Pour l’exemple, considérons une liste de 6 étudiants :
+Prenons l’exemple d’une structure \code{Etudiant}, contenant les champs
+\code{matricule}, \code{nom}, \code{prénom}, 
+\code{dateNais} (date de naissance) et \code{option} (G, I ou
+R). Pour l’exemple, considérons une liste de 6 étudiants~:
 
 \begin{center}
 \begin{tabular}{*{5}{>{\sffamily\arraybackslash}m{2cm}}}
@@ -73,7 +74,7 @@ Si nous désirons à présent classer sur l’ordre alphabétique des noms, il
 faut décider de départager en cas de noms identiques sur un autre
 champ, de façon naturelle sur celui des prénoms. Ceci donnerait le
 classement double suivant, en \textbf{majeur} sur le nom et en
-\textbf{mineur} sur le prénom :
+\textbf{mineur} sur le prénom~:
 
 \begin{center}
 \begin{tabular}{*{5}{>{\sffamily\arraybackslash}m{2cm}}}
@@ -88,9 +89,9 @@ classement double suivant, en \textbf{majeur} sur le nom et en
 
 Supposons enfin que nous voulions grouper les étudiants par sections,
 nous devons alors classer prioritairement sur l’option, départager sur
-les noms et ensuite sur les prénoms. C’est alors un classement triple :
+les noms et ensuite sur les prénoms. C’est alors un classement triple~:
 en \textbf{majeur} sur l’option, en \textbf{médian} sur le nom et en
-\textbf{mineur} sur le prénom : 
+\textbf{mineur} sur le prénom~: 
 
 \begin{center}
 \begin{tabular}{*{5}{>{\sffamily\arraybackslash}m{2cm}}}
@@ -103,17 +104,17 @@ en \textbf{majeur} sur l’option, en \textbf{médian} sur le nom et en
 \end{tabular}
 \end{center}
 
-Remarque : le classement sur l’option n’est pas forcément un classement
+Remarque~: le classement sur l’option n’est pas forcément un classement
 alphabétique des trois lettres G, I, R ! Toute autre permutation de ces
 trois lettres serait une possibilité~acceptable.
 
 En résumé, les exemples ci-dessus constituent des exemples de
 \textbf{classements complexes}. On dira que des données sont classées
-sur la \textbf{clé complexe} champ1 – champ 2 – … – champ n (où «~champ
-i~» est un champ de la structure des données) si le classement se fait
-prioritairement depuis le champ 1 jusqu’au champ n. Autrement dit, si
-deux données ont tous leurs champs 1, 2,…,i égaux (i {\textless} n), le
-classement se fait en départageant sur le champ i+1. L’indice du champ
+sur la \textbf{clé complexe} champ1 – champ 2 – … – champ $n$ (où «~champ
+$i$~» est un champ de la structure des données) si le classement se fait
+prioritairement depuis le champ 1 jusqu’au champ $n$. Autrement dit, si
+deux données ont tous leurs champs 1, 2,…,$i$ égaux ($i < n$), le
+classement se fait en départageant sur le champ $i + 1$. L’indice du champ
 correspond au \textbf{niveau} du classement complexe.
 
 Par exemple, le dernier classement ci dessus est un classement sur la
@@ -154,7 +155,7 @@ lettres G, I, R doit être considérée comme aléatoire dans ces deux cas
 et sans signification pour le traitement itératif.
 
 Dans le 2\textsuperscript{ème} classement, nous pouvons parler de
-rupture sur les noms : l’étudiant Durant Kevin met fin au sous-ensemble
+rupture sur les noms~: l’étudiant Durant Kevin met fin au sous-ensemble
 des Dupont, et l’étudiant Guilmant met fin au sous-ensemble des Durant.
 
 
@@ -174,7 +175,7 @@ Bien qu’ayant le même nom, ces deux étudiants appartiennent à deux
 sous-ensembles différents lorsqu’on prend l’option en considération.
 
 Notons encore que d’un point de vue théorique, deux éléments ont un rôle
-spécial et se singularisent quelque peu des autres : il s’agit du
+spécial et se singularisent quelque peu des autres~: il s’agit du
 \textbf{premier} et du \textbf{dernier} élément qui ont pour rôle de
 délimiter l’ensemble logique. Le premier est singulier dans la mesure
 où il n’est précédé par aucun autre élément, et de plus sa présence
@@ -203,12 +204,12 @@ car elle n’est pas liée à un champ des données, et est naturellement
 prioritaire sur ces champs). Pour illustrer cela, reprenons l’exemple
 de la liste d’étudiants, que nous imaginons contenue dans un fichier
 nommé Student dont les enregistrements sont de type Etudiant. Le
-parcours de base de ce fichier est le suivant :
+parcours de base de ce fichier est le suivant~:
 
 \cadre{
 \begin{pseudo}
-	\Module{RuptureNiveau}{student\In: Fichier d’Etudiant}{}
-		\Decl enr : Etudiant
+	\Module{RuptureNiveau}{student\In: fichier d’Etudiant}{}
+		\Decl enr~: Etudiant
 		\Open student (lecture)
 		\Readf student; enr
 		\While{NON EOF(student)}
@@ -231,20 +232,20 @@ que nous voulions savoir quel est le nombre d’étudiants dans chaque
 option. Une solution consisterait à avoir 3 compteurs, un par option.
 On peut imaginer une façon plus judicieuse de faire à partir du dernier
 classement~qui contient précisément les étudiants déjà groupés par
-option : à chaque fois qu’il y a rupture sur l’option, on connait alors
+option~: à chaque fois qu’il y a rupture sur l’option, on connait alors
 le total d’étudiants dans l’option qui vient d’être parcourue. Ceci ne
 nécessite qu’un seul compteur remis à 0 à chaque fois qu’une nouvelle
 option est rencontrée, c’est-à-dire à chaque rupture. De plus
 l’algorithme serait aussi fonctionnel quelle que soit le nombre
-d’options. Voici une solution : 
+d’options. Voici une solution~: 
 
 \cadre{
 \begin{pseudo}
-	\Module{RuptureNiveau1}{student\In : Fichier d’Etudiant}{}
+	\Module{RuptureNiveau1}{student\In~: fichier d’Etudiant}{}
 		\LComment on suppose les données classées en majeur sur l’option
-		\Decl enr : Etudiant
-		\Decl saveOption : caractère
-		\Decl cpt : entier
+		\Decl enr~: Etudiant
+		\Decl saveOption~: caractère
+		\Decl cpt~: entier
 		\Empty
 		
 		\Open student (lecture)
@@ -271,14 +272,14 @@ d’options. Voici une solution :
 \begin{Emphase}[reflexion]{Questions de réflexion}
 \begin{enumerate}
 	\item 
-		pourquoi la condition \code{NON EOF(student)}
+		Pourquoi la condition \code{NON EOF(student)}
 		apparait-elle une 2\up{ème} fois dans la boucle 
 		intérieure ?
 	\item 
-		pourquoi l’ordre de lecture est-il dans la boucle centrale et pas
+		Pourquoi l’ordre de lecture est-il dans la boucle centrale et pas
 		ailleurs ?
 	\item 
-		pourquoi dans l’instruction d'affichage, on trouve
+		Pourquoi dans l’instruction d'affichage, on trouve
 		\code{saveOption} plutôt que \code{enr.option} ?
 	\item 
 		l’ordre des conditions apparaissant dans le 2\up{ème} tant
@@ -293,17 +294,17 @@ d’étudiants nés dans les différentes années de naissance. L’algorithme
 correspondant s’écrit facilement et fonctionne lorsque le fichier est
 cette fois-ci classé en majeur sur le groupe et en mineur sur la date
 de naissance~(ou encore classement double sur la clé complexe option –
-dateNais) :
+dateNais)~:
 
 \cadre{
 \begin{pseudo}
-	\Module{RuptureNiveau2}{student\In : Fichier d’Etudiant}{}
+	\Module{RuptureNiveau2}{student\In~: fichier d’Etudiant}{}
 		\LComment on suppose les données classées en majeur sur l’option
 		\LComment et en mineur sur la date de naissance (ordre chronologique)
-		\Decl enr : Etudiant
-		\Decl saveOption : caractère
-		\Decl saveAnneNaissance : entier
-		\Decl cpt : entier
+		\Decl enr~: Etudiant
+		\Decl saveOption~: caractère
+		\Decl saveAnneNaissance~: entier
+		\Decl cpt~: entier
 		\Empty
 
 		\Open student (lecture)
@@ -382,9 +383,9 @@ que précédemment.
 \begin{pseudo}
 	\Module{RuptureNiveau1dansTableau}{Student\In: tableau[1 à n] d’Etudiant}{}
 		\LComment on suppose les données classées en majeur sur l’option
-		\Decl élément : Etudiant
-		\Decl saveOption : caractère
-		\Decl cpt, i : entier
+		\Decl élément~: Etudiant
+		\Decl saveOption~: caractère
+		\Decl cpt, i~: entier
 		
 		\Let i \Gets 1
 		\While{i ${\leq}$ n}
@@ -420,15 +421,15 @@ sous-groupe et à la fin de l’ensemble.
 	utilisateur.
 
 	Le fichier \code{impression} présente la structure d’enregistrement
-	\code{Enr} suivante :
+	\code{Enr} suivante~:
 	
 	\cadre{
 	\begin{pseudo}
 	\Struct{Enr}
-	\Decl login : chaine \RComment login de l’utilisateur
-	\Decl date : Date \RComment date de la session d’impression
-	\Decl moment : Moment \RComment moment de la session
-	\Decl nombre : entier \RComment nombre de feuilles imprimées ou photocopiées
+	\Decl login~: chaine \RComment login de l’utilisateur
+	\Decl date~: Date \RComment date de la session d’impression
+	\Decl moment~: Moment \RComment moment de la session
+	\Decl nombre~: entier \RComment nombre de feuilles imprimées ou photocopiées
 	\EndStruct
 	\end{pseudo}
 	}
@@ -446,7 +447,7 @@ sous-groupe et à la fin de l’ensemble.
 			Le fichier étant mis à jour tous les soirs, il est plus probable
 			qu'il soit trié en majeur sur la date et en mineur sur
 			le login. Décrivez l'allure générale de
-			l'algorithme dans ce cas : variables nécessaires et
+			l'algorithme dans ce cas~: variables nécessaires et
 			grandes étapes de la solution.
 	\end{enumerate}
 \end{Exercice}
@@ -462,12 +463,12 @@ sous-groupe et à la fin de l’ensemble.
 	\cadre{
 	\begin{pseudo}
 	\Struct{Voiture}
-	\Decl plaque : chaine \RComment numéro d’immatriculation
-	\Decl marque : chaine \RComment marque de la voiture (par ex. «~Citroën~»)
-	\Decl type : chaine \RComment marque de la voiture (par ex. «~Citroën~»)
-	\Decl nom : chaine \RComment nom du propriétaire
-	\Decl adresse : chaine \RComment dresse du propriétaire
-	\Decl date : Date \RComment date de la demande d’immatriculation
+	\Decl plaque~: chaine \RComment numéro d’immatriculation
+	\Decl marque~: chaine \RComment marque de la voiture (par ex. «~Citroën~»)
+	\Decl type~: chaine \RComment marque de la voiture (par ex. «~Citroën~»)
+	\Decl nom~: chaine \RComment nom du propriétaire
+	\Decl adresse~: chaine \RComment dresse du propriétaire
+	\Decl date~: Date \RComment date de la demande d’immatriculation
 	\EndStruct
 	\end{pseudo}
 	}
@@ -475,14 +476,14 @@ sous-groupe et à la fin de l’ensemble.
 	Afin de préparer le travail des journalistes, il a été demandé au
 	service informatique de préparer un affichage qui globalise les ventes
 	de voiture par marque et pour chaque marque, par type. Cet affichage
-	contiendra les renseignements suivants :
+	contiendra les renseignements suivants~:
 
 	\begin{liste}
 		\item 
 			un titre général «~Ventes de voitures neuves en ****~» où les étoiles
 			seront remplacées par l’année concernée.
 		\item 
-			pour chaque marque :
+			pour chaque marque~:
 			\begin{liste}
 				\item 
 					le nom de la marque
@@ -518,32 +519,32 @@ sous-groupe et à la fin de l’ensemble.
 	plus «~méritant~» durant cette période au point de vue de la
 	participation des mineurs. Chaque résultat individuel des participants
 	(y compris des majeurs) a été enregistré dans un fichier \code{résultats} dont
-	la structure d’un enregistrement \code{Enr} est :
+	la structure d’un enregistrement \code{Enr} est~:
 
 	\cadre{
 	\begin{pseudo}
 	\Struct{Enr}
-	\Decl nom : chaine \RComment nom et prénom du participant
-	\Decl âge : entier \RComment {âge du participant au moment du concours}
-	\Decl référence : chaine \RComment référence du club auquel appartient ce participant
-	\Decl numéro : entier \RComment numéro du concours auquel il a participé
-	\Decl résultat : entier \RComment résultat obtenu lors de ce concours (sur 100)
+	\Decl nom~: chaine \RComment nom et prénom du participant
+	\Decl âge~: entier \RComment {âge du participant au moment du concours}
+	\Decl référence~: chaine \RComment référence du club auquel appartient ce participant
+	\Decl numéro~: entier \RComment numéro du concours auquel il a participé
+	\Decl résultat~: entier \RComment résultat obtenu lors de ce concours (sur 100)
 	\EndStruct
 	\end{pseudo}
 	}
 
 	Sachant que ce fichier est ordonné en majeur sur le champ la référence
 	et en mineur sur le nom, on demande d’écrire l’algorithme qui écrit les
-	informations suivantes :
+	informations suivantes~:
 
-	pour chaque club :
+	pour chaque club~:
 
 	\liststyleListv
 	\begin{liste}
 		\item 
 			sa référence
 		\item 
-			pour chaque membre mineur de ce club :
+			pour chaque membre mineur de ce club~:
 		\item 
 			son nom et prénom
 		\item 
@@ -552,7 +553,7 @@ sous-groupe et à la fin de l’ensemble.
 			le nombre total de participations des membres mineurs
 	\end{liste}
 	
-	\textbf{N.B. : }un membre mineur qui s’est inscrit à un concours = une
+	\textbf{N.B.~: }un membre mineur qui s’est inscrit à un concours = une
 	participation. Un club qui n’aura eu aucun membre mineur participant
 	figurera quand même dans le résultat avec la mention «~Pas de
 	participation de membre mineur~». Par contre, un club dont aucun membre
@@ -571,22 +572,22 @@ sous-groupe et à la fin de l’ensemble.
 	température est installé, les relevés réalisés au cours des douze
 	derniers mois. Deux relevés sur un même site sont distanciés au minimum
 	de 30 secondes et au maximum de 10 minutes. Chaque enregistrement du
-	fichier a la structure \code{Relevé} suivante :
+	fichier a la structure \code{Relevé} suivante~:
 
 	\cadre{
 	\begin{pseudo}
 	\Struct{Relevé}
-	\Decl lieu : chaine \RComment site d’un relevé
-	\Decl date : Date \RComment {âge du participant au moment du concours}
-	\Decl moment : Moment \RComment référence du club auquel appartient ce participant
-	\Decl température : réel \RComment température relevée
+	\Decl lieu~: chaine \RComment site d’un relevé
+	\Decl date~: Date \RComment {âge du participant au moment du concours}
+	\Decl moment~: Moment \RComment référence du club auquel appartient ce participant
+	\Decl température~: réel \RComment température relevée
 	\EndStruct
 	\end{pseudo}
 	}
 	
 	Ce fichier est ordonné croissant en majeur sur le lieu, en médian sur la
 	date et en mineur sur le moment. On demande d’écrire l’algorithme
-	permettant de créer :
+	permettant de créer~:
 
 	\begin{liste}
 		\item 
@@ -611,23 +612,23 @@ sous-groupe et à la fin de l’ensemble.
 	\cadre{
 	\begin{pseudo}
 	\Struct{Résultat}
-	\Decl équipe : chaine \RComment le nom de l’équipe
-	\Decl ptsGagnés : entier \RComment les points marqués par l’équipe
-	\Decl ptsPerdus : entier \RComment les points encaissés par l’équipe
-	\Decl date : Date \RComment la date de la rencontre
+	\Decl équipe~: chaine \RComment le nom de l’équipe
+	\Decl ptsGagnés~: entier \RComment les points marqués par l’équipe
+	\Decl ptsPerdus~: entier \RComment les points encaissés par l’équipe
+	\Decl date~: Date \RComment la date de la rencontre
 	\EndStruct
 	\end{pseudo}
 	}
 
 	Le fichier est ordonné croissant en majeur sur l'équipe
 	et en mineur sur la date. On demande d’écrire l’algorithme qui
-	permet~d’écrire :
+	permet~d’écrire~:
 
 	\begin{liste}
 		\item 
-			un titre général : «~STATISTIQUES NBA~»
+			un titre général~: «~STATISTIQUES NBA~»
 		\item 
-			pour chaque équipe :
+			pour chaque équipe~:
 			\begin{liste}
 				\item 
 					son nom 
@@ -639,7 +640,7 @@ sous-groupe et à la fin de l’ensemble.
 					le plus grand écart de points lors d’une rencontre de cette équipe
 			\end{liste}
 		\item 
-			en fin de traitement :
+			en fin de traitement~:
 			\begin{liste}
 				\item 
 					le nombre total de points marqués pour l’ensemble des équipes.
@@ -668,14 +669,14 @@ sous-groupe et à la fin de l’ensemble.
 	quand même, les votes émis à partir d’une même adresse e-mail pour un
 	même site étaient quand même enregistrés dans le fichier \code{votes} mais ne
 	pouvaient compter que pour \textbf{un seul} vote valable. Sachant que
-	ce fichier a la structure d’enregistrement suivante :
+	ce fichier a la structure d’enregistrement suivante~:
 
 	\cadre{
 	\begin{pseudo}
 	\Struct{Vote}
-	\Decl url : chaine \RComment adresse du site choisi (ex. : «~http://www.heb.be~»)
-	\Decl email : entier \RComment adresse e-mail du votant
-	\Decl jour : entier \RComment jour du vote (de 1 à 31)
+	\Decl url~: chaine \RComment adresse du site choisi (ex.~: «~http://www.heb.be~»)
+	\Decl email~: entier \RComment adresse e-mail du votant
+	\Decl jour~: entier \RComment jour du vote (de 1 à 31)
 	\EndStruct
 	\end{pseudo}
 	}
@@ -683,7 +684,7 @@ sous-groupe et à la fin de l’ensemble.
 	et que le fichier est ordonné croissant en majeur sur
 	l'URL et en mineur sur l'email,
 	écrire un algorithme qui en une seule lecture du fichier écrit les
-	informations suivantes :
+	informations suivantes~:
 
 	\begin{liste}
 		\item 
@@ -715,15 +716,15 @@ sous-groupe et à la fin de l’ensemble.
 	à un fichier central annuel appelé \code{prescriptions}. 
 
 	La structure \code{Prescription} des enregistrements de ce fichier est
-	la suivante :
+	la suivante~:
 
 	\cadre{
 	\begin{pseudo}
 	\Struct{Prescription}
-	\Decl date : Date \RComment  date de la prescription
-	\Decl numéro : entier \RComment numéro d’agrément du médecin
-	\Decl nom : chaine \RComment nom du médicament
-	\Decl qté : entier \RComment quantité de ce médicament prescrite sur cette ordonnance
+	\Decl date~: Date \RComment  date de la prescription
+	\Decl numéro~: entier \RComment numéro d’agrément du médecin
+	\Decl nom~: chaine \RComment nom du médicament
+	\Decl qté~: entier \RComment quantité de ce médicament prescrite sur cette ordonnance
 	\EndStruct
 	\end{pseudo}
 	}
@@ -740,15 +741,15 @@ sous-groupe et à la fin de l’ensemble.
 	La gendarmerie a enregistré dans un fichier \code{pv} toutes les infractions au
 	code de la route commises par des automobilistes ayant une plaque belge
 	durant l’année dernière. La structure \code{Infraction} d’un
-	enregistrement comprend les champs :
+	enregistrement comprend les champs~:
 
 	\cadre{
 	\begin{pseudo}
 	\Struct{Infraction}
-	\Decl plaque : chaine
-	\Decl date : Date 
-	\Decl moment : Moment
-	\Decl type : chaine \RComment code associé à une infraction donnée
+	\Decl plaque~: chaine
+	\Decl date~: Date 
+	\Decl moment~: Moment
+	\Decl type~: chaine \RComment code associé à une infraction donnée
 	\EndStruct
 	\end{pseudo}
 	}
@@ -758,14 +759,14 @@ sous-groupe et à la fin de l’ensemble.
 	enregistrements ayant le même numéro de plaque.
 
 	La gendarmerie dispose également d’une table \code{amendes}
-	de 60 éléments structurés de type \code{Amende} comprenant les champs :
+	de 60 éléments structurés de type \code{Amende} comprenant les champs~:
 
 	\cadre{
 	\begin{pseudo}
 	\Struct{Amende}
-	\Decl type : chaine \RComment code associé à une infraction donnée
-	\Decl libellé : chaine \RComment l’infraction (ex. «~excès de vitesse~»)
-	\Decl montant : entier \RComment montant de l’amende en €
+	\Decl type~: chaine \RComment code associé à une infraction donnée
+	\Decl libellé~: chaine \RComment l’infraction (ex. «~excès de vitesse~»)
+	\Decl montant~: entier \RComment montant de l’amende en €
 	\EndStruct
 	\end{pseudo}
 	}
@@ -790,30 +791,30 @@ sous-groupe et à la fin de l’ensemble.
 	Pour l’année dernière, toutes les informations sont enregistrées dans
 	le fichier \code{vols}.
 
-	La structure \code{Vol} des enregistrements de ce fichier est : 
+	La structure \code{Vol} des enregistrements de ce fichier est~: 
 
 	\cadre{
 	\begin{pseudo}
 	\Struct{Vol}
-	\Decl numéro : chaine \RComment le numéro du vol
-	\Decl type : caractère \RComment {‘A’ pour atterrissage ou ‘D’ pour décollage}
-	\Decl lieu : chaine \RComment le lieu d’où provient le vol (type ‘A’) ou sa destination (type ‘D’)
-	\Decl cie : chaine \RComment compagnie aérienne propriétaire de l’avion
-	\Decl nb : entier \RComment le nombre de passagers (pouvant valoir 0)
-	\Decl qté : réel \RComment le tonnage de marchandise transportée (pouvant valoir 0)
-	\Decl date : Date \RComment date du vol
-	\Decl moment : Moment \RComment heure de départ ou d’arrivée
+	\Decl numéro~: chaine \RComment le numéro du vol
+	\Decl type~: caractère \RComment {‘A’ pour atterrissage ou ‘D’ pour décollage}
+	\Decl lieu~: chaine \RComment le lieu d’où provient le vol (type ‘A’) ou sa destination (type ‘D’)
+	\Decl cie~: chaine \RComment compagnie aérienne propriétaire de l’avion
+	\Decl nb~: entier \RComment le nombre de passagers (pouvant valoir 0)
+	\Decl qté~: réel \RComment le tonnage de marchandise transportée (pouvant valoir 0)
+	\Decl date~: Date \RComment date du vol
+	\Decl moment~: Moment \RComment heure de départ ou d’arrivée
 	\EndStruct
 	\end{pseudo}
 	}
 
 	Sachant que ce fichier est ordonné croissant en majeur sur la compagnie
 	et en mineur sur lieu, on vous demande d’établir l’algorithme qui
-	permette d’établir les statistiques suivantes :
+	permette d’établir les statistiques suivantes~:
 
 	\begin{liste}
 		\item 
-			pour chaque compagnie apparaissant dans \code{vols} :
+			pour chaque compagnie apparaissant dans \code{vols}~:
 		\begin{liste}
 			\item 
 				une ligne titre avec le nom de la compagnie,
@@ -828,7 +829,7 @@ sous-groupe et à la fin de l’ensemble.
 				a été expédiée par cette compagnie là.
 		\end{liste}
 		\item 
-			à la fin on écrira : 
+			à la fin on écrira~: 
 		\begin{liste}
 			\item 
 				la différence entre le nombre \textbf{total} de passagers arrivés et
@@ -849,7 +850,7 @@ sous-groupe et à la fin de l’ensemble.
 \end{Exercice}
 
 \begin{Exercice}{Une suite logique}
-	\textstyleMotCl{\textmd{Voici une petite suite logique :}}
+	\textstyleMotCl{\textmd{Voici une petite suite logique~:}}
 
 	\begin{enumerate}[label=\alph*)]
 		\item 
@@ -898,5 +899,5 @@ sous-groupe et à la fin de l’ensemble.
 	module qui enlève les redondances de la liste. On vous demande de créer
 	une \textbf{nouvelle liste} (la liste de départ reste inchangée)
 
-	Exemple : Si la liste est (1, 3, 3, 7, 8, 8, 8) le résultat est (1, 3, 7, 8).
+	Exemple~: Si la liste est (1, 3, 3, 7, 8, 8, 8) le résultat est (1, 3, 7, 8).
 \end{Exercice}

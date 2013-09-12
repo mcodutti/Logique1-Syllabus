@@ -290,6 +290,368 @@
 	où chaque paire de bornes \textstyleCodeInsr{bMin\_i}~et
 	\textstyleCodeInsr{bMax\_i} limite l’indice correspondant 
 	à la $i^{ème}$	dimension du tableau.
+	
+	
+% ================================================
+\section{Parcours d'un tableau à deux dimensions}
+\label{algo:Tab2D}
+% ================================================
+
+Considérons à présent un tableau à deux dimensions 
+(n lignes et m colonnes)
+
+Déclaration d'un tableau statique~:
+
+\cadre{
+\begin{pseudo}
+	\Decl tab~: tableau [1 à n, 1 à m] de T
+\end{pseudo}
+}
+
+Déclaration d'un tableau dynamique~:
+
+\cadre{
+	\begin{pseudo}
+	\Decl tab~: \K{tableau} de T
+	\Let tab \Gets \K{nouveau} \K{tableau} [1 à n, 1 à m] de T
+	\end{pseudo}
+	}
+
+Commençons par des cas plus simples 
+où on ne parcourt qu'une seule des dimensions 
+puis attaquons le cas général.
+
+\subsection{Parcours d'une dimension}
+
+On peut vouloir ne parcourir qu'une seule ligne du tableau.
+Si on parcourt la ligne $l$, on visite les cases 
+$(l,1)$, $(l,2)$, \dots, $(l,m)$.
+L'indice de ligne est constant et c'est l'indice de colonne qui varie.
+Ce qui donne l'algorithme \vref{algo:parcours2-ligne}.
+
+\begin{tabular}{|*{5}{>{\centering\arraybackslash}m{0.3cm}|}}
+\hline
+\ & \ & \ & \ & \  \\
+\hline
+\cellcolor{gray!25}\ & \cellcolor{gray!25}\ & \cellcolor{gray!25}\ & \cellcolor{gray!25}\ & \cellcolor{gray!25}\  \\
+\hline
+\ & \ & \ & \ & \  \\
+\hline
+\end{tabular}
+
+\begin{algorithm}[H]
+\begin{pseudo}
+	\caption{Parcours de la ligne $l$ d'un tableau à deux dimensions}
+	\label{algo:parcours2-ligne}
+	\For{c de 1 à m}
+		\Stmt traiter tab[l,c]
+	\EndFor
+\end{pseudo}
+\end{algorithm}
+
+Retenons~: pour parcourir une ligne, on utilise une boucle sur les colonnes. 
+
+Symétriquement, on pourrait considérer le parcours de la colonne $c$
+comme avec l'algorithme \vref{algo:parcours2-col}.
+
+\begin{algorithm}[H]
+\begin{pseudo}
+	\caption{Parcours de la colonne $c$ d'un tableau à deux dimensions}
+	\label{algo:parcours2-col}
+	\For{l de 1 à n}
+		\Stmt traiter tab[l,c]
+	\EndFor
+\end{pseudo}
+\end{algorithm}
+
+Si le tableau est carré ($n=m$) on peut aussi envisager le parcours
+des deux diagonales.
+
+Pour la colonne descendante, 
+les éléments à visiter sont $(1,1)$, $(2,2)$, \dots, $(n,n)$.
+Une seule boucle suffit 
+comme le montre l'algorithme \vref{algo:parcours2-diag1}.
+
+\begin{tabular}{|*{3}{>{\centering\arraybackslash}m{0.3cm}|}}
+\hline
+\cellcolor{gray!25}\ & \ & \ \\
+\hline
+\ & \cellcolor{gray!25}\ & \ \\
+\hline
+\ & \ & \cellcolor{gray!25}\ \\
+\hline
+\end{tabular}
+
+\begin{algorithm}[H]
+\begin{pseudo}
+	\caption{Parcours de la diagonale descendante d'un tableau carré}
+	\label{algo:parcours2-diag1}
+	\For{i de 1 à n}
+		\Stmt traiter tab[i,i]
+	\EndFor
+\end{pseudo}
+\end{algorithm}
+
+Pour la colonne montante, 
+on peut envisager deux solutions, 
+avec deux indices (cf. algorithme \vref{algo:parcours2-diag2a})
+ou un seul (cf. algorithme \vref{algo:parcours2-diag2b})
+qui se base sur le fait que $i+j=n+1 \Rightarrow j=n+1-i$.
+
+\begin{algorithm}[H]
+\begin{pseudo}
+	\caption{Parcours de la diagonale montante d'un tableau carré - 2 indices}
+	\label{algo:parcours2-diag2a}
+	\Let j \Gets n
+	\For{i de 1 à n}
+		\Stmt traiter tab[i,j]
+		\Let j \Gets j - 1
+	\EndFor
+\end{pseudo}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\begin{pseudo}
+	\caption{Parcours de la diagonale montante d'un tableau carré - 1 indice}
+	\label{algo:parcours2-diag2b}
+	\For{i de 1 à n}
+		\Stmt traiter tab[i, n + 1 - i]
+	\EndFor
+\end{pseudo}
+\end{algorithm}
+
+\subsection{Parcours des deux dimensions}
+
+\subsubsection*{Parcours par lignes et par colonnes}
+
+Les deux parcours les plus courants sont les parcours ligne par ligne
+et colonne par colonne.
+Les tableaux suivants montrent dans quel ordre chaque case est visitée dans ces deux parcours.
+
+\begin{center}
+\begin{minipage}{0.4\textwidth}
+\begin{center}
+Parcours ligne par ligne\\
+\begin{tabular}{|*{5}{>{\centering\arraybackslash}m{0.35cm}|}}
+\hline
+1 & 2 & 3 & 4 & 5 \\
+\hline
+6 & 7 & 8 & 9 & 10 \\
+\hline
+11 & 12 & 13 & 14 & 15 \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+\qquad
+\begin{minipage}{0.4\textwidth}
+\begin{center}
+Parcours colonne par colonne\\
+\begin{tabular}{|*{5}{>{\centering\arraybackslash}m{0.35cm}|}}
+\hline
+1 & 4 & 7 & 10 & 13 \\
+\hline
+2 & 5 & 8 & 11 & 14 \\
+\hline
+3 & 6 & 9 & 12 & 15 \\
+\hline
+\end{tabular}
+\end{center}
+\end{minipage}
+\end{center}
+
+Le plus simple est d'utiliser deux boucles imbriquées 
+(cf. algorithmes \vref{algo:parcours2-lig2} et \vref{algo:parcours2-col2})
+
+\begin{algorithm}[H]
+\begin{pseudo}
+	\caption{Parcours d'un tableau à 2 dimensions, ligne par ligne}
+	\label{algo:parcours2-lig2}
+	\For{lg de 1 à n}
+		\For{col de 1 à m}
+			\Stmt traiter tab[lg,col]
+		\EndFor
+	\EndFor
+\end{pseudo}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\begin{pseudo}
+	\caption{Parcours d'un tableau à 2 dimensions, colonne par colonne}
+	\label{algo:parcours2-col2}
+	\For{col de 1 à m}
+		\For{lg de 1 à n}
+			\Stmt traiter tab[lg,col]
+		\EndFor
+	\EndFor
+\end{pseudo}
+\end{algorithm}
+
+Mais on peut obtenir le même résultat avec une seule boucle
+si l'indice sert juste à compter le nombre de passages
+et que les indices de lignes et de colonnes sont gérés manuellement.
+
+L'algorithme \vref{algo:parcours2-1bcl} montre ce que ça donne
+pour un parcours ligne par ligne.
+La solution pour un parcours colonne par colonne est similaire
+et laissée en exercice.
+
+L'avantage de cette solution apparaitra 
+quand on verra des situations plus difficiles.
+
+\begin{algorithm}[H]
+\begin{pseudo}
+	\caption{Parcours d'un tableau à 2 dimensions via une seule boucle}
+	\label{algo:parcours2-1bcl}
+	\Let lg \Gets 1
+	\Let col \Gets 1
+	\For{i de 1 à n*m}
+		\Stmt traiter tab[lg,col]
+		\Let col \Gets col + 1	\RComment Passer à la case suivante
+		\If{col > m} \RComment On déborde sur la droite, passer à la ligne suivante
+			\Let col \Gets 1
+			\Let lg \Gets lg + 1
+		\EndIf
+	\EndFor
+\end{pseudo}
+\end{algorithm}
+
+\subsubsection*{Interrompre le parcours}
+
+Comme avec les tableaux à une dimension, 
+envisageons l'arrêt prématuré lors de la rencontre d'une certaine condition.
+Et, comme avec les tableaux à une dimension, 
+transformons d'abord nos \K{pour} en \K{tant que}.
+
+Par exemple, les deux parcours ligne par ligne, avec une et deux boucle(s)
+sont explicités dans les algorithmes \vref{algo:parcours2-lig2-tq}
+et \vref{algo:parcours2-1bcl-tq}.
+
+\begin{algorithm}[H]
+\begin{pseudo}
+	\caption{Parcours d'un tableau à 2 dimensions, ligne par ligne, via un tant que}
+	\label{algo:parcours2-lig2-tq}
+	\Let lg \Gets 1
+	\While{lg < n}
+		\Let col \Gets 1
+		\While{col < m}
+			\Stmt traiter tab[lg, col]
+			\Let col \Gets col + 1
+		\EndWhile
+		\Let lg \Gets lg + 1
+	\EndWhile
+\end{pseudo}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\begin{pseudo}
+	\caption{Parcours d'un tableau à 2 dimensions via une seule boucle et un tant que}
+	\label{algo:parcours2-1bcl-tq}
+	\Let lg \Gets 1
+	\Let col \Gets 1
+	\Let i \Gets 1
+	\While{i $\le$ n*m} \RComment ou "lg $\le$ n" 
+		\Stmt traiter tab[lg,col]
+		\Let col \Gets col + 1	\RComment Passer à la case suivante
+		\If{col > m} \RComment On déborde sur la droite, passer à la ligne suivante
+			\Let col \Gets 1
+			\Let lg \Gets lg + 1
+		\EndIf
+		\Let i \Gets i + 1		
+	\EndWhile
+\end{pseudo}
+\end{algorithm}
+
+On peut à présent introduire le test comme on l'a fait 
+dans les algorithmes \vref{algo:parcours1-partiel-sans-bool}
+et \vref{algo:parcours1-partiel-avec-bool}.
+
+Illustrons-le au travers de deux exemples.
+L'algorithme \vref{algo:parcours2-lig2-arret} introduit un test 
+à l'algorithme \vref{algo:parcours2-lig2-tq} en utilisant un booléen
+alors que l'algorithme \vref{algo:parcours2-1bcl-arret} introduit un test
+à l'algorithme \vref{algo:parcours2-1bcl-tq} sans utiliser de booléen.
+
+\begin{algorithm}[H]
+\begin{pseudo}
+	\caption{Parcours avec test d'arrêt - deux boucles et un booléen}
+	\label{algo:parcours2-lig2-arret}
+	\Let trouvé \Gets faux
+	\Let lg \Gets 1
+	\While{lg $<$ n ET NON trouvé}
+		\Let col \Gets 1
+		\While{col $<$ m ET NON trouvé}
+			\If{\textit{tab[lg, col] impose l'arrêt du parcours}}
+				\Let trouvé \Gets vrai
+			\Else \RComment Ne pas modifier les indices si arrêt demandé
+				\Let col \Gets col + 1
+			\EndIf
+		\EndWhile
+		\If{NON trouvé} \RComment Ne pas modifier les indices si arrêt demandé
+			\Let lg \Gets lg + 1
+		\EndIf
+	\EndWhile
+\end{pseudo}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\begin{pseudo}
+	\caption{Parcours avec test d'arrêt - une boucle et pas de booléen}
+	\label{algo:parcours2-1bcl-arret}
+	\Let lg \Gets 1
+	\Let col \Gets 1
+	\Let i \Gets 1
+	\While{i $\le$ n*m ET tab[lg, col] n'impose pas l'arrêt}  
+		\Let col \Gets col + 1	\RComment Passer à la case suivante
+		\If{col > m} \RComment On déborde sur la droite, passer à la ligne suivante
+			\Let col \Gets 1
+			\Let lg \Gets lg + 1
+		\EndIf
+		\Let i \Gets i + 1		
+	\EndWhile
+	\LComment Arrêt prématuré si i $\le$ n*m.
+\end{pseudo}
+\end{algorithm}
+
+\subsubsection*{Parcours plus compliqué - le serpent}
+
+Envisageons un parcours plus difficile illustré par le tableau suivant.
+
+\begin{center}
+\begin{tabular}{|*{5}{>{\centering\arraybackslash}m{0.35cm}|}}
+\hline
+1 & 2 & 3 & 4 & 5 \\
+\hline
+10 & 9 & 8 & 7 & 6 \\
+\hline
+11 & 12 & 13 & 14 & 15 \\
+\hline
+\end{tabular}
+\end{center}
+
+Le plus simple est d'adapter l'algorithme \vref{algo:parcours2-1bcl}
+en introduisant un sens de déplacement, 
+ce qui donne l'algorithme \vref{algo:parcours2-serpent}.
+
+\begin{algorithm}[H]
+\begin{pseudo}
+	\caption{Parcours du serpent dans un tableau à deux dimensions}
+	\label{algo:parcours2-serpent}
+	\Let lg \Gets 1
+	\Let col \Gets 1
+	\Let depl \Gets 1	\RComment 1 pour avancer, -1 pour reculer
+	\For{i de 1 à n*m}
+		\Stmt traiter tab[lg, col]
+		\If{1 $\le$ col + depl ET col + depl $\le$ m}
+			\Let col \Gets col + depl \RComment On se déplace dans la ligne
+		\Else
+			\Let lg \Gets lg + 1	\RComment On passe à la ligne suivante
+			\Let depl \Gets -depl	\RComment et on change de sens
+		\EndIf
+	\EndFor
+\end{pseudo}
+\end{algorithm}
+
 
 % ===================
 \section{ Exercices}
