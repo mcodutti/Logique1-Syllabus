@@ -4,13 +4,13 @@
 
 
 	\marginicon{objectif}
-		Dans ce chapitre, nous présentons les bases de la programmation orientée
-		objet. Nous commençons par expliquer les motivations qui ont amené ce
-		type de programmation avant d'entrer dans le vif du
-		sujet en explicitant le concept
-		d'\textit{encapsulation}. Les autres piliers de
-		l'orienté objet (\textit{héritage} et
-		\textit{polymorphisme}) ne seront pas vus cette année.
+	Dans ce chapitre, nous présentons les bases de la programmation orientée
+	objet. Nous commençons par expliquer les motivations qui ont amené ce
+	type de programmation avant d'entrer dans le vif du
+	sujet en explicitant le concept
+	d'\textit{encapsulation}. Les autres piliers de
+	l'orienté objet (\textit{héritage} et
+	\textit{polymorphisme}) ne seront pas vus cette année.
 
 
 %===================
@@ -36,13 +36,16 @@
 			de pouvoir réutiliser du travail déjà produit si un sous-problème est
 			déjà apparu dans le cadre d'un autre problème ;
 		\item 
-				de produire un code plus lisible car s'exprimant avec
-				des termes de plus haut niveau, plus proches du problème à résoudre.
-				Ainsi, là où un tri devra être fait, on trouvera le mot «~trier~» qui
-				fera référence à la partie de code qui s’occupe du tri. Cela va dans le
-				sens d’une plus grande «~abstraction~» du code~: un code qui s’éloigne
-				du langage simpliste compris par le processeur pour s’approcher de la
-				pensée humaine et des termes du problème à résoudre.
+			de produire un code plus lisible car s'exprimant avec
+			des termes de plus haut niveau, 
+			plus proches du problème à résoudre.
+			Ainsi, là où un tri devra être fait, 
+			on trouvera le mot «~trier~» qui fera référence 
+			à la partie de code qui s’occupe du tri. 
+			Cela va dans le sens d’une plus grande «~abstraction~» du code~: 
+			un code qui s’éloigne du langage simpliste 
+			compris par le processeur pour s’approcher de la
+			pensée humaine et des termes du problème à résoudre.
 	\end{liste}
 	
 	Les langages de programmation ont suivi cette approche en permettant
@@ -63,1672 +66,1587 @@
 	de panier d'achats, de compte en banque, de banque, de
 	client, de portefeuille d'actions, ...
 
-
 %==========================
 \section{La notion d'objet}
 %==========================
 
-\marginicon{definition}
-{\sffamily\bfseries\upshape
-Définition\footnote{Les définitions sont tirées du livre de Cardon et
-Dabancourt (cf. bibliographie)}}
-
-Un \textbf{objet} est une entité logicielle qui~:
-
-\begin{liste}
-	\item 
-		a une \textbf{identité~}; c'est-à-dire que nous pouvons
-		identifier un objet par un nom (tout comme une variable possède un
-		nom).
-	\item 
-		est capable de sauvegarder un \textbf{état}, c'est à
-		dire un ensemble d'informations dans des variables
-		internes;
-	\item 
-		répond à des \textbf{messages} précis en déclenchant des activations
-		internes appropriées qui peuvent changer l'état de
-		l'objet. Ces opérations sont appelées des
-		\textbf{méthodes}. Ce sont des fonctions liées à des objets et qui
-		précisent le \textbf{comportement} de ces objets.
-\end{liste}
-
-{\sffamily\bfseries\upshape
-État}
-
-Un objet contient de l'information, des données qui
-définissent son état.
-
-\begin{Emphase}{Exemples}
-
-\begin{liste}
-	\item 
-		Pour un produit, l'état peut être~:
-		l'intitulé du produit, son code barre, son prix, ... 
-	\item 
-		Pour un employé, on peut avoir~: son nom, son prénom, son adresse, sa
-		date d'embauche, son salaire mensuel, sa fonction, son
-		téléphone, ... 
-	\item 
-		Une carte à jouer a une couleur et une valeur.
-	\item 
-		L'état d'une date est le jour du
-		calendrier qu'elle représente.
-	\item 
-		L'état d'une heure est le moment de la
-		journée qu'elle représente.
-\end{liste}
-\end{Emphase}
-
-L'état d'un objet est mémorisé via des
-variables qu'on appelle des \textit{attributs}.
-
-\bigskip
-
-\marginicon{definition}
-{\sffamily\bfseries\upshape
-Attributs}
-
-Les \textbf{attributs} d'un objet sont
-l'ensemble des informations se présentant sous forme
-de variables et permettant de représenter l'état
-d'un objet.
-
-Nous verrons plus loin la syntaxe précise pour définir les attributs
-d'un objet.
-
-\begin{Emphase}{Exemples}
-
-\begin{liste}
-	\item 
-		L'intitulé d'un produit peut être
-		représenté par une chaine. C'est également le cas des
-		nom(s) et prénom(s) d'un employé.
-	\item 
-		La date d'embauche peut être représentée par un «~objet
-		date~» (une date est rarement un type primitif du langage utilisé). Un
-		attribut d'un objet peut être lui même un objet.
-	\item 
-		Un moment de la journée peut aussi être un objet représenté par trois
-		entiers\footnote{Toutefois, on verra que ce n'est
-		peut-être pas la meilleure solution.}~: les heures, les minutes et les
-		secondes (en supposant qu'on désire une précision de
-		l'ordre de la seconde).
-	\item 
-		L'adresse d'un employé peut être
-		représentée par une seule chaine mais également par un «~objet
-		adresse~» (qui contiendrait~: une rue, un numéro, un code postal,
-		...).
-\end{liste}
-\end{Emphase}
-
-\marginicon{attention}
-{\textbf{Remarque}\textbf{~: }Certaines parties de
-l'état peuvent évoluer au fil du temps.
-D'autres parties sont immuables. Ainsi
-l'adresse d'une personne peut changer
-mais pas sa date de naissance. }
-
-\clearpage
-\marginicon{exercice}
-\begin{Emphase}{Exercices - attributs}
-
-\begin{enumerate}
-	\item 
-		Quel(s) attribut(s) prendriez-vous pour représenter
-		(l'état d') une date ?
-	\item 
-		Et pour un dé à 6 faces ?
-	\item 
-		Et pour un produit de magasin ?
-	\item 
-		Et pour une télévision ? \ (on peut en trouver vraiment beaucoup !)
-\end{enumerate}
-\end{Emphase}
-\bigskip
-
-\marginicon{definition}
-{\sffamily\bfseries\upshape
-Comportement}
-
-{Le \textbf{comportement} d'un objet est défini par
-l'ensemble des messages ou requêtes auxquels il peut
-répondre.}
-
-Pour ce faire, il exécute un module qui pourra
-éventuellement retourner une information à l'émetteur
-du message.
-
-Les messages peuvent interroger l'objet, le modifier,
-lui demander d'agir sur son environnement (afficher du
-texte, modifier un fichier, ...). 
-
-{
-\textbf{Exemples} }
-
-\begin{liste}
-	\item {
-		Quels «~messages~» peut-on envoyer à une date ? On peut lui demander
-		(entre autres):}
-			\begin{liste}
-				\item {
-					des informations sur le jour du mois, le mois, l'année,
-					le jour de la semaine ; }
-				\item {
-					si elle est antérieure ou non à une autre date ;}
-				\item {
-					si elle fait partie d'une année bissextile ; }
-				\item {
-					le nombre de jours qui la sépare de la fin de l'année
-					;}
-				\item {
-					de passer au jour suivant, à la semaine suivante, ...}
-			\end{liste}
-	\item 
-		Et pour un stock de produits ? On peut 
-		\begin{liste}
-			\item {
-				lui demander la quantité disponible d'un produit donné
-				;}
-			\item {
-				lui annoncer l'arrivée d'une quantité
-				donnée d'un produit donné ;}
-			\item {
-				lui indiquer qu'un produit n'existe
-				plus (à retirer du stock) ;}
-			\item {
-				lui demander d'enlever une certaine quantité
-				d'un produit du stock.}
-		\end{liste}
-	\item {
-		Et pour un employé ? On peut}
-		\begin{liste}
-			\item {
-				lui demander son adresse, son salaire ou sa fonction, ...}
-			\item {
-				augmenter son salaire ;}
-			\item {
-				le changer de fonction ;}
-			\item {
-				le licencier (penser à prévoir une date de départ dans
-				l'état !).}
-		\end{liste}
-	\item {
-		Pour un moment de la journée on peut demander s'il se
-		situe le matin ou pas, ...}	
-\end{liste}
-
-\marginicon{exercice}
-\begin{Emphase}{Exercices - comportement}
-
-\begin{enumerate}
-	\item {
-		Quel comportement voyez-vous pour un téléviseur ?}
-	\item {
-		Et pour un produit de magasin ?}
-\end{enumerate}
-\end{Emphase}
-
-\bigskip
-
-\marginicon{definition}
-{\sffamily\bfseries\upshape
-Méthode}
-
-{Un message lance l'exécution d'un
-module appelé \textbf{méthode} dans le jargon de
-l'orienté objet. }
-
-{\bfseries
-Exemples}
-
-\begin{liste}
-	\item {
-		Pour permettre à une date de passer au jour suivant, nous allons définir
-		une méthode qui incrémente le jour du mois en tenant compte
-		d'un possible basculement au mois suivant ou à
-		l'année suivante.}
-	\item {
-		Pour calculer le bénéfice d'un produit, nous allons définir
-		une méthode qui, à partir du prix d'achat et du prix de vente,
-		calcule le bénéfice.}
+	\subsection{Définition}
+	%-----------------------
 	
-	\item {
-		Pour permettre à un moment d'indiquer
-		s'il est le matin ou pas, nous allons définir une
-		méthode comme celle-ci (nous verrons plus tard comment
-		l'associer aux objets)}
+		\marginicon{definition}
+		Un \textbf{objet}%
+		\footnote{%
+			Les définitions sont tirées du livre de Cardon et
+			Dabancourt (cf. bibliographie)
+		}
+		est une entité logicielle qui~:
+	
+		\begin{liste}
+		\item 
+			a une \textbf{identité~}; c'est-à-dire que nous pouvons
+			identifier un objet par un nom (tout comme une variable possède un
+			nom).
+		\item 
+			est capable de sauvegarder un \textbf{état}, c'est à
+			dire un ensemble d'informations dans des variables
+			internes;
+		\item 
+			répond à des \textbf{messages} précis en déclenchant des activations
+			internes appropriées qui peuvent changer l'état de
+			l'objet. Ces opérations sont appelées des
+			\textbf{méthodes}. Ce sont des fonctions liées à des objets et qui
+			précisent le \textbf{comportement} de ces objets.
+		\end{liste}
 
-		\bigskip
+	\subsection{État}
+	%-----------------
+
+		\marginicon{definition}
+		Un objet contient de l'information, des données qui
+		définissent son état.
+
+		\textbf{Exemples}	
+		\begin{liste}
+		\item 
+			Pour un produit, l'état peut être~:
+			l'intitulé du produit, son code barre, son prix, ... 
+		\item 
+			Pour un employé, on peut avoir~: son nom, son prénom, son adresse, sa
+			date d'embauche, son salaire mensuel, sa fonction, son
+			téléphone, ... 
+		\item 
+			Une carte à jouer a une couleur et une valeur.
+		\item 
+			L'état d'une date est le jour du
+			calendrier qu'elle représente.
+		\item 
+			L'état d'une heure est le moment de la
+			journée qu'elle représente.
+		\end{liste}
+
+		L'état d'un objet est mémorisé via des
+		variables qu'on appelle des \textit{attributs}.
+
+	\subsection{Attributs}
+	%----------------------
+
+		\marginicon{definition}
+		Les \textbf{attributs} d'un objet sont
+		l'ensemble des informations se présentant sous forme
+		de variables et permettant de représenter l'état
+		d'un objet.
+
+		Nous verrons plus loin la syntaxe précise 
+		pour définir les attributs d'un objet.
+
+		\textbf{Exemples}
+		\begin{liste}
+		\item 
+			L'intitulé d'un produit peut être
+			représenté par une chaine. C'est également le cas des
+			nom(s) et prénom(s) d'un employé.
+		\item 
+			La date d'embauche peut être représentée par un «~objet
+			date~» (une date est rarement un type primitif du langage utilisé). Un
+			attribut d'un objet peut être lui même un objet.
+		\item 
+			Un moment de la journée peut aussi être un objet représenté par trois
+			entiers\footnote{Toutefois, on verra que ce n'est
+			peut-être pas la meilleure solution.}~: les heures, les minutes et les
+			secondes (en supposant qu'on désire une précision de
+			l'ordre de la seconde).
+		\item 
+			L'adresse d'un employé peut être
+			représentée par une seule chaine mais également par un «~objet
+			adresse~» (qui contiendrait~: une rue, un numéro, un code postal\dots).
+		\end{liste}
+
+		\marginicon{attention}
+		\textbf{Remarque}\textbf{~: }Certaines parties de
+		l'état peuvent évoluer au fil du temps.
+		D'autres parties sont immuables. 
+		Ainsi l'adresse d'une personne peut changer
+		mais pas sa date de naissance.
+
+		\begin{Emphase}{Exercices - attributs}
+			\marginicon{exercice}
+			\remonter
+			\begin{enumerate}
+				\item 
+					Quel(s) attribut(s) prendriez-vous pour représenter
+					(l'état d') une date ?
+				\item 
+					Et pour un dé à 6 faces ?
+				\item 
+					Et pour un produit de magasin ?
+				\item 
+					Et pour une télévision ?
+					(on peut en trouver vraiment beaucoup !)
+			\end{enumerate}
+		\end{Emphase}
+
+	\subsection{Comportement}
+	%-------------------------
+
+		\marginicon{definition}
+		Le \textbf{comportement} d'un objet est défini par
+		l'ensemble des messages ou requêtes auxquels il peut répondre.
+
+		Pour ce faire, il exécute un module qui pourra
+		éventuellement retourner une information à l'émetteur
+		du message.
+		
+		Les messages peuvent interroger l'objet, le modifier,
+		lui demander d'agir sur son environnement (afficher du
+		texte, modifier un fichier\dots). 
+
+		\textbf{Exemples}
+		\begin{liste}
+		\item
+			Quels «~messages~» peut-on envoyer à une date ? 
+			On peut lui demander (entre autres) :
+			\begin{liste}
+			\item
+				des informations sur le jour du mois, le mois, l'année,
+				le jour de la semaine ;
+			\item
+				si elle est antérieure ou non à une autre date ;
+			\item
+				si elle fait partie d'une année bissextile ;
+			\item
+				le nombre de jours qui la sépare de la fin de l'année ;
+			\item 
+				de passer au jour suivant, à la semaine suivante\dots
+			\end{liste}
+		\item 
+			Et pour un stock de produits ? On peut 
+			\begin{liste}
+			\item
+				lui demander la quantité disponible d'un produit donné ;
+			\item
+				lui annoncer l'arrivée d'une quantité
+				donnée d'un produit donné ;
+			\item
+				lui indiquer qu'un produit n'existe
+				plus (à retirer du stock) ;
+			\item 
+				lui demander d'enlever une certaine quantité
+				d'un produit du stock.
+			\end{liste}
+		\item
+			Et pour un employé ? On peut
+			\begin{liste}
+			\item 
+				lui demander son adresse, son salaire ou sa fonction\dots
+			\item 
+				augmenter son salaire ;
+			\item 
+				le changer de fonction ;
+			\item 
+				le licencier 
+				(penser à prévoir une date de départ dans l'état !).
+			\end{liste}
+		\item 
+			Pour un moment de la journée on peut demander s'il se
+			situe le matin ou pas\dots	
+		\end{liste}
+
+		\begin{Emphase}{Exercices - comportement}
+			\marginicon{exercice}
+			\remonter
+			\begin{enumerate}
+			\item
+				Quel comportement voyez-vous pour un téléviseur ?
+			\item
+				Et pour un produit de magasin ?
+			\end{enumerate}
+		\end{Emphase}
+
+	\subsection{Méthode}
+	%--------------------
+	
+		\marginicon{definition}
+		Un message lance l'exécution d'un
+		module appelé \textbf{méthode} dans le jargon de
+		l'orienté objet.
+
+		\textbf{Exemples}
+		\begin{liste}
+		\item
+			Pour permettre à une date de passer au jour suivant, nous allons définir
+			une méthode qui incrémente le jour du mois en tenant compte
+			d'un possible basculement au mois suivant ou à
+			l'année suivante.
+		\item
+			Pour calculer le bénéfice d'un produit, nous allons définir
+			une méthode qui, à partir du prix d'achat et du prix de vente,
+			calcule le bénéfice.
+		\item 
+			Pour permettre à un moment d'indiquer
+			s'il est le matin ou pas, nous allons définir une
+			méthode comme celle-ci (nous verrons plus tard comment
+			l'associer aux objets)
+	
+			\medskip
+			\cadre{
+			\begin{pseudo}
+				\LComment On suppose que 'heure' est un des attributs utilisés
+				\LComment pour représenter l'état (le moment dans la journée)
+				\Method{estMatin}{}{booléen}
+					\Return heure < 12 \RComment on considère que midi est situé l'après-midi
+				\EndMethod
+			\end{pseudo}
+			}
+			
+			\medskip
+			Cet exemple devrait vous sembler familier à deux exceptions près
+	
+			\begin{liste}
+				\item
+					on utilise le mot «~\textstyleMotCl{méthode}~» en lieu et place de
+					«~\textstyleMotCl{module}~» ;
+				\item
+					les attributs (l'heure ici) ne sont pas passés en
+					paramètre. Un objet connait déjà son état et donc la valeur de ses
+					attributs. Nous verrons plus loin la syntaxe précise.
+			\end{liste}
+		\end{liste}
+
+		\begin{Emphase}{Exercices - méthodes}
+			\remonter
+			\marginicon{exercice}
+			\begin{enumerate}
+			\item 
+				Dans le comportement d'un téléviseur, on retrouve
+				«~éteindre~» et «~allumer~». 
+				À quoi ressemblerait le code de ces méthodes ?
+			\item 
+				Écrivez la méthode qui permet de passer au jour suivant.
+			\item 
+				Écrivez la méthode qui calcule 
+				le bénéfice réalisé lors de la vente d'un produit.
+			\end{enumerate}
+		\end{Emphase}
+
+	\subsection{Activer un comportement}
+
+		Pour activer un comportement d'un objet, 
+		il faut lui envoyer un message 
+		(ou dit autrement, appeler une de ses méthodes). 
+		La syntaxe que nous allons utiliser 
+		(c'est la plus courante) est la notation pointée.
 
 		\cadre{
 		\begin{pseudo}
-			\LComment On suppose que 'heure' est un des attributs utilisés
-			\LComment pour représenter l'état (le moment dans la journée)
-			\Method{estMatin}{}{booléen}
-				\Return heure < 12 \RComment on considère que midi est situé l'après-midi
+			\Stmt nomObjet.nomMéthode()
+		\end{pseudo}
+		}
+
+		\medskip\textbf{Exemple}~:
+		Supposons que le nom «~maintenant~» 
+		désigne un objet contenant un moment de la journée 
+		(on verra comment réaliser cela). 
+		Si on veut savoir si on est le matin, on peut écrire
+
+		\cadre{
+		\begin{pseudo}
+			\If{maintenant.estMatin()}
+				\Stmt ...
+			\EndIf
+		\end{pseudo}
+		}
+
+		\begin{Emphase}{Exercice – activer un comportement}
+			\marginicon{exercice}
+			Écrire la portion de code qui allume une télévision 
+			(désignée par «~maTélévision~») 
+			et puis l'éteint aussitôt après.		
+		\end{Emphase}
+
+	\subsection{Les paramètres d'un comportement}
+
+		Activer un comportement revient à appeler une méthode de
+		l'objet. Souvent il est nécessaire
+		d'envoyer à l'objet des informations
+		complémentaires pour préciser notre demande ce qui se fait via
+		l'utilisation des paramètres.
+
+		\textbf{Exemple}~:
+		Si on veut modifier le salaire d'un employé, 
+		il faut que notre message contienne le nouveau salaire. 
+		Autrement dit, 
+		il faut communiquer ce nouveau salaire à la méthode 
+		de changement du salaire.
+		Ce qui donne la méthode suivante~:
+
+		\cadre{
+		\begin{pseudo}
+			\Method{modifierSalaire}{nouveauSalaire~: entier}{}
+				\Stmt salaire \Gets nouveauSalaire
 			\EndMethod
 		\end{pseudo}
 		}
-		
-		\bigskip
-		{
-		Cet exemple devrait vous sembler familier à deux exceptions près}
 
-		\liststyleListv
-		\begin{liste}
-			\item {
-				on utilise le mot «~\textstyleMotCl{méthode}~» en lieu et place de
-				«~\textstyleMotCl{module}~» ;}
-			\item {
-				les attributs (l'heure ici) ne sont pas passés en
-				paramètre. Un objet connait déjà son état et donc la valeur de ses
-				attributs. Nous verrons plus loin la syntaxe précise.}
-	\end{liste}
-\end{liste}
-
-\marginicon{exercice}
-\begin{Emphase}{Exercices - méthodes}
-
-\begin{enumerate}
-	\item 
-		Dans le comportement d'un téléviseur, on retrouve
-		«~éteindre~» et «~allumer~». À quoi ressemblerait le code de ces
-		méthodes ?
-	\item 
-		Écrivez la méthode qui permet de passer au jour suivant.
-	\item 
-		Écrivez la méthode qui calcule le bénéfice réalisé lors de la vente d'un produit.
-\end{enumerate}
-\end{Emphase}
-\bigskip
-
-{\sffamily\bfseries
-Activer un comportement}
-
-{
-Pour activer un comportement d'un objet, il faut lui
-envoyer un message (ou dit autrement, appeler une de ses méthodes). La
-syntaxe que nous allons utiliser (c'est la plus
-courante) est la notation pointée}
-
-\cadre{
-\begin{pseudo}
-	\Stmt nomObjet.nomMéthode()
-\end{pseudo}
-}
-
-\begin{Emphase}{Exemple}
-
-{
-Supposons que le nom «~maintenant~» désigne un objet contenant un moment
-de la journée (on verra comment réaliser cela). Si on veut savoir si on
-est le matin, on peut écrire}
-
-\cadre{
-\begin{pseudo}
-	\If{maintenant.estMatin()}
-		\Stmt ...
-	\EndIf
-\end{pseudo}
-}
-\end{Emphase}
-\bigskip
-
-\marginicon{exercice}
-\begin{Emphase}{Exercice – activer un comportement}
-
-Écrire la portion de code qui allume une télévision (désignée par
-«~maTélévision~») et puis l'éteint aussitôt après.
-
-\end{Emphase}
-
-\bigskip
-
-{\sffamily\bfseries\upshape
-Les paramètres d'un comportement}
-
-{
-Activer un comportement revient à appeler une méthode de
-l'objet. Souvent il est nécessaire
-d'envoyer à l'objet des informations
-complémentaires pour préciser notre demande ce qui se fait via
-l'utilisation des paramètres.}
-
-\begin{Emphase}{Exemple}
-
-Si on veut modifier le salaire d'un employé, il faut
-que notre message contienne le nouveau salaire. Autrement dit, il faut
-communiquer ce nouveau salaire à la méthode de changement du salaire.
-Ce qui donne la méthode suivante~:
-
-\cadre{
-\begin{pseudo}
-	\Method{modifierSalaire}{nouveauSalaire~: entier}{}
-		\Stmt salaire \Gets nouveauSalaire
-	\EndMethod
-\end{pseudo}
-}
-\end{Emphase}
-
-\marginicon{exercice}
-\begin{Emphase}{Exercices – paramètres du comportement}
-
-\begin{enumerate}
-	\item 
-		Prenons un objet représentant un produit de magasin. 
-		Nous supposerons qu'un produit a un \textit{numéro}, un 
-		\textit{libellé}, un \textit{prixAchat}, un
-		\textit{prix de vente} et une \textit{quantitéEnStock}
-		Donnez les \textbf{entêtes} des méthodes suivantes qui permettent de
-		:
-
-		\begin{liste}
+		\begin{Emphase}{Exercices – paramètres du comportement}
+			\remonter
+			\marginicon{exercice}
+			\begin{enumerate}
 			\item 
-				obtenir le prix de vente
+				Prenons un objet représentant un produit de magasin. 
+				Nous supposerons qu'un produit a un \textit{numéro}, 
+				un  \textit{libellé}, un \textit{prixAchat}, 
+				un \textit{prix de vente} et une \textit{quantitéEnStock}
+				Donnez les \textbf{entêtes} des méthodes suivantes 
+				qui permettent de~:
+				\begin{liste}
+				\item 
+					obtenir le prix de vente
+				\item 
+					calculer le bénéfice
+				\item 
+					donner la quantité restant en stock
+				\item 
+					dire si le produit est en rupture de stock.
+				\end{liste}
+						
 			\item 
-				calculer le bénéfice
+				Prenons un objet représentant une date du calendrier grégorien. 
+				Donnez les entêtes des méthodes suivantes qui permettent de~:
+				\begin{liste}
+				\item
+					demander le nom du jour correspondant à une date (par exemple lundi, mardi, ...)
+				\item 
+					savoir si une date est antérieure à une autre
+				\item 
+					connaitre le nombre de jours (absolu) séparant deux dates.
+				\end{liste}
+					
 			\item 
-				donner la quantité restant en stock
+				Utilisation. Soit deux dates $date1$ et $date2$ ; écrivez la
+				portion de code qui utilise les méthodes ci-dessus pour
+				\begin{liste}
+					\item 
+						vérifier quelle date précède l'autre;
+					\item 
+						calculer le nombre de jours d'écart entre ces deux
+						dates.
+				\end{liste}
+				
 			\item 
-				dire si le produit est en rupture de stock.
-		\end{liste}
-			
-	\item 
-		Prenons un objet représentant une date du calendrier grégorien. 
-		Donnez les entêtes des méthodes suivantes qui permettent de
-		:
-
-		\begin{liste}
-			\item
-				demander le nom du jour correspondant à une date (par exemple lundi, mardi, ...)
-			\item 
-				savoir si une date est antérieure à une autre
-			\item 
-				connaitre le nombre de jours (absolu) séparant deux dates.
-		\end{liste}
-		
-	\item 
-		Utilisation. Soit deux dates $date1$ et $date2$ ; écrivez la
-		portion de code qui utilise les méthodes ci-dessus pour
-		
-		\begin{liste}
-			\item 
-				vérifier quelle date précède l'autre;
-			\item 
-				calculer le nombre de jours d'écart entre ces deux
-				dates.
-		\end{liste}
+				Précédemment, vous avez défini l'ensemble du
+				comportement d'un téléviseur. Écrivez les entêtes des
+				méthodes correspondant à ce comportement ainsi qu'une
+				portion de code qui les utilise.
+			\end{enumerate}
+		\end{Emphase}
 	
-	\item 
-		Précédemment, vous avez défini l'ensemble du
-		comportement d'un téléviseur. Écrivez les entêtes des
-		méthodes correspondant à ce comportement ainsi qu'une
-		portion de code qui les utilise.
-\end{enumerate}
-\end{Emphase}
-
 %=========================
 \section{L'encapsulation}
 %=========================
 
-Un objet possède un état qui est représenté par des attributs. Les
-bonnes pratiques de la programmation orientée objet préconisent
-fortement que les attributs d'un objet soient
-invisibles en dehors de l'objet. Ils ne pourront être
-accédés qu'au travers du comportement de
-l'objet, c'est-à-dire via ses
-méthodes.
+	Un objet possède un état qui est représenté par des attributs. 
+	Les bonnes pratiques de la programmation orientée objet préconisent
+	fortement que les attributs d'un objet soient
+	invisibles en dehors de l'objet. 
+	Ils ne pourront être accédés qu'au travers 
+	du comportement de l'objet, 
+	c'est-à-dire via ses méthodes.
+	
+	\marginicon{definition}
+	\textbf{%
+		Lorsque les détails de l'implémentation
+		d'un objet sont masqués aux autres objets, on dit
+		qu'il y a \textbf{encapsulation} des données et du
+		comportement des objets.
+	}
+	
+	Pourquoi une telle recommandation ? 
+	Le but est de garantir la cohérence de l'état de l'objet. 
+	Si on pouvait accéder directement à un attribut 
+	(et donc le modifier), 
+	on pourrait y mettre une valeur incohérente. 
+	Par exemple, on pourrait dire que les minutes d'un moment 
+	valent -3 ou 75 ou encore que le jour d'une date est 32 !
+	
+	Dès lors, il nous faudra préciser pour chaque \textbf{membre} 
+	(attributs et méthodes) d'un objet s'il est
+	\textbf{privé} (inconnu de l'extérieur) ou
+	\textbf{public} (connu de l'extérieur). 
+	
+	Le bon usage impose que tous les attributs soient rendus privés 
+	et que les méthodes restent publiques. 
+	Toutefois, on pourra trouver également des méthodes privées. 
+	Ce sera notamment le cas si plusieurs méthodes d'un objet 
+	ont une partie commune ; 
+	il sera intéressant de la \textit{factoriser}, 
+	c-à-d en faire une méthode privée (ex~: un calcul de maximum).
+	
+	Puisqu'un attribut est privé,
+	il est courant pour chacun des attributs de rencontrer 
+	une méthode destinée à connaitre la valeur de cet attribut 
+	et une autre qui permet de la modifier.
 
-\marginicon{definition}
-{\sffamily\bfseries\upshape
-{
-Lorsque les détails de l'implémentation
-d'un objet sont masqués aux autres objets, on dit
-qu'il y a \textbf{encapsulation} des données et du
-comportement des objets.}}
+	\subsection{Accesseur et mutateur}
+	%----------------------------------
+	
+	\marginicon{definition}
+	
+	\textbf{Accesseur}%
+	\footnote{On utilise aussi souvent le mot anglais «~getter~».}%
+	~: méthode dont le but est de fournir la valeur d'un attribut.
 
+	\textbf{Mutateur}%
+	\footnote{On utilise aussi souvent le mot anglais «~setter~»}%
+	~: méthode dont le but est de modifier la valeur d'un attribut.
 
-Pourquoi une telle recommandation ? Le but est de garantir la cohérence
-de l'état de l'objet. Si on pouvait
-accéder directement à un attribut (et donc le modifier), on pourrait y
-mettre une valeur incohérente. Par exemple, on pourrait dire que les
-minutes d'un moment valent -3 ou 75 ou encore que le
-jour d'une date est 32 !
+	Par convention, 
+	ces méthodes sont nommées \code{getNom} et 
+	\code{setNom} où «~nom~» est le nom de l'attribut%
+	\footnote{%
+		Pour un attribut booléen, 
+		on pourra préférer \code{estNom} ou \code{isNom} 
+		au lieu de \code{getNom}. 
+	}
+	Par facilité, on utilisera parfois le terme «~accesseur~»
+	pour désigner à la fois les «~accesseurs~» et les «~mutateurs~».
 
-Dès lors, il nous faudra préciser pour chaque \textbf{membre} (attributs
-et méthodes) d'un objet s'il est
-\textbf{privé} (inconnu de l'extérieur) ou
-\textbf{public} (connu de l'extérieur). 
+	\textbf{Exemple}~:
+	Écrivons l'accesseur et le mutateur pour l'attribut 
+	«~heure~» d'un moment de la journée.
 
-Le bon usage impose que tous les attributs soient rendus privés et que
-les méthodes restent publiques. Toutefois, on pourra trouver également
-des méthodes privées. Ce sera notamment le cas si plusieurs méthodes
-d'un objet ont une partie commune; \ il sera
-intéressant de la \textit{factoriser}, c-à-d en faire une méthode
-privée (ex~: un calcul de maximum).
+	\cadre{
+	\begin{pseudo}
+		\Method{getHeure}{}{entier}
+			\Return heure
+		\EndMethod
+	\end{pseudo}
+	}
 
-Puisqu'un attribut est privé, il est courant pour
-chacun des attributs de rencontrer une méthode destinée à connaitre la
-valeur de cet attribut et une autre qui permet de la modifier.
+	\cadre{
+	\begin{pseudo}
+		\Method{setHeure}{uneHeure~: entier}{}
+			\Stmt heure \Gets uneHeure
+		\EndMethod
+	\end{pseudo}
+	}
 
-\clearpage
-%-------------------
-% todo everywhere :
-% subsubsection
-% -------------------
-{\sffamily\bfseries\upshape
-Accesseur et mutateur}
+	\subsection{Que faire si le paramètre est invalide ?}
+	%-----------------------------------------------------
+	
+	Dans l'exemple précédent, 
+	que se passerait-il si le paramètre \code{uneHeure} vaut 25 ? 
+	Une valeur aberrante serait affectée à l'attribut \code{heure}.
 
-\marginicon{definition}
-{\sffamily\bfseries\upshape
-{
-\textbf{Accesseur}\footnote{{On utilise aussi
-souvent le mot anglais «~getter~». }}~: méthode dont le but est de
-fournir la valeur d'un attribut.
+	Dans le cas de paramètres invalides, 
+	la plus mauvaise solution est de ne rien faire. 
+	Le programme continuerait en croyant que tout s’est bien
+	passé et il court à la catastrophe. 
+	Il est préférable qu’un programme s'interrompe 
+	plutôt que de fournir une mauvaise réponse. 
 
-\textbf{Mutateur}\footnote{{On utilise aussi
-souvent le mot anglais «~setter~»}}~: méthode dont le but est de
-modifier la valeur d'un attribut.}}
+	Dans certains langages (comme le C), 
+	l’usage est que chaque module retourne un entier indiquant 
+	s'il y a eu une erreur (et laquelle). 
+	L’inconvénient est que le module appelant n’est pas
+	obligé de tenir compte de l’erreur.
 
-Par convention, ces méthodes sont nommées «~getNom~» et «~setNom~» où
-«~nom~» est le nom de
-l'attribut\footnote{{Pour un
-attribut booléen, on pourra préférer «~estNom~» ou «~isNom~» au lieu de
-«~getNom~»}}. Par facilité, on utilisera parfois le terme «~accesseur~»
-pour désigner à la fois les «~accesseurs~» et les «~mutateurs~».
+	Les \textbf{exceptions} sont un mécanisme du même genre 
+	mais qui oblige à fournir un code de traitement de l’erreur. 
+	Il ne sera pas étudié en première année%
+	\footnote{%
+		En tout cas pas au cours de Logique 
+		mais vous étudierez cette notion au cours de Java.%
+	}.
 
-{\bfseries
-Exemple}
+	Cette année, nous nous contenterons d'indiquer
+	clairement dans nos codes qu'il s'agit d'une situation anormale 
+	via la primitive \code{erreur} qui arrête le déroulement du
+	programme avec une courte explication du problème.
 
-Écrivons l'accesseur et le mutateur pour
-l'attribut «~heure~» d'un moment de
-la journée
+	La syntaxe que nous allons retenir est
 
-\cadre{
-\begin{pseudo}
-	\Method{getHeure}{}{entier}
-		\Return heure
-	\EndMethod
-\end{pseudo}
-}
+	\cadre{
+	\begin{pseudo}
+		\Stmt \K{erreur} "explication de l'erreur"
+	\end{pseudo}
+	}
 
-\bigskip
+	Ce qui donne~:	
+	
+	\cadre{
+	\begin{pseudo}
+		\Method{setHeure}{uneHeure~: entier}{}
+			\If{uneHeure < 0 OU uneHeure > 23}
+				\Stmt \K{erreur} "heure invalide"
+			\EndIf
+			\Stmt heure \Gets uneHeure
+		\EndMethod
+	\end{pseudo}
+	}
 
-\cadre{
-\begin{pseudo}
-	\Method{setHeure}{uneHeure~: entier}{}
-		\Stmt heure \Gets uneHeure
-	\EndMethod
-\end{pseudo}
-}
+	\medskip
+	\textbf{Remarque}~: 
+	Accéder à la valeur d’un attribut ne pose pas 
+	de problème de validité. 
+	Alors pourquoi rendre l’attribut complètement privé 
+	plutôt que de n’empêcher que des modifications directes 
+	(une sorte d’attribut en \textit{lecture seule}) ? 
+	Cela permet de changer de façon transparente la représentation des données. 
+	Nous y reviendrons plus loin.
 
-\bigskip
-
-{\sffamily\bfseries\upshape
-Que faire si le paramètre est invalide ? }
-
-Dans l'exemple précédent, que se passerait-il si le
-paramètre \textstyleCodeInsr{uneHeure} vaut 25 ? Une valeur aberrante serait
-affectée à l'attribut \textstyleCodeInsr{heure}.
-
-Dans le cas de paramètres invalides, la plus mauvaise solution est de ne
-rien faire. Le programme continuerait en croyant que tout s’est bien
-passé et il court à la catastrophe. Il est préférable qu’un programme
-s'interrompe plutôt que de fournir une mauvaise réponse. 
-
-Dans certains langages (comme le C), l’usage est que chaque module
-retourne un entier indiquant s'il y a eu une erreur
-(et laquelle). L’inconvénient est que le module appelant n’est pas
-obligé de tenir compte de l’erreur.
-
-Les \textbf{exceptions} sont un mécanisme du même genre mais qui oblige
-à fournir un code de traitement de l’erreur. Il ne sera pas étudié en
-première année\footnote{{En tout cas pas au
-cours de Logique mais vous étudierez cette notion au cours de Java.}}.
-
-Cette année, nous nous contenterons d'indiquer
-clairement dans nos codes qu'il
-s'agit d'une situation anormale via
-la primitive \textstyleMotCl{erreur} qui arrête le déroulement du
-programme avec une courte explication du problème.
-
-La syntaxe que nous allons retenir est
-
-\cadre{
-\begin{pseudo}
-	\Stmt \K{erreur} "explication de l'erreur"
-\end{pseudo}
-}
-
-\bigskip
-
-Ce qui donne~:
-
-\cadre{
-\begin{pseudo}
-	\Method{setHeure}{uneHeure~: entier}{}
-		\If{uneHeure < 0 OU uneHeure > 23}
-			\Stmt \K{erreur} "heure invalide"
-		\EndIf
-		\Stmt heure \Gets uneHeure
-	\EndMethod
-\end{pseudo}
-}
-
-\textbf{Remarque}~: Accéder à la valeur d’un attribut ne pose pas de
-problème de validité. Alors pourquoi rendre l’attribut complètement
-privé plutôt que de n’empêcher que des modifications directes (une
-sorte d’attribut en \textit{lecture seule}) ? Cela permet de changer de
-façon transparente la représentation des données. \ Nous y reviendrons
-plus loin.
-
-\marginicon{exercice}
-\begin{Emphase}{Exercice - encapsulation}
-
-Sans le savoir, vous avez déjà défini des accesseurs et des 
-mutateurs pour le téléviseur. Lesquels ? En suivant la convention
-de nom pour les accesseurs et les mutateurs, 
-quels noms auraient-ils dû porter ?
-\end{Emphase}
+	\begin{Emphase}{Exercice - encapsulation}
+		\marginicon{exercice}
+		Sans le savoir, vous avez déjà défini des accesseurs et des 
+		mutateurs pour le téléviseur. 
+		Lesquels ? 
+		En suivant la convention de nom pour les accesseurs et les mutateurs, 
+		quels noms auraient-ils dû porter ?
+	\end{Emphase}
 
 %====================================================
 \section{La notion de classe et d'instance}
 %=====================================================
 
-Pour pouvoir utiliser des objets nous allons devoir les définir
-(expliciter leur état et leur comportement). Cette définition est
-commune à tous les objets similaires. Par exemple tous les moments ont
-un même comportement et un même type d'état (des heures, des minutes et
-des secondes).
-
-\marginicon{definition}
-{\sffamily\bfseries\upshape
-{
-Une \textbf{classe} est un ensemble d'objets qui ont en
-commun les mêmes méthodes et qui partagent les mêmes types
-d'attributs.}}
-
-Une \textbf{instance}\footnote{Vous pouvez considérer les termes
-«~instance de classe~» et «~objet~» comme synonymes. }
-d'une classe est un objet particulier
-d'une classe qui peut activer les méthodes de la
-classe et qui a des valeurs particulières pour ses attributs.
-
-On peut établir le parallélisme avec les types de base que vous avez
-déjà vus. Définir une classe revient à définir un nouveau type de
-données. En gros, on peut dire qu'un \textbf{objet
-est à une classe ce qu'une variable est à un type}.
-
-Comprenons bien que les objets d'une même classe ont le
-même «~type~» d'état mais pas le même état proprement
-dit. Deux objets «~moment~» représentent tous deux un moment 
-(heures, minutes, secondes) de la journée mais pas (forcement) 
-le même ! Ils auront donc les mêmes attributs mais
-avec des valeurs différentes !
-
-{\sffamily\bfseries\upshape
-Définition d'une classe}
-
-{
-Nous devons d'abord définir une classe avant de pouvoir
-en instancier les objets que nous voulons utiliser. Précisons la
-syntaxe utilisée pour définir une classe}
-
-\cadre{
-\begin{pseudo}
-	\Class{NomDeLaClasse}
-		\Private
-			\LComment liste des attributs (donc privés par convention)
-		\Public
-			\LComment liste des méthodes publiques
-		\Private
-			\LComment liste des méthodes privées
-	\EndClass
-	\LComment Par souci de lisibilité, on pourra indiquer uniquement 
-	les signatures des
-	\LComment méthodes et donner le code complet des méthodes à 
-	la suite de la classe.
-\end{pseudo}
-}
-
-\clearpage
-
-{
-\textbf{Exemple}~: la classe Moment qui représente un moment de la
-journée}
-
-\cadre{
-\begin{pseudo}
-	\Class{Moment}
-		\Private
-			\Decl heure~: entier
-			\Decl minute~: entier
-			\Decl seconde~: entier
-		\Public
-			\MethodSign{getHeure}{}{entier}
-			\MethodSign{getMinute}{}{entier}
-			\MethodSign{getSeconde}{}{entier}
-			\MethodSign{setHeure}{uneHeure~: entier}{}
-			\MethodSign{setMinute}{uneMinute~: entier}{}
-			\MethodSign{setSeconde}{uneSeconde~: entier}{}
-			\MethodSign{estMatin}{}{booléen}
-	\EndClass
+	Pour pouvoir utiliser des objets nous allons devoir les définir
+	(expliciter leur état et leur comportement). 
+	Cette définition est commune à tous les objets similaires. 
+	Par exemple tous les moments ont un même comportement 
+	et un même type d'état 
+	(des heures, des minutes et des secondes).
 	
-	\Method{estMatin}{}{booléen}
-		\Return heure < 12
-	\EndMethod
-	\LComment + les accesseurs et les mutateurs
+	\marginicon{definition}
+	\textbf{Une \textbf{classe} est un ensemble d'objets qui ont en
+	commun les mêmes méthodes et qui partagent les mêmes types
+	d'attributs.}
 
-\end{pseudo}
-}
+	Une \textbf{instance}%
+	\footnote{%
+		Vous pouvez considérer les termes
+		«~instance de classe~» et «~objet~» comme synonymes.
+	}
+	d'une classe est un objet particulier
+	d'une classe qui peut activer les méthodes de la
+	classe et qui a des valeurs particulières pour ses attributs.
 
-\bigskip
+	On peut établir le parallélisme avec les types de base que vous avez
+	déjà vus. Définir une classe revient à définir un nouveau type de
+	données. En gros, on peut dire qu'un \textbf{objet
+	est à une classe ce qu'une variable est à un type}.
+	
+	Comprenons bien que les objets d'une même classe ont le
+	même «~type~» d'état mais pas le même état proprement
+	dit. Deux objets «~moment~» représentent tous deux un moment 
+	(heures, minutes, secondes) de la journée mais pas (forcement) 
+	le même ! Ils auront donc les mêmes attributs mais
+	avec des valeurs différentes !
+	
+	\subsection{Définition d'une classe}
+	%------------------------------------
+	
+		Nous devons d'abord définir une classe avant de pouvoir
+		en instancier les objets que nous voulons utiliser. Précisons la
+		syntaxe utilisée pour définir une classe
 
-{\sffamily\bfseries\upshape
-Instanciation d'une classe}
+		\cadre{
+		\begin{pseudo}
+			\Class{NomDeLaClasse}
+				\Private
+					\LComment liste des attributs (donc privés par convention)
+				\Public
+					\LComment liste des méthodes publiques
+				\Private
+					\LComment liste des méthodes privées
+			\EndClass
+			\LComment Par souci de lisibilité, on pourra indiquer uniquement 
+			les signatures des
+			\LComment méthodes et donner le code complet des méthodes à 
+			la suite de la classe.
+		\end{pseudo}
+		}
 
-{«~Instancier~» signifie créer un objet d'une classe.
-Cela s'écrit avec l'instruction
-\textstyleMotCl{nouveau}. Pour lui donner un nom, on
-l'assigne à une variable déclarée du type de la
-classe.}
+		\textbf{Exemple}~: 
+		la classe Moment qui représente un moment de la journée.
 
-\cadre{
-\begin{pseudo}
-	\Decl nomObjet~: nomClasse 
-	\RComment déclaration de l'objet
-	\Let nomObjet \Gets \K{nouveau} nomClasse() 
-	\RComment instanciation de l'objet
-\end{pseudo}
-}
+		\cadre{
+		\begin{pseudo}
+			\Class{Moment}
+				\Private
+					\Decl heure~: entier
+					\Decl minute~: entier
+					\Decl seconde~: entier
+				\Public
+					\MethodSign{getHeure}{}{entier}
+					\MethodSign{getMinute}{}{entier}
+					\MethodSign{getSeconde}{}{entier}
+					\MethodSign{setHeure}{uneHeure~: entier}{}
+					\MethodSign{setMinute}{uneMinute~: entier}{}
+					\MethodSign{setSeconde}{uneSeconde~: entier}{}
+					\MethodSign{estMatin}{}{booléen}
+			\EndClass
+			
+			\Method{estMatin}{}{booléen}
+				\Return heure < 12
+			\EndMethod
+			\LComment + les accesseurs et les mutateurs		
+		\end{pseudo}
+		}
 
-Dans ce cours de Logique, nous adopterons le fait que 
-les noms des paramètres soient différents de ceux des 
-attributs (on préconisera d’imaginer des noms variés tels 
-que uneDate, maDate, laListe, autreObjet…), ce qui évitera 
-toute ambigüité (entre minuscule et majuscule par exemple).
+	\subsection{Instanciation d'une classe}
+	%---------------------------------------
+	
+		«~Instancier~» signifie créer un objet d'une classe.
+		Cela s'écrit avec l'instruction
+		\code{nouveau}. 
+		Pour lui donner un nom, 
+		on l'assigne à une variable déclarée du type de la
+		classe.
 
+		\cadre{
+		\begin{pseudo}
+			\Decl nomObjet~: nomClasse 
+			\RComment déclaration de l'objet
+			\Let nomObjet \Gets \K{nouveau} nomClasse() 
+			\RComment instanciation de l'objet
+		\end{pseudo}
+		}
 
-{
-\textbf{Exemple}~: pour créer un moment de la journée}
+		Dans ce cours de Logique, nous adopterons le fait que 
+		les noms des paramètres soient différents de ceux des 
+		attributs (on préconisera d’imaginer des noms variés tels 
+		que uneDate, maDate, laListe, autreObjet…), ce qui évitera 
+		toute ambigüité (entre minuscule et majuscule par exemple).
 
-\cadre{
-\begin{pseudo}
-	\Module{test}{}{}
-		\Decl midi~: Moment
-		\RComment déclaration
-		\Let midi \Gets \K{nouveau} Moment()
-		\RComment instanciation
-		\Stmt midi.setHeure( 12 )
-		\RComment mutateur
-		\Stmt midi.setMinute( 0 )
-		\RComment " "
-		\Stmt midi.setSeconde( 0 )
-		\RComment " "
-		\If{midi.estMatin()}
-			\Write "Midi est considéré comme
-			étant encore le matin"
-		\Else 
-			\Write "Midi est considéré comme
-			étant l'après-midi"
-		\EndIf
-	\EndModule
-\end{pseudo}
-}
+		\textbf{Exemple}~: pour créer un moment de la journée.
+		
+		\cadre{
+		\begin{pseudo}
+			\Module{test}{}{}
+				\Decl midi~: Moment
+				\RComment déclaration
+				\Let midi \Gets \K{nouveau} Moment()
+				\RComment instanciation
+				\Stmt midi.setHeure( 12 )
+				\RComment mutateur
+				\Stmt midi.setMinute( 0 )
+				\RComment " "
+				\Stmt midi.setSeconde( 0 )
+				\RComment " "
+				\If{midi.estMatin()}
+					\Write "Midi est considéré comme
+					étant encore le matin"
+				\Else 
+					\Write "Midi est considéré comme
+					étant l'après-midi"
+				\EndIf
+			\EndModule
+		\end{pseudo}
+		}
 
-Remarquez qu'il y a une différence importante entre les
-objets et les types de bases. Lorsqu'on déclare une
-variable d'un type de base, cela alloue
-automatiquement un espace mémoire pour cette variable.
-C'est différent avec les objets. La déclaration
-n'entraine qu'une réservation mémoire
-pour une «~référence~» vers un objet. Celui-ci
-n'existe pas encore. Il sera créé (et sa mémoire
-allouée) via une instruction spécifique (\code{nouveau}). On
-parle de variable «\textit{~dynamique~}». Le nom est alors~une
-«~référence~» vers l’objet. Les avantages de cette dissociation seront
-évidents lorsque nous parlerons de la notion de \textit{constructeur}.
+		Remarquez qu'il y a une différence importante entre les
+		objets et les types de bases. Lorsqu'on déclare une
+		variable d'un type de base, cela alloue
+		automatiquement un espace mémoire pour cette variable.
+		C'est différent avec les objets. La déclaration
+		n'entraine qu'une réservation mémoire
+		pour une «~référence~» vers un objet. Celui-ci
+		n'existe pas encore. Il sera créé (et sa mémoire
+		allouée) via une instruction spécifique (\code{nouveau}). On
+		parle de variable «\textit{~dynamique~}». Le nom est alors~une
+		«~référence~» vers l’objet. Les avantages de cette dissociation seront
+		évidents lorsque nous parlerons de la notion de \textit{constructeur}.
 
-\clearpage
+		Après la déclaration, on a~:
+		\begin{center}
+		\begin{tabular}{m{2.2089999cm}}
+		\centering\arraybslash  midi\\\hline
+		\multicolumn{1}{|m{2.2089999cm}|}{\centering\arraybslash
+		\itshape rien}\\\hline
+		\end{tabular}
+		\end{center}
 
-Après la déclaration, on a~:
+		Après l'instanciation (ou création), on a~:
+		\begin{center}
+		\begin{tabular}{m{2.578cm}m{2.261cm}|m{3.162cm}|}
+		\centering  midi &
+		\multicolumn{1}{m{2.261cm}}{~
+		} &
+		\multicolumn{1}{m{3.162cm}}{\centering\arraybslash
+		 Moment}\\\hhline{-~-}
+		\multicolumn{1}{|m{2.578cm}|}{~
+		} &
+		\centering \sffamily → &
+		\centering\arraybslash  heure = ?\\\hhline{-~~}
+		~
+		 &
+		~
+		 &
+		\centering\arraybslash  minute = ?\\
+		~
+		 &
+		~
+		 &
+		\centering\arraybslash  seconde = ?\\\hhline{~~-}
+		\end{tabular}
+		\end{center}
+		
+		Remarquez qu'il n'y a pas d'initialisation par défaut, pour le moment.
 
-\begin{center}
-\tablehead{}
-\begin{supertabular}{m{2.2089999cm}}
-\centering\arraybslash  midi\\\hline
-\multicolumn{1}{|m{2.2089999cm}|}{\centering\arraybslash
-\itshape rien}\\\hline
-\end{supertabular}
-\end{center}
+		Après l'action des mutateurs, on a~:
+		\begin{center}
+		\begin{tabular}{m{2.578cm}m{2.261cm}|m{3.162cm}|}
+		\centering  midi &
+		\multicolumn{1}{m{2.261cm}}{~
+		} &
+		\multicolumn{1}{m{3.162cm}}{\centering\arraybslash
+		 Moment}\\\hhline{-~-}
+		\multicolumn{1}{|m{2.578cm}|}{~
+		} &
+		\centering \sffamily → &
+		\centering\arraybslash  heure = 12\\\hhline{-~~}
+		~
+		 &
+		~
+		 &
+		\centering\arraybslash  minute = 0\\
+		~
+		 &
+		~
+		 &
+		\centering\arraybslash  seconde = 0\\\hhline{~~-}
+		\end{tabular}
+		\end{center}
 
-Après l'instanciation (ou création), on a~:
-
-\begin{center}
-\tablehead{}
-\begin{supertabular}{m{2.578cm}m{2.261cm}|m{3.162cm}|}
-\centering  midi &
-\multicolumn{1}{m{2.261cm}}{~
-} &
-\multicolumn{1}{m{3.162cm}}{\centering\arraybslash
- Moment}\\\hhline{-~-}
-\multicolumn{1}{|m{2.578cm}|}{~
-} &
-\centering \sffamily → &
-\centering\arraybslash  heure = ?\\\hhline{-~~}
-~
- &
-~
- &
-\centering\arraybslash  minute = ?\\
-~
- &
-~
- &
-\centering\arraybslash  seconde = ?\\\hhline{~~-}
-\end{supertabular}
-\end{center}
-
-Remarquez qu'il n'y a pas d'initialisation par défaut, pour le moment.
-
-Après l'action des mutateurs, on a~:
-
-\bigskip
-
-\begin{center}
-\tablehead{}
-\begin{supertabular}{m{2.578cm}m{2.261cm}|m{3.162cm}|}
-\centering  midi &
-\multicolumn{1}{m{2.261cm}}{~
-} &
-\multicolumn{1}{m{3.162cm}}{\centering\arraybslash
- Moment}\\\hhline{-~-}
-\multicolumn{1}{|m{2.578cm}|}{~
-} &
-\centering \sffamily → &
-\centering\arraybslash  heure = 12\\\hhline{-~~}
-~
- &
-~
- &
-\centering\arraybslash  minute = 0\\
-~
- &
-~
- &
-\centering\arraybslash  seconde = 0\\\hhline{~~-}
-\end{supertabular}
-\end{center}
-
-\marginicon{exercice}
-\begin{Emphase}{Exercices – classe et instance}
-
-\begin{enumerate}
-	\item 
-		Pour les produits, vous avez déjà écrit les attributs et les en-têtes des
-		méthodes. Regroupez le tout en une classe \textstyleCodeInsr{Produit}
-		\textbf{en respectant les notations que vous venez de voir.}
-	\item 
-		Écrivez un module qui affiche le prix d'achat d'un produit, son prix 
-		de vente hors TVA et son prix de vente TVA comprise.
-\end{enumerate}
-
-\end{Emphase}
+		\begin{Emphase}{Exercices – classe et instance}
+			\remonter
+			\marginicon{exercice}
+			\begin{enumerate}
+				\item 
+					Pour les produits, vous avez déjà écrit les attributs et les en-têtes des
+					méthodes. Regroupez le tout en une classe \code{Produit}
+					\textbf{en respectant les notations que vous venez de voir.}
+				\item 
+					Écrivez un module qui affiche le prix d'achat d'un produit, son prix 
+					de vente hors TVA et son prix de vente TVA comprise.
+			\end{enumerate}		
+		\end{Emphase}
 
 %==========================
 \section{Les constructeurs}
 %===========================
 
-L'encapsulation nous permet de contrôler
-l'état de l'objet et de
-l'empêcher de tomber dans un état invalide. Mais
-qu'en est-il de l'état de départ ?
-Est-il valide ?
-
-Il serait bon, lorsqu'on crée un objet (via
-\textstyleMotCl{nouveau}) de pouvoir indiquer l'état
-initial de l'objet et que cet état puisse être validé.
-C'est le rôle précis des constructeurs.
-
-\marginicon{definition}
-{\sffamily\bfseries\upshape{
-Un \textbf{constructeur} est une méthode particulière permettant
-d'initialiser les attributs d'un
-objet lors de sa création effective. Elle porte le même nom que sa
-classe et ne retourne pas de valeur.}}
-
-Il peut y avoir plusieurs constructeurs ce qui permet
-d'offrir plusieurs possibilités d'indiquer l'état initial de
-l'objet. Toutefois, nous limiterons au maximum le nombre 
-de constructeurs dans une classe.
-
-Remarquez que cela demande de définir plusieurs méthodes 
-qui portent le même nom. C'est ce qu'on appelle la
-\textbf{surcharge}. Des méthodes homonymes (c-à-d de même nom) doivent
-pouvoir être différenciées via leur signature (la liste de leurs
-paramètres).
-
-{\bfseries
-Exemple}
-
-Écrivons des constructeurs pour un moment de la journée~:
-
-\cadre{
-\begin{pseudo}
-	\Class{Moment}
-		\Private
-			\LComment pas de changement
-			\Decl heure~: entier
-			\Decl minute~: entier
-			\Decl seconde~: entier
-		\Public
-			\ConstrSign{Moment}{uneHeure, uneMinute, uneSeconde~: entiers}
-			\ConstrSign{Moment}{uneHeure, uneMinute~: entiers}
-			\RComment 0 seconde par défaut
-			\ConstrSign{Moment}{uneHeure~: entier}
-			\RComment initialiser à une heure pile
-			\Empty
-			\LComment pas de changement au niveau des méthodes~:
-			\MethodSign{getHeure}{}{entier}
-			\MethodSign{getMinute}{}{entier}
-			\MethodSign{getSeconde}{}{entier}
-			\MethodSign{setHeure}{uneHeure~: entier}{}
-			\MethodSign{setMinute}{uneMinute~: entier}{}
-			\MethodSign{setSeconde}{uneSeconde~: entier}{}
-			\MethodSign{estMatin}{}{booléen}
-	\EndClass
-	\end{pseudo}
-}
-
-\cadre{
-\begin{pseudo}
-	\Constr{Moment}{uneHeure, uneMinute, uneSeconde~: entiers}
-		\Stmt setHeure(uneHeure)
-		\Stmt setMinute(uneMinute)
-		\Stmt setSeconde(uneSeconde)
-	\EndConstr
+	L'encapsulation nous permet de contrôler
+	l'état de l'objet et de
+	l'empêcher de tomber dans un état invalide. Mais
+	qu'en est-il de l'état de départ ?
+	Est-il valide ?
 	
-	\Empty
-	\Constr{Moment}{uneHeure, uneMinute~: entiers}
-		\Stmt setHeure(uneHeure)
-		\Stmt setMinute(uneMinute)
-		\Stmt setSeconde(0)
-	\EndConstr
+	Il serait bon, lorsqu'on crée un objet (via
+	\code{nouveau}) de pouvoir indiquer l'état
+	initial de l'objet et que cet état puisse être validé.
+	C'est le rôle précis des constructeurs.
 	
-	\Empty
-	\Constr{Moment}{uneHeure~: entier}
-		\Stmt setHeure(uneHeure)
-		\Stmt setMinute(0)
-		\Stmt setSeconde(0)
-	\EndConstr
+	\marginicon{definition}
+	Un \textbf{constructeur} est une méthode particulière permettant
+	d'initialiser les attributs d'un
+	objet lors de sa création effective. Elle porte le même nom que sa
+	classe et ne retourne pas de valeur.
+	
+	Il peut y avoir plusieurs constructeurs ce qui permet
+	d'offrir plusieurs possibilités d'indiquer l'état initial de
+	l'objet. Toutefois, nous limiterons au maximum le nombre 
+	de constructeurs dans une classe.
+	
+	Remarquez que cela demande de définir plusieurs méthodes 
+	qui portent le même nom. C'est ce qu'on appelle la
+	\textbf{surcharge}. Des méthodes homonymes (c-à-d de même nom) doivent
+	pouvoir être différenciées via leur signature (la liste de leurs
+	paramètres).
+
+	\textbf{Exemple}~:
+	Écrivons des constructeurs pour un moment de la journée~:
+
+	\cadre{
+	\begin{pseudo}
+		\Class{Moment}
+			\Private
+				\LComment pas de changement
+				\Decl heure~: entier
+				\Decl minute~: entier
+				\Decl seconde~: entier
+			\Public
+				\ConstrSign{Moment}{uneHeure, uneMinute, uneSeconde~: entiers}
+				\ConstrSign{Moment}{uneHeure, uneMinute~: entiers}
+				\RComment 0 seconde par défaut
+				\ConstrSign{Moment}{uneHeure~: entier}
+				\RComment initialiser à une heure pile
+				\Empty
+				\LComment pas de changement au niveau des méthodes~:
+				\MethodSign{getHeure}{}{entier}
+				\MethodSign{getMinute}{}{entier}
+				\MethodSign{getSeconde}{}{entier}
+				\MethodSign{setHeure}{uneHeure~: entier}{}
+				\MethodSign{setMinute}{uneMinute~: entier}{}
+				\MethodSign{setSeconde}{uneSeconde~: entier}{}
+				\MethodSign{estMatin}{}{booléen}
+		\EndClass
+		\end{pseudo}
+	}
+	
+	\cadre{
+	\begin{pseudo}
+		\Constr{Moment}{uneHeure, uneMinute, uneSeconde~: entiers}
+			\Stmt setHeure(uneHeure)
+			\Stmt setMinute(uneMinute)
+			\Stmt setSeconde(uneSeconde)
+		\EndConstr
 		
-	\Empty
-	\LComment + les accesseurs, les mutateurs et les autres méthodes
+		\Empty
+		\Constr{Moment}{uneHeure, uneMinute~: entiers}
+			\Stmt setHeure(uneHeure)
+			\Stmt setMinute(uneMinute)
+			\Stmt setSeconde(0)
+		\EndConstr
+		
+		\Empty
+		\Constr{Moment}{uneHeure~: entier}
+			\Stmt setHeure(uneHeure)
+			\Stmt setMinute(0)
+			\Stmt setSeconde(0)
+		\EndConstr
+			
+		\Empty
+		\LComment + les accesseurs, les mutateurs et les autres méthodes
+	
+	\end{pseudo}
+	}
 
-\end{pseudo}
-}
+	Contrairement à ce qu'on peut trouver dans certains langages, 
+	comme Java par exemple, nous n'autorisons pas ici d'appel 
+	d'un constructeur d'une classe \code{A} dans un autre constructeur 
+	de cette même classe \code{A}.
+	
+	Par contre, il est courant en logique qu'un constructeur 
+	appelle les mutateurs afin d'effectuer les tests sans 
+	avoir à les dupliquer.
+	Mais c'est une démarche que vous éviterez de faire dans
+	des langages comme Java par exemple 
+	(cela vous sera expliqué plus tard).
+	
+	Lorsqu'on instancie un objet, les paramètres
+	qu'on donne déterminent le constructeur qui est
+	effectivement utilisé pour initialiser l'état de
+	l'objet.
 
-Contrairement à ce qu'on peut trouver dans certains langages, 
-comme Java par exemple, nous n'autorisons pas ici d'appel 
-d'un constructeur d'une classe A dans un autre constructeur 
-de cette même classe A.
+	\textbf{Exemple}~: Instancions quelques moments de la journée.
+	
+	\cadre{
+	\begin{pseudo}
+		\Let heureDépart \Gets \K{nouveau} Moment(14, 23, 56)
+		\Let heureLever \Gets \K{nouveau} Moment(9, 30)
+		\Let heureGouter \Gets \K{nouveau} Moment(17)
+	\end{pseudo}
+	}
 
-Par contre, il est courant en logique qu'un constructeur 
-appelle les mutateurs afin d'effectuer les tests sans 
-avoir à les dupliquer.
-Mais c'est une démarche que vous éviterez de faire dans
-des langages comme Java par exemple (cela vous sera expliqué
-plus tard).
-
-Lorsqu'on instancie un objet, les paramètres
-qu'on donne déterminent le constructeur qui est
-effectivement utilisé pour initialiser l'état de
-l'objet.
-
-{
-\textbf{Exemple}~: Instancions quelques moments de la journée}
-
-\cadre{
-\begin{pseudo}
-	\Let heureDépart \Gets \K{nouveau} Moment(14, 23, 56)
-	\Let heureLever \Gets \K{nouveau} Moment(9, 30)
-	\Let heureGouter \Gets \K{nouveau} Moment(17)
-\end{pseudo}
-}
-
-Le fait qu'un objet est instancié via la primitive
-\textbf{nouveau} et pas implicitement à la déclaration permet de
-postposer sa construction effective au moment où
-l'état initial qu'on veut lui donner
-sera connu (ce qui peut résulter d'un calcul). On est
-ainsi assuré que tous les objets manipulés sont valides ce qui permet
-d’éviter les situations où une méthode fait des dégâts suite à la
-manipulation d’un objet invalide.
-
-\marginicon{exercice}
-{\sffamily\bfseries\scshape
-Exercices - constructeur}
-
-\begin{enumerate}
-	\item {
-		Écrivez un ou des constructeur(s) pour un \textstyleCodeInsr{Produit}}
-	\item {
-		Adaptez le module écrit plus haut pour qu'il affiche le prix hors TVA
-		puis le prix TVA comprise du produit n°105176 (Lego réveil figurine policier)
-		au prix d'achat de 25\texteuro, au prix de vente de 30\texteuro et 
-		dont il y a 10 exemplaires en stock.}
-\end{enumerate}
-
+	Le fait qu'un objet est instancié via la primitive
+	\code{nouveau} et pas implicitement à la déclaration permet de
+	postposer sa construction effective au moment où
+	l'état initial qu'on veut lui donner
+	sera connu (ce qui peut résulter d'un calcul). On est
+	ainsi assuré que tous les objets manipulés sont valides ce qui permet
+	d’éviter les situations où une méthode fait des dégâts suite à la
+	manipulation d’un objet invalide.
+	
+	\begin{Emphase}{Exercices - constructeur}
+		\remonter
+		\marginicon{exercice}
+		\begin{enumerate}
+			\item {
+				Écrivez un ou des constructeur(s) pour un \code{Produit}}
+			\item {
+				Adaptez le module écrit plus haut pour qu'il affiche le prix hors TVA
+				puis le prix TVA comprise du produit n°105176 (Lego réveil figurine policier)
+				au prix d'achat de 25\texteuro, au prix de vente de 30\texteuro et 
+				dont il y a 10 exemplaires en stock.}
+		\end{enumerate}
+	\end{Emphase}
 
 %================================================
 \section{Du choix de la représentation de l'état}
 %=================================================
 
-Lorsqu'on définit une classe, il faut choisir les
-attributs qui vont permettre de représenter l'état des
-objets. Cela peut paraitre immédiat mais il n'en est
-rien.
+	Lorsqu'on définit une classe, il faut choisir les
+	attributs qui vont permettre de représenter l'état des
+	objets. Cela peut paraitre immédiat mais il n'en est
+	rien.
+	
+	\textbf{Exemple}
+		
+	Pour un moment de la journée, nous avons choisi
+	d'utiliser trois attributs entiers (les heures, les
+	minutes et les secondes). Nous aurions tout aussi bien pu choisir
+	d'utiliser un seul entier représentant le nombre de
+	secondes écoulées depuis minuit.
+	
+	Ces deux représentations sont tout-à-fait équivalentes en terme de
+	potentiel mais la grande différence est l'efficacité
+	du code des méthodes. 
+	
+	Prenons deux méthodes symptomatiques~: celle qui donne
+	l'heure et celle qui compare deux moments de la
+	journée. La première est beaucoup plus simple à écrire et plus rapide
+	avec la première représentation alors que la seconde méthode est plus
+	simple à écrire et plus rapide avec la seconde représentation.
+	
+	Dès lors, quelle représentation choisir ? Il faut examiner, pour chaque
+	représentation possible, le nombre de méthodes qui sont efficaces mais
+	aussi imaginer la fréquence de leur utilisation (ce qui est difficile
+	et changeant). Heureusement, ce choix n'est pas
+	définitif. Si on change d'avis, on peut changer la
+	représentation. Il faudra bien sûr réécrire les méthodes de la classe
+	mais il ne faudra rien changer au reste du code, c-à-d les lignes du
+	code utilisant la classe. C’est d’ailleurs là une des grandes forces de
+	la programmation orientée objet.
 
-\begin{Emphase}{Exemple}
+	\begin{Emphase}{Exercices – représentation de l'état}
+		\remonter
+		\marginicon{exercice}
+		\begin{enumerate}
+			\item 
+				Compléter la classe Moment en écrivant la méthode «~getHeure~» et celle
+				qui compare deux moments pour les deux représentations imaginées
+				ci-dessus.
+			\item 
+				Écrire le module qui crée deux moments de la journée et vérifie si le
+				premier est avant le second. Ce code dépend-il des attributs choisis
+				pour définir la classe Moment ?
+		\end{enumerate}
+	\end{Emphase}
 
-Pour un moment de la journée, nous avons choisi
-d'utiliser trois attributs entiers (les heures, les
-minutes et les secondes). Nous aurions tout aussi bien pu choisir
-d'utiliser un seul entier représentant le nombre de
-secondes écoulées depuis minuit.
-
-Ces deux représentations sont tout-à-fait équivalentes en terme de
-potentiel mais la grande différence est l'efficacité
-du code des méthodes. 
-
-Prenons deux méthodes symptomatiques~: celle qui donne
-l'heure et celle qui compare deux moments de la
-journée. La première est beaucoup plus simple à écrire et plus rapide
-avec la première représentation alors que la seconde méthode est plus
-simple à écrire et plus rapide avec la seconde représentation.
-
-Dès lors, quelle représentation choisir ? Il faut examiner, pour chaque
-représentation possible, le nombre de méthodes qui sont efficaces mais
-aussi imaginer la fréquence de leur utilisation (ce qui est difficile
-et changeant). Heureusement, ce choix n'est pas
-définitif. Si on change d'avis, on peut changer la
-représentation. Il faudra bien sûr réécrire les méthodes de la classe
-mais il ne faudra rien changer au reste du code, c-à-d les lignes du
-code utilisant la classe. C’est d’ailleurs là une des grandes forces de
-la programmation orientée objet.
-\end{Emphase}
-
-\marginicon{exercice}
-\begin{Emphase}{Exercices – représentation de l'état}
-
-\begin{enumerate}
-	\item 
-		Compléter la classe Moment en écrivant la méthode «~getHeure~» et celle
-		qui compare deux moments pour les deux représentations imaginées
-		ci-dessus.
-	\item 
-		Écrire le module qui crée deux moments de la journée et vérifie si le
-		premier est avant le second. Ce code dépend-il des attributs choisis
-		pour définir la classe Moment ?
-\end{enumerate}
-\end{Emphase}
-
-\marginicon{attention}
-{\bfseries
-Remarque}
-
-Précédemment, nous avons défini un \textbf{accesseur} comme une méthode
-permettant d’accéder à la valeur d’un attribut. Mais c’est au
-développeur de définir quels sont les attributs ; c’est totalement caché
-à l’utilisateur de la classe. On voit donc bien que cette notion
-d’accesseur n’a pleinement de sens qu’en interne, pour le développeur
-de la classe. Pour l’utilisateur il s’agit d’une méthode comme les
-autres.
+	\marginicon{attention}
+	\textbf{Remarque}
+	
+	Précédemment, nous avons défini un \textbf{accesseur} comme une méthode
+	permettant d’accéder à la valeur d’un attribut. Mais c’est au
+	développeur de définir quels sont les attributs ; c’est totalement caché
+	à l’utilisateur de la classe. On voit donc bien que cette notion
+	d’accesseur n’a pleinement de sens qu’en interne, pour le développeur
+	de la classe. Pour l’utilisateur il s’agit d’une méthode comme les
+	autres.
 
 
 %============================
 \section{La mort d'un objet}
 %============================
 
-On sait que déclarer une variable ou créer un objet réserve de l’espace
-en mémoire. On ne s’est jamais demandé quand cet espace mémoire est
-libéré.
+	On sait que déclarer une variable ou créer un objet réserve de l’espace
+	en mémoire. On ne s’est jamais demandé quand cet espace mémoire est
+	libéré.
+	
+	Pour les variables locales d’un module ou d'une
+	méthode, la réponse est simple~: l’espace mémoire est récupéré
+	lorsqu’on arrive à la fin du module ou de la méthode.
+	
+	Pour les objets, c’est un peu plus compliqué. L’espace réservé pour
+	contenir la référence (voir paragraphe suivant) est bien libéré à la
+	fin du module puisque la variable cesse d’exister. Par contre l’espace
+	réservé dynamiquement pour contenir l’objet lui-même (par la primitive
+	\code{nouveau}) est toujours là et bien là !
+	
+	Mais alors, il n’est plus référencé et donc plus utilisable ? Pas
+	forcément. En effet, il est possible qu’il soit référencé par plusieurs
+	références. Si certaines sont détruites, il se peut que d’autres
+	continuent à exister. Ce sera le cas, par exemple, si l’objet constitue
+	la valeur de retour de la méthode ; sa référence à l’intérieur du
+	module est détruite mais il sera toujours accessible par une référence
+	du module appelant.
+	
+	Mais que faire quand on n’a plus besoin d’un objet ? On trouve
+	typiquement deux approches dans les langages OO.
 
-Pour les variables locales d’un module ou d'une
-méthode, la réponse est simple~: l’espace mémoire est récupéré
-lorsqu’on arrive à la fin du module ou de la méthode.
-
-Pour les objets, c’est un peu plus compliqué. L’espace réservé pour
-contenir la référence (voir paragraphe suivant) est bien libéré à la
-fin du module puisque la variable cesse d’exister. Par contre l’espace
-réservé dynamiquement pour contenir l’objet lui-même (par la primitive
-\textstyleMotCl{nouveau}) est toujours là et bien là !
-
-Mais alors, il n’est plus référencé et donc plus utilisable ? Pas
-forcément. En effet, il est possible qu’il soit référencé par plusieurs
-références. Si certaines sont détruites, il se peut que d’autres
-continuent à exister. Ce sera le cas, par exemple, si l’objet constitue
-la valeur de retour de la méthode ; sa référence à l’intérieur du
-module est détruite mais il sera toujours accessible par une référence
-du module appelant.
-
-Mais que faire quand on n’a plus besoin d’un objet ? On trouve
-typiquement deux approches dans les langages OO.
-
-{\sffamily\bfseries\upshape
-Destruction explicite de l’objet}
-
-Dans cette approche (qui est celle de C++ notamment), c’est au
-programmeur lui-même qu’il incombe de détruire explicitement un objet
-et ainsi de permettre au système de récupérer l’espace mémoire. 
-
-Cette technique offre au programmeur un grand contrôle sur l’utilisation
-de la mémoire mais offre malheureusement quelques inconvénients.
-
-\begin{liste}
-	\item 
-		Cela demande une grande attention lors de la programmation afin de
-		récupérer tout l’espace qui peut l’être. Dans le cas contraire, on
-		gaspille de la mémoire.
-	\item 
-		Dans l’autre sens, il ne faut pas trop détruire. Si, par mégarde, on
-		détruit un objet qui est encore référencé et qu'on
-		utilise cette référence, le comportement du programme est imprévisible
-		(la mémoire peut avoir été utilisée pour autre chose).
-	\item 
-		Un objet peut contenir des références à d’autres objets. La destruction
-		est alors un processus non trivial qui peut sensiblement alourdir et
-		obscurcir le code.
-\end{liste}
-
-{\sffamily\bfseries\upshape
-Utilisation d’un \textit{garbage collector} (ramasse-miettes)}
-
-Cette autre approche (choisie notamment par Java) enlève au programmeur
-toute (ou presque) responsabilité quant à la gestion de la mémoire. De
-temps en temps, ou lorsque le besoin s’en fait sentir, un composant du
-système appelé \textit{garbage collector} se met au travail. Son rôle
-est justement de récupérer l’espace qui n’est plus utilisé. Pour cela,
-il considère que tout objet qui n'est plus accessible
-(parce que plus aucune référence ne permet d’y accéder) peut être
-détruit.
-
-Par facilité et parce que cela correspond au cours de Java que vous
-suivez cette année, nous adopterons dans ce cours cette seconde
-approche, c'est à dire qu'il ne faut
-pas se préoccuper de ce problème ;-)
+	\subsection{Destruction explicite de l’objet}
+	%---------------------------------------------
+	
+		Dans cette approche (qui est celle de C++ notamment), c’est au
+		programmeur lui-même qu’il incombe de détruire explicitement un objet
+		et ainsi de permettre au système de récupérer l’espace mémoire. 
+		
+		Cette technique offre au programmeur un grand contrôle sur l’utilisation
+		de la mémoire mais offre malheureusement quelques inconvénients.
+	
+		\begin{liste}
+			\item 
+				Cela demande une grande attention lors de la programmation afin de
+				récupérer tout l’espace qui peut l’être. Dans le cas contraire, on
+				gaspille de la mémoire.
+			\item 
+				Dans l’autre sens, il ne faut pas trop détruire. Si, par mégarde, on
+				détruit un objet qui est encore référencé et qu'on
+				utilise cette référence, le comportement du programme est imprévisible
+				(la mémoire peut avoir été utilisée pour autre chose).
+			\item 
+				Un objet peut contenir des références à d’autres objets. La destruction
+				est alors un processus non trivial qui peut sensiblement alourdir et
+				obscurcir le code.
+		\end{liste}
+	
+	\subsection{Utilisation d’un \textit{garbage collector} (ramasse-miettes)}
+	%---------------------------------------------------------------------------
+	
+		Cette autre approche (choisie notamment par Java) enlève au programmeur
+		toute (ou presque) responsabilité quant à la gestion de la mémoire. De
+		temps en temps, ou lorsque le besoin s’en fait sentir, un composant du
+		système appelé \textit{garbage collector} se met au travail. Son rôle
+		est justement de récupérer l’espace qui n’est plus utilisé. Pour cela,
+		il considère que tout objet qui n'est plus accessible
+		(parce que plus aucune référence ne permet d’y accéder) peut être
+		détruit.
+		
+		Par facilité et parce que cela correspond au cours de Java que vous
+		suivez cette année, nous adopterons dans ce cours cette seconde
+		approche, c'est à dire qu'il ne faut
+		pas se préoccuper de ce problème ;-)
 
 
 %=====================================
 \section{Quelques éléments de syntaxe}
 %=====================================
 
-Clarifions certaines notations liées aux objets.
+	Clarifions certaines notations liées aux objets.
 
-\begin{liste}
-	\item {
-		On peut directement afficher un objet. Cela affiche son état,
-		c'est-à-dire les valeurs de ses attributs dans
-		l'ordre où ils apparaissent dans la définition de la
-		classe.
-		\\
-		\bigskip
-		\cadre{
-		\begin{pseudo}
-			\Decl rendezVous~: Moment
-			\Let rendezVous \Gets \K{nouveau} Moment(14, 23, 56)
-			\Write rendezVous 
-			\RComment affichera 14, 23 et 56 dans un format lisible quelconque
-		\end{pseudo}
-		}
-		}
-		\bigskip
-
-	\item {
-		Un nom d'objet est en fait une \textbf{référence} à
-		l'objet. Ainsi l'affectation ne copie
-		pas l'objet mais sa référence. Au final, nous avons
-		deux noms identifiant le même objet}
-		\\
-		\bigskip
-		\cadre{
-		\begin{pseudo}
-			\Decl moment1, moment2~: Moment
-			\Let moment1 \Gets \K{nouveau} Moment(14, 23, 56)
-			\Let moment2 \Gets moment1
-			\RComment moment1 et moment2 désignent le même objet
-			\Stmt moment2.setHeure( 12 )
-			\Write moment1.getHeure() 
-			\RComment affiche 12 !!!
-		\end{pseudo}
-		}
-
-		\bigskip
-
-		\begin{center}
-		\tablehead{}
-		\begin{supertabular}{m{2.19cm}m{2.2779999cm}|m{2.975cm}|m{2.34cm}m{2.146cm}}
-		\hhline{-~-~-}
-		\multicolumn{1}{|m{2.19cm}|}{\centering  moment1}
-		&
-		\centering \sffamily → &
-		\centering  Heure = \sout{14} 12 &
-		\multicolumn{1}{m{2.34cm}|}{\centering \sffamily
-		←} &
-		\multicolumn{1}{m{2.146cm}|}{\centering\arraybslash
-		 moment2}\\\hhline{-~~~-}
-		~
-		 &
-		~
-		 &
-		\centering  minute = 23 &
-		~
-		 &
-		~
-		\\
-		~
-		 &
-		~
-		 &
-		\centering  seconde = 56 &
-		~
-		 &
-		~
-		\\\hhline{~~-~~}
-		\end{supertabular}
-		\end{center}
-
-		\bigskip
-
-	\item 
-		Le signe «~=~» permet de tester que deux noms référencent le même objet.
-		Pour tester que deux objets différents sont dans le même état, on
-		utilise la méthode «~égal~».
-		\\
-		\bigskip
-		\cadre{
-		\begin{pseudo}
-			\Decl moment1, moment2, moment3~: Moment
-			\Empty
-			\Let moment1 \Gets {nouveau} Moment( 14, 23, 56 )
-			\Let moment2 \Gets moment1 
-			\RComment moment1 et moment2 désignent le même objet
-			\Empty
-			\Let moment3 \Gets {nouveau} Moment( 14, 23, 56 )
-			\Write moment1 = moment2
-			\RComment vrai
-			\Write moment1 = moment3 
-			\RComment faux
-			\Write moment1.égal(moment2) 
-			\RComment vrai
-			\Write moment1.égal(moment3) 
-			\RComment vrai
-			\Empty 
-			\Stmt moment2.setHeure( 12 )
-			\Write moment1.égal(moment2) 
-			\RComment vrai
-			\Write moment1.égal(moment3) 
-			\RComment faux
-		\end{pseudo}
-		}
-\end{liste}
-
-\bigskip
-
-\begin{liste}
-	\item {
-		\textbf{Un attribut privé n'est pas connu en dehors de la
-		classe.}
-		
-		Précisons~: un attribut privé n'est connu que
-		des instances de cette classe, ce qui signifie qu'il
-		est également connu par tous les autres objets de la même
-		classe.
-
-		\begin{Emphase}{Exemple}~: 	
-		écrivons la méthode qui teste si un moment précède un
-		autre (en supposant que l'état est représenté par un
-		seul entier, totalSecondes, le nombre de secondes depuis minuit)
-		\end{Emphase}
-		
-		\bigskip
-		\cadre{
-		\begin{pseudo}
-			\Method{estAntérieur}{autre~: Moment}{booléen}
-				\Return totalSecondes < autre.totalSecondes
-				\LComment c'est équivalent à \textstyleMotCl{retourner} totalSecondes < autre.getTotalSecondes()
-			\EndMethod
-		\end{pseudo}
-		}
-		\bigskip
-		}
-	\item {
-		Lorsqu'il est déclaré, un nom d'objet
-		ne référence encore aucun objet. Cela s'indique par la
-		valeur «~rien~». On peut aussi utiliser cette valeur pour enlever toute
-		référence vers un objet.
-		\\
-		\bigskip
-		\cadre{
-		\begin{pseudo}
-			\Decl moment~: Moment
-			\RComment moment = rien
-			\Let moment \Gets \K{nouveau} Moment( 14, 23, 56 )
-			\RComment moment ${\neq}$ rien
-			\Let moment \Gets rien
-			\RComment moment = rien
-		\end{pseudo}
-		}
-		}
-\end{liste}
+	\begin{liste}
+		\item {
+			On peut directement afficher un objet. Cela affiche son état,
+			c'est-à-dire les valeurs de ses attributs dans
+			l'ordre où ils apparaissent dans la définition de la
+			classe.
+			\\
+			\bigskip
+			\cadre{
+			\begin{pseudo}
+				\Decl rendezVous~: Moment
+				\Let rendezVous \Gets \K{nouveau} Moment(14, 23, 56)
+				\Write rendezVous 
+				\RComment affichera 14, 23 et 56 dans un format lisible quelconque
+			\end{pseudo}
+			}
+			}
+			\bigskip
 	
-
-\marginicon{exercice}
-\begin{Emphase}{Exercice – méthode égal()}
-
-Écrire la méthode égal() pour la classe Moment.
-
-\bigskip
-
-N.B.~: On supposera par la suite qu'une telle méthode
-existe par défaut pour toutes les nouvelles classes.
-\end{Emphase}
+		\item {
+			Un nom d'objet est en fait une \textbf{référence} à
+			l'objet. Ainsi l'affectation ne copie
+			pas l'objet mais sa référence. Au final, nous avons
+			deux noms identifiant le même objet}
+			\\
+			\bigskip
+			\cadre{
+			\begin{pseudo}
+				\Decl moment1, moment2~: Moment
+				\Let moment1 \Gets \K{nouveau} Moment(14, 23, 56)
+				\Let moment2 \Gets moment1
+				\RComment moment1 et moment2 désignent le même objet
+				\Stmt moment2.setHeure( 12 )
+				\Write moment1.getHeure() 
+				\RComment affiche 12 !!!
+			\end{pseudo}
+			}
+	
+			\bigskip
+	
+			\begin{center}
+			\tablehead{}
+			\begin{supertabular}{m{2.19cm}m{2.2779999cm}|m{2.975cm}|m{2.34cm}m{2.146cm}}
+			\hhline{-~-~-}
+			\multicolumn{1}{|m{2.19cm}|}{\centering  moment1}
+			&
+			\centering \sffamily → &
+			\centering  Heure = \sout{14} 12 &
+			\multicolumn{1}{m{2.34cm}|}{\centering \sffamily
+			←} &
+			\multicolumn{1}{m{2.146cm}|}{\centering\arraybslash
+			 moment2}\\\hhline{-~~~-}
+			~
+			 &
+			~
+			 &
+			\centering  minute = 23 &
+			~
+			 &
+			~
+			\\
+			~
+			 &
+			~
+			 &
+			\centering  seconde = 56 &
+			~
+			 &
+			~
+			\\\hhline{~~-~~}
+			\end{supertabular}
+			\end{center}
+	
+			\bigskip
+	
+		\item 
+			Le signe «~=~» permet de tester que deux noms référencent le même objet.
+			Pour tester que deux objets différents sont dans le même état, on
+			utilise la méthode «~égal~».
+			\\
+			\bigskip
+			\cadre{
+			\begin{pseudo}
+				\Decl moment1, moment2, moment3~: Moment
+				\Empty
+				\Let moment1 \Gets {nouveau} Moment( 14, 23, 56 )
+				\Let moment2 \Gets moment1 
+				\RComment moment1 et moment2 désignent le même objet
+				\Empty
+				\Let moment3 \Gets {nouveau} Moment( 14, 23, 56 )
+				\Write moment1 = moment2
+				\RComment vrai
+				\Write moment1 = moment3 
+				\RComment faux
+				\Write moment1.égal(moment2) 
+				\RComment vrai
+				\Write moment1.égal(moment3) 
+				\RComment vrai
+				\Empty 
+				\Stmt moment2.setHeure( 12 )
+				\Write moment1.égal(moment2) 
+				\RComment vrai
+				\Write moment1.égal(moment3) 
+				\RComment faux
+			\end{pseudo}
+			}
+	\end{liste}
+	
+	\bigskip
+	
+	\begin{liste}
+		\item {
+			\textbf{Un attribut privé n'est pas connu en dehors de la
+			classe.}
+			
+			Précisons~: un attribut privé n'est connu que
+			des instances de cette classe, ce qui signifie qu'il
+			est également connu par tous les autres objets de la même
+			classe.
+			
+			\smallskip
+			\textbf{Exemple}~: 	
+			écrivons la méthode qui teste si un moment précède un
+			autre (en supposant que l'état est représenté par un
+			seul entier, totalSecondes, le nombre de secondes depuis minuit)
+			
+			\bigskip
+			\cadre{
+			\begin{pseudo}
+				\Method{estAntérieur}{autre~: Moment}{booléen}
+					\Return totalSecondes < autre.totalSecondes
+					\LComment c'est équivalent à \textstyleMotCl{retourner} totalSecondes < autre.getTotalSecondes()
+				\EndMethod
+			\end{pseudo}
+			}
+			\bigskip
+			}
+		\item {
+			Lorsqu'il est déclaré, un nom d'objet
+			ne référence encore aucun objet. Cela s'indique par la
+			valeur «~rien~». On peut aussi utiliser cette valeur pour enlever toute
+			référence vers un objet.
+			\\
+			\bigskip
+			\cadre{
+			\begin{pseudo}
+				\Decl moment~: Moment
+				\RComment moment = rien
+				\Let moment \Gets \K{nouveau} Moment( 14, 23, 56 )
+				\RComment moment ${\neq}$ rien
+				\Let moment \Gets rien
+				\RComment moment = rien
+			\end{pseudo}
+			}
+			}
+	\end{liste}
+	
+	\begin{Emphase}{Exercice – méthode égal()}
+		\marginicon{exercice}
+		Écrire la méthode \code{égal()} pour la classe \code{Moment}.
+		
+		N.B.~: On supposera par la suite qu'une telle méthode
+		existe par défaut pour toutes les nouvelles classes.
+	\end{Emphase}
 
 %===============================================	
 \section{Représentation modélisée d'une classe}
 %===============================================
 
-Un dessin étant souvent plus lisible qu'un texte, on
-peut représenter graphiquement une classe. Une notation courante est
-celle utilisée en UML\footnote{{Unified
-Modeling Langage. }On vous en parlera plus en détail au cours
-d'Analyse.}. Pour faire simple, une classe est
-représentée par un rectangle composé de 3 zones~: la première pour le
-nom de la classe, la deuxième pour les attributs et la troisième pour
-les méthodes. On indique par un signe «~+~» (resp. «~-~») que le membre
-est public (resp. privé)
+	Un dessin étant souvent plus lisible qu'un texte, on
+	peut représenter graphiquement une classe. Une notation courante est
+	celle utilisée en UML\footnote{{Unified
+	Modeling Langage. }On vous en parlera plus en détail au cours
+	d'Analyse.}. Pour faire simple, une classe est
+	représentée par un rectangle composé de 3 zones~: la première pour le
+	nom de la classe, la deuxième pour les attributs et la troisième pour
+	les méthodes. On indique par un signe «~+~» (resp. «~-~») que le membre
+	est public (resp. privé)
 
-\begin{Emphase}{Exemple}
+	\textbf{Exemple}
+	
+	\begin{center}
+	\begin{tabular}{|m{7cm}|}
+	\hline
+	\centering\arraybslash \bfseries Moment\\\hline
+	{ {}- heure~: entier}
+	
+	{ {}- minute~: entier}
+	
+	 {}- seconde~: entier\\\hline
+	{ + getHeure() \textsf{→} entier}
+	
+	{ + setHeure( uneHeure~: entier )}
+	
+	{ + avancer1Heure()}
+	
+	 ...\\\hline
+	\end{tabular}
+	\end{center}
 
-Remarquons qu'on indique la signature des méthodes mais
-pas le code associé. En fonction du niveau de détail désiré, on
-pourrait aussi omettre les paramètres et types de retour.
-
-\begin{center}
-\begin{minipage}{7cm}
-\begin{center}
-\tablehead{}
-\begin{supertabular}{|m{7cm}|}
-\hline
-\centering\arraybslash \bfseries Moment\\\hline
-{ {}- heure~: entier}
-
-{ {}- minute~: entier}
-
- {}- seconde~: entier\\\hline
-{ + getHeure() \textsf{→} entier}
-
-{ + setHeure( uneHeure~: entier )}
-
-{ + avancer1Heure()}
-
- ...\\\hline
-\end{supertabular}
-\end{center}
-\end{minipage}
-\end{center}
-
-\end{Emphase}
-
+	Remarquons qu'on indique la signature des méthodes mais
+	pas le code associé. En fonction du niveau de détail désiré, on
+	pourrait aussi omettre les paramètres et types de retour.
 
 %=======================================
 \section{Un exemple complet~: une durée}
 %=======================================
 
-Examinons un exemple complet pour fixer les notions introduites par ce
-chapitre. Lors de l'apprentissage du pseudo-code, vous
-avez écrit quelques modules manipulant des heures (conversion du format
-HMS en nombre de secondes depuis minuit, conversion inverse, différence
-entre 2 heures, …). Il est souvent utile, lorsqu’on développe un
-algorithme, d’avoir à sa disposition un tel type de données au même
-titre que les types prédéfinis. Faisons-le !
-
-{\sffamily\bfseries\upshape
-Ce que l’on veut vraiment}
-
-Avant tout, il faut bien préciser ce que l’on veut décrire. L’«~heure~»
-est un concept multifacettes. Parle-t-on de l’heure comme moment dans
-la journée ou de l’heure comme représentant une durée ? Dans le premier
-cas, elle ne peut dépasser 24h et la différence entre 2 heures n’a pas
-de sens (ou plus précisément n’est pas une heure, mais une durée !).
-Dans le deuxième cas, on n’a pas ces contraintes. Nous allons ici
-adopter la deuxième approche et pour bien la distinguer, nous allons
-plutôt appeler cela une \textbf{durée}.
-
-{\sffamily\bfseries\upshape
-Le comportement (les méthodes)}
-
-La première question à se poser est celle des services qu’on veut
-fournir, c’est-à-dire des méthodes publiques de la classe. On doit
-pouvoir \textit{construire} une durée. On doit pouvoir connaitre le
-nombre de jours, d’heures, minutes ou secondes correspondant à une durée. On doit
-pouvoir effectuer des calculs avec des durées (addition, soustraction).
-Enfin, on doit pouvoir comparer des durées. Arrêtons-nous là, mais en
-pratique, on pourrait trouver encore bon nombre d’autres méthodes qu’il
-serait intéressant de fournir. Ce qui nous donne jusqu’à présent
-
-\cadre{
-\begin{pseudo}
-	\Class{Durée}
-		\Private
-			\LComment rien encore
-		\Public
-			\ConstrSign{Durée}{secondes~: entier}
-			\ConstrSign{Durée}{heure, minute, seconde~: entiers}
+	Examinons un exemple complet pour fixer les notions introduites par ce
+	chapitre. Lors de l'apprentissage du pseudo-code, vous
+	avez écrit quelques modules manipulant des heures (conversion du format
+	HMS en nombre de secondes depuis minuit, conversion inverse, différence
+	entre 2 heures, …). Il est souvent utile, lorsqu’on développe un
+	algorithme, d’avoir à sa disposition un tel type de données au même
+	titre que les types prédéfinis. Faisons-le !
+	
+	\subsection{Ce que l’on veut vraiment}
+	
+		Avant tout, il faut bien préciser ce que l’on veut décrire. L’«~heure~»
+		est un concept multifacettes. Parle-t-on de l’heure comme moment dans
+		la journée ou de l’heure comme représentant une durée ? Dans le premier
+		cas, elle ne peut dépasser 24h et la différence entre 2 heures n’a pas
+		de sens (ou plus précisément n’est pas une heure, mais une durée !).
+		Dans le deuxième cas, on n’a pas ces contraintes. Nous allons ici
+		adopter la deuxième approche et pour bien la distinguer, nous allons
+		plutôt appeler cela une \textbf{durée}.
+	
+	\subsection{Le comportement (les méthodes)}
+	
+		La première question à se poser est celle des services qu’on veut
+		fournir, c’est-à-dire des méthodes publiques de la classe. On doit
+		pouvoir \textit{construire} une durée. On doit pouvoir connaitre le
+		nombre de jours, d’heures, minutes ou secondes correspondant à une durée. On doit
+		pouvoir effectuer des calculs avec des durées (addition, soustraction).
+		Enfin, on doit pouvoir comparer des durées. Arrêtons-nous là, mais en
+		pratique, on pourrait trouver encore bon nombre d’autres méthodes qu’il
+		serait intéressant de fournir. Ce qui nous donne jusqu’à présent
+		
+		\cadre{
+		\begin{pseudo}
+			\Class{Durée}
+				\Private
+					\LComment rien encore
+				\Public
+					\ConstrSign{Durée}{secondes~: entier}
+					\ConstrSign{Durée}{heure, minute, seconde~: entiers}
+					\Empty
+					\MethodSign{getJour}{}{entier}
+					\RComment nb de jours dans une durée
+					\MethodSign{getHeure}{}{entier}
+					\RComment entier entre 0 et 23 inclus
+					\MethodSign{getMinute}{}{entier}
+					\RComment entier entre 0 et 59 inclus
+					\MethodSign{getSeconde}{}{entier}
+					\RComment entier entre 0 et 59 inclus
+					\Empty
+					\MethodSign{getTotalHeures}{}{entier}
+					\RComment Le nombre total d’heures
+					\MethodSign{getTotalMinutes}{}{entier}
+					\RComment Le nombre total de minutes
+					\MethodSign{getTotalSecondes}{}{entier}
+					\RComment Le nombre total de secondes
+					\Empty
+					\MethodSign{ajouter}{autreDurée~: Durée}{}
+					\MethodSign{différence}{autreDurée~: Durée}{Durée}
+					\MethodSign{égale}{autreDurée~: Durée}{booléen}
+					\MethodSign{plusPetit}{autreDurée~: Durée}{booléen}
+			\EndClass
+		\end{pseudo}
+		}
+		
+		\marginicon{attention}
+		\textbf{Quelques remarques}
+		\begin{liste}
+			\item {
+				On a deux constructeurs, ce qui offre plus de souplesse pour initialiser
+				un objet. Ceci est un exemple supplémentaire du concept de
+				«\textbf{~surcharge~}».}
+			\item {
+				Faisons bien la distinction entre les méthodes
+				\code{getXXX()} et \code{getTotalXXX()}. Par
+				exemple, la méthode \code{getMinute()} retourne la valeur
+				de la composante «~minutes~» dans une représentation HMS tandis que la
+				méthode \code{getTotalMinutes()} retourne le nombre total
+				de minutes entières pour cette durée. Ex~: pour 1h23’12’’,
+				\code{getMinute()} retourne 23 et
+				\code{getTotalMinutes()} retourne 83. Idem avec 
+				les jours, les heures	et les secondes.}
+			\item {
+				Les méthodes \code{getTotalXXX()} retournent le nombre
+				(toujours entier) de XXX contenus dans la durée. Exemple, avec la durée
+				0h23’52'’, \code{getTotalMinutes()}
+				retourne 23 et pas 24 (autrement dit, il n’y a pas d’arrondi vers le
+				haut).}
+			\item {
+				Il n’y a pas de \textit{mutateur }(\code{setXXX()}). Ce qui
+				signifie qu’on ne peut pas changer directement la valeur de l’objet
+				après son initialisation. On aurait pu en définir mais nous
+				n'avons pas jugé utile de le faire dans ce cas
+				précis.}
+			\item {
+				La méthode \code{ajouter()} ne retourne rien. En effet,
+				elle ajoute la durée à l’objet sur lequel est appelée la méthode. C’est
+				un choix ; on aurait aussi pu dire que la méthode ne modifie pas
+				l’objet mais en retourne un autre qui représente la somme. Dans ce cas,
+				on l’aurait plutôt appelée «\code{~plus( )}~».}
+			\item {
+				La méthode \code{différence()}, elle, renvoie toujours une
+				durée (positive).}
+		\end{liste}
+	
+	\subsection{La représentation de l'état (les attributs)}
+	
+		La question suivante est~: «~Comment représenter une durée en interne ?
+		». Plusieurs possibilités existent. Par exemple~:	
+		\begin{liste}
+			\item 
+				via le nombre d’heures, de minutes et de secondes
+			\item 
+				via le nombre total de secondes
+			\item 
+				via une chaine, par exemple au format «~HH~:MM~:SS~» où HH pourrait
+				éventuellement excéder 23.
+		\end{liste}
+		
+		Le premier choix semble le plus évident mais réfléchissons-y de plus
+		près. D’une part, pourquoi se limiter aux heures. On pourrait
+		introduire un champ ‘\code{jour}’ (après tout on a bien
+		une méthode \code{getJour()}). 
+		
+		Quel critère doit vraiment nous permettre de décider ? Il faut une
+		représentation qui soit suffisante (tout est représenté) et qui
+		permette d’écrire des méthodes lisibles et si possible efficaces
+		(c'est-à-dire où le calcul est rapide). Selon ces
+		critères, la deuxième représentation est de loin la meilleure. Ce qui
+		nous donne
+		
+		\cadre{
+		\begin{pseudo}
+			\Class{Durée}
+				\Private
+					\Decl totalSecondes~: entier
+				\Public
+					\LComment idem
+			\EndClass
+		\end{pseudo}
+		}
+	
+	\subsection{L'implémentation}
+	
+		On est à présent prêt pour écrire le code des méthodes. Ce qui nous
+		donne pour la classe dans son entièreté~:
+		
+		\cadre{
+		\begin{pseudo}
+			\Class{Durée}
+				\Private
+					\Decl totalSecondes~: entier
+				\Public
+					\ConstrSign{Durée}{secondes~: entier}
+					\ConstrSign{Durée}{heure, minute, seconde~: entiers}
+					\Empty
+					\MethodSign{getJour}{}{entier}
+					\RComment nb de jours dans une durée
+					\MethodSign{getHeure}{}{entier}
+					\RComment entier entre 0 et 23 inclus
+					\MethodSign{getMinute}{}{entier}
+					\RComment entier entre 0 et 59 inclus
+					\MethodSign{getSeconde}{}{entier}
+					\RComment entier entre 0 et 59 inclus
+					\Empty
+					\MethodSign{getTotalHeures}{}{entier}
+					\RComment Le nombre total d’heures
+					\MethodSign{getTotalMinutes}{}{entier}
+					\RComment Le nombre total de minutes
+					\MethodSign{getTotalSecondes}{}{entier}
+					\RComment Le nombre total de secondes
+					\Empty
+					\MethodSign{ajouter}{autreDurée~: Durée}{}
+					\MethodSign{différence}{autreDurée~: Durée}{Durée}
+					\MethodSign{égale}{autreDurée~: Durée}{booléen}
+					\MethodSign{plusPetit}{autreDurée~: Durée}{booléen}
+			\EndClass
+		\end{pseudo}
+		}
+		
+		\cadre{
+		\begin{pseudo}
+			\Constr{Durée}{secondes~: entier}
+				\If{secondes < 0}
+					\Stmt \K{erreur} "paramètre négatif"
+				\EndIf
+				\Let totalSecondes \Gets secondes
+			\EndConstr
 			\Empty
-			\MethodSign{getJour}{}{entier}
-			\RComment nb de jours dans une durée
-			\MethodSign{getHeure}{}{entier}
-			\RComment entier entre 0 et 23 inclus
-			\MethodSign{getMinute}{}{entier}
-			\RComment entier entre 0 et 59 inclus
-			\MethodSign{getSeconde}{}{entier}
-			\RComment entier entre 0 et 59 inclus
+			\Constr{Durée}{heure, minute, seconde~: entiers}
+				\If{heure < 0 OU minute < 0 OU seconde < 0}
+					\Stmt \K{erreur} "un des paramètres est négatif"
+				\EndIf
+				\Let totalSecondes \Gets 3600*heure + 60*minute + seconde
+			\EndConstr
+		\end{pseudo}
+		}
+		
+		\cadre{
+		\begin{pseudo}
+			\LComment Retourne le nombre de jours dans une 
+			représentation JJ/HH:MM:SS
+			\Method{getJour}{}{entier}
+				\Return totalSecondes DIV (3600*24)
+			\EndMethod
 			\Empty
-			\MethodSign{getTotalHeures}{}{entier}
-			\RComment Le nombre total d’heures
-			\MethodSign{getTotalMinutes}{}{entier}
-			\RComment Le nombre total de minutes
-			\MethodSign{getTotalSecondes}{}{entier}
-			\RComment Le nombre total de secondes
+			\LComment Retourne le nombre d'heures dans une 
+			représentation JJ/HH:MM:SS
+			\Method{getHeure}{}{entier}
+				\LComment On doit enlever les jours éventuels
+				\Return (totalSecondes DIV 3600) MOD 24
+			\EndMethod
 			\Empty
-			\MethodSign{ajouter}{autreDurée~: Durée}{}
-			\MethodSign{différence}{autreDurée~: Durée}{Durée}
-			\MethodSign{égale}{autreDurée~: Durée}{booléen}
-			\MethodSign{plusPetit}{autreDurée~: Durée}{booléen}
-	\EndClass
-\end{pseudo}
-}
-
-\bigskip
-
-\marginicon{attention}
-{\bfseries
-Quelques remarques}
-
-\begin{liste}
-	\item {
-		On a deux constructeurs, ce qui offre plus de souplesse pour initialiser
-		un objet. Ceci est un exemple supplémentaire du concept de
-		«\textbf{~surcharge~}».}
-	\item {
-		Faisons bien la distinction entre les méthodes
-		\textstyleCodeInsr{getXXX()} et \textstyleCodeInsr{getTotalXXX()}. Par
-		exemple, la méthode \textstyleCodeInsr{getMinute()} retourne la valeur
-		de la composante «~minutes~» dans une représentation HMS tandis que la
-		méthode \textstyleCodeInsr{getTotalMinutes()} retourne le nombre total
-		de minutes entières pour cette durée. Ex~: pour 1h23’12’’,
-		\textstyleCodeInsr{getMinute()} retourne 23 et
-		\textstyleCodeInsr{getTotalMinutes()} retourne 83. Idem avec 
-		les jours, les heures	et les secondes.}
-	\item {
-		Les méthodes \textstyleCodeInsr{getTotalXXX()} retournent le nombre
-		(toujours entier) de XXX contenus dans la durée. Exemple, avec la durée
-		0h23’52'’, \textstyleCodeInsr{getTotalMinutes()}
-		retourne 23 et pas 24 (autrement dit, il n’y a pas d’arrondi vers le
-		haut).}
-	\item {
-		Il n’y a pas de \textit{mutateur }(\textstyleCodeInsr{setXXX()}). Ce qui
-		signifie qu’on ne peut pas changer directement la valeur de l’objet
-		après son initialisation. On aurait pu en définir mais nous
-		n'avons pas jugé utile de le faire dans ce cas
-		précis.}
-	\item {
-		La méthode \textstyleCodeInsr{ajouter()} ne retourne rien. En effet,
-		elle ajoute la durée à l’objet sur lequel est appelée la méthode. C’est
-		un choix ; on aurait aussi pu dire que la méthode ne modifie pas
-		l’objet mais en retourne un autre qui représente la somme. Dans ce cas,
-		on l’aurait plutôt appelée «\textstyleCodeInsr{~plus( )}~».}
-	\item {
-		La méthode \textstyleCodeInsr{différence()}, elle, renvoie toujours une
-		durée (positive).}
-\end{liste}
-
-{\sffamily\bfseries
-La représentation de l'état (les attributs)}
-
-La question suivante est~: «~Comment représenter une durée en interne ?
-». Plusieurs possibilités existent. Par exemple~:
-
-\begin{liste}
-	\item 
-		via le nombre d’heures, de minutes et de secondes
-	\item 
-		via le nombre total de secondes
-	\item 
-		via une chaine, par exemple au format «~HH~:MM~:SS~» où HH pourrait
-		éventuellement excéder 23.
-\end{liste}
-
-Le premier choix semble le plus évident mais réfléchissons-y de plus
-près. D’une part, pourquoi se limiter aux heures. On pourrait
-introduire un champ ‘\textstyleCodeInsr{jour}’ (après tout on a bien
-une méthode \textstyleCodeInsr{getJour()}). 
-
-Quel critère doit vraiment nous permettre de décider ? Il faut une
-représentation qui soit suffisante (tout est représenté) et qui
-permette d’écrire des méthodes lisibles et si possible efficaces
-(c'est-à-dire où le calcul est rapide). Selon ces
-critères, la deuxième représentation est de loin la meilleure. Ce qui
-nous donne
-
-\cadre{
-\begin{pseudo}
-	\Class{Durée}
-		\Private
-			\Decl totalSecondes~: entier
-		\Public
-			\LComment idem
-	\EndClass
-\end{pseudo}
-}
-
-{\sffamily\bfseries\upshape
-L'implémentation}
-
-On est à présent prêt pour écrire le code des méthodes. Ce qui nous
-donne pour la classe dans son entièreté~:
-
-\cadre{
-\begin{pseudo}
-	\Class{Durée}
-		\Private
-			\Decl totalSecondes~: entier
-		\Public
-			\ConstrSign{Durée}{secondes~: entier}
-			\ConstrSign{Durée}{heure, minute, seconde~: entiers}
+			\LComment Retourne le nombre de minutes dans une 
+			représentation JJ/HH:MM:SS
+			\Method{getMinute}{}{entier}
+				\LComment On doit enlever les heures éventuelles
+				\Return (totalSecondes DIV 60) MOD 60
+			\EndMethod
 			\Empty
-			\MethodSign{getJour}{}{entier}
-			\RComment nb de jours dans une durée
-			\MethodSign{getHeure}{}{entier}
-			\RComment entier entre 0 et 23 inclus
-			\MethodSign{getMinute}{}{entier}
-			\RComment entier entre 0 et 59 inclus
-			\MethodSign{getSeconde}{}{entier}
-			\RComment entier entre 0 et 59 inclus
+			\LComment Retourne le nombre de secondes dans une 
+			représentation JJ/HH:MM:SS
+			\Method{getSeconde}{}{entier}
+				\LComment On doit enlever les minutes éventuelles
+				\Return totalSecondes  MOD 60
+			\EndMethod
+		\end{pseudo}
+		}
+		
+		\cadre{
+		\begin{pseudo}
+		
+			\LComment Retourne le nombre entier d’heures complètes
+			\Method{getTotalHeures}{}{entier}
+				\Return totalSecondes DIV 3600
+			\EndMethod
 			\Empty
-			\MethodSign{getTotalHeures}{}{entier}
-			\RComment Le nombre total d’heures
-			\MethodSign{getTotalMinutes}{}{entier}
-			\RComment Le nombre total de minutes
-			\MethodSign{getTotalSecondes}{}{entier}
-			\RComment Le nombre total de secondes
+			\LComment Retourne le nombre entier de minutes complètes
+			\Method{getTotalMinutes}{}{entier}
+				\Return totalSecondes DIV 60
+			\EndMethod
 			\Empty
-			\MethodSign{ajouter}{autreDurée~: Durée}{}
-			\MethodSign{différence}{autreDurée~: Durée}{Durée}
-			\MethodSign{égale}{autreDurée~: Durée}{booléen}
-			\MethodSign{plusPetit}{autreDurée~: Durée}{booléen}
-	\EndClass
-\end{pseudo}
-}
-
-\cadre{
-\begin{pseudo}
-	\Constr{Durée}{secondes~: entier}
-		\If{secondes < 0}
-			\Stmt \K{erreur} "paramètre négatif"
-		\EndIf
-		\Let totalSecondes \Gets secondes
-	\EndConstr
-	\Empty
-	\Constr{Durée}{heure, minute, seconde~: entiers}
-		\If{heure < 0 OU minute < 0 OU seconde < 0}
-			\Stmt \K{erreur} "un des paramètres est négatif"
-		\EndIf
-		\Let totalSecondes \Gets 3600*heure + 60*minute + seconde
-	\EndConstr
-\end{pseudo}
-}
-
-\cadre{
-\begin{pseudo}
-	\LComment Retourne le nombre de jours dans une 
-	représentation JJ/HH:MM:SS
-	\Method{getJour}{}{entier}
-		\Return totalSecondes DIV (3600*24)
-	\EndMethod
-	\Empty
-	\LComment Retourne le nombre d'heures dans une 
-	représentation JJ/HH:MM:SS
-	\Method{getHeure}{}{entier}
-		\LComment On doit enlever les jours éventuels
-		\Return (totalSecondes DIV 3600) MOD 24
-	\EndMethod
-\end{pseudo}
-}
-
-\cadre{
-\begin{pseudo}
-	\LComment Retourne le nombre de minutes dans une 
-	représentation JJ/HH:MM:SS
-	\Method{getMinute}{}{entier}
-		\LComment On doit enlever les heures éventuelles
-		\Return (totalSecondes DIV 60) MOD 60
-	\EndMethod
-	\Empty
-	\LComment Retourne le nombre de secondes dans une 
-	représentation JJ/HH:MM:SS
-	\Method{getSeconde}{}{entier}
-		\LComment On doit enlever les minutes éventuelles
-		\Return totalSecondes  MOD 60
-	\EndMethod
-\end{pseudo}
-}
-
-\cadre{
-\begin{pseudo}
-
-	\LComment Retourne le nombre entier d’heures complètes
-	\Method{getTotalHeures}{}{entier}
-		\Return totalSecondes DIV 3600
-	\EndMethod
-	\Empty
-	\LComment Retourne le nombre entier de minutes complètes
-	\Method{getTotalMinutes}{}{entier}
-		\Return totalSecondes DIV 60
-	\EndMethod
-	\Empty
-	\LComment Retourne le nombre entier de secondes complètes
-	\Method{getTotalSecondes}{}{entier}
-		\Return totalSecondes
-	\EndMethod
-\end{pseudo}
-}
-
-\cadre{
-\begin{pseudo}
-	\Method{ajouter}{autreDurée~: Durée}{}
-		\Let totalSecondes \Gets totalSecondes + autreDurée.totalSecondes
-	\EndMethod
-	\Empty
-	\Method{différence}{autreDurée~: Durée}{Durée}
-		\Return \K{nouvelle} Durée(valeurAbsolue(totalSecondes - autreDurée.totalSecondes))
-	\EndMethod
-	\Empty
-	\Method{égale}{autreDurée~: Durée}{booléen}
-		\Return totalSecondes = autreDurée.totalSecondes
-	\EndMethod
-	\Empty
-	\Method{plusPetit}{autreDurée~: Durée}{booléen}
-		\Return totalSecondes < autreDurée.totalSecondes
-	\EndMethod
-\end{pseudo}
-}
-
-Et c’est tout ! Chaque méthode est très petite. C’est une constante en
-orienté objet~: écrire de petites méthodes qui font chacune une et une
-seule chose bien précise.
-
-
+			\LComment Retourne le nombre entier de secondes complètes
+			\Method{getTotalSecondes}{}{entier}
+				\Return totalSecondes
+			\EndMethod
+		\end{pseudo}
+		}
+		
+		\cadre{
+		\begin{pseudo}
+			\Method{ajouter}{autreDurée~: Durée}{}
+				\Let totalSecondes \Gets totalSecondes + autreDurée.totalSecondes
+			\EndMethod
+			\Empty
+			\Method{différence}{autreDurée~: Durée}{Durée}
+				\Return \K{nouvelle} Durée(valeurAbsolue(totalSecondes - autreDurée.totalSecondes))
+			\EndMethod
+			\Empty
+			\Method{égale}{autreDurée~: Durée}{booléen}
+				\Return totalSecondes = autreDurée.totalSecondes
+			\EndMethod
+			\Empty
+			\Method{plusPetit}{autreDurée~: Durée}{booléen}
+				\Return totalSecondes < autreDurée.totalSecondes
+			\EndMethod
+		\end{pseudo}
+		}
+		
+		Et c’est tout ! Chaque méthode est très petite. C’est une constante en
+		orienté objet~: écrire de petites méthodes qui font chacune une et une
+		seule chose bien précise.
+	
 %===============================
 \section{Ce qu'on n'a pas vu...}
 %================================
 
-Nous n'avons évidemment pas épuisé le sujet de
-l'orienté objet. Celui-ci est composé de trois piliers
-: l'\textbf{encapsulation},
-l'\textbf{héritage} et le \textbf{polymorphisme}.
-
-Nous venons de voir l'essentiel de la partie
-«~encapsulation~». Les deux autres notions, plus complexes, seront
-abordées au cours de Java mais également au cours de Logique de
-deuxième année. En voici un aperçu~:
-
-\marginicon{definition}
-{\sffamily\bfseries\upshape
-L'héritage}
-
-{L’héritage permet de définir une classe à partir d’une autre qui lui
-sert de base.} 
-On peut alors
-
-\begin{liste}
-	\item {
-		étendre son état}
-	\item {
-		augmenter ou modifier son comportement}
-\end{liste}
-
-Par exemple, on pourra définir un \textstyleCodeInsr{Etudiant} à partir
-de la notion de \textstyleCodeInsr{Personne}.
-
-La classe qui sert de point de départ est appelée \textbf{classe de
-base}, \textbf{classe mère} ou encore \textbf{super-classe}. La classe
-qu’on définit à partir d’une classe mère est appelée \textbf{classe
-dérivée}, \textbf{classe fille} ou encore \textbf{sous-classe}.
-
-Cette notion est un préalable pour le pilier suivant, le
-\textbf{polymorphisme}.
-
-\marginicon{definition}
-{\sffamily\bfseries\upshape
-Le polymorphisme}
-
-{
-Le polymorphisme permet d’utiliser un objet fille en lieu et place d’un
-objet mère.} 
-
-{Exposé aussi brièvement cela peut paraitre futile mais cela
-permet de construire du code ayant une architecture élégante, robuste
-et facilement adaptable.}
-
+	Nous n'avons évidemment pas épuisé le sujet de
+	l'orienté objet. 
+	Celui-ci est composé de trois piliers~: l'\textbf{encapsulation},
+	l'\textbf{héritage} et le \textbf{polymorphisme}.
+	
+	Nous venons de voir l'essentiel de la partie «~encapsulation~». 
+	Les deux autres notions, plus complexes, 
+	seront abordées au cours de Java 
+	mais également au cours de Logique de deuxième année. 
+	En voici un aperçu~:
+	
+	\subsection{L'héritage}
+	%-----------------------
+	
+		\marginicon{definition}
+		L’\textbf{héritage} permet de définir une classe 
+		à partir d’une autre qui lui sert de base. 
+		On peut alors
+		\begin{liste}
+			\item étendre son état ;
+			\item augmenter ou modifier son comportement.
+		\end{liste}
+		
+		Par exemple, on pourra définir un \code{Etudiant} à partir
+		de la notion de \code{Personne}.
+		
+		La classe qui sert de point de départ est appelée \textbf{classe de
+		base}, \textbf{classe mère} ou encore \textbf{super-classe}. La classe
+		qu’on définit à partir d’une classe mère est appelée \textbf{classe
+		dérivée}, \textbf{classe fille} ou encore \textbf{sous-classe}.
+		
+		Cette notion est un préalable pour le pilier suivant, le
+		\textbf{polymorphisme}.
+	
+	\subsection{Le polymorphisme}
+	%-----------------------------
+	
+		\marginicon{definition}
+		Le \textbf{polymorphisme} permet d’utiliser un objet fille 
+		en lieu et place d’un objet mère. 
+		
+		Exposé aussi brièvement cela peut paraitre futile mais cela
+		permet de construire du code ayant une architecture élégante, robuste
+		et facilement adaptable.
 
 %==================
 \section{Exercices}
 %==================
 
 \begin{Exercice}{Un produit}
-	Reprendre la classe \textstyleCodeInsr{Produit} qui a servi
+	Reprendre la classe \code{Produit} qui a servi
 	d'exemple. Identifier et écrire les méthodes qui vous
 	paraissent utiles pour une telle classe.
 	
@@ -1738,21 +1656,21 @@ et facilement adaptable.}
 \end{Exercice}
 
 \begin{Exercice}{Une personne}
-	Créer une classe \textstyleCodeInsr{Personne}, une personne étant
+	Créer une classe \code{Personne}, une personne étant
 	constituée d'un nom, d'un prénom et
 	d'une date de naissance. Cette classe utilisera la
-	classe \textstyleCodeInsr{Date}.
+	classe \code{Date}.
 
 	On doit pouvoir construire une personne~:
 
 	\begin{liste}
 		\item 
-			avec 3 arguments~: le nom (\textstyleCodeInsr{chaine}), le prénom
-			(\textstyleCodeInsr{chaine}) et la date de naissance de la personne
-			(\textstyleCodeInsr{Date})
+			avec 3 arguments~: le nom (\code{chaine}), le prénom
+			(\code{chaine}) et la date de naissance de la personne
+			(\code{Date})
 		\item 
 			avec 2 arguments de type chaine~: le nom et le prénom de la personne; la
-			date de naissance est alors initialisée à «\textstyleCodeInsr{~rien~}»
+			date de naissance est alors initialisée à «\code{~rien~}»
 	\end{liste}
 
 	Écrire aussi tous les accesseurs et mutateurs que vous jugez
@@ -1772,12 +1690,12 @@ et facilement adaptable.}
 	paramètre, il faudra tester si cette date n’est pas antérieure à la
 	date du jour. On considérera que la date 
 	du jour est fournie par le constructeur de
-	\textstyleCodeInsr{Date} sans paramètre.
+	\code{Date} sans paramètre.
 \end{Exercice}
 
 \begin{Exercice}{Anniversaire des personnes}
-	À l'aide de la classe \textstyleCodeInsr{Personne} écrite plus haut,
-	écrire un module qui lit des \textstyleCodeInsr{Personne} (au clavier)
+	À l'aide de la classe \code{Personne} écrite plus haut,
+	écrire un module qui lit des \code{Personne} (au clavier)
 	et affiche les noms et le nombre de celles nées ce mois-ci. On suppose
 	que la lecture de «~rien~» indique la fin des données.
 \end{Exercice}
