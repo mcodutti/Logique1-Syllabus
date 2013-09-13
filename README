@@ -22,7 +22,7 @@ Pour produire le document : pdflatex log1.tex
 Pour inclure l'index, il faut compiler avec :
 
    pdflatex log1.tex
-   makeindex -s perso.ist exemple.idx
+   makeindex -s perso.ist log1.idx
    pdflatex log1.tex
 
 Le document est gros.
