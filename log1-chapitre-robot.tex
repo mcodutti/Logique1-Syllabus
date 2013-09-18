@@ -23,12 +23,11 @@
 	le «~robot logique~», un programme d'aide à
 	l'apprentissage de l'algorithmique conçu par Marc Tommasi
 	de l'université de Lille
-	3\footnote{http://jrobot.gforge.inria.fr/}.
+	3\footnote{\url{http://jrobot.gforge.inria.fr/}}.
 	
-	\begin{center}
-	\includegraphics[width=5.553cm,height=5.302cm]{image/robot-grille}
-	\end{center}
-	
+	\begin{multicols}{2}
+	\includegraphics[width=5.553cm,height=5.302cm]{image/robot-grille.pdf}
+
 	Un robot se déplace dans un domaine rectangulaire sous 
 	forme d'une grille délimitée par un mur.
 	On peut y placer un trésor. Le but est de trouver
@@ -39,48 +38,41 @@
 	«~à droite~», ...) en utilisant éventuellement des structures
 	conditionnelles ou répétitives.
 
+	\end{multicols}
+	
+	\textbf{Note}~: Récemment, l'auteur a modifié le graphisme de l'application.
+	Le robot apparait comme un pinguoin et le trésor est
+	devenu un poisson. 
+	Le fonctionnement de l'application n'a toutefois pas 
+	fondamentalement changé.
+
 	\subsection{Installation}
 
-		Le programme est pré-installé sur les machines de
-		l'école mais il vous faudra
-		l'installer chez vous. Nous vous indiquons comment
-		installer la \textbf{version windows non maintenue}. Elle est plus
-		simple à installer et à utiliser tout en étant suffisante pour ce que
-		nous voulons en faire. Toutefois, elle ne fonctionne pas sous Linux ni
-		sous Mac. Si vous êtes un utilisateur de ces systèmes, essayez
-		d'installer la dernière version. Enfin, sachez que
-		vous devez disposer des droits d'administration sur la
-		machine pour l'installation.
-
-		\marginicon{install}
-		\begin{enumerate}
-		\item
-			Téléchargez le programme
-			(\url{https://gforge.inria.fr/frs/?group\_id=2929})
-		\item 
-			Décompressez-le (avec le logiciel disponible sur votre machine)
-		\item
-			Cela crée un dossier «~robot~» avec un fichier \textit{Setup}.
-			Exécutez-le.
-		\end{enumerate}
-
+		Le programme n'est pas installé à l'école.
+		Il est possible de l'essayez sans l'installer
+		Pour cela, il faut se rendre sur la page de l'application
+		(\url{http://jrobot.gforge.inria.fr/}) et cliquer sur le lien
+		\og~Essayez-le~\fg.
+		Chez vous, vous pouvez également cliquer sur le lien 
+		\og~Téléchargez-le~\fg{} pour l'installer.
+		
 	\subsection{Utilisation}
 
 		Le robot se configure via deux fenêtres.
 
 		\begin{enumerate}
 		\item 
-			La première permet d'indiquer la \textbf{situation
-			initiale}~: position et orientation du robot, position du trésor.
+			La première permet de «~programmer~» le robot, 
+			lui donner la \textbf{séquence d'instructions}
+			qu'il va devoir suivre. 
+			Cette fenêtre permet également
+			d'indiquer la \textbf{situation initiale}~: 
+			position et orientation du robot, position du trésor.
+			
 		\item 
-			La deuxième permet de «~programmer~» le robot, lui donner la
-			\textbf{séquence d'instructions}
-			qu'il va devoir suivre. Les instructions
-			qu'il comprend sont rudimentaires. 
+			La deuxième fenêtre montre la grille avec le robot 
+			et permet de voir «~tourner~» le programme.  
 		\end{enumerate}
-
-		Une troisième fenêtre montre la grille avec le robot et permet de voir
-		«~tourner~» le programme.
 
 \section{La séquence}
 
@@ -91,15 +83,14 @@
 	plus rudimentaires sont~:
 	
 	\begin{Emphase}[definition]{Instructions élémentaires}
-		\cadre{
-		\begin{pseudo}
-		\Stmt \K{Avancer}
-		\Stmt \Comment Le robot se déplace d'une case dans la direction vers laquelle il regarde
-		\Stmt \K{ADroite}
-		\Stmt \Comment Le robot tourne d'un quart de tour vers la droite.
-		\Stmt \Comment Ainsi, s'il regardait en bas, il regarde à présent à gauche.
-		\end{pseudo}
-		}
+		\remonter
+		\begin{description}
+		\item[Avancer]
+			Le robot se déplace d'une case dans la direction vers laquelle il regarde
+		\item[Pivoter à droite]
+			Le robot tourne d'un quart de tour vers la droite.
+			Ainsi, s'il regardait en bas, il regarde à présent à gauche.
+		\end{description}
 	\end{Emphase}
 		
 	Nous allons commencer par quelque chose de très simple~: demandons au
@@ -123,15 +114,8 @@
 		\textbf{But}~: Le robot doit faire demi-tour.
 
 		\textbf{Solution}
-
-		\cadre{
-		\begin{pseudo}
-		\Begin
-			\Stmt ADroite
-			\Stmt ADroite
-		\End
-		\end{pseudo}
-		}
+		
+		\includegraphics{image/robot-demitour}
 		
 	\end{Emphase}
 
@@ -154,20 +138,12 @@
 	\end{Emphase}
 
 	Vous avez peut-être trouvé la solution suivante~:
-
-	\cadre{
-	\begin{pseudo}
-	\Begin
-		\Stmt Avancer
-		\Stmt Avancer
-	\End
-	\end{pseudo}
-	}
+		
+	\includegraphics{image/robot-avancer2}
 	
 	Elle n'est \textbf{pas correcte} ! Pourtant je suis sûr
 	que vous l'avez essayé et que le robot a effectivement
 	avancé de 2 cases. 
-
 	
 	\begin{Emphase}[reflexion]{Test de l'algorithme}
 
@@ -235,43 +211,26 @@
 	effectuer va dépendre de la situation, de son environnement. Comment
 	faire ? Le robot a la possibilité de \textbf{tester son environnement}
 	et de réagir en conséquence (en suivant scrupuleusement ce
-	qu'on lui a \ indiqué évidemment). On va pouvoir lui
+	qu'on lui a indiqué évidemment). On va pouvoir lui
 	donner deux séries d'instructions; il exécutera la
 	première série ou la deuxième en fonction du résultat du test.
 
-	
 	\begin{Emphase}[definition]{Les tests}
-	Les tests disponibles sont~:
+	Parmi les tests disponibles on trouve~:
 	
-		\cadre{
-		\begin{pseudo}
-		\Stmt \K{devantMur}
-		\Stmt \Comment est vrai si le robot fait \textbf{face} à un mur.
-		\Stmt \K{devantTrésor}
-		\Stmt \Comment est vrai si le robot fait face au trésor.
-		\Stmt \K{devantMarque}
-		\Stmt \Comment est vrai si le robot fait face à une marque.
-		\Stmt \K{surMarque}
-		\Stmt \Comment est vrai si le robot est sur une marque.
-		\Stmt \K{non}, \K{et}, \K{ou}
-		\Stmt \Comment De plus, le robot est capable d'effectuer 
-			des \emph{calculs logiques}
-		\Stmt \Comment grâce à ces opérateurs.
-		\end{pseudo}
-		}
+		\begin{description}
+		\item[devantMur]
+			est vrai si le robot fait \textbf{face} à un mur.
+		\item[devantTrésor]
+			est vrai si le robot fait face au trésor.
+		\end{description}
 	\end{Emphase}
 
+	De plus, on peut utiliser les opérateurs \textbf{non}, \textbf{et}, 
+	\textbf{ou} pour effectuer des \emph{calculs logiques}.
 	
 	\begin{Emphase}[definition]{Les alternatives}
-		\cadre{
-		\begin{pseudo}
-		\If{condition}
-			\Stmt série d'instructions à exécuter si la condition est vraie.
-		\Else
-			\Stmt série d'instructions à exécuter si la condition est fausse.
-		\EndIf
-		\end{pseudo}
-		}
+	\includegraphics[scale=1]{image/robot-si}
 	\end{Emphase}
 
 	Lorsque le robot doit exécuter une alternative, il teste la condition
@@ -323,18 +282,11 @@
 		case} tout droit (dans la direction vers laquelle il regarde). 
 		Si un mur l'en empêche, il devra s'arrêter juste devant ce mur.
 
-	\end{Emphase}
+		\textbf{Solution}~: 
+		
+		\includegraphics[scale=0.9]{image/robot-avancer1}
 
-	\cadre{
-	\begin{pseudo}
-	\Begin
-		\If{non devantMur}
-			\Stmt Avancer
-		\Else
-		\EndIf
-	\End
-	\end{pseudo}
-	}
+	\end{Emphase}
 	
 	Si cet exemple est bien compris, 
 	essayez de résoudre par vous-même celui-ci~:
@@ -373,13 +325,7 @@
 
 	
 	\begin{Emphase}[definition]{La répétition}
-	\cadre{
-	\begin{pseudo}
-		\While{condition}
-			\Stmt série d'instructions à exécuter si la condition est vraie.
-		\EndWhile
-	\end{pseudo}
-	}
+	\includegraphics[scale=1]{image/robot-tq}
 	\end{Emphase}
 
 	Lorsqu'il rencontre cette structure, le robot évalue la
@@ -388,10 +334,6 @@
 	puis revient tester la condition. Lorsqu'elle devient
 	fausse ou si elle est fausse dès le début, il passe à la suite de
 	l'algorithme.
-	
-	Nous avons à présent tout ce qu'il faut pour résoudre
-	notre problème.
-
 	
 	\begin{Emphase}[exercice]{Exercice~: avancer jusqu'au mur}
 
@@ -422,23 +364,23 @@
 
 	
 	\begin{Emphase}[definition]{Instructions élémentaires}
-		\cadre{
-		\begin{pseudo}
-		\Stmt \K{ajouterMarque} 
-		\Stmt \Comment Le robot trace une croix sur la case qu'il occupe.
-		\Stmt \K{effacerMarque}
-		\Stmt \Comment Le robot efface la croix sur la case qu'il occupe.
-		\end{pseudo}
-		}
+		\remonter
+		\begin{description}
+		\item[Marquer]
+			Le robot trace une croix sur la case qu'il occupe.
+		\item[Effacer marque]
+			Le robot efface la croix sur la case qu'il occupe.
+		\end{description}
 	\end{Emphase}
 
-	\begin{Emphase}{Test}
-		\cadre{
-		\begin{pseudo}
-		\Stmt \K{surMarque}
-		\Stmt \Comment Est vrai si le robot est dans une case marquée d'une croix.
-		\end{pseudo}
-		}
+	\begin{Emphase}{Tests}
+		\remonter
+		\begin{description}
+		\item[devantMarque]
+			est vrai si le robot fait face à une marque.
+		\item[surMarque]
+			est vrai si le robot est sur une marque.
+		\end{description}
 	\end{Emphase}
 
 	Nous avons à présent tout ce qu'il faut pour résoudre
