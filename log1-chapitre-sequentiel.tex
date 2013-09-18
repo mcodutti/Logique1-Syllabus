@@ -809,50 +809,47 @@
 		\end{pseudo}
 		}
 		
+		\clearpage
 		\begin{center}
-		\tablehead{}
-		\begin{supertabular}
-			{m{3cm}m{3cm}m{3cm}m{3cm}}
-			\multicolumn{1}{|m{3cm}|}{} &
-			\multicolumn{1}{m{3cm}|}{a} &
-			\multicolumn{1}{m{3cm}|}{b} &
-			\multicolumn{1}{m{3cm}|}{c}\\\hline
+		\begin{tabular}{*{4}{>{\centering\arraybackslash}m{3cm}}}
+			 &
+			{a} &
+			{b} &
+			{c}\\\hline			
+		\end{tabular}
+		\begin{tabular}{|m{3cm}|*{3}{>{\centering\arraybackslash}m{3cm}|}}
+			{\code{a, b, c : entiers}} &
+			{indéfini} &
+			{indéfini} &
+			{indéfini}\\\hline
 			
-			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{a, b, c : entiers}} &
-			\multicolumn{1}{m{3cm}|}{indéfini} &
-			\multicolumn{1}{m{3cm}|}{indéfini} &
-			\multicolumn{1}{m{3cm}|}{indéfini}\\\hline
+			{\code{a}{ $\gets$ } 12} &
+			{12} &
+			{indéfini} &
+			{indéfini}\\\hline
 			
-			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{a}{ $\gets$ } 12} &
-			\multicolumn{1}{m{3cm}|}{12} &
-			\multicolumn{1}{m{3cm}|}{indéfini} &
-			\multicolumn{1}{m{3cm}|}{indéfini}\\\hline
+			{\code{b}{ $\gets$ } 5} &
+			{12} &
+			{5} &
+			{indéfini}\\\hline
 			
-			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{b}{ $\gets$ } 5} &
-			\multicolumn{1}{m{3cm}|}{12} &
-			\multicolumn{1}{m{3cm}|}{5} &
-			\multicolumn{1}{m{3cm}|}{indéfini}\\\hline
+			{\code{c}{ $\gets$ }  \code{a - b}} &
+			{12} &
+			{5} &
+			{7}\\\hline
 			
-			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{c}{ $\gets$ }  \textstyleCodeInsr{a - b}} &
-			\multicolumn{1}{m{3cm}|}{12} &
-			\multicolumn{1}{m{3cm}|}{5} &
-			\multicolumn{1}{m{3cm}|}{7}\\\hline
+			{\code{a}{ $\gets$ }  \code{a + c}} &
+			{19} &
+			{5} &
+			{7}\\\hline
 			
-			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{a}{ $\gets$ }  \textstyleCodeInsr{a + c}} &
-			\multicolumn{1}{m{3cm}|}{19} &
-			\multicolumn{1}{m{3cm}|}{5} &
-			\multicolumn{1}{m{3cm}|}{7}\\\hline
-			
-			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{b}{ $\gets$ }  \textstyleCodeInsr{a}} &
-			\multicolumn{1}{m{3cm}|}{19} &
-			\multicolumn{1}{m{3cm}|}{19} &
-			\multicolumn{1}{m{3cm}|}{7}\\\hline
-			
-		\end{supertabular}
+			{\code{b}{ $\gets$ }  \code{a}} &
+			{19} &
+			{19} &
+			{7}\\\hline
+		\end{tabular}
 		\end{center}
 
-		\bigskip
-		
 		\bigskip
 
 		\cadre{
@@ -867,34 +864,33 @@
 		}
 		
 		\begin{center}
-		\tablehead{}
-		\begin{supertabular}
-			{m{3cm}m{3cm}m{3cm}m{3cm}}
-			\multicolumn{1}{|m{3cm}|}{} &
-			\multicolumn{1}{m{3cm}|}{a} &
-			\multicolumn{1}{m{3cm}|}{b} &
-			\multicolumn{1}{m{3cm}|}{c}\\\hline
+		\begin{tabular}{*{4}{>{\centering\arraybackslash}m{3cm}}}
+			 &
+			{a} &
+			{b} &
+			{c}\\\hline			
+		\end{tabular}
+		\begin{tabular}{|m{3cm}|*{3}{>{\centering\arraybackslash}m{3cm}|}}
+			{\code{a, b, c : entiers}} &
+			{indéfini} &
+			{indéfini} &
+			{indéfini}\\\hline
 			
-			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{a, b, c : entiers}} &
-			\multicolumn{1}{m{3cm}|}{indéfini} &
-			\multicolumn{1}{m{3cm}|}{indéfini} &
-			\multicolumn{1}{m{3cm}|}{indéfini}\\\hline
+			{\code{a}{ $\gets$ } 12} &
+			{12} &
+			{indéfini} &
+			{indéfini}\\\hline
 			
-			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{a}{ $\gets$ } 12} &
-			\multicolumn{1}{m{3cm}|}{12} &
-			\multicolumn{1}{m{3cm}|}{indéfini} &
-			\multicolumn{1}{m{3cm}|}{indéfini}\\\hline
+			{\code{c}{ $\gets$ }  \textstyleCodeInsr{a - b}} &
+			{12} &
+			{indéfini} &
+			{???}\\\hline
 			
-			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{c}{ $\gets$ }  \textstyleCodeInsr{a - b}} &
-			\multicolumn{1}{m{3cm}|}{12} &
-			\multicolumn{1}{m{3cm}|}{indéfini} &
-			\multicolumn{1}{m{3cm}|}{???}\\\hline
-			
-			\multicolumn{1}{|m{3cm}|}{\textstyleCodeInsr{d}{ $\gets$ }  \textstyleCodeInsr{c - 2}} &
-			\multicolumn{1}{m{3cm}|}{12} &
-			\multicolumn{1}{m{3cm}|}{indéfini} &
-			\multicolumn{1}{m{3cm}|}{???}\\\hline
-		\end{supertabular}
+			{\code{d}{ $\gets$ }  \textstyleCodeInsr{c - 2}} &
+			{12} &
+			{indéfini} &
+			{???}\\\hline
+		\end{tabular}
 		\end{center}
 		
 		\textstyleCodeInsr{c} ne peut pas être calculé car b n'a pas été initialisé;
@@ -1081,6 +1077,7 @@
 				\end{pseudo}
 				}
 
+\clearpage
 	\section{Exercices}
 
 		\subsection{Pour s'échauffer}
