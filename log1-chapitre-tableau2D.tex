@@ -89,124 +89,90 @@
 	est décomposé en cinq éléments de deuxième niveau accessibles par le
 	deuxième indice.
 	
-	\textbf{Exemple~:} reprenons l'exemple du stock de 10 produit
-	\vref{tableau:tab1DStock10Articles} mais pour chaque jour de la semaine.
+	\textbf{Exemple~:} reprenons l'exemple du stock de 10 produits
+	qui a servi d'introduction au chapitre sur les tableaux
+	mais, cette fois, pour chaque jour de la semaine.
 	
-	
+	\begin{small}
 	\begin{center}
-		\tablehead{}
-		\begin{supertabular}{m{1.5cm}m{1.2cm}m{1.2cm}m{1.2cm}m{1.2cm}m{1.2cm}m{1.2cm}m{1.2cm}m{1.2cm}m{1.2cm}m{1.4cm}}
+		\begin{tabular}{*{8}{>{\centering\arraybackslash}m{1.5cm}}}
 			~ &
-			\centering  \textstyleCodeInsr{article1} &
-			\centering  \textstyleCodeInsr{article2} &
-			\centering  \textstyleCodeInsr{article3} &
-			\centering  \textstyleCodeInsr{article4} &
-			\centering  \textstyleCodeInsr{article5} &
-			\centering  \textstyleCodeInsr{article6} &
-			\centering  \textstyleCodeInsr{article7} &
-			\centering  \textstyleCodeInsr{article8} &
-			\centering  \textstyleCodeInsr{article9} &
-			\centering\arraybslash 
-			\textstyleCodeInsr{article10}\\\hhline{~----------}
-			\multicolumn{1}{m{1.5cm}|}{\centering 
-			\textstyleCodeInsr{lundi}} & 
-			\multicolumn{1}{m{1.2cm}|}{cpt[1][1]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[1][2]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[1][3]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[1][4]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[1][5]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[1][6]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[1][7]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[1][8]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[1][9]} &
-			\multicolumn{1}{m{1.4cm}|}{cpt[1][10]
-			}\\\hhline{~----------}
-			
-			\multicolumn{1}{m{1.5cm}|}{\centering 
-			\textstyleCodeInsr{mardi}} & 
-			\multicolumn{1}{m{1.2cm}|}{cpt[2][1]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[2][2]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[2][3]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[2][4]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[2][5]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[2][6]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[2][7]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[2][8]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[2][9]} &
-			\multicolumn{1}{m{1.4cm}|}{cpt[2][10]
-			}\\\hhline{~----------}
-			
-			\multicolumn{1}{m{1.5cm}|}{\centering 
-			\textstyleCodeInsr{mercredi}} & 
-			\multicolumn{1}{m{1.2cm}|}{cpt[3][1]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[3][2]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[3][3]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[3][4]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[3][5]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[3][6]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[3][7]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[3][8]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[3][9]} &
-			\multicolumn{1}{m{1.4cm}|}{cpt[3][10]
-			}\\\hhline{~----------}
-			
-			\multicolumn{1}{m{1.5cm}|}{\centering 
-			\textstyleCodeInsr{jeudi}} & 
-			\multicolumn{1}{m{1.2cm}|}{cpt[4][1]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[4][2]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[4][3]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[4][4]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[4][5]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[4][6]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[4][7]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[4][8]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[4][9]} &
-			\multicolumn{1}{m{1.4cm}|}{cpt[4][10]
-			}\\\hhline{~----------}
-			
-			\multicolumn{1}{m{1.5cm}|}{\centering 
-			\textstyleCodeInsr{vendredi}} & 
-			\multicolumn{1}{m{1.2cm}|}{cpt[5][1]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[5][2]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[5][3]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[5][4]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[5][5]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[5][6]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[5][7]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[5][8]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[5][9]} &
-			\multicolumn{1}{m{1.4cm}|}{cpt[5][10]
-			}\\\hhline{~----------}
-			
-			\multicolumn{1}{m{1.5cm}|}{\centering 
-			\textstyleCodeInsr{samedi}} & 
-			\multicolumn{1}{m{1.2cm}|}{cpt[6][1]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[6][2]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[6][3]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[6][4]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[6][5]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[6][6]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[6][7]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[6][8]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[6][9]} &
-			\multicolumn{1}{m{1.4cm}|}{cpt[6][10]
-			}\\\hhline{~----------}
-			
-			\multicolumn{1}{m{1.5cm}|}{\centering 
-			\textstyleCodeInsr{dimanche}} & 
-			\multicolumn{1}{m{1.2cm}|}{cpt[7][1]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[7][2]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[7][3]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[7][4]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[7][5]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[7][6]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[7][7]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[7][8]} &
-			\multicolumn{1}{m{1.2cm}|}{cpt[7][9]} &
-			\multicolumn{1}{m{1.4cm}|}{cpt[7][10]
-			}\\\hhline{~----------}
-		\end{supertabular}
+			{article1} &
+			{article2} &
+			{article3} &
+			\dots &
+			{article8} &
+			{article9} &
+			{article10}\\
+		\end{tabular}	
+		\begin{tabular}{|m{1.5cm}|*{7}{>{\centering\arraybackslash}m{1.5cm}|}}
+			\hline
+			{lundi} & 
+			{cpt[1][1]} &
+			{cpt[1][2]} &
+			{cpt[1][3]} &
+			\dots &
+			{cpt[1][8]} &
+			{cpt[1][9]} &
+			{cpt[1][10]}
+			\\\hline
+			{mardi} &  
+			{cpt[2][1]} &
+			{cpt[2][2]} &
+			{cpt[2][3]} &
+			\dots &
+			{cpt[2][8]} &
+			{cpt[2][9]} &
+			{cpt[2][10]}
+			\\\hline
+			{mercredi} & 
+			{cpt[3][1]} &
+			{cpt[3][2]} &
+			{cpt[3][3]} &
+			\dots &
+			{cpt[3][8]} &
+			{cpt[3][9]} &
+			{cpt[3][10]}
+			\\\hline
+			{jeudi} & 
+			{cpt[4][1]} &
+			{cpt[4][2]} &
+			{cpt[4][3]} &
+			\dots &
+			{cpt[4][8]} &
+			{cpt[4][9]} &
+			{cpt[4][10]}
+			\\\hline
+			{vendredi} & 
+			{cpt[5][1]} &
+			{cpt[5][2]} &
+			{cpt[5][3]} &
+			\dots &
+			{cpt[5][8]} &
+			{cpt[5][9]} &
+			{cpt[5][10]}
+			\\\hline
+			{samedi} & 
+			{cpt[6][1]} &
+			{cpt[6][2]} &
+			{cpt[6][3]} &
+			\dots &
+			{cpt[6][8]} &
+			{cpt[6][9]} &
+			{cpt[6][10]}
+			\\\hline
+			{dimanche} & 
+			{cpt[7][1]} &
+			{cpt[7][2]} &
+			{cpt[7][3]} &
+			\dots &
+			{cpt[7][8]} &
+			{cpt[7][9]} &
+			{cpt[7][10]}
+			\\\hline
+		\end{tabular}
 	\end{center}
+	\end{small}
 	
 	\bigskip
 
