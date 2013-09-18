@@ -533,25 +533,35 @@ et voyons ensuite les parcours avec arrêt prématuré.
 
 \subsection{Parcours complet}
 
-Pour le parcourir, on peut utiliser la boucle \K{pour}
-comme dans l'algorithme \vref{algo:parcours1-complet-pour}
-où "traiter" va dépendre du problème concret posé~:
+Les tableaux interviennent dans de nombreux problèmes 
+et il est primordial de savoir les parcourir 
+en utilisant des algorithmes
+corrects, efficaces et lisibles.
+
+Examinons les situations courantes et voyons quelles solutions conviennent.
+On pourrait aussi envisager d'autres parcours
+(à l'envers, une case sur deux, \dots) 
+mais ils ne représentent aucune difficulté nouvelle.
+
+Pour parcourir complètement un tableau, 
+on peut utiliser la boucle \K{pour}
+comme dans l'algorithme suivant
+où \og{}traiter\fg{} va dépendre du problème concret posé~:
 afficher, modifier, sommer, \dots
 
-\begin{algorithm}[H]
+\cadre{
 \begin{pseudo}
-	\caption{Parcours complet d'un tableau via une boucle pour}
-	\label{algo:parcours1-complet-pour}
+	\LComment{Parcours complet d'un tableau via une boucle pour}
 	\LComment Les déclarations sont omises pour ne pas alourdir les algorithmes.
 	\For{i de 1 à n}
 		\Stmt traiter tab[i]
 	\EndFor
 \end{pseudo}
-\end{algorithm}
+}
 
 \subsection{Parcours avec sortie prématurée}
 
-Parfois, on ne doit pas forcement parcourir le tableau jusqu'au bout
+Parfois, on ne doit pas forcément parcourir le tableau jusqu'au bout
 mais on pourra s'arrêter prématurément si une certaine condition est remplie.
 Par exemple~:
 \begin{liste}
@@ -560,19 +570,18 @@ Par exemple~:
 \end{liste}
 
 La première étape est de transformer le \K{pour} en \K{tant que}
-ce qui donne l'algorithme \vref{algo:parcours1-complet-tq}.
+ce qui donne l'algorithme 
 
-\begin{algorithm}[H]
+\cadre{
 \begin{pseudo}
-	\caption{Parcours complet d'un tableau via une boucle tant-que}
-	\label{algo:parcours1-complet-tq}
+	\LComment{Parcours complet d'un tableau via une boucle tant-que}
 	\Let i \Gets 1
 	\While{i $\le$ n}
 		\Stmt traiter tab[i]
 		\Let i \Gets i + 1
 	\EndWhile
 \end{pseudo}
-\end{algorithm}
+}
 
 On peut à présent introduire le test d'arrêt.
 Une contrainte est qu'on voudra, à la fin de la boucle, savoir
@@ -584,10 +593,9 @@ En général, la solution [A] sera plus claire si le test est court.
 
 \subsubsection*{[A] Sans variable booléenne}
 
-\begin{algorithm}[H]
+\cadre{
 \begin{pseudo}
-	\caption{Parcours partiel d'un tableau sans variable booléenne}
-	\label{algo:parcours1-partiel-sans-bool}
+	\LComment{Parcours partiel d'un tableau sans variable booléenne}
 	\Let i \Gets 1
 	\While{i $\le$ n ET \textit{test sur \code{tab[i]} dit que on continue}}
 		\Let i \Gets i + 1
@@ -598,17 +606,16 @@ En général, la solution [A] sera plus claire si le test est court.
 		\LComment arrêt prématuré à l'indice i.
 	\EndIf
 \end{pseudo}
-\end{algorithm}
+}
 
 On pourrait inverser les deux branches du \K{si-sinon} en inversant le test
 mais attention à ne pas tester tab[i] car $i$ n'est peut-être pas valide.
 
 \subsubsection*{[B] Avec variable booléenne}
 
-\begin{algorithm}[H]
+\cadre{
 \begin{pseudo}
-	\caption{Parcours partiel d'un tableau avec variable booléenne}
-	\label{algo:parcours1-partiel-avec-bool}
+	\LComment{Parcours partiel d'un tableau avec variable booléenne}
 	\Let i \Gets 1
 	\Let trouvé \Gets faux
 	\While{i $\le$ n ET NON trouvé}
@@ -620,14 +627,14 @@ mais attention à ne pas tester tab[i] car $i$ n'est peut-être pas valide.
 	\EndWhile
 	\LComment tester le booléen pour savoir si arrêt prématuré.
 \end{pseudo}
-\end{algorithm}
+}
 
 Attention à bien choisir un nom de booléen adapté au problème
 et à l'initialiser à la bonne valeur. 
-Par exemple, si la variable s'appelle "continue"
+Par exemple, si la variable s'appelle \og{}continue\fg{}
 \begin{liste}
 \item initialiser la variable à vrai ;
-\item le test de la boucle est "\dots ET continue" ;
+\item le test de la boucle est \og\code{\dots ET continue}\fg{} ;
 \item mettre la variable à faux pour sortir de la boucle.
 \end{liste}
 
