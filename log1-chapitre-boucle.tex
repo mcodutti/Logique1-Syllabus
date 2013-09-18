@@ -101,10 +101,10 @@
 		\end{pseudo}
 		}
 
-		Comme pour la structure \textstyleMotCl{si}, la \textbf{condition} est
+		Comme pour la structure \code{si}, la \code{condition} est
 		une expression à valeur booléenne. Dans ce type de structure, il faut
 		qu’il y ait dans la séquence d’instructions comprise entre
-		\textstyleMotCl{tant que} et \textstyleMotCl{fin tant que} au moins une
+		\code{tant que} et \code{fin tant que} au moins une
 		instruction qui modifie une des composantes de la condition de telle
 		manière qu’elle puisse devenir \textbf{fausse} à un moment donné. Dans
 		le cas contraire, la condition reste indéfiniment vraie et la boucle va
@@ -144,8 +144,8 @@
 		}
 
 		Comme ci-dessus, il faut que la séquence d’instructions comprise entre
-		\textstyleMotCl{faire} et \textstyleMotCl{jusqu'à ce
-		que} contienne au moins une instruction qui modifie la condition de
+		\code{faire} et \code{jusqu'à ce que} 
+		contienne au moins une instruction qui modifie la condition de
 		telle manière qu’elle puisse devenir \textbf{vraie} à un moment donné
 		pour arrêter l'itération. 
 		La figure \vref{fig:boucle-faire} décrit le déroulement de cette boucle. 
@@ -173,18 +173,18 @@
 		\end{pseudo}
 		}
 
-		Dans ce type de structure, \textbf{début}, \textbf{fin} et \textbf{pas}
+		Dans ce type de structure, \code{début}, \code{fin} et \code{pas}
 		peuvent être des constantes, des variables ou des expressions (le plus
 		souvent à valeurs entières mais on admettra parfois des réels). Le
-		\textbf{pas} est facultatif, et généralement omis (dans ce cas, sa valeur 
+		\code{pas} est facultatif, et généralement omis (dans ce cas, sa valeur 
 		par défaut est 1). Ce pas est parfois négatif, dans le cas
 		d'un compte à rebours, par exemple
-		\textstyleCodeInsr{pour n de 10 à 1 par -1}.
+		\code{pour n de 10 à 1 par -1}.
 
-		Quand le \textbf{pas} est positif, la boucle s'arrête
-		lorsque la variable dépasse la valeur de \textbf{fin}. Par contre, avec
-		un \textbf{pas} négatif, la boucle s'arrête lorsque la
-		variable prend une valeur plus petite que la valeur de \textbf{fin}
+		Quand le \code{pas} est positif, la boucle s'arrête
+		lorsque la variable dépasse la valeur de \code{fin}. Par contre, avec
+		un \code{pas} négatif, la boucle s'arrête lorsque la
+		variable prend une valeur plus petite que la valeur de \code{fin}
 		(cf. le test dans l'organigramme de la figure \vref{fig:boucle-pour})
 
 		\begin{figure}[h]
@@ -196,11 +196,11 @@
 
 		\marginicon{attention}
 		Veiller à la cohérence de l’écriture de cette structure. On considérera
-		qu’au cas (à éviter) où \textbf{début} est strictement supérieur à
-		\textbf{fin} et le \textbf{pas} est positif, la séquence d’instructions
+		qu’au cas (à éviter) où \code{début} est strictement supérieur à
+		\code{fin} et le \code{pas} est positif, la séquence d’instructions
 		n’est jamais exécutée (mais ce n’est pas le cas dans tous les langages
-		de programmation !). Idem si \textbf{début} est strictement inférieur à
-		\textbf{fin} mais avec un \textbf{pas} négatif.
+		de programmation !). Idem si \code{début} est strictement inférieur à
+		\code{fin} mais avec un \code{pas} négatif.
 
 		\textbf{Exemples~}:
 
@@ -215,29 +215,29 @@
 		
 		\marginicon{attention}
 		Veiller aussi à ne pas modifier dans la séquence d’instructions une des
-		variables de contrôle \textbf{début}, \textbf{fin} ou \textbf{pas} ! Il
+		variables de contrôle \code{début}, \code{fin} ou \code{pas} ! Il
 		est aussi fortement déconseillé de modifier «~manuellement~» la
-		\textbf{variable} de contrôle au sein de la boucle
-		\textstyleMotCl{pour}. Il ne faut pas l’initialiser en début de boucle,
-		et ne pas s’occuper de sa modification, l’instruction \textbf{variable}
-		{\textsf{\textbf{←}}} \textbf{variable} +
-		\textbf{pas} étant automatique et implicite à chaque étape de la
-		boucle. Il est aussi déconseillé d’utiliser \textbf{variable} à la
-		sortie de la structure \textstyleMotCl{pour} sans lui affecter une
+		\code{variable} de contrôle au sein de la boucle
+		\code{pour}. Il ne faut pas l’initialiser en début de boucle,
+		et ne pas s’occuper de sa modification, l’instruction 
+		\code{variable ← variable + pas} 
+		étant automatique et implicite à chaque étape de la
+		boucle. Il est aussi déconseillé d’utiliser \code{variable} à la
+		sortie de la structure \code{pour} sans lui affecter une
 		nouvelle valeur (son contenu pouvant varier selon le langage de
 		programmation).
 
 	\subsection{Quel type de boucle choisir ?}
 
 		En pratique, il est possible d’utiliser systématiquement la boucle 
-		\textstyleMotCl{tant que} qui peut s’adapter à toutes les situations. 
-		Cependant, il est plus clair d’utiliser la boucle \textstyleMotCl{pour} 
+		\code{tant que} qui peut s’adapter à toutes les situations. 
+		Cependant, il est plus clair d’utiliser la boucle \code{pour} 
 		dans les cas où le nombre d’itérations est fixé et connu à l’avance 
 		(par là, on veut dire que le nombre d'itérations est déterminé au moment 
 		où on arrive à la boucle). 
-		La boucle \textstyleMotCl{faire} convient quant à elle
+		La boucle \code{faire} convient quant à elle
 		dans les cas où le contenu de la boucle doit être parcouru au moins une
-		fois, alors que dans \textstyleMotCl{tant que}, 
+		fois, alors que dans \code{tant que}, 
 		le nombre de parcours peut être nul si la condition initiale est fausse. 
 		La figure \vref{fig:boucle-choix} propose un petit schéma récapitulatif.
 
@@ -379,7 +379,7 @@
 		l'affichage est le même que pour $10$.
 
 		Est-ce qu'on peut utiliser un «~pour~» ? 
-		Oui. De 1 à $n$, il y a exactement «~$n DIV 2$~» nombres à afficher. 
+		Oui. De 1 à $n$, il y a exactement «~$n$ DIV $2$~» nombres à afficher. 
 		La difficulté vient du lien à faire entre la variable de
 		contrôle et le nombre à afficher.
 
@@ -579,34 +579,27 @@
 
 		\marginicon{reflexion}
 		\textbf{Réflexions}~: 
-		\begin{itemize}
+		\begin{liste}
 		\item
-		Quelle valeur sentinelle prendrait-on 
-		pour additionner une série de cotes d'interrogations ? 
-		Une série de températures ?
-
+			Quelle valeur sentinelle prendrait-on 
+			pour additionner une série de cotes d'interrogations ? 
+			Une série de températures ?
 		\item
-		Dans les solutions 2 et 3 on lit une variable booléenne. 
-		Comment un programmeur pourrait-il réaliser 
-		cette instruction de façon pratique ?
+			Dans les solutions 2 et 3 on lit une variable booléenne. 
+			Comment un programmeur pourrait-il réaliser 
+			cette instruction de façon pratique ?		
+		\end{liste}
 		
-		Voilà ! Vous devriez à présent être en mesure de
-		résoudre les exercices qui suivent.
-		Courage ! Et n'en passez aucun !
-		\end{itemize}
-		
-
-Ce chapitre propose en exercice des suites.
-Toutes ces suites peuvent se résoudre 
-en suivant un même squelette d'algorithme 
-que nous allons expliquer ici.
-
-Un exemple simple pourrait être celui-ci~:
-
 \subsection{Exemple 6~: Suite des nombres pairs}
-	Écrire l'algorithme qui affiche les $n$ premiers termes
-	de la suite: $2$, $4$, $6$ \dots.
 
+	Ce chapitre propose en exercice des suites.
+	Toutes ces suites peuvent se résoudre 
+	en suivant un même squelette d'algorithme 
+	que nous allons expliquer ici.
+
+	Un exemple simple pourrait être celui-ci~:
+	\og{}Écrire l'algorithme qui affiche les $n$ premiers termes
+	de la suite: $2$, $4$, $6$\dots\fg{}
 
 Puisqu'on doit écrire plusieurs nombres et qu'on sait exactement combien,
 on se tournera tout naturellement vers une boucle \K{pour}.
@@ -682,8 +675,9 @@ en connaissant juste le nombre précédent.
 Prenons un exemple un peu plus compliqué pour l'illustrer.
 
 \subsection{Exemple 7~: 3 pas en avant, 2 pas en arrière} 
-	Écrire l'algorithme qui affiche les $n$ premiers termes
-	de la suite: $1$, $2$, $3$, $4$, $3$, $2$, $3$, $4$, $5$, $4$, $3$ \dots.
+	Compliquons un peu : 
+	\og{}Écrire l'algorithme qui affiche les $n$ premiers termes
+	de la suite: $1$, $2$, $3$, $4$, $3$, $2$, $3$, $4$, $5$, $4$, $3$\dots\fg{}
 
 Si on vient d'écrire, disons un $3$,
 impossible sans information supplémentaire,
@@ -723,11 +717,14 @@ mais qui respecte toujours le schéma vu.
 \textbf{Un conseil}~: essayez de respecter ce schéma 
 et vous obtiendrez plus facilement un algorithme
 correct et lisible, également dans les cas particuliers.
-		
-
+	
 % ==================
 \section{Exercices}
 % ==================
+
+Voilà ! Vous devriez à présent être en mesure de
+résoudre les exercices qui suivent.
+Courage ! Et n'en passez aucun !
 
 \begin{Exercice}{Compréhension d'algorithmes}
 	Quels sont les affichages réalisés lors de l'exécution
