@@ -121,17 +121,16 @@ la condition qui est vraie.
 \begin{Emphase}[definition]{selon que (version avec listes de valeurs)}
 \cadre{
 \begin{pseudo}
-\Switch{(variable(/expression) \K{vaut}}
+\Switch{variable \K{vaut}}
 	\Case{liste\_1 de valeurs séparées par des virgules }
-		\LComment instructions lorsque la valeur est dans liste\_1
+		\LComment instructions lorsque la valeur de la variable est dans liste\_1
 	\Case{liste\_2 de valeurs séparées par des virgules }
-		\LComment instructions lorsque la valeur est dans liste\_2
-		
-	\dots
+		\LComment instructions lorsque la valeur de la variable est dans liste\_2		
+	\Empty \dots
 	\Case{liste\_n de valeurs séparées par des virgules }
-		\LComment instructions lorsque la valeur est dans liste\_n
+		\LComment instructions lorsque la valeur de la variable est dans liste\_n
 	\Case{\K{autres }}
-		\LComment instructions lorsque la valeur de l'expression
+		\LComment instructions lorsque la valeur de la variable 
 		\LComment ne se trouve dans aucune des listes précédentes
 \EndSwitch
 \end{pseudo}
@@ -147,18 +146,17 @@ d’écriture de plusieurs alternatives imbriquées. Elle est équivalente à
 
 \cadre{
 \begin{pseudo}
-\If{variable/expression = une des valeurs de la liste\_1}
+\If{variable = une des valeurs de la liste\_1}
 	\LComment instructions lorsque la valeur est dans liste\_1
 \Else
-	\If{variable/expression = une des valeurs de la liste\_2}
+	\If{variable = une des valeurs de la liste\_2}
 		\LComment instructions lorsque la valeur est dans liste\_2
 	\Else
-		
-		\dots
-		\If{variableexpression = une des valeurs de la liste\_n}
+		\Empty\dots
+		\If{variable = une des valeurs de la liste\_n}
 			\LComment instructions lorsque la valeur est dans liste\_n
 		\Else
-			\LComment instructions lorsque la valeur de l'expression
+			\LComment instructions lorsque la valeur de la variable
 			\LComment ne se trouve dans aucune des listes précédentes
 		\EndIf
 	\EndIf
@@ -177,8 +175,7 @@ Noter que le cas \textstyleMotCl{autres} est facultatif.
 		\LComment instructions lorsque la condition\_1 est vraie
 	\Case{condition\_2 }
 		\LComment instructions lorsque la condition\_2 est vraie
-	
-	\dots
+	\Empty \dots
 	\Case{condition\_n }
 		\LComment instructions lorsque la condition\_n est vraie
 	\Case{\K{autres }}
@@ -202,8 +199,7 @@ simultanément. C'est équivalent à :
 	\If{condition\_2}
 		\LComment instructions lorsque la condition\_2 est vraie
 	\Else
-		
-		\dots
+		\Empty \dots
 		\If{condition\_n}
 			\LComment instructions lorsque la condition\_n est vraie
 		\Else
@@ -270,7 +266,7 @@ dans un mois en utilisant une énumération.
 			\Write 31
 		\Case{AVRIL, JUIN, SEPTEMBRE, NOVEMBRE}
 			\Write 30
-		\Case{FÉVRIER} \Comment{on ne tient pas compte ici des années bissextiles}
+		\Case{FÉVRIER} \RComment{on ne tient pas compte ici des années bissextiles}
 			\Write 28
 	\EndSwitch
 	\LComment{Pas de clause \og{}autre\fg{} car toutes les valeurs possibles ont été envisagées}
