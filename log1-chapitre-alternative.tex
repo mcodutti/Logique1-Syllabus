@@ -264,7 +264,7 @@ dans un mois en utilisant une énumération.
 \Module{nbJours}{}{}
 	\Decl unMois : Mois
 	\Read unMois
-	\RComment on lira la valeur JANVIER ou FÉVRIER ou MARS ou ... ou DÉCEMBRE
+	\RComment on lira la valeur JANVIER ou FÉVRIER ou \dots{} ou DÉCEMBRE
 	\Switch{unMois \K{vaut}}
 		\Case{JANVIER, MARS, MAI, JUILLET, AOÛT, OCTOBRE, DÉCEMBRE}
 			\Write 31
@@ -272,9 +272,8 @@ dans un mois en utilisant une énumération.
 			\Write 30
 		\Case{FÉVRIER} \Comment{on ne tient pas compte ici des années bissextiles}
 			\Write 28
-		\Case{\K{autre}}
-			\Write "Mois invalide"
 	\EndSwitch
+	\LComment{Pas de clause \og{}autre\fg{} car toutes les valeurs possibles ont été envisagées}
 \EndModule
 \end{pseudo}
 }
