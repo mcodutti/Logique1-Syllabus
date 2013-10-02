@@ -25,7 +25,7 @@
 	\begin{pseudo}
 	\LComment Lit deux nombres et affiche le maximum des deux.
 	\Module{max2}{}{}
-		\Decl a,b,max : réels
+		\Decl a,b,max~:~réels
 		\Read a,b
 		\If{a > b}
 			\Let max \Gets a
@@ -68,7 +68,7 @@
 	\begin{pseudo}
 	\Module{max3}{}{}
 		\LComment Lit trois nombres et affiche le maximum des trois.
-		\Decl a, b, c, temp, max : réels
+		\Decl a, b, c, temp, max~:~réels
 		\Read a,b,c
 		\If{a > b}
 			\Let temp \Gets a
@@ -129,7 +129,7 @@
 	\cadre{
 	\begin{pseudo}
 	\LComment Affiche deux nombres et sort le maximum des deux.
-	\Module{max2}{a\In, b\In : réels, max\Out~: réel}{}
+	\Module{max2}{a\In, b\In~:~réels, max\Out~: réel}{}
 		\If{a > b}
 			\Let max \Gets a
 		\Else
@@ -149,7 +149,7 @@
 
 	{Pour faire appel aux services de ce module, il
 	suffit à présent d’écrire son nom suivi d’un nombre de variables (ou,
-	en entrée, d’expressions) en accord avec son entête. Montrons par
+	en entrée, d’expressions) en accord avec son en-tête. Montrons par
 	un exemple comment le module
 	}\textstyleCodeInsr{{max3}}{
 	peut faire appel au module
@@ -159,7 +159,7 @@
 	\begin{pseudo}
 	\LComment Lit trois nombres et affiche le maximum des trois.
 	\Module{max3}{}{}
-		\Decl a, b, c, temp, max : réels
+		\Decl a, b, c, temp, max~:~réels
 		\Read a, b, c
 		\Stmt max2( a, b, temp )
 		\Stmt max2( temp, c, max )
@@ -330,10 +330,10 @@
 	Ce serait aussi le cas de toute autre variable temporaire 
 	déclarée dans le module.
 
-	Notons au passage que les variables déclarées dans l’entête du module ne
+	Notons au passage que les variables déclarées dans l’en-tête du module ne
 	doivent plus l’être dans la partie «~déclaration de variables~» de ce
 	module. Mais toutes les variables utilisées dans un module doivent être
-	déclarées, soit dans son entête, soit dans sa déclaration. Le
+	déclarées, soit dans son en-tête, soit dans sa déclaration. Le
 	non-respect de cette règle provoquerait une erreur d’exécution.
 
 	Pour illustrer le fonctionnement des variables
@@ -349,7 +349,7 @@
 	\begin{pseudo}
 	\LComment Lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
-		\Decl a, b, c, temp, max : réels
+		\Decl a, b, c, temp, max~:~réels
 		\Stmt lirePositif(a)
 		\Stmt lirePositif(b)
 		\Stmt lirePositif(c)
@@ -375,7 +375,7 @@
 	\cadre{
 	\begin{pseudo}
 	\LComment Affiche deux nombres et sort le maximum des deux.
-	\Module{max2}{a\In, b\In~: réels, max\Out : réel}{}
+	\Module{max2}{a\In, b\In~: réels, max\Out~:~réel}{}
 		\If{a > b}
 			\Let max \Gets a
 		\Else
@@ -399,11 +399,11 @@
 	Un deuxième type de module est le 
 	\textbf{module renvoyant une valeur}. 
 	(On désigne aussi ce type de modules par le terme \textbf{fonction}).
-	Son entête est du type suivant~:
+	Son en-tête est du type suivant~:
 
 	\cadre{
 	\begin{pseudo}
-	\ModuleSign{exemple }{var1\In : type1, var2\In : type2, \dots, varN\In : typeN}{typeRes}
+	\ModuleSign{exemple }{var1\In~:~type1, var2\In~:~type2, \dots, varN\In~:~typeN}{typeRes}
 	\end{pseudo}
 	}
 
@@ -441,7 +441,7 @@
 		module~;}}
 	\item {
 		ces arguments deviennent automatiquement des variables locales du module 
-		; déclarées dans son entête, elles ne doivent plus l’être dans la
+		; déclarées dans son en-tête, elles ne doivent plus l’être dans la
 		partie déclarative~;}
 	\item {
 		{la valeur renvoyée est définie à la fin du
@@ -462,7 +462,7 @@
 
 	Comme précédemment, il faut veiller, lors de l’appel de ce 
 	type de module, à ce que le nombre d’arguments ainsi que leur type
-	correspondent à ceux spécifiés dans l’entête.
+	correspondent à ceux spécifiés dans l’en-tête.
 
 	Pour exemple, transformons une fois de plus la
 	dernière version de notre algorithme.
@@ -492,7 +492,7 @@
 	\begin{pseudo}
 	\LComment Lit un nombre, le retourne s’il est positif et sinon lance une erreur.
 	\Module{lirePositif}{}{réel}
-		\Decl a : réel
+		\Decl a~:~réel
 		\Read a
 		\If{a < 0}
 			\Error Le nombre n’est pas positif !
@@ -505,7 +505,7 @@
 	\cadre{
 	\begin{pseudo}
 	\LComment Affiche deux nombres et retourne le maximum des deux.
-	\Module{max2}{a\In, b\In : réels}{réel}
+	\Module{max2}{a\In, b\In~:~réels}{réel}
 		\Decl max~: réel
 		\If{a > b}
 			\Let max \Gets a
@@ -540,7 +540,7 @@
 	\begin{pseudo}
 	\LComment Lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
-		\Decl a, b, c : réels
+		\Decl a, b, c~:~réels
 		\Let a \Gets lirePositif()
 		\Let b \Gets lirePositif()
 		\Let c \Gets lirePositif()
@@ -662,7 +662,7 @@ d’un exemple complet.
 	\begin{pseudo}
 		\LComment Affiche trois entiers~:~des heures, des minutes et des secondes et 
 		sort le nombre de secondes correspondant.
-		\ModuleSign{hmsVersSec}{h\In, m\In, s\In, secondes\Out : entiers}{}
+		\ModuleSign{hmsVersSec}{h\In, m\In, s\In, secondes\Out~:~entiers}{}
 	\end{pseudo}
 	}
 	
@@ -697,7 +697,7 @@ d’un exemple complet.
 	\cadre{
 	\begin{pseudo}
 	\LComment Affiche trois entiers~:~des heures, des minutes et des secondes et retourne le nombre de secondes correspondant.
-		\Module{hmsVersSec}{h\In, m\In, s\In : entiers}{entier}
+		\Module{hmsVersSec}{h\In, m\In, s\In~:~entiers}{entier}
 			\Return h * 3600 + m * 60 + s
 		\EndModule
 	\end{pseudo}
@@ -744,10 +744,10 @@ d’un exemple complet.
 	\begin{pseudo}
 		\LComment Lit deux moments (h-m-s) et affiche le moment de la différence entre les deux.
 		\Module{différenceEntreHeures}{}{} \RComment Pas de paramètre~!
-			\Decl h1, m1, s1, h2, m2, s2 : entiers \RComment Les 2 moments à soustraire
-			\Decl secondes1, secondes2 : entiers \RComment Ces 2 moments en secondes
-			\Decl diffSecondes : entier \RComment La différence en secondes
-			\Decl diffH, diffM, diffS : entiers \RComment La différence en H-M-S
+			\Decl h1, m1, s1, h2, m2, s2~:~entiers \RComment Les 2 moments à soustraire
+			\Decl secondes1, secondes2~:~entiers \RComment Ces 2 moments en secondes
+			\Decl diffSecondes~:~entier \RComment La différence en secondes
+			\Decl diffH, diffM, diffS~:~entiers \RComment La différence en H-M-S
 			\Read h1, m1, s1, h2, m2, s2
 			\Let secondes1 \Gets hmsVersSec( h1, m1, s1 )
 			\Let secondes2 \Gets hmsVersSec( h2, m2, s2 )
@@ -775,7 +775,7 @@ d’un exemple complet.
 	de lignes de code vers un autre endroit du texte de
 	l’algorithme. La raison de découper un module en blocs
 	peut être le souci de clarifier un algorithme en le découpant en étapes
-	bien distinctes, ou tout simplement un manque de place\dots Les variables
+    bien distinctes, ou tout simplement un manque de place\dots{} Les variables
 	d’un bloc ne sont donc pas des variables locales du bloc dans lequel
 	elles apparaissent, mais bien des variables locales du module auquel
 	appartient ce bloc. L’appel de l’exécution des instructions se trouvant
@@ -802,7 +802,7 @@ d’un exemple complet.
 	\cadre{
 	\begin{pseudo}
 	\Block{déclaration}
-		\Decl num1, den1, num2, den2, numRes, denRes : entiers
+		\Decl num1, den1, num2, den2, numRes, denRes~:~entiers
 	\EndBlock
 	\end{pseudo}
 	}
@@ -869,7 +869,7 @@ d’un exemple complet.
 	Un code valide résout un problème particulier. Mais dans les situations
 	réelles, le problème change régulièrement. Nous voudrons adapter le
 	logiciel à de nouveaux besoins, à une modification de la législation,
-	parce qu’un besoin était mal compris, \dots Ces modifications peuvent
+    parce qu’un besoin était mal compris\dots{} Ces modifications peuvent
 	parfois être prévues mais pas toujours.}
 
 	{
@@ -913,7 +913,7 @@ d’un exemple complet.
 	immédiatement clair dans le code. La première source de lisibilité
 	provient donc du code lui-même. C’est pourquoi on est
 	attentif à la bonne découpe en modules, au choix judicieux des noms de
-	modules et de variables, \dots Le respect de ces bonnes pratiques diminue
+    modules et de variables\dots{} Le respect de ces bonnes pratiques diminue
 	le besoin de commentaires.}
 	
 \subsection{L’efficience}
@@ -959,7 +959,7 @@ d’un exemple complet.
 	\cadre{
 	\begin{pseudo}
 	\Module{ex1}{}{}
-		\Decl x, y : entiers
+		\Decl x, y~:~entiers
 		\Stmt addition(3, 4, x)
 		\Write x
 		\Let x \Gets 3
@@ -970,8 +970,8 @@ d’un exemple complet.
 
 	\Empty
 
-	\Module{addition}{a\In, b\In, c\Out : entiers}{}
-		\Decl somme : entier
+	\Module{addition}{a\In, b\In, c\Out~:~entiers}{}
+		\Decl somme~:~entier
 		\Let somme \Gets a + b
 		\Let c \Gets somme
 	\EndModule
@@ -981,7 +981,7 @@ d’un exemple complet.
 	\cadre{
 	\begin{pseudo}
 	\Module{ex2}{}{}
-		\Decl a, b : entiers
+		\Decl a, b~:~entiers
 		\Stmt addition(3, 4, a) \Comment voir ci-dessus
 		\Write a
 		\Let a \Gets 3
@@ -995,7 +995,7 @@ d’un exemple complet.
 	\cadre{
 	\begin{pseudo}
 	\Module{ex3}{}{}
-		\Decl a, b, c : entiers
+		\Decl a, b, c~:~entiers
 		\Stmt calcul(3, 4, c)
 		\Write c
 		\Let a \Gets 3
@@ -1005,7 +1005,7 @@ d’un exemple complet.
 		\Write a, b, c
 	\EndModule
 	\Empty
-	\Module{calcul}{a\In, b\In, c\Out : entiers}{}
+	\Module{calcul}{a\In, b\In, c\Out~:~entiers}{}
 		\Let a \Gets 2 * a
 		\Let b \Gets 3 * b
 		\Let c \Gets a + b
@@ -1016,7 +1016,7 @@ d’un exemple complet.
 	\cadre{
 	\begin{pseudo}
 	\Module{ex4}{}{}
-		\Decl a, b, c : entiers
+		\Decl a, b, c~:~entiers
 		\Let a \Gets 3
 		\Let b \Gets 4
 		\Let c \Gets f(b)
@@ -1025,13 +1025,13 @@ d’un exemple complet.
 		\Write a, b, c
 	\EndModule
 	\Empty
-	\Module{calcul2}{a\In, b\In, c\Out : entiers}{}
+	\Module{calcul2}{a\In, b\In, c\Out~:~entiers}{}
 		\Let a \Gets f(a)
 		\Let c \Gets 3 * b
 		\Let c \Gets a + c
 	\EndModule
 	\Empty
-	\Module{f}{a\In : entier}{entier}
+	\Module{f}{a\In~:~entier}{entier}
 		\Decl b~: entier
 		\Let b \Gets 2 * a + 1
 		\Return b
@@ -1045,11 +1045,11 @@ d’un exemple complet.
 	Parmi les instructions suivantes (où les variables
 	\textstyleCodeInsr{a}, \textstyleCodeInsr{b} et \textstyleCodeInsr{c}
 	sont des entiers), lesquelles font correctement appel au module
-	d’entête suivant~?
+	d’en-tête suivant~?
 
 	\cadre{
 	\begin{pseudo}
-		\ModuleSign{PGCD}{a\In,b\In : entiers}{entier}
+		\ModuleSign{PGCD}{a\In,b\In~:~entiers}{entier}
 	\end{pseudo}
 	}
 
@@ -1076,8 +1076,8 @@ d’un exemple complet.
 	\cadre{
 	\begin{pseudo}
 		\LComment Affiche un entier et retourne vrai s’il est pair et faux sinon.
-		\Module{estPair}{nb\In : entier}{booléen}
-		\Decl pair : booléen
+		\Module{estPair}{nb\In~:~entier}{booléen}
+		\Decl pair~:~booléen
 		\Let pair \Gets faux
 		\If{nb MOD 2 = 0}
 			\Let pair \Gets vrai
@@ -1090,8 +1090,8 @@ d’un exemple complet.
 	\cadre{
 	\begin{pseudo}
 		\LComment Affiche un entier et retourne vrai s’il est pair et faux sinon.
-		\Module{estPair}{nb\In : entier}{booléen}
-		\Decl pair : booléen
+		\Module{estPair}{nb\In~:~entier}{booléen}
+		\Decl pair~:~booléen
 		\If{nb MOD 2 = 0}
 			\Let pair \Gets vrai
 		\Else
@@ -1105,8 +1105,8 @@ d’un exemple complet.
 	\cadre{
 	\begin{pseudo}
 		\LComment Affiche un entier et retourne vrai s’il est pair et faux sinon.
-		\Module{estPair}{nb\In : entier}{booléen}
-			\Decl pair : booléen
+		\Module{estPair}{nb\In~:~entier}{booléen}
+			\Decl pair~:~booléen
 			\Let pair \Gets nb MOD 2 = 0
 			\Return pair
 		\EndModule
@@ -1116,7 +1116,7 @@ d’un exemple complet.
 	\cadre{
 	\begin{pseudo}
 		\LComment Affiche un entier et retourne vrai s’il est pair et faux sinon.
-		\Module{estPair}{nb\In : entier}{booléen}
+		\Module{estPair}{nb\In~:~entier}{booléen}
 		\Return nb MOD 2 = 0
 		\EndModule
 	\end{pseudo}
@@ -1125,7 +1125,7 @@ d’un exemple complet.
 	\cadre{
 	\begin{pseudo}
 		\LComment Affiche un entier et retourne vrai s’il est pair et faux sinon.
-		\Module{estPair}{nb\In : entier}{booléen}
+		\Module{estPair}{nb\In~:~entier}{booléen}
 		\If{nb MOD 2 = 0}
 			\Return vrai
 		\Else
@@ -1138,7 +1138,7 @@ d’un exemple complet.
 	\cadre{
 	\begin{pseudo}
 		\LComment Affiche un entier et retourne vrai s’il est pair et faux sinon.
-		\Module{estPair}{nb\In : entier}{booléen}
+		\Module{estPair}{nb\In~:~entier}{booléen}
 		\If{nb MOD 2 = 0}
 			\Return vrai
 		\EndIf
