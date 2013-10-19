@@ -1,8 +1,9 @@
 % Adaptation du package algorithmicx pour écrire les algorithmes
 % du cours de logique à l'ESI
 
-\usepackage{algpseudocode}		% Perme d'écrire des algorithmes
+\usepackage{algpseudocode}		% Permet d'écrire des algorithmes
 \usepackage{algorithm}			% Pour des algorithmes flottants
+\usepackage{environ}                    % Pour avoir un cadre autour du pseudo-code
 
 % ==============================================================================
 % Le code suivant permet d'avoir des lignes verticales pour délimiter les blocs. 
@@ -164,6 +165,14 @@
 	\end{sffamily}
 	\end{minipage}
 }
+
+\NewEnviron{pseudoC}{%
+    \cadre{
+    \begin{pseudo}
+        \BODY
+    \end{pseudo}
+    }
+  }
 
 \newcommand{\cadre}[1]{%
 	\fcolorbox{gray}{gray!10}{%
