@@ -35,6 +35,12 @@
 \algdef{SE}[FOR]{For}{EndFor}[1]
   {\printandpush\algorithmicfor\ #1\ \algorithmicdo}
   {\popandprint\algorithmicend\ \algorithmicfor}%
+\algdef{SE}[FOR]{ForC}{EndFor}[3]
+  {\printandpush\algorithmicfor\ #1\ \algorithmicfrom\ #2\ \algorithmicto\ #3 \algorithmicdo}
+  {\popandprint\algorithmicend\ \algorithmicfor}%
+\algdef{SE}[FOR]{ForStep}{EndFor}[4]
+  {\printandpush\algorithmicfor\ #1\ \algorithmicfrom\ #2\ \algorithmicto\ #3\ \algorithmicstep #4\ \algorithmicdo}
+  {\popandprint\algorithmicend\ \algorithmicfor}%
 %\algdef{S}[FOR]{ForAll}[1]
 %  {\printindent\algorithmicforall\ #1\ \algorithmicdo}%
 \algdef{SE}[LOOP]{Loop}{EndLoop}
@@ -96,6 +102,9 @@
 \algrenewcommand\algorithmicfunction{\textbf{module}}
 \algrenewcommand\algorithmicwhile{\textbf{tant que}}
 \algrenewcommand\algorithmicfor{\textbf{pour}}
+\algrenewcommand\algorithmicfrom{\textbf{de}}
+\algrenewcommand\algorithmicto{\textbf{à}}
+\algrenewcommand\algorithmicstep{\textbf{par}}
 \algrenewcommand\algorithmicrepeat{\textbf{faire}}
 \algrenewcommand\algorithmicuntil{\textbf{jusqu'à ce que}}
 \algrenewcommand\algorithmicdo{\textbf{faire}}
