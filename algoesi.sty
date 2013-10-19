@@ -65,6 +65,9 @@
 \algdef{SE}[SWITCH]{Switch}{EndSwitch}[1]
   {\printandpush\algorithmicswitch\ #1}
   {\popandprint\algorithmicend\ \algorithmicswitch}%
+\algdef{SE}[SWITCH]{SwitchC}{EndSwitch}[1]
+  {\printandpush\algorithmicswitch\ #1 \algorithmicworth}
+  {\popandprint\algorithmicend\ \algorithmicswitch}%
 \algdef{C}[SWITCH]{SWITCH}{Case}[1]
   {\popandprint\pushindent\ #1:}%
 \algdef{SE}[STRUCT]{Struct}{EndStruct}[1]
@@ -101,6 +104,7 @@
 \algrenewcommand\algorithmicthen{\textbf{alors}}
 \algrenewcommand\algorithmicelse{\textbf{sinon}}
 \algnewcommand\algorithmicswitch{\textbf{selon que}}
+\algnewcommand\algorithmicworth{\textbf{vaut}}
 \floatname{algorithm}{Algorithme}
 
 % Modifications de style
