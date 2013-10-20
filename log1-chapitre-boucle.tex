@@ -1145,12 +1145,12 @@ Courage ! Et n'en passez aucun !
 			\LComment{Chiffrer un message en utilisant le chiffre de César}
 			\Module{chiffrerCésar}{msgClair\In: chaine, déplacement\In: entier}{chaine}
 				\Decl msgChiffré : chaine
-				\Decl carClair : caractère
+				\Decl carClair, carChiffré : caractères
 				\Decl i : entier
 				\Empty
 				\Let msgChiffré \Gets ""
 				\For{i \K{de} 1 \K{à} long(msgClair)}
-					\Let carClair \Gets car(msgClair,i)
+					\Let carClair \Gets car(msgClair, i)
 					\Let carChiffré \Gets avancer(carClair, déplacement)
 					\Let msgChiffré \Gets concat( msgChiffré, chaine(carChiffré) )
 				\EndFor
