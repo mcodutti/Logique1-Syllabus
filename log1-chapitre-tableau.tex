@@ -374,7 +374,7 @@
 			\Empty
 		\EndWhile
 		\Empty
-		\For{i \K{de} 1 \K{à} 10}
+		\For{i \K{de} 1 \K{à} nbArticles}
 			\Write "quantité vendue de produit ", i, ": ", cpt[i]
 		\EndFor
 		\Empty
@@ -401,7 +401,7 @@
 	
 		\cadre{
 	\begin{pseudo}
-	\LComment Calcule et affiche la quantité vendue de 10 produits.
+	\LComment Calcule et affiche la quantité vendue de x produits.
 	\Module{statistiquesVentesAvecTableau}{}{}
 		\Empty
 		\Decl cpt~: \K{tableau} d’entiers
@@ -429,7 +429,7 @@
 			\Empty
 		\EndWhile
 		\Empty
-		\For{i \K{de} 1 \K{à} 10}
+		\For{i \K{de} 1 \K{à} nbArticles}
 			\Write "quantité vendue de produit ", i, ": ", cpt[i]
 		\EndFor
 		\Empty
