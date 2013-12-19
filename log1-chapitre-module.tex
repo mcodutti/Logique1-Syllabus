@@ -2,7 +2,7 @@
 
 	\marginicon{objectif}
 	Dans ce chapitre, nous voyons pourquoi et comment découper un algorithme
-	en modules (morceaux d'algorithmes).
+	en modules (morceaux d’algorithmes).
 
 \section{Introduction}
 
@@ -19,13 +19,13 @@
 	
 	Illustrons l’approche modulaire sur l’exercice du chapitre précédent
 	demandant de calculer le maximum de 3 nombres. Commençons par écrire la
-	solution du problème plus simple~: le maximum de 2 nombres.
+	solution du problème plus simple~:~le maximum de 2 nombres.
 
 	\cadre{
 	\begin{pseudo}
 	\LComment Lit deux nombres et affiche le maximum des deux.
 	\Module{max2}{}{}
-		\Decl a,b,max~: réels
+		\Decl a,b,max~:~réels
 		\Read a,b
 		\If{a > b}
 			\Let max \Gets a
@@ -49,12 +49,12 @@
 
 	{Sur base de cette idée, comment faire à présent
 	pour introduire le calcul du maximum de 2 nombres dans l’algorithme
-	calculant le maximum de 3 nombres ? Une solution consiste à
+	calculant le maximum de 3 nombres~? Une solution consiste à
 	«~copier-coller~» les lignes de code du module
 	}\textstyleCodeInsr{{max2}}{
 	dans le module
 	}\textstyleCodeInsr{{max3}}{,
-	toutefois en adaptant son contenu au contexte de ce module~: les
+	toutefois en adaptant son contenu au contexte de ce module~:~les
 	nombres
 	}\textstyleCodeInsr{{a}}{
 	et
@@ -68,7 +68,7 @@
 	\begin{pseudo}
 	\Module{max3}{}{}
 		\LComment Lit trois nombres et affiche le maximum des trois.
-		\Decl a, b, c, temp, max~: réels
+		\Decl a, b, c, temp, max~:~réels
 		\Read a,b,c
 		\If{a > b}
 			\Let temp \Gets a
@@ -90,17 +90,17 @@
 	algorithmes. Imaginons qu’il aurait fallu de cette façon «~mixer~» deux
 	algorithmes d’une cinquantaine de lignes chacun. Le résultat serait un
 	algorithme d’une centaine de lignes qui perdrait en lisibilité et
-	clarté. De plus, l’opération effectuée n’est pas sans risques~: que se
+	clarté. De plus, l’opération effectuée n’est pas sans risques~:~que se
 	passerait-il si les deux modules contiennent chacun une variable nommée
-	de manière identique ? Cette «~transplantation~» demande donc la
+	de manière identique~? Cette «~transplantation~» demande donc la
 	vérification de toutes les variables utilisées, la réécriture des
 	lignes de déclarations de variables de façon à y inclure celles du
 	module «~greffé~», le «~raccord~» correct des données lues et écrites
-	par ce module aux variables du module principal, etc… 
+	par ce module aux variables du module principal, etc.
 	
-	Imaginons, par exemple, que l'on doive calculer le
+	Imaginons, par exemple, que l’on doive calculer le
 	maximum de 4 ou même 5 nombres. Le résultat serait un code long et
-	à l'allure répétitive. Une erreur serait vite arrivée et
+	à l’allure répétitive. Une erreur serait vite arrivée et
 	serait difficile à détecter.
 	
 	L’idéal serait de pouvoir garder deux modules séparés, conservant chacun
@@ -113,7 +113,7 @@
 
 	Pour pouvoir faire communiquer les modules entre eux, il faut les
 	équiper d’une «~interface~» de transmission des variables appelée
-	l’\textbf{en-tête }du module et qui contient une déclaration de
+	l’\textbf{en-tête} du module et qui contient une déclaration de
 	variables qu’on appellera ici \textbf{paramètres} du module. 
 	
 	Les variables accompagnées d’une flèche vers le bas (\textsf{↓}) sont
@@ -129,7 +129,7 @@
 	\cadre{
 	\begin{pseudo}
 	\LComment Affiche deux nombres et sort le maximum des deux.
-	\Module{max2}{a\In, b\In~: réels, max\Out~: réel}{}
+	\Module{max2}{a\In, b\In~:~réels, max\Out~: réel}{}
 		\If{a > b}
 			\Let max \Gets a
 		\Else
@@ -140,16 +140,16 @@
 	}
 
 	Notons que, sous cette forme, ce module est devenu «~inactif~», il ne
-	lit rien ni n'affiche rien, mais il est cependant prêt à être utilisé. Il
+	lit rien ni n’affiche rien, mais il est cependant prêt à être utilisé. Il
 	suffit pour cela de lui fournir les valeurs de \textstyleCodeInsr{a} et
 	\textstyleCodeInsr{b} (paramètres d’entrée) pour qu’il entre en action.
 	Une fois le maximum calculé, celui-ci est affecté à la variable
-	\textstyleCodeInsr{max} qui – en tant que paramètre de sortie –
+	\textstyleCodeInsr{max} qui –~en tant que paramètre de sortie~–
 	contiendra et renverra le résultat voulu.
 
 	{Pour faire appel aux services de ce module, il
 	suffit à présent d’écrire son nom suivi d’un nombre de variables (ou,
-	en entrée, d'expressions) en accord avec son entête. Montrons par
+	en entrée, d’expressions) en accord avec son en-tête. Montrons par
 	un exemple comment le module
 	}\textstyleCodeInsr{{max3}}{
 	peut faire appel au module
@@ -159,7 +159,7 @@
 	\begin{pseudo}
 	\LComment Lit trois nombres et affiche le maximum des trois.
 	\Module{max3}{}{}
-		\Decl a, b, c, temp, max~: réels
+		\Decl a, b, c, temp, max~:~réels
 		\Read a, b, c
 		\Stmt max2( a, b, temp )
 		\Stmt max2( temp, c, max )
@@ -184,7 +184,7 @@
 	}\textstyleCodeInsr{{b}}{
 	du module
 	}\textstyleCodeInsr{{max2}}{,
-	puis ce module peut entrer en action~;}}
+	puis ce module peut entrer en action ;}}
 	\item {
 	{à l’issue du module
 	}\textstyleCodeInsr{{max2}}{,
@@ -215,7 +215,7 @@
 	}\textstyleCodeInsr{{b}}{
 	du module
 	}\textstyleCodeInsr{{max2}}{,
-	puis ce module peut entrer en action~;}}
+	puis ce module peut entrer en action ;}}
 	\item {
 	{à l’issue du module
 	}\textstyleCodeInsr{{max2}}{,
@@ -233,7 +233,7 @@
 	}\textstyleCodeInsr{{max2}}{
 	«~aux alentours~» du premier, c’est-à-dire que ces deux modules doivent
 	se trouver sur le même support d’écriture de
-	l'algorithme complet.}
+	l’algorithme complet.}
 
 	{
 	{Implicitement, on a introduit ici un nouveau
@@ -268,10 +268,10 @@
 	\begin{liste}
 	\item {
 	{un paramètre peut être à la fois paramètre
-	d’entrée et de sortie~; on le fait suivre alors de la double flèche
+	d’entrée et de sortie ; on le fait suivre alors de la double flèche
 	}{↓↑}{~;}}
 	\item {
-	si tous les paramètres sont en entrée, on peut omettre les flèches;}
+	si tous les paramètres sont en entrée, on peut omettre les flèches~;}
 	\item {
 	la présence de ces paramètres n’est pas obligatoire, on peut envisager
 	un module sans paramètre de sortie (par ex. un module qui reçoit en
@@ -312,13 +312,13 @@
 	(variables dont le contenu est reconnu 
 	par tous les modules d’un programme).
 
-	Précisons qu'une variable locale est aussi
+	Précisons qu’une variable locale est aussi
 	\textbf{dynamique}, c’est-à-dire qu’un emplacement en mémoire lui est
 	réservé durant l’exécution du module où elle est déclarée. Une fois
 	l’exécution terminée, cet emplacement est récupéré en mémoire.
 
 	Plutôt qu’une restriction, cette propriété est
-	une aide confortable au programmeur~: si, de
+	une aide confortable au programmeur~:~si, de
 	façon fortuite, des variables appartenant à des modules différents
 	possédaient le même nom, il n’y aurait pas d’interférence entre ces
 	variables, ni confusion possible de leur
@@ -330,10 +330,10 @@
 	Ce serait aussi le cas de toute autre variable temporaire 
 	déclarée dans le module.
 
-	Notons au passage que les variables déclarées dans l’entête du module ne
+	Notons au passage que les variables déclarées dans l’en-tête du module ne
 	doivent plus l’être dans la partie «~déclaration de variables~» de ce
 	module. Mais toutes les variables utilisées dans un module doivent être
-	déclarées, soit dans son entête, soit dans sa déclaration. Le
+	déclarées, soit dans son en-tête, soit dans sa déclaration. Le
 	non-respect de cette règle provoquerait une erreur d’exécution.
 
 	Pour illustrer le fonctionnement des variables
@@ -342,14 +342,14 @@
 	strictement négatifs. Le module
 	\textstyleCodeInsr{lirePositif} ci-dessous
 	vérifie si un nombre lu est positif et affiche un message
-	d'erreur sinon. Le texte complet de l’algorithme est
+	d’erreur sinon. Le texte complet de l’algorithme est
 	le suivant~:
 
 	\cadre{
 	\begin{pseudo}
 	\LComment Lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
-		\Decl a, b, c, temp, max~: réels
+		\Decl a, b, c, temp, max~:~réels
 		\Stmt lirePositif(a)
 		\Stmt lirePositif(b)
 		\Stmt lirePositif(c)
@@ -362,11 +362,11 @@
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Lit un nombre, le sort s'il est positif et sinon lance une erreur.
+	\LComment Lit un nombre, le sort s’il est positif et sinon lance une erreur.
 	\Module{lirePositif}{a\Out~: réel}{}
 		\Read a
 		\If{a < 0}
-			\Error Le nombre n'est pas positif !
+			\Error Le nombre n’est pas positif !
 		\EndIf
 	\EndModule
 	\end{pseudo}
@@ -375,7 +375,7 @@
 	\cadre{
 	\begin{pseudo}
 	\LComment Affiche deux nombres et sort le maximum des deux.
-	\Module{max2}{a\In, b\In~: réels, max\Out~: réel}{}
+	\Module{max2}{a\In, b\In~: réels, max\Out~:~réel}{}
 		\If{a > b}
 			\Let max \Gets a
 		\Else
@@ -386,7 +386,7 @@
 	}
 
 	Dans cet exemple, les trois modules en jeu utilisent 
-	une variable nommée \textstyleCodeInsr{a}; 
+	une variable nommée \textstyleCodeInsr{a} ; 
 	il n’y a cependant aucune confusion possible. 
 	Ainsi, à l’issue du deuxième appel du module
 	\textstyleCodeInsr{lirePositif}, 
@@ -399,11 +399,11 @@
 	Un deuxième type de module est le 
 	\textbf{module renvoyant une valeur}. 
 	(On désigne aussi ce type de modules par le terme \textbf{fonction}).
-	Son entête est du type suivant~:
+	Son en-tête est du type suivant~:
 
 	\cadre{
 	\begin{pseudo}
-	\ModuleSign{exemple }{var1\In~: type1, var2\In~: type2, \dots, varN\In~: typeN}{typeRes}
+	\ModuleSign{exemple }{var1\In~:~type1, var2\In~:~type2, \dots, varN\In~:~typeN}{typeRes}
 	\end{pseudo}
 	}
 
@@ -432,7 +432,7 @@
 		du langage utilisé~;}}
 	\item {
 		\textstyleCodeInsr{{var1}}{,
-		...,
+		\dots,
 		}\textstyleCodeInsr{{varN}}{
 		sont les paramètres du module (aussi appelés
 		}{\textbf{arguments}}{)
@@ -440,7 +440,7 @@
 		sortie }{étant plus rares dans ce type de
 		module~;}}
 	\item {
-		ces arguments deviennent automatiquement des variables locales du module
+		ces arguments deviennent automatiquement des variables locales du module 
 		; déclarées dans son en-tête, elles ne doivent plus l’être dans la
 		partie déclarative~;}
 	\item {
@@ -462,7 +462,7 @@
 
 	Comme précédemment, il faut veiller, lors de l’appel de ce 
 	type de module, à ce que le nombre d’arguments ainsi que leur type
-	correspondent à ceux spécifiés dans l’entête.
+	correspondent à ceux spécifiés dans l’en-tête.
 
 	Pour exemple, transformons une fois de plus la
 	dernière version de notre algorithme.
@@ -470,8 +470,8 @@
 	les modules \textstyleCodeInsr{lirePositif} et
 	\textstyleCodeInsr{max2} renvoient à présent 
 	chacun uniquement une valeur de type \textit{réel}.
-	Noter que le premier de ces modules n’a pas d’argument.
-	Noter également la façon d’appeler ces deux modules.
+	Notez que le premier de ces modules n’a pas d’argument.
+	Notez également la façon d’appeler ces deux modules.
 
 	\cadre{
 	\begin{pseudo}
@@ -490,12 +490,12 @@
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Lit un nombre, le retourne s'il est positif et sinon lance une erreur.
+	\LComment Lit un nombre, le retourne s’il est positif et sinon lance une erreur.
 	\Module{lirePositif}{}{réel}
-		\Decl a~: réel
+		\Decl a~:~réel
 		\Read a
 		\If{a < 0}
-			\Error Le nombre n'est pas positif !
+			\Error Le nombre n’est pas positif !
 		\EndIf
 		\Return a
 	\EndModule
@@ -505,7 +505,7 @@
 	\cadre{
 	\begin{pseudo}
 	\LComment Affiche deux nombres et retourne le maximum des deux.
-	\Module{max2}{a\In, b\In~: réels}{réel}
+	\Module{max2}{a\In, b\In~:~réels}{réel}
 		\Decl max~: réel
 		\If{a > b}
 			\Let max \Gets a
@@ -517,7 +517,7 @@
 	\end{pseudo}
 	}
 
-	L'écriture avec une valeur de retour permet une
+	L’écriture avec une valeur de retour permet une
 	écriture plus compacte~:
 
 	\cadre{
@@ -540,7 +540,7 @@
 	\begin{pseudo}
 	\LComment Lit trois nombres positifs et affiche le maximum des trois.
 	\Module{max3}{}{}
-		\Decl a, b, c~: réels
+		\Decl a, b, c~:~réels
 		\Let a \Gets lirePositif()
 		\Let b \Gets lirePositif()
 		\Let c \Gets lirePositif()
@@ -549,7 +549,7 @@
 	\end{pseudo}
 	}
 
-	ou même (et là, ce n'est plus du tout lisible !)~:
+	ou même (et là, ce n’est plus du tout lisible~!)~:
 
 	\cadre{
 	\begin{pseudo}
@@ -563,10 +563,10 @@
 \section{Un exemple complet}
 
 Synthétisons les notions vues dans ce chapitre au travers
-d'un exemple complet.
+d’un exemple complet.
 
 
-\begin{Emphase}[exercice]{Exercice résolu~: Écart entre 2 moments}
+\begin{Emphase}[exercice]{Exercice résolu~:~Écart entre 2 moments}
 	Étant donné deux moments dans une journée donnés chacun par trois
 	nombres (heure, minute, seconde), écrire un algorithme qui calcule et
 	affiche le délai écoulé entre ces deux moments en heure(s), minute(s),
@@ -576,24 +576,24 @@ d'un exemple complet.
 
 \subsection*{Analyse du problème}
 
-	Le problème n'est pas simple. 
-	On pourrait se dire qu'il suffit de soustraire les heures, 
+	Le problème n’est pas simple. 
+	On pourrait se dire qu’il suffit de soustraire les heures, 
 	les minutes et les secondes.
 
-	Ainsi, pour l'écart entre
-	1h22'23'' et
-	3h34'56'', on
+	Ainsi, pour l’écart entre
+	1h22’23’’ et
+	3h34’56’’, on
 	calcule 3h-1h=2h;
-	34'-22'=12' et
-	56''-23''=33''
+	34’-22’=12’ et
+	56’’-23’’=33’’
 	ce qui donne un écart de
-	2h12'33''.
+	2h12’33’’.
 
-	Mais il s'agit là d'un cas favorable
+	Mais il s’agit là d’un cas favorable
 	sans résultat négatif. Si une des soustractions est négative, comme par
-	exemple pour l'écart entre
-	1h22'23'' et
-	3h11'12'', de
+	exemple pour l’écart entre
+	1h22’23’’ et
+	3h11’12’’, de
 	simples soustractions ne suffisent pas.
 
 	On pourrait bien sûr compléter notre code pour tenir compte de tous les
@@ -609,9 +609,9 @@ d'un exemple complet.
 	\end{pseudo}
 	}
 
-	Cela peut nous mettre sur la voie d'une approche
+	Cela peut nous mettre sur la voie d’une approche
 	détournée pour arriver à nos fins. Le chemin sera plus long mais sera
-	plus simple à écrire. L'idée est de tout convertir en
+	plus simple à écrire. L’idée est de tout convertir en
 	secondes car alors la soustraction est simple. Le résultat est alors
 	reconverti en heures-minutes-secondes.
 
@@ -622,25 +622,25 @@ d'un exemple complet.
 \subsection*{Conversion en secondes}
 
 	Une des sous-tâches est donc la conversion en secondes
-	d'un moment exprimé en heures-minutes-secondes
+	d’un moment exprimé en heures-minutes-secondes
 	(h-m-s). Il nous faut adapter la solution trouvée pour
-	l'exercice du chapitre sur les algorithmes séquentiels
-	car il n'est pas question ici que les données soient
-	lues ni que le résultat soit écrit~; l'interaction ne
-	se fait pas avec l'utilisateur mais avec le module
-	principal qui va l'utiliser.\footnote{On pourrait,
+	l’exercice du chapitre sur les algorithmes séquentiels
+	car il n’est pas question ici que les données soient
+	lues ni que le résultat soit écrit~; l’interaction ne
+	se fait pas avec l’utilisateur mais avec le module
+	principal qui va l’utiliser\footnote{On pourrait,
 	dans notre cas précis, imaginer que le module de conversion demande les
-	données à l'utilisateur mais un tel module serait
-	moins souvent réutilisable.}
+	données à l’utilisateur mais un tel module serait
+	moins souvent réutilisable.}.
 
 	La première question à se poser est donc celle des paramètres~:
 
 	\begin{liste}
 	\item 
-		Quelles sont les données dont a besoin l'algorithme
-		pour travailler ?
+		Quelles sont les données dont a besoin l’algorithme
+		pour travailler~?
 	\item 
-		Quels résultats fournit-il ?
+		Quels résultats fournit-il~?
 	\end{liste}
 
 	Dans notre cas, la réponse est simple~:
@@ -648,7 +648,7 @@ d'un exemple complet.
 	\begin{liste}
 	\item {
 		Les données sont le moment à convertir en secondes. Ce moment est
-		représenté par trois entiers~: les heures, les minutes et les secondes
+		représenté par trois entiers~:~les heures, les minutes et les secondes
 		;}
 	\item {
 		Le résultat est le moment converti en secondes. Il est représenté par un
@@ -660,8 +660,9 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Affiche trois entiers~: des heures, des minutes et des secondes et sort le nombre de secondes correspondant.
-		\ModuleSign{hmsVersSec}{h\In, m\In, s\In, secondes\Out~: entiers}{}
+		\LComment Affiche trois entiers~:~des heures, des minutes et des secondes et 
+		sort le nombre de secondes correspondant.
+		\ModuleSign{hmsVersSec}{h\In, m\In, s\In, secondes\Out~:~entiers}{}
 	\end{pseudo}
 	}
 	
@@ -676,15 +677,15 @@ d'un exemple complet.
 
 	Dans de pareils cas, 
 	on privilégie souvent la valeur de retour car cela
-	facilite l'écriture lors de l'appel.
+	facilite l’écriture lors de l’appel.
 
-	L'algorithme s'écrit alors~:
+	L’algorithme s’écrit alors~:
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Affiche trois entiers~: des heures, des minutes et des secondes et retourne le nombre de secondes correspondant.
+	\LComment Affiche trois entiers~:~des heures, des minutes et des secondes et retourne le nombre de secondes correspondant.
 		\Module{hmsVersSec}{h\In, m\In, s\In~: entiers}{entier}
-			\Decl secondes~: entier \RComment {À déclarer puisque ce n'est pas un paramètre}
+			\Decl secondes~:~entier \RComment {À déclarer puisque ce n’est pas un paramètre}
 			\Let secondes \Gets  h * 3600 + m * 60 + s
 			\Return secondes
 		\EndModule
@@ -695,8 +696,8 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-	\LComment Affiche trois entiers~: des heures, des minutes et des secondes et retourne le nombre de secondes correspondant.
-		\Module{hmsVersSec}{h\In, m\In, s\In~: entiers}{entier}
+	\LComment Affiche trois entiers~:~des heures, des minutes et des secondes et retourne le nombre de secondes correspondant.
+		\Module{hmsVersSec}{h\In, m\In, s\In~:~entiers}{entier}
 			\Return h * 3600 + m * 60 + s
 		\EndModule
 	\end{pseudo}
@@ -707,17 +708,17 @@ d'un exemple complet.
 	À la fin de notre algorithme, il nous faudra reconvertir un résultat
 	exprimé en secondes sous la forme heures-minutes-secondes. À nouveau,
 	on a déjà résolu ce problème dans le chapitre sur les algorithmes
-	séquentiels. Mais il faut l'adapter à
-	l'usage de paramètres.
+	séquentiels. Mais il faut l’adapter à
+	l’usage de paramètres.
 
 	\begin{liste}
 	\item {
-		Quelles sont les données ? Une seule, le moment exprimé en secondes}
+		Quelles sont les données~? Une seule, le moment exprimé en secondes}
 	\item {
-		Quels sont les résultats calculés par le module ? Ce même moment exprimé
+		Quels sont les résultats calculés par le module~? Ce même moment exprimé
 		en heures-minutes-secondes. Trois entiers sont requis ce qui fait que
 		le choix entre un paramètre en sortie et une valeur de retour ne se
-		pose pas ici~; impossible d'utiliser une valeur de
+		pose pas ici~; impossible d’utiliser une valeur de
 		retour (qui doit être unique)~; on doit utiliser des paramètres en
 		sortie.}
 	\end{liste}
@@ -742,11 +743,11 @@ d'un exemple complet.
 	\cadre{
 	\begin{pseudo}
 		\LComment Lit deux moments (h-m-s) et affiche le moment de la différence entre les deux.
-		\Module{différenceEntreHeures}{}{} \RComment Pas de paramètres !
-			\Decl h1, m1, s1, h2, m2, s2~: entiers \RComment Les 2 moments à soustraire
-			\Decl secondes1, secondes2~: entiers \RComment Ces 2 moments en secondes
-			\Decl diffSecondes~: entier \RComment La différence en secondes
-			\Decl diffH, diffM, diffS~: entiers \RComment La différence en H-M-S
+		\Module{différenceEntreHeures}{}{} \RComment Pas de paramètre~!
+			\Decl h1, m1, s1, h2, m2, s2~:~entiers \RComment Les 2 moments à soustraire
+			\Decl secondes1, secondes2~:~entiers \RComment Ces 2 moments en secondes
+			\Decl diffSecondes~:~entier \RComment La différence en secondes
+			\Decl diffH, diffM, diffS~:~entiers \RComment La différence en H-M-S
 			\Read h1, m1, s1, h2, m2, s2
 			\Let secondes1 \Gets hmsVersSec( h1, m1, s1 )
 			\Let secondes2 \Gets hmsVersSec( h2, m2, s2 )
@@ -762,7 +763,7 @@ d'un exemple complet.
 		Dans la solution ci-dessus, 
 		quelle est ou quelles sont la/les variable(s) locale(s) 
 		dont on pourrait se passer moyennant une réécriture de
-		l'algorithme ?
+		l’algorithme~?
 	\end{Emphase}
 	
 \section{Blocs}
@@ -771,10 +772,10 @@ d'un exemple complet.
 	{Un bloc est l’écriture d’une portion de module
 	à l’extérieur de celui-ci. C’est un simple
 	}{\textit{déplacement}}{
-	de lignes de codes vers un autre endroit du texte de
-	l'algorithme. La raison de découper un module en blocs
+	de lignes de code vers un autre endroit du texte de
+	l’algorithme. La raison de découper un module en blocs
 	peut être le souci de clarifier un algorithme en le découpant en étapes
-	bien distinctes, ou tout simplement un manque de place… Les variables
+    bien distinctes, ou tout simplement un manque de place\dots{} Les variables
 	d’un bloc ne sont donc pas des variables locales du bloc dans lequel
 	elles apparaissent, mais bien des variables locales du module auquel
 	appartient ce bloc. L’appel de l’exécution des instructions se trouvant
@@ -801,7 +802,7 @@ d'un exemple complet.
 	\cadre{
 	\begin{pseudo}
 	\Block{déclaration}
-		\Decl num1, den1, num2, den2, numRes, denRes~: entiers
+		\Decl num1, den1, num2, den2, numRes, denRes~:~entiers
 	\EndBlock
 	\end{pseudo}
 	}
@@ -826,7 +827,7 @@ d'un exemple complet.
 	\cadre{
 	\begin{pseudo}
 	\Block{écritureRésultat}
-		\Write numRes, "/", denRes \RComment la fraction n'est pas simplifiée
+		\Write numRes, "/", denRes \RComment la fraction n’est pas simplifiée
 	\EndBlock
 	\end{pseudo}
 	}
@@ -836,45 +837,45 @@ d'un exemple complet.
 	est aussi appelé }{\textbf{dictionnaire des
 	variables}}{ du module.}}
 
-\section{Qu'est-ce qu'un algorithme de qualité ?}
+\section{Qu’est-ce qu’un algorithme de qualité~?}
 
 	{
 	Nous voulons tous produire du code de qualité mais
-	qu'est-ce que cette notion recouvre vraiment ?
-	Qu'est-ce qui permet de juger de la qualité
-	d'un code ? De nombreux critères existent. Citons ici,
+	qu’est-ce que cette notion recouvre vraiment~?
+	Qu’est-ce qui permet de juger de la qualité
+	d’un code~? De nombreux critères existent. Citons ici,
 	parmi les plus pertinents, ceux qui sont le plus liés à ce
 	cours\footnote{Pour approfondir cette notion,
-	l'étudiant pourra lire par exemple~: Bertrand Meyer,
-	«~\textit{Conception et programmation par objets~: pour du logiciel de
-	qualité}~», aux éditions «\textit{~interéditions~}»}. }
+	l’étudiant pourra lire par exemple~:~Bertrand Meyer,
+	«~\textit{Conception et programmation par objets~:~pour du logiciel de
+	qualité}~», aux éditions «\textit{~interéditions~}»}.}
 
 \subsection{La validité}
 
 	{
-	C'est l'évidence, le code doit
+	C’est l’évidence, le code doit
 	réaliser les tâches pour lesquelles il a été écrit, même dans tous les
-	cas particuliers imaginés. C'est là le critère
+	cas particuliers imaginés. C’est là le critère
 	principal et les autres ne sont là que pour aider à atteindre celui-ci
 	plus facilement. Ne nous leurrons pas, ce critère est loin
-	d'être facile à rencontrer. Il suffit pour
-	s'en convaincre de se rappeler toutes les fois où des
+	d’être facile à rencontrer. Il suffit pour
+	s’en convaincre de se rappeler toutes les fois où des
 	logiciels pourtant courants que nous utilisons se sont déjà arrêtés sur
 	des erreurs.}
 
-\subsection{L'extensibilité (ou évolutivité)}
+\subsection{L’extensibilité (ou évolutivité)}
 
 	{
 	Un code valide résout un problème particulier. Mais dans les situations
 	réelles, le problème change régulièrement. Nous voudrons adapter le
 	logiciel à de nouveaux besoins, à une modification de la législation,
-	parce qu’un besoin était mal compris, ... Ces modifications peuvent
+    parce qu’un besoin était mal compris\dots{} Ces modifications peuvent
 	parfois être prévues mais pas toujours.}
 
 	{
-	Le code doit être écrit de telle sorte qu'un changement
-	mineur dans le problème n'implique
-	qu'un changement mineur dans le code. Ce changement
+	Le code doit être écrit de telle sorte qu’un changement
+	mineur dans le problème n’implique
+	qu’un changement mineur dans le code. Ce changement
 	doit être évident, facile à opérer et rapide. Il ne doit pas mettre à
 	mal la validité du code.}
 
@@ -886,68 +887,67 @@ d'un exemple complet.
 	à nouveau un code qui a déjà fait ses preuves dans le 
 	but de gagner du temps que l’on pourra investir dans les 
 	aspects algorithmiques propres au nouveau projet. 
-	Le découpage en modules joue ici un rôle essentiel.
-}
+	Le découpage en modules joue ici un rôle essentiel.}
 
 \subsection{La lisibilité}
 
 	{
-	La lisibilité d'un code recouvre une notion globale et
+	La lisibilité d’un code recouvre une notion globale et
 	locale. Au niveau global, on doit facilement comprendre la structure
 	générale du code afin de pouvoir aisément comprendre où se trouve 
-	la portion de	code qui nous intéresse. 
+	la portion de code qui nous intéresse. 
 	Au niveau local, on doit pouvoir comprendre
 	aisément chaque bout de code.}
 
 	{
 	Au niveau du procédural (on nomme ainsi la programmation qui se
-	structure à l'aide de modules), cela revient à dire
-	qu'on doit rapidement voir quels sont les fonctions et
+	structure à l’aide de modules), cela revient à dire
+	qu’on doit rapidement voir quelles sont les fonctions et
 	leur rôle (niveau global) et que chaque fonction sera aisément
-	compréhensible (niveau local). }
+	compréhensible (niveau local).}
 	
 	{
-	Est-ce que la lisibilité d'un code passe par
-	l'abondance de commentaire ? Non, pas forcément. Le
-	commentaire sert à expliquer ce qui n'est pas
+	Est-ce que la lisibilité d’un code passe par
+	l’abondance de commentaire~? Non, pas forcément. Le
+	commentaire sert à expliquer ce qui n’est pas
 	immédiatement clair dans le code. La première source de lisibilité
-	provient donc du code lui-même. C'est pourquoi on est
+	provient donc du code lui-même. C’est pourquoi on est
 	attentif à la bonne découpe en modules, au choix judicieux des noms de
-	modules et de variables, ... Le respect de ces bonnes pratiques diminue
+    modules et de variables\dots{} Le respect de ces bonnes pratiques diminue
 	le besoin de commentaires.}
 	
-\subsection{L'efficience}
+\subsection{L’efficience}
 
 	{
-	Ce critère s'intéresse à la bonne utilisation des
+	Ce critère s’intéresse à la bonne utilisation des
 	ressources informatiques. Est-ce que le programme va tourner
-	suffisamment vite, utiliser peu de mémoire ? Faut-il chercher
-	systématiquement à optimiser son code ? Non ! On a souvent tendance à
+	suffisamment vite, utiliser peu de mémoire~? Faut-il chercher
+	systématiquement à optimiser son code~? Non~! On a souvent tendance à
 	surévaluer ce critère ce qui est dommageable pour trois raisons.}
 
 	\begin{liste}
 	\item {
-		Souvent, l'approche directe est suffisante. Par
+		Souvent, l’approche directe est suffisante. Par
 		exemple, la plupart des applications sont interactives.
-		C'est alors l’utilisateur qui est le plus lent, pas la
-		machine qui a tout le temps d'effectuer sa tâche
-		pendant que l’utilisateur réfléchit à ce qu'il doit
+		C’est alors l’utilisateur qui est le plus lent, pas la
+		machine qui a tout le temps d’effectuer sa tâche
+		pendant que l’utilisateur réfléchit à ce qu’il doit
 		taper.}
 	\item {
 		En général, un programme passe 80\% de son temps dans 20\% de son code.
 		Chercher à optimiser chaque ligne de code est une perte de temps.}
 	\item {
-		Accroitre la rapidité d'un code est presque toujours en
-		contradiction avec sa lisibilité. On risque d'utiliser un algorithme moins
+		Accroitre la rapidité d’un code est presque toujours en
+		contradiction avec sa lisibilité. On risque d’utiliser un algorithme moins
 		connu ou des raccourcis difficiles à suivre.}
 	\end{liste}
 
 	{
-	C'est pourquoi on recommande en général, face à un
-	problème, d'utiliser la solution la plus courante, la
+	C’est pourquoi on recommande en général, face à un
+	problème, d’utiliser la solution la plus courante, la
 	plus claire. Une fois le programme terminé, et seulement si le besoin
-	s'en fait sentir, on identifiera les portions de code
-	où le programme s'attarde le plus et on cherchera à
+	s’en fait sentir, on identifiera les portions de code
+	où le programme s’attarde le plus et on cherchera à
 	les optimiser.}
 
 \section{Exercices}
@@ -959,7 +959,7 @@ d'un exemple complet.
 	\cadre{
 	\begin{pseudo}
 	\Module{ex1}{}{}
-		\Decl x, y~: entiers
+		\Decl x, y~:~entiers
 		\Stmt addition(3, 4, x)
 		\Write x
 		\Let x \Gets 3
@@ -970,8 +970,8 @@ d'un exemple complet.
 
 	\Empty
 
-	\Module{addition}{a\In, b\In, c\Out~: entiers}{}
-		\Decl somme~: entier
+	\Module{addition}{a\In, b\In, c\Out~:~entiers}{}
+		\Decl somme~:~entier
 		\Let somme \Gets a + b
 		\Let c \Gets somme
 	\EndModule
@@ -981,7 +981,7 @@ d'un exemple complet.
 	\cadre{
 	\begin{pseudo}
 	\Module{ex2}{}{}
-		\Decl a, b~: entiers
+		\Decl a, b~:~entiers
 		\Stmt addition(3, 4, a) \Comment voir ci-dessus
 		\Write a
 		\Let a \Gets 3
@@ -995,7 +995,7 @@ d'un exemple complet.
 	\cadre{
 	\begin{pseudo}
 	\Module{ex3}{}{}
-		\Decl a, b, c~: entiers
+		\Decl a, b, c~:~entiers
 		\Stmt calcul(3, 4, c)
 		\Write c
 		\Let a \Gets 3
@@ -1005,7 +1005,7 @@ d'un exemple complet.
 		\Write a, b, c
 	\EndModule
 	\Empty
-	\Module{calcul}{a\In, b\In, c\Out~: entiers}{}
+	\Module{calcul}{a\In, b\In, c\Out~:~entiers}{}
 		\Let a \Gets 2 * a
 		\Let b \Gets 3 * b
 		\Let c \Gets a + b
@@ -1016,7 +1016,7 @@ d'un exemple complet.
 	\cadre{
 	\begin{pseudo}
 	\Module{ex4}{}{}
-		\Decl a, b, c~: entiers
+		\Decl a, b, c~:~entiers
 		\Let a \Gets 3
 		\Let b \Gets 4
 		\Let c \Gets f(b)
@@ -1025,13 +1025,13 @@ d'un exemple complet.
 		\Write a, b, c
 	\EndModule
 	\Empty
-	\Module{calcul2}{a\In, b\In, c\Out~: entiers}{}
+	\Module{calcul2}{a\In, b\In, c\Out~:~entiers}{}
 		\Let a \Gets f(a)
 		\Let c \Gets 3 * b
 		\Let c \Gets a + c
 	\EndModule
 	\Empty
-	\Module{f}{a\In~: entier}{entier}
+	\Module{f}{a\In~:~entier}{entier}
 		\Decl b~: entier
 		\Let b \Gets 2 * a + 1
 		\Return b
@@ -1045,11 +1045,11 @@ d'un exemple complet.
 	Parmi les instructions suivantes (où les variables
 	\textstyleCodeInsr{a}, \textstyleCodeInsr{b} et \textstyleCodeInsr{c}
 	sont des entiers), lesquelles font correctement appel au module
-	d’en-tête suivant ?
+	d’en-tête suivant~?
 
 	\cadre{
 	\begin{pseudo}
-		\ModuleSign{PGCD}{a\In,b\In: entiers}{entier}
+		\ModuleSign{PGCD}{a\In,b\In~:~entiers}{entier}
 	\end{pseudo}
 	}
 
@@ -1069,15 +1069,15 @@ d'un exemple complet.
 	}
 \end{Exercice}
 
-\begin{Exercice}{Comparaison d'algorithmes}
+\begin{Exercice}{Comparaison d’algorithmes}
 	Soit un module testant si un nombre entier est pair.
 	Comparez les différentes solutions proposées.
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Affiche un entier et retourne vrai si il est pair et faux sinon.
-		\Module{estPair}{nb\In~: entier}{booléen}
-		\Decl pair~: booléen
+		\LComment Affiche un entier et retourne vrai s’il est pair et faux sinon.
+		\Module{estPair}{nb\In~:~entier}{booléen}
+		\Decl pair~:~booléen
 		\Let pair \Gets faux
 		\If{nb MOD 2 = 0}
 			\Let pair \Gets vrai
@@ -1089,9 +1089,9 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Affiche un entier et retourne vrai si il est pair et faux sinon.
-		\Module{estPair}{nb\In~: entier}{booléen}
-		\Decl pair~: booléen
+		\LComment Affiche un entier et retourne vrai s’il est pair et faux sinon.
+		\Module{estPair}{nb\In~:~entier}{booléen}
+		\Decl pair~:~booléen
 		\If{nb MOD 2 = 0}
 			\Let pair \Gets vrai
 		\Else
@@ -1104,9 +1104,9 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Affiche un entier et retourne vrai si il est pair et faux sinon.
-		\Module{estPair}{nb\In~: entier}{booléen}
-			\Decl pair~: booléen
+		\LComment Affiche un entier et retourne vrai s’il est pair et faux sinon.
+		\Module{estPair}{nb\In~:~entier}{booléen}
+			\Decl pair~:~booléen
 			\Let pair \Gets nb MOD 2 = 0
 			\Return pair
 		\EndModule
@@ -1115,8 +1115,8 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Affiche un entier et retourne vrai si il est pair et faux sinon.
-		\Module{estPair}{nb\In~: entier}{booléen}
+		\LComment Affiche un entier et retourne vrai s’il est pair et faux sinon.
+		\Module{estPair}{nb\In~:~entier}{booléen}
 		\Return nb MOD 2 = 0
 		\EndModule
 	\end{pseudo}
@@ -1124,8 +1124,8 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Affiche un entier et retourne vrai si il est pair et faux sinon.
-		\Module{estPair}{nb\In~: entier}{booléen}
+		\LComment Affiche un entier et retourne vrai s’il est pair et faux sinon.
+		\Module{estPair}{nb\In~:~entier}{booléen}
 		\If{nb MOD 2 = 0}
 			\Return vrai
 		\Else
@@ -1137,8 +1137,8 @@ d'un exemple complet.
 
 	\cadre{
 	\begin{pseudo}
-		\LComment Affiche un entier et retourne vrai si il est pair et faux sinon.
-		\Module{estPair}{nb\In~: entier}{booléen}
+		\LComment Affiche un entier et retourne vrai s’il est pair et faux sinon.
+		\Module{estPair}{nb\In~:~entier}{booléen}
 		\If{nb MOD 2 = 0}
 			\Return vrai
 		\EndIf
@@ -1156,22 +1156,22 @@ entières passées en paramètres.
 \end{Exercice}
 
 \begin{Exercice}{Valeur absolue}
-Écrire un module qui retourne la valeur absolue d'un
+Écrire un module qui retourne la valeur absolue d’un
 réel reçu en paramètre.
-Quel est l'avantage pour un module de retourner la réponse 
-plutôt que de l'afficher ?
+Quel est l’avantage pour un module de retourner la réponse 
+plutôt que de l’afficher~?
 \end{Exercice}
 
 \begin{Exercice}{Maximum de 4 nombres}
 \marginicon{java}
 Écrire un module qui retourne le maximum de 4
-nombres donnés en paramètres en utilisant les modules
+nombres donnés en paramètre en utilisant les modules
 max2 et/ou max3 déjà développés dans ce chapitre.
 \end{Exercice}
 
-\begin{Exercice}{Validité d'une date}
+\begin{Exercice}{Validité d’une date}
 \marginicon{java}
-Reprendre l'algorithme de validation d'une date 
+Reprendre l’algorithme de validation d’une date 
 développé au chapitre précédent et le rendre modulaire.
 \end{Exercice}
 

@@ -17,7 +17,7 @@
 		une \textbf{date} est composée de trois éléments (le jour, le mois,
 		l’année), le mois s’exprimant, selon le format,
 		tantôt par un entier (15/10/2014) tantôt
-		par une chaine (15 octobre 2014)}
+		par une chaine (15~octobre~2014)}
 	\item {
 		un \textbf{moment} de la journée est un triple d’entiers (heures,
 		minutes, secondes)}
@@ -25,9 +25,9 @@
 		la localisation d’un \textbf{point} dans un plan nécessite la
 		connaissance de deux coordonnées cartésiennes (l’abscisse \textit{x} et
 		l’ordonnée \textit{y}) ou polaires (le rayon \textit{r} et l’angle
-		\textit{$\theta $})}
+		\textit{$\theta$})}
 	\item {
-		une \textbf{adresse }est composée de plusieurs données~: un nom de rue,
+		une \textbf{adresse} est composée de plusieurs données~:~un nom de rue,
 		un numéro de maison, parfois un numéro de boite postale, un code
 		postal, le nom de la localité, un nom ou code de pays pour une adresse
 		à l’étranger\dots}
@@ -35,19 +35,19 @@
 
 	Pour stocker et manipuler de tels ensembles de données, nous utiliserons
 	des \textbf{types structurés} ou \textbf{structures}\footnote{Nous
-	verrons dans un chapitre ultérieur que l'approche
+	verrons dans un chapitre ultérieur que l’approche
 	«~orientée objet~» offre également une solution élégante pour manipuler
-	des données complexes}. Une \textbf{structure} est donc un ensemble
+	des données complexes.}. Une \textbf{structure} est donc un ensemble
 	fini d’éléments pouvant être de types distincts. Chaque élément de cet
 	ensemble, appelé \textbf{champ} de la structure, possède un nom unique.
 	
-	Noter qu’un champ d’une structure peut lui-même être une structure. Par
+	Notez qu’un champ d’une structure peut lui-même être une structure. Par
 	exemple, une \textbf{carte d’identité} inclut parmi ses informations
 	une \textbf{date} de naissance, l’\textbf{adresse} de son
-	propriétaire (cachée dans la puce électronique!),\dots
+	propriétaire (cachée dans la puce électronique~!),\dots
 
 % ===================================
-\section{Définition d'une structure}
+\section{Définition d’une structure}
 % ===================================
 
 	\marginicon{definition}
@@ -56,15 +56,15 @@
 	\cadre{
 	\begin{pseudo}
 	\Struct{NomDeLaStructure}
-		\Decl nomChamp1~: type1
-		\Decl nomChamp2~: type2
+		\Decl nomChamp1 : type1
+		\Decl nomChamp2 : type2
 		\Decl \dots
-		\Decl nomChampN~: typeN
+		\Decl nomChampN : typeN
 	\EndStruct
 	\end{pseudo}
 	}
 
-	\textstyleCodeInsr{nomChamp1}, \dots, \textstyleCodeInsr{nomChampN }
+	\textstyleCodeInsr{nomChamp1}, \dots, \textstyleCodeInsr{nomChampN} 
 	sont les noms des différents champs de la structure, 
 	et \textstyleCodeInsr{type1}, \dots, \textstyleCodeInsr{typeN} 
 	les types de ces champs. 
@@ -78,9 +78,9 @@
 	\cadre{
 	\begin{pseudo}
 	\Struct{Date}
-		\Decl jour~: entier
-		\Decl mois~: entier
-		\Decl année~: entier
+		\Decl jour : entier
+		\Decl mois : entier
+		\Decl année : entier
 	\EndStruct
 	\end{pseudo}
 	}
@@ -88,9 +88,9 @@
 	\cadre{
 	\begin{pseudo}
 	\Struct{Moment}
-		\Decl heure~: entier
-		\Decl minute~: entier
-		\Decl seconde~: entier
+		\Decl heure : entier
+		\Decl minute : entier
+		\Decl seconde : entier
 	\EndStruct
 	\end{pseudo}
 	}
@@ -98,8 +98,8 @@
 	\cadre{
 	\begin{pseudo}
 	\Struct{Point}
-		\Decl x~: réel
-		\Decl y~: réel
+		\Decl x : réel
+		\Decl y : réel
 	\EndStruct
 	\end{pseudo}
 	}
@@ -114,9 +114,9 @@
 
 	\cadre{
 	\begin{pseudo}
-	\Decl anniversaire, jourJ~: Date
-	\Decl départ, arrivée, unMoment~: Moment
-	\Decl a, b, centreGravité~: Point
+	\Decl anniversaire, jourJ : Date
+	\Decl départ, arrivée, unMoment : Moment
+	\Decl a, b, centreGravité : Point
 	\end{pseudo}
 	}
 
@@ -180,7 +180,7 @@
 
 	\cadre{
 	\begin{pseudo}
-	\ModuleSign{nbSecondesEcoulées}{ départ\In, arrivée\In~: Moment}{entier}
+	\ModuleSign{nbSecondesEcoulées}{ départ\In, arrivée\In : Moment}{entier}
 	\end{pseudo}
 	}
 
@@ -201,13 +201,13 @@
 	relation d’ordre n’accompagne pas toujours les structures utilisées. En
 	effet, s’il est naturel de vouloir comparer des dates ou des moments,
 	comment définir une relation d’ordre avec les points du plan ou avec
-	des cartes d’identités ?
+	des cartes d’identités~?
 
 	Si le besoin de comparer des variables
 	structurées se fait sentir, il faudra dans ce cas écrire des modules de
 	comparaison adaptés aux structures utilisées.
 
-	Par facilité d'écriture, on peut assigner tous les champs en une 
+	Par facilité d’écriture, on peut assigner tous les champs en une 
 	fois via des «~\{\}~». Exemple~:
 
 	\cadre{
@@ -231,8 +231,8 @@
 	\LComment {–1 si la première date est antérieure à la deuxième}
 	\LComment 0 si les deux	dates sont identiques
 	\LComment 1 si la première date est postérieure à la deuxième.
-	\Module{comparerDates}{date1\In, date2\In~: Date}{entier}
-		\Decl résultat~: entier
+	\Module{comparerDates}{date1\In, date2\In : Date}{entier}
+		\Decl résultat : entier
 		\Let  résultat \Gets -1
 		\RComment valeur choisie par défaut
 		\If{date1.année ${\geq}$ date2.année}
@@ -329,12 +329,12 @@
 		un module calculant la surface d’un rectangle reçu en paramètre ;}
 	\item {
 		un module recevant en paramètre un rectangle R et les coordonnées
-		d'un point P, et renvoyant 
+		d’un point P, et renvoyant 
 		\textbf{vrai} si et seulement si le point P est à
-		l'intérieur du rectangle R ;}
+		l’intérieur du rectangle R ;}
 	\item {
 		un module recevant en paramètre un rectangle R et les coordonnées
-		d'un point P, et renvoyant 
+		d’un point P, et renvoyant 
 		\textbf{vrai} si et seulement si le point P est sur le bord du
 		rectangle R ;}
 	\item {
@@ -346,7 +346,7 @@
 
 \begin{Exercice}{Validation de date}
 	Écrire un algorithme qui valide une date reçue en paramètre 
-	sous forme d'une structure.
+	sous forme d’une structure.
 \end{Exercice}
 
 	

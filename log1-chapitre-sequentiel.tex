@@ -2,11 +2,11 @@
 
 	\marginicon{objectif}
 	Dans ce chapitre, vous apprendrez à écrire un algorithme séquentiel pour
-	résoudre un problème informatique. C'est aussi
-	l'occasion de fixer la syntaxe du pseudo-code que nous
+	résoudre un problème informatique. C’est aussi
+	l’occasion de fixer la syntaxe du pseudo-code que nous
 	allons utiliser. Nous commençons avec les algorithmes
 	séquentiels qui sont de simples séquences de suites
-	d'instructions. Les structures alternatives et
+	d’instructions. Les structures alternatives et
 	répétitives seront vues dans les chapitres suivants.
 
 
@@ -14,7 +14,7 @@
 
 		Supposons que nous voulions rédiger une marche
 		à suivre détaillée qui explique comment additionner deux fractions. Une
-		possibilité de l’écrire en langage «~naturel~» serait la suivante :
+		possibilité de l’écrire en langage «~naturel~» serait la suivante~:
 
 		\cadre{
 		\begin{pseudo}
@@ -31,19 +31,19 @@
 		faciliter l’effort de programmation qui en suivrait. N’oublions pas
 		qu’un ordinateur n’est qu’une machine dépourvue de toute intelligence
 		et incapable de comprendre les sous-entendus qu’un être humain pourrait
-		comprendre !
+		comprendre~!
 
 		De plus, les notions de dénominateur commun et
 		de simplification de fraction, qui vous sont 
-		familières depuis l'école primaire, 
-		ne sont pas immédiates d'un point de
-		vue algorithmique. Un algorithme proche d'un langage
+		familières depuis l’école primaire, 
+		ne sont pas immédiates d’un point de
+		vue algorithmique. Un algorithme proche d’un langage
 		de programmation ne devrait mentionner que les opérations élémentaires
 		de calcul telles que $+$, -, $*$, $/$.
 
 		Ceci dit, afin d’être plus proche d’un
 		programme écrit dans un langage compréhensible par l’ordinateur,
-		l’algorithme ci-dessus pourrait s’écrire :
+		l’algorithme ci-dessus pourrait s’écrire~:
 
 		\cadre{
 		\begin{pseudo}
@@ -99,7 +99,7 @@
 		\marginicon{definition}
 		Le \textbf{pseudo-code} ou \textit{Langage de Description des
 		Algorithmes} (LDA en abrégé) est un langage formel et symbolique
-		utilisant :
+		utilisant~:
 
 		\begin{liste}
 		\item
@@ -119,7 +119,7 @@
 
 		C’est de cette dernière exigence que nait la polémique consistant à
 		savoir jusqu’à quel niveau de détail il convient d’aller dans la
-		représentation d’un algorithme ! Nous dirons, pour notre part, qu’il ne
+		représentation d’un algorithme~! Nous dirons, pour notre part, qu’il ne
 		doit jamais être aussi détaillé que le programme lui-même, celui-ci
 		étant, par essence, la description ultime. Point n’est besoin de donner
 		deux descriptions quasi identiques d’un algorithme, l’une dans un
@@ -133,7 +133,7 @@
 		\textbf{programme}, exprimé en langage de programmation.
 
 		On pourrait d’ailleurs concevoir la possibilité d’établir d’autres
-		\textbf{algorithmes plus }\textbf{détaillés} se situant entre
+		\textbf{algorithmes plus détaillés} se situant entre
 		l’algorithme général et le programme et qui tiendraient compte de
 		certaines particularités du langage de programmation dans lequel ils
 		sont destinés à être traduits.
@@ -147,7 +147,7 @@
 
 		En conclusion, à partir du moment où des conventions sont prises dans un
 		contexte bien déterminé (un service informatique d’une entreprise, un
-		groupe scolaire,...), il convient que \textbf{tous }respectent ces
+		groupe scolaire...), il convient que \textbf{tous} respectent ces
 		conventions. Ce sera à chacun de juger jusqu’où il ne faut pas aller
 		trop loin dans la liberté d’écriture.
 
@@ -159,7 +159,7 @@
 		alors de \textbf{variables}. Dans un algorithme, une variable conserve
 		toujours son nom et son type, mais peut changer de \textbf{valeur}.
 		
-		Le \textbf{nom }d’une variable permet de la caractériser et de la
+		Le \textbf{nom} d’une variable permet de la caractériser et de la
 		reconnaitre. Ainsi, dans l’exemple donné ci-dessus, nous pourrions
 		donner le nom \textit{num1} au \textit{premier numérateur} et
 		\textit{num2} au \textit{second numérateur}, ce qui permet déjà de
@@ -170,7 +170,7 @@
 		\subsection{Les types autorisés}
 
 			Dans un premier temps, les seuls \textbf{types} utilisés sont les
-			suivants :
+			suivants~:
 			
 			\begin{center}
 			\tablehead{}
@@ -181,11 +181,11 @@
 			 pour les nombres réels\\
 			\raggedleft  \textstyleMotCl{caractère} &
 			 pour les différentes lettres et caractères (par
-			exemple ceux qui apparaissent sur un clavier : ‘a’, ‘1’, ‘\#’, etc…)\\
+			exemple ceux qui apparaissent sur un clavier~: ‘a’, ‘1’, ‘\#’, etc.)\\
 			\raggedleft  \textstyleMotCl{chaine} &
 			{ pour les variables contenant plusieurs
 			caractères ou aucun (la chaine vide)}
-			(par exemple : "Bonjour", "Bonjour le monde", "a", "", etc.)
+			(par exemple~: "Bonjour", "Bonjour le monde", "a", "", etc.)
 			\\
 			\raggedleft  \textstyleMotCl{booléen} &
 			 les variables de ce type ne peuvent valoir que
@@ -202,12 +202,12 @@
 				Quel(s) type(s) de données utiliseriez-vous 
 				pour représenter 
 				\begin{itemize}
-					\item une date du calendrier ?
-					\item un moment dans la journée ?
-					\item le prix d'un produit en grande surface ?
-					\item votre nom ?
-					\item vos initiales ?
-					\item votre adresse ?
+					\item une date du calendrier~?
+					\item un moment dans la journée~?
+					\item le prix d’un produit en grande surface~?
+					\item votre nom~?
+					\item vos initiales~?
+					\item votre adresse~?
 				\end{itemize}
 				
 				\bigskip
@@ -217,7 +217,7 @@
 		\subsection{Déclaration de variables}
 
 			La déclaration d’une variable est l’instruction 
-			qui définit son nom et son type. On pourrait écrire :
+			qui définit son nom et son type. On pourrait écrire~:
 
 			\cadre{
 			\begin{pseudo}
@@ -228,7 +228,7 @@
 			
 			Mais, bien entendu, cette formulation, trop proche du
 			langage parlé, serait trop floue et trop longue. 
-			Dès lors, nous abrégerons par :
+			Dès lors, nous abrégerons par~:
 
 			\cadre{
 			\begin{pseudo}
@@ -253,7 +253,7 @@
 			ou encore \textbf{dictionnaire des données}.
 
 			Par exemple, pour l’algorithme des fractions, la déclaration des
-			informations pourrait être la suivante :
+			informations pourrait être la suivante~:
 
 			\cadre{
 			\begin{pseudo}
@@ -261,7 +261,7 @@
 			\end{pseudo}
 			}
 
-			avec la signification suivante :
+			avec la signification suivante~:
 
 			\begin{liste}
 			\item
@@ -277,14 +277,14 @@
 			
 			\marginicon{attention}
 			Attention, lors de la déclaration d’une variable, celle-ci n’a pas de
-			valeur ! Nous verrons plus loin que c’est l’instruction
+			valeur~! Nous verrons plus loin que c’est l’instruction
 			d’\textbf{affectation} qui va servir à donner un contenu aux variables
 			déclarées. En logique, nous n’envisageons pas d’\textit{affectation par
 			défaut} consistant à donner une valeur initiale de façon automatique
 			aux variables déclarées (par exemple 0 pour les variables numériques,
 			comme c’est le cas dans certains langages informatiques).
 
-		\subsection{Comment nommer correctement une variable ?}
+		\subsection{Comment nommer correctement une variable~?}
 
 			Le but est de trouver un nom qui soit suffisamment court tout en restant
 			explicite (ainsi \textstyleCodeInsr{num1} est plus approprié pour
@@ -294,7 +294,7 @@
 			appeler \textbf{den} la variable représentant le numérateur.
 			Il faut aussi tenir compte que les
 			langages de programmation imposent certaines limitations (parfois
-			différentes d'un langage à l'autre)
+			différentes d’un langage à l’autre)
 			ce qui peut nécessiter une modification du nom lors de la traduction.
 
 			Voici quelques règles et limitations traditionnelles dans les langages
@@ -329,10 +329,10 @@
 				\textstyleCodeInsr{z}\textstyleCodeInsr{\textsubscript{6}} ou
 				\textstyleCodeInsr{m²)}
 			\item
-				Les mots clés du langage sont interdits (par exemple
+				Les mots-clés du langage sont interdits (par exemple
 				\textstyleMotCl{for}, \textstyleMotCl{if}, 
 				\textstyleMotCl{while }pour Java et Cobol) et on déconseille 
-				d'utiliser les mots-clés du pseudo-code (tels que
+				d’utiliser les mots-clés du pseudo-code (tels que
 				\textstyleMotCl{\textsf{lire}}, 
 				\textstyleMotCl{\textsf{afficher}}, 
 				\textstyleMotCl{\textsf{pour}}…)
@@ -342,7 +342,7 @@
 				(tel que ${\Delta}$) mais d’autres oui ; certains font la distinction
 				entre les minuscules et majuscules, d’autres non. En logique, nous
 				admettons dans noms de variables les caractères accentués du français,
-				par ex. : durée, intérêts, etc.
+				par ex.~: durée, intérêts, etc.
 			\end{liste}
 
 			Il est impossible de décrire ici toutes les particularités des
@@ -350,16 +350,16 @@
 			du langage qu’il sera amené à utiliser.
 
 			
-			\begin{Emphase}[exercice]{Exercice : Déclarer une date}
+			\begin{Emphase}[exercice]{Exercice~:~Déclarer une date}
 				Déclarer le(s) variable(s) permettant de représenter la date
-				d'anniversaire de quelqu'un.
+				d’anniversaire de quelqu’un.
 			\end{Emphase}
 			
 			
-			\begin{Emphase}[exercice]{Exercice : Déclarer un rendez-vous}
+			\begin{Emphase}[exercice]{Exercice~:~Déclarer un rendez-vous}
 				Déclarer le(s) variable(s) permettant de représenter
-				l'heure de début, l'heure de fin et
-				l'objet d 'un rendez-vous.
+				l’heure de début, l’heure de fin et
+				l’objet d’un rendez-vous.
 			\end{Emphase}
 
 	\section{Opérateurs et expressions}
@@ -371,7 +371,7 @@
 	
 		\subsection{Opérateurs arithmétiques élémentaires}
 	
-			Ce sont les opérateurs binaires bien connus :
+			Ce sont les opérateurs binaires bien connus~:
 	
 			\begin{center}
 			\tablehead{}
@@ -396,7 +396,7 @@
 		\subsection{DIV et MOD}
 	
 			Ce sont deux opérateurs très importants qui ne peuvent s’utiliser
-			qu’avec des variables entières :
+			qu’avec des variables entières~:
 	
 			\begin{center}
 			\tablehead{}
@@ -414,9 +414,9 @@
 			L’élévation à la puissance sera notée \textstyleCodeInsr{**} ou
 			\textstyleCodeInsr{\^{}} . Pour la racine carrée d’une variable x nous
 			écrirons  $\sqrt{x}$ \textit{.} Attention, pour ce dernier, de veiller
-			à ne l’utiliser qu’avec un radicant positif !
+			à ne l’utiliser qu’avec un radicant positif~!
 	
-			\textbf{Exemple} : 
+			\textbf{Exemple}~: 
 			$(-b+\sqrt{(b\ast \ast 2-4\ast a\ast c)})/(2\ast a)$
 			
 			Mais on peut aussi accepter la notation mathématique usuelle
@@ -424,11 +424,11 @@
 	
 			\marginicon{reflexion}
 			Pourquoi ne pas avoir écrit «~\textstyleCodeInsr{4ac}~» et
-			«~\textstyleCodeInsr{2a}~» ?
+			«~\textstyleCodeInsr{2a}~»~?
 	
-			Si nécessaire, on se permettra d'utiliser les autres
+			Si nécessaire, on se permettra d’utiliser les autres
 			fonctions mathématiques sous leur forme la plus courante dans la
-			plupart des langages de programmation (exemples :
+			plupart des langages de programmation (exemples~:
 			$sin(x)$, $tan(x)$, $log(x)$, $exp(x)$, ...)
 			
 		
@@ -450,7 +450,7 @@
 			\end{supertabular}
 			\end{center}
 	
-			Pour les chaines, c'est l’ordre alphabétique qui
+			Pour les chaines, c’est l’ordre alphabétique qui
 			détermine le résultat (par exemple
 			\textstyleCodeInsr{{\textquotedbl}milou{\textquotedbl} {\textless}
 			{\textquotedbl}tintin{\textquotedbl}} est \textbf{vrai} de même que
@@ -478,9 +478,9 @@
 			toujours vrai, sauf quand les deux conditions sont fausses.
 	
 			Veillez à mettre des parenthèses dans le cas de combinaisons de ET et de
-			OU : \textstyleCodeInsr{(cond1 ET cond2) OU cond3} étant différent de
+			OU~: \textstyleCodeInsr{(cond1 ET cond2) OU cond3} étant différent de
 			\textstyleCodeInsr{cond1 ET (cond2 OU cond3).} En cas
-			d'oubli de parenthèses, il faudra se rappeler que
+			d’oubli de parenthèses, il faudra se rappeler que
 			\textstyleCodeInsr{ET} est prioritaire sur le \textstyleCodeInsr{OU}.
 			
 			Pour rappel aussi, pour un booléen \textstyleCodeInsr{ok}~: 
@@ -492,7 +492,7 @@
 		\subsection{Évaluation complète et court-circuitée}
 	
 			On définit deux modes d’évaluation des opérateurs \textstyleCodeInsr{ET}
-			et \textstyleCodeInsr{OU} :
+			et \textstyleCodeInsr{OU}~:
 	
 			\begin{description}
 			\item[l’évaluation \textit{complète}]
@@ -500,7 +500,7 @@
 				\textstyleCodeInsr{cond1 ET cond2} (respectivement
 				\textstyleCodeInsr{cond1 OU cond2}), les deux conditions sont chacune
 				évaluées, après quoi on évalue la valeur de vérité de l’ensemble de
-				l'expression.
+				l’expression.
 			\item[l’évaluation \textit{court-circuitée}]
 				dans un premier temps, seule la
 				première condition est testée. Dans le cas du \textstyleCodeInsr{ET},
@@ -527,15 +527,15 @@
 			nul. L’évaluation court-circuitée donne le résultat \textbf{faux}
 			immédiatement après test de la première condition sans évaluer la
 			seconde, tandis que l’évaluation complète entrainerait un arrêt de
-			l’algorithme pour cause de division par 0 !
+			l’algorithme pour cause de division par 0~!
 	
-			Noter que l’évaluation court-circuitée a pour conséquence la
+			Notez que l’évaluation court-circuitée a pour conséquence la
 			non-commutativité du \textstyleCodeInsr{ET} et du
 			\textstyleCodeInsr{OU~}: \textstyleCodeInsr{cond1 ET cond2} n’est donc
 			pas équivalent à \textstyleCodeInsr{cond2 ET cond1}, puisque l’ordre
 			des évaluations des deux conditions entre en jeu.~Nous conseillons
 			cependant de limiter les cas d’utilisation de l’évaluation
-			court-circuitée et d'opter pour des expressions dont
+			court-circuitée et d’opter pour des expressions dont
 			l’évaluation serait similaire dans les deux cas. La justification
 			d’utiliser l’évaluation court-circuitée apparaitra dans plusieurs
 			exemples tout au long du cours.
@@ -556,9 +556,9 @@
 			\item \textstyleCodeInsr{concat(maChaine1,maChaine2)}
 				concatène les chaines \textstyleCodeInsr{maChaine1} 
 				et \textstyleCodeInsr{maChaine2}.
-				(ex: \textstyleCodeInsr{concat("Bon","jour")} donne \textstyleCodeInsr{"Bonjour"})
-				Cette fonction \textstyleCodeInsr{concat()} impose l'utilisation d'arguments
-				mais en admet un nombre indéfini. L'écriture 
+				(ex~:~\textstyleCodeInsr{concat("Bon","jour")} donne \textstyleCodeInsr{"Bonjour"})
+				Cette fonction \textstyleCodeInsr{concat()} impose l’utilisation d’arguments
+				mais en admet un nombre indéfini. L’écriture 
 				\textstyleCodeInsr{concat("La ","souris ","mange ","le ","chat.")} est donc valable.
 			\end{liste}
 			
@@ -575,9 +575,9 @@
 				\textstyleCodeInsr{estMinuscule}).
 			\item \textstyleCodeInsr{majuscule(car)} donne la majuscule de la lettre \textstyleCodeInsr{car}
 				(idem pour \textstyleCodeInsr{minuscule}).
-			\item \textstyleCodeInsr{position(car)} donne la position de \textstyleCodeInsr{car} dans l'alphabet (ex: \textstyleCodeInsr{numLettre('E')} donne 5, 
-			idem pour \textstyleCodeInsr{numLettre('e')}).
-			\item \textstyleCodeInsr{lettre(num)} l'inverse de la précédente (ex: \textstyleCodeInsr{lettre(4)} donne le caractère 'D').
+			\item \textstyleCodeInsr{position(car)} donne la position de \textstyleCodeInsr{car} dans l’alphabet (ex~:~\textstyleCodeInsr{numLettre(’E’)} donne 5, 
+			idem pour \textstyleCodeInsr{numLettre(’e’)}).
+			\item \textstyleCodeInsr{lettre(num)} l’inverse de la précédente (ex~:~\textstyleCodeInsr{lettre(4)} donne le caractère ’D’).
 			\end{liste}
 
 			 
@@ -592,14 +592,14 @@
 
 			On parle d’\textbf{affectation externe} lorsque la valeur à affecter à
 			une variable est donnée par l’utilisateur qui la communique à
-			l’exécutant quand celui-ci le lui demande : cette valeur est donc
+			l’exécutant quand celui-ci le lui demande~:~cette valeur est donc
 			\textit{externe} à la procédure \ (l’ordinateur ne peut la deviner
-			lui-même !)
+			lui-même~!)
 
 			L’affectation externe est donc la primitive qui permet de recevoir de
-			l’utilisateur, au moment où l'algorithme se déroule,
+			l’utilisateur, au moment où l’algorithme se déroule,
 			une ou plusieurs valeur(s) et de les affecter à des variables en
-			mémoire. Nous noterons :
+			mémoire. Nous noterons~:
 
 			\cadre{
 			\begin{pseudo}
@@ -617,21 +617,21 @@
 			}
 			
 			L’exécution de cette instruction provoque une
-			pause dans le déroulement de l’algorithme : l’exécutant demande alors à
+			pause dans le déroulement de l’algorithme~:~l’exécutant demande alors à
 			l’utilisateur les valeurs des variables à lire. Ces valeurs viennent
 			donc de l’\textit{extérieur~}; une fois introduites dans le système,
 			elles sont affectées aux variables concernées et l’algorithme peut
 			reprendre son cours. 
-			Les possibilités d'introduction de données 
-			sont nombreuses : citons par exemple l’encodage de
-			données au clavier, un clic de souris, le toucher d'un
+			Les possibilités d’introduction de données 
+			sont nombreuses~:~citons par exemple l’encodage de
+			données au clavier, un clic de souris, le toucher d’un
 			écran tactile, des données provenant d’un fichier, etc.
 
 		\subsection{Affectation interne }
 
 			On parle d’affectation interne lorsque la valeur d’une variable est
 			«~calculée~» par l’exécutant de l’algorithme lui-même à partir de
-			données qu’il connait déjà :
+			données qu’il connait déjà~:
 
 			\cadre{
 			\begin{pseudo}
@@ -641,9 +641,9 @@
 			
 			Rappelons qu’une \textbf{expression} 
 			est une combinaison de variables et
-			d’opérateurs. L'expression a une valeur.
+			d’opérateurs. L’expression a une valeur.
 			
-			\subsubsection*{Exemples d'affectation corrects}
+			\subsubsection*{Exemples d’affectation corrects}
 			
 			\cadre{
 			\begin{pseudo}
@@ -657,14 +657,14 @@
 			\end{pseudo}
 			}
 			
-			\subsubsection*{Exemples d'affectation incorrects}
+			\subsubsection*{Exemples d’affectation incorrects}
 			
 			\cadre{
 			\begin{pseudo}
 			\Let somme + 1 \Gets 3
-			\RComment somme + 1 n'est pas une variable
+			\RComment somme + 1 n’est pas une variable
 			\Let somme \Gets 3n
-			\RComment 3n n'est ni un nom de variable correct ni une expression correcte
+			\RComment 3n n’est ni un nom de variable correct ni une expression correcte
 			\end{pseudo}
 			}
 			
@@ -678,21 +678,22 @@
 				:
 				\begin{liste}
 				\item
-					\textstyleCodeInsr{varEntière}{ $\gets$ }\textstyleCodeInsr{varRéelle} : 
-					dans ce cas le contenu de la variable sera la valeur \textbf{tronquée}
-					de l’expression réelle. 
+					\textstyleCodeInsr{varEntière}{ $\gets$
+                    }\textstyleCodeInsr{varRéelle}~:~dans ce cas le contenu de la variable sera 
+                    la valeur \textbf{tronquée} de l’expression réelle. 
 					Par exemple si «~\textstyleCodeInsr{nb}~» est
 					une variable de type entier, son contenu après l’instruction
 					«~\textstyleCodeInsr{nb}{ $\gets$ }\textstyleCodeInsr{$15/4$}~» 
 					sera 3
 				\item 
-					\textstyleCodeInsr{varRéelle}{ $\gets$ }\textstyleCodeInsr{varEntière} :
-					ici, il n'y a pas de perte de valeur.
+					\textstyleCodeInsr{varRéelle}{ $\gets$
+                    }\textstyleCodeInsr{varEntière}~:~ici, il n’y a pas de perte de valeur.
 				\item 
-					\textstyleCodeInsr{varChaine}{ $\gets$ }\textstyleCodeInsr{varCaractère} : 
-					équivalent à \textstyleCodeInsr{varChaine}{ $\gets$ }\textstyleCodeInsr{chaine(varCaractère)}.
+					\textstyleCodeInsr{varChaine}{ $\gets$
+                    }\textstyleCodeInsr{varCaractère}~:~équivalent à 
+                    \textstyleCodeInsr{varChaine}{ $\gets$ }\textstyleCodeInsr{chaine(varCaractère)}.
 					
-					Le contraire n'est évidemment pas accepté.
+					Le contraire n’est évidemment pas accepté.
 				\end{liste}
 			\item 
 				Seules les variables déclarées peuvent être affectées, que ce soit par
@@ -701,11 +702,11 @@
 				Nous ne mélangerons pas la déclaration d’une variable et son
 				affectation interne dans une même ligne de code, donc pas
 				d’instructions hybrides du genre 
-				\textsf{x}{ $\gets$ }\textstyleCodeInsr{2 : entier} ou encore 
-				\textsf{x~: entier(0)}.
+				\textsf{x}{ $\gets$ }\textstyleCodeInsr{2~:~entier} ou encore 
+				\textsf{x~:~entier(0)}.
 			\item 
 				Pour l’affectation interne, toutes les variables apparaissant dans
-				l'\textstyleCodeInsr{expression} doivent avoir été affectées
+				l’\textstyleCodeInsr{expression} doivent avoir été affectées
 				préalablement. Le contraire provoquerait un arrêt de l’algorithme.
 			\end{liste}
 			
@@ -713,7 +714,7 @@
 
 		L’instruction de communication des résultats consiste à donner à
 		l’extérieur (donc à l’utilisateur) la valeur d’un résultat 
-		calculé au cours de l’exécution de l’algorithme. Nous écrirons :
+		calculé au cours de l’exécution de l’algorithme. Nous écrirons~:
 
 			\cadre{
 			\begin{pseudo}
@@ -724,7 +725,7 @@
 		qui signifie que la valeur d’une expression (ou celles des différentes
 		variables mentionnées) sera fournie à l’utilisateur (par exemple par un
 		affichage à l’écran ou par impression sur listing via l’imprimante,
-		etc\dots).
+		etc.).
 
 		\subsubsection*{Remarques}
 
@@ -736,7 +737,7 @@
 			évidemment pas de confusion possible à partir du moment où l’on sait
 			qu’il s’agit de primitives d’échange entre l’extérieur et l’ordinateur
 			exécutant la procédure, mais par principe, il est conseillé d’utiliser
-			une syntaxe commune et limitée à un petit nombre de mots clés.
+			une syntaxe commune et limitée à un petit nombre de mots-clés.
 		\item
 			Comme pour l’affectation interne, on ne peut \textstyleCodeInsr{afficher}
 			que des expressions dont les variables qui la composent ont été 
@@ -748,7 +749,7 @@
 		La traduction d’un algorithme en pseudo-code constituera le contenu d’un
 		\textstyleMotCl{module}. Un module contient donc la solution
 		algorithmique d’un problème donné (ou d’une de ses parties). Sa
-		structure générale sera la suivante :
+		structure générale sera la suivante~:
 
 		\cadre{
 		\begin{pseudo}
@@ -765,30 +766,30 @@
 		
 		\begin{liste}
 		\item {
-			Le code d'un algorithme sera toujours compris entre la
+			Le code d’un algorithme sera toujours compris entre la
 			première ligne, appelée «~entête~» qui commence par 
 			le mot «~module~»
-			suivi du nom choisi pour l'algorithme, et la ligne
-			finale «~fin module~». Le code compris entre l'entête
+			suivi du nom choisi pour l’algorithme, et la ligne
+			finale «~fin module~». Le code compris entre l’entête
 			et la ligne finale sera toujours légèrement décalé vers la droite,
-			c'est un premier exemple
-			d'\textbf{indentation} indispensable pour la
-			lisibilité d'un programme, nous y reviendrons lors de
-			l'étude des structures alternatives et répétitives.}
+			c’est un premier exemple
+			d’\textbf{indentation} indispensable pour la
+			lisibilité d’un programme, nous y reviendrons lors de
+			l’étude des structures alternatives et répétitives.}
 		\item {
-			Comme pour les variables, le nomDuModule devra être approprié au contenu
-			! Par exemple, \textstyleCodeInsr{sommerNombres)}, 
+			Comme pour les variables, le nomDuModule devra être approprié au
+            contenu~! Par exemple, \textstyleCodeInsr{sommerNombres)}, 
 			\textstyleCodeInsr{additionnerFractions()} plutôt que 
 			\textstyleCodeInsr{goPartez()}!
 			Le rôle des parenthèses qui suivent le nom du module sera expliqué plus
 			tard.}
 		\item {
 			Il va de soi que toutes les parties de cette structure générale ne
-			seront pas toujours nécessaires : certains algorithmes ne nécessiteront
-			pas de lecture de données, d'autres ne devront pas
-			communiquer des résultats,...}
+			seront pas toujours nécessaires~:~certains algorithmes ne nécessiteront
+			pas de lecture de données, d’autres ne devront pas
+			communiquer des résultats...}
 		\item {
-			Pour la lisibilité, on veillera toujours à ce qu'un module
+			Pour la lisibilité, on veillera toujours à ce qu’un module
 			tienne sur une vingtaine de lignes (donc, en pratique, sur un écran 
 			de 40 x 80 caractères ou une page). Ceci implique que si le module 
 			devait être plus long, il faudrait le découper, comme nous le verrons 
@@ -821,7 +822,7 @@
 			{c}\\\hline			
 		\end{tabular}
 		\begin{tabular}{|m{3cm}|*{3}{>{\centering\arraybackslash}m{3cm}|}}
-			{\code{a, b, c : entiers}} &
+			{\code{a, b, c~:~entiers}} &
 			{indéfini} &
 			{indéfini} &
 			{indéfini}\\\hline
@@ -874,7 +875,7 @@
 			{c}\\\hline			
 		\end{tabular}
 		\begin{tabular}{|m{3cm}|*{3}{>{\centering\arraybackslash}m{3cm}|}}
-			{\code{a, b, c : entiers}} &
+			{\code{a, b, c~:~entiers}} &
 			{indéfini} &
 			{indéfini} &
 			{indéfini}\\\hline
@@ -896,8 +897,8 @@
 		\end{tabular}
 		\end{center}
 		
-		\textstyleCodeInsr{c} ne peut pas être calculé car b n'a pas été initialisé;
-		quant à \textstyleCodeInsr{d}, il n'est même pas déclaré !
+		\textstyleCodeInsr{c} ne peut pas être calculé car b n’a pas été initialisé;
+		quant à \textstyleCodeInsr{d}, il n’est même pas déclaré~!
 
 		\bigskip
 			
@@ -917,19 +918,19 @@
 		}
 		
 		\textbf{Remarque~:}
-		rappelons que la fraction affichée n'est sans doute pas simplifiée. 
-		Nous n'avons pas encore tous les atouts suffisants pour réaliser 
-		cela à ce niveau. Patience !
+		rappelons que la fraction affichée n’est sans doute pas simplifiée. 
+		Nous n’avons pas encore tous les atouts suffisants pour réaliser 
+		cela à ce niveau. Patience~!
 
 	\section{Commenter un algorithme}
 
 		On n’insistera jamais assez sur la nécessité de \textbf{documenter} un
 		algorithme en y insérant des \textbf{commentaires} judicieux, clairs et
-		suffisants ! Un commentaire est un texte placé dans
-		l'algorithme et destiné à faciliter au maximum la
+		suffisants~! Un commentaire est un texte placé dans
+		l’algorithme et destiné à faciliter au maximum la
 		compréhension d’un algorithme par le lecteur (parfois une autre
-		personne, mais aussi souvent l'auteur qui se perd dans
-		son propre texte lorsqu'il s'y replonge après une
+		personne, mais aussi souvent l’auteur qui se perd dans
+		son propre texte lorsqu’il s’y replonge après une
 		interruption). Ces commentaires (introduits par
 		«~\textstyleCodeInsr{//~»}) seront bien entendu ignorés par
 		l’exécutant de l’algorithme.
@@ -944,13 +945,13 @@
 				\RComment calcul du dénominateur
 			\Let numRes \Gets num1*den2 + num2*den1
 				\RComment calcul du numérateur
-			\Empty \RComment la fraction n'est sans doute pas simplifiée
+			\Empty \RComment la fraction n’est sans doute pas simplifiée
 			\Write numRes, "/", denRes
 		\EndModule
 		\end{pseudo}
 		}
 
-		Noter qu’un excès de commentaires peut être aussi nuisible qu’un
+		Notez qu’un excès de commentaires peut être aussi nuisible qu’un
 		trop-peu pour la compréhension d’un algorithme. Par exemple, un choix
 		judicieux de noms de variables peut s’avérer bien plus efficace que des
 		commentaires superflus. Ainsi, l’instruction
@@ -961,7 +962,7 @@
 		\end{pseudo}
 		}
 
-		dépourvue de commentaires est bien préférable aux lignes suivantes :
+		dépourvue de commentaires est bien préférable aux lignes suivantes~:
 
 		\cadre{
 		\begin{pseudo}
@@ -970,20 +971,20 @@
 		\end{pseudo}
 		}
 		
-		Nous prendrons l'habitude de commenter chaque module en précisant ce qu'il fait.
+		Nous prendrons l’habitude de commenter chaque module en précisant ce qu’il fait.
 
 	\section{Compléments de pseudo-code}
 
 		\textstyleMotCl{\textmd{Présentons quelques notions algorithmiques peu
 		utilisées en première mais qui vous seront peut-être utiles dans
-		l'un ou l'autre des exercices.}}
+		l’un ou l’autre des exercices.}}
 
 		\subsection{Constantes}
 
 			Une \textbf{constante} est une information pour laquelle nom, type et
 			valeur sont figés. La liste des constantes utilisées dans un algorithme
 			apparaitra dans la section déclaration des variables sous la forme
-			suivante :
+			suivante~:
 
 			\cadre{
 			\begin{pseudo}
@@ -998,11 +999,11 @@
 
 		\subsection{Énumération}
 
-			Parfois, une variable ne peut prendre qu'un ensemble
+			Parfois, une variable ne peut prendre qu’un ensemble
 			fixe et fini de valeurs. Par exemple une variable représentant une
 			saison ne peut prendre que quatre valeurs (HIVER, PRINTEMPS, ÉTÉ,
-			AUTOMNE). On va l'indiquer grâce à
-			l'énumération qui introduit un \textbf{nouveau type}
+			AUTOMNE). On va l’indiquer grâce à
+			l’énumération qui introduit un \textbf{nouveau type}
 			de donnée.
 
 			\cadre{
@@ -1011,9 +1012,9 @@
 			\end{pseudo}
 			}
 
-			Il y a deux avantages à cela : une indication claire des possibilités de
+			Il y a deux avantages à cela~:~une indication claire des possibilités de
 			la variable lors de la déclaration et une lisibilité du code grâce à
-			l'utilisation des valeurs explicites.
+			l’utilisation des valeurs explicites.
 			
 			Par exemple, 
 			
@@ -1021,7 +1022,7 @@
 				\begin{pseudo}
 					\LComment Lit une saison et affiche sa particularité
 					\Module{particularitéSaisonnière}{}{}
-						\Decl uneSaison : Saison
+						\Decl uneSaison~:~Saison
 						\Read uneSaison
 						\RComment on lira la valeur HIVER ou PRINTEMPS ou ÉTÉ ou AUTOMNE
 						\If{uneSaison = HIVER}
@@ -1042,40 +1043,40 @@
 			}
 
 
-			\begin{Emphase}[exercice]{Exercice : Autres situations}
+			\begin{Emphase}[exercice]{Exercice~:~Autres situations}
 
-				Pouvez-vous identifier d'autres données qui pourraient
-				avantageusement s'exprimer avec une énumération ?
+				Pouvez-vous identifier d’autres données qui pourraient
+				avantageusement s’exprimer avec une énumération~?
 
 			\end{Emphase}
 			
-			\subsubsection*{Quid des langages de programmation ?}
+			\subsubsection*{Quid des langages de programmation~?}
 
 				Certains langages (comme Java) proposent un type énuméré complet.
-				D'autres (comme C et C++) proposent un type énuméré
+				D’autres (comme C et C++) proposent un type énuméré
 				incomplet mais qui permet néanmoins une écriture comme celle ci-dessus.
 				Cobol propose des «~noms conditions~» qui représentent
-				l'ensemble des valeurs possibles
-				d'une variable. D'autres langages,
+				l’ensemble des valeurs possibles
+				d’une variable. D’autres langages,
 				enfin, ne proposent rien. Pour ces langages, le truc est de définir des
 				constantes entières qui vont permettre une écriture proche de celle
 				ci-dessus (mais sans une déclaration explicite).
 
 			\subsubsection*{Lien avec les entiers}
 
-				Dans l'exemple ci dessus, on lit une Saison mais souvent,
+				Dans l’exemple ci-dessus, on lit une Saison mais souvent,
 				si on travaille avec les Mois par exemple,
-				on disposera plutôt d'un entier. Il faut pouvoir
+				on disposera plutôt d’un entier. Il faut pouvoir
 				convertir les valeurs. Chaque langage de programmation propose sa
-				propre technique; nous allons adopter la syntaxe suivante :
+				propre technique; nous allons adopter la syntaxe suivante~:
 
 				\cadre{
 				\begin{pseudo}
 				\Stmt Saison(3) 
-					\RComment donne l'énumération de la saison numéro 3 (on commence à 1);
+					\RComment donne l’énumération de la saison numéro 3 (on commence à 1);
 					\LComment donne ÉTÉ dans notre exemple.
 				\Stmt position(uneSaison)
-					\RComment donne l'entier associé à une saison;
+					\RComment donne l’entier associé à une saison;
 					\LComment si on a lu HIVER comme valeur pour uneSaison, donne la valeur 1.
 				\end{pseudo}
 				}
@@ -1083,18 +1084,18 @@
 \clearpage
 	\section{Exercices}
 
-		\subsection{Pour s'échauffer}
+		\subsection{Pour s’échauffer}
 
-\begin{Exercice}{Compréhension d'algorithme}
+\begin{Exercice}{Compréhension d’algorithme}
 
 	Pour ces exercices, nous vous demandons de comprendre des algorithmes
 	donnés. Plus précisément, que vont-ils afficher si à chaque fois les
-	deux nombres lus au départ sont successivement $2$ et $3$ ?
+	deux nombres lus au départ sont successivement $2$ et $3$~?
 
 	\cadre{
 	\begin{pseudo}
 	\Module{exerciceA}{}{}
-		\Decl a,b : entiers
+		\Decl a,b~:~entiers
 		\Read a,b
 		\Let a \Gets a + 2 * b
 		\Write a
@@ -1105,8 +1106,8 @@
 	\cadre{
 	\begin{pseudo}
 	\Module{exerciceB}{}{}
-		\Decl a,b : entiers
-		\Decl quotient : réel
+		\Decl a,b~:~entiers
+		\Decl quotient~:~réel
 		\Read b,a
 		\Let quotient \Gets a / b
 		\Write quotient
@@ -1117,7 +1118,7 @@
 	\cadre{
 	\begin{pseudo}
 	\Module{exerciceC}{}{}
-		\Decl a,b,c,d : entiers
+		\Decl a,b,c,d~:~entiers
 		\Read c,d
 		\Let a \Gets 2 * c + 5 * d
 		\Let b \Gets 2 + c * 3 + d
@@ -1130,11 +1131,11 @@
 	\cadre{
 	\begin{pseudo}
 	\Module{exerciceD}{}{}
-		\Decl x,y : réels
+		\Decl x,y~:~réels
 		\Read x,y
 		\Let x \Gets x * x
 		\Let x \Gets x * x + y * y
-		\Let x \Gets ${\surd}$(x) 
+        \Let x \Gets $\sqrt{\text{x}}$ 
 		\Write x
 	\EndModule
 	\end{pseudo}
@@ -1143,7 +1144,7 @@
 	\cadre{
 	\begin{pseudo}
 	\Module{exerciceE}{}{}
-		\Decl x,y : réels
+		\Decl x,y~:~réels
 		\Read x,x
 		\Let x \Gets x MOD x + (x + 1) DIV 2
 		\Write x + 3
@@ -1161,7 +1162,7 @@
 	\cadre{
 	\begin{pseudo}
 	\Module{exA}{}{} \Comment Division
-		\Decl nb1, nb2 : réels
+		\Decl nb1, nb2~:~réels
 		\Write nb1 / nb2
 	\EndModule
 	\end{pseudo}
@@ -1170,7 +1171,7 @@
 	\cadre{
 	\begin{pseudo}
 	\Module{exB}{}{} \Comment Somme
-		\Decl nb1, nb2 : réels
+		\Decl nb1, nb2~:~réels
 		\Read nb1, nb2
 		\Let m \Gets (nb1 + nb2) / 2
 		\Write m
@@ -1180,7 +1181,7 @@
 
 \end{Exercice}
 
-\begin{Exercice}{Simplification d'algorithme}
+\begin{Exercice}{Simplification d’algorithme}
 
 	Voici quelques extraits d’algorithmes corrects du point de vue de la
 	syntaxe mais contenant des lignes inutiles ou des lourdeurs d’écriture.
@@ -1219,7 +1220,7 @@
 
 \subsection{Exercices d’apprentissage}
 
-	Il est temps de se lancer et d'écrire vos premiers
+	Il est temps de se lancer et d’écrire vos premiers
 	modules. Voici quelques précieux conseils pour vous 
 	guider dans la résolution de tels problèmes~:
 
@@ -1239,16 +1240,16 @@
 		d’élaborer l’algorithme définitif pseudo-codé.}
 	\end{liste}
 
-\begin{Exercice}{Surface d'un triangle}
+\begin{Exercice}{Surface d’un triangle}
 	\marginicon{java}
 	Écrire un algorithme qui calcule et affiche la surface
-	d'un triangle connaissant sa base et sa hauteur.
+	d’un triangle connaissant sa base et sa hauteur.
 	
 	\begin{Solution}
 		\cadre{
 		\begin{pseudo}
 			\Module{surfaceTriangle}{}{}
-				\Decl base, hauteur, surface : réels
+				\Decl base, hauteur, surface~:~réels
 				\Read base
 				\Read hauteur
 				\Let surface \Gets ( base * hauteur ) / 2
@@ -1286,18 +1287,18 @@
 \begin{Exercice}{Cote moyenne}
 	Écrire un algorithme qui, étant donné les résultats (cote entière sur
 	20) de trois examens passés par un étudiant (exprimés par six nombres,
-	à savoir, la cote et la pondération de chaque examen) calcule et
+	à savoir, la cote et la pondération de chaque examen), calcule et
 	affiche la moyenne globale exprimée en pourcentage. Vérifiez bien votre
-	algorithme avec des valeurs concrètes; il est facile de se tromper dans
-	la formule !
+	algorithme avec des valeurs concrètes ; il est facile de se tromper dans
+	la formule~!
 \end{Exercice}
 
 \begin{Exercice}{Somme des chiffres}
 	\marginicon{java}
 	Écrire un algorithme qui calcule la somme des chiffres
-	d'un nombre entier de 3 chiffres.
-	Réflexion : l’algorithme est-il aussi valide pour les entiers inférieurs
-	à 100 ?
+	d’un nombre entier de 3 chiffres.
+	Réflexion~:~l’algorithme est-il aussi valide pour les entiers inférieurs
+	à 100~?
 \end{Exercice}
 
 \begin{Exercice}{Conversion HMS en secondes}
@@ -1313,5 +1314,5 @@
 	exprimé en secondes, calcule et affiche ce temps sous la forme de trois
 	nombres (heure, minute et seconde).
 
-	Ex : 10000 secondes donnera 2h 46'40''
+	Ex~:~10000 secondes donnera 2h 46'40''
 \end{Exercice}
