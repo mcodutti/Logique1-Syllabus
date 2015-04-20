@@ -1,8 +1,9 @@
 % Adaptation du package algorithmicx pour écrire les algorithmes
 % du cours de logique à l'ESI
 
-\usepackage{algpseudocode}		% Perme d'écrire des algorithmes
+\usepackage{algpseudocode}		% Permet d'écrire des algorithmes
 \usepackage{algorithm}			% Pour des algorithmes flottants
+\usepackage{environ}                    % Pour avoir un cadre autour du pseudo-code
 
 % ==============================================================================
 % Le code suivant permet d'avoir des lignes verticales pour délimiter les blocs. 
@@ -34,6 +35,12 @@
 \algdef{SE}[FOR]{For}{EndFor}[1]
   {\printandpush\algorithmicfor\ #1\ \algorithmicdo}
   {\popandprint\algorithmicend\ \algorithmicfor}%
+\algdef{SE}[FOR]{ForC}{EndFor}[3]
+  {\printandpush\algorithmicfor\ #1\ \algorithmicfrom\ #2\ \algorithmicto\ #3 \algorithmicdo}
+  {\popandprint\algorithmicend\ \algorithmicfor}%
+\algdef{SE}[FOR]{ForStep}{EndFor}[4]
+  {\printandpush\algorithmicfor\ #1\ \algorithmicfrom\ #2\ \algorithmicto\ #3\ \algorithmicstep #4\ \algorithmicdo}
+  {\popandprint\algorithmicend\ \algorithmicfor}%
 %\algdef{S}[FOR]{ForAll}[1]
 %  {\printindent\algorithmicforall\ #1\ \algorithmicdo}%
 \algdef{SE}[LOOP]{Loop}{EndLoop}
@@ -64,6 +71,9 @@
 \algdef{SE}[SWITCH]{Switch}{EndSwitch}[1]
   {\printandpush\algorithmicswitch\ #1}
   {\popandprint\algorithmicend\ \algorithmicswitch}%
+\algdef{SE}[SWITCH]{SwitchC}{EndSwitch}[1]
+  {\printandpush\algorithmicswitch\ #1 \algorithmicworth}
+  {\popandprint\algorithmicend\ \algorithmicswitch}%
 \algdef{C}[SWITCH]{SWITCH}{Case}[1]
   {\popandprint\pushindent\ #1:}%
 \algdef{SE}[STRUCT]{Struct}{EndStruct}[1]
@@ -92,6 +102,9 @@
 \algrenewcommand\algorithmicfunction{\textbf{module}}
 \algrenewcommand\algorithmicwhile{\textbf{tant que}}
 \algrenewcommand\algorithmicfor{\textbf{pour}}
+\algrenewcommand\algorithmicfrom{\textbf{de}}
+\algrenewcommand\algorithmicto{\textbf{à}}
+\algrenewcommand\algorithmicstep{\textbf{par}}
 \algrenewcommand\algorithmicrepeat{\textbf{faire}}
 \algrenewcommand\algorithmicuntil{\textbf{jusqu'à ce que}}
 \algrenewcommand\algorithmicdo{\textbf{faire}}
@@ -100,6 +113,7 @@
 \algrenewcommand\algorithmicthen{\textbf{alors}}
 \algrenewcommand\algorithmicelse{\textbf{sinon}}
 \algnewcommand\algorithmicswitch{\textbf{selon que}}
+\algnewcommand\algorithmicworth{\textbf{vaut}}
 \floatname{algorithm}{Algorithme}
 
 % Modifications de style
@@ -114,6 +128,10 @@
 \newcommand{\Gives}{\ \ensuremath{\rightarrow}{}}
 \newcommand{\T}[1]{\textsf{#1}} % Type
 \newcommand{\K}[1]{\textbf{#1}} % Keyword
+
+\newcommand{\From}{\textbf{de}\ }
+\newcommand{\To}{\textbf{à}\ }
+\newcommand{\By}{\textbf{par}\ }
 
 %\definecolor{declarecolor}{gray}{0.2}
 \newcommand{\Declare}[2]{\LState{#1 : #2}}
@@ -164,6 +182,14 @@
 	\end{sffamily}
 	\end{minipage}
 }
+
+\NewEnviron{pseudoC}{%
+    \cadre{
+    \begin{pseudo}
+        \BODY
+    \end{pseudo}
+    }
+  }
 
 \newcommand{\cadre}[1]{%
 	\fcolorbox{gray}{gray!10}{%
